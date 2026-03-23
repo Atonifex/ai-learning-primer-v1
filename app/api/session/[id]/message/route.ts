@@ -1,0 +1,106 @@
+import { NextRequest } from "next/server";
+import { getCurrentUser } from "../../../../../lib/auth/session";
+import { getProfile } from "../../../../../lib/services/profile";
+import { getSession, addMessage } from "../../../../../lib/services/session";
+import {
+  getRelevantMemory,
+  getRecentSummaries,
+  getLatestStoryState,
+} from "../../../../../lib/services/memory";
+import { streamSessionResponse } from "../../../../../lib/ai/sessionOrchestrator";
+
+export async function POST(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const user = await getCurrentUser();
+  if (!user) return new Response("Unauthorized", { status: 401 });
+
+  const { id: sessionId } = await params;
+  const { content } = await req.json();
+
+  if (!content) return new Response("Missing content", { status: 400 });
+
+  const profile = await getProfile(user.userId);
+  if (!profile) return new Response("No profile", { status: 404 });
+
+  const session = await getSession(sessionId);
+  if (!session) return new Response("Session not found", { status: 404 });
+
+  const isStart = content === "__start__";
+
+  // Save user message (unless it's the auto-start signal)
+  if (!isStart) {
+    await addMessage(sessionId, "USER", content);
+  }
+
+  // Load context
+  const [memoryItems, recentSummaries, storyState] = await Promise.all([
+    getRelevantMemory(profile.id),
+    getRecentSummaries(profile.id),
+    getLatestStoryState(profile.id),
+  ]);
+
+  const encoder = new TextEncoder();
+  let assistantText = "";
+  let finalImageUrl: string | null = null;
+  let finalImagePrompt: string | null = null;
+
+  const stream = new ReadableStream({
+    async start(controller) {
+      const send = (data: object) => {
+        controller.enqueue(
+          encoder.encode(`data: ${JSON.stringify(data)}\n\n`)
+        );
+      };
+
+      try {
+        const generator = streamSessionResponse(
+          profile,
+          memoryItems,
+          storyState,
+          recentSummaries,
+          session.messages,
+          content
+        );
+
+        for await (const chunk of generator) {
+          if (chunk.type === "text") {
+            assistantText += chunk.content;
+            send(chunk);
+          } else if (chunk.type === "image_start") {
+            send(chunk);
+          } else if (chunk.type === "image_done") {
+            finalImageUrl = chunk.url;
+            finalImagePrompt = chunk.prompt;
+            send(chunk);
+          }
+        }
+
+        // Save assistant message
+        const saved = await addMessage(
+          sessionId,
+          "ASSISTANT",
+          assistantText,
+          finalImageUrl,
+          finalImagePrompt
+        );
+
+        send({ type: "done", messageId: saved.id });
+      } catch (err) {
+        console.error("Stream error:", err);
+        send({ type: "error", message: "An error occurred" });
+      } finally {
+        controller.close();
+      }
+    },
+  });
+
+  return new Response(stream, {
+    headers: {
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache",
+      Connection: "keep-alive",
+    },
+  });
+}

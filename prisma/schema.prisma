@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id             String          @id @default(cuid())
+  email          String          @unique
+  passwordHash   String
+  createdAt      DateTime        @default(now())
+  learnerProfile LearnerProfile?
+}
+
+model LearnerProfile {
+  id             String          @id @default(cuid())
+  userId         String          @unique
+  user           User            @relation(fields: [userId], references: [id])
+  activeLanguage Language
+  currentLevel   Level
+  goals          String
+  interests      String[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  sessions       Session[]
+  memoryItems    MemoryItem[]
+  skillProgress  SkillProgress[]
+  storyStates    StoryState[]
+}
+
+enum Language {
+  ES
+  ZH
+}
+
+enum Level {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+model Session {
+  id               String         @id @default(cuid())
+  learnerProfileId String
+  learnerProfile   LearnerProfile @relation(fields: [learnerProfileId], references: [id])
+  language         Language
+  status           SessionStatus  @default(ACTIVE)
+  arcName          String?
+  arcSummary       String?
+  startedAt        DateTime       @default(now())
+  completedAt      DateTime?
+  messages         Message[]
+  storyState       StoryState?
+  memoryItems      MemoryItem[]   @relation("SourceSession")
+}
+
+enum SessionStatus {
+  ACTIVE
+  COMPLETED
+  ABANDONED
+}
+
+model Message {
+  id          String      @id @default(cuid())
+  sessionId   String
+  session     Session     @relation(fields: [sessionId], references: [id])
+  role        MessageRole
+  content     String
+  imageUrl    String?
+  imagePrompt String?
+  orderIndex  Int
+  createdAt   DateTime    @default(now())
+}
+
+enum MessageRole {
+  USER
+  ASSISTANT
+}
+
+model MemoryItem {
+  id               String         @id @default(cuid())
+  learnerProfileId String
+  learnerProfile   LearnerProfile @relation(fields: [learnerProfileId], references: [id])
+  type             MemoryType
+  content          String
+  confidence       Float          @default(1.0)
+  sourceSessionId  String?
+  sourceSession    Session?       @relation("SourceSession", fields: [sourceSessionId], references: [id])
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+}
+
+enum MemoryType {
+  VOCABULARY_GAP
+  RECURRING_MISTAKE
+  MISCONCEPTION
+  CONFIDENCE_SIGNAL
+  INTEREST
+  GOAL
+  PREFERENCE
+  STORY_CONTINUITY
+}
+
+model SkillProgress {
+  id               String         @id @default(cuid())
+  learnerProfileId String
+  learnerProfile   LearnerProfile @relation(fields: [learnerProfileId], references: [id])
+  skillName        String
+  language         Language
+  estimatedLevel   Float
+  confidence       Float          @default(0.5)
+  lastObservedAt   DateTime       @default(now())
+
+  @@unique([learnerProfileId, skillName, language])
+}
+
+model StoryState {
+  id                  String         @id @default(cuid())
+  learnerProfileId    String
+  learnerProfile      LearnerProfile @relation(fields: [learnerProfileId], references: [id])
+  sessionId           String         @unique
+  session             Session        @relation(fields: [sessionId], references: [id])
+  arcName             String
+  currentState        String
+  recurringCharacters Json
+  activeThemes        String[]
+  lastUpdatedAt       DateTime       @updatedAt
+}

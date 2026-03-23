@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(mkdir -p \"/c/Users/iharj/Documents/ChatGPT_or_Coding/ai-learning-primer-v1/app/api/session/[id]/message\")",
+      "Bash(mkdir -p \"/c/Users/iharj/Documents/ChatGPT_or_Coding/ai-learning-primer-v1/app/api/session/[id]/complete\")",
+      "Bash(mkdir -p \"/c/Users/iharj/Documents/ChatGPT_or_Coding/ai-learning-primer-v1/app/learn/[sessionId]\")",
+      "Bash(npx prisma:*)",
+      "Bash(node:*)",
+      "Bash(del /c/Users/iharj/Documents/ChatGPT_or_Coding/ai-learning-primer-v1/prisma.config.js)",
+      "Bash(xargs grep:*)",
+      "Bash(DATABASE_URL=\"postgresql://user:pass@localhost:5432/primer\" npx prisma generate 2>&1)",
+      "Bash(npx tsc:*)",
+      "Bash(cat /c/Users/iharj/Documents/ChatGPT_or_Coding/ai-learning-primer-v1/app/learn/[sessionId]/page.tsx)",
+      "Bash(cat /c/Users/iharj/Documents/ChatGPT_or_Coding/ai-learning-primer-v1/app/api/session/[id]/message/route.ts)",
+      "Bash(npx next:*)"
+    ]
+  }
+}
