@@ -1,7 +1,11 @@
 import { NextRequest } from "next/server";
 import { getCurrentUser } from "../../../../../lib/auth/session";
 import { getProfile } from "../../../../../lib/services/profile";
-import { getSession, addMessage } from "../../../../../lib/services/session";
+import { getSession, addMessage, updateMessageImage } from "../../../../../lib/services/session";
+import {
+  persistMessageSceneToStorage,
+  updatePortraitsAfterSceneImage,
+} from "../../../../../lib/services/characterPortraits";
 import {
   getRelevantMemory,
   getRecentSummaries,
@@ -45,6 +49,7 @@ export async function POST(
   let assistantText = "";
   let finalImageUrl: string | null = null;
   let finalImagePrompt: string | null = null;
+  let lastCharactersInScene: string[] = [];
 
   const stream = new ReadableStream({
     async start(controller) {
@@ -75,6 +80,9 @@ export async function POST(
               finalImageUrl = chunk.url;
               finalImagePrompt = chunk.prompt;
             }
+            if (chunk.charactersInScene?.length) {
+              lastCharactersInScene = chunk.charactersInScene;
+            }
             send(chunk);
           }
         }
@@ -87,6 +95,32 @@ export async function POST(
           finalImageUrl,
           finalImagePrompt
         );
+
+        if (finalImageUrl?.startsWith("data:image")) {
+          const b64Match = /^data:image\/\w+;base64,(.+)$/.exec(finalImageUrl);
+          if (b64Match?.[1]) {
+            const pngBytes = Buffer.from(b64Match[1], "base64");
+            const persisted = await persistMessageSceneToStorage({
+              profileId: profile.id,
+              sessionId,
+              messageId: saved.id,
+              pngBytes,
+            });
+            if (persisted) {
+              await updateMessageImage(saved.id, {
+                imageStoragePath: persisted.path,
+                imageUrl: persisted.signedUrl ?? finalImageUrl,
+              });
+            }
+            await updatePortraitsAfterSceneImage({
+              profileId: profile.id,
+              sessionId,
+              messageId: saved.id,
+              charactersInScene: lastCharactersInScene,
+              imageStoragePath: persisted?.path ?? null,
+            });
+          }
+        }
 
         send({ type: "done", messageId: saved.id });
       } catch (err) {

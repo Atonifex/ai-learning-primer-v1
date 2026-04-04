@@ -18,6 +18,8 @@ export interface MessageData {
   content: string;
   imageUrl?: string | null;
   imagePrompt?: string | null;
+  /** Supabase Storage path when uploaded (bucket-relative). */
+  imageStoragePath?: string | null;
   orderIndex: number;
   createdAt: Date;
 }
@@ -52,15 +54,27 @@ export interface SkillUpdate {
   confidence: number;
 }
 
+export interface RecurringCharacterEntry {
+  name: string;
+  description: string;
+  /** Optional stable slug for portrait routing; filled by extraction or server. */
+  characterKey?: string;
+}
+
 export interface StoryStateData {
   arcName: string;
   currentState: string;
-  recurringCharacters: { name: string; description: string }[];
+  recurringCharacters: RecurringCharacterEntry[];
   activeThemes: string[];
 }
 
 export type StreamChunk =
   | { type: "text"; content: string }
   | { type: "image_start" }
-  | { type: "image_done"; url: string; prompt: string }
+  | {
+      type: "image_done";
+      url: string;
+      prompt: string;
+      charactersInScene?: string[];
+    }
   | { type: "done"; messageId: string };

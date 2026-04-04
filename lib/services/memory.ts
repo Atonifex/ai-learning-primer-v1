@@ -1,5 +1,11 @@
 import { prisma } from "../db/prisma";
-import type { MemoryItemData, SkillUpdate, StoryStateData, Language } from "../types";
+import type {
+  MemoryItemData,
+  SkillUpdate,
+  StoryStateData,
+  Language,
+  RecurringCharacterEntry,
+} from "../types";
 
 export async function getRelevantMemory(
   profileId: string,
@@ -129,10 +135,25 @@ export async function getLatestStoryState(profileId: string): Promise<StoryState
     orderBy: { lastUpdatedAt: "desc" },
   });
   if (!state) return null;
+  const raw = state.recurringCharacters as unknown;
+  const recurringCharacters: RecurringCharacterEntry[] = Array.isArray(raw)
+    ? raw.map((c: unknown) => {
+        if (c && typeof c === "object" && "name" in c) {
+          const o = c as { name: string; description?: string; characterKey?: string };
+          return {
+            name: o.name,
+            description: o.description ?? "",
+            ...(o.characterKey ? { characterKey: o.characterKey } : {}),
+          };
+        }
+        return { name: String(c), description: "" };
+      })
+    : [];
+
   return {
     arcName: state.arcName,
     currentState: state.currentState,
-    recurringCharacters: state.recurringCharacters as { name: string; description: string }[],
+    recurringCharacters,
     activeThemes: state.activeThemes,
   };
 }

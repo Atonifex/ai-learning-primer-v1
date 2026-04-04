@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCurrentUser } from "../../../../lib/auth/session";
+import { enrichSessionDataWithSignedUrls } from "../../../../lib/services/characterPortraits";
 import { getSession } from "../../../../lib/services/session";
 
 export async function GET(
@@ -11,5 +12,6 @@ export async function GET(
   const { id } = await params;
   const session = await getSession(id);
   if (!session) return NextResponse.json({ error: "Session not found" }, { status: 404 });
-  return NextResponse.json({ session });
+  const enriched = await enrichSessionDataWithSignedUrls(session);
+  return NextResponse.json({ session: enriched });
 }

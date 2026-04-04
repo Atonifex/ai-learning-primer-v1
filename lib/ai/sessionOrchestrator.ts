@@ -5,6 +5,7 @@ import {
   generateSceneImage,
   generateSceneImageTool,
 } from "./imageTool";
+import { getReferenceBuffersForScene } from "./referenceImages";
 import {
   aiDebug,
   isAiDebug,
@@ -123,7 +124,7 @@ export async function* streamSessionResponse(
         );
       }
 
-      let args: { prompt: string; alt_text: string };
+      let args: { prompt: string; alt_text: string; characters_in_scene?: string[] };
       try {
         args = JSON.parse(toolCall.args);
       } catch (e) {
@@ -133,15 +134,28 @@ export async function* streamSessionResponse(
         continue;
       }
 
+      const charactersInScene = args.characters_in_scene ?? [];
+
       yield { type: "image_start" };
 
       try {
-        imageUrl = await generateSceneImage(args.prompt);
+        const referenceBuffers = await getReferenceBuffersForScene(
+          profile.id,
+          charactersInScene,
+          sessionMessages
+        );
+        imageUrl = await generateSceneImage(args.prompt, { referenceBuffers });
         aiDebug("orchestrator", "image_done", {
           ok: true,
           imageChars: imageUrl.length,
+          refCount: referenceBuffers.length,
         });
-        yield { type: "image_done", url: imageUrl, prompt: args.prompt };
+        yield {
+          type: "image_done",
+          url: imageUrl,
+          prompt: args.prompt,
+          charactersInScene,
+        };
       } catch (err) {
         console.error("Image generation failed:", err);
         aiDebug("orchestrator", "image_done", {
@@ -150,7 +164,12 @@ export async function* streamSessionResponse(
         });
         imageUrl = null;
         // Client must receive a terminal event after image_start, or loading never clears.
-        yield { type: "image_done", url: "", prompt: args.prompt };
+        yield {
+          type: "image_done",
+          url: "",
+          prompt: args.prompt,
+          charactersInScene,
+        };
       }
 
       // Continue conversation after tool execution

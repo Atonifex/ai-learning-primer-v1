@@ -44,7 +44,7 @@ Extract structured information and return ONLY valid JSON with this exact shape:
   "storyUpdate": {
     "arcName": "name of this session's story arc",
     "currentState": "2-3 sentence summary of where the story ended",
-    "recurringCharacters": [{ "name": "character name", "description": "brief description" }],
+    "recurringCharacters": [{ "name": "character name", "description": "brief description", "characterKey": "optional stable slug (lowercase, hyphens) matching portrait routing" }],
     "activeThemes": ["theme1", "theme2"]
   },
   "sessionSummary": "2-3 sentence summary of what was learned and practiced in this session"

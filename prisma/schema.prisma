@@ -15,19 +15,20 @@ model User {
 }
 
 model LearnerProfile {
-  id             String          @id @default(cuid())
-  userId         String          @unique
-  user           User            @relation(fields: [userId], references: [id])
-  activeLanguage Language
-  currentLevel   Level
-  goals          String
-  interests      String[]
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
-  sessions       Session[]
-  memoryItems    MemoryItem[]
-  skillProgress  SkillProgress[]
-  storyStates    StoryState[]
+  id                 String               @id @default(cuid())
+  userId             String               @unique
+  user               User                 @relation(fields: [userId], references: [id])
+  activeLanguage     Language
+  currentLevel       Level
+  goals              String
+  interests          String[]
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  sessions           Session[]
+  memoryItems        MemoryItem[]
+  skillProgress      SkillProgress[]
+  storyStates        StoryState[]
+  characterPortraits CharacterPortrait[]
 }
 
 enum Language {
@@ -63,20 +64,36 @@ enum SessionStatus {
 }
 
 model Message {
-  id          String      @id @default(cuid())
-  sessionId   String
-  session     Session     @relation(fields: [sessionId], references: [id])
-  role        MessageRole
-  content     String
-  imageUrl    String?
-  imagePrompt String?
-  orderIndex  Int
-  createdAt   DateTime    @default(now())
+  id               String      @id @default(cuid())
+  sessionId        String
+  session          Session     @relation(fields: [sessionId], references: [id])
+  role             MessageRole
+  content          String
+  imageUrl         String?
+  imagePrompt      String?
+  imageStoragePath String?
+  orderIndex       Int
+  createdAt        DateTime    @default(now())
 }
 
 enum MessageRole {
   USER
   ASSISTANT
+}
+
+/// At most two logical portraits per character: first establishing shot + latest (middle scenes not retained in Storage).
+model CharacterPortrait {
+  id                 String         @id @default(cuid())
+  learnerProfileId   String
+  learnerProfile     LearnerProfile @relation(fields: [learnerProfileId], references: [id], onDelete: Cascade)
+  characterKey       String
+  displayName        String?
+  firstMessageId     String?
+  latestMessageId    String?
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+
+  @@unique([learnerProfileId, characterKey])
 }
 
 model MemoryItem {

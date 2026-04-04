@@ -27,7 +27,9 @@ function formatStoryState(state: StoryStateData | null): string {
   if (!state) return "No prior story state — begin a new arc.";
   const characters =
     Array.isArray(state.recurringCharacters) && state.recurringCharacters.length
-      ? state.recurringCharacters.map((c: { name: string; description: string }) => `${c.name}: ${c.description}`).join("; ")
+      ? state.recurringCharacters
+          .map((c) => `${c.name}: ${c.description}`)
+          .join("; ")
       : "None established yet";
   return [
     `Arc: ${state.arcName}`,
@@ -86,11 +88,14 @@ YOUR APPROACH:
 ${langInstructions}
 
 GENERATING SCENE IMAGES:
-Call generate_scene_image when:
+Call generate_scene_image every 2 messages, or even sooner if any of these occur:
 - The session opens with a new scene
 - The setting changes significantly
 - A visually powerful moment occurs
-Do NOT call it for every message — only for meaningful visual moments.
+
+When calling generate_scene_image, use characters_in_scene to list every recurring character who appears in the shot, spelling their names exactly as in CURRENT STORY STATE (consistent naming keeps portrait references aligned).
 
 When the learner sends "__start__", generate the opening of this session's story. Describe the scene vividly, introduce context or characters, and give the learner something engaging to respond to in ${lang}. Always call generate_scene_image for the opening scene.`;
 }
+
+//4/4/2026: Removed this from GENERATING SCENE IMAGES: Do NOT call it for every message — only for meaningful visual moments.

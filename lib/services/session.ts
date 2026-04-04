@@ -40,6 +40,7 @@ export async function getSession(sessionId: string): Promise<SessionData | null>
       content: m.content,
       imageUrl: m.imageUrl,
       imagePrompt: m.imagePrompt,
+      imageStoragePath: m.imageStoragePath,
       orderIndex: m.orderIndex,
       createdAt: m.createdAt,
     })),
@@ -51,11 +52,20 @@ export async function addMessage(
   role: "USER" | "ASSISTANT",
   content: string,
   imageUrl?: string | null,
-  imagePrompt?: string | null
+  imagePrompt?: string | null,
+  imageStoragePath?: string | null
 ): Promise<MessageData> {
   const count = await prisma.message.count({ where: { sessionId } });
   const msg = await prisma.message.create({
-    data: { sessionId, role, content, imageUrl, imagePrompt, orderIndex: count },
+    data: {
+      sessionId,
+      role,
+      content,
+      imageUrl,
+      imagePrompt,
+      imageStoragePath,
+      orderIndex: count,
+    },
   });
   return {
     id: msg.id,
@@ -63,9 +73,20 @@ export async function addMessage(
     content: msg.content,
     imageUrl: msg.imageUrl,
     imagePrompt: msg.imagePrompt,
+    imageStoragePath: msg.imageStoragePath,
     orderIndex: msg.orderIndex,
     createdAt: msg.createdAt,
   };
+}
+
+export async function updateMessageImage(
+  messageId: string,
+  data: { imageUrl?: string | null; imageStoragePath?: string | null }
+): Promise<void> {
+  await prisma.message.update({
+    where: { id: messageId },
+    data,
+  });
 }
 
 export async function completeSession(sessionId: string, summary: string): Promise<void> {
@@ -101,6 +122,7 @@ export async function listSessions(profileId: string): Promise<SessionData[]> {
       content: m.content,
       imageUrl: m.imageUrl,
       imagePrompt: m.imagePrompt,
+      imageStoragePath: m.imageStoragePath,
       orderIndex: m.orderIndex,
       createdAt: m.createdAt,
     })),
