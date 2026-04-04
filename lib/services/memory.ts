@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client";
 import { prisma } from "../db/prisma";
 import type {
   MemoryItemData,
@@ -98,7 +99,7 @@ export async function upsertStoryState(
     update: {
       arcName: state.arcName,
       currentState: state.currentState,
-      recurringCharacters: state.recurringCharacters,
+      recurringCharacters: state.recurringCharacters as unknown as Prisma.InputJsonValue,
       activeThemes: state.activeThemes,
     },
     create: {
@@ -106,7 +107,7 @@ export async function upsertStoryState(
       sessionId,
       arcName: state.arcName,
       currentState: state.currentState,
-      recurringCharacters: state.recurringCharacters,
+      recurringCharacters: state.recurringCharacters as unknown as Prisma.InputJsonValue,
       activeThemes: state.activeThemes,
     },
   });
