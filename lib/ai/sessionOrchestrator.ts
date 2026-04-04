@@ -1,7 +1,16 @@
 import OpenAI from "openai";
 import type { ChatCompletionMessageParam } from "openai/resources/chat/completions";
 import { buildSystemPrompt } from "./contextBuilder";
-import { generateSceneImage, generateSceneImageTool } from "./imageTool";
+import {
+  generateSceneImage,
+  generateSceneImageTool,
+} from "./imageTool";
+import {
+  aiDebug,
+  isAiDebug,
+  isAiDebugFull,
+  summarizeMessagesForDebug,
+} from "./aiDebug";
 import type {
   LearnerProfileData,
   MemoryItemData,
@@ -31,7 +40,6 @@ export async function* streamSessionResponse(
   userMessage: string
 ): AsyncGenerator<StreamChunk> {
   const systemPrompt = buildSystemPrompt(profile, memoryItems, storyState, recentSummaries);
-  console.log("systemPrompt", systemPrompt);
 
   const priorMessages = toOpenAIMessages(sessionMessages);
   const isStart = userMessage === "__start__";
@@ -42,6 +50,29 @@ export async function* streamSessionResponse(
     ...(isStart ? [] : [{ role: "user" as const, content: userMessage }]),
     ...(isStart ? [{ role: "user" as const, content: "__start__" }] : []),
   ];
+
+  if (isAiDebug()) {
+    aiDebug("orchestrator", "turn_start", {
+      model: MODEL,
+      turn: isStart ? "session_start" : "user_message",
+      systemPromptChars: systemPrompt.length,
+      priorTurns: priorMessages.length,
+      messagesOutline: summarizeMessagesForDebug(
+        messages.map((m) => ({
+          role: m.role,
+          content: typeof m.content === "string" ? m.content : "[multipart]",
+        })),
+        120
+      ),
+    });
+    if (isAiDebugFull()) {
+      console.log(
+        "[Primer AI:orchestrator] system_prompt (full — PRIMER_AI_DEBUG_FULL)\n---\n" +
+          systemPrompt +
+          "\n---"
+      );
+    }
+  }
 
   let fullText = "";
   let toolCall: { id: string; name: string; args: string } | null = null;
@@ -78,10 +109,27 @@ export async function* streamSessionResponse(
     }
 
     if (choice.finish_reason === "tool_calls" && toolCall) {
+      aiDebug("orchestrator", "tool_calls_finish", {
+        toolName: toolCall.name,
+        toolCallId: toolCall.id,
+        argsChars: toolCall.args.length,
+      });
+      if (isAiDebug()) {
+        console.log(
+          `[Primer AI:orchestrator] tool_arguments (truncated)`,
+          toolCall.args.length > 800
+            ? `${toolCall.args.slice(0, 800)}…`
+            : toolCall.args
+        );
+      }
+
       let args: { prompt: string; alt_text: string };
       try {
         args = JSON.parse(toolCall.args);
-      } catch {
+      } catch (e) {
+        aiDebug("orchestrator", "tool_args_parse_error", {
+          error: e instanceof Error ? e.message : String(e),
+        });
         continue;
       }
 
@@ -89,9 +137,17 @@ export async function* streamSessionResponse(
 
       try {
         imageUrl = await generateSceneImage(args.prompt);
+        aiDebug("orchestrator", "image_done", {
+          ok: true,
+          imageChars: imageUrl.length,
+        });
         yield { type: "image_done", url: imageUrl, prompt: args.prompt };
       } catch (err) {
         console.error("Image generation failed:", err);
+        aiDebug("orchestrator", "image_done", {
+          ok: false,
+          error: err instanceof Error ? err.message : String(err),
+        });
         imageUrl = null;
         // Client must receive a terminal event after image_start, or loading never clears.
         yield { type: "image_done", url: "", prompt: args.prompt };
@@ -121,6 +177,11 @@ export async function* streamSessionResponse(
         },
       ];
 
+      aiDebug("orchestrator", "continuation_request", {
+        model: MODEL,
+        messagesInRequest: continuationMessages.length,
+      });
+
       const stream2 = await openai.chat.completions.create({
         model: MODEL,
         messages: continuationMessages,
@@ -128,12 +189,30 @@ export async function* streamSessionResponse(
       });
 
       for await (const chunk2 of stream2) {
-        const delta2 = chunk2.choices[0]?.delta;
+        const c2 = chunk2.choices[0];
+        const delta2 = c2?.delta;
         if (delta2?.content) {
           fullText += delta2.content;
           yield { type: "text", content: delta2.content };
         }
+        const fr2 = c2?.finish_reason;
+        if (fr2 && isAiDebug()) {
+          aiDebug("orchestrator", "continuation_chunk_finish", {
+            finish_reason: fr2,
+          });
+        }
       }
+    } else if (choice.finish_reason && choice.finish_reason !== "tool_calls") {
+      aiDebug("orchestrator", "first_stream_finish", {
+        finish_reason: choice.finish_reason,
+        assistantTextChars: fullText.length,
+      });
     }
+  }
+
+  if (isAiDebug()) {
+    aiDebug("orchestrator", "turn_end", {
+      totalAssistantChars: fullText.length,
+    });
   }
 }

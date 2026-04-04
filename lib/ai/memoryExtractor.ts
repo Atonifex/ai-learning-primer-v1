@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { aiDebug, isAiDebug } from "./aiDebug";
 import type { MessageData, MemoryItemData, SkillUpdate, StoryStateData, Language } from "../types";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -56,8 +57,16 @@ Rules:
 - Do not duplicate items that already exist in the existing memory (above)
 - Include at least one STORY_CONTINUITY item if there was meaningful narrative`;
 
+  if (isAiDebug()) {
+    aiDebug("memoryExtractor", "request", {
+      model: "gpt-5.4-nano",
+      messageCount: messages.length,
+      promptChars: prompt.length,
+    });
+  }
+
   const response = await openai.chat.completions.create({
-    model: "gpt-4o",
+    model: "gpt-5.4-nano",
     messages: [{ role: "user", content: prompt }],
     response_format: { type: "json_object" },
     temperature: 0.2,
@@ -67,5 +76,12 @@ Rules:
   if (!content) throw new Error("Empty extraction response");
 
   const result = JSON.parse(content) as ExtractionResult;
+  if (isAiDebug()) {
+    aiDebug("memoryExtractor", "response", {
+      memoryItems: result.memoryItems.length,
+      skillUpdates: result.skillUpdates.length,
+      sessionSummaryChars: result.sessionSummary?.length ?? 0,
+    });
+  }
   return result;
 }
