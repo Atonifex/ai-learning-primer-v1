@@ -71,8 +71,10 @@ export async function POST(
           } else if (chunk.type === "image_start") {
             send(chunk);
           } else if (chunk.type === "image_done") {
-            finalImageUrl = chunk.url;
-            finalImagePrompt = chunk.prompt;
+            if (chunk.url) {
+              finalImageUrl = chunk.url;
+              finalImagePrompt = chunk.prompt;
+            }
             send(chunk);
           }
         }

@@ -116,13 +116,17 @@ export default function SessionPage({ params }: PageProps) {
               } else if (data.type === "image_start") {
                 setImageLoading(true);
               } else if (data.type === "image_done") {
-                setCurrentImage(data.url);
+                if (data.url) {
+                  setCurrentImage(data.url);
+                  setMessages((prev) =>
+                    prev.map((m) =>
+                      m.id === streamingId ? { ...m, imageUrl: data.url } : m
+                    )
+                  );
+                }
                 setImageLoading(false);
-                setMessages((prev) =>
-                  prev.map((m) =>
-                    m.id === streamingId ? { ...m, imageUrl: data.url } : m
-                  )
-                );
+              } else if (data.type === "error") {
+                setImageLoading(false);
               } else if (data.type === "done") {
                 setMessages((prev) =>
                   prev.map((m) =>
@@ -142,8 +146,10 @@ export default function SessionPage({ params }: PageProps) {
         setMessages((prev) =>
           prev.filter((m) => m.id !== streamingId)
         );
+        setImageLoading(false);
       } finally {
         setStreaming(false);
+        setImageLoading(false);
       }
     },
     [sessionId, streaming]

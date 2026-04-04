@@ -5,17 +5,36 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const STYLE_PREFIX =
   "Graphic novel illustration, painterly, warm cinematic lighting, rich colors, detailed, atmospheric. ";
 
+/**
+ * GPT image models (`gpt-image-1-mini`, etc.) return base64 by default — not URLs.
+ * `response_format` / URLs apply to DALL·E; see OpenAI Images API docs.
+ */
 export async function generateSceneImage(prompt: string): Promise<string> {
   const response = await openai.images.generate({
     model: "gpt-image-1-mini",
     prompt: STYLE_PREFIX + prompt,
     n: 1,
     size: "1536x1024",
-  } as Parameters<typeof openai.images.generate>[0]) as { data: { url?: string; b64_json?: string }[] };
+    output_format: "png",
+  });
 
-  const url = response.data[0]?.url;
-  if (!url) throw new Error("No image URL returned from OpenAI");
-  return url;
+  const rows = response.data ?? [];
+  const first = rows[0];
+
+  if (first?.url) return first.url;
+
+  const b64 = first?.b64_json;
+  if (b64) {
+    const fmt = response.output_format ?? "png";
+    const mime =
+      fmt === "jpeg" ? "image/jpeg" : fmt === "webp" ? "image/webp" : "image/png";
+    return `data:${mime};base64,${b64}`;
+  }
+
+  throw new Error(
+    `OpenAI returned no image (data.length=${rows.length}). ` +
+      `If you still see "No image URL returned", rebuild: stale .next bundle from before base64 support.`
+  );
 }
 
 export const generateSceneImageTool = {

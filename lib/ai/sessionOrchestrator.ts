@@ -11,7 +11,7 @@ import type {
 } from "../types";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-const MODEL = "gpt-4o";
+const MODEL = "gpt-5.4-mini";
 
 function toOpenAIMessages(messages: MessageData[]): ChatCompletionMessageParam[] {
   return messages
@@ -92,6 +92,8 @@ export async function* streamSessionResponse(
       } catch (err) {
         console.error("Image generation failed:", err);
         imageUrl = null;
+        // Client must receive a terminal event after image_start, or loading never clears.
+        yield { type: "image_done", url: "", prompt: args.prompt };
       }
 
       // Continue conversation after tool execution
