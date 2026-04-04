@@ -31,6 +31,7 @@ export async function* streamSessionResponse(
   userMessage: string
 ): AsyncGenerator<StreamChunk> {
   const systemPrompt = buildSystemPrompt(profile, memoryItems, storyState, recentSummaries);
+  console.log("systemPrompt", systemPrompt);
 
   const priorMessages = toOpenAIMessages(sessionMessages);
   const isStart = userMessage === "__start__";

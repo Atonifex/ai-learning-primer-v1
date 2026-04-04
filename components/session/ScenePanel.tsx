@@ -1,13 +1,22 @@
 "use client";
 
+import { cn } from "../../lib/utils";
+
 interface ScenePanelProps {
   imageUrl: string | null;
   loading: boolean;
+  /** When set, use full height of parent (e.g. right column). Otherwise legacy top band height. */
+  className?: string;
 }
 
-export default function ScenePanel({ imageUrl, loading }: ScenePanelProps) {
+export default function ScenePanel({ imageUrl, loading, className }: ScenePanelProps) {
   return (
-    <div className="relative w-full bg-stone-900 overflow-hidden" style={{ height: "42vh", minHeight: "220px" }}>
+    <div
+      className={cn(
+        "relative w-full bg-stone-900 overflow-hidden",
+        className ?? "h-[42vh] min-h-[220px]"
+      )}
+    >
       {imageUrl && !loading && (
         // eslint-disable-next-line @next/next/no-img-element
         <img

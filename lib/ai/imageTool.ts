@@ -49,7 +49,7 @@ export const generateSceneImageTool = {
         prompt: {
           type: "string",
           description:
-            "Detailed visual description of the scene. Include setting, mood, characters, lighting. The style will automatically be graphic novel / painterly.",
+            "Detailed visual description of the scene. Include setting, mood, characters, lighting. The style will automatically be photo realistic, detailed, and high resolution.",
         },
         alt_text: {
           type: "string",

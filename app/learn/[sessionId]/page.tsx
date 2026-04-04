@@ -212,32 +212,39 @@ export default function SessionPage({ params }: PageProps) {
         </button>
       </header>
 
-      {/* Scene panel */}
-      <ScenePanel imageUrl={currentImage} loading={imageLoading} />
+      {/* Main: chat left, scene image right (stacked on small screens: chat first, image below) */}
+      <div className="flex flex-1 min-h-0 flex-col md:flex-row">
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col border-stone-200/90 md:border-r">
+          <MessageList messages={messages} />
 
-      {/* Messages */}
-      <MessageList messages={messages} />
-
-      {/* Streaming indicator */}
-      {streaming && (
-        <div className="flex-shrink-0 px-4 pb-1">
-          <div className="max-w-2xl mx-auto flex items-center gap-2 text-stone-400 text-xs ml-10">
-            <div className="flex gap-1">
-              {[0, 1, 2].map((i) => (
-                <div
-                  key={i}
-                  className="w-1.5 h-1.5 bg-amber-400 rounded-full animate-bounce"
-                  style={{ animationDelay: `${i * 0.15}s` }}
-                />
-              ))}
+          {streaming && (
+            <div className="flex-shrink-0 px-4 pb-1">
+              <div className="mx-auto flex max-w-2xl items-center gap-2 text-stone-400 text-xs ml-10">
+                <div className="flex gap-1">
+                  {[0, 1, 2].map((i) => (
+                    <div
+                      key={i}
+                      className="h-1.5 w-1.5 animate-bounce rounded-full bg-amber-400"
+                      style={{ animationDelay: `${i * 0.15}s` }}
+                    />
+                  ))}
+                </div>
+                <span>Primer is writing…</span>
+              </div>
             </div>
-            <span>Primer is writing…</span>
-          </div>
-        </div>
-      )}
+          )}
 
-      {/* Input */}
-      <InputBar onSend={sendMessage} disabled={streaming || leaving} />
+          <InputBar onSend={sendMessage} disabled={streaming || leaving} />
+        </div>
+
+        <div className="flex min-h-[220px] min-w-0 flex-1 flex-col border-t border-stone-200 bg-stone-900 md:h-full md:min-h-0 md:border-l md:border-t-0">
+          <ScenePanel
+            imageUrl={currentImage}
+            loading={imageLoading}
+            className="h-full min-h-[220px] md:min-h-0"
+          />
+        </div>
+      </div>
 
       {/* Leave confirmation */}
       {confirmLeave && (
