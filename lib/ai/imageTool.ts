@@ -72,12 +72,14 @@ export async function generateSceneImage(
   );
 }
 
+
+//, or sooner if a new scene begins, the setting changes significantly, or a visually important moment occurs. 
 export const generateSceneImageTool = {
   type: "function" as const,
   function: {
     name: "generate_scene_image",
     description:
-      "Generate a scene image on every 2nd assistant message, or sooner if a new scene begins, the setting changes significantly, or a visually important moment occurs. For visual consistency, list named characters visible in the scene in characters_in_scene using the same names as in CURRENT STORY STATE.",
+      "Generate a scene image on every assistant message. For visual consistency, list named characters visible in the scene in characters_in_scene using the same names as in CURRENT STORY STATE.",
     parameters: {
       type: "object",
       properties: {

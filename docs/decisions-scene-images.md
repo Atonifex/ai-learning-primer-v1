@@ -28,4 +28,4 @@
 
 ## Migrations
 
-- If **`prisma migrate dev`** hangs on a pooler, apply migrations with **`prisma migrate deploy`** using a **direct** Postgres connection string when possible.
+- **Two env vars** (see `.env.local.example`): **`DATABASE_URL`** = Supabase transaction pooler (app runtime); **`MIGRATE_DATABASE_URL`** = session pooler for Prisma CLI — aligns with Supabase connection docs and avoids migrate-on-`:6543` hangs.
