@@ -23,6 +23,14 @@ import type {
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const MODEL = "gpt-5.4-mini";
 
+function throwIfAborted(signal: AbortSignal | undefined) {
+  if (signal?.aborted) {
+    const e = new Error("The operation was aborted");
+    e.name = "AbortError";
+    throw e;
+  }
+}
+
 function toOpenAIMessages(messages: MessageData[]): ChatCompletionMessageParam[] {
   return messages
     .filter((m) => m.content && m.content !== "__start__")
@@ -38,7 +46,8 @@ export async function* streamSessionResponse(
   storyState: StoryStateData | null,
   recentSummaries: string[],
   sessionMessages: MessageData[],
-  userMessage: string
+  userMessage: string,
+  abortSignal?: AbortSignal
 ): AsyncGenerator<StreamChunk> {
   const systemPrompt = buildSystemPrompt(profile, memoryItems, storyState, recentSummaries);
 
@@ -79,15 +88,19 @@ export async function* streamSessionResponse(
   let toolCall: { id: string; name: string; args: string } | null = null;
   let imageUrl: string | null = null;
 
-  const stream = await openai.chat.completions.create({
-    model: MODEL,
-    messages,
-    tools: [generateSceneImageTool],
-    tool_choice: "auto",
-    stream: true,
-  });
+  const stream = await openai.chat.completions.create(
+    {
+      model: MODEL,
+      messages,
+      tools: [generateSceneImageTool],
+      tool_choice: "auto",
+      stream: true,
+    },
+    { signal: abortSignal }
+  );
 
   for await (const chunk of stream) {
+    throwIfAborted(abortSignal);
     const choice = chunk.choices[0];
     if (!choice) continue;
 
@@ -136,6 +149,7 @@ export async function* streamSessionResponse(
 
       const charactersInScene = args.characters_in_scene ?? [];
 
+      throwIfAborted(abortSignal);
       yield { type: "image_start" };
 
       try {
@@ -144,7 +158,11 @@ export async function* streamSessionResponse(
           charactersInScene,
           sessionMessages
         );
-        imageUrl = await generateSceneImage(args.prompt, { referenceBuffers });
+        throwIfAborted(abortSignal);
+        imageUrl = await generateSceneImage(args.prompt, {
+          referenceBuffers,
+          abortSignal,
+        });
         aiDebug("orchestrator", "image_done", {
           ok: true,
           imageChars: imageUrl.length,
@@ -157,6 +175,7 @@ export async function* streamSessionResponse(
           charactersInScene,
         };
       } catch (err) {
+        if (err instanceof Error && err.name === "AbortError") throw err;
         console.error("Image generation failed:", err);
         aiDebug("orchestrator", "image_done", {
           ok: false,
@@ -171,6 +190,8 @@ export async function* streamSessionResponse(
           charactersInScene,
         };
       }
+
+      throwIfAborted(abortSignal);
 
       // Continue conversation after tool execution
       const continuationMessages: ChatCompletionMessageParam[] = [
@@ -201,13 +222,17 @@ export async function* streamSessionResponse(
         messagesInRequest: continuationMessages.length,
       });
 
-      const stream2 = await openai.chat.completions.create({
-        model: MODEL,
-        messages: continuationMessages,
-        stream: true,
-      });
+      const stream2 = await openai.chat.completions.create(
+        {
+          model: MODEL,
+          messages: continuationMessages,
+          stream: true,
+        },
+        { signal: abortSignal }
+      );
 
       for await (const chunk2 of stream2) {
+        throwIfAborted(abortSignal);
         const c2 = chunk2.choices[0];
         const delta2 = c2?.delta;
         if (delta2?.content) {

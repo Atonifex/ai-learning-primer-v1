@@ -66,7 +66,8 @@ export async function POST(
           storyState,
           recentSummaries,
           session.messages,
-          content
+          content,
+          req.signal
         );
 
         for await (const chunk of generator) {
@@ -85,6 +86,10 @@ export async function POST(
             }
             send(chunk);
           }
+        }
+
+        if (req.signal.aborted) {
+          return;
         }
 
         // Save assistant message
@@ -124,6 +129,9 @@ export async function POST(
 
         send({ type: "done", messageId: saved.id });
       } catch (err) {
+        if (err instanceof Error && err.name === "AbortError") {
+          return;
+        }
         console.error("Stream error:", err);
         send({ type: "error", message: "An error occurred" });
       } finally {

@@ -12,6 +12,8 @@ const SIZE = "1536x1024" as const;
 export interface GenerateSceneImageOptions {
   /** When non-empty, uses images.edit with reference images (base64-decoded buffers). */
   referenceBuffers?: Buffer[];
+  /** Cancels the in-flight OpenAI image request when the client aborts the session stream. */
+  abortSignal?: AbortSignal;
 }
 
 function b64JsonToDataUrl(b64: string, outputFormat: string | undefined): string {
@@ -24,25 +26,33 @@ function b64JsonToDataUrl(b64: string, outputFormat: string | undefined): string
 /**
  * GPT Image models return `b64_json` only — not hosted URLs.
  */
+function requestOpts(signal: AbortSignal | undefined) {
+  return signal ? { signal } : undefined;
+}
+
 export async function generateSceneImage(
   prompt: string,
   options?: GenerateSceneImageOptions
 ): Promise<string> {
+  const signal = options?.abortSignal;
   const refs = options?.referenceBuffers?.filter((b) => b.length > 0) ?? [];
 
   if (refs.length > 0) {
     const imageFiles = await Promise.all(
       refs.map((b, i) => toFile(b, `ref-${i}.png`, { type: "image/png" }))
     );
-    const response = await openai.images.edit({
-      model: IMAGE_MODEL,
-      image: imageFiles,
-      prompt: STYLE_PREFIX + prompt,
-      quality: QUALITY,
-      size: SIZE,
-      output_format: "png",
-      input_fidelity: "high",
-    });
+    const response = await openai.images.edit(
+      {
+        model: IMAGE_MODEL,
+        image: imageFiles,
+        prompt: STYLE_PREFIX + prompt,
+        quality: QUALITY,
+        size: SIZE,
+        output_format: "png",
+        input_fidelity: "high",
+      },
+      requestOpts(signal)
+    );
 
     const rows = response.data ?? [];
     const first = rows[0];
@@ -52,14 +62,17 @@ export async function generateSceneImage(
     throw new Error(`OpenAI edit returned no image (data.length=${rows.length})`);
   }
 
-  const response = await openai.images.generate({
-    model: IMAGE_MODEL,
-    prompt: STYLE_PREFIX + prompt,
-    quality: QUALITY,
-    n: 1,
-    size: SIZE,
-    output_format: "png",
-  });
+  const response = await openai.images.generate(
+    {
+      model: IMAGE_MODEL,
+      prompt: STYLE_PREFIX + prompt,
+      quality: QUALITY,
+      n: 1,
+      size: SIZE,
+      output_format: "png",
+    },
+    requestOpts(signal)
+  );
 
   const rows = response.data ?? [];
   const first = rows[0];

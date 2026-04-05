@@ -20,6 +20,9 @@ export default function SessionPage({ params }: PageProps) {
   const [leaving, setLeaving] = useState(false);
   const [confirmLeave, setConfirmLeave] = useState(false);
   const streamingIdRef = useRef<string>(`streaming-${Date.now()}`);
+  const streamAbortRef = useRef<AbortController | null>(null);
+  const opSeqRef = useRef(0);
+  const streamingRef = useRef(false);
   const hasStarted = useRef(false);
 
   // Resolve params
@@ -55,9 +58,21 @@ export default function SessionPage({ params }: PageProps) {
 
   const sendMessage = useCallback(
     async (content: string) => {
-      if (!sessionId || streaming) return;
+      if (!sessionId || leaving) return;
+      if (content === "__start__" && streamingRef.current) return;
 
       const isStart = content === "__start__";
+
+      if (streamingRef.current && !isStart) {
+        streamAbortRef.current?.abort();
+        const droppedId = streamingIdRef.current;
+        setMessages((prev) => prev.filter((m) => m.id !== droppedId));
+        setImageLoading(false);
+        streamingRef.current = false;
+      }
+
+      const mySeq = ++opSeqRef.current;
+
       if (!isStart) {
         const userMsg: Message = {
           id: `user-${Date.now()}`,
@@ -69,6 +84,7 @@ export default function SessionPage({ params }: PageProps) {
 
       const streamingId = `streaming-${Date.now()}`;
       streamingIdRef.current = streamingId;
+      streamingRef.current = true;
       setStreaming(true);
 
       const streamingMsg: Message = {
@@ -79,11 +95,15 @@ export default function SessionPage({ params }: PageProps) {
       };
       setMessages((prev) => [...prev, streamingMsg]);
 
+      const ac = new AbortController();
+      streamAbortRef.current = ac;
+
       try {
         const res = await fetch(`/api/session/${sessionId}/message`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ content }),
+          signal: ac.signal,
         });
 
         if (!res.body) throw new Error("No response body");
@@ -142,17 +162,21 @@ export default function SessionPage({ params }: PageProps) {
           }
         }
       } catch (err) {
-        console.error("Stream error:", err);
-        setMessages((prev) =>
-          prev.filter((m) => m.id !== streamingId)
-        );
-        setImageLoading(false);
+        const aborted = err instanceof Error && err.name === "AbortError";
+        if (!aborted) {
+          console.error("Stream error:", err);
+          setMessages((prev) => prev.filter((m) => m.id !== streamingId));
+          setImageLoading(false);
+        }
       } finally {
+        if (mySeq !== opSeqRef.current) return;
+        if (streamAbortRef.current === ac) streamAbortRef.current = null;
+        streamingRef.current = false;
         setStreaming(false);
         setImageLoading(false);
       }
     },
-    [sessionId, streaming]
+    [sessionId, leaving]
   );
 
   // Auto-start if no messages
@@ -160,7 +184,7 @@ export default function SessionPage({ params }: PageProps) {
     if (!sessionId || hasStarted.current) return;
     // Wait a tick to ensure messages are loaded
     const timer = setTimeout(() => {
-      if (messages.length === 0 && !streaming) {
+      if (messages.length === 0 && !streamingRef.current) {
         hasStarted.current = true;
         sendMessage("__start__");
       } else if (messages.length > 0) {
@@ -168,7 +192,7 @@ export default function SessionPage({ params }: PageProps) {
       }
     }, 500);
     return () => clearTimeout(timer);
-  }, [sessionId, messages.length, streaming, sendMessage]);
+  }, [sessionId, messages.length, sendMessage]);
 
   async function handleLeave() {
     if (leaving) return;
@@ -234,7 +258,7 @@ export default function SessionPage({ params }: PageProps) {
             </div>
           )}
 
-          <InputBar onSend={sendMessage} disabled={streaming || leaving} />
+          <InputBar onSend={sendMessage} disabled={leaving} />
         </div>
 
         <div className="flex min-h-[220px] min-w-0 flex-1 flex-col border-t border-stone-200 bg-stone-900 md:h-full md:min-h-0 md:border-l md:border-t-0">
