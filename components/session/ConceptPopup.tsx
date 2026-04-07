@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import FormattedText from "../ui/FormattedText";
 
 interface ConceptPopupProps {
   word: string;
@@ -22,15 +23,11 @@ export default function ConceptPopup({
 }: ConceptPopupProps) {
   const popupRef = useRef<HTMLDivElement>(null);
 
-  // Position popup above the word, centered on it, clamped to viewport
   const left = Math.min(
     Math.max(8, rect.left + rect.width / 2 - POPUP_WIDTH / 2),
     window.innerWidth - POPUP_WIDTH - 8
   );
-  // Distance from bottom of viewport to the popup's bottom edge
   const bottom = window.innerHeight - rect.top + GAP;
-
-  // Arrow offset relative to popup left edge, pointing at word center
   const arrowLeft = Math.min(
     Math.max(12, rect.left + rect.width / 2 - left - 6),
     POPUP_WIDTH - 20
@@ -45,8 +42,7 @@ export default function ConceptPopup({
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") onClose();
     }
-    // Defer by one tick so the click that opened the popup doesn't
-    // immediately trigger the outside-click handler
+    // Defer mousedown listener so the opening click doesn't immediately close the popup
     const timer = setTimeout(() => {
       document.addEventListener("mousedown", handleMouseDown);
     }, 0);
@@ -64,7 +60,6 @@ export default function ConceptPopup({
       className="fixed z-50 bg-white rounded-xl shadow-xl border border-stone-200 p-3"
       style={{ width: POPUP_WIDTH, bottom, left }}
     >
-      {/* Header row */}
       <div className="flex items-center justify-between mb-1.5">
         <span className="text-[11px] font-semibold text-stone-400 uppercase tracking-wider truncate pr-2">
           {word}
@@ -80,7 +75,6 @@ export default function ConceptPopup({
         </button>
       </div>
 
-      {/* Definition content */}
       <div className="min-h-[1.75rem]">
         {streaming && !content ? (
           <div className="flex gap-1 items-center py-1">
@@ -94,7 +88,7 @@ export default function ConceptPopup({
           </div>
         ) : (
           <p className="text-stone-700 text-[13px] leading-relaxed">
-            {content}
+            <FormattedText content={content} />
             {streaming && (
               <span className="inline-block w-0.5 h-3 bg-amber-400 ml-0.5 animate-pulse align-middle" />
             )}
@@ -102,7 +96,6 @@ export default function ConceptPopup({
         )}
       </div>
 
-      {/* Downward-pointing arrow */}
       <div
         className="absolute -bottom-[7px] w-3 h-3 bg-white border-r border-b border-stone-200 rotate-45"
         style={{ left: arrowLeft }}
