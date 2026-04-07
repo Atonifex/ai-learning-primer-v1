@@ -3,15 +3,18 @@ import OpenAI, { toFile } from "openai";
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const STYLE_PREFIX =
-  "Photo realistic, detailed, high resolution, realistic lighting, realistic colors, realistic atmosphere. ";
+  "Photo realistic, detailed, high resolution, realistic lighting, realistic colors, realistic atmosphere. Adjust the scene to follow the recent scene description or hints from the user's messages about where they want to go, what they are looking at, or where the storyline is progressing to.";
 
 export const IMAGE_MODEL = "gpt-image-1.5" as const;
-const QUALITY = "medium" as const;
+const QUALITY = "low" as const;
 const SIZE = "1536x1024" as const;
 
 export interface GenerateSceneImageOptions {
-  /** When non-empty, uses images.edit with reference images (base64-decoded buffers). */
-  referenceBuffers?: Buffer[]; //First image (original character + most recent one. Could be expanded but would cost more in tokens.)
+  /**
+   * When non-empty, uses images.edit with reference images (base64-decoded buffers).
+   * As of `referenceImages.ts`, typically **one** buffer (latest portrait or prior scene).
+   */
+  referenceBuffers?: Buffer[];
   /** Cancels the in-flight OpenAI image request when the client aborts the session stream. */
   abortSignal?: AbortSignal;
 }
@@ -61,7 +64,7 @@ export async function generateSceneImage(
         quality: QUALITY,
         size: SIZE,
         output_format: "png",
-        input_fidelity: "high",
+        input_fidelity: "medium",
       },
       requestOpts(signal)
     );

@@ -4,7 +4,7 @@
 
 - **GPT Image (`gpt-image-1.5`)** with **`quality: "medium"`** and **`1536x1024`**, **`output_format: "png"`**.
 - Responses are treated as **base64 / data URLs** in the happy path (no reliance on OpenAI-hosted image URLs for persistence).
-- **`images.generate`** when there are no reference buffers; **`images.edit`** when references exist, with **`input_fidelity: "high"`** on the edit path.
+- **`images.generate`** when there are no reference buffers; **`images.edit`** when references exist, with **`input_fidelity: "medium"`** on the edit path.
 - Tool output includes optional **`characters_in_scene`** so the server can update **`CharacterPortrait`** rows and prefer portrait-based references on later turns.
 
 ## Storage

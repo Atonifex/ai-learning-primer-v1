@@ -36,6 +36,7 @@ export async function loadImageBytesForMessage(msg: {
   return null;
 }
 
+/** Returns [establishing, latest] for the primary character (order preserved; last index = most recent scene). */
 export async function getPortraitReferenceBuffers(
   profileId: string,
   characterKeys: string[]
