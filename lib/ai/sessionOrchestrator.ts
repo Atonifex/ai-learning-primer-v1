@@ -95,6 +95,12 @@ export async function* streamSessionResponse(
       tools: [generateSceneImageTool],
       tool_choice: "auto",
       stream: true,
+      //4/7/2026: Experiment with max_completion_tokens to see if it helps with the length of the responses.
+      //This is temporary; a more sophisticated solution will calculate max_completion_tokens or 
+      //verbosity based on user's age, language level, demonstrated interest, assessment type, etc.
+      //I am worried about limiting effective tool calling if I implement low verbosity or max_completion_tokens.
+      verbosity: "low",
+      //max_completion_tokens: 150,
     },
     { signal: abortSignal }
   );
