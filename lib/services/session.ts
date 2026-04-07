@@ -1,12 +1,16 @@
 import { prisma } from "../db/prisma";
 import type { MessageData, SessionData, Language } from "../types";
+import { ensureLearnerStoryChain } from "./storyCurriculum";
 
 export async function startSession(profileId: string, language: Language): Promise<string> {
+  const { chapterId } = await ensureLearnerStoryChain(profileId);
   const session = await prisma.session.create({
     data: {
       learnerProfileId: profileId,
       language,
       status: "ACTIVE",
+      chapterId,
+      sceneIndex: 0,
     },
   });
   return session.id;
@@ -20,20 +24,42 @@ export async function getActiveSession(profileId: string): Promise<string | null
   return session?.id ?? null;
 }
 
-export async function getSession(sessionId: string): Promise<SessionData | null> {
-  const session = await prisma.session.findUnique({
-    where: { id: sessionId },
-    include: {
-      messages: { orderBy: { orderIndex: "asc" } },
-    },
-  });
-  if (!session) return null;
+function mapSessionToData(
+  session: {
+    id: string;
+    language: string;
+    status: string;
+    arcName: string | null;
+    startedAt: Date;
+    sceneIndex: number;
+    messages: {
+      id: string;
+      role: string;
+      content: string;
+      imageUrl: string | null;
+      imagePrompt: string | null;
+      imageStoragePath: string | null;
+      orderIndex: number;
+      createdAt: Date;
+    }[];
+    chapter: null | {
+      id: string;
+      title: string;
+      focusTags: string[];
+      actCurrent: number;
+      actTotal: number;
+      pathAheadWhisper: string | null;
+      storyArc: { id: string; title: string; focusTags: string[] };
+    };
+  }
+): SessionData {
   return {
     id: session.id,
     language: session.language as Language,
     status: session.status as SessionData["status"],
     arcName: session.arcName,
     startedAt: session.startedAt,
+    sceneIndex: session.sceneIndex,
     messages: session.messages.map((m) => ({
       id: m.id,
       role: m.role as MessageData["role"],
@@ -44,7 +70,41 @@ export async function getSession(sessionId: string): Promise<SessionData | null>
       orderIndex: m.orderIndex,
       createdAt: m.createdAt,
     })),
+    chapter: session.chapter
+      ? {
+          id: session.chapter.id,
+          title: session.chapter.title,
+          focusTags: session.chapter.focusTags,
+          actCurrent: session.chapter.actCurrent,
+          actTotal: session.chapter.actTotal,
+          pathAheadWhisper: session.chapter.pathAheadWhisper,
+          arc: {
+            id: session.chapter.storyArc.id,
+            title: session.chapter.storyArc.title,
+            focusTags: session.chapter.storyArc.focusTags,
+          },
+        }
+      : null,
   };
+}
+
+export async function getSession(sessionId: string): Promise<SessionData | null> {
+  const { ensureSessionLinkedToChapter } = await import("./storyCurriculum");
+  await ensureSessionLinkedToChapter(sessionId);
+
+  const session = await prisma.session.findUnique({
+    where: { id: sessionId },
+    include: {
+      messages: { orderBy: { orderIndex: "asc" } },
+      chapter: {
+        include: {
+          storyArc: { select: { id: true, title: true, focusTags: true } },
+        },
+      },
+    },
+  });
+  if (!session) return null;
+  return mapSessionToData(session);
 }
 
 export async function addMessage(
@@ -107,24 +167,15 @@ export async function listSessions(profileId: string): Promise<SessionData[]> {
   const sessions = await prisma.session.findMany({
     where: { learnerProfileId: profileId },
     orderBy: { startedAt: "desc" },
-    include: { messages: { orderBy: { orderIndex: "asc" } } },
+    include: {
+      messages: { orderBy: { orderIndex: "asc" } },
+      chapter: {
+        include: {
+          storyArc: { select: { id: true, title: true, focusTags: true } },
+        },
+      },
+    },
     take: 50,
   });
-  return sessions.map((s) => ({
-    id: s.id,
-    language: s.language as Language,
-    status: s.status as SessionData["status"],
-    arcName: s.arcName,
-    startedAt: s.startedAt,
-    messages: s.messages.map((m) => ({
-      id: m.id,
-      role: m.role as MessageData["role"],
-      content: m.content,
-      imageUrl: m.imageUrl,
-      imagePrompt: m.imagePrompt,
-      imageStoragePath: m.imageStoragePath,
-      orderIndex: m.orderIndex,
-      createdAt: m.createdAt,
-    })),
-  }));
+  return sessions.map((s) => mapSessionToData(s));
 }

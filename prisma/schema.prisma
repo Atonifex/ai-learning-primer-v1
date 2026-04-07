@@ -29,6 +29,8 @@ model LearnerProfile {
   skillProgress      SkillProgress[]
   storyStates        StoryState[]
   characterPortraits CharacterPortrait[]
+  storyWorld         StoryWorld?
+  conceptLedgerEvents ConceptLedgerEvent[]
 }
 
 enum Language {
@@ -42,6 +44,95 @@ enum Level {
   ADVANCED
 }
 
+/// One woven narrative world per learner (persistent setting + continuity).
+model StoryWorld {
+  id               String         @id @default(cuid())
+  learnerProfileId String         @unique
+  learnerProfile   LearnerProfile @relation(fields: [learnerProfileId], references: [id], onDelete: Cascade)
+  title            String         @default("Your story")
+  bible            String         @default("")
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  storyArcs        StoryArc[]
+}
+
+/// 4/7/2026 note from Ivan: This almost certainly will change. I need to think deeper about what this will actually be.
+/// Immutable snapshot of a curriculum graph once referenced by an arc (`sourceNotes` for future standards IDs).
+model CurriculumVersion {
+  id          String   @id @default(cuid())
+  label       String?
+  sourceNotes String?
+  createdAt   DateTime @default(now())
+  conceptNodes ConceptNode[]
+  storyArcs    StoryArc[]
+}
+
+/// Concept node: surrogate key + human slug per curriculum version.
+model ConceptNode {
+  id                  String         @id @default(cuid())
+  curriculumVersionId String
+  curriculumVersion   CurriculumVersion @relation(fields: [curriculumVersionId], references: [id], onDelete: Cascade)
+  slug                String
+  displayName         String
+  parentId            String?
+  metadata            Json?
+  ledgerEvents        ConceptLedgerEvent[]
+
+  @@unique([curriculumVersionId, slug])
+}
+
+model StoryArc {
+  id                  String            @id @default(cuid())
+  storyWorldId        String
+  storyWorld          StoryWorld        @relation(fields: [storyWorldId], references: [id], onDelete: Cascade)
+  curriculumVersionId String
+  curriculumVersion   CurriculumVersion @relation(fields: [curriculumVersionId], references: [id], onDelete: Restrict)
+  title               String
+  summary             String?
+  /// High-level pedagogical / narrative emphasis for the arc (refined per chapter in `Chapter.focusTags`).
+  focusTags           String[]          @default([])
+  status              StoryArcStatus    @default(ACTIVE)
+  orderIndex          Int               @default(0)
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  chapters            Chapter[]
+}
+
+enum StoryArcStatus {
+  DRAFT
+  ACTIVE
+  COMPLETED
+  ABANDONED
+}
+
+model Chapter {
+  id               String         @id @default(cuid())
+  storyArcId       String
+  storyArc         StoryArc       @relation(fields: [storyArcId], references: [id], onDelete: Cascade)
+  title            String
+  orderIndex       Int
+  /// Refined from `StoryArc.focusTags` when the chapter is created.
+  focusTags        String[]       @default([])
+  status           ChapterStatus  @default(ACTIVE)
+  pathAheadWhisper String?
+  handoffSummary   String?
+  plannerJson      Json?
+  actCurrent       Int            @default(1)
+  actTotal         Int            @default(3)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  sessions         Session[]
+  branchPoints     BranchPoint[]
+  incomingBranches BranchOption[] @relation("BranchNextChapter")
+}
+
+enum ChapterStatus {
+  PLANNED
+  ACTIVE
+  COMPLETED
+  ABANDONED_HANDOFF
+}
+
 model Session {
   id               String         @id @default(cuid())
   learnerProfileId String
@@ -52,9 +143,13 @@ model Session {
   arcSummary       String?
   startedAt        DateTime       @default(now())
   completedAt      DateTime?
+  chapterId        String?
+  chapter          Chapter?       @relation(fields: [chapterId], references: [id])
+  sceneIndex       Int            @default(0)
   messages         Message[]
   storyState       StoryState?
   memoryItems      MemoryItem[]   @relation("SourceSession")
+  conceptLedgerEvents ConceptLedgerEvent[]
 }
 
 enum SessionStatus {
@@ -144,4 +239,48 @@ model StoryState {
   recurringCharacters Json
   activeThemes        String[]
   lastUpdatedAt       DateTime       @updatedAt
+}
+
+model ConceptLedgerEvent {
+  id               String                 @id @default(cuid())
+  learnerProfileId String
+  learnerProfile   LearnerProfile         @relation(fields: [learnerProfileId], references: [id], onDelete: Cascade)
+  conceptNodeId    String
+  conceptNode      ConceptNode            @relation(fields: [conceptNodeId], references: [id], onDelete: Cascade)
+  eventType        ConceptLedgerEventType
+  sessionId        String?
+  session          Session?               @relation(fields: [sessionId], references: [id])
+  messageId        String?
+  confidence       Float                  @default(0.5)
+  createdAt        DateTime               @default(now())
+}
+
+enum ConceptLedgerEventType {
+  INTRODUCED
+  REINFORCED
+  APPLIED
+}
+
+model BranchPoint {
+  id         String    @id @default(cuid())
+  chapterId  String
+  chapter    Chapter   @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  promptText String?
+  createdAt  DateTime  @default(now())
+  resolvedAt DateTime?
+  options    BranchOption[]
+}
+
+model BranchOption {
+  id               String   @id @default(cuid())
+  branchPointId    String
+  branchPoint      BranchPoint @relation(fields: [branchPointId], references: [id], onDelete: Cascade)
+  orderIndex       Int
+  title            String
+  teaser           String
+  imageUrl         String?
+  imageStoragePath String?
+  imagePrompt      String?
+  nextChapterId    String?
+  nextChapter      Chapter? @relation("BranchNextChapter", fields: [nextChapterId], references: [id])
 }

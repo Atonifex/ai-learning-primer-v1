@@ -39,6 +39,8 @@
 | Payment gate | None |
 | Learner tone/difficulty control | Deferred to post-V1 |
 
+**Story spine (Phases 0–2):** World → Arc → Chapter → Session; arc- and chapter-level `focusTags`; curriculum version freeze. Implementation: [roadmap-post-v1.md](./roadmap-post-v1.md), [lib/services/storyCurriculum.ts](../lib/services/storyCurriculum.ts).
+
 ---
 
 ## 1. Architecture Overview

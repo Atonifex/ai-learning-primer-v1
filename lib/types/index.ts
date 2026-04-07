@@ -24,13 +24,30 @@ export interface MessageData {
   createdAt: Date;
 }
 
+/** Chapter + arc focus tags for prompts (see `lib/story/focusTags.ts`). */
+export interface SessionChapterContext {
+  id: string;
+  title: string;
+  focusTags: string[];
+  actCurrent: number;
+  actTotal: number;
+  pathAheadWhisper: string | null;
+  arc: {
+    id: string;
+    title: string;
+    focusTags: string[];
+  };
+}
+
 export interface SessionData {
   id: string;
   language: Language;
   status: SessionStatus;
   arcName?: string | null;
   startedAt: Date;
+  sceneIndex: number;
   messages: MessageData[];
+  chapter?: SessionChapterContext | null;
 }
 
 export interface LearnerProfileData {
