@@ -25,6 +25,14 @@ interface MessageListProps {
   messages: Message[];
 }
 
+function clog(message: string, data?: Record<string, unknown>) {
+  fetch("/api/client-log", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message, data }),
+  }).catch(() => {});
+}
+
 export default function MessageList({ messages }: MessageListProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
   const [popup, setPopup] = useState<PopupState | null>(null);
@@ -36,12 +44,14 @@ export default function MessageList({ messages }: MessageListProps) {
 
   const handleWordClick = useCallback(
     async (word: string, sentence: string, rect: DOMRect) => {
-      // Cancel any in-flight definition
+      clog("word clicked", { word, sentence: sentence.slice(0, 60) });
+
       defineAbortRef.current?.abort();
       const ac = new AbortController();
       defineAbortRef.current = ac;
 
       setPopup({ word, sentence, rect, content: "", streaming: true });
+      clog("popup set, starting fetch", { word });
 
       try {
         const res = await fetch("/api/define", {
@@ -51,11 +61,13 @@ export default function MessageList({ messages }: MessageListProps) {
           signal: ac.signal,
         });
 
-        if (!res.body) return;
+        clog("response received", { status: res.status, ok: res.ok });
+        if (!res.body) { clog("no response body"); return; }
 
         const reader = res.body.getReader();
         const decoder = new TextDecoder();
         let buffer = "";
+        let chunkCount = 0;
 
         while (true) {
           const { done, value } = await reader.read();
@@ -70,9 +82,11 @@ export default function MessageList({ messages }: MessageListProps) {
             try {
               const data = JSON.parse(line.slice(6));
               if (data.content) {
+                chunkCount++;
                 setPopup((p) => (p ? { ...p, content: p.content + data.content } : p));
               }
               if (data.done) {
+                clog("stream done", { chunkCount });
                 setPopup((p) => (p ? { ...p, streaming: false } : p));
               }
             } catch {
@@ -81,7 +95,11 @@ export default function MessageList({ messages }: MessageListProps) {
           }
         }
       } catch (err) {
-        if (err instanceof Error && err.name === "AbortError") return;
+        if (err instanceof Error && err.name === "AbortError") {
+          clog("fetch aborted");
+          return;
+        }
+        clog("fetch error", { error: String(err) });
         setPopup((p) => (p ? { ...p, streaming: false } : p));
       }
     },

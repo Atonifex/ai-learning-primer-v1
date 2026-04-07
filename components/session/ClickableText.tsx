@@ -6,13 +6,18 @@ interface ClickableTextProps {
 }
 
 export default function ClickableText({ content, onWordClick }: ClickableTextProps) {
-  // Split into alternating word / whitespace tokens, preserving all whitespace for pre-wrap
+  // Flat token list: split by whitespace, preserving the whitespace tokens
   const tokens = content.split(/(\s+)/);
 
-  function getContext(tokenIndex: number): string {
-    const before = tokens.slice(Math.max(0, tokenIndex - 12), tokenIndex).join("");
-    const after = tokens.slice(tokenIndex + 1, tokenIndex + 13).join("");
-    return (before + tokens[tokenIndex] + after).trim().slice(0, 220);
+  // Plain text (no **) used for context extraction
+  const plainText = content.replace(/\*\*/g, "");
+
+  function getContext(cleanWord: string): string {
+    const idx = plainText.indexOf(cleanWord);
+    if (idx === -1) return plainText.slice(0, 220);
+    const start = Math.max(0, idx - 110);
+    const end = Math.min(plainText.length, idx + cleanWord.length + 110);
+    return plainText.slice(start, end).trim();
   }
 
   return (
@@ -20,26 +25,45 @@ export default function ClickableText({ content, onWordClick }: ClickableTextPro
       {tokens.map((token, i) => {
         if (!token) return null;
 
-        // Pure whitespace — render as-is so whitespace-pre-wrap works correctly
+        // Newline → explicit line break
+        if (token === "\n" || token === "\r\n") {
+          return <br key={i} />;
+        }
+
+        // Other pure whitespace — preserve as-is
         if (/^\s+$/.test(token)) {
           return <span key={i}>{token}</span>;
         }
 
+        // Detect **bold** tokens (single-token bold, e.g. **Seguimos** or **word,**)
+        const boldMatch = token.match(/^\*\*(.+)\*\*$/);
+        const displayText = boldMatch ? boldMatch[1] : token;
+        const isBold = !!boldMatch;
+
+        // Strip leading/trailing punctuation for the query word
+        const clean = displayText.replace(/^[^\w\u00C0-\u024F]+|[^\w\u00C0-\u024F]+$/g, "");
+
+        const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+          e.stopPropagation();
+          if (clean.length === 0) return;
+          const rect = e.currentTarget.getBoundingClientRect();
+          onWordClick(clean, getContext(clean), rect);
+        };
+
+        const className =
+          "rounded-sm px-px cursor-pointer transition-colors duration-100 hover:bg-stone-200/60 active:bg-stone-300/70";
+
+        if (isBold) {
+          return (
+            <strong key={i} className={`font-semibold ${className}`} onClick={handleClick}>
+              {displayText}
+            </strong>
+          );
+        }
+
         return (
-          <span
-            key={i}
-            className="rounded-sm px-px cursor-pointer transition-colors duration-100 hover:bg-stone-200/60 active:bg-stone-300/70"
-            onClick={(e) => {
-              e.stopPropagation();
-              const rect = e.currentTarget.getBoundingClientRect();
-              // Strip leading/trailing punctuation before querying
-              const clean = token.replace(/^[^\w\u00C0-\u024F]+|[^\w\u00C0-\u024F]+$/g, "");
-              if (clean.length > 0) {
-                onWordClick(clean, getContext(i), rect);
-              }
-            }}
-          >
-            {token}
+          <span key={i} className={className} onClick={handleClick}>
+            {displayText}
           </span>
         );
       })}

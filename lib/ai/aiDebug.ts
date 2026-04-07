@@ -54,3 +54,15 @@ export function aiDebug(scope: string, phase: string, data?: DebugPayload): void
     console.log(`[Primer AI:${scope}] ${phase}`);
   }
 }
+
+/**
+ * Always-on debug for the /api/define endpoint.
+ * Logs to server console on every call so you can diagnose without .env changes.
+ */
+export function defineDebug(phase: string, data?: DebugPayload): void {
+  if (data && Object.keys(data).length > 0) {
+    console.log(`[Primer Define] ${phase}`, data);
+  } else {
+    console.log(`[Primer Define] ${phase}`);
+  }
+}

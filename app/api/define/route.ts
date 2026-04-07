@@ -1,10 +1,13 @@
 import { NextRequest } from "next/server";
 import OpenAI from "openai";
+import { defineDebug } from "../../../lib/ai/aiDebug";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 export async function POST(req: NextRequest) {
   const { word, sentence } = await req.json();
+  defineDebug("request", { word, sentence: sentence?.slice(0, 80) });
+
   if (!word) return new Response("Missing word", { status: 400 });
 
   const encoder = new TextEncoder();
@@ -12,6 +15,7 @@ export async function POST(req: NextRequest) {
   const stream = new ReadableStream({
     async start(controller) {
       try {
+        defineDebug("openai call start", { model: "gpt-5.4-nano", word });
         const completion = await openai.chat.completions.create({
           model: "gpt-5.4-nano",
           messages: [
@@ -28,22 +32,22 @@ export async function POST(req: NextRequest) {
             },
           ],
           stream: true,
-          verbosity: "low",
-          reasoning: {
-            effort: "low",
-          }
-          //max_tokens: 80,
+          max_completion_tokens: 80,
         });
 
+        let totalChunks = 0;
         for await (const chunk of completion) {
           const content = chunk.choices[0]?.delta?.content;
           if (content) {
+            totalChunks++;
             controller.enqueue(
               encoder.encode(`data: ${JSON.stringify({ content })}\n\n`)
             );
           }
         }
+        defineDebug("openai call done", { chunks: totalChunks });
       } catch (err) {
+        defineDebug("openai call error", { error: String(err) });
         console.error("Define stream error:", err);
         controller.enqueue(
           encoder.encode(`data: ${JSON.stringify({ error: true })}\n\n`)
