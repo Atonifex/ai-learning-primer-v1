@@ -64,7 +64,7 @@ export async function generateSceneImage(
         quality: QUALITY,
         size: SIZE,
         output_format: "png",
-        input_fidelity: "medium",
+        input_fidelity: "low",
       },
       requestOpts(signal)
     );
