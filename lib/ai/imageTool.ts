@@ -11,7 +11,7 @@ const SIZE = "1536x1024" as const;
 
 export interface GenerateSceneImageOptions {
   /** When non-empty, uses images.edit with reference images (base64-decoded buffers). */
-  referenceBuffers?: Buffer[];
+  referenceBuffers?: Buffer[]; //First image (original character + most recent one. Could be expanded but would cost more in tokens.)
   /** Cancels the in-flight OpenAI image request when the client aborts the session stream. */
   abortSignal?: AbortSignal;
 }
@@ -28,6 +28,18 @@ function b64JsonToDataUrl(b64: string, outputFormat: string | undefined): string
  */
 function requestOpts(signal: AbortSignal | undefined) {
   return signal ? { signal } : undefined;
+}
+
+function dataUrlFromImageResponse(
+  rows: { url?: string; b64_json?: string }[],
+  outputFormat: string | undefined,
+  emptyLabel: string
+): string {
+  const first = rows[0];
+  if (first?.url) return first.url;
+  const b64 = first?.b64_json;
+  if (b64) return b64JsonToDataUrl(b64, outputFormat);
+  throw new Error(`${emptyLabel} (data.length=${rows.length})`);
 }
 
 export async function generateSceneImage(
@@ -53,13 +65,11 @@ export async function generateSceneImage(
       },
       requestOpts(signal)
     );
-
-    const rows = response.data ?? [];
-    const first = rows[0];
-    if (first?.url) return first.url;
-    const b64 = first?.b64_json;
-    if (b64) return b64JsonToDataUrl(b64, response.output_format ?? undefined);
-    throw new Error(`OpenAI edit returned no image (data.length=${rows.length})`);
+    return dataUrlFromImageResponse(
+      response.data ?? [],
+      response.output_format ?? undefined,
+      "OpenAI edit returned no image"
+    );
   }
 
   const response = await openai.images.generate(
@@ -73,15 +83,10 @@ export async function generateSceneImage(
     },
     requestOpts(signal)
   );
-
-  const rows = response.data ?? [];
-  const first = rows[0];
-  if (first?.url) return first.url;
-  const b64 = first?.b64_json;
-  if (b64) return b64JsonToDataUrl(b64, response.output_format ?? undefined);
-
-  throw new Error(
-    `OpenAI returned no image (data.length=${rows.length}). GPT Image uses base64.`
+  return dataUrlFromImageResponse(
+    response.data ?? [],
+    response.output_format ?? undefined,
+    "OpenAI returned no image. GPT Image uses base64"
   );
 }
 
