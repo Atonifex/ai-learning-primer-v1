@@ -42,6 +42,7 @@ export interface SessionChapterContext {
 export interface SessionData {
   id: string;
   language: Language;
+  subjectSlug?: string;
   status: SessionStatus;
   arcName?: string | null;
   startedAt: Date;

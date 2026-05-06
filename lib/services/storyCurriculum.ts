@@ -10,6 +10,7 @@
 import { prisma } from "../db/prisma";
 import { generateArcFocusTags, refineChapterFocusTags } from "../story/focusTags";
 import type { Language } from "../types";
+import { getOrCreateDefaultCatalog } from "./subjects";
 
 export async function ensureLearnerStoryChain(profileId: string): Promise<{ chapterId: string }> {
   const profile = await prisma.learnerProfile.findUniqueOrThrow({
@@ -35,12 +36,7 @@ export async function ensureLearnerStoryChain(profileId: string): Promise<{ chap
   });
 
   if (!arc) {
-    const cv = await prisma.curriculumVersion.create({
-      data: {
-        label: "seed-v1",
-        sourceNotes: null,
-      },
-    });
+    const catalog = await getOrCreateDefaultCatalog();
     const arcTags = generateArcFocusTags({
       language: profile.activeLanguage as Language,
       goals: profile.goals,
@@ -49,7 +45,7 @@ export async function ensureLearnerStoryChain(profileId: string): Promise<{ chap
     arc = await prisma.storyArc.create({
       data: {
         storyWorldId: world.id,
-        curriculumVersionId: cv.id,
+        standardsCatalogId: catalog.id,
         title: "Opening arc",
         summary: null,
         focusTags: arcTags,

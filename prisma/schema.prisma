@@ -15,22 +15,26 @@ model User {
 }
 
 model LearnerProfile {
-  id                 String               @id @default(cuid())
-  userId             String               @unique
-  user               User                 @relation(fields: [userId], references: [id])
+  id                 String              @id @default(cuid())
+  userId             String              @unique
+  user               User                @relation(fields: [userId], references: [id])
   activeLanguage     Language
   currentLevel       Level
   goals              String
   interests          String[]
-  createdAt          DateTime             @default(now())
-  updatedAt          DateTime             @updatedAt
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
   sessions           Session[]
   memoryItems        MemoryItem[]
   skillProgress      SkillProgress[]
+  standardsProgress  StandardsProgress[]
+  standardsEvidence  StandardsEvidence[]
   storyStates        StoryState[]
   characterPortraits CharacterPortrait[]
   storyWorld         StoryWorld?
-  conceptLedgerEvents ConceptLedgerEvent[]
+  learnerSubjects    LearnerSubject[]
+  activityCompletions LearningActivityCompletion[]
+  assessmentResults  AssessmentResult[]
 }
 
 enum Language {
@@ -56,37 +60,130 @@ model StoryWorld {
   storyArcs        StoryArc[]
 }
 
-/// 4/7/2026 note from Ivan: This almost certainly will change. I need to think deeper about what this will actually be.
-/// Immutable snapshot of a curriculum graph once referenced by an arc (`sourceNotes` for future standards IDs).
-model CurriculumVersion {
-  id          String   @id @default(cuid())
-  label       String?
-  sourceNotes String?
-  createdAt   DateTime @default(now())
-  conceptNodes ConceptNode[]
-  storyArcs    StoryArc[]
+model Subject {
+  id               String              @id @default(cuid())
+  slug             String              @unique
+  domain           SubjectDomain
+  gradeBand        String
+  framework        String
+  targetLanguage   Language?
+  displayName      String
+  createdAt        DateTime            @default(now())
+  updatedAt        DateTime            @updatedAt
+  sessions         Session[]
+  learnerSubjects  LearnerSubject[]
+  standardsCatalogs StandardsCatalog[]
+  learningActivities LearningActivity[]
+  assessments      Assessment[]
 }
 
-/// Concept node: surrogate key + human slug per curriculum version.
-model ConceptNode {
-  id                  String         @id @default(cuid())
-  curriculumVersionId String
-  curriculumVersion   CurriculumVersion @relation(fields: [curriculumVersionId], references: [id], onDelete: Cascade)
-  slug                String
-  displayName         String
-  parentId            String?
-  metadata            Json?
-  ledgerEvents        ConceptLedgerEvent[]
+enum SubjectDomain {
+  MATH
+  ELA
+  SCIENCE
+  SOCIAL_STUDIES
+  WORLD_LANGUAGE
+}
 
-  @@unique([curriculumVersionId, slug])
+model LearnerSubject {
+  id               String               @id @default(cuid())
+  learnerProfileId String
+  learnerProfile   LearnerProfile       @relation(fields: [learnerProfileId], references: [id], onDelete: Cascade)
+  subjectId        String
+  subject          Subject              @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  status           LearnerSubjectStatus @default(ACTIVE)
+  enrolledAt       DateTime             @default(now())
+
+  @@unique([learnerProfileId, subjectId])
+}
+
+enum LearnerSubjectStatus {
+  ACTIVE
+  PAUSED
+  COMPLETED
+}
+
+model StandardsCatalog {
+  id          String    @id @default(cuid())
+  subjectId   String
+  subject     Subject   @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  version     String
+  label       String
+  framework   String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  strands     Strand[]
+  standards   Standard[]
+  storyArcs   StoryArc[]
+
+  @@unique([subjectId, version])
+}
+
+model Strand {
+  id            String           @id @default(cuid())
+  catalogId     String
+  catalog       StandardsCatalog @relation(fields: [catalogId], references: [id], onDelete: Cascade)
+  code          String
+  displayName   String
+  description   String?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  standardGroups StandardGroup[]
+
+  @@unique([catalogId, code])
+}
+
+model StandardGroup {
+  id              String    @id @default(cuid())
+  strandId        String
+  strand          Strand    @relation(fields: [strandId], references: [id], onDelete: Cascade)
+  code            String
+  displayName     String
+  purpose         String?
+  bigIdeaSummary  String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  standards       Standard[]
+
+  @@unique([strandId, code])
+}
+
+model Standard {
+  id                    String                   @id @default(cuid())
+  catalogId             String
+  catalog               StandardsCatalog         @relation(fields: [catalogId], references: [id], onDelete: Cascade)
+  standardGroupId       String
+  standardGroup         StandardGroup            @relation(fields: [standardGroupId], references: [id], onDelete: Cascade)
+  code                  String
+  description           String
+  examples              Json?
+  clarifications        Json?
+  purposeAndStrategies  String?
+  commonMisconceptions  String?
+  glossaryTerms         String[]                 @default([])
+  verticalAlignment     Json?
+  accessPoints          Json?
+  contentComplexity     String?
+  verificationStatus    String?
+  sourceUrl             String?
+  primerNotes           Json?
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+  standardsProgress     StandardsProgress[]
+  standardsEvidence     StandardsEvidence[]
+  skillLinks            SkillStandardLink[]
+  activityLinks         LearningActivityStandardLink[]
+  assessmentLinks       AssessmentStandardLink[]
+
+  @@unique([catalogId, code])
 }
 
 model StoryArc {
   id                  String            @id @default(cuid())
   storyWorldId        String
   storyWorld          StoryWorld        @relation(fields: [storyWorldId], references: [id], onDelete: Cascade)
-  curriculumVersionId String
-  curriculumVersion   CurriculumVersion @relation(fields: [curriculumVersionId], references: [id], onDelete: Restrict)
+  standardsCatalogId  String
+  standardsCatalog    StandardsCatalog  @relation(fields: [standardsCatalogId], references: [id], onDelete: Restrict)
   title               String
   summary             String?
   /// High-level pedagogical / narrative emphasis for the arc (refined per chapter in `Chapter.focusTags`).
@@ -137,7 +234,9 @@ model Session {
   id               String         @id @default(cuid())
   learnerProfileId String
   learnerProfile   LearnerProfile @relation(fields: [learnerProfileId], references: [id])
-  language         Language
+  subjectId        String
+  subject          Subject        @relation(fields: [subjectId], references: [id])
+  targetLanguage   Language?
   status           SessionStatus  @default(ACTIVE)
   arcName          String?
   arcSummary       String?
@@ -149,7 +248,7 @@ model Session {
   messages         Message[]
   storyState       StoryState?
   memoryItems      MemoryItem[]   @relation("SourceSession")
-  conceptLedgerEvents ConceptLedgerEvent[]
+  standardsEvidence StandardsEvidence[]
 }
 
 enum SessionStatus {
@@ -215,17 +314,97 @@ enum MemoryType {
   STORY_CONTINUITY
 }
 
+model Skill {
+  id                  String              @id @default(cuid())
+  slug                String              @unique
+  displayName         String
+  description         String
+  subjectScope        String[]            @default([])
+  aggregationStrategy AggregationStrategy @default(WEIGHTED_MEAN)
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+  progress            SkillProgress[]
+  standardLinks       SkillStandardLink[]
+}
+
+enum AggregationStrategy {
+  WEIGHTED_MEAN
+  MIN_OF_LINKS
+  BAYESIAN
+}
+
+model SkillStandardLink {
+  id         String   @id @default(cuid())
+  skillId    String
+  skill      Skill    @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  standardId String
+  standard   Standard @relation(fields: [standardId], references: [id], onDelete: Cascade)
+  weight     Float    @default(1.0)
+  notes      String?
+
+  @@unique([skillId, standardId])
+}
+
 model SkillProgress {
   id               String         @id @default(cuid())
   learnerProfileId String
-  learnerProfile   LearnerProfile @relation(fields: [learnerProfileId], references: [id])
-  skillName        String
-  language         Language
-  estimatedLevel   Float
+  learnerProfile   LearnerProfile @relation(fields: [learnerProfileId], references: [id], onDelete: Cascade)
+  skillId          String
+  skill            Skill          @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  mastery          Float          @default(0)
   confidence       Float          @default(0.5)
+  evidenceCount    Int            @default(0)
   lastObservedAt   DateTime       @default(now())
 
-  @@unique([learnerProfileId, skillName, language])
+  @@unique([learnerProfileId, skillId])
+}
+
+model StandardsProgress {
+  id                 String         @id @default(cuid())
+  learnerProfileId   String
+  learnerProfile     LearnerProfile @relation(fields: [learnerProfileId], references: [id], onDelete: Cascade)
+  standardId         String
+  standard           Standard       @relation(fields: [standardId], references: [id], onDelete: Cascade)
+  mastery            Float          @default(0)
+  confidence         Float          @default(0.5)
+  evidenceCount      Int            @default(0)
+  lastObservedAt     DateTime       @default(now())
+  lastDemonstratedAt DateTime?
+  nextReviewAt       DateTime?
+
+  @@unique([learnerProfileId, standardId])
+}
+
+model StandardsEvidence {
+  id               String             @id @default(cuid())
+  learnerProfileId String
+  learnerProfile   LearnerProfile     @relation(fields: [learnerProfileId], references: [id], onDelete: Cascade)
+  standardId       String
+  standard         Standard           @relation(fields: [standardId], references: [id], onDelete: Cascade)
+  sourceType       EvidenceSourceType
+  sourceId         String?
+  sessionId        String?
+  session          Session?           @relation(fields: [sessionId], references: [id], onDelete: SetNull)
+  messageId        String?
+  evidenceTier     EvidenceTier
+  correctness      Float?
+  hintsUsed        Int?
+  difficulty       Float?
+  rubricMatches    String[]           @default([])
+  notes            String?
+  createdAt        DateTime           @default(now())
+}
+
+enum EvidenceSourceType {
+  CONVERSATIONAL
+  ACTIVITY
+  ASSESSMENT
+}
+
+enum EvidenceTier {
+  CONVERSATIONAL
+  GUIDED
+  CHECKPOINT
 }
 
 model StoryState {
@@ -241,24 +420,105 @@ model StoryState {
   lastUpdatedAt       DateTime       @updatedAt
 }
 
-model ConceptLedgerEvent {
-  id               String                 @id @default(cuid())
-  learnerProfileId String
-  learnerProfile   LearnerProfile         @relation(fields: [learnerProfileId], references: [id], onDelete: Cascade)
-  conceptNodeId    String
-  conceptNode      ConceptNode            @relation(fields: [conceptNodeId], references: [id], onDelete: Cascade)
-  eventType        ConceptLedgerEventType
-  sessionId        String?
-  session          Session?               @relation(fields: [sessionId], references: [id])
-  messageId        String?
-  confidence       Float                  @default(0.5)
-  createdAt        DateTime               @default(now())
+model LearningActivity {
+  id               String                         @id @default(cuid())
+  slug             String                         @unique
+  displayName      String
+  kind             ActivityKind
+  subjectId        String
+  subject          Subject                        @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  description      String
+  estimatedMinutes Int?
+  difficulty       Int?
+  content          Json?
+  narrativeContext String?
+  authoring        ActivityAuthoring              @default(AI_GENERATED)
+  generatedFromSessionId String?
+  generatedAt      DateTime?
+  createdAt        DateTime                       @default(now())
+  updatedAt        DateTime                       @updatedAt
+  standardLinks    LearningActivityStandardLink[]
+  completions      LearningActivityCompletion[]
 }
 
-enum ConceptLedgerEventType {
-  INTRODUCED
-  REINFORCED
-  APPLIED
+enum ActivityKind {
+  READING
+  INTERACTIVE_GAME
+  MINI_QUIZ
+  CHALLENGE
+  STORY_SCENE
+  JOURNAL_PROMPT
+}
+
+enum ActivityAuthoring {
+  AI_GENERATED
+  HAND_AUTHORED
+  TEMPLATE
+}
+
+model LearningActivityStandardLink {
+  id               String           @id @default(cuid())
+  learningActivityId String
+  learningActivity LearningActivity @relation(fields: [learningActivityId], references: [id], onDelete: Cascade)
+  standardId       String
+  standard         Standard         @relation(fields: [standardId], references: [id], onDelete: Cascade)
+
+  @@unique([learningActivityId, standardId])
+}
+
+model LearningActivityCompletion {
+  id                 String           @id @default(cuid())
+  learnerProfileId   String
+  learnerProfile     LearnerProfile   @relation(fields: [learnerProfileId], references: [id], onDelete: Cascade)
+  learningActivityId String
+  learningActivity   LearningActivity @relation(fields: [learningActivityId], references: [id], onDelete: Cascade)
+  startedAt          DateTime         @default(now())
+  completedAt        DateTime?
+  score              Float?
+  perStandardCorrectness Json?
+  evidenceWritten    Boolean          @default(false)
+}
+
+model Assessment {
+  id               String                   @id @default(cuid())
+  slug             String                   @unique
+  displayName      String
+  subjectId        String
+  subject          Subject                  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  format           AssessmentFormat
+  items            Json?
+  createdAt        DateTime                 @default(now())
+  updatedAt        DateTime                 @updatedAt
+  standardLinks    AssessmentStandardLink[]
+  results          AssessmentResult[]
+}
+
+enum AssessmentFormat {
+  MULTIPLE_CHOICE
+  SHORT_ANSWER
+  MIXED
+}
+
+model AssessmentStandardLink {
+  id           String     @id @default(cuid())
+  assessmentId String
+  assessment   Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  standardId   String
+  standard     Standard   @relation(fields: [standardId], references: [id], onDelete: Cascade)
+
+  @@unique([assessmentId, standardId])
+}
+
+model AssessmentResult {
+  id               String         @id @default(cuid())
+  learnerProfileId String
+  learnerProfile   LearnerProfile @relation(fields: [learnerProfileId], references: [id], onDelete: Cascade)
+  assessmentId     String
+  assessment       Assessment     @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  total            Float?
+  perStandardScores Json?
+  itemResults      Json?
+  attemptedAt      DateTime       @default(now())
 }
 
 model BranchPoint {

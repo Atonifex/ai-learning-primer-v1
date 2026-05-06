@@ -4,7 +4,6 @@ import type {
   MemoryItemData,
   SkillUpdate,
   StoryStateData,
-  Language,
   RecurringCharacterEntry,
 } from "../types";
 
@@ -65,25 +64,43 @@ export async function upsertSkillProgress(
   skills: SkillUpdate[]
 ): Promise<void> {
   for (const skill of skills) {
+    const slug = skill.skillName
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, "_")
+      .replace(/[^a-z0-9_]/g, "")
+      .slice(0, 64);
+    if (!slug) continue;
+
+    const skillRow = await prisma.skill.upsert({
+      where: { slug },
+      update: {},
+      create: {
+        slug,
+        displayName: skill.skillName,
+        description: `Auto-captured skill: ${skill.skillName}`,
+      },
+    });
+
     await prisma.skillProgress.upsert({
       where: {
-        learnerProfileId_skillName_language: {
+        learnerProfileId_skillId: {
           learnerProfileId: profileId,
-          skillName: skill.skillName,
-          language: skill.language,
+          skillId: skillRow.id,
         },
       },
       update: {
-        estimatedLevel: skill.estimatedLevel,
+        mastery: Math.max(0, Math.min(100, skill.estimatedLevel * 100)),
         confidence: skill.confidence,
+        evidenceCount: { increment: 1 },
         lastObservedAt: new Date(),
       },
       create: {
         learnerProfileId: profileId,
-        skillName: skill.skillName,
-        language: skill.language as Language,
-        estimatedLevel: skill.estimatedLevel,
+        skillId: skillRow.id,
+        mastery: Math.max(0, Math.min(100, skill.estimatedLevel * 100)),
         confidence: skill.confidence,
+        evidenceCount: 1,
       },
     });
   }

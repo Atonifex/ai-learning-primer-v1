@@ -1,13 +1,16 @@
 import { prisma } from "../db/prisma";
 import type { MessageData, SessionData, Language } from "../types";
 import { ensureLearnerStoryChain } from "./storyCurriculum";
+import { getOrCreateDefaultSubject } from "./subjects";
 
 export async function startSession(profileId: string, language: Language): Promise<string> {
   const { chapterId } = await ensureLearnerStoryChain(profileId);
+  const subject = await getOrCreateDefaultSubject();
   const session = await prisma.session.create({
     data: {
       learnerProfileId: profileId,
-      language,
+      subjectId: subject.id,
+      targetLanguage: language,
       status: "ACTIVE",
       chapterId,
       sceneIndex: 0,
@@ -27,7 +30,8 @@ export async function getActiveSession(profileId: string): Promise<string | null
 function mapSessionToData(
   session: {
     id: string;
-    language: string;
+    targetLanguage: string | null;
+    subject: { slug: string };
     status: string;
     arcName: string | null;
     startedAt: Date;
@@ -55,7 +59,8 @@ function mapSessionToData(
 ): SessionData {
   return {
     id: session.id,
-    language: session.language as Language,
+    language: (session.targetLanguage ?? "ES") as Language,
+    subjectSlug: session.subject.slug,
     status: session.status as SessionData["status"],
     arcName: session.arcName,
     startedAt: session.startedAt,
@@ -96,6 +101,7 @@ export async function getSession(sessionId: string): Promise<SessionData | null>
     where: { id: sessionId },
     include: {
       messages: { orderBy: { orderIndex: "asc" } },
+      subject: { select: { slug: true } },
       chapter: {
         include: {
           storyArc: { select: { id: true, title: true, focusTags: true } },
@@ -169,6 +175,7 @@ export async function listSessions(profileId: string): Promise<SessionData[]> {
     orderBy: { startedAt: "desc" },
     include: {
       messages: { orderBy: { orderIndex: "asc" } },
+      subject: { select: { slug: true } },
       chapter: {
         include: {
           storyArc: { select: { id: true, title: true, focusTags: true } },
