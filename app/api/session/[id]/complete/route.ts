@@ -3,7 +3,7 @@ import { getCurrentUser } from "../../../../../lib/auth/session";
 import { getProfile } from "../../../../../lib/services/profile";
 import { getSession, completeSession } from "../../../../../lib/services/session";
 import { getRelevantMemory } from "../../../../../lib/services/memory";
-import { upsertMemoryItems, upsertSkillProgress, upsertStoryState } from "../../../../../lib/services/memory";
+import { upsertMemoryItems, upsertStoryState } from "../../../../../lib/services/memory";
 import { extractSessionMemory } from "../../../../../lib/ai/memoryExtractor";
 
 export async function POST(
@@ -39,7 +39,6 @@ export async function POST(
 
     await Promise.all([
       upsertMemoryItems(profile.id, sessionId, result.memoryItems),
-      upsertSkillProgress(profile.id, result.skillUpdates),
       upsertStoryState(profile.id, sessionId, result.storyUpdate),
       completeSession(sessionId, result.sessionSummary),
     ]);

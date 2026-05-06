@@ -7,7 +7,8 @@ import MessageList, { type Message } from "../../../components/session/MessageLi
 import InputBar from "../../../components/session/InputBar";
 import PreviouslyOnCard from "../../../components/session/PreviouslyOnCard";
 import BranchPickPanel from "../../../components/session/BranchPickPanel";
-import type { SessionStoryUi } from "../../../lib/types";
+import GeneratedActivityCard from "../../../components/session/GeneratedActivityCard";
+import type { GeneratedActivity, SessionStoryUi } from "../../../lib/types";
 
 interface PageProps {
   params: Promise<{ sessionId: string }>;
@@ -23,6 +24,7 @@ export default function SessionPage({ params }: PageProps) {
   const [leaving, setLeaving] = useState(false);
   const [confirmLeave, setConfirmLeave] = useState(false);
   const [storyUi, setStoryUi] = useState<SessionStoryUi | null>(null);
+  const [generatedActivities, setGeneratedActivities] = useState<GeneratedActivity[]>([]);
   const [chapterMeta, setChapterMeta] = useState<{
     actCurrent: number;
     actTotal: number;
@@ -177,6 +179,12 @@ export default function SessionPage({ params }: PageProps) {
                   );
                 }
                 setImageLoading(false);
+              } else if (data.type === "activity_generated" && data.activity) {
+                setGeneratedActivities((prev) => {
+                  const exists = prev.some((a) => a.id === data.activity.id);
+                  if (exists) return prev;
+                  return [...prev, data.activity];
+                });
               } else if (data.type === "error") {
                 setImageLoading(false);
               } else if (data.type === "done") {
@@ -284,6 +292,13 @@ export default function SessionPage({ params }: PageProps) {
               }}
             />
           )}
+          {generatedActivities.map((activity) => (
+            <GeneratedActivityCard
+              key={activity.id}
+              sessionId={sessionId}
+              activity={activity}
+            />
+          ))}
 
           {streaming && (
             <div className="flex-shrink-0 px-4 pb-1">

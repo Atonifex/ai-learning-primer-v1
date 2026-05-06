@@ -7,7 +7,8 @@
     "build": "prisma migrate deploy && prisma generate && next build",
     "postinstall": "prisma generate",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@hugeicons/core-free-icons": "^4.0.0",
@@ -43,6 +44,10 @@
     "eslint-config-next": "16.2.1",
     "prisma": "^7.5.0",
     "tailwindcss": "^4",
+    "tsx": "^4.20.6",
     "typescript": "^5"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   }
 }

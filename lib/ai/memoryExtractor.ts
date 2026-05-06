@@ -1,12 +1,11 @@
 import OpenAI from "openai";
 import { aiDebug, isAiDebug } from "./aiDebug";
-import type { MessageData, MemoryItemData, SkillUpdate, StoryStateData, Language } from "../types";
+import type { MessageData, MemoryItemData, StoryStateData, Language } from "../types";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 export interface ExtractionResult {
   memoryItems: MemoryItemData[];
-  skillUpdates: SkillUpdate[];
   storyUpdate: StoryStateData;
   sessionSummary: string;
 }
@@ -38,9 +37,6 @@ Extract structured information and return ONLY valid JSON with this exact shape:
   "memoryItems": [
     { "type": "VOCABULARY_GAP" | "RECURRING_MISTAKE" | "MISCONCEPTION" | "CONFIDENCE_SIGNAL" | "INTEREST" | "GOAL" | "PREFERENCE" | "STORY_CONTINUITY", "content": "specific, actionable description", "confidence": 0.0-1.0 }
   ],
-  "skillUpdates": [
-    { "skillName": "specific skill name", "language": "${language}", "estimatedLevel": 0.0-1.0, "confidence": 0.0-1.0 }
-  ],
   "storyUpdate": {
     "arcName": "name of this session's story arc",
     "currentState": "2-3 sentence summary of where the story ended",
@@ -55,7 +51,8 @@ Rules:
 - Keep memory items specific and actionable (not vague like "needs improvement")
 - Confidence should reflect how certain you are, based on transcript evidence
 - Do not duplicate items that already exist in the existing memory (above)
-- Include at least one STORY_CONTINUITY item if there was meaningful narrative`;
+- Include at least one STORY_CONTINUITY item if there was meaningful narrative
+- Do NOT return correctness scores, mastery estimates, or skill level deltas (those are tracked in StandardsEvidence).`;
 
   if (isAiDebug()) {
     aiDebug("memoryExtractor", "request", {
@@ -79,7 +76,6 @@ Rules:
   if (isAiDebug()) {
     aiDebug("memoryExtractor", "response", {
       memoryItems: result.memoryItems.length,
-      skillUpdates: result.skillUpdates.length,
       sessionSummaryChars: result.sessionSummary?.length ?? 0,
     });
   }

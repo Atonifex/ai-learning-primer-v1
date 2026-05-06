@@ -77,6 +77,7 @@ export async function POST(
             abortSignal: req.signal,
             spine,
             previouslyOn,
+            sessionId,
           }
         );
 

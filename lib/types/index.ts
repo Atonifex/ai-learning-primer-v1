@@ -125,6 +125,20 @@ export interface SessionStoryUi {
   branchPoint: BranchPointUi | null;
 }
 
+export interface GeneratedQuizItem {
+  id: string;
+  question: string;
+  options: string[];
+}
+
+export interface GeneratedActivity {
+  id: string;
+  standardCode: string;
+  title: string;
+  instructions: string;
+  items: GeneratedQuizItem[];
+}
+
 export type StreamChunk =
   | { type: "text"; content: string }
   | { type: "image_start" }
@@ -134,4 +148,6 @@ export type StreamChunk =
       prompt: string;
       charactersInScene?: string[];
     }
+  | { type: "standard_observation"; standardCode: string; mastery: number }
+  | { type: "activity_generated"; activity: GeneratedActivity }
   | { type: "done"; messageId: string };

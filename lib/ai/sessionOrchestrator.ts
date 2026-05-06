@@ -5,7 +5,13 @@ import {
   generateSceneImage,
   generateSceneImageTool,
 } from "./imageTool";
+import {
+  generateLearningActivityTool,
+  recordStandardObservationTool,
+} from "./standardsTool";
 import { getReferenceBuffersForScene } from "./referenceImages";
+import { recordStandardObservation } from "../services/standardsProgress";
+import { createGeneratedMiniQuiz } from "../services/learningActivities";
 import {
   aiDebug,
   isAiDebug,
@@ -52,6 +58,7 @@ export async function* streamSessionResponse(
     abortSignal?: AbortSignal;
     spine?: StorySpineContext | null;
     previouslyOn?: string | null;
+    sessionId?: string;
   }
 ): AsyncGenerator<StreamChunk> {
   const abortSignal = opts?.abortSignal;
@@ -94,14 +101,14 @@ export async function* streamSessionResponse(
   }
 
   let fullText = "";
-  let toolCall: { id: string; name: string; args: string } | null = null;
+  const toolCalls = new Map<number, { id: string; name: string; args: string }>();
   let imageUrl: string | null = null;
 
   const stream = await openai.chat.completions.create(
     {
       model: MODEL,
       messages,
-      tools: [generateSceneImageTool],
+      tools: [generateSceneImageTool, recordStandardObservationTool, generateLearningActivityTool],
       tool_choice: "auto",
       stream: true,
       //4/7/2026: Experiment with max_completion_tokens to see if it helps with the length of the responses.
@@ -128,108 +135,230 @@ export async function* streamSessionResponse(
 
     if (delta.tool_calls) {
       for (const tc of delta.tool_calls) {
-        if (!toolCall) {
-          toolCall = { id: tc.id || "", name: tc.function?.name || "", args: "" };
+        const index = tc.index ?? 0;
+        const existing = toolCalls.get(index);
+        if (!existing) {
+          toolCalls.set(index, { id: tc.id || "", name: tc.function?.name || "", args: "" });
         }
+        const row = toolCalls.get(index)!;
+        if (tc.id) row.id = tc.id;
+        if (tc.function?.name) row.name = tc.function.name;
         if (tc.function?.arguments) {
-          toolCall.args += tc.function.arguments;
+          row.args += tc.function.arguments;
         }
       }
     }
 
-    if (choice.finish_reason === "tool_calls" && toolCall) {
-      aiDebug("orchestrator", "tool_calls_finish", {
-        toolName: toolCall.name,
-        toolCallId: toolCall.id,
-        argsChars: toolCall.args.length,
-      });
-      if (isAiDebug()) {
-        console.log(
-          `[Primer AI:orchestrator] tool_arguments (truncated)`,
-          toolCall.args.length > 800
-            ? `${toolCall.args.slice(0, 800)}…`
-            : toolCall.args
-        );
-      }
+    if (choice.finish_reason === "tool_calls" && toolCalls.size > 0) {
+      const orderedCalls = [...toolCalls.entries()]
+        .sort((a, b) => a[0] - b[0])
+        .map(([, v]) => v);
+      const toolResults: Array<{ tool_call_id: string; content: string }> = [];
 
-      let args: { prompt: string; alt_text: string; characters_in_scene?: string[] };
-      try {
-        args = JSON.parse(toolCall.args);
-      } catch (e) {
-        aiDebug("orchestrator", "tool_args_parse_error", {
-          error: e instanceof Error ? e.message : String(e),
+      for (const call of orderedCalls) {
+        aiDebug("orchestrator", "tool_calls_finish", {
+          toolName: call.name,
+          toolCallId: call.id,
+          argsChars: call.args.length,
         });
-        continue;
-      }
+        if (isAiDebug()) {
+          console.log(
+            `[Primer AI:orchestrator] tool_arguments (truncated)`,
+            call.args.length > 800 ? `${call.args.slice(0, 800)}…` : call.args
+          );
+        }
 
-      const charactersInScene = args.characters_in_scene ?? [];
+        let args: Record<string, unknown>;
+        try {
+          args = JSON.parse(call.args);
+        } catch (e) {
+          aiDebug("orchestrator", "tool_args_parse_error", {
+            error: e instanceof Error ? e.message : String(e),
+          });
+          toolResults.push({
+            tool_call_id: call.id,
+            content: JSON.stringify({ success: false, error: "Invalid JSON arguments" }),
+          });
+          continue;
+        }
+
+        if (call.name === "generate_scene_image") {
+          const prompt = typeof args.prompt === "string" ? args.prompt : "";
+          const charactersInScene = Array.isArray(args.characters_in_scene)
+            ? args.characters_in_scene.filter((v): v is string => typeof v === "string")
+            : [];
+          if (!prompt) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({ success: false, error: "Missing prompt" }),
+            });
+            continue;
+          }
+
+          throwIfAborted(abortSignal);
+          yield { type: "image_start" };
+
+          try {
+            const referenceBuffers = await getReferenceBuffersForScene(
+              profile.id,
+              charactersInScene,
+              sessionMessages
+            );
+            throwIfAborted(abortSignal);
+            imageUrl = await generateSceneImage(prompt, {
+              referenceBuffers,
+              abortSignal,
+            });
+            aiDebug("orchestrator", "image_done", {
+              ok: true,
+              imageChars: imageUrl.length,
+              refCount: referenceBuffers.length,
+            });
+            yield {
+              type: "image_done",
+              url: imageUrl,
+              prompt,
+              charactersInScene,
+            };
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: true,
+                description: "Scene image generated and displayed to learner.",
+              }),
+            });
+          } catch (err) {
+            if (err instanceof Error && err.name === "AbortError") throw err;
+            console.error("Image generation failed:", err);
+            aiDebug("orchestrator", "image_done", {
+              ok: false,
+              error: err instanceof Error ? err.message : String(err),
+            });
+            imageUrl = null;
+            yield {
+              type: "image_done",
+              url: "",
+              prompt,
+              charactersInScene,
+            };
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({ success: false, error: "Image generation failed" }),
+            });
+          }
+        } else if (call.name === "record_standard_observation") {
+          const sessionId = opts?.sessionId;
+          const standardCode =
+            typeof args.standard_code === "string" ? args.standard_code.trim() : "";
+          const evidenceTier =
+            args.evidence_tier === "CONVERSATIONAL" ||
+            args.evidence_tier === "GUIDED" ||
+            args.evidence_tier === "CHECKPOINT"
+              ? args.evidence_tier
+              : "CONVERSATIONAL";
+          if (!sessionId || !standardCode) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({ success: false, error: "Missing session or standard_code" }),
+            });
+            continue;
+          }
+
+          try {
+            const result = await recordStandardObservation({
+              sessionId,
+              standardCode,
+              evidenceTier,
+              correctness: typeof args.correctness === "number" ? args.correctness : undefined,
+              notes: typeof args.notes === "string" ? args.notes : undefined,
+            });
+            yield {
+              type: "standard_observation",
+              standardCode: result.standardCode,
+              mastery: result.mastery,
+            };
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({ success: true, ...result }),
+            });
+          } catch (err) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: false,
+                error: err instanceof Error ? err.message : String(err),
+              }),
+            });
+          }
+        } else if (call.name === "generate_learning_activity") {
+          const sessionId = opts?.sessionId;
+          const standardCode =
+            typeof args.standard_code === "string" ? args.standard_code.trim() : "";
+          if (!sessionId || !standardCode) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({ success: false, error: "Missing session or standard_code" }),
+            });
+            continue;
+          }
+
+          try {
+            const activity = await createGeneratedMiniQuiz({
+              sessionId,
+              standardCode,
+              title:
+                typeof args.title === "string" ? args.title : `Mini quiz: ${standardCode}`,
+              instructions:
+                typeof args.instructions === "string"
+                  ? args.instructions
+                  : "Pick the best answer for each question.",
+              items: args.items,
+            });
+            yield { type: "activity_generated", activity };
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: true,
+                activityId: activity.id,
+                standardCode: activity.standardCode,
+                itemCount: activity.items.length,
+              }),
+            });
+          } catch (err) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: false,
+                error: err instanceof Error ? err.message : String(err),
+              }),
+            });
+          }
+        } else {
+          toolResults.push({
+            tool_call_id: call.id,
+            content: JSON.stringify({ success: false, error: `Unknown tool: ${call.name}` }),
+          });
+        }
+      }
 
       throwIfAborted(abortSignal);
-      yield { type: "image_start" };
 
-      try {
-        const referenceBuffers = await getReferenceBuffersForScene(
-          profile.id,
-          charactersInScene,
-          sessionMessages
-        );
-        throwIfAborted(abortSignal);
-        imageUrl = await generateSceneImage(args.prompt, {
-          referenceBuffers,
-          abortSignal,
-        });
-        aiDebug("orchestrator", "image_done", {
-          ok: true,
-          imageChars: imageUrl.length,
-          refCount: referenceBuffers.length,
-        });
-        yield {
-          type: "image_done",
-          url: imageUrl,
-          prompt: args.prompt,
-          charactersInScene,
-        };
-      } catch (err) {
-        if (err instanceof Error && err.name === "AbortError") throw err;
-        console.error("Image generation failed:", err);
-        aiDebug("orchestrator", "image_done", {
-          ok: false,
-          error: err instanceof Error ? err.message : String(err),
-        });
-        imageUrl = null;
-        // Client must receive a terminal event after image_start, or loading never clears.
-        yield {
-          type: "image_done",
-          url: "",
-          prompt: args.prompt,
-          charactersInScene,
-        };
-      }
-
-      throwIfAborted(abortSignal);
-
-      // Continue conversation after tool execution
       const continuationMessages: ChatCompletionMessageParam[] = [
         ...messages,
         {
           role: "assistant",
           content: fullText || null,
-          tool_calls: [
-            {
-              id: toolCall.id,
-              type: "function",
-              function: { name: toolCall.name, arguments: toolCall.args },
-            },
-          ],
+          tool_calls: orderedCalls.map((call) => ({
+            id: call.id,
+            type: "function",
+            function: { name: call.name, arguments: call.args },
+          })),
         },
-        {
-          role: "tool",
-          tool_call_id: toolCall.id,
-          content: JSON.stringify({
-            success: !!imageUrl,
-            description: "Scene image generated and displayed to learner.",
-          }),
-        },
+        ...toolResults.map((row) => ({
+          role: "tool" as const,
+          tool_call_id: row.tool_call_id,
+          content: row.content,
+        })),
       ];
 
       aiDebug("orchestrator", "continuation_request", {
@@ -261,6 +390,7 @@ export async function* streamSessionResponse(
           });
         }
       }
+      toolCalls.clear();
     } else if (choice.finish_reason && choice.finish_reason !== "tool_calls") {
       aiDebug("orchestrator", "first_stream_finish", {
         finish_reason: choice.finish_reason,
