@@ -27,3 +27,5 @@ Primary initial wedge: language learning for adults and homeschool learners.
 - Postgres
 - Prisma
 - structured evals and tests
+
+## Deploy to Vercel using "vercel"

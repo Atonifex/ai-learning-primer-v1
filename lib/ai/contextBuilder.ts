@@ -1,4 +1,9 @@
-import type { LearnerProfileData, MemoryItemData, StoryStateData } from "../types";
+import type {
+  LearnerProfileData,
+  MemoryItemData,
+  StorySpineContext,
+  StoryStateData,
+} from "../types";
 
 export interface BuiltContext {
   systemPrompt: string;
@@ -23,6 +28,39 @@ function formatMemoryItems(items: MemoryItemData[]): string {
     .join("\n");
 }
 
+function formatStorySpine(spine: StorySpineContext | null, previouslyOnLine: string | null): string {
+  const lines: string[] = [];
+  if (!spine) {
+    lines.push("No structured story spine yet — use learner profile and memory only.");
+  } else {
+    const plannerHint =
+      spine.plannerJson && typeof spine.plannerJson === "object"
+        ? JSON.stringify(spine.plannerJson).slice(0, 1200)
+        : spine.plannerJson
+          ? String(spine.plannerJson).slice(0, 800)
+          : "None";
+    lines.push(
+      `World: ${spine.worldTitle}`,
+      spine.worldBible.trim()
+        ? `World bible (persistent — stay consistent):\n${spine.worldBible.trim()}`
+        : "World bible: (not set yet)",
+      `Arc: ${spine.arcTitle}${spine.arcSummary ? ` — ${spine.arcSummary}` : ""}`,
+      `Arc focus tags: ${spine.arcFocusTags.length ? spine.arcFocusTags.join(", ") : "—"}`,
+      `Chapter: ${spine.chapterTitle}`,
+      `Chapter focus tags: ${spine.chapterFocusTags.length ? spine.chapterFocusTags.join(", ") : "—"}`,
+      `Structure: Act ${spine.actCurrent} of ${spine.actTotal} · scene index ${spine.sceneIndex}`,
+      spine.pathAheadWhisper
+        ? `Narrative tease (whisper — foreshadow without spoiling): ${spine.pathAheadWhisper}`
+        : "",
+      `Chapter planner / objectives (JSON excerpt): ${plannerHint}`
+    );
+  }
+  if (previouslyOnLine?.trim()) {
+    lines.push(`Previously on (recap for this learner): ${previouslyOnLine.trim()}`);
+  }
+  return lines.filter(Boolean).join("\n");
+}
+
 function formatStoryState(state: StoryStateData | null): string {
   if (!state) return "No prior story state — begin a new arc.";
   const characters =
@@ -43,7 +81,11 @@ export function buildSystemPrompt(
   profile: LearnerProfileData,
   memoryItems: MemoryItemData[],
   storyState: StoryStateData | null,
-  recentSummaries: string[]
+  recentSummaries: string[],
+  opts?: {
+    spine?: StorySpineContext | null;
+    previouslyOn?: string | null;
+  }
 ): string {
   const lang = LANGUAGE_NAMES[profile.activeLanguage] || profile.activeLanguage;
   const level = LEVEL_NAMES[profile.currentLevel] || profile.currentLevel;
@@ -69,7 +111,10 @@ LEARNER PROFILE:
 WHAT YOU KNOW ABOUT THIS LEARNER:
 ${formatMemoryItems(memoryItems)}
 
-CURRENT STORY STATE:
+STORY SPINE (database — honor world, arc, and chapter; woven narrative across subjects):
+${formatStorySpine(opts?.spine ?? null, opts?.previouslyOn ?? null)}
+
+CURRENT STORY STATE (from last update in this chapter’s thread):
 ${formatStoryState(storyState)}
 
 RECENT SESSION SUMMARIES:

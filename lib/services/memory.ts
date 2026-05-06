@@ -130,12 +130,12 @@ export async function getRecentSummaries(
   return sessions.map((s) => s.arcSummary!);
 }
 
-export async function getLatestStoryState(profileId: string): Promise<StoryStateData | null> {
-  const state = await prisma.storyState.findFirst({
-    where: { learnerProfile: { id: profileId } },
-    orderBy: { lastUpdatedAt: "desc" },
-  });
-  if (!state) return null;
+function mapStoryStateRow(state: {
+  arcName: string;
+  currentState: string;
+  recurringCharacters: unknown;
+  activeThemes: string[];
+}): StoryStateData {
   const raw = state.recurringCharacters as unknown;
   const recurringCharacters: RecurringCharacterEntry[] = Array.isArray(raw)
     ? raw.map((c: unknown) => {
@@ -157,4 +157,38 @@ export async function getLatestStoryState(profileId: string): Promise<StoryState
     recurringCharacters,
     activeThemes: state.activeThemes,
   };
+}
+
+export async function getLatestStoryState(profileId: string): Promise<StoryStateData | null> {
+  const state = await prisma.storyState.findFirst({
+    where: { learnerProfile: { id: profileId } },
+    orderBy: { lastUpdatedAt: "desc" },
+  });
+  if (!state) return null;
+  return mapStoryStateRow(state);
+}
+
+/**
+ * Story continuity for prompts: prefer the latest `StoryState` among sessions in the same chapter
+ * so we do not bleed arc state from unrelated sessions.
+ */
+export async function getStoryStateForSessionContext(
+  sessionId: string
+): Promise<StoryStateData | null> {
+  const session = await prisma.session.findUnique({
+    where: { id: sessionId },
+    select: { learnerProfileId: true, chapterId: true },
+  });
+  if (!session) return null;
+
+  if (!session.chapterId) {
+    return getLatestStoryState(session.learnerProfileId);
+  }
+
+  const state = await prisma.storyState.findFirst({
+    where: { session: { chapterId: session.chapterId } },
+    orderBy: { lastUpdatedAt: "desc" },
+  });
+  if (!state) return null;
+  return mapStoryStateRow(state);
 }

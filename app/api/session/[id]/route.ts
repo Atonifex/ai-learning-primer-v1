@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getCurrentUser } from "../../../../lib/auth/session";
 import { enrichSessionDataWithSignedUrls } from "../../../../lib/services/characterPortraits";
 import { getSession } from "../../../../lib/services/session";
+import { buildSessionStoryUi } from "../../../../lib/services/sessionStoryContext";
 
 export async function GET(
   _req: NextRequest,
@@ -13,5 +14,6 @@ export async function GET(
   const session = await getSession(id);
   if (!session) return NextResponse.json({ error: "Session not found" }, { status: 404 });
   const enriched = await enrichSessionDataWithSignedUrls(session);
-  return NextResponse.json({ session: enriched });
+  const storyUi = await buildSessionStoryUi(id);
+  return NextResponse.json({ session: enriched, storyUi });
 }

@@ -15,6 +15,7 @@ import {
 import type {
   LearnerProfileData,
   MemoryItemData,
+  StorySpineContext,
   StoryStateData,
   StreamChunk,
   MessageData,
@@ -47,9 +48,17 @@ export async function* streamSessionResponse(
   recentSummaries: string[],
   sessionMessages: MessageData[],
   userMessage: string,
-  abortSignal?: AbortSignal
+  opts?: {
+    abortSignal?: AbortSignal;
+    spine?: StorySpineContext | null;
+    previouslyOn?: string | null;
+  }
 ): AsyncGenerator<StreamChunk> {
-  const systemPrompt = buildSystemPrompt(profile, memoryItems, storyState, recentSummaries);
+  const abortSignal = opts?.abortSignal;
+  const systemPrompt = buildSystemPrompt(profile, memoryItems, storyState, recentSummaries, {
+    spine: opts?.spine ?? null,
+    previouslyOn: opts?.previouslyOn ?? null,
+  });
 
   const priorMessages = toOpenAIMessages(sessionMessages);
   const isStart = userMessage === "__start__";

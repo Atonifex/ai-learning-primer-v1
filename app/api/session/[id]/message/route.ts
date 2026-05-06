@@ -9,9 +9,13 @@ import {
 import {
   getRelevantMemory,
   getRecentSummaries,
-  getLatestStoryState,
+  getStoryStateForSessionContext,
 } from "../../../../../lib/services/memory";
 import { streamSessionResponse } from "../../../../../lib/ai/sessionOrchestrator";
+import {
+  getPreviouslyOnRecap,
+  getStorySpineForSession,
+} from "../../../../../lib/services/sessionStoryContext";
 
 export async function POST(
   req: NextRequest,
@@ -38,11 +42,13 @@ export async function POST(
     await addMessage(sessionId, "USER", content);
   }
 
-  // Load context
-  const [memoryItems, recentSummaries, storyState] = await Promise.all([
+  // Load context (story state scoped to this chapter when possible)
+  const [memoryItems, recentSummaries, storyState, spine, previouslyOn] = await Promise.all([
     getRelevantMemory(profile.id),
     getRecentSummaries(profile.id),
-    getLatestStoryState(profile.id),
+    getStoryStateForSessionContext(sessionId),
+    getStorySpineForSession(sessionId),
+    getPreviouslyOnRecap(sessionId),
   ]);
 
   const encoder = new TextEncoder();
@@ -67,7 +73,11 @@ export async function POST(
           recentSummaries,
           session.messages,
           content,
-          req.signal
+          {
+            abortSignal: req.signal,
+            spine,
+            previouslyOn,
+          }
         );
 
         for await (const chunk of generator) {

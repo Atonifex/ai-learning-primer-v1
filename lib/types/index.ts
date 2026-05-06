@@ -85,6 +85,45 @@ export interface StoryStateData {
   activeThemes: string[];
 }
 
+/** Injected into system prompt from StoryWorld / StoryArc / Chapter (Phase 3). */
+export interface StorySpineContext {
+  worldTitle: string;
+  worldBible: string;
+  arcTitle: string;
+  arcSummary: string | null;
+  arcFocusTags: string[];
+  chapterTitle: string;
+  chapterFocusTags: string[];
+  actCurrent: number;
+  actTotal: number;
+  pathAheadWhisper: string | null;
+  sceneIndex: number;
+  plannerJson: unknown;
+}
+
+export interface BranchOptionUi {
+  id: string;
+  orderIndex: number;
+  title: string;
+  teaser: string;
+  imageUrl: string | null;
+}
+
+export interface BranchPointUi {
+  id: string;
+  promptText: string | null;
+  options: BranchOptionUi[];
+}
+
+/** Extra session payload for ScenePanel + Previously On + branches (Phase 4). */
+export interface SessionStoryUi {
+  worldTitle: string;
+  worldBible: string;
+  previouslyOn: string | null;
+  showPreviouslyOn: boolean;
+  branchPoint: BranchPointUi | null;
+}
+
 export type StreamChunk =
   | { type: "text"; content: string }
   | { type: "image_start" }

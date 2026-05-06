@@ -5,6 +5,9 @@ import { useRouter } from "next/navigation";
 import ScenePanel from "../../../components/session/ScenePanel";
 import MessageList, { type Message } from "../../../components/session/MessageList";
 import InputBar from "../../../components/session/InputBar";
+import PreviouslyOnCard from "../../../components/session/PreviouslyOnCard";
+import BranchPickPanel from "../../../components/session/BranchPickPanel";
+import type { SessionStoryUi } from "../../../lib/types";
 
 interface PageProps {
   params: Promise<{ sessionId: string }>;
@@ -19,6 +22,12 @@ export default function SessionPage({ params }: PageProps) {
   const [streaming, setStreaming] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const [confirmLeave, setConfirmLeave] = useState(false);
+  const [storyUi, setStoryUi] = useState<SessionStoryUi | null>(null);
+  const [chapterMeta, setChapterMeta] = useState<{
+    actCurrent: number;
+    actTotal: number;
+    pathAheadWhisper: string | null;
+  } | null>(null);
   const streamingIdRef = useRef<string>(`streaming-${Date.now()}`);
   const streamAbortRef = useRef<AbortController | null>(null);
   const opSeqRef = useRef(0);
@@ -30,19 +39,31 @@ export default function SessionPage({ params }: PageProps) {
     params.then(({ sessionId: sid }) => setSessionId(sid));
   }, [params]);
 
-  // Load existing session messages
+  useEffect(() => {
+    hasStarted.current = false;
+  }, [sessionId]);
+
+  // Load existing session messages + story UI metadata
   useEffect(() => {
     if (!sessionId) return;
     fetch(`/api/session/${sessionId}`)
       .then((r) => r.json())
-      .then(({ session }) => {
-        if (!session) return;
-        const msgs: Message[] = session.messages.map((m: {
-          id: string;
-          role: "USER" | "ASSISTANT";
-          content: string;
-          imageUrl?: string | null;
-        }) => ({
+      .then(({ session, storyUi: su }: { session?: unknown; storyUi?: SessionStoryUi }) => {
+        if (!session || typeof session !== "object" || !("messages" in session)) return;
+        const s = session as {
+          messages: Array<{
+            id: string;
+            role: "USER" | "ASSISTANT";
+            content: string;
+            imageUrl?: string | null;
+          }>;
+          chapter?: {
+            actCurrent: number;
+            actTotal: number;
+            pathAheadWhisper: string | null;
+          } | null;
+        };
+        const msgs: Message[] = s.messages.map((m) => ({
           id: m.id,
           role: m.role,
           content: m.content,
@@ -50,15 +71,26 @@ export default function SessionPage({ params }: PageProps) {
         }));
         setMessages(msgs);
 
-        // Set last image if any
         const lastWithImage = [...msgs].reverse().find((m) => m.imageUrl);
         if (lastWithImage?.imageUrl) setCurrentImage(lastWithImage.imageUrl);
+
+        if (su) setStoryUi(su);
+        if (s.chapter) {
+          setChapterMeta({
+            actCurrent: s.chapter.actCurrent,
+            actTotal: s.chapter.actTotal,
+            pathAheadWhisper: s.chapter.pathAheadWhisper,
+          });
+        } else {
+          setChapterMeta(null);
+        }
       });
   }, [sessionId]);
 
   const sendMessage = useCallback(
     async (content: string) => {
       if (!sessionId || leaving) return;
+      if (storyUi?.branchPoint) return;
       if (content === "__start__" && streamingRef.current) return;
 
       const isStart = content === "__start__";
@@ -176,13 +208,13 @@ export default function SessionPage({ params }: PageProps) {
         setImageLoading(false);
       }
     },
-    [sessionId, leaving]
+    [sessionId, leaving, storyUi?.branchPoint]
   );
 
-  // Auto-start if no messages
+  // Auto-start if no messages (wait until branch choice is cleared if present)
   useEffect(() => {
     if (!sessionId || hasStarted.current) return;
-    // Wait a tick to ensure messages are loaded
+    if (storyUi?.branchPoint) return;
     const timer = setTimeout(() => {
       if (messages.length === 0 && !streamingRef.current) {
         hasStarted.current = true;
@@ -192,7 +224,7 @@ export default function SessionPage({ params }: PageProps) {
       }
     }, 500);
     return () => clearTimeout(timer);
-  }, [sessionId, messages.length, sendMessage]);
+  }, [sessionId, messages.length, sendMessage, storyUi?.branchPoint]);
 
   async function handleLeave() {
     if (leaving) return;
@@ -239,7 +271,19 @@ export default function SessionPage({ params }: PageProps) {
       {/* Main: chat left, scene image right (stacked on small screens: chat first, image below) */}
       <div className="flex flex-1 min-h-0 flex-col md:flex-row">
         <div className="flex min-h-0 min-w-0 flex-1 flex-col border-stone-200/90 md:border-r">
+          {storyUi?.showPreviouslyOn && storyUi.previouslyOn && (
+            <PreviouslyOnCard sessionId={sessionId} text={storyUi.previouslyOn} />
+          )}
           <MessageList messages={messages} />
+          {storyUi?.branchPoint && (
+            <BranchPickPanel
+              sessionId={sessionId}
+              branchPoint={storyUi.branchPoint}
+              onResolved={(nextId) => {
+                router.push(`/learn/${nextId}`);
+              }}
+            />
+          )}
 
           {streaming && (
             <div className="flex-shrink-0 px-4 pb-1">
@@ -258,7 +302,7 @@ export default function SessionPage({ params }: PageProps) {
             </div>
           )}
 
-          <InputBar onSend={sendMessage} disabled={leaving} />
+          <InputBar onSend={sendMessage} disabled={leaving || Boolean(storyUi?.branchPoint)} />
         </div>
 
         <div className="flex min-h-[220px] min-w-0 flex-1 flex-col border-t border-stone-200 bg-stone-900 md:h-full md:min-h-0 md:border-l md:border-t-0">
@@ -266,6 +310,9 @@ export default function SessionPage({ params }: PageProps) {
             imageUrl={currentImage}
             loading={imageLoading}
             className="h-full min-h-[220px] md:min-h-0"
+            actCurrent={chapterMeta?.actCurrent}
+            actTotal={chapterMeta?.actTotal}
+            pathAheadWhisper={chapterMeta?.pathAheadWhisper}
           />
         </div>
       </div>
