@@ -13,7 +13,7 @@ export async function getSkillProgressOverview(profileId: string) {
     mastery: Math.round(row.mastery),
     confidence: Math.round(row.confidence * 100),
     evidenceCount: row.evidenceCount,
-    subjectScope: row.skill.subjectScope,
+    subjectScope: row.skill.subjectScope.length ? row.skill.subjectScope.join(", ") : null,
     lastObservedAt: row.lastObservedAt,
   }));
 }
@@ -103,6 +103,8 @@ export async function getSubjectStandardsProgress(profileId: string, subjectSlug
             mastery: Math.round(p?.mastery ?? 0),
             confidence: Math.round((p?.confidence ?? 0.5) * 100),
             evidenceCount: p?.evidenceCount ?? 0,
+            lastObservedAt: p?.lastObservedAt ?? null,
+            nextReviewAt: p?.nextReviewAt ?? null,
           };
         }),
       })),

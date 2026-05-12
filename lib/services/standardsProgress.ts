@@ -1,24 +1,6 @@
 import { prisma } from "../db/prisma";
-
-type EvidenceTier = "CONVERSATIONAL" | "GUIDED" | "CHECKPOINT";
-
-const TIER_WEIGHT: Record<EvidenceTier, number> = {
-  CONVERSATIONAL: 0.1,
-  GUIDED: 0.4,
-  CHECKPOINT: 1.0,
-};
-
-const TIER_CAP: Record<EvidenceTier, number> = {
-  CONVERSATIONAL: 70,
-  GUIDED: 90,
-  CHECKPOINT: 100,
-};
-
-const STEP_SIZE = 18;
-
-function clamp(value: number, min: number, max: number): number {
-  return Math.max(min, Math.min(max, value));
-}
+import type { EvidenceTier } from "./standardsMasteryMath";
+import { clamp, nextConfidenceAfterObservation, nextStandardsMastery } from "./standardsMasteryMath";
 
 function nextReviewFromOutcome(success: boolean): Date {
   const now = Date.now();
@@ -75,13 +57,20 @@ async function recomputeSkillMasteryForStandard(standardId: string, profileId: s
 
     const mastery = totalWeight > 0 ? weightedSum / totalWeight : 0;
     const confidence = confidenceCount > 0 ? confidenceSum / confidenceCount : 0.5;
+    const standardIdsForSkill = skillLinks.map((l) => l.standardId);
+    const evidenceTotal = await prisma.standardsEvidence.count({
+      where: {
+        learnerProfileId: profileId,
+        standardId: { in: standardIdsForSkill },
+      },
+    });
 
     await prisma.skillProgress.upsert({
       where: { learnerProfileId_skillId: { learnerProfileId: profileId, skillId } },
       update: {
         mastery,
         confidence,
-        evidenceCount: { increment: 1 },
+        evidenceCount: evidenceTotal,
         lastObservedAt: new Date(),
       },
       create: {
@@ -89,7 +78,7 @@ async function recomputeSkillMasteryForStandard(standardId: string, profileId: s
         skillId,
         mastery,
         confidence,
-        evidenceCount: 1,
+        evidenceCount: evidenceTotal,
       },
     });
   }
@@ -140,8 +129,6 @@ export async function recordStandardObservation(params: {
   }
 
   const baseCorrectness = clamp(correctness ?? 0.7, 0, 1);
-  const tierWeight = TIER_WEIGHT[evidenceTier];
-  const cap = TIER_CAP[evidenceTier];
 
   const progress = await prisma.standardsProgress.upsert({
     where: {
@@ -157,10 +144,12 @@ export async function recordStandardObservation(params: {
     },
   });
 
-  const currentNorm = clamp(progress.mastery, 0, 100) / 100;
-  const delta = tierWeight * (baseCorrectness - currentNorm) * STEP_SIZE;
-  const nextMastery = clamp(progress.mastery + delta, 0, cap);
-  const nextConfidence = clamp((progress.confidence + baseCorrectness) / 2, 0, 1);
+  const nextMastery = nextStandardsMastery({
+    currentMastery: progress.mastery,
+    evidenceTier,
+    correctnessNormalized: baseCorrectness,
+  });
+  const nextConfidence = nextConfidenceAfterObservation(progress.confidence, baseCorrectness);
   const success = baseCorrectness >= 0.7;
 
   await prisma.$transaction(async (tx) => {

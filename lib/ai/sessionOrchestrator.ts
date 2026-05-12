@@ -155,6 +155,8 @@ export async function* streamSessionResponse(
         .map(([, v]) => v);
       const toolResults: Array<{ tool_call_id: string; content: string }> = [];
 
+      yield { type: "assistant_thinking", phase: "tools" };
+
       for (const call of orderedCalls) {
         aiDebug("orchestrator", "tool_calls_finish", {
           toolName: call.name,
@@ -343,6 +345,7 @@ export async function* streamSessionResponse(
 
       throwIfAborted(abortSignal);
 
+      // Continue conversation after tool execution
       const continuationMessages: ChatCompletionMessageParam[] = [
         ...messages,
         {
@@ -365,6 +368,8 @@ export async function* streamSessionResponse(
         model: MODEL,
         messagesInRequest: continuationMessages.length,
       });
+
+      yield { type: "assistant_thinking", phase: "continuation" };
 
       const stream2 = await openai.chat.completions.create(
         {

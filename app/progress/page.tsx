@@ -18,10 +18,20 @@ export default async function ProgressPage() {
 
   return (
     <main className="mx-auto max-w-5xl px-6 py-10">
-      <h1 className="text-2xl font-semibold text-stone-900">Your Progress</h1>
-      <p className="mt-2 text-sm text-stone-600">
-        Explore growth by subject standards and cross-subject skills.
-      </p>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-semibold text-stone-900">Your Progress</h1>
+          <p className="mt-2 text-sm text-stone-600">
+            Explore growth by subject standards and cross-subject skills.
+          </p>
+        </div>
+        <Link
+          href="/progress/skills"
+          className="text-sm font-medium text-amber-700 hover:text-amber-900 hover:underline"
+        >
+          All skills →
+        </Link>
+      </div>
 
       <section className="mt-8">
         <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-stone-500">

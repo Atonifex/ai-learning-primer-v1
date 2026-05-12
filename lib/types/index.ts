@@ -141,6 +141,7 @@ export interface GeneratedActivity {
 
 export type StreamChunk =
   | { type: "text"; content: string }
+  | { type: "assistant_thinking"; phase: "tools" | "continuation" }
   | { type: "image_start" }
   | {
       type: "image_done";

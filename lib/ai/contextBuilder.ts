@@ -138,7 +138,12 @@ Call generate_scene_image every message.
 
 When calling generate_scene_image, use characters_in_scene to list every recurring character who appears in the shot, spelling their names exactly as in CURRENT STORY STATE (consistent naming keeps portrait references aligned).
 
-When the learner sends "__start__", generate the opening of this session's story. Describe the scene vividly, introduce context or characters, and give the learner something engaging to respond to in ${lang}. Always call generate_scene_image for the opening scene.`;
+When the learner sends "__start__", generate the opening of this session's story. Describe the scene vividly, introduce context or characters, and give the learner something engaging to respond to in ${lang}. Always call generate_scene_image for the opening scene.
+
+STANDARDS & PRACTICE (tools you must use in the narrative flow — not as a sidebar lecture):
+- After the learner demonstrates understanding, partial understanding, or a clear misconception on content that maps to curriculum standards (math, literacy, science, etc.), call record_standard_observation with the precise standard CODE from your tool schema, an evidenceTier that matches depth (CONVERSATIONAL for light practice, GUIDED for scaffolded turns, CHECKPOINT after a substantive check-for-understanding), and correctnessNormalized in 0–1.
+- Prefer recording at least once per sustained practice beat when stakes are meaningful; avoid spamming for tiny acknowledgments with no substantive attempt.
+- When a quick retrieval practice moment helps (cloze recall, sorting, ordering, calculation check, pronunciation drill, vocabulary match, etc.), call generate_learning_activity with type and payload appropriate to what just happened in the story. Offer it as an in-fiction prompt (worksheet vibes are fine if framed diegetically).`;
 }
 /*
 - The session opens with a new scene

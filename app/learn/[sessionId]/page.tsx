@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import ScenePanel from "../../../components/session/ScenePanel";
 import MessageList, { type Message } from "../../../components/session/MessageList";
 import InputBar from "../../../components/session/InputBar";
@@ -35,6 +36,11 @@ export default function SessionPage({ params }: PageProps) {
   const opSeqRef = useRef(0);
   const streamingRef = useRef(false);
   const hasStarted = useRef(false);
+  const [streamingHasAssistantText, setStreamingHasAssistantText] = useState(false);
+  const [thinkingPhase, setThinkingPhase] = useState<"tools" | "continuation" | null>(null);
+  const [observationToasts, setObservationToasts] = useState<
+    { id: string; standardCode: string; mastery: number }[]
+  >([]);
 
   // Resolve params
   useEffect(() => {
@@ -103,6 +109,8 @@ export default function SessionPage({ params }: PageProps) {
         setMessages((prev) => prev.filter((m) => m.id !== droppedId));
         setImageLoading(false);
         streamingRef.current = false;
+        setStreamingHasAssistantText(false);
+        setThinkingPhase(null);
       }
 
       const mySeq = ++opSeqRef.current;
@@ -119,6 +127,8 @@ export default function SessionPage({ params }: PageProps) {
       const streamingId = `streaming-${Date.now()}`;
       streamingIdRef.current = streamingId;
       streamingRef.current = true;
+      setStreamingHasAssistantText(false);
+      setThinkingPhase(null);
       setStreaming(true);
 
       const streamingMsg: Message = {
@@ -160,6 +170,8 @@ export default function SessionPage({ params }: PageProps) {
               const data = JSON.parse(line.slice(6));
 
               if (data.type === "text") {
+                setStreamingHasAssistantText(true);
+                setThinkingPhase(null);
                 setMessages((prev) =>
                   prev.map((m) =>
                     m.id === streamingId
@@ -167,6 +179,19 @@ export default function SessionPage({ params }: PageProps) {
                       : m
                   )
                 );
+              } else if (data.type === "assistant_thinking") {
+                if (data.phase === "tools" || data.phase === "continuation") {
+                  setThinkingPhase(data.phase);
+                }
+              } else if (data.type === "standard_observation") {
+                const id = `obs-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+                setObservationToasts((prev) => [
+                  ...prev,
+                  { id, standardCode: data.standardCode, mastery: data.mastery },
+                ]);
+                window.setTimeout(() => {
+                  setObservationToasts((prev) => prev.filter((t) => t.id !== id));
+                }, 6000);
               } else if (data.type === "image_start") {
                 setImageLoading(true);
               } else if (data.type === "image_done") {
@@ -214,6 +239,8 @@ export default function SessionPage({ params }: PageProps) {
         streamingRef.current = false;
         setStreaming(false);
         setImageLoading(false);
+        setThinkingPhase(null);
+        setStreamingHasAssistantText(false);
       }
     },
     [sessionId, leaving, storyUi?.branchPoint]
@@ -263,6 +290,12 @@ export default function SessionPage({ params }: PageProps) {
           <span className="text-lg font-semibold tracking-tight">Primer</span>
           <span className="text-stone-500 text-xs">◈</span>
           <span className="text-stone-400 text-sm">Learning session</span>
+          <Link
+            href="/progress"
+            className="ml-2 text-xs text-amber-400/90 hover:text-amber-300 transition-colors"
+          >
+            Progress
+          </Link>
         </div>
         <button
           onClick={() => setConfirmLeave(true)}
@@ -300,6 +333,21 @@ export default function SessionPage({ params }: PageProps) {
             />
           ))}
 
+          {observationToasts.length > 0 && (
+            <div className="flex-shrink-0 space-y-1 px-4 pb-1">
+              {observationToasts.map((t) => (
+                <div
+                  key={t.id}
+                  className="mx-auto max-w-2xl rounded-lg border border-amber-100 bg-amber-50/90 px-3 py-2 text-xs text-amber-900 ml-10"
+                >
+                  Progress saved:{" "}
+                  <span className="font-semibold">{t.standardCode}</span> mastery{" "}
+                  <span className="font-semibold">{Math.round(t.mastery)}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
           {streaming && (
             <div className="flex-shrink-0 px-4 pb-1">
               <div className="mx-auto flex max-w-2xl items-center gap-2 text-stone-400 text-xs ml-10">
@@ -312,7 +360,17 @@ export default function SessionPage({ params }: PageProps) {
                     />
                   ))}
                 </div>
-                <span>Primer is writing…</span>
+                <span>
+                  {streamingHasAssistantText
+                    ? "Primer is writing…"
+                    : imageLoading
+                      ? "Painting the scene…"
+                      : thinkingPhase === "tools"
+                        ? "Using tools (scene, quizzes, standards)…"
+                        : thinkingPhase === "continuation"
+                          ? "Continuing your scene…"
+                          : "Primer is thinking…"}
+                </span>
               </div>
             </div>
           )}

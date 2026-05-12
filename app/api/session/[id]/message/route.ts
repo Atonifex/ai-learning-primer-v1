@@ -85,6 +85,12 @@ export async function POST(
           if (chunk.type === "text") {
             assistantText += chunk.content;
             send(chunk);
+          } else if (chunk.type === "assistant_thinking") {
+            send(chunk);
+          } else if (chunk.type === "standard_observation") {
+            send(chunk);
+          } else if (chunk.type === "activity_generated") {
+            send(chunk);
           } else if (chunk.type === "image_start") {
             send(chunk);
           } else if (chunk.type === "image_done") {
