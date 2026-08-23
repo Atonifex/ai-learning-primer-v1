@@ -1,5 +1,5 @@
 # Primer — Master Vision Plan
-**Version:** 2026-08-22  
+**Version:** 2026-08-23  
 **Status:** ACTIVE SOURCE OF TRUTH — coding agents start here  
 **Audience:** Product owner + AI coding agents (Cursor / Claude Code / sub-agents)  
 **Primary users:** Grades 3–8 to start (Florida homeschool / ESA first; 3rd–4th as the proof slice)  
@@ -467,6 +467,34 @@ Do **not** steal Undertale’s FIGHT/MERCY moral test or bullet-hell. The “dum
 
 Record: **lifetime**, **per session** (wall clock, even if they jump lessons), **per lesson / chapter / unit**. No daily cap in the first loop. Hidden timers for the child unless toggled. Parent dashboard later uses these numbers.
 
+### 4.15 World growth architecture (locked 2026-08-23)
+
+**Problem:** The island should keep growing and feel shaped by the child — without the LLM inventing tiles, standards, or infinite plot every turn.
+
+**Lock: hybrid (Minecraft terrain + LLM nodes), not LLM-as-god.**
+
+| Layer | Generator | When |
+|-------|-----------|------|
+| **Terrain** | Deterministic rules + seed (`lib/play/beachMap.ts`: ridge, tutorial south band, north landmass, `TILE_OVERRIDES`) | Once per world; fog peels as the captain explores |
+| **Node types** | Authored catalog (`creek`, `ridge_pass`, `ruin`, `grove`, `camp_upgrade`, …) with allowed biomes + activity kinds | Design-time recipes (like village structure types) |
+| **Chapter pack** | **Chapter Compiler** — medium model (`PLANNING_MODEL`) | End of chapter / start of unit — **not** every message |
+| **Live talk** | `gpt-5.6-luna` wraps nodes; ZPD hints | Every turn |
+| **World ledger** | Code: durable facts from choices + artifacts | After missions, branches, reflections |
+
+**Chapter Compiler inputs:** shared saga beat; previous `handoffSummary`; standards gaps; activity bank slugs; open map slots (north of ridge); complexity stage (MC → speak → make → project).
+
+**Chapter Compiler outputs (JSON, validated):** `plannerJson` patch; 1–3 **map stamps** `{ nodeType, region/col-row, unlockAfter, missionSlug }`; ordered bank activities; one **create** beat when stage allows; `pathAheadWhisper`.
+
+**Rho on the walk loop** sees missions + ledger + standards — does **not** paint tiles. Future tools (not live yet): `stamp_node`, `unlock_region`, `advance_chapter` — only after a compiler pack exists.
+
+**Student-shaped continuity:** ledger facts (decisions, ration plans, named places, artifacts). Next chapter **must reuse** at least one artifact or decision. Branches = 2–3 meaningful forks per chapter (`BranchPoint`), not infinite LLM plot.
+
+**Infinite Minecraft continents are the wrong metaphor.** Reveal flavor north of the ridge forever if needed; **units still march the Guild saga.** If the child asks for a volcano before the saga allows it: Rho gates gently + offer a pre-typed node when the compiler opens the ridge — never spawn a one-off biome on the live loop.
+
+**Build order (after Mission Loop v1 is stable):** (1) world ledger schema, (2) region graph + node-type catalog + stamps on north slots, (3) Chapter Compiler job, (4) Rho world tools wired to packs only, (5) complexity ladder (MC → create modules), (6) disguised placement diagnostic (§4.4).
+
+**Status today:** north terrain exists (unreachable); five tutorial pins + Mission Loop v1; **no** ledger, compiler, or `stamp_node`. See §9.
+
 ---
 
 ## 5. Three-layer data architecture (the Plaud "secret sauce")
@@ -768,44 +796,96 @@ Existing code: `app/progress/*`, `lib/services/progress.ts`, `StandardsEvidence`
 
 ---
 
-## 9. What is already built (do not rebuild)
+## 9. Current app state (2026-08-23)
 
-Agents: inventory before coding.
+**Phase A (first playable loop) is shipped.** A child can: parent/child login → first-run cinematic + coach → Pixi beach → wreck talk → overlay quiz → four other pin missions → Ch1 crew log → Ch2 activates in saga. Evidence and time land on `/progress`.
 
-- Auth, household two-login, first-run (`video → name → move → talk → work`), auto-enroll G3 cores
-- Session start/stream/complete
-- ContextBuilder + SessionOrchestrator + MemoryExtractor + image tool
-- Standards catalogs + observation tools + mastery math
-- Mini-quiz generation/grading
-- StoryWorld / Arc / Chapter / StoryState
-- Prompt templates: `lib/ai/promptTemplates/` including `_shared_castaway_world.ts`
-- Progress pages and SSE activity/observation cards
+### Status matrix
 
-**Likely gaps vs this plan:** shared multi-subject `StoryState` vs per-catalog arc; incomplete science G3 seed; Grade 4 not seeded; activity kinds beyond mini-quiz; Pixi overworld + dialogue cutscene; map/resources; TTS/STT; Higgsfield asset slot; chapter reflections as first-class artifacts; parent dashboard; `gpt-5.6-luna` router (orchestrator may still say `gpt-5.4-mini`); household two-login model.
+| Area | Status | What exists today |
+|------|--------|-------------------|
+| G3 standards in Prisma | **DONE** | 127 codes; `record_standard_observation` rejects unknown codes |
+| G3 activity bank in Prisma | **DONE** | 177 activities; `from_grade3_bank.ts` wired |
+| G4 standards in Prisma | **DONE** | Seeded; enrollment when onboarding grade ≥ 4; sessions remap G3 job slugs → G4 lens |
+| Saga spine | **PARTIAL** | Static TS templates → `StoryWorld` / 6 chapters per learner; Ch1–2 from `grade3_castaway_curriculum`; **not** LLM-customized per child |
+| Three-mode shell | **DONE** | Intro → Pixi home → dialogue (left/right) → overlay quiz/reflection |
+| Mission Loop v1 | **DONE** | Jobs HUD + `/saga`; 5 pins → bank overlays; per-mission `subjectSlug`; Rho `suggest_next_mission` / `open_mission` |
+| First-run tutorial | **DONE** | Video/poster → name → move → talk → work; per-learner `firstRunStep` |
+| Household auth | **DONE** | Parent email + child username/PIN; `/household`; child JWT scoped to one captain |
+| Rho live loop | **PARTIAL** | `gpt-5.6-luna`; ZPD; mission context in prompt; tools: observe, generate_activity, suggest/open mission |
+| Rho TTS | **DONE** | OpenAI TTS; discard audio; Voice on/off; mic barge-in |
+| STT | **DONE** | Whisper; transcribe + discard |
+| Stills pack | **DONE** | 15 files in `public/stills/tutorial/` |
+| North landmass | **PARTIAL** | Procedural map + ridge; **not reachable**; no stamps/nodes north of ridge |
+| Parchment map overlay | **NOT BUILT** | Fog only on walk camera |
+| Disguised placement | **NOT BUILT** | §4.4 Kumon-in-story diagnostic + parent benchmark report |
+| Chapter Compiler | **NOT BUILT** | `PLANNING_MODEL` constant only; no job |
+| World ledger | **NOT BUILT** | `StoryState` is narrative thread only; no decision/artifact ledger |
+| Full-screen activity tools | **NOT BUILT** | Overlay MC quizzes only; FR items dropped in overlay path |
+| Parent dashboard / email / PDF | **NOT BUILT** | `/progress` only; `/settings` for reading level |
+| Per-turn scene images | **OFF** | Stills pack; re-enable in full MVP |
+| Skill tutorial videos | **NOT BUILT** | Intro cinematic only |
+| XP / rations persistence | **NOT BUILT** | HUD stubs from mission complete |
+| G4 activity bank + G4 saga | **NOT BUILT** | G4 standards + prompt lenses only |
+
+### Key files (do not rebuild)
+
+- **Play shell:** `components/play/PlayShell.tsx`, `OverworldCanvas.tsx`, `beachWorld.ts`, `MissionBoard.tsx`, `FirstRunCoach.tsx`
+- **Map:** `lib/play/beachMap.ts` (tutorial south + ridge + north landmass)
+- **Missions:** `lib/play/missions.ts`, `lib/services/missions.ts`, `app/api/missions/**`, `app/saga/page.tsx`
+- **Learning:** `lib/play/overlayQuiz.ts`, `chapterReflection.ts`, `zpd.ts`, `hiddenTurns.ts`
+- **AI:** `lib/ai/sessionOrchestrator.ts`, `contextBuilder.ts`, `models.ts` (`LIVE_INTERACTION_MODEL`, `PLANNING_MODEL`)
+- **Data:** `prisma/seed.ts`, `lib/services/storyCurriculum.ts`, `castawayChapters.ts`
+- **Auth:** `lib/auth/*`, `lib/services/household.ts`, `lib/play/firstRun.ts`
+
+### Known debt (§15 Step 1 closeout)
+
+Overlay MC-only; straight-line walk; ambient ocean silent; XP/rations not persisted; `PlayShell` >250 lines; graphic-novel `ScenePanel` unused; missions still use G3 bank slugs when captain is on G4 grade band.
+
+---
+
+## 9.1 What still needs to be done (priority order)
+
+**P0 — Make the current loop trustworthy (tomorrow)**
+
+1. **Manual QA pass** — full first-run + all five missions + Ch1 reflection → Ch2 on `/saga` (see §19 test script).
+2. **Ch2 food missions** — wire food-chapter bank slugs to new pins or Jobs entries (today Ch2 activates in DB but gameplay may still be Ch1 mission set).
+3. **Evidence across subjects** — confirm `/progress` shows ELA/SCI/SS codes after non-wreck missions, not only math.
+4. **Disguised placement design doc** — item pool, stop rules, parent benchmark copy (§4.4); implement after loop is stable.
+
+**P1 — World feels alive (next coding slices)**
+
+5. **World ledger** — decisions + artifacts (ration plan text, branch choices) feeding next chapter handoff.
+6. **Parchment map overlay** — shares `beachMap` mask; grows as fog peels (U5).
+7. **Persist rewards** — XP/rations tied to `LearningActivityCompletion` / chapter complete.
+8. **Full-screen tools** — ship’s log, plan writing, measure (one module at a time); keep overlay for quick MC.
+
+**P2 — Compiler + expansion**
+
+9. **Chapter Compiler** (medium model) — validate against bank + standards; stamp nodes north of ridge.
+10. **Rho world tools** — `advance_chapter`, `stamp_node` (compiler output only).
+11. **G4 activity bank + saga planners** — mirror G3 pattern.
+12. **Parent dashboard + weekly email + PDF** — same data, three surfaces.
+
+**Explicitly later:** perk trees, dynamic per-turn images, Higgsfield mp4 (poster OK), multiplayer, Access Points gameplay, skill tutorial video system.
 
 ---
 
 ## 10. Product development phases
 
-### Phase A — First playable loop (immediately after catalog seed)
+### Phase A — First playable loop — **SHIPPED 2026-08-23**
 
-**Goal:** A real 8-year-old can play ~15 minutes on a tiny beach, talk to Rho (speak or short type), finish one overlay quiz, and want to continue. **Teaching corpus:** §4.6. **Do not wait for G4 or parent PDF.**
-
-Order: **§11** (seed catalogs → bank → shell). Must include:
-
-1. Poster intro (Higgsfield later)
-2. Captain `displayName`; **Rho = humanoid AI First Mate** (call + follower)
-3. Wreck → talk (movement tutorial) → mini-game; **tutorial = placement**
-4. Overlay quiz + luna ZPD; speak-first
-5. Stills pack / placeholders; resource HUD; XP stub OK
-6. Time tracking (session + activity)
-7. Evidence on `/progress` (even if ugly)
-8. Prisma: full G3 standards + activity bank wired
-9. Chapter reflection at chapter end (may be spoken)
+**Goal met:** Child can play ~15+ minutes on the beach, all tutorial missions, Ch1 reflection, multi-subject evidence. See §9.
 
 ---
 
-### Phase B — Tutorial complete (core crew + camp decision)
+### Phase A′ — Mission Loop v1 — **SHIPPED 2026-08-23**
+
+Jobs board, `/saga`, five pin overlays, subject sessions, Rho mission tools, Ch1→Ch2 chapter activation. See §18 log.
+
+---
+
+### Phase B — Tutorial complete (core crew + camp decision) — **IN PROGRESS**
 
 Find remaining core five; choose camp; expanding map v1; 5 hand-authored activities × remaining tutorial chapters for **math**, templates for other lenses.
 
@@ -850,11 +930,17 @@ Quay/Unity sample level using **this** spec's Chapter 1. Do not split narrative.
 - Time: session start/end + activity start/end.
 - Missing images: `TODO(stills)` rectangles, never crash.
 
-### Step 2 — Out of the first loop (full MVP)
+### Step 2 — After Mission Loop v1 (current focus)
 
-G4 catalogs; remaining G3 *gameplay*; parent dashboard + weekly email + weekly PDF; dynamic scene images; Higgsfield mp4; perk trees; cosmetics; household two-login polish; school-equivalent tests after a mini-project; Access Points gameplay (not planned).
+See **§9.1** for the full priority list. Next coding chats should pick **one** slice:
 
-**Out forever for this product direction:** Three.js, graphic-novel-as-home, language-tutor as the product, hourly parent spam, XP as the only reward.
+- Ch2 food missions playable end-to-end
+- World ledger + handoff into `Chapter.handoffSummary`
+- Parchment map overlay (same mask as `beachMap.ts`)
+- Disguised placement (design first, then implement)
+- Chapter Compiler spike (read-only: emit JSON pack for Ch3, do not stamp map yet)
+
+**Out until Phase B/C:** parent PDF, perk trees, infinite north content, LLM terrain, Access Points gameplay.
 
 ---
 
@@ -1009,7 +1095,7 @@ Technical debt (defer to end of this plan unless a later step naturally clears i
 - [ ] Checkpoint assessment + diegetic reward
 - [ ] Resource counters tied to chapter complete
 - [ ] SortingTable / NumberBuilder
-- [ ] Canonical stills pack filled by Ivan; then dynamic scenes for full MVP
+- [x] Canonical stills pack filled by Ivan; then dynamic scenes for full MVP
 - [ ] Playwright happy path (see testing roadmap)
 
 ### P3 — Building epoch depth
@@ -1091,7 +1177,7 @@ Technical debt (defer to end of this plan unless a later step naturally clears i
 | `curriculum_resources/grade3_activity_bank_{math,ela,science,ss,reflections}.ts` | Bank by subject |
 | `curriculum_resources/grade3_curriculum_coverage.md` | Code × chapter × activity × checkpoint; regenerate via `grade3_verify_coverage.ts` |
 | `prisma/seeds/activities/types.ts` | `ActivityTemplate` / seed shape |
-| `prisma/seeds/activities/from_grade3_bank.ts` | Map to LearningActivity — **unwired** until catalog sync |
+| `prisma/seeds/activities/from_grade3_bank.ts` | Map to LearningActivity — **wired** in `seed.ts` (177 rows) |
 | `lib/services/learningActivities.ts` | Mini-quiz create/grade |
 | `prisma/schema.prisma` → `LearningActivity*` | Persistence |
 | `lib/ai/sessionOrchestrator.ts` | Select template → wrap story → call module |
@@ -1142,110 +1228,41 @@ Technical debt (defer to end of this plan unless a later step naturally clears i
 
 ---
 
-## 17. Open questions live in §20
+## 17. Open questions (2026-08-23)
 
-Answered 2026-08-22 items are in **§4**. **§20 D (U1–U15) SUPERSEDED** — Pixi three-mode shell shipped 2026-08-22 (see §18). Remaining P1+ work is listed in §15.
+**Closed for coding:** A1–A2, A11–A15, E1–E9, E11–E13, P5–P11, U1–U15 defaults — see **§4** and **§4.7**. Pixi three-mode shell + Mission Loop v1 shipped.
 
-**E2 is locked:** copy full G3 catalogs into Prisma now.
+**Still open (do not block tomorrow’s QA):**
+
+| ID | Topic | Default / next step |
+|----|-------|---------------------|
+| A3 | Camera pan limits north of ridge | Limited pan in region; free zoom later |
+| A4 | Save-anywhere + max sit | 15–25 min depth; save-anywhere |
+| A6 | Subject switching | Mission picks lens; parent override in settings |
+| I1–I5 | IEP scope | Accommodations toggles + optional goal text; Access Points later (§4.13) |
+| P1–P4 | Parent dashboard copy | Lock when building dashboard; `/progress` is interim |
+| **World growth** | Compiler + ledger | **§4.15** hybrid lock |
+
+**E2 is locked:** full G3 + G4 catalogs in Prisma; G4 activity bank + saga still TODO.
 
 ---
 
-## 20. Spec-gap questionnaire (remaining only)
+## 20. Spec-gap questionnaire — **CLOSED 2026-08-23**
 
-How to reply: paste IDs (`U1`, `A3`, `I2`, …) with a short answer. If you agree with the **default**, write `U1 default`. ★ = blocks the next coding step (Pixi / Chapter 1 build spec).
+The 2026-08-20 questionnaire is **superseded**. Do not re-ask U1–U15 or A1 home-loop questions in coding chats.
 
-### Design-spec tally (2026-08-22)
+| Area | Where locked |
+|------|----------------|
+| Home UX | §4.3 Option A — Pixi overworld + dialogue cutscene + activity tools |
+| Game/UI defaults | §4.7–§4.8 (U1–U15 answered in prose) |
+| Models / placement / ZPD | §4.4 |
+| Progression / rewards | §4.9 |
+| Prisma seed strategy | §4.11 |
+| World growth | §4.15 |
+| Current build state + roadmap | §9, §9.1, §11 Step 2 |
+| Remaining IEP / parent copy | §17 table above |
 
-| Area | Status |
-|------|--------|
-| A1 home loop | **LOCKED** — Pixi Stardew overworld is home; dialogue cutscene; activity tools. Graphic-novel-as-home SUPERSEDED. See §4.3 |
-| A2 camera | **LOCKED** — top-down (Stardew / Pokémon) |
-| A11 devices | **LOCKED** — iPad + Chromebook + desktop eventually; tonight = fastest G3+G4 loop |
-| A12 children | **LOCKED** — one child in playable MVP; parent may attach many; multiplayer later |
-| A13 connectivity | **LOCKED** — online-only |
-| A14–A15 collaborator | **LOCKED** — **Quay** (not Quinn); Ivan owns all IP for now |
-| E1 coverage | **LOCKED** — tonight ~10 codes × 4 subjects (§4.6); then all G3+G4 |
-| E2 Prisma catalogs | **LOCKED** — seed full G3 (then G4); teach the slice |
-| E3 sessions | **LOCKED** — 1–2 subjects per sit; ≥15 min depth; interleave + spaced repetition; units = bundles of standards |
-| E4 struggle | **LOCKED** — ZPD hints/tools/examples; `gpt-5.6-luna` live; medium model for unit/chapter plans |
-| E5 reflections | **LOCKED** — end of chapters; active recall + parent report; in-world purpose for the child |
-| E6 checkpoints | **LOCKED** — later boss after mini in-game project; not a Ch1 gate |
-| E7–E8 framework | **LOCKED** — Florida only in MVP; later NGSS/CC; then AZ/UT/WV; then private TX/NY |
-| E9 spaced review | **LOCKED** — keep `ReviewItem` in later sessions; distinct from E5 reflections |
-| E10 IEP | **INTENT LOCKED** (must satisfy) — **scope still open** (I1–I5) |
-| E11 input | **LOCKED** — speak or type; scaffold to demonstrated lexile |
-| E12 scoring | **DEFER** — keep current mastery math for the slice; redesign after data; tests must be defensible before ESA sales |
-| E13 science beats | **RECOMMENDED in §4.6** — confirm or swap |
-| P5–P11 parent | **LOCKED** except P1–P4 (30s home, wording, raw chat, time cap) |
-| P6 logins | **LOCKED** — two logins, one household (§4.5) |
-| P7 stipend PDF | **EXPLAINED + LOCKED** — Phase B optional PDF; dashboard is the proof |
-| P8 Rho = AI | **LOCKED** — yes, explicit; see §4.5 pedagogy note |
-| P9 voice | **LOCKED** — transcribe and discard; COPPA |
-| P10 siblings | **LOCKED** — parent may attach multiple kids |
-| P11 proof | **LOCKED** — pedagogy aligned to standards + provable reporting |
-| **D / U1–U15** | **OPEN — answer next. Blocks Pixi.** Defaults below shifted away from graphic-novel art. |
-
-Dropped as no longer necessary: A1/A2 as questions; E2 as a puzzle; P7 as a mystery; Quinn naming.
-
-### A. Remaining engineering
-
-| ID | ★ | Question | Default if you skip |
-|----|---|---------|---------------------|
-| A3 | ★ | **Who controls the camera in MVP?** Player pan/zoom freely, or Rho-guided “look here” with limited pan? | Limited pan inside the current region; free zoom later |
-| A4 | | **Session length target** (cliffhang / save). You said ≥15 min depth. Confirm save-anywhere and max sit? | 15–25 minutes, save-anywhere, soft cliffhanger |
-| A5 | ★ | **MVP chapter count** before dogfood: crash + how many playable chapters? | 2 chapters (wreck + food) + chapter reflection |
-| A6 | ★ | **Subject switching:** child picks from map, parent sets, or orchestrator chooses the lens? | Orchestrator chooses after placement; parent override in settings; map jobs hint the lens |
-| A7 | ★ | **Hand-authored vs LLM in Chapter 1?** | Hand-author: 1 log, 1 quiz, 1 reflection. LLM (`gpt-5.6-luna`): connective dialogue + ZPD hints |
-| A8 | ★ | **Live image gen frequency?** | Pack + first-meet portraits; no per-turn image gen |
-| A9 | | Higgsfield: who exports `public/cinematics/crash_landing.mp4` this week? | Placeholder poster + skip until file exists |
-| A10 | | LLM stack: current split vs Vercel AI Gateway for all? Live model **must** be `gpt-5.6-luna`. | Gateway if it makes luna + medium routing easy; else current split |
-
-### B. Remaining educator / IEP
-
-E1–E9, E11–E13 are locked or recommended in §4 / §4.6. **E10 needs scoping** or we will under- or over-build.
-
-| ID | ★ | Question | Default |
-|----|---|---------|---------|
-| I1 | ★ | **What does “satisfy IEPs” mean in v1?** (a) UDL accommodations any child can toggle, (b) parent-entered IEP *goals* with progress reports, (c) both, (d) legally act as the child’s official IEP service (usually **no** — schools/districts own that)? | (a)+(b) light: accommodations + parent can attach goal text and see evidence. **Not** (d) |
-| I2 | | Which accommodations must ship in the 10-standard slice? Check all that matter: extra time, fewer items, TTS already, STT already, larger text, high contrast, simplified lexile floor, reduced motion, no timed drills, calculator always allowed | TTS/STT + extra time + no timers + reduced motion + lexile floor. Calculator when the standard allows |
-| I3 | | How does the parent *tell* Primer about the IEP? Upload PDF (we should **not** parse PDFs in MVP), checkbox list, or free-text goals? | Checkbox accommodations + optional free-text goals. No PDF parser |
-| I4 | | Florida **access points** (modified standards for significant cognitive disabilities): in MVP, or later? | Later. Catalog can store the text; gameplay stays on standard codes until a specialist reviews |
-| I5 | | Speech/language vs SLD vs ADHD vs low vision — any **must-support** in first testers? | ADHD + dyslexia-like: speak/type, extra time, chunked tasks. Low vision / AAC later |
-
-### C. Remaining parent (build after student game, but lock copy)
-
-| ID | ★ | Question | Default |
-|----|---|---------|---------|
-| P1 | ★ | **Parent home after first session:** What must they see in <30 seconds? | Child’s name, minutes today/week, one sentence of story, 1–3 skills in plain English, tests/reflections when they exist |
-| P2 | ★ | **Word for progress** instead of “0.62 mastery”? | “Growing / solid / ready to show it” — one metaphor, stick to it |
-| P3 | ★ | **Can the parent read the chat log?** | No raw log. Recap + reflection + standards + test scores. Observer later gets recap only |
-| P4 | | **Time limits / bedtime?** | Parent-set daily cap (off by default) |
-
-### D. Game / UI (answer these now — blocks Pixi)
-
-Defaults **shifted** because graphic-novel-as-home is rejected. Stardew feel implies **readable pixel / painterly 16-bit**, not watercolor comic panels for the map.
-
-| ID | ★ | Question | Default |
-|----|---|---------|---------|
-| U1 | ★ | **Art direction for Pixi tiles:** Stardew-like pixel, saturated Ghibli-ish painterly, or something else? (Not graphic-novel watercolor as the *map*.) | **Stardew-like pixel / HD-16-bit.** Portraits in dialogue may be slightly more illustrated than the tiles |
-| U2 | ★ | **Captain avatar:** customizable in MVP or a silhouette until a wreck portrait? | Named in UI; generic young captain sprite; customization in Building |
-| U3 | ★ | **Rho on the map vs in the dialogue panel** — both? | Both: small follower sprite + large portrait on the **right** in talk mode |
-| U4 | ★ | **Click a wreck pile:** enter dialogue, or open an activity tool immediately? | Click → short Rho line → then talk **or** tool. Never a silent menu |
-| U5 | ★ | **Fog of war:** literal fog, or “unexplored” parchment? | Soft fog + unexplored tiles (Stardew), not a paper map overlay |
-| U6 | ★ | **Resources on HUD in Tutorial?** | Food/rations only; full scrap HUD in Building |
-| U7 | ★ | **Unlock juice** when you find Rho / finish a chapter? | Short camp animation + TTS + new map pin. **No XP bar.** Island changes are the reward |
-| U8 | | Input chrome in dialogue: always-visible mic + keyboard? | Always both; mic next to send |
-| U9 | | Motion: respect `prefers-reduced-motion`? | Yes |
-| U10 | | UI chrome color: keep Primer amber for parent, island palette inside Pixi? | Yes |
-| U11 | | iPad: portrait-only, or landscape required for the map? | Landscape preferred; portrait playable (map stacked) |
-| U12 | ★ | **Move:** WASD walk (Stardew), tap-to-move (Chromebook/iPad), or point-and-click only? | **Tap-to-move everywhere** + WASD on desktop. Pure click-adventure is the fallback if walk physics slips |
-| U13 | | How many unique named locations on the Tutorial map? | 5: beach wreck, dune, treeline, creek, camp site |
-| U14 | | Activity tools: full-screen (recommended), overlay card, or in-world crate lid? | **Full-screen tool** (Stardew fishing). Overlay only for tiny confirms |
-| U15 | | Soundscape from minute one? | Soft ocean + UI clicks; TTS talks |
-
-### After you answer D
-
-I will: (1) move remaining ★ answers into §4, (2) write `docs/CHAPTER_1_BUILD_SPEC.md` (screens, Pixi nodes, activities, §4.6 codes, APIs, `gpt-5.6-luna` router), (3) then a new coding chat can implement without re-asking. P1–P4 and I1–I5 can land in parallel; they do not block the student overworld.
+If a new ★ question appears, add the answer to **§4** or **§17** — do not revive the full questionnaire body here.
 
 ---
 
@@ -1253,6 +1270,15 @@ I will: (1) move remaining ★ answers into §4, (2) write `docs/CHAPTER_1_BUILD
 
 
 Agents append here. Newest first.
+
+### 2026-08-23 — Master plan sync (state + roadmap + world architecture)
+
+- Bumped doc version to **2026-08-23**. Replaced stale **§9** inventory (old “Pixi not built / G4 not seeded”) with **§9 status matrix** + **§9.1 priority order**.
+- Added **§4.15 World growth architecture** — hybrid lock: deterministic terrain + Chapter Compiler (medium model) + world ledger; not LLM-painted tiles on live turns.
+- Marked **Phase A** and **Phase A′ (Mission Loop v1)** shipped; **§11 Step 2** points at §9.1.
+- **Closed §20 questionnaire** — answers live in §4 / §17; do not re-ask U1–U15 in coding chats.
+- Reconciled G4: catalogs **are** seeded + G4 enrollment works; G4 **activity bank + saga** still not built (supersedes earlier §18 note that said G4 not seeded).
+- Files: `docs/MASTER_VISION_PLAN.md` only.
 
 ### 2026-08-23 — Grade 4 start path + disguised-placement lock
 
@@ -1303,7 +1329,7 @@ Agents append here. Newest first.
 ### 2026-08-23 — Reading level settings + G4 readiness note
 
 - **`/settings`** page lets parents/captains change `readingLevel` after onboarding (`PATCH /api/profile`); linked from `/progress`. Takes effect on the next dialogue turn.
-- **Grade 4 standards state (not playable yet):** full catalogs authored in `curriculum_resources/standards_*_grade4.ts` (`math_g4`, `ela_g4`, etc.) but **not seeded** to Prisma, no G4 activity bank/saga, no G4 prompt templates, enrollment/session start still hard-coded to G3 slugs. Next data step: re-export G4 catalogs in `prisma/seeds/` + wire `seed.ts` (same pattern as G3). Gameplay step after G3 loop is tested: G4 templates, checkpoint-driven subject advance, grade-aware enrollment.
+- **Grade 4 (updated 2026-08-23 doc sync):** G4 catalogs **are seeded**; onboarding grade 4+ enrolls G4 subjects; sessions remap G3 job slugs → G4 lenses. Still missing: G4 activity bank, G4 saga planners, G4-specific island jobs.
 - Files: `lib/services/profile.ts`, `app/api/profile/route.ts`, `app/settings/page.tsx`, `components/settings/ReadingLevelForm.tsx`, `app/progress/page.tsx`, `CONTEXT.md`.
 
 ### 2026-08-23 — Dialogue text size + reading level
@@ -1404,6 +1430,48 @@ These are not extra features. They are **failure modes** that kill otherwise bea
 9. **IP of Amplify.** Use the **flowchart structure**, never snail passages or Amplify art. Original island texts only.
 
 10. **Your energy.** The Plaud call ends with a real fork (consulting vs education). The MVP that can be dogfooded *this week* is the only one that informs that choice. Protect Phase A from Enterprise-phase daydreaming.
+
+### Vision-alignment test script (run after every slice)
+
+Use this **before** building the Chapter Compiler or parent dashboard. A real child (or you role-playing one) on Chromebook + one on desktop if possible.
+
+**Product shape (must pass)**
+
+- [ ] **Home is the map** — child lands on Pixi beach, not a chat-first page or graphic-novel reader.
+- [ ] **Talk is a cutscene** — wreck opens left-chat / right-Rho; mic visible; typing is fallback.
+- [ ] **Work is diegetic** — overlay quiz feels like salvage/crate work, not a detached worksheet modal (even if MC-only for now).
+- [ ] **Rho is sidekick** — captain is hero; Rho hints after struggle, never takes the quiz.
+- [ ] **Rewards are island-shaped** — new pin / Jobs entry / saga chapter advance — not “+50 XP” as the main juice (stubs OK if visible unlock happens).
+
+**First-run + Ch1 loop (must pass)**
+
+- [ ] Parent creates household → child PIN login → **Wake the captain** works.
+- [ ] Intro video or poster → name → move gate → talk gate → wreck salvage overlay (no auto-quiz at 8s).
+- [ ] After wreck quiz: **dune, treeline, creek** unlock on map + Jobs board.
+- [ ] Each mission starts the **correct subject session** (check network or `/saga` subject label).
+- [ ] Wrong quiz answer → **ZPD ladder** (hint → worked example → retry), not infinite identical MC.
+- [ ] Camp mission locked until **Ch1 crew log**; completing log marks Ch1 done and **Ch2 active** on `/saga`.
+
+**Evidence + trust (must pass)**
+
+- [ ] `/progress` shows **math + ELA + science + SS** standard codes after the four non-wreck missions — not math-only.
+- [ ] Crew log text appears on `/progress`; `STORY_BEAT` memory influences next Rho line (spot-check one follow-up).
+- [ ] Time: session duration + per-activity minutes recorded (hidden HUD unless toggled).
+- [ ] Unknown standard code still **rejects** (orchestrator cannot invent Florida codes).
+
+**Anti-patterns (must NOT happen)**
+
+- [ ] Graphic novel as home; Three.js overworld; language-tutor as product.
+- [ ] Parent must enter their password for the child to play daily.
+- [ ] Raw child chat log visible to parent (recap only later).
+- [ ] Per-turn scene image gen on live loop (stills pack only).
+- [ ] LLM spawning new map tiles or biomes mid-conversation.
+
+**Regression smoke**
+
+- [ ] `npm test` + `npx tsc --noEmit` green.
+- [ ] Missing still file → placeholder, no white screen crash.
+- [ ] Logout / sibling switch cannot open another captain’s session id.
 
 ---
 

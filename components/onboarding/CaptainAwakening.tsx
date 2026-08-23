@@ -20,7 +20,6 @@ export default function CaptainAwakening(props: {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           displayName: displayName.trim(),
-          firstRunEvent: "name_saved",
         }),
       });
       const data = await res.json();
