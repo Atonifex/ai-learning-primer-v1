@@ -1,38 +1,154 @@
+import { Prisma } from "@prisma/client";
 import { prisma } from "../db/prisma";
-import type { Language, Level, LearnerProfileData } from "../types";
+import type {
+  EnrolledSubject,
+  Language,
+  LearnerProfileData,
+  Level,
+} from "../types";
+import {
+  DEFAULT_PRIMARY_SUBJECT_SLUG,
+  GRADE_3_CORE_SUBJECT_SLUGS,
+} from "../constants/subjects";
+import { enrollLearnerInGrade3CoreSubjects } from "./learnerSubjects";
+import { ensureLearnerStoryChain } from "./storyCurriculum";
 
-export async function getProfile(userId: string): Promise<LearnerProfileData | null> {
-  const profile = await prisma.learnerProfile.findUnique({
-    where: { userId },
-  });
-  if (!profile) return null;
+export class ProfileAlreadyExistsError extends Error {
+  constructor() {
+    super("Profile already exists for this user");
+    this.name = "ProfileAlreadyExistsError";
+  }
+}
+
+type ProfileWithSubjects = Prisma.LearnerProfileGetPayload<{
+  include: {
+    learnerSubjects: {
+      include: {
+        subject: { select: { slug: true; displayName: true; domain: true } };
+      };
+    };
+  };
+}>;
+
+function toLearnerProfileData(profile: ProfileWithSubjects): LearnerProfileData {
+  const enrolledSubjects: EnrolledSubject[] = profile.learnerSubjects.map(
+    (ls) => ({
+      slug: ls.subject.slug,
+      displayName: ls.subject.displayName,
+      domain: ls.subject.domain,
+      status: ls.status,
+    })
+  );
   return {
     id: profile.id,
-    activeLanguage: profile.activeLanguage as Language,
-    currentLevel: profile.currentLevel as Level,
+    displayName: profile.displayName,
+    gradeBand: profile.gradeBand,
+    primarySubjectSlug: profile.primarySubjectSlug,
     goals: profile.goals,
     interests: profile.interests,
+    activeLanguage: profile.activeLanguage as Language | null,
+    currentLevel: profile.currentLevel as Level | null,
+    enrolledSubjects,
   };
 }
 
-export async function createProfile(
-  userId: string,
-  data: { activeLanguage: Language; currentLevel: Level; goals: string; interests: string[] }
-): Promise<LearnerProfileData> {
-  const profile = await prisma.learnerProfile.create({
-    data: {
-      userId,
-      activeLanguage: data.activeLanguage,
-      currentLevel: data.currentLevel,
-      goals: data.goals,
-      interests: data.interests,
+export async function getProfile(
+  userId: string
+): Promise<LearnerProfileData | null> {
+  const profile = await prisma.learnerProfile.findUnique({
+    where: { userId },
+    include: {
+      learnerSubjects: {
+        include: {
+          subject: {
+            select: { slug: true, displayName: true, domain: true },
+          },
+        },
+        orderBy: { enrolledAt: "asc" },
+      },
     },
   });
-  return {
-    id: profile.id,
-    activeLanguage: profile.activeLanguage as Language,
-    currentLevel: profile.currentLevel as Level,
-    goals: profile.goals,
-    interests: profile.interests,
-  };
+  if (!profile) return null;
+  return toLearnerProfileData(profile);
+}
+
+export async function hasProfile(userId: string): Promise<boolean> {
+  const profile = await prisma.learnerProfile.findUnique({
+    where: { userId },
+    select: { id: true },
+  });
+  return profile != null;
+}
+
+export interface CreateProfileInput {
+  displayName?: string | null;
+  goals: string;
+  interests: string[];
+  primarySubjectSlug?: string;
+}
+
+/**
+ * Transactional onboarding:
+ *   1. Create LearnerProfile with `gradeBand="3"`, `primarySubjectSlug`, optional `displayName`.
+ *   2. Enroll learner in all 4 Grade 3 core subjects.
+ *   3. Create the shared StoryWorld + StoryArc + Chapter 1 ("ensureLearnerStoryChain").
+ *
+ * Throws `ProfileAlreadyExistsError` if the user already has a profile.
+ */
+export async function createProfile(
+  userId: string,
+  data: CreateProfileInput
+): Promise<LearnerProfileData> {
+  const primarySubjectSlug =
+    data.primarySubjectSlug &&
+    (GRADE_3_CORE_SUBJECT_SLUGS as readonly string[]).includes(
+      data.primarySubjectSlug
+    )
+      ? data.primarySubjectSlug
+      : DEFAULT_PRIMARY_SUBJECT_SLUG;
+
+  const profileId = await prisma.$transaction(async (tx) => {
+    const existing = await tx.learnerProfile.findUnique({
+      where: { userId },
+      select: { id: true },
+    });
+    if (existing) throw new ProfileAlreadyExistsError();
+
+    const profile = await tx.learnerProfile.create({
+      data: {
+        userId,
+        displayName: data.displayName?.trim() || null,
+        gradeBand: "3",
+        primarySubjectSlug,
+        activeLanguage: null,
+        currentLevel: null,
+        goals: data.goals,
+        interests: data.interests,
+      },
+      select: { id: true },
+    });
+
+    await enrollLearnerInGrade3CoreSubjects(tx, profile.id);
+    return profile.id;
+  });
+
+  // Story chain creation reuses `prisma` directly (it opens its own writes
+  // against StoryWorld / StoryArc / Chapter outside the enrollment tx so the
+  // transaction stays short).
+  await ensureLearnerStoryChain(profileId);
+
+  const profile = await prisma.learnerProfile.findUniqueOrThrow({
+    where: { id: profileId },
+    include: {
+      learnerSubjects: {
+        include: {
+          subject: {
+            select: { slug: true, displayName: true, domain: true },
+          },
+        },
+        orderBy: { enrolledAt: "asc" },
+      },
+    },
+  });
+  return toLearnerProfileData(profile);
 }

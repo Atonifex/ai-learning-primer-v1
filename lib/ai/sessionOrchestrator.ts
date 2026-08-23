@@ -1,6 +1,9 @@
 import OpenAI from "openai";
 import type { ChatCompletionMessageParam } from "openai/resources/chat/completions";
-import { buildSystemPrompt } from "./contextBuilder";
+import {
+  buildSystemPrompt,
+  type CoherenceMapBlockInput,
+} from "./contextBuilder";
 import {
   generateSceneImage,
   generateSceneImageTool,
@@ -12,6 +15,10 @@ import {
 import { getReferenceBuffersForScene } from "./referenceImages";
 import { recordStandardObservation } from "../services/standardsProgress";
 import { createGeneratedMiniQuiz } from "../services/learningActivities";
+import {
+  formatStandardsBlock,
+  getStandardCodesForSubject,
+} from "../services/standardsCatalog";
 import {
   aiDebug,
   isAiDebug,
@@ -26,6 +33,34 @@ import type {
   StreamChunk,
   MessageData,
 } from "../types";
+
+function extractCoherenceMap(
+  spine: StorySpineContext | null | undefined,
+  subjectSlug: string
+): CoherenceMapBlockInput | null {
+  if (!spine || !spine.plannerJson || typeof spine.plannerJson !== "object")
+    return null;
+  const planner = spine.plannerJson as Record<string, unknown>;
+  const subjectPlans =
+    planner.subjectPlans && typeof planner.subjectPlans === "object"
+      ? (planner.subjectPlans as Record<string, unknown>)
+      : null;
+  const subjectPlan =
+    subjectPlans && typeof subjectPlans[subjectSlug] === "object"
+      ? (subjectPlans[subjectSlug] as CoherenceMapBlockInput["subjectPlan"])
+      : undefined;
+  return {
+    sharedBeat: typeof planner.sharedBeat === "string" ? planner.sharedBeat : undefined,
+    anchorQuestion:
+      typeof planner.anchorQuestion === "string" ? planner.anchorQuestion : undefined,
+    chapterQuestion:
+      typeof planner.chapterQuestion === "string" ? planner.chapterQuestion : undefined,
+    investigationQuestions: Array.isArray(planner.investigationQuestions)
+      ? (planner.investigationQuestions as string[])
+      : undefined,
+    subjectPlan,
+  };
+}
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const MODEL = "gpt-5.4-mini";
@@ -54,18 +89,34 @@ export async function* streamSessionResponse(
   recentSummaries: string[],
   sessionMessages: MessageData[],
   userMessage: string,
-  opts?: {
+  opts: {
+    /** Subject lens for this session — required so we inject the right template + standards. */
+    subjectSlug: string;
     abortSignal?: AbortSignal;
     spine?: StorySpineContext | null;
     previouslyOn?: string | null;
     sessionId?: string;
   }
 ): AsyncGenerator<StreamChunk> {
-  const abortSignal = opts?.abortSignal;
-  const systemPrompt = buildSystemPrompt(profile, memoryItems, storyState, recentSummaries, {
-    spine: opts?.spine ?? null,
-    previouslyOn: opts?.previouslyOn ?? null,
-  });
+  const abortSignal = opts.abortSignal;
+
+  const standards = await getStandardCodesForSubject(opts.subjectSlug);
+  const standardsBlock = formatStandardsBlock(standards);
+  const coherenceMap = extractCoherenceMap(opts.spine, opts.subjectSlug);
+
+  const systemPrompt = buildSystemPrompt(
+    profile,
+    memoryItems,
+    storyState,
+    recentSummaries,
+    {
+      subjectSlug: opts.subjectSlug,
+      spine: opts.spine ?? null,
+      previouslyOn: opts.previouslyOn ?? null,
+      standardsBlock,
+      coherenceMap,
+    }
+  );
 
   const priorMessages = toOpenAIMessages(sessionMessages);
   const isStart = userMessage === "__start__";

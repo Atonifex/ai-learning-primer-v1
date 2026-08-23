@@ -4,59 +4,64 @@ import type {
   StorySpineContext,
   StoryStateData,
 } from "../types";
+import {
+  MAPMAKERS_WORLD_BIBLE,
+  getPromptTemplate,
+} from "./promptTemplates";
 
 export interface BuiltContext {
   systemPrompt: string;
   memoryLines: string;
 }
 
-const LANGUAGE_NAMES: Record<string, string> = {
-  ES: "Spanish",
-  ZH: "Chinese (Mandarin)",
-};
-
-const LEVEL_NAMES: Record<string, string> = {
-  BEGINNER: "Beginner",
-  INTERMEDIATE: "Intermediate",
-  ADVANCED: "Advanced",
-};
+/**
+ * Slice of `Chapter.plannerJson` we care about in the prompt — anchor/chapter
+ * questions plus the subject-specific plan for the active session's lens.
+ */
+export interface CoherenceMapBlockInput {
+  sharedBeat?: string;
+  anchorQuestion?: string;
+  chapterQuestion?: string;
+  investigationQuestions?: string[];
+  subjectPlan?: {
+    targetStandardCodes?: string[];
+    investigationQuestions?: string[];
+    evidenceExperiences?: string[];
+    culminatingTask?: string;
+  };
+}
 
 function formatMemoryItems(items: MemoryItemData[]): string {
-  if (!items.length) return "No prior memory yet — this may be the first session.";
+  if (!items.length)
+    return "No prior memory yet — this may be the first session.";
   return items
     .map((m) => `- [${m.type.replace(/_/g, " ").toLowerCase()}] ${m.content}`)
     .join("\n");
 }
 
-function formatStorySpine(spine: StorySpineContext | null, previouslyOnLine: string | null): string {
+function formatStorySpine(
+  spine: StorySpineContext | null,
+  previouslyOnLine: string | null
+): string {
   const lines: string[] = [];
   if (!spine) {
-    lines.push("No structured story spine yet — use learner profile and memory only.");
-  } else {
-    const plannerHint =
-      spine.plannerJson && typeof spine.plannerJson === "object"
-        ? JSON.stringify(spine.plannerJson).slice(0, 1200)
-        : spine.plannerJson
-          ? String(spine.plannerJson).slice(0, 800)
-          : "None";
     lines.push(
-      `World: ${spine.worldTitle}`,
-      spine.worldBible.trim()
-        ? `World bible (persistent — stay consistent):\n${spine.worldBible.trim()}`
-        : "World bible: (not set yet)",
+      "No structured story spine yet — fall back to the world bible above."
+    );
+  } else {
+    lines.push(
       `Arc: ${spine.arcTitle}${spine.arcSummary ? ` — ${spine.arcSummary}` : ""}`,
-      `Arc focus tags: ${spine.arcFocusTags.length ? spine.arcFocusTags.join(", ") : "—"}`,
       `Chapter: ${spine.chapterTitle}`,
-      `Chapter focus tags: ${spine.chapterFocusTags.length ? spine.chapterFocusTags.join(", ") : "—"}`,
       `Structure: Act ${spine.actCurrent} of ${spine.actTotal} · scene index ${spine.sceneIndex}`,
       spine.pathAheadWhisper
         ? `Narrative tease (whisper — foreshadow without spoiling): ${spine.pathAheadWhisper}`
-        : "",
-      `Chapter planner / objectives (JSON excerpt): ${plannerHint}`
+        : ""
     );
   }
   if (previouslyOnLine?.trim()) {
-    lines.push(`Previously on (recap for this learner): ${previouslyOnLine.trim()}`);
+    lines.push(
+      `Previously on (recap for this learner): ${previouslyOnLine.trim()}`
+    );
   }
   return lines.filter(Boolean).join("\n");
 }
@@ -64,7 +69,8 @@ function formatStorySpine(spine: StorySpineContext | null, previouslyOnLine: str
 function formatStoryState(state: StoryStateData | null): string {
   if (!state) return "No prior story state — begin a new arc.";
   const characters =
-    Array.isArray(state.recurringCharacters) && state.recurringCharacters.length
+    Array.isArray(state.recurringCharacters) &&
+    state.recurringCharacters.length
       ? state.recurringCharacters
           .map((c) => `${c.name}: ${c.description}`)
           .join("; ")
@@ -77,81 +83,101 @@ function formatStoryState(state: StoryStateData | null): string {
   ].join("\n");
 }
 
+function formatLearnerBlock(profile: LearnerProfileData): string {
+  const name = profile.displayName?.trim() || "(no name given)";
+  return [
+    `Captain (displayName): ${name}`,
+    `Grade: ${profile.gradeBand}`,
+    `Goals: ${profile.goals}`,
+    `Interests: ${profile.interests.join(", ") || "(none yet)"}`,
+  ].join("\n");
+}
+
+function formatCoherenceMapBlock(map: CoherenceMapBlockInput | null): string {
+  if (!map) return "";
+  const lines: string[] = ["CHAPTER COHERENCE MAP (use to scope today's beats):"];
+  if (map.sharedBeat) lines.push(`- Shared beat: ${map.sharedBeat}`);
+  if (map.anchorQuestion) lines.push(`- Anchor question: ${map.anchorQuestion}`);
+  if (map.chapterQuestion)
+    lines.push(`- Chapter question: ${map.chapterQuestion}`);
+  const investigation =
+    map.subjectPlan?.investigationQuestions?.length
+      ? map.subjectPlan.investigationQuestions
+      : map.investigationQuestions;
+  if (investigation?.length) {
+    lines.push(`- Investigation questions:`);
+    for (const q of investigation) lines.push(`    • ${q}`);
+  }
+  if (map.subjectPlan?.targetStandardCodes?.length) {
+    lines.push(
+      `- Target standard codes for THIS lens this chapter: ${map.subjectPlan.targetStandardCodes.join(", ")}`
+    );
+  }
+  if (map.subjectPlan?.culminatingTask) {
+    lines.push(
+      `- Culminating task (narrative application): ${map.subjectPlan.culminatingTask}`
+    );
+  }
+  return lines.join("\n");
+}
+
+export interface BuildSystemPromptOpts {
+  spine?: StorySpineContext | null;
+  previouslyOn?: string | null;
+  /** Required: the subject lens for THIS session (math_g3 / ela_g3 / etc.). */
+  subjectSlug: string;
+  /** Formatted output of `formatStandardsBlock` — injected verbatim. */
+  standardsBlock?: string;
+  coherenceMap?: CoherenceMapBlockInput | null;
+}
+
+/**
+ * System prompt = shared world bible + subject lens + learner block +
+ * standards block + memory block + coherence map + pedagogy instructions.
+ *
+ * Difficulty is NEVER a stored or asked field — the pedagogy block tells the
+ * model to infer it from STRENGTH / MISCONCEPTION memory items.
+ */
 export function buildSystemPrompt(
   profile: LearnerProfileData,
   memoryItems: MemoryItemData[],
   storyState: StoryStateData | null,
   recentSummaries: string[],
-  opts?: {
-    spine?: StorySpineContext | null;
-    previouslyOn?: string | null;
-  }
+  opts: BuildSystemPromptOpts
 ): string {
-  const lang = LANGUAGE_NAMES[profile.activeLanguage] || profile.activeLanguage;
-  const level = LEVEL_NAMES[profile.currentLevel] || profile.currentLevel;
+  const template = getPromptTemplate(opts.subjectSlug);
 
-  const langInstructions =
-    profile.activeLanguage === "ZH"
-      ? `For Chinese: include Pinyin alongside characters for new vocabulary (e.g., 你好 nǐ hǎo). Gradually reduce Pinyin as the learner improves.`
-      : `For Spanish: use natural, conversational Spanish. Include accents correctly. Use regional-neutral Latin American Spanish unless learner specifies otherwise.`;
+  const summariesBlock = recentSummaries.length
+    ? recentSummaries.map((s, i) => `Session ${i + 1}: ${s}`).join("\n")
+    : "No prior sessions.";
 
-  const summariesBlock =
-    recentSummaries.length
-      ? recentSummaries.map((s, i) => `Session ${i + 1}: ${s}`).join("\n")
-      : "No prior sessions.";
+  const standardsBlock = opts.standardsBlock?.trim()
+    ? opts.standardsBlock
+    : "STANDARDS: (none injected — record_standard_observation should not be called this session)";
 
-  return `You are Primer, a personal AI tutor for students in grades 2-8. You teach through immersive, story-driven experiences.
+  const coherence = formatCoherenceMapBlock(opts.coherenceMap ?? null);
 
-LEARNER PROFILE:
-- Level: ${level}
-- Goals: ${profile.goals}
-- Interests: ${profile.interests.join(", ")}
+  const sections: string[] = [
+    `You are Primer, a personal AI tutor for a Grade ${profile.gradeBand} learner. Teach through one continuous story — never as a worksheet in a costume.`,
+    MAPMAKERS_WORLD_BIBLE,
+    template.basePrompt,
+    `LEARNER PROFILE:\n${formatLearnerBlock(profile)}`,
+    standardsBlock,
+    `LEARNER MEMORY (use to open the session AND calibrate difficulty — this is the only difficulty signal):\n${formatMemoryItems(
+      memoryItems
+    )}`,
+    `STORY SPINE:\n${formatStorySpine(opts.spine ?? null, opts.previouslyOn ?? null)}`,
+    `STORY STATE (last update in this chapter's thread):\n${formatStoryState(storyState)}`,
+    `RECENT SESSION SUMMARIES:\n${summariesBlock}`,
+    coherence,
+    template.pedagogyInstructions,
+    `TOOLS:
+- generate_scene_image: call every message. Use characters_in_scene to list every recurring character in the shot, spelling names exactly as in STORY STATE.
+- record_standard_observation: call with a code from the STANDARDS block only. Pick evidence_tier honestly. Use correctness 0–1.
+- generate_learning_activity: call when a quick retrieval moment fits diegetically (a ledger to fill, a manifest to check, a logbook to complete). Standard_code must come from the STANDARDS block.
 
-WHAT YOU KNOW ABOUT THIS LEARNER:
-${formatMemoryItems(memoryItems)}
+When the learner sends "__start__", open the session: name where the captain and Rho are right now (chapter location), reference the most relevant LEARNER MEMORY item (if any), and give the captain one specific thing to do in-world. Always call generate_scene_image for the opening scene.`,
+  ];
 
-STORY SPINE (database — honor world, arc, and chapter; woven narrative across subjects):
-${formatStorySpine(opts?.spine ?? null, opts?.previouslyOn ?? null)}
-
-CURRENT STORY STATE (from last update in this chapter’s thread):
-${formatStoryState(storyState)}
-
-RECENT SESSION SUMMARIES:
-${summariesBlock}
-
-YOUR APPROACH:
-- Teach through narrative, dialogue, and guided discovery
-- Weave vocabulary and grammar naturally into the story — never lecture
-- Correct mistakes gently, within the flow of the narrative
-- Invite the learner to respond in ${lang} when appropriate
-- Match difficulty to their level: ${level}
-- Ask questions, create moments of choice, make learning feel like an adventure
-- Maintain continuity: reference prior sessions, characters, and themes when they exist
-- Be warm, curious, encouraging — feel like a trusted guide, not a chatbot
-- Make your messages short (less than 150 words) to encourage the learner to respond in ${lang}.
-
-${langInstructions}
-
-GENERATING SCENE IMAGES:
-Call generate_scene_image every message.
-
-When calling generate_scene_image, use characters_in_scene to list every recurring character who appears in the shot, spelling their names exactly as in CURRENT STORY STATE (consistent naming keeps portrait references aligned).
-
-When the learner sends "__start__", generate the opening of this session's story. Describe the scene vividly, introduce context or characters, and give the learner something engaging to respond to in ${lang}. Always call generate_scene_image for the opening scene.
-
-STANDARDS & PRACTICE (tools you must use in the narrative flow — not as a sidebar lecture):
-- After the learner demonstrates understanding, partial understanding, or a clear misconception on content that maps to curriculum standards (math, literacy, science, etc.), call record_standard_observation with the precise standard CODE from your tool schema, an evidenceTier that matches depth (CONVERSATIONAL for light practice, GUIDED for scaffolded turns, CHECKPOINT after a substantive check-for-understanding), and correctnessNormalized in 0–1.
-- Prefer recording at least once per sustained practice beat when stakes are meaningful; avoid spamming for tiny acknowledgments with no substantive attempt.
-- When a quick retrieval practice moment helps (cloze recall, sorting, ordering, calculation check, pronunciation drill, vocabulary match, etc.), call generate_learning_activity with type and payload appropriate to what just happened in the story. Offer it as an in-fiction prompt (worksheet vibes are fine if framed diegetically).`;
+  return sections.filter((s) => s && s.trim()).join("\n\n---\n\n");
 }
-/*
-- The session opens with a new scene
-- The setting changes significantly
-- A visually powerful moment occurs
-
-
-Removed on 5/26/2026 to transform to homeschool rather than language:
-- Learning: ${lang}
-
-*/
-//4/4/2026: Removed this from GENERATING SCENE IMAGES: Do NOT call it for every message — only for meaningful visual moments.

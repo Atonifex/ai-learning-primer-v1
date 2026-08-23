@@ -1,15 +1,8 @@
-import type { Language } from "../types";
-
 export interface ArcFocusInput {
-  language: Language;
-  goals: string;
+  gradeBand: string;
+  primarySubjectSlug: string;
   interests: string[];
 }
-
-const LANG_LABEL: Record<Language, string> = {
-  ES: "spanish",
-  ZH: "chinese",
-};
 
 function slugPart(s: string): string {
   return s
@@ -22,12 +15,14 @@ function slugPart(s: string): string {
 
 /**
  * High-level tags when a `StoryArc` is created (woven world; arc-wide emphasis).
- * Later: can be replaced or augmented by planner AI while keeping the same shape (`string[]`).
+ * Subject/grade/interest only — difficulty is inferred from session performance, never tagged.
  */
 export function generateArcFocusTags(input: ArcFocusInput): string[] {
-  const tags: string[] = [`lang:${LANG_LABEL[input.language]}`, `level:story-arc`];
-  const goalSlug = slugPart(input.goals);
-  if (goalSlug) tags.push(`goal:${goalSlug.slice(0, 32)}`);
+  const tags: string[] = [
+    `grade:${input.gradeBand}`,
+    `subject:${input.primarySubjectSlug}`,
+    "level:story-arc",
+  ];
   for (const interest of input.interests.slice(0, 5)) {
     const s = slugPart(interest);
     if (s) tags.push(`interest:${s}`);

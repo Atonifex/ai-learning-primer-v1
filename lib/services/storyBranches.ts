@@ -3,7 +3,6 @@ import { getSignedSceneUrl, isSceneStorageConfigured } from "../storage/sceneIma
 import type { BranchPointUi } from "../types";
 import { createChapterInArc } from "./storyCurriculum";
 import { completeSession } from "./session";
-import { getOrCreateDefaultSubject } from "./subjects";
 
 export async function getPendingBranchForChapter(
   chapterId: string
@@ -53,7 +52,13 @@ export async function applyBranchSelection(params: {
 
   const session = await prisma.session.findUnique({
     where: { id: sessionId },
-    select: { id: true, chapterId: true, learnerProfileId: true },
+    select: {
+      id: true,
+      chapterId: true,
+      learnerProfileId: true,
+      subjectId: true,
+      targetLanguage: true,
+    },
   });
   if (!session || session.learnerProfileId !== learnerProfileId) {
     throw new Error("Session not found");
@@ -110,18 +115,11 @@ export async function applyBranchSelection(params: {
     return { nextSessionId: existing.id };
   }
 
-  const lang = await prisma.learnerProfile.findUnique({
-    where: { id: learnerProfileId },
-    select: { activeLanguage: true },
-  });
-  if (!lang) throw new Error("Profile not found");
-  const subject = await getOrCreateDefaultSubject();
-
   const next = await prisma.session.create({
     data: {
       learnerProfileId,
-      subjectId: subject.id,
-      targetLanguage: lang.activeLanguage,
+      subjectId: session.subjectId,
+      targetLanguage: session.targetLanguage,
       status: "ACTIVE",
       chapterId: nextChapterId,
       sceneIndex: 0,

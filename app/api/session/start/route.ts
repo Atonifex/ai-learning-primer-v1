@@ -14,6 +14,6 @@ export async function POST() {
   const existing = await getActiveSession(profile.id);
   if (existing) return NextResponse.json({ sessionId: existing });
 
-  const sessionId = await startSession(profile.id, profile.activeLanguage);
+  const sessionId = await startSession(profile.id, profile.primarySubjectSlug);
   return NextResponse.json({ sessionId });
 }

@@ -1,16 +1,36 @@
 import { prisma } from "../db/prisma";
-import type { MessageData, SessionData, Language } from "../types";
+import type { Language, MessageData, SessionData } from "../types";
 import { ensureLearnerStoryChain } from "./storyCurriculum";
-import { getOrCreateDefaultSubject } from "./subjects";
 
-export async function startSession(profileId: string, language: Language): Promise<string> {
+/**
+ * Start a session under a specific subject lens. The subject must already be
+ * seeded — fail loudly otherwise so we never silently fall back to the wrong
+ * standards catalog.
+ *
+ * `targetLanguage` is null for G3 core subjects (math/ELA/science/SS); it's
+ * set only when a world-language subject is active (Phase 6).
+ */
+export async function startSession(
+  profileId: string,
+  subjectSlug: string
+): Promise<string> {
+  const subject = await prisma.subject.findUnique({
+    where: { slug: subjectSlug },
+    select: { id: true, targetLanguage: true },
+  });
+  if (!subject) {
+    throw new Error(
+      `Subject "${subjectSlug}" is not seeded. Run \`npm run db:seed\` before starting a session.`
+    );
+  }
+
   const { chapterId } = await ensureLearnerStoryChain(profileId);
-  const subject = await getOrCreateDefaultSubject();
+
   const session = await prisma.session.create({
     data: {
       learnerProfileId: profileId,
       subjectId: subject.id,
-      targetLanguage: language,
+      targetLanguage: subject.targetLanguage,
       status: "ACTIVE",
       chapterId,
       sceneIndex: 0,
@@ -59,7 +79,7 @@ function mapSessionToData(
 ): SessionData {
   return {
     id: session.id,
-    language: (session.targetLanguage ?? "ES") as Language,
+    language: (session.targetLanguage as Language | null) ?? null,
     subjectSlug: session.subject.slug,
     status: session.status as SessionData["status"],
     arcName: session.arcName,

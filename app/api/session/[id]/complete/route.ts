@@ -33,7 +33,7 @@ export async function POST(
     const existingMemory = await getRelevantMemory(profile.id);
     const result = await extractSessionMemory(
       session.messages,
-      session.language,
+      { subjectSlug: session.subjectSlug, gradeBand: profile.gradeBand },
       existingMemory
     );
 

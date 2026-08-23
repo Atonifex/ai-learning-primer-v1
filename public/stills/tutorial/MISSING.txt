@@ -1,0 +1,1 @@
+TODO(stills): Drop the files listed in README.md in this folder. Until then, the app must render named placeholders (filename as alt text + a tinted rectangle) and must not crash.

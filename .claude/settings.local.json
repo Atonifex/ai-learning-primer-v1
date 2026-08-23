@@ -15,7 +15,9 @@
       "Bash(cat /c/Users/iharj/Documents/ChatGPT_or_Coding/ai-learning-primer-v1/app/api/session/[id]/message/route.ts)",
       "Bash(npx next:*)",
       "Bash(Get-ChildItem -Path . -Name -Recurse)",
-      "Bash(Select-String -Pattern \"\\(auth|signup|onboard\\)\")"
+      "Bash(Select-String -Pattern \"\\(auth|signup|onboard\\)\")",
+      "Bash(npm run *)",
+      "Bash(npx tsx *)"
     ]
   }
 }

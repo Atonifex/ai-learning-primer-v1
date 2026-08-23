@@ -74,6 +74,7 @@ export async function POST(
           session.messages,
           content,
           {
+            subjectSlug: session.subjectSlug,
             abortSignal: req.signal,
             spine,
             previouslyOn,

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { verifyToken } from "./lib/auth/jwt";
 
-const PROTECTED = ["/learn", "/sessions", "/onboarding"];
+const PROTECTED = ["/learn", "/sessions", "/onboarding", "/progress"];
 const AUTH_PAGES = ["/login", "/register"];
 
 export async function middleware(request: NextRequest) {
@@ -40,6 +40,7 @@ export const config = {
     "/learn/:path*",
     "/sessions/:path*",
     "/onboarding/:path*",
+    "/progress/:path*",
     "/login",
     "/register",
     "/api/profile/:path*",

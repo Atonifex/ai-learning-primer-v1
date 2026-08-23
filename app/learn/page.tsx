@@ -10,10 +10,10 @@ export default async function LearnPage() {
   const profile = await getProfile(user.userId);
   if (!profile) redirect("/onboarding");
 
-  // Return to existing active session or start a new one
+  // Return to existing active session or start a new one in the profile's primary subject lens.
   let sessionId = await getActiveSession(profile.id);
   if (!sessionId) {
-    sessionId = await startSession(profile.id, profile.activeLanguage);
+    sessionId = await startSession(profile.id, profile.primarySubjectSlug);
   }
 
   redirect(`/learn/${sessionId}`);

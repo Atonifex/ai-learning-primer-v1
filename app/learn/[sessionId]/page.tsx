@@ -9,7 +9,15 @@ import InputBar from "../../../components/session/InputBar";
 import PreviouslyOnCard from "../../../components/session/PreviouslyOnCard";
 import BranchPickPanel from "../../../components/session/BranchPickPanel";
 import GeneratedActivityCard from "../../../components/session/GeneratedActivityCard";
+import { SUBJECT_DISPLAY_NAMES } from "../../../lib/constants/subjects";
 import type { GeneratedActivity, SessionStoryUi } from "../../../lib/types";
+
+function subjectLabel(slug: string | undefined | null): string {
+  if (!slug) return "Learning session";
+  return (
+    SUBJECT_DISPLAY_NAMES[slug as keyof typeof SUBJECT_DISPLAY_NAMES] ?? slug
+  );
+}
 
 interface PageProps {
   params: Promise<{ sessionId: string }>;
@@ -26,6 +34,7 @@ export default function SessionPage({ params }: PageProps) {
   const [confirmLeave, setConfirmLeave] = useState(false);
   const [storyUi, setStoryUi] = useState<SessionStoryUi | null>(null);
   const [generatedActivities, setGeneratedActivities] = useState<GeneratedActivity[]>([]);
+  const [sessionSubjectSlug, setSessionSubjectSlug] = useState<string | null>(null);
   const [chapterMeta, setChapterMeta] = useState<{
     actCurrent: number;
     actTotal: number;
@@ -59,6 +68,7 @@ export default function SessionPage({ params }: PageProps) {
       .then(({ session, storyUi: su }: { session?: unknown; storyUi?: SessionStoryUi }) => {
         if (!session || typeof session !== "object" || !("messages" in session)) return;
         const s = session as {
+          subjectSlug?: string;
           messages: Array<{
             id: string;
             role: "USER" | "ASSISTANT";
@@ -71,6 +81,7 @@ export default function SessionPage({ params }: PageProps) {
             pathAheadWhisper: string | null;
           } | null;
         };
+        if (s.subjectSlug) setSessionSubjectSlug(s.subjectSlug);
         const msgs: Message[] = s.messages.map((m) => ({
           id: m.id,
           role: m.role,
@@ -289,7 +300,7 @@ export default function SessionPage({ params }: PageProps) {
         <div className="flex items-center gap-2">
           <span className="text-lg font-semibold tracking-tight">Primer</span>
           <span className="text-stone-500 text-xs">◈</span>
-          <span className="text-stone-400 text-sm">Learning session</span>
+          <span className="text-stone-400 text-sm">{subjectLabel(sessionSubjectSlug)}</span>
           <Link
             href="/progress"
             className="ml-2 text-xs text-amber-400/90 hover:text-amber-300 transition-colors"

@@ -1,6 +1,7 @@
 import OpenAI from "openai";
 import { aiDebug, isAiDebug } from "./aiDebug";
-import type { MessageData, MemoryItemData, StoryStateData, Language } from "../types";
+import type { MemoryItemData, MessageData, StoryStateData } from "../types";
+import { SUBJECT_DISPLAY_NAMES } from "../constants/subjects";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -10,9 +11,21 @@ export interface ExtractionResult {
   sessionSummary: string;
 }
 
+function subjectLensLabel(subjectSlug: string): string {
+  return (
+    SUBJECT_DISPLAY_NAMES[subjectSlug as keyof typeof SUBJECT_DISPLAY_NAMES] ??
+    subjectSlug
+  );
+}
+
+/**
+ * Subject- and grade-aware memory extraction. The output drives both story
+ * continuity (STORY_BEAT is read by every subject next session) and difficulty
+ * calibration (MISCONCEPTION + STRENGTH replace any stored pace field).
+ */
 export async function extractSessionMemory(
   messages: MessageData[],
-  language: Language,
+  opts: { subjectSlug: string; gradeBand: string },
   existingMemory: MemoryItemData[]
 ): Promise<ExtractionResult> {
   const transcript = messages
@@ -24,9 +37,11 @@ export async function extractSessionMemory(
     ? existingMemory.map((m) => `- [${m.type}] ${m.content}`).join("\n")
     : "None";
 
-  const prompt = `You are a learning analyst reviewing a ${language === "ES" ? "Spanish" : "Chinese"} language learning session.
+  const subjectLabel = subjectLensLabel(opts.subjectSlug);
 
-EXISTING MEMORY (to avoid duplicates):
+  const prompt = `You are a learning analyst reviewing a Grade ${opts.gradeBand} session in the "${subjectLabel}" lens of the shared expedition arc.
+
+EXISTING MEMORY (avoid duplicates):
 ${existingMemoryText}
 
 SESSION TRANSCRIPT:
@@ -35,29 +50,44 @@ ${transcript}
 Extract structured information and return ONLY valid JSON with this exact shape:
 {
   "memoryItems": [
-    { "type": "VOCABULARY_GAP" | "RECURRING_MISTAKE" | "MISCONCEPTION" | "CONFIDENCE_SIGNAL" | "INTEREST" | "GOAL" | "PREFERENCE" | "STORY_CONTINUITY", "content": "specific, actionable description", "confidence": 0.0-1.0 }
+    {
+      "type": "MISCONCEPTION" | "STRENGTH" | "VOCABULARY_GAP" | "RECURRING_MISTAKE" | "INTEREST_SIGNAL" | "CONFIDENCE_LEVEL" | "STORY_BEAT" | "GOAL" | "PREFERENCE",
+      "content": "specific, actionable, learner-facing description",
+      "confidence": 0.0-1.0
+    }
   ],
   "storyUpdate": {
-    "arcName": "name of this session's story arc",
-    "currentState": "2-3 sentence summary of where the story ended",
-    "recurringCharacters": [{ "name": "character name", "description": "brief description", "characterKey": "optional stable slug (lowercase, hyphens) matching portrait routing" }],
+    "arcName": "The Mapmaker's Expedition",
+    "currentState": "2-3 sentence in-world summary of where the story ended (subject-agnostic — readable by any subject next session)",
+    "recurringCharacters": [
+      { "name": "character name", "description": "brief description", "characterKey": "optional lowercase-hyphen slug" }
+    ],
     "activeThemes": ["theme1", "theme2"]
   },
-  "sessionSummary": "2-3 sentence summary of what was learned and practiced in this session"
+  "sessionSummary": "2-3 sentence summary of what the captain practiced this session and where it leaves the story"
 }
 
-Rules:
-- Only extract items that are clearly evidenced in the transcript
-- Keep memory items specific and actionable (not vague like "needs improvement")
-- Confidence should reflect how certain you are, based on transcript evidence
-- Do not duplicate items that already exist in the existing memory (above)
-- Include at least one STORY_CONTINUITY item if there was meaningful narrative
-- Do NOT return correctness scores, mastery estimates, or skill level deltas (those are tracked in StandardsEvidence).`;
+Memory type rules:
+- STORY_BEAT: narrative events the captain should reconnect to next session, regardless of subject. ALWAYS include at least one if there was meaningful narrative ("Bosun Mara was found near the creek"). These are the cross-subject memory items.
+- MISCONCEPTION: a clear, specific reasoning gap on a standard — what the captain got wrong and why. Tag with the subject ("Subtracts when problem implies addition") so the next subject session can see it.
+- STRENGTH: a moment of confident, correct, justified reasoning. Used by the AI next session to calibrate difficulty UP.
+- VOCABULARY_GAP: only for ELA/world-language sessions where a specific word blocked comprehension.
+- CONFIDENCE_LEVEL: inferred or self-reported confidence; one sentence ("Hesitant about reading bar graphs").
+- INTEREST_SIGNAL: an interest the captain expressed in-world ("Lit up when the story turned to navigation").
+- RECURRING_MISTAKE, GOAL, PREFERENCE: only when clearly evidenced.
+
+Other rules:
+- Only extract items clearly evidenced in the transcript. No speculation.
+- Confidence reflects how certain you are based on the transcript.
+- Do not duplicate items already in EXISTING MEMORY.
+- Do NOT return correctness scores, mastery estimates, or skill level deltas (those go through StandardsEvidence via the record_standard_observation tool, not here).`;
 
   if (isAiDebug()) {
     aiDebug("memoryExtractor", "request", {
       model: "gpt-5.4-nano",
       messageCount: messages.length,
+      subjectSlug: opts.subjectSlug,
+      gradeBand: opts.gradeBand,
       promptChars: prompt.length,
     });
   }

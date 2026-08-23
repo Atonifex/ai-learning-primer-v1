@@ -2,15 +2,27 @@ export type Language = "ES" | "ZH";
 export type Level = "BEGINNER" | "INTERMEDIATE" | "ADVANCED";
 export type MessageRole = "USER" | "ASSISTANT";
 export type SessionStatus = "ACTIVE" | "COMPLETED" | "ABANDONED";
+export type LearnerSubjectStatus = "ACTIVE" | "PAUSED" | "COMPLETED";
 export type MemoryType =
   | "VOCABULARY_GAP"
   | "RECURRING_MISTAKE"
   | "MISCONCEPTION"
+  | "STRENGTH"
   | "CONFIDENCE_SIGNAL"
+  | "CONFIDENCE_LEVEL"
   | "INTEREST"
+  | "INTEREST_SIGNAL"
   | "GOAL"
   | "PREFERENCE"
-  | "STORY_CONTINUITY";
+  | "STORY_CONTINUITY"
+  | "STORY_BEAT";
+
+export interface EnrolledSubject {
+  slug: string;
+  displayName: string;
+  domain: string;
+  status: LearnerSubjectStatus;
+}
 
 export interface MessageData {
   id: string;
@@ -41,8 +53,9 @@ export interface SessionChapterContext {
 
 export interface SessionData {
   id: string;
-  language: Language;
-  subjectSlug?: string;
+  /** Null for G3 core subjects; set only when a world-language subject is active. */
+  language: Language | null;
+  subjectSlug: string;
   status: SessionStatus;
   arcName?: string | null;
   startedAt: Date;
@@ -53,10 +66,16 @@ export interface SessionData {
 
 export interface LearnerProfileData {
   id: string;
-  activeLanguage: Language;
-  currentLevel: Level;
+  displayName: string | null;
+  gradeBand: string;
+  primarySubjectSlug: string;
   goals: string;
   interests: string[];
+  /** Null for G3 core; set when a world-language subject is active (Phase 6). */
+  activeLanguage: Language | null;
+  /** Preserved for Phase 6 world-language flow; not collected at G3 onboarding. */
+  currentLevel: Level | null;
+  enrolledSubjects: EnrolledSubject[];
 }
 
 export interface MemoryItemData {

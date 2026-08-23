@@ -3,14 +3,21 @@ import Link from "next/link";
 import { getCurrentUser } from "../../lib/auth/session";
 import { getProfile } from "../../lib/services/profile";
 import { listSessions } from "../../lib/services/session";
+import { SUBJECT_DISPLAY_NAMES } from "../../lib/constants/subjects";
 import type { SessionData } from "../../lib/types";
 
-const LANG_LABELS: Record<string, string> = { ES: "Spanish", ZH: "Chinese" };
 const STATUS_LABELS: Record<string, string> = {
   ACTIVE: "In progress",
   COMPLETED: "Completed",
   ABANDONED: "Abandoned",
 };
+
+function subjectLabel(slug: string | undefined): string {
+  if (!slug) return "Session";
+  return (
+    SUBJECT_DISPLAY_NAMES[slug as keyof typeof SUBJECT_DISPLAY_NAMES] ?? slug
+  );
+}
 
 function formatDate(date: Date) {
   return new Date(date).toLocaleDateString("en-US", {
@@ -106,7 +113,7 @@ function SessionCard({ session, active }: { session: SessionData; active?: boole
         <div className="min-w-0">
           <div className="flex items-center gap-2 mb-1">
             <span className="text-sm font-semibold text-stone-900 group-hover:text-amber-800 transition-colors truncate">
-              {session.arcName || "Session"}
+              {session.chapter?.title || session.arcName || "Session"}
             </span>
             {active && (
               <span className="flex-shrink-0 px-2 py-0.5 bg-amber-100 text-amber-700 text-xs rounded-full font-medium">
@@ -115,7 +122,7 @@ function SessionCard({ session, active }: { session: SessionData; active?: boole
             )}
           </div>
           <div className="flex items-center gap-2 text-xs text-stone-400">
-            <span>{LANG_LABELS[session.language] || session.language}</span>
+            <span>{subjectLabel(session.subjectSlug)}</span>
             <span>·</span>
             <span>{formatDate(session.startedAt)}</span>
             <span>·</span>

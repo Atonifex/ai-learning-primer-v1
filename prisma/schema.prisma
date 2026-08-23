@@ -18,8 +18,11 @@ model LearnerProfile {
   id                 String              @id @default(cuid())
   userId             String              @unique
   user               User                @relation(fields: [userId], references: [id])
-  activeLanguage     Language
-  currentLevel       Level
+  displayName        String?
+  gradeBand          String              @default("3")
+  primarySubjectSlug String              @default("math_g3")
+  activeLanguage     Language?
+  currentLevel       Level?
   goals              String
   interests          String[]
   createdAt          DateTime            @default(now())
@@ -35,6 +38,7 @@ model LearnerProfile {
   learnerSubjects    LearnerSubject[]
   activityCompletions LearningActivityCompletion[]
   assessmentResults  AssessmentResult[]
+  reviewItems        ReviewItem[]
 }
 
 enum Language {
@@ -307,11 +311,30 @@ enum MemoryType {
   VOCABULARY_GAP
   RECURRING_MISTAKE
   MISCONCEPTION
+  STRENGTH
   CONFIDENCE_SIGNAL
+  CONFIDENCE_LEVEL
   INTEREST
+  INTEREST_SIGNAL
   GOAL
   PREFERENCE
   STORY_CONTINUITY
+  STORY_BEAT
+}
+
+/// Spaced-retrieval review schedule. Surfaced as a 2–3 question "expedition log review" when due.
+model ReviewItem {
+  id             String         @id @default(cuid())
+  learnerId      String
+  learner        LearnerProfile @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+  standardCode   String
+  conceptSummary String
+  nextReviewAt   DateTime
+  timesReviewed  Int            @default(0)
+  lastScore      Float?
+  createdAt      DateTime       @default(now())
+
+  @@index([learnerId, nextReviewAt])
 }
 
 model Skill {
