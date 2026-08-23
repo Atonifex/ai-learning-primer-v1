@@ -1,11 +1,10 @@
 "use client";
 
 import type { MissionPublic } from "../../lib/play/missions";
-import { SUBJECT_DISPLAY_NAMES } from "../../lib/constants/subjects";
-import type { Grade3SubjectSlug } from "../../lib/constants/subjects";
+import { SUBJECT_DISPLAY_NAMES, type PlayableCoreSubjectSlug } from "../../lib/constants/subjects";
 
 function subjectLabel(slug: string): string {
-  return SUBJECT_DISPLAY_NAMES[slug as Grade3SubjectSlug] ?? slug;
+  return SUBJECT_DISPLAY_NAMES[slug as PlayableCoreSubjectSlug] ?? slug;
 }
 
 function statusCopy(status: MissionPublic["status"]): string {

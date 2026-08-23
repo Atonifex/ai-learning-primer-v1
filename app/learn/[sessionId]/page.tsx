@@ -1,6 +1,5 @@
 import { redirect } from "next/navigation";
-import { getCurrentUser } from "../../../lib/auth/session";
-import { getProfile } from "../../../lib/services/profile";
+import { requireChildPage } from "../../../lib/auth/pageGuards";
 import { getSession } from "../../../lib/services/session";
 import PlayShell from "../../../components/play/PlayShell";
 
@@ -12,14 +11,10 @@ interface PageProps {
 export default async function SessionPlayPage({ params, searchParams }: PageProps) {
   const { sessionId } = await params;
   const { mission } = await searchParams;
-  const user = await getCurrentUser();
-  if (!user) redirect("/login");
-
-  const profile = await getProfile(user.userId);
-  if (!profile) redirect("/onboarding");
+  const { profile } = await requireChildPage();
 
   const session = await getSession(sessionId);
-  if (!session) redirect("/learn");
+  if (!session || session.learnerProfileId !== profile.id) redirect("/learn");
 
   return (
     <PlayShell
@@ -28,6 +23,7 @@ export default async function SessionPlayPage({ params, searchParams }: PageProp
       subjectSlug={session.subjectSlug}
       sessionStartedAt={session.startedAt.toISOString()}
       initialMission={typeof mission === "string" ? mission : undefined}
+      firstRunStep={profile.firstRunStep}
     />
   );
 }

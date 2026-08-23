@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getCurrentUser } from "../../../../../lib/auth/session";
-import { getProfile } from "../../../../../lib/services/profile";
+import {
+  childProfileResponse,
+  forbidIfForeignSession,
+  isNextResponse,
+} from "../../../../../lib/auth/apiChild";
 import { getSession, completeSession } from "../../../../../lib/services/session";
 import { getRelevantMemory } from "../../../../../lib/services/memory";
 import { upsertMemoryItems, upsertStoryState } from "../../../../../lib/services/memory";
@@ -10,16 +13,15 @@ export async function POST(
   _req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const user = await getCurrentUser();
-  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const profile = await childProfileResponse();
+  if (isNextResponse(profile)) return profile;
 
   const { id: sessionId } = await params;
 
-  const profile = await getProfile(user.userId);
-  if (!profile) return NextResponse.json({ error: "No profile" }, { status: 404 });
-
   const session = await getSession(sessionId);
   if (!session) return NextResponse.json({ error: "Session not found" }, { status: 404 });
+  const foreign = forbidIfForeignSession(session, profile.id);
+  if (foreign) return foreign;
 
   if (session.messages.length < 2) {
     // Not enough content to extract — just mark abandoned

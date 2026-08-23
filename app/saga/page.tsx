@@ -1,7 +1,5 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { getCurrentUser } from "../../lib/auth/session";
-import { getProfile } from "../../lib/services/profile";
+import { requireChildPage } from "../../lib/auth/pageGuards";
 import { getSagaProgress } from "../../lib/services/missions";
 import { SUBJECT_DISPLAY_NAMES } from "../../lib/constants/subjects";
 import type { Grade3SubjectSlug } from "../../lib/constants/subjects";
@@ -11,10 +9,7 @@ function subjectLabel(slug: string): string {
 }
 
 export default async function SagaPage() {
-  const user = await getCurrentUser();
-  if (!user) redirect("/login");
-  const profile = await getProfile(user.userId);
-  if (!profile) redirect("/onboarding");
+  const { profile } = await requireChildPage();
 
   const saga = await getSagaProgress(profile.id);
 

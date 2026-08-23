@@ -5,11 +5,21 @@ import { standardsMathGrade3 } from "../curriculum_resources/standards_math_grad
 import { standardsElaGrade3 } from "../curriculum_resources/standards_ela_grade3";
 import { standardsScienceGrade3 } from "../curriculum_resources/standards_science_grade3";
 import { standardsSocialStudiesGrade3 } from "../curriculum_resources/standards_social_studies_grade3";
+import { standardsMathGrade4 } from "../curriculum_resources/standards_math_grade4";
+import { standardsElaGrade4 } from "../curriculum_resources/standards_ela_grade4";
+import { standardsScienceGrade4 } from "../curriculum_resources/standards_science_grade4";
+import { standardsSocialStudiesGrade4 } from "../curriculum_resources/standards_social_studies_grade4";
 import { skillsGrade3 } from "./seeds/skills_grade3";
 import { grade3LearningActivitySeeds } from "./seeds/activities/from_grade3_bank";
 import type { SubjectSeed } from "./seeds/types";
-import { createProfile, getProfile } from "../lib/services/profile";
+import { getProfile } from "../lib/services/profile";
 import { syncWreckAndFoodChaptersForLearner } from "../lib/services/storyCurriculum";
+import {
+  addCaptain,
+  ensureParentHousehold,
+  listHouseholdCaptains,
+} from "../lib/services/household";
+import bcrypt from "bcryptjs";
 
 const asJson = (value: unknown): Prisma.InputJsonValue | Prisma.NullableJsonNullValueInput | undefined =>
   value == null ? undefined : (value as Prisma.InputJsonValue);
@@ -58,13 +68,20 @@ const SECTION_46_CODES = new Set([
   "SS.3.CG.2.1",
 ]);
 
-const TEST_CAPTAIN_EMAIL = "test_captain@primer.local";
+const TEST_PARENT_EMAIL = "test_parent@primer.local";
+const TEST_CAPTAIN_USERNAME = "testcaptain";
+const TEST_CAPTAIN_PIN = "1234";
+const TEST_PARENT_PASSWORD = "test-parent-login";
 
 const subjectSeeds: SubjectSeed[] = [
   standardsMathGrade3,
   standardsElaGrade3,
   standardsScienceGrade3,
   standardsSocialStudiesGrade3,
+  standardsMathGrade4,
+  standardsElaGrade4,
+  standardsScienceGrade4,
+  standardsSocialStudiesGrade4,
 ];
 
 async function upsertSubjectCatalog(seed: SubjectSeed): Promise<Map<string, string>> {
@@ -286,29 +303,52 @@ async function upsertLearningActivities(
 }
 
 async function ensureTestCaptainWithWreckFood(): Promise<void> {
-  let user = await prisma.user.findUnique({ where: { email: TEST_CAPTAIN_EMAIL } });
-  if (!user) {
-    user = await prisma.user.create({
+  let parent = await prisma.user.findUnique({ where: { email: TEST_PARENT_EMAIL } });
+  if (!parent) {
+    const passwordHash = await bcrypt.hash(TEST_PARENT_PASSWORD, 12);
+    parent = await prisma.user.create({
       data: {
-        email: TEST_CAPTAIN_EMAIL,
-        passwordHash: "test-captain-seed-hash",
+        email: TEST_PARENT_EMAIL,
+        passwordHash,
+        role: "PARENT",
       },
     });
   }
+  await ensureParentHousehold(parent.id);
 
-  let profile = await getProfile(user.id);
-  if (!profile) {
-    profile = await createProfile(user.id, {
-      displayName: "Test Captain",
-      goals: "Survey the wreck, ration food, recover the crew.",
-      interests: ["Ocean", "Maps", "Crew"],
-      primarySubjectSlug: "math_g3",
+  const captains = await listHouseholdCaptains(parent.id);
+  let childUserId = captains.find((c) => c.username === TEST_CAPTAIN_USERNAME)?.userId;
+  if (!childUserId) {
+    const existingChild = await prisma.user.findUnique({
+      where: { username: TEST_CAPTAIN_USERNAME },
     });
+    if (existingChild) {
+      childUserId = existingChild.id;
+    } else {
+      const { child } = await addCaptain({
+        parentUserId: parent.id,
+        username: TEST_CAPTAIN_USERNAME,
+        pin: TEST_CAPTAIN_PIN,
+        gradeBand: "3",
+        displayName: "Test Captain",
+      });
+      childUserId = child.id;
+    }
+  }
+
+  await prisma.learnerProfile.updateMany({
+    where: { userId: childUserId },
+    data: { firstRunStep: "complete", displayName: "Test Captain" },
+  });
+
+  const profile = await getProfile(childUserId);
+  if (!profile) {
+    throw new Error("Seed: test captain profile missing");
   }
 
   const { updated } = await syncWreckAndFoodChaptersForLearner(profile.id);
   console.log(
-    `Test learner ${TEST_CAPTAIN_EMAIL} (${profile.id}): synced ${updated} wreck+food chapters.`,
+    `Test household ${TEST_PARENT_EMAIL} / captain ${TEST_CAPTAIN_USERNAME} (${profile.id}): synced ${updated} wreck+food chapters. PIN ${TEST_CAPTAIN_PIN}. Parent password ${TEST_PARENT_PASSWORD}.`,
   );
 }
 
@@ -327,7 +367,7 @@ async function smokeCheckActivityLinks(standardCodeToId: Map<string, string>): P
   console.log(`Smoke: activity ${linked.learningActivity.slug} ↔ ${linked.standard.code}`);
 
   const testUser = await prisma.user.findUnique({
-    where: { email: TEST_CAPTAIN_EMAIL },
+    where: { username: TEST_CAPTAIN_USERNAME },
     include: {
       learnerProfile: {
         include: {
@@ -368,7 +408,9 @@ async function main(): Promise<void> {
     const localMap = await upsertSubjectCatalog(subjectSeed);
     for (const [code, id] of localMap) standardCodeToId.set(code, id);
   }
-  console.log(`Seeded ${standardCodeToId.size} Grade 3 standards across ${subjectSeeds.length} subjects.`);
+  console.log(
+    `Seeded ${standardCodeToId.size} standards across ${subjectSeeds.length} subjects (G3 + G4 catalogs).`,
+  );
   await upsertSkills(standardCodeToId);
   await upsertLearningActivities(standardCodeToId);
   await ensureTestCaptainWithWreckFood();

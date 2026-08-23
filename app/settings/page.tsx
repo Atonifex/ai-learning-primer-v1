@@ -1,14 +1,9 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { getCurrentUser } from "../../lib/auth/session";
-import { getProfile } from "../../lib/services/profile";
+import { requireChildPage } from "../../lib/auth/pageGuards";
 import ReadingLevelForm from "../../components/settings/ReadingLevelForm";
 
 export default async function SettingsPage() {
-  const user = await getCurrentUser();
-  if (!user) redirect("/login");
-  const profile = await getProfile(user.userId);
-  if (!profile) redirect("/onboarding");
+  const { profile } = await requireChildPage();
 
   return (
     <main className="mx-auto max-w-2xl px-6 py-10">
@@ -37,7 +32,7 @@ export default async function SettingsPage() {
           Coming later
         </h2>
         <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-stone-600">
-          <li>Separate parent login and household profiles</li>
+          <li>Weekly parent report (dashboard, email, PDF)</li>
           <li>Automatic advance to Grade 4 standards after G3 checkpoints</li>
           <li>Placement quiz to set reading level without guessing</li>
         </ul>

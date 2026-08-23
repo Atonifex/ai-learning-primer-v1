@@ -1,14 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { prisma } from "../../../../lib/db/prisma";
-import { signToken } from "../../../../lib/auth/jwt";
-import { COOKIE_NAME } from "../../../../lib/auth/session";
+import { applyAuthCookie } from "../../../../lib/auth/session";
+import { tokenForUser } from "../../../../lib/auth/tokenUser";
+import { ensureParentHousehold } from "../../../../lib/services/household";
 
 export async function POST(req: NextRequest) {
-  const { email, password } = await req.json();
+  const { email, password } = await req.json().catch(() => ({}));
+  if (typeof email !== "string" || typeof password !== "string") {
+    return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
+  }
 
-  const user = await prisma.user.findUnique({ where: { email } });
-  if (!user) {
+  const user = await prisma.user.findUnique({
+    where: { email: email.trim().toLowerCase() },
+    include: { learnerProfile: { select: { id: true } } },
+  });
+  if (!user || user.role === "CHILD") {
     return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
   }
 
@@ -17,15 +24,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
   }
 
-  const token = await signToken({ userId: user.id, email: user.email });
-
-  const res = NextResponse.json({ ok: true });
-  res.cookies.set(COOKIE_NAME, token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    maxAge: 60 * 60 * 24 * 30,
-    path: "/",
+  const household = await ensureParentHousehold(user.id);
+  const token = await tokenForUser({
+    id: user.id,
+    email: user.email,
+    role: "PARENT",
+    householdId: household.id,
+    learnerProfile: user.learnerProfile,
   });
+
+  const res = NextResponse.json({ ok: true, role: "PARENT" });
+  applyAuthCookie(res, token);
   return res;
 }

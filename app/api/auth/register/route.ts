@@ -1,14 +1,28 @@
 import { NextRequest, NextResponse } from "next/server";
-import bcrypt from "bcryptjs";
 import { prisma } from "../../../../lib/db/prisma";
-import { signToken } from "../../../../lib/auth/jwt";
-import { COOKIE_NAME } from "../../../../lib/auth/session";
+import { applyAuthCookie } from "../../../../lib/auth/session";
+import { tokenForUser } from "../../../../lib/auth/tokenUser";
+import { createParentWithHousehold } from "../../../../lib/services/household";
+import bcrypt from "bcryptjs";
 
 export async function POST(req: NextRequest) {
-  const { email, password } = await req.json();
+  const body = await req.json().catch(() => null);
+  const email =
+    typeof body?.email === "string" ? body.email.trim().toLowerCase() : "";
+  const password = typeof body?.password === "string" ? body.password : "";
+  const coppaConsent = body?.coppaConsent === true;
 
   if (!email || !password || password.length < 8) {
-    return NextResponse.json({ error: "Invalid email or password (min 8 chars)" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid email or password (min 8 chars)" },
+      { status: 400 }
+    );
+  }
+  if (!coppaConsent) {
+    return NextResponse.json(
+      { error: "A parent or guardian must agree before creating an account." },
+      { status: 400 }
+    );
   }
 
   const existing = await prisma.user.findUnique({ where: { email } });
@@ -17,17 +31,21 @@ export async function POST(req: NextRequest) {
   }
 
   const passwordHash = await bcrypt.hash(password, 12);
-  const user = await prisma.user.create({ data: { email, passwordHash } });
-
-  const token = await signToken({ userId: user.id, email: user.email });
-
-  const res = NextResponse.json({ ok: true });
-  res.cookies.set(COOKIE_NAME, token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    maxAge: 60 * 60 * 24 * 30,
-    path: "/",
+  const { parent } = await createParentWithHousehold({
+    email,
+    passwordHash,
+    coppaConsent: true,
   });
+
+  const token = await tokenForUser({
+    id: parent.id,
+    email: parent.email,
+    role: parent.role,
+    householdId: parent.householdId,
+    learnerProfile: parent.learnerProfile,
+  });
+
+  const res = NextResponse.json({ ok: true, role: "PARENT" });
+  applyAuthCookie(res, token);
   return res;
 }

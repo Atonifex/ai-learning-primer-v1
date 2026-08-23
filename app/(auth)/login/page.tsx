@@ -1,81 +1,50 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Button from "../../../components/ui/Button";
-import Input from "../../../components/ui/Input";
+import ParentLoginForm from "../../../components/auth/ParentLoginForm";
+import CaptainLoginForm from "../../../components/auth/CaptainLoginForm";
+
+type Tab = "parent" | "captain";
 
 export default function LoginPage() {
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
-    try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Login failed");
-      router.push("/learn");
-      router.refresh();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Login failed");
-    } finally {
-      setLoading(false);
-    }
-  }
+  const [tab, setTab] = useState<Tab>("parent");
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-stone-50 px-4">
+    <div className="flex min-h-screen items-center justify-center bg-stone-50 px-4">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-semibold text-stone-900 tracking-tight">Primer</h1>
-          <p className="mt-2 text-stone-500 text-sm">Your personal learning companion</p>
+          <h1 className="text-3xl font-semibold tracking-tight text-stone-900">Primer</h1>
+          <p className="mt-2 text-sm text-stone-500">
+            Parents sign in here. Captains use a login and PIN.
+          </p>
         </div>
-        <div className="bg-white rounded-2xl border border-stone-100 shadow-sm p-8">
-          <h2 className="text-lg font-semibold text-stone-900 mb-6">Welcome back</h2>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-stone-700 mb-1.5">Email</label>
-              <Input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
-                required
-                autoFocus
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-stone-700 mb-1.5">Password</label>
-              <Input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                required
-              />
-            </div>
-            {error && (
-              <p className="text-sm text-red-600 bg-red-50 rounded-lg px-3 py-2">{error}</p>
-            )}
-            <Button type="submit" disabled={loading} className="w-full" size="lg">
-              {loading ? "Signing in…" : "Sign in"}
-            </Button>
-          </form>
+        <div className="rounded-2xl border border-stone-100 bg-white p-8 shadow-sm">
+          <div className="mb-6 grid grid-cols-2 gap-1 rounded-xl bg-stone-100 p-1">
+            <button
+              type="button"
+              onClick={() => setTab("parent")}
+              className={`rounded-lg py-2 text-sm font-medium ${
+                tab === "parent" ? "bg-white text-stone-900 shadow-sm" : "text-stone-500"
+              }`}
+            >
+              Parent
+            </button>
+            <button
+              type="button"
+              onClick={() => setTab("captain")}
+              className={`rounded-lg py-2 text-sm font-medium ${
+                tab === "captain" ? "bg-white text-stone-900 shadow-sm" : "text-stone-500"
+              }`}
+            >
+              Captain
+            </button>
+          </div>
+          {tab === "parent" ? <ParentLoginForm /> : <CaptainLoginForm />}
           <p className="mt-6 text-center text-sm text-stone-500">
-            No account?{" "}
-            <Link href="/register" className="text-amber-700 font-medium hover:underline">
-              Create one
+            New household?{" "}
+            <Link href="/register" className="font-medium text-amber-700 hover:underline">
+              Create a parent account
             </Link>
           </p>
         </div>

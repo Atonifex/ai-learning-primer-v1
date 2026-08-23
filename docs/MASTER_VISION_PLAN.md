@@ -290,7 +290,8 @@ The old `/learn` **graphic-novel page as home** is rejected. It felt like a chat
 - **Live interaction:** `gpt-5.6-luna` (write this name in code comments / model router). Cheap, fast, every hint and turn.
 - **Unit/chapter authoring or revision:** medium-reasoning model. Runs when tutorial/placement finishes, when evidence says the sequence is wrong, or when a parent/teacher requests a plan update — not every message.
 - **ZPD:** If the child is stuck, give hints, tools, worked examples, then fade support. Do not loop the same static narrative. Encouragement can feel Duolingo-like; the *task* must require thought (not only MC).
-- **Tutorial = placement.** Even within a labeled grade, ability varies. Estimate lexile, math fluency, speaking, SS/science knowledge. Then generate Units/Chapters. Revise from later interactions.
+- **Tutorial = placement (product lock).** The first ~30 minutes is **not** a labeled test. It is a Kumon-style diagnostic **hidden inside the wreck/camp story**: Rho asks in-world jobs that probe math, reading, science observation, and social-studies reasoning. Start items from the **onboarding grade band** (the parent’s guess), but **do not assume the child is on-grade**. Skills will often split — e.g. grade 4 reading and grade 2 math. Branch up/down per **subject**, not one global level. After this window, give the parent a **benchmark report** across sampled standards (what was solid, shaky, unknown). Then generate Units/Chapters from that map. Revise from later play. Design this diagnostic carefully (item pool, stop rules, parent copy) before coding it as a named “placement test.”
+
 - **Scoring:** Keep current `standardsMasteryMath` / evidence tiers for the **10-standard slice**. Redesign after that slice produces data. **Do not block** the playable loop. School-equivalent chapter/unit tests must be defensible **before ESA sales** — that is the hard deadline, not tonight.
 
 **E2 / what belongs in Prisma:** See **§4.11**. Short version: **yes, seed all G3 (then G4) standards, the activity bank, and checkpoint templates.** The **saga spine** stays as TypeScript templates (`grade3_castaway_curriculum.ts`) copied onto each learner — `StoryWorld` is per-child today. Medium LLM customizes that child’s units/chapters after placement. Do **not** wait to play: the first loop only *teaches* §4.6.
@@ -514,7 +515,7 @@ The AI does **not** invent standards. It **selects** activities and **narrates**
 
 Also present: `curriculum_resources/grade4_science_scraped.json` (scrape companion to science G4).
 
-**What Prisma actually loads today** (`prisma/seed.ts`): full Grade 3 catalogs from `curriculum_resources/standards_*_grade3.ts` (math, ELA, science, SS). `prisma/seeds/standards_*_grade3.ts` re-export those files. `OLDstandards_ela_grade3.ts` is unused legacy. Grade 4 and ELA G5 catalogs are **authored, not seeded**.
+**What Prisma actually loads today** (`prisma/seed.ts`): full Grade 3 **and Grade 4** catalogs from `curriculum_resources/standards_*_grade{3,4}.ts` (math, ELA, science, SS). `prisma/seeds/standards_*_grade{3,4}.ts` re-export those files. `OLDstandards_ela_grade3.ts` is unused legacy. ELA G5 is **authored, not seeded**. Captains onboarded as grade 3 enroll G3 subjects; grade 4–8 enroll G4 until later catalogs exist.
 
 | Grade | Domain | Canonical authoring file | Seed / runtime |
 |-------|--------|--------------------------|----------------|
@@ -522,10 +523,10 @@ Also present: `curriculum_resources/grade4_science_scraped.json` (scrape compani
 | 3 | Math | `curriculum_resources/standards_math_grade3.ts` | seeded (re-export via `prisma/seeds/standards_math_grade3.ts`) |
 | 3 | Science | `curriculum_resources/standards_science_grade3.ts` | seeded (re-export via `prisma/seeds/standards_science_grade3.ts`) |
 | 3 | Social studies | `curriculum_resources/standards_social_studies_grade3.ts` | seeded (re-export via `prisma/seeds/standards_social_studies_grade3.ts`) |
-| 4 | ELA | `curriculum_resources/standards_ela_grade4.ts` | not seeded |
-| 4 | Math | `curriculum_resources/standards_math_grade4.ts` | not seeded |
-| 4 | Science | `curriculum_resources/standards_science_grade4.ts` | not seeded |
-| 4 | Social studies | `curriculum_resources/standards_social_studies_grade4.ts` | not seeded |
+| 4 | ELA | `curriculum_resources/standards_ela_grade4.ts` | **seeded** |
+| 4 | Math | `curriculum_resources/standards_math_grade4.ts` | **seeded** |
+| 4 | Science | `curriculum_resources/standards_science_grade4.ts` | **seeded** |
+| 4 | Social studies | `curriculum_resources/standards_social_studies_grade4.ts` | **seeded** |
 | 5 | ELA | `curriculum_resources/standards_ela_grade5.ts` | not seeded |
 
 Supporting:
@@ -771,7 +772,7 @@ Existing code: `app/progress/*`, `lib/services/progress.ts`, `StandardsEvidence`
 
 Agents: inventory before coding.
 
-- Auth, onboarding (`displayName` + dive-in; goals/interests default; auto-enroll G3 cores)
+- Auth, household two-login, first-run (`video → name → move → talk → work`), auto-enroll G3 cores
 - Session start/stream/complete
 - ContextBuilder + SessionOrchestrator + MemoryExtractor + image tool
 - Standards catalogs + observation tools + mastery math
@@ -954,7 +955,7 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 - [x] Audit G3 seeds vs `curriculum_resources` — 127 authoring codes; **80 seedGap** (math 28, science 22, SS 30). ELA authoring seed is complete; `seed.ts` may still import OLD ELA.
 - [x] Replace G3 prisma math/science/SS slices with full `curriculum_resources` catalogs; point `seed.ts` at authoring catalogs (not OLD) — **done before the activity bank**
 - [x] Seed activity bank after catalog sync (`from_grade3_bank.ts`)
-- [ ] Seed Grade 4 catalogs into Prisma (`ela/math/science/ss`) — after first playable loop is OK
+- [x] Seed Grade 4 catalogs into Prisma (`ela/math/science/ss`) — G4 subjects enroll when onboarding grade is 4+
 - [ ] `buildSystemPrompt` always includes shared castaway bible + chapter `plannerJson` + **session subject** standards only
 - [x] `record_standard_observation` rejects unknown codes
 - [x] Shared story chain: one world, one saga, four lenses (`ensureLearnerStoryChain`)
@@ -986,7 +987,7 @@ Technical debt (defer to end of this plan unless a later step naturally clears i
 2. Overlay quiz uses MC items only from bank slugs (drops free-response items). Mission Loop v1 covers wreck + four other pins; still not full-screen tools.
 3. Rations / XP HUD are client stubs — not persisted; not tied to chapter complete (P2).
 4. Ambient ocean bed is silent; mute control not wired for ambient (U15 placeholder). Rho TTS has its own Voice on/off.
-5. Intro Skip is `localStorage`, not per-learner server state.
+5. Intro Skip is per-learner (`firstRunStep` / `introSeenAt`), not `localStorage`.
 6. Walk is straight-line + axis slide, not A* pathing.
 7. Graphic-novel `ScenePanel` is unused as home (kept for possible still reuse).
 8. STT is `whisper-1`, not luna; requires mic permission + `OPENAI_API_KEY`.
@@ -999,7 +1000,7 @@ Technical debt (defer to end of this plan unless a later step naturally clears i
 - [ ] Camp site choice branch
 - [ ] XP + camp pin (perk tree UI later)
 - [x] TTS for Rho (OpenAI)
-- [ ] Parent account linked to child account(s) (COPPA-ready)
+- [x] Parent account linked to child account(s) (COPPA-ready)
 - [ ] Parent dashboard + weekly email + weekly PDF (full MVP, after student loop)
 
 ### P2 — Immersion + measurement
@@ -1252,6 +1253,20 @@ I will: (1) move remaining ★ answers into §4, (2) write `docs/CHAPTER_1_BUILD
 
 
 Agents append here. Newest first.
+
+### 2026-08-23 — Grade 4 start path + disguised-placement lock
+
+- Captains can **start on Grade 3 or Grade 4**. Onboarding `gradeBand` 3 enrolls `*_g3` subjects; 4–8 enrolls `*_g4` until G5+ catalogs exist (`readingLevel` stays independent). G4 Florida catalogs are seeded. Live sessions use G4 prompt lenses + G4 standards injection. Island jobs still use the G3 activity bank; starting a pin remaps the session lens (e.g. `math_g3` job → `math_g4` session). Saga planners stay on G3 keys.
+- **§4.4 placement lock:** first ~30 minutes = Kumon-style diagnostic **in story**, starting from onboarding grade but not assuming on-grade skill; per-subject up/down; parent benchmark report. Not built yet.
+- Files: `lib/constants/subjects.ts`, `lib/services/{profile,learnerSubjects,missions,storyCurriculum}.ts`, `lib/ai/{promptTemplates,sessionOrchestrator}.ts`, `prisma/seed.ts`, `app/api/session/start/route.ts`, `docs/MASTER_VISION_PLAN.md`.
+
+### 2026-08-23 — Household two-login + first-run tutorial
+
+- Replaced language-app onboarding (email user → name/grade → ocean dive) with MASTER §4.5 **two logins, one household**. Parent: email + password + COPPA checkbox. Child: username + 4-digit PIN. Parent `/household` adds captains and **Wake the captain** (switches JWT). No parent dashboard.
+- Child first-run lives in `PlayShell`: Ivan’s 20–30s `crash_landing.mp4` (poster fallback) → Guild-log name (speak or type) → gated **move / talk+mic / salvage overlay**. Authored Rho coach; live luna still runs wreck talk and ZPD. Extra HUD (Jobs/Saga/Progress/Leave) hidden until work is done. Intro skip is per-learner, not Chromebook `localStorage`. Quiz no longer auto-opens at 8s.
+- Schema: `Household`, `User.role/username/nullable email`, `LearnerProfile.householdId` + `firstRunStep`. Session APIs require child JWT and refuse sibling session ids.
+- Files: `prisma/schema.prisma`, `prisma/migrations/20260823070000_household_first_run/`, `lib/auth/*`, `lib/services/household.ts`, `lib/play/firstRun.ts`, `components/{auth,household,onboarding,play}/*`, `app/{household,privacy,(auth),api/household,api/auth}/*`, `scripts/migrate-household.ts`, `docs/MASTER_VISION_PLAN.md`.
+- Not legal advice: consent is checkbox + timestamp, not FTC verifiable consent. Dashboard/email/PDF still later.
 
 ### 2026-08-23 — Mission Loop v1 (pins + board + subject sessions)
 

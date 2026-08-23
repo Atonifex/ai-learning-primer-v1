@@ -1,14 +1,9 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { getCurrentUser } from "../../../lib/auth/session";
-import { getProfile } from "../../../lib/services/profile";
+import { requireChildPage } from "../../../lib/auth/pageGuards";
 import { getSkillProgressOverview } from "../../../lib/services/progress";
 
 export default async function SkillsProgressPage() {
-  const user = await getCurrentUser();
-  if (!user) redirect("/login");
-  const profile = await getProfile(user.userId);
-  if (!profile) redirect("/onboarding");
+  const { profile } = await requireChildPage();
 
   const skills = await getSkillProgressOverview(profile.id);
 

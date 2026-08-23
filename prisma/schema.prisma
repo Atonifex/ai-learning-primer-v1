@@ -6,23 +6,51 @@ datasource db {
   provider = "postgresql"
 }
 
+enum UserRole {
+  PARENT
+  CHILD
+}
+
+/// One parent account + one or more child captain logins (MASTER §4.5).
+model Household {
+  id                  String           @id @default(cuid())
+  parentUserId        String           @unique
+  parent              User             @relation("HouseholdParent", fields: [parentUserId], references: [id])
+  coppaConsentAt      DateTime?
+  coppaConsentVersion String?
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
+  members             User[]           @relation("HouseholdMembers")
+  learnerProfiles     LearnerProfile[]
+}
+
 model User {
-  id             String          @id @default(cuid())
-  email          String          @unique
-  passwordHash   String
-  createdAt      DateTime        @default(now())
-  learnerProfile LearnerProfile?
+  id              String          @id @default(cuid())
+  email           String?         @unique
+  username        String?         @unique
+  passwordHash    String
+  role            UserRole        @default(PARENT)
+  householdId     String?
+  household       Household?      @relation("HouseholdMembers", fields: [householdId], references: [id])
+  ownedHousehold  Household?      @relation("HouseholdParent")
+  createdAt       DateTime        @default(now())
+  learnerProfile  LearnerProfile?
 }
 
 model LearnerProfile {
   id                 String              @id @default(cuid())
   userId             String              @unique
   user               User                @relation(fields: [userId], references: [id])
+  householdId        String
+  household          Household           @relation(fields: [householdId], references: [id])
   displayName        String?
   /// Organizational / enrolled grade (3–8). Curriculum catalogs may still be G3-first.
   gradeBand          String              @default("3")
   /// Dialogue / passage reading target. Defaults to gradeBand at onboarding; may diverge later (placement).
   readingLevel       String              @default("3")
+  /// First-run director: video → name → move → talk → work → complete.
+  firstRunStep       String              @default("video")
+  introSeenAt        DateTime?
   primarySubjectSlug String              @default("math_g3")
   activeLanguage     Language?
   currentLevel       Level?

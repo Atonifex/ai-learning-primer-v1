@@ -1,7 +1,5 @@
-import { redirect } from "next/navigation";
 import Link from "next/link";
-import { getCurrentUser } from "../../lib/auth/session";
-import { getProfile } from "../../lib/services/profile";
+import { requireChildPage } from "../../lib/auth/pageGuards";
 import { listSessions } from "../../lib/services/session";
 import { SUBJECT_DISPLAY_NAMES } from "../../lib/constants/subjects";
 import type { SessionData } from "../../lib/types";
@@ -28,11 +26,7 @@ function formatDate(date: Date) {
 }
 
 export default async function SessionsPage() {
-  const user = await getCurrentUser();
-  if (!user) redirect("/login");
-
-  const profile = await getProfile(user.userId);
-  if (!profile) redirect("/onboarding");
+  const { profile } = await requireChildPage();
 
   const sessions = await listSessions(profile.id);
   const activeSessions = sessions.filter((s) => s.status === "ACTIVE");

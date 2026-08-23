@@ -53,6 +53,7 @@ export interface SessionChapterContext {
 
 export interface SessionData {
   id: string;
+  learnerProfileId: string;
   /** Null for G3 core subjects; set only when a world-language subject is active. */
   language: Language | null;
   subjectSlug: string;
@@ -70,6 +71,9 @@ export interface LearnerProfileData {
   gradeBand: string;
   /** Dialogue/passage reading target (grade string). Defaults to gradeBand at onboarding. */
   readingLevel: string;
+  firstRunStep: string;
+  introSeenAt: Date | null;
+  householdId: string;
   primarySubjectSlug: string;
   goals: string;
   interests: string[];

@@ -1,32 +1,34 @@
 import type { Prisma } from "@prisma/client";
 import { prisma } from "../db/prisma";
 import {
+  coreSubjectSlugsForGrade,
   GRADE_3_CORE_SUBJECT_SLUGS,
   type Grade3SubjectSlug,
+  type PlayableCoreSubjectSlug,
 } from "../constants/subjects";
 import type { EnrolledSubject } from "../types";
 
 /**
- * Enroll a learner in all G3 core subjects in one transaction. Idempotent —
- * if the learner is already enrolled in a subject, that row is preserved.
- *
- * Throws if any of the core subjects is missing from the DB — that means the
- * seed has not been run (see `npm run db:seed`).
+ * Enroll a learner in the four core subjects for their catalog grade.
+ * Idempotent — existing rows are kept. Throws if those Subject rows are
+ * missing (run `npm run db:seed`).
  */
-export async function enrollLearnerInGrade3CoreSubjects(
+export async function enrollLearnerInCoreSubjects(
   tx: Prisma.TransactionClient,
-  learnerProfileId: string
+  learnerProfileId: string,
+  gradeBand: string
 ): Promise<void> {
+  const slugs = [...coreSubjectSlugsForGrade(gradeBand)];
   const subjects = await tx.subject.findMany({
-    where: { slug: { in: [...GRADE_3_CORE_SUBJECT_SLUGS] } },
+    where: { slug: { in: slugs } },
     select: { id: true, slug: true },
   });
 
-  if (subjects.length !== GRADE_3_CORE_SUBJECT_SLUGS.length) {
+  if (subjects.length !== slugs.length) {
     const found = new Set(subjects.map((s) => s.slug));
-    const missing = GRADE_3_CORE_SUBJECT_SLUGS.filter((s) => !found.has(s));
+    const missing = slugs.filter((s) => !found.has(s));
     throw new Error(
-      `Cannot enroll learner — missing Grade 3 core subjects: ${missing.join(
+      `Cannot enroll learner — missing core subjects: ${missing.join(
         ", "
       )}. Run \`npm run db:seed\`.`
     );
@@ -40,6 +42,14 @@ export async function enrollLearnerInGrade3CoreSubjects(
     })),
     skipDuplicates: true,
   });
+}
+
+/** @deprecated Prefer enrollLearnerInCoreSubjects(tx, id, gradeBand) */
+export async function enrollLearnerInGrade3CoreSubjects(
+  tx: Prisma.TransactionClient,
+  learnerProfileId: string
+): Promise<void> {
+  await enrollLearnerInCoreSubjects(tx, learnerProfileId, "3");
 }
 
 export async function listEnrolledSubjects(
@@ -64,4 +74,12 @@ export function isGrade3CoreSubjectSlug(
   slug: string
 ): slug is Grade3SubjectSlug {
   return (GRADE_3_CORE_SUBJECT_SLUGS as readonly string[]).includes(slug);
+}
+
+export function isEnrolledCoreSubjectSlug(
+  slug: string
+): slug is PlayableCoreSubjectSlug {
+  return (
+    slug.endsWith("_g3") || slug.endsWith("_g4")
+  );
 }

@@ -1,26 +1,27 @@
 import "dotenv/config";
 import { prisma } from "../../lib/db/prisma";
-import { createProfile } from "../../lib/services/profile";
+import { addCaptain, createParentWithHousehold } from "../../lib/services/household";
 import { startSession, getSession } from "../../lib/services/session";
 import { buildSystemPrompt } from "../../lib/ai/contextBuilder";
 import {
   formatStandardsBlock,
   getStandardCodesForSubject,
 } from "../../lib/services/standardsCatalog";
+import bcrypt from "bcryptjs";
 
 async function main() {
-  // 1. Create a throwaway user (Auth normally does this).
   const email = `smoke_${Date.now()}@primer.local`;
-  const user = await prisma.user.create({
-    data: { email, passwordHash: "smoke-test-hash" },
-    select: { id: true },
+  const { parent } = await createParentWithHousehold({
+    email,
+    passwordHash: await bcrypt.hash("smoke-parent-pass", 12),
+    coppaConsent: true,
   });
 
-  // 2. Create profile via the new transactional onboarding.
-  const profile = await createProfile(user.id, {
+  const { profile, child } = await addCaptain({
+    parentUserId: parent.id,
+    username: `smoke_${Date.now().toString().slice(-8)}`,
+    pin: "2468",
     displayName: "Smokey",
-    goals: "Get sharp at multiplication and write good log entries.",
-    interests: ["Animals", "Ocean", "Mysteries"],
   });
   console.log("PROFILE:", {
     id: profile.id,
@@ -113,7 +114,9 @@ async function main() {
   await prisma.session.deleteMany({ where: { learnerProfileId: profile.id } });
   await prisma.memoryItem.deleteMany({ where: { learnerProfileId: profile.id } });
   await prisma.learnerProfile.delete({ where: { id: profile.id } });
-  await prisma.user.delete({ where: { id: user.id } });
+  await prisma.user.delete({ where: { id: child.id } });
+  await prisma.household.delete({ where: { parentUserId: parent.id } });
+  await prisma.user.delete({ where: { id: parent.id } });
   console.log("CLEANUP: ok");
 }
 

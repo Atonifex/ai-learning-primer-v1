@@ -16,6 +16,9 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 export async function POST(req: NextRequest) {
   const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (user.role !== "CHILD") {
+    return NextResponse.json({ error: "Sign in as a captain to play." }, { status: 403 });
+  }
 
   if (!process.env.OPENAI_API_KEY) {
     console.error("TTS failed: OPENAI_API_KEY missing");

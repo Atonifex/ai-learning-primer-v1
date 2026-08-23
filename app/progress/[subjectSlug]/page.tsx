@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
-import { getCurrentUser } from "../../../lib/auth/session";
-import { getProfile } from "../../../lib/services/profile";
+import { notFound } from "next/navigation";
+import { requireChildPage } from "../../../lib/auth/pageGuards";
 import { getSubjectStandardsProgress } from "../../../lib/services/progress";
 
 interface PageProps {
@@ -10,10 +9,7 @@ interface PageProps {
 
 export default async function SubjectProgressPage({ params }: PageProps) {
   const { subjectSlug } = await params;
-  const user = await getCurrentUser();
-  if (!user) redirect("/login");
-  const profile = await getProfile(user.userId);
-  if (!profile) redirect("/onboarding");
+  const { profile } = await requireChildPage();
 
   const data = await getSubjectStandardsProgress(profile.id, subjectSlug);
   if (!data) notFound();

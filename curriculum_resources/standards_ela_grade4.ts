@@ -1,4 +1,4 @@
-import type { SubjectSeed } from "./types";
+import type { SubjectSeed } from "../prisma/seeds/types";
 
 export const standardsElaGrade4: SubjectSeed = {
   slug: "ela_g4",

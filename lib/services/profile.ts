@@ -7,15 +7,21 @@ import type {
   Level,
 } from "../types";
 import {
-  DEFAULT_PRIMARY_SUBJECT_SLUG,
-  GRADE_3_CORE_SUBJECT_SLUGS,
+  coreSubjectSlugsForGrade,
+  defaultPrimarySubjectSlug,
 } from "../constants/subjects";
 import {
   DEFAULT_GRADE_BAND,
   parseLearnerGradeBand,
   type LearnerGradeBand,
 } from "../constants/grades";
-import { enrollLearnerInGrade3CoreSubjects } from "./learnerSubjects";
+import {
+  applyFirstRunEvent,
+  parseFirstRunStep,
+  type FirstRunEvent,
+  type FirstRunStep,
+} from "../play/firstRun";
+import { enrollLearnerInCoreSubjects } from "./learnerSubjects";
 import { ensureLearnerStoryChain } from "./storyCurriculum";
 
 export class ProfileAlreadyExistsError extends Error {
@@ -49,6 +55,9 @@ function toLearnerProfileData(profile: ProfileWithSubjects): LearnerProfileData 
     displayName: profile.displayName,
     gradeBand: profile.gradeBand,
     readingLevel: profile.readingLevel,
+    firstRunStep: profile.firstRunStep,
+    introSeenAt: profile.introSeenAt,
+    householdId: profile.householdId,
     primarySubjectSlug: profile.primarySubjectSlug,
     goals: profile.goals,
     interests: profile.interests,
@@ -96,6 +105,7 @@ export interface CreateProfileInput {
   gradeBand?: string | null;
   /** Optional override; defaults to gradeBand. */
   readingLevel?: string | null;
+  firstRunStep?: FirstRunStep;
   goals?: string;
   interests?: string[];
   primarySubjectSlug?: string;
@@ -106,7 +116,8 @@ export interface CreateProfileInput {
  *   1. Create LearnerProfile with gradeBand + readingLevel (defaults to grade),
  *      primarySubjectSlug, optional displayName.
  *      Goals/interests default when omitted (UI is name + grade + dive-in).
- *   2. Enroll learner in all 4 Grade 3 core subjects (MVP curriculum still G3).
+ *   2. Enroll learner in the four core subjects for their catalog grade
+ *      (G3 if gradeBand is 3; G4 if 4–8 until later catalogs exist).
  *   3. Create the shared StoryWorld + StoryArc + Chapter 1 ("ensureLearnerStoryChain").
  *
  * Throws `ProfileAlreadyExistsError` if the user already has a profile.
@@ -115,14 +126,6 @@ export async function createProfile(
   userId: string,
   data: CreateProfileInput
 ): Promise<LearnerProfileData> {
-  const primarySubjectSlug =
-    data.primarySubjectSlug &&
-    (GRADE_3_CORE_SUBJECT_SLUGS as readonly string[]).includes(
-      data.primarySubjectSlug
-    )
-      ? data.primarySubjectSlug
-      : DEFAULT_PRIMARY_SUBJECT_SLUG;
-
   const gradeBand: LearnerGradeBand = parseLearnerGradeBand(
     data.gradeBand,
     DEFAULT_GRADE_BAND
@@ -131,6 +134,12 @@ export async function createProfile(
     data.readingLevel,
     gradeBand
   );
+  const coreSlugs = coreSubjectSlugsForGrade(gradeBand);
+  const primarySubjectSlug =
+    data.primarySubjectSlug &&
+    (coreSlugs as readonly string[]).includes(data.primarySubjectSlug)
+      ? data.primarySubjectSlug
+      : defaultPrimarySubjectSlug(gradeBand);
 
   const profileId = await prisma.$transaction(async (tx) => {
     const existing = await tx.learnerProfile.findUnique({
@@ -139,12 +148,22 @@ export async function createProfile(
     });
     if (existing) throw new ProfileAlreadyExistsError();
 
+    const owner = await tx.user.findUnique({
+      where: { id: userId },
+      select: { householdId: true, role: true },
+    });
+    if (!owner?.householdId) {
+      throw new Error("Captain must belong to a household before a profile is created");
+    }
+
     const profile = await tx.learnerProfile.create({
       data: {
         userId,
+        householdId: owner.householdId,
         displayName: data.displayName?.trim() || null,
         gradeBand,
         readingLevel,
+        firstRunStep: data.firstRunStep ?? "video",
         primarySubjectSlug,
         activeLanguage: null,
         currentLevel: null,
@@ -154,7 +173,7 @@ export async function createProfile(
       select: { id: true },
     });
 
-    await enrollLearnerInGrade3CoreSubjects(tx, profile.id);
+    await enrollLearnerInCoreSubjects(tx, profile.id, gradeBand);
     return profile.id;
   });
 
@@ -181,6 +200,10 @@ export async function createProfile(
 
 export interface UpdateProfileInput {
   readingLevel?: string | null;
+  displayName?: string | null;
+  firstRunEvent?: FirstRunEvent;
+  firstRunStep?: FirstRunStep;
+  introSeenAt?: Date | null;
 }
 
 /**
@@ -193,7 +216,7 @@ export async function updateProfile(
 ): Promise<LearnerProfileData> {
   const existing = await prisma.learnerProfile.findUnique({
     where: { userId },
-    select: { id: true },
+    select: { id: true, firstRunStep: true },
   });
   if (!existing) {
     throw new Error("Profile not found");
@@ -204,10 +227,27 @@ export async function updateProfile(
       ? parseLearnerGradeBand(data.readingLevel, DEFAULT_GRADE_BAND)
       : undefined;
 
+  const currentStep = parseFirstRunStep(existing.firstRunStep);
+  let firstRunStep = data.firstRunStep;
+  if (data.firstRunEvent) {
+    firstRunStep = applyFirstRunEvent(currentStep, data.firstRunEvent);
+  }
+  const introSeenAt =
+    data.introSeenAt !== undefined
+      ? data.introSeenAt
+      : data.firstRunEvent === "video_done"
+        ? new Date()
+        : undefined;
+
   const profile = await prisma.learnerProfile.update({
     where: { userId },
     data: {
       ...(readingLevel != null ? { readingLevel } : {}),
+      ...(data.displayName !== undefined
+        ? { displayName: data.displayName?.trim() || null }
+        : {}),
+      ...(firstRunStep != null ? { firstRunStep } : {}),
+      ...(introSeenAt !== undefined ? { introSeenAt } : {}),
     },
     include: {
       learnerSubjects: {

@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getCurrentUser } from "../../../../../lib/auth/session";
-import { getProfile } from "../../../../../lib/services/profile";
+import {
+  childProfileResponse,
+  forbidIfForeignSession,
+  isNextResponse,
+} from "../../../../../lib/auth/apiChild";
 import { getSession } from "../../../../../lib/services/session";
 import { TUTORIAL_QUIZ_SLUG } from "../../../../../lib/play/tutorialQuizSlug";
 import {
@@ -13,13 +16,13 @@ export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const user = await getCurrentUser();
-  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  const profile = await getProfile(user.userId);
-  if (!profile) return NextResponse.json({ error: "No profile found" }, { status: 404 });
+  const profile = await childProfileResponse();
+  if (isNextResponse(profile)) return profile;
   const { id: sessionId } = await params;
   const session = await getSession(sessionId);
   if (!session) return NextResponse.json({ error: "Session not found" }, { status: 404 });
+  const foreign = forbidIfForeignSession(session, profile.id);
+  if (foreign) return foreign;
 
   const slug = req.nextUrl.searchParams.get("slug")?.trim() || TUTORIAL_QUIZ_SLUG;
   const completed = await hasCompletedActivitySlug(profile.id, slug);
@@ -30,15 +33,14 @@ export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const user = await getCurrentUser();
-  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-
-  const profile = await getProfile(user.userId);
-  if (!profile) return NextResponse.json({ error: "No profile found" }, { status: 404 });
+  const profile = await childProfileResponse();
+  if (isNextResponse(profile)) return profile;
 
   const { id: sessionId } = await params;
   const session = await getSession(sessionId);
   if (!session) return NextResponse.json({ error: "Session not found" }, { status: 404 });
+  const foreign = forbidIfForeignSession(session, profile.id);
+  if (foreign) return foreign;
 
   const body = (await req.json().catch(() => null)) as
     | {

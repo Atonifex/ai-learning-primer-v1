@@ -1,17 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getCurrentUser } from "../../../../../../../lib/auth/session";
-import { getProfile } from "../../../../../../../lib/services/profile";
+import { childProfileResponse, isNextResponse } from "../../../../../../../lib/auth/apiChild";
 import { submitGeneratedMiniQuiz } from "../../../../../../../lib/services/learningActivities";
 
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ id: string; activityId: string }> }
 ) {
-  const user = await getCurrentUser();
-  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-
-  const profile = await getProfile(user.userId);
-  if (!profile) return NextResponse.json({ error: "No profile found" }, { status: 404 });
+  const profile = await childProfileResponse();
+  if (isNextResponse(profile)) return profile;
 
   const { id: sessionId, activityId } = await params;
   const body = (await req.json()) as {

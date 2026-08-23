@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { LIVE_INTERACTION_MODEL } from "./models";
 import type { ChatCompletionMessageParam } from "openai/resources/chat/completions";
 import {
   buildSystemPrompt,
@@ -35,7 +36,7 @@ import type {
   StreamChunk,
   MessageData,
 } from "../types";
-import { LIVE_INTERACTION_MODEL } from "./models";
+import { storySpineSubjectSlug } from "../constants/subjects";
 import { expandHiddenTurn, isHiddenTurn } from "../play/hiddenTurns";
 
 function extractCoherenceMap(
@@ -49,10 +50,13 @@ function extractCoherenceMap(
     planner.subjectPlans && typeof planner.subjectPlans === "object"
       ? (planner.subjectPlans as Record<string, unknown>)
       : null;
+  const plannerKey = storySpineSubjectSlug(subjectSlug);
   const subjectPlan =
-    subjectPlans && typeof subjectPlans[subjectSlug] === "object"
-      ? (subjectPlans[subjectSlug] as CoherenceMapBlockInput["subjectPlan"])
-      : undefined;
+    subjectPlans && typeof subjectPlans[plannerKey] === "object"
+      ? (subjectPlans[plannerKey] as CoherenceMapBlockInput["subjectPlan"])
+      : subjectPlans && typeof subjectPlans[subjectSlug] === "object"
+        ? (subjectPlans[subjectSlug] as CoherenceMapBlockInput["subjectPlan"])
+        : undefined;
   return {
     sharedBeat: typeof planner.sharedBeat === "string" ? planner.sharedBeat : undefined,
     anchorQuestion:

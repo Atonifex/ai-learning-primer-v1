@@ -50,6 +50,7 @@ export async function getActiveSession(profileId: string): Promise<string | null
 function mapSessionToData(
   session: {
     id: string;
+    learnerProfileId: string;
     targetLanguage: string | null;
     subject: { slug: string };
     status: string;
@@ -79,6 +80,7 @@ function mapSessionToData(
 ): SessionData {
   return {
     id: session.id,
+    learnerProfileId: session.learnerProfileId,
     language: (session.targetLanguage as Language | null) ?? null,
     subjectSlug: session.subject.slug,
     status: session.status as SessionData["status"],

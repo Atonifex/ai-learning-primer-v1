@@ -32,6 +32,10 @@ const DEFAULT_CATALOG_VERSION_BY_SLUG: Record<string, string> = {
   ela_g3: "v2",
   science_g3: "v1",
   social_studies_g3: "v1",
+  math_g4: "v1",
+  ela_g4: "v2",
+  science_g4: "v1",
+  social_studies_g4: "v1",
 };
 
 /** Six-chapter spine: curriculum wreck+food planners for Ch1–Ch2, shared templates for Ch3–Ch6. */

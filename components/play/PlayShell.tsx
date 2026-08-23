@@ -9,7 +9,7 @@ import { HIDDEN_TURN } from "../../lib/play/hiddenTurns";
 import { missionByPin } from "../../lib/play/missions";
 import { TUTORIAL_QUIZ_SLUG } from "../../lib/play/tutorialQuizSlug";
 import type { StillKey } from "../../lib/play/stills";
-import { SUBJECT_DISPLAY_NAMES, type Grade3SubjectSlug } from "../../lib/constants/subjects";
+import { SUBJECT_DISPLAY_NAMES, type PlayableCoreSubjectSlug } from "../../lib/constants/subjects";
 import { formatHiddenMinutes, secondsBetween } from "../../lib/services/timeMath";
 import IntroCinematic from "./IntroCinematic";
 import ResourceHud from "./ResourceHud";
@@ -18,6 +18,9 @@ import DialogueCutscene from "./DialogueCutscene";
 import QuizOverlay from "./QuizOverlay";
 import ReflectionOverlay from "./ReflectionOverlay";
 import MissionBoard from "./MissionBoard";
+import CaptainAwakening from "../onboarding/CaptainAwakening";
+import FirstRunCoach from "./FirstRunCoach";
+import { useFirstRunTutorial } from "./useFirstRunTutorial";
 import { useSessionStream } from "./useSessionStream";
 import { useLearningLoop } from "./useLearningLoop";
 import { useMissions } from "./useMissions";
@@ -25,11 +28,10 @@ import { unlockRhoAudio } from "../../lib/play/rhoAudio";
 
 const OverworldCanvas = dynamic(() => import("./OverworldCanvas"), { ssr: false });
 
-const INTRO_KEY = "primer.introSkipped";
 const TIMER_KEY = "primer.showTimers";
 
 function subjectBadge(slug: string): string {
-  const full = SUBJECT_DISPLAY_NAMES[slug as Grade3SubjectSlug];
+  const full = SUBJECT_DISPLAY_NAMES[slug as PlayableCoreSubjectSlug];
   if (full) return full.replace("Grade 3 ", "");
   return slug.replace("_g3", "").replaceAll("_", " ");
 }
@@ -40,18 +42,20 @@ export default function PlayShell(props: {
   subjectSlug: string;
   sessionStartedAt: string;
   initialMission?: string;
+  firstRunStep?: string;
 }) {
   const router = useRouter();
-  const captain = props.displayName.trim() || "Captain";
+  const [captainName, setCaptainName] = useState(
+    () => props.displayName.trim() || "Captain"
+  );
+  const captain = captainName;
+  const firstRun = useFirstRunTutorial(props.firstRunStep ?? "video", captain);
   const missions = useMissions();
-  const [showIntro, setShowIntro] = useState(true);
   const [dialogueOpen, setDialogueOpen] = useState(false);
   const [boardOpen, setBoardOpen] = useState(false);
   const [startingId, setStartingId] = useState<string | null>(null);
   const [talkedToWreck, setTalkedToWreck] = useState(false);
-  const [hint, setHint] = useState<string | null>(
-    "Tap the wreck — or use WASD. Rho follows you."
-  );
+  const [hint, setHint] = useState<string | null>(null);
   const [confirmLeave, setConfirmLeave] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const [showTimers, setShowTimers] = useState(false);
@@ -113,7 +117,6 @@ export default function PlayShell(props: {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (window.localStorage.getItem(INTRO_KEY) === "1") setShowIntro(false);
     setShowTimers(window.localStorage.getItem(TIMER_KEY) === "1");
   }, []);
 
@@ -131,16 +134,16 @@ export default function PlayShell(props: {
     if (!stream.loaded) return;
     if (stream.messages.length > 0) {
       setTalkedToWreck(true);
-      setShowIntro(false);
     }
   }, [stream.loaded, stream.messages.length]);
 
   useEffect(() => {
     const missionId = props.initialMission;
-    if (!missionId || openedMissionRef.current === missionId || showIntro) return;
+    if (!missionId || openedMissionRef.current === missionId) return;
+    if (!firstRun.complete) return;
     openedMissionRef.current = missionId;
     void beginMission(missionId, { talk: true });
-  }, [beginMission, props.initialMission, showIntro]);
+  }, [beginMission, props.initialMission, firstRun.complete]);
 
   useEffect(() => {
     if (stream.streaming) return;
@@ -164,28 +167,25 @@ export default function PlayShell(props: {
   }, [learning, stream.generatedActivities]);
 
   function skipIntro() {
-    window.localStorage.setItem(INTRO_KEY, "1");
-    setShowIntro(false);
+    void firstRun.advance("video_done");
   }
 
   function openWreckTalk() {
     unlockRhoAudio();
     setDialogueOpen(true);
     setHint(null);
+    if (firstRun.step === "move") {
+      void firstRun.advance("walked_to_wreck");
+    }
     if (!talkedToWreck && !wreckOpeningRef.current) {
       wreckOpeningRef.current = true;
       setTalkedToWreck(true);
-      pendingQuizRef.current = true;
+      const waitForSpeech = firstRun.step === "move" || firstRun.step === "talk";
+      pendingQuizRef.current = !waitForSpeech;
       void stream.sendMessage(HIDDEN_TURN.wreckApproach);
-      window.setTimeout(() => {
-        if (!pendingQuizRef.current) return;
-        pendingQuizRef.current = false;
-        void learning.openTutorialQuiz().catch((e: unknown) => {
-          setHint(e instanceof Error ? e.message : "Could not open the crate lid.");
-        });
-      }, 8000);
       return;
     }
+    if (firstRun.step === "talk") return;
     if (!learning.quizDone && !learning.showQuiz) {
       void learning.openTutorialQuiz().catch((e: unknown) => {
         setHint(e instanceof Error ? e.message : "Could not open the crate lid.");
@@ -194,6 +194,14 @@ export default function PlayShell(props: {
     }
     if (learning.quizDone && !learning.reflectionDone) {
       void learning.openReflection();
+    }
+  }
+
+  function onCaptainSend(content: string) {
+    void stream.sendMessage(content);
+    if (firstRun.step === "talk") {
+      pendingQuizRef.current = true;
+      void firstRun.advance("spoke_to_rho");
     }
   }
 
@@ -213,6 +221,9 @@ export default function PlayShell(props: {
 
   function onWander() {
     if (talkedToWreck || dialogueOpen) return;
+    if (firstRun.step === "video" || firstRun.step === "name" || firstRun.step === "move") {
+      return;
+    }
     unlockRhoAudio();
     setDialogueOpen(true);
     setHint("Rho is calling.");
@@ -246,10 +257,12 @@ export default function PlayShell(props: {
 
   const unlockedPins = useMemo(
     () =>
-      missions.missions
-        .filter((m) => m.status !== "locked" && m.pinId !== "wreck")
-        .map((m) => m.pinId),
-    [missions.missions]
+      firstRun.complete
+        ? missions.missions
+            .filter((m) => m.status !== "locked" && m.pinId !== "wreck")
+            .map((m) => m.pinId)
+        : [],
+    [firstRun.complete, missions.missions]
   );
 
   const portrait: StillKey = stream.streaming
@@ -258,7 +271,7 @@ export default function PlayShell(props: {
       ? "rhoPortraitEncouraging"
       : "rhoPortraitNeutral";
 
-  if (showIntro) {
+  if (firstRun.step === "video") {
     return (
       <div className="h-screen">
         <IntroCinematic onSkip={skipIntro} />
@@ -266,11 +279,26 @@ export default function PlayShell(props: {
     );
   }
 
+  if (firstRun.step === "name") {
+    return (
+      <div className="h-screen">
+        <CaptainAwakening
+          onSaved={(name) => {
+            setCaptainName(name);
+            void firstRun.advance("name_saved");
+          }}
+        />
+      </div>
+    );
+  }
+
+  const chrome = firstRun.chrome;
+
   return (
     <div className="relative h-screen overflow-hidden bg-[#0a3340]">
       <OverworldCanvas
         paused={dialogueOpen || learning.showQuiz || learning.showReflection || boardOpen}
-        quizDone={learning.quizDone || missions.wreckQuizDone}
+        quizDone={firstRun.complete && (learning.quizDone || missions.wreckQuizDone)}
         talkedToWreck={talkedToWreck}
         unlockedPins={unlockedPins}
         onArriveAtPin={onArriveAtPin}
@@ -280,59 +308,77 @@ export default function PlayShell(props: {
         captainName={captain}
         rations={missions.rations}
         xp={missions.xp}
-        hint={hint}
-        timerLabel={showTimers ? formatHiddenMinutes(elapsedSeconds) : null}
+        hint={firstRun.coach ? null : hint}
+        timerLabel={chrome.leave && showTimers ? formatHiddenMinutes(elapsedSeconds) : null}
       />
 
       <header className="pointer-events-none absolute right-3 top-3 z-[60] flex flex-wrap items-center justify-end gap-2">
-        <span className="rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100/70">
-          {subjectBadge(props.subjectSlug)}
-        </span>
-        <button
-          type="button"
-          onClick={() => setBoardOpen(true)}
-          className="pointer-events-auto rounded-full bg-amber-700/90 px-3 py-1.5 text-xs text-amber-50 hover:bg-amber-600"
-        >
-          Jobs
-        </button>
-        <Link
-          href="/saga"
-          className="pointer-events-auto rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100 hover:bg-[#1a120c]"
-        >
-          Saga
-        </Link>
-        <button
-          type="button"
-          onClick={() => {
-            const next = !showTimers;
-            setShowTimers(next);
-            window.localStorage.setItem(TIMER_KEY, next ? "1" : "0");
-          }}
-          className="pointer-events-auto rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100/70 hover:bg-[#1a120c]"
-        >
-          {showTimers ? "Hide time" : "Time"}
-        </button>
-        <Link
-          href="/progress"
-          className="pointer-events-auto rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100 hover:bg-[#1a120c]"
-        >
-          Progress
-        </Link>
-        <button
-          type="button"
-          onClick={() => setConfirmLeave(true)}
-          className="pointer-events-auto rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100 hover:bg-[#1a120c]"
-        >
-          Leave
-        </button>
+        {chrome.subjectBadge && (
+          <span className="rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100/70">
+            {subjectBadge(props.subjectSlug)}
+          </span>
+        )}
+        {chrome.jobs && (
+          <button
+            type="button"
+            onClick={() => setBoardOpen(true)}
+            className="pointer-events-auto rounded-full bg-amber-700/90 px-3 py-1.5 text-xs text-amber-50 hover:bg-amber-600"
+          >
+            Jobs
+          </button>
+        )}
+        {chrome.saga && (
+          <Link
+            href="/saga"
+            className="pointer-events-auto rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100 hover:bg-[#1a120c]"
+          >
+            Saga
+          </Link>
+        )}
+        {chrome.leave && (
+          <button
+            type="button"
+            onClick={() => {
+              const next = !showTimers;
+              setShowTimers(next);
+              window.localStorage.setItem(TIMER_KEY, next ? "1" : "0");
+            }}
+            className="pointer-events-auto rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100/70 hover:bg-[#1a120c]"
+          >
+            {showTimers ? "Hide time" : "Time"}
+          </button>
+        )}
+        {chrome.progress && (
+          <Link
+            href="/progress"
+            className="pointer-events-auto rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100 hover:bg-[#1a120c]"
+          >
+            Progress
+          </Link>
+        )}
+        {chrome.leave && (
+          <button
+            type="button"
+            onClick={() => setConfirmLeave(true)}
+            className="pointer-events-auto rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100 hover:bg-[#1a120c]"
+          >
+            Leave
+          </button>
+        )}
       </header>
 
-      <div className="pointer-events-none absolute bottom-4 left-3 z-20">
-        <RhoRadio
-          onCall={callRho}
-          disabled={learning.showQuiz || learning.showReflection}
-        />
-      </div>
+      {chrome.radio && (
+        <div className="pointer-events-none absolute bottom-4 left-3 z-20">
+          <RhoRadio
+            onCall={callRho}
+            disabled={learning.showQuiz || learning.showReflection}
+          />
+        </div>
+      )}
+
+      {firstRun.coach && !dialogueOpen && !learning.showQuiz && (
+        <FirstRunCoach text={firstRun.coach} />
+      )}
 
       {dialogueOpen && (
         <DialogueCutscene
@@ -343,7 +389,7 @@ export default function PlayShell(props: {
           thinkingLabel={stream.streaming ? "Rho is listening…" : ""}
           portrait={portrait}
           storyUi={stream.storyUi}
-          onSend={stream.sendMessage}
+          onSend={onCaptainSend}
           onClose={() => setDialogueOpen(false)}
           onBranchResolved={(id) => router.push(`/learn/${id}`)}
         />
@@ -375,7 +421,12 @@ export default function PlayShell(props: {
             setDialogueOpen(true);
             setHint("The island is a little bigger than it looked.");
             void missions.refresh();
-            if (wreck && !learning.reflectionDone) void learning.openReflection();
+            if (wreck && firstRun.step === "work") {
+              void firstRun.advance("work_done");
+            }
+            if (wreck && !learning.reflectionDone && firstRun.complete) {
+              void learning.openReflection();
+            }
           }}
         />
       )}

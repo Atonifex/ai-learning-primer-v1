@@ -1,7 +1,5 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { getCurrentUser } from "../../lib/auth/session";
-import { getProfile } from "../../lib/services/profile";
+import { requireChildPage } from "../../lib/auth/pageGuards";
 import {
   getLatestChapterReflection,
   getLearnerTimeSummary,
@@ -12,10 +10,7 @@ import {
 import { formatHiddenMinutes } from "../../lib/services/timeMath";
 
 export default async function ProgressPage() {
-  const user = await getCurrentUser();
-  if (!user) redirect("/login");
-  const profile = await getProfile(user.userId);
-  if (!profile) redirect("/onboarding");
+  const { profile } = await requireChildPage();
 
   const [subjects, skills, observations, crewLog, time] = await Promise.all([
     getSubjectProgressOverview(profile.id),

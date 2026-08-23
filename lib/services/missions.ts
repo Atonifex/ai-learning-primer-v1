@@ -11,6 +11,7 @@ import {
 import { hasCompletedActivitySlug, listCompletedActivitySlugs } from "../play/overlayQuiz";
 import { TUTORIAL_QUIZ_SLUG } from "../play/tutorialQuizSlug";
 import { hasCompletedChapterReflection } from "../play/chapterReflection";
+import { remapCoreSubjectToGrade } from "../constants/subjects";
 import { completeSession, startSession } from "./session";
 import { ensureLearnerStoryChain } from "./storyCurriculum";
 
@@ -100,9 +101,18 @@ export async function startMissionForLearner(params: {
     throw new Error(mission.lockReason || "That job is still locked.");
   }
 
+  const profile = await prisma.learnerProfile.findUnique({
+    where: { id: params.learnerProfileId },
+    select: { gradeBand: true },
+  });
+  const sessionSubjectSlug = remapCoreSubjectToGrade(
+    mission.subjectSlug,
+    profile?.gradeBand ?? "3"
+  );
+
   const { sessionId, switched } = await startOrContinueSubjectSession(
     params.learnerProfileId,
-    mission.subjectSlug
+    sessionSubjectSlug
   );
   return { sessionId, switched, mission };
 }
