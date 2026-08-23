@@ -1,5 +1,7 @@
 import { prisma } from "../db/prisma";
+import { filterTonightSliceCodes } from "../curriculum/tonightSlice";
 import { recordStandardObservation } from "../services/standardsProgress";
+import { stampActivityClock } from "../services/timeTracking";
 import type { GeneratedActivity } from "../types";
 import { hintsFromContent, parseMcItems } from "./quizItems";
 
@@ -8,6 +10,7 @@ export const TUTORIAL_QUIZ_SLUG = "g3-ma-wreck-number-forms";
 
 export type TutorialQuizPublic = GeneratedActivity & {
   hints: string[];
+  standardCodes: string[];
   completionId: string;
   alreadyCompleted: boolean;
   priorScore: number | null;
@@ -29,8 +32,14 @@ async function loadTutorialActivity() {
   if (!mc.length) {
     throw new Error(`Tutorial quiz "${TUTORIAL_QUIZ_SLUG}" has no multiple-choice items.`);
   }
-  const standardCode = activity.standardLinks[0]?.standard.code ?? "MA.3.NSO.1.1";
-  return { activity, mc, standardCode, hints: hintsFromContent(activity.content) };
+  const linked = activity.standardLinks.map((l) => l.standard.code);
+  const standardCodes = filterTonightSliceCodes(linked);
+  if (!standardCodes.length) {
+    throw new Error(
+      `Tutorial quiz "${TUTORIAL_QUIZ_SLUG}" has no §4.6 codes linked. Linked: ${linked.join(", ") || "(none)"}`
+    );
+  }
+  return { activity, mc, standardCodes, hints: hintsFromContent(activity.content) };
 }
 
 export async function hasCompletedTutorialQuiz(
@@ -54,8 +63,9 @@ export async function hasCompletedTutorialQuiz(
 
 export async function startTutorialOverlayQuiz(params: {
   learnerProfileId: string;
+  sessionId: string;
 }): Promise<TutorialQuizPublic> {
-  const { activity, mc, standardCode, hints } = await loadTutorialActivity();
+  const { activity, mc, standardCodes, hints } = await loadTutorialActivity();
 
   const done = await prisma.learningActivityCompletion.findFirst({
     where: {
@@ -69,7 +79,8 @@ export async function startTutorialOverlayQuiz(params: {
   if (done) {
     return {
       id: activity.id,
-      standardCode,
+      standardCode: standardCodes[0]!,
+      standardCodes,
       title: activity.displayName,
       instructions: activity.description,
       items: mc.map(({ id, question, options }) => ({ id, question, options })),
@@ -93,13 +104,20 @@ export async function startTutorialOverlayQuiz(params: {
       data: {
         learnerProfileId: params.learnerProfileId,
         learningActivityId: activity.id,
+        sessionId: params.sessionId,
       },
+    });
+  } else if (!open.sessionId) {
+    open = await prisma.learningActivityCompletion.update({
+      where: { id: open.id },
+      data: { sessionId: params.sessionId },
     });
   }
 
   return {
     id: activity.id,
-    standardCode,
+    standardCode: standardCodes[0]!,
+    standardCodes,
     title: activity.displayName,
     instructions: activity.description,
     items: mc.map(({ id, question, options }) => ({ id, question, options })),
@@ -122,8 +140,9 @@ export async function submitTutorialOverlayQuiz(params: {
   mastery: number;
   missed: string[];
   hints: string[];
+  standardCodes: string[];
 }> {
-  const { activity, mc, standardCode, hints } = await loadTutorialActivity();
+  const { activity, mc, standardCodes, hints } = await loadTutorialActivity();
 
   const completion = await prisma.learningActivityCompletion.findUnique({
     where: { id: params.completionId },
@@ -150,33 +169,39 @@ export async function submitTutorialOverlayQuiz(params: {
   }
   const total = mc.length;
   const score = total > 0 ? correct / total : 0;
+  const perStandard = Object.fromEntries(standardCodes.map((code) => [code, score]));
 
-  const updated = await prisma.learningActivityCompletion.update({
-    where: { id: completion.id },
-    data: {
-      completedAt: new Date(),
+  await stampActivityClock({
+    completionId: completion.id,
+    extra: {
+      sessionId: params.sessionId,
       score: score * 100,
-      perStandardCorrectness: { [standardCode]: score },
+      perStandardCorrectness: perStandard,
       evidenceWritten: true,
     },
   });
 
-  const observation = await recordStandardObservation({
-    sessionId: params.sessionId,
-    standardCode,
-    evidenceTier: "GUIDED",
-    sourceType: "ACTIVITY",
-    sourceId: updated.id,
-    correctness: score,
-    notes: `Tutorial overlay quiz ${activity.slug} completed`,
-  });
+  let lastMastery = 0;
+  for (const standardCode of standardCodes) {
+    const observation = await recordStandardObservation({
+      sessionId: params.sessionId,
+      standardCode,
+      evidenceTier: "GUIDED",
+      sourceType: "ACTIVITY",
+      sourceId: completion.id,
+      correctness: score,
+      notes: `Tutorial overlay quiz ${activity.slug} completed`,
+    });
+    lastMastery = observation.mastery;
+  }
 
   return {
     score: Math.round(score * 100),
     total,
     correct,
-    mastery: Math.round(observation.mastery),
+    mastery: Math.round(lastMastery),
     missed,
     hints,
+    standardCodes,
   };
 }

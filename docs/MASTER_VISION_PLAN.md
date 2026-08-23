@@ -971,14 +971,14 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 - [x] Speak-first mic in composer; STT when wired; short type fallback
 - [x] Mini-quiz overlay + luna ZPD (no static retry-only) — overlay is bank MC; ZPD is luna after submit + scaffold hints
 - [x] Time tracking: session + activity
-- [ ] **Chapter reflection** (spoken OK) persisted
-- [ ] Memory `STORY_BEAT` on complete
+- [x] **Chapter reflection** (spoken OK) persisted
+- [x] Memory `STORY_BEAT` on complete
 
 **Step 1 closeout (2026-08-22) — done / leftover / debt**
 
 Done: three-mode shell (intro → Pixi beach → dialogue cutscene → overlay quiz); Rho radio + follower; `gpt-5.6-luna` live turns; whisper STT (audio discarded); stills placeholders; session `startedAt`/`completedAt` + quiz `LearningActivityCompletion` start/end.
 
-Not this slice (still open above / P1+): chapter reflection, `STORY_BEAT` memory, TTS, parchment map overlay, Higgsfield mp4, real stills art, parent dashboard, mastery redesign, full-screen activity tools.
+Not this slice (still open above / P1+): TTS, parchment map overlay, Higgsfield mp4, real stills art, parent dashboard, mastery redesign, full-screen activity tools.
 
 Technical debt (defer to end of this plan unless a later step naturally clears it):
 1. Per-turn `generate_scene_image` is **disabled** (stills pack). Handler remains; re-enable for full-MVP dynamic scenes.
@@ -1117,6 +1117,11 @@ Technical debt (defer to end of this plan unless a later step naturally clears i
 | `lib/ai/models.ts` | Live model `gpt-5.6-luna` |
 | `app/api/stt/route.ts` | OpenAI STT; transcribe and discard |
 | `app/api/session/[id]/tutorial-quiz/route.ts` | Overlay salvage quiz start/submit |
+| `app/api/session/[id]/reflection/route.ts` | Chapter 1 crew log (spoken or short text) |
+| `lib/play/chapterReflection.ts` | Persist reflection + STORY_BEAT |
+| `lib/play/zpd.ts` | Hint → example → fade ladder |
+| `lib/services/timeTracking.ts` | Session + activity clocks (no daily cap) |
+| `lib/curriculum/tonightSlice.ts` | §4.6 code allow-list |
 | `lib/ai/contextBuilder.ts` | Prompt assembly |
 | `lib/ai/memoryExtractor.ts` | Memory |
 | `lib/ai/imageTool.ts` | Scenes (disabled on live turns until dynamic-stills MVP) |
@@ -1242,6 +1247,12 @@ I will: (1) move remaining ★ answers into §4, (2) write `docs/CHAPTER_1_BUILD
 
 
 Agents append here. Newest first.
+
+### 2026-08-23 — Learning truth in the shell
+
+- Live dialogue / ZPD hints stay on **`gpt-5.6-luna`**. `PLANNING_MODEL` exists for later unit/chapter authoring and is not used on turns. Overlay quiz miss walks hint → worked crate example → faded try (not a static retry loop). Completing the salvage quiz writes `StandardsEvidence` (GUIDED) against the activity’s real §4.6 codes (wreck quiz: `MA.3.NSO.1.1`).
+- Time: session wall-clock + per-activity `durationSeconds`; no daily cap; child HUD hidden unless they tap Time. Chapter 1 crew log (`g3-reflect-u1-ch1`) is spoken or short text, persisted on `LearningActivityCompletion.responseText` + `STORY_BEAT`. `/progress` shows recent observations, time, and the crew log. No parent email/PDF; mastery formula unchanged; no per-turn images.
+- Files: `lib/play/{tutorialQuiz,chapterReflection,zpd,hiddenTurns}.ts`, `lib/services/{timeTracking,progress,session}.ts`, `lib/ai/{models,contextBuilder}.ts`, `components/play/*`, `app/progress/page.tsx`, `app/api/session/[id]/reflection/route.ts`, `prisma/schema.prisma`, `docs/MASTER_VISION_PLAN.md`.
 
 ### 2026-08-22 — Three-mode playable shell (Step 1)
 

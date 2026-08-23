@@ -1,4 +1,5 @@
 import { prisma } from "../db/prisma";
+import { getLearnerTimeSummary } from "./timeTracking";
 
 export async function getSkillProgressOverview(profileId: string) {
   const rows = await prisma.skillProgress.findMany({
@@ -111,3 +112,47 @@ export async function getSubjectStandardsProgress(profileId: string, subjectSlug
     })),
   };
 }
+
+export async function getRecentObservations(profileId: string, limit = 8) {
+  const rows = await prisma.standardsEvidence.findMany({
+    where: { learnerProfileId: profileId },
+    orderBy: { createdAt: "desc" },
+    take: limit,
+    include: {
+      standard: { select: { code: true, description: true } },
+    },
+  });
+  return rows.map((row) => ({
+    id: row.id,
+    standardCode: row.standard.code,
+    description: row.standard.description,
+    evidenceTier: row.evidenceTier,
+    sourceType: row.sourceType,
+    correctness: row.correctness,
+    notes: row.notes,
+    createdAt: row.createdAt,
+  }));
+}
+
+export async function getLatestChapterReflection(profileId: string) {
+  const row = await prisma.learningActivityCompletion.findFirst({
+    where: {
+      learnerProfileId: profileId,
+      completedAt: { not: null },
+      responseText: { not: null },
+      learningActivity: { kind: "JOURNAL_PROMPT" },
+    },
+    orderBy: { completedAt: "desc" },
+    include: {
+      learningActivity: { select: { displayName: true, slug: true } },
+    },
+  });
+  if (!row?.responseText) return null;
+  return {
+    title: row.learningActivity.displayName,
+    text: row.responseText,
+    completedAt: row.completedAt,
+  };
+}
+
+export { getLearnerTimeSummary };

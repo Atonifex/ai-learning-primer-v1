@@ -3,10 +3,10 @@ import { getCurrentUser } from "../../../../../lib/auth/session";
 import { getProfile } from "../../../../../lib/services/profile";
 import { getSession } from "../../../../../lib/services/session";
 import {
-  hasCompletedTutorialQuiz,
-  startTutorialOverlayQuiz,
-  submitTutorialOverlayQuiz,
-} from "../../../../../lib/play/tutorialQuiz";
+  hasCompletedChapterReflection,
+  startChapterReflection,
+  submitChapterReflection,
+} from "../../../../../lib/play/chapterReflection";
 
 export async function GET(
   _req: NextRequest,
@@ -19,7 +19,7 @@ export async function GET(
   const { id: sessionId } = await params;
   const session = await getSession(sessionId);
   if (!session) return NextResponse.json({ error: "Session not found" }, { status: 404 });
-  const completed = await hasCompletedTutorialQuiz(profile.id);
+  const completed = await hasCompletedChapterReflection(profile.id);
   return NextResponse.json({ completed });
 }
 
@@ -38,38 +38,34 @@ export async function POST(
   if (!session) return NextResponse.json({ error: "Session not found" }, { status: 404 });
 
   const body = (await req.json().catch(() => null)) as
-    | {
-        action?: string;
-        completionId?: string;
-        answers?: Array<{ itemId: string; selectedIndex: number }>;
-      }
+    | { action?: string; completionId?: string; text?: string }
     | null;
 
   const action = body?.action === "submit" ? "submit" : "start";
 
   try {
     if (action === "start") {
-      const quiz = await startTutorialOverlayQuiz({
+      const reflection = await startChapterReflection({
         learnerProfileId: profile.id,
         sessionId,
       });
-      return NextResponse.json({ quiz });
+      return NextResponse.json({ reflection });
     }
 
-    if (!body?.completionId || !Array.isArray(body.answers)) {
-      return NextResponse.json({ error: "Missing answers" }, { status: 400 });
+    if (!body?.completionId || typeof body.text !== "string") {
+      return NextResponse.json({ error: "Missing crew log" }, { status: 400 });
     }
 
-    const result = await submitTutorialOverlayQuiz({
+    const result = await submitChapterReflection({
       sessionId,
       learnerProfileId: profile.id,
       completionId: body.completionId,
-      answers: body.answers,
+      text: body.text,
     });
     return NextResponse.json({ result });
   } catch (error) {
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Tutorial quiz failed" },
+      { error: error instanceof Error ? error.message : "Crew log failed" },
       { status: 400 }
     );
   }

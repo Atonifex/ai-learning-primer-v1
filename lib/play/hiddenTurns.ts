@@ -9,6 +9,10 @@ export const HIDDEN_TURN = {
   rhoCall: "__rho_call__",
   rhoWander: "__rho_wander__",
   quizResultPrefix: "__quiz_result__",
+  zpdHintPrefix: "__zpd_hint__",
+  zpdExamplePrefix: "__zpd_example__",
+  zpdFadePrefix: "__zpd_fade__",
+  reflectionPrefix: "__reflection__",
 } as const;
 
 const HIDDEN_EXACT = new Set<string>([
@@ -20,13 +24,16 @@ const HIDDEN_EXACT = new Set<string>([
 
 export function isHiddenTurn(content: string): boolean {
   if (HIDDEN_EXACT.has(content)) return true;
-  return content.startsWith(HIDDEN_TURN.quizResultPrefix);
+  return (
+    content.startsWith(HIDDEN_TURN.quizResultPrefix) ||
+    content.startsWith(HIDDEN_TURN.zpdHintPrefix) ||
+    content.startsWith(HIDDEN_TURN.zpdExamplePrefix) ||
+    content.startsWith(HIDDEN_TURN.zpdFadePrefix) ||
+    content.startsWith(HIDDEN_TURN.reflectionPrefix)
+  );
 }
 
-export function expandHiddenTurn(
-  content: string,
-  displayName: string
-): string {
+export function expandHiddenTurn(content: string, displayName: string): string {
   const captain = displayName.trim() || "Captain";
   if (content === HIDDEN_TURN.start || content === HIDDEN_TURN.wreckApproach) {
     return `[TUTORIAL BEAT U4] ${captain} just walked up to the wreck pile. You are Rho, the humanoid AI First Mate — never the hero. Greet ${captain} by name. Invite them to speak (the mic) or type a little. Ask one short question about the salvage. Do not generate a quiz or a scene image. Under 80 words.`;
@@ -39,7 +46,23 @@ export function expandHiddenTurn(
   }
   if (content.startsWith(HIDDEN_TURN.quizResultPrefix)) {
     const payload = content.slice(HIDDEN_TURN.quizResultPrefix.length).trim();
-    return `[OVERLAY QUIZ RESULT] ${payload} You are Rho. If they missed items, give ONE ZPD hint or a worked example (not the same static retry). If they succeeded, praise specifically and remind them they are the captain. Under 80 words. Do not generate a new quiz or scene image.`;
+    return `[OVERLAY QUIZ RESULT] ${payload} You are Rho. If they missed items, do NOT loop the same static retry. Start the ZPD ladder: one short hint, then wait. If they succeeded, praise specifically and remind them they are the captain. Under 80 words. Do not generate a new quiz or scene image.`;
+  }
+  if (content.startsWith(HIDDEN_TURN.zpdHintPrefix)) {
+    const payload = content.slice(HIDDEN_TURN.zpdHintPrefix.length).trim();
+    return `[ZPD HINT] ${payload} You are Rho. Give ONE new hint in-world (a crate lid, place value). Do not repeat a previous line. Do not give the full answer. Under 50 words. Live model only — no plan rewrite.`;
+  }
+  if (content.startsWith(HIDDEN_TURN.zpdExamplePrefix)) {
+    const payload = content.slice(HIDDEN_TURN.zpdExamplePrefix.length).trim();
+    return `[ZPD WORKED EXAMPLE] ${payload} You are Rho. Walk one crate as a worked example (standard / expanded / word form). Then hand the next crate back to ${captain}. Under 80 words.`;
+  }
+  if (content.startsWith(HIDDEN_TURN.zpdFadePrefix)) {
+    const payload = content.slice(HIDDEN_TURN.zpdFadePrefix.length).trim();
+    return `[ZPD FADE] ${payload} You are Rho. Fade support: ask ${captain} to try the smaller crate themselves. Encourage; do not solve it. Under 50 words.`;
+  }
+  if (content.startsWith(HIDDEN_TURN.reflectionPrefix)) {
+    const payload = content.slice(HIDDEN_TURN.reflectionPrefix.length).trim();
+    return `[CREW LOG] ${captain} left a note for the missing engineer: ${payload || "(short note)"}. Thank them in-world. Do not grade like a worksheet. Under 50 words.`;
   }
   return content;
 }

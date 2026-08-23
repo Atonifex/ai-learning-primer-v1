@@ -246,6 +246,8 @@ model Session {
   arcSummary       String?
   startedAt        DateTime       @default(now())
   completedAt      DateTime?
+  /// Wall-clock seconds for this sitting (set on complete/abandon). No daily cap.
+  durationSeconds  Int?
   chapterId        String?
   chapter          Chapter?       @relation(fields: [chapterId], references: [id])
   sceneIndex       Int            @default(0)
@@ -253,6 +255,7 @@ model Session {
   storyState       StoryState?
   memoryItems      MemoryItem[]   @relation("SourceSession")
   standardsEvidence StandardsEvidence[]
+  activityCompletions LearningActivityCompletion[]
 }
 
 enum SessionStatus {
@@ -495,11 +498,18 @@ model LearningActivityCompletion {
   learnerProfile     LearnerProfile   @relation(fields: [learnerProfileId], references: [id], onDelete: Cascade)
   learningActivityId String
   learningActivity   LearningActivity @relation(fields: [learningActivityId], references: [id], onDelete: Cascade)
+  sessionId          String?
+  session            Session?         @relation(fields: [sessionId], references: [id], onDelete: SetNull)
   startedAt          DateTime         @default(now())
   completedAt        DateTime?
+  durationSeconds    Int?
+  /// Spoken or typed response (chapter reflection / journal).
+  responseText       String?
   score              Float?
   perStandardCorrectness Json?
   evidenceWritten    Boolean          @default(false)
+
+  @@index([sessionId])
 }
 
 model Assessment {

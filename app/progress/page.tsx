@@ -2,7 +2,14 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "../../lib/auth/session";
 import { getProfile } from "../../lib/services/profile";
-import { getSkillProgressOverview, getSubjectProgressOverview } from "../../lib/services/progress";
+import {
+  getLatestChapterReflection,
+  getLearnerTimeSummary,
+  getRecentObservations,
+  getSkillProgressOverview,
+  getSubjectProgressOverview,
+} from "../../lib/services/progress";
+import { formatHiddenMinutes } from "../../lib/services/timeMath";
 
 export default async function ProgressPage() {
   const user = await getCurrentUser();
@@ -10,9 +17,12 @@ export default async function ProgressPage() {
   const profile = await getProfile(user.userId);
   if (!profile) redirect("/onboarding");
 
-  const [subjects, skills] = await Promise.all([
+  const [subjects, skills, observations, crewLog, time] = await Promise.all([
     getSubjectProgressOverview(profile.id),
     getSkillProgressOverview(profile.id),
+    getRecentObservations(profile.id, 6),
+    getLatestChapterReflection(profile.id),
+    getLearnerTimeSummary(profile.id),
   ]);
   const topSkills = skills.slice(0, 8);
 
@@ -32,6 +42,65 @@ export default async function ProgressPage() {
           All skills →
         </Link>
       </div>
+
+      <section className="mt-8 grid gap-3 md:grid-cols-2">
+        <div className="rounded-xl border border-stone-200 bg-white p-4">
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-stone-500">
+            Time on the island
+          </h2>
+          <p className="mt-2 text-sm text-stone-800">
+            Lifetime: {formatHiddenMinutes(time.lifetimeSeconds)} · last sitting:{" "}
+            {time.lastSessionSeconds == null
+              ? "none yet"
+              : formatHiddenMinutes(time.lastSessionSeconds)}
+          </p>
+          <p className="mt-1 text-xs text-stone-500">
+            No daily cap. Activity work: {formatHiddenMinutes(time.activitySeconds)}.
+          </p>
+        </div>
+        <div className="rounded-xl border border-stone-200 bg-white p-4">
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-stone-500">
+            Crew log
+          </h2>
+          {crewLog ? (
+            <p className="mt-2 text-sm text-stone-800">“{crewLog.text}”</p>
+          ) : (
+            <p className="mt-2 text-sm text-stone-500">
+              A chapter note for the missing engineer will appear here.
+            </p>
+          )}
+        </div>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-stone-500">
+          Recent observations
+        </h2>
+        <div className="rounded-xl border border-stone-200 bg-white">
+          {observations.length === 0 ? (
+            <p className="p-4 text-sm text-stone-600">
+              Finish the wreck salvage quiz and an observation will land here.
+            </p>
+          ) : (
+            observations.map((obs) => (
+              <div
+                key={obs.id}
+                className="border-b border-stone-100 p-4 last:border-b-0"
+              >
+                <p className="text-sm font-medium text-stone-900">{obs.standardCode}</p>
+                <p className="mt-0.5 text-xs text-stone-600">{obs.description}</p>
+                <p className="mt-1 text-xs text-stone-500">
+                  {obs.evidenceTier} · {obs.sourceType}
+                  {obs.correctness != null
+                    ? ` · ${Math.round(obs.correctness * 100)}%`
+                    : ""}
+                  {obs.notes ? ` · ${obs.notes}` : ""}
+                </p>
+              </div>
+            ))
+          )}
+        </div>
+      </section>
 
       <section className="mt-8">
         <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-stone-500">

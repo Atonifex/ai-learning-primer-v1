@@ -176,17 +176,13 @@ export async function updateMessageImage(
 }
 
 export async function completeSession(sessionId: string, summary: string): Promise<void> {
-  await prisma.session.update({
-    where: { id: sessionId },
-    data: { status: "COMPLETED", completedAt: new Date(), arcSummary: summary },
-  });
+  const { stampSessionClock } = await import("./timeTracking");
+  await stampSessionClock(sessionId, "COMPLETED", summary);
 }
 
 export async function abandonSession(sessionId: string): Promise<void> {
-  await prisma.session.update({
-    where: { id: sessionId },
-    data: { status: "ABANDONED" },
-  });
+  const { stampSessionClock } = await import("./timeTracking");
+  await stampSessionClock(sessionId, "ABANDONED");
 }
 
 export async function listSessions(profileId: string): Promise<SessionData[]> {

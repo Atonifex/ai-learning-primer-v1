@@ -21,6 +21,8 @@ describe("hidden turns", () => {
   it("hides tutorial signals and expands them for luna", () => {
     expect(isHiddenTurn(HIDDEN_TURN.wreckApproach)).toBe(true);
     expect(isHiddenTurn("__quiz_result__ score=0")).toBe(true);
+    expect(isHiddenTurn("__zpd_hint__ crate")).toBe(true);
+    expect(isHiddenTurn("__reflection__ note")).toBe(true);
     expect(isHiddenTurn("hello Rho")).toBe(false);
     const expanded = expandHiddenTurn(HIDDEN_TURN.wreckApproach, "Hanzo");
     expect(expanded).toContain("Hanzo");

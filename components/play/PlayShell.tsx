@@ -7,61 +7,75 @@ import { useRouter } from "next/navigation";
 import type { PinId } from "../../lib/play/beachMap";
 import { TUTORIAL_PINS } from "../../lib/play/beachMap";
 import { HIDDEN_TURN } from "../../lib/play/hiddenTurns";
-import type { TutorialQuizPublic } from "../../lib/play/tutorialQuiz";
 import type { StillKey } from "../../lib/play/stills";
+import { formatHiddenMinutes, secondsBetween } from "../../lib/services/timeMath";
 import IntroCinematic from "./IntroCinematic";
 import ResourceHud from "./ResourceHud";
 import RhoRadio from "./RhoRadio";
 import DialogueCutscene from "./DialogueCutscene";
 import QuizOverlay from "./QuizOverlay";
+import ReflectionOverlay from "./ReflectionOverlay";
 import { useSessionStream } from "./useSessionStream";
+import { useLearningLoop } from "./useLearningLoop";
 
 const OverworldCanvas = dynamic(() => import("./OverworldCanvas"), { ssr: false });
 
 const INTRO_KEY = "primer.introSkipped";
+const TIMER_KEY = "primer.showTimers";
 
 export default function PlayShell(props: {
   sessionId: string;
   displayName: string;
   subjectSlug: string;
+  sessionStartedAt: string;
 }) {
   const router = useRouter();
   const captain = props.displayName.trim() || "Captain";
   const [showIntro, setShowIntro] = useState(true);
   const [dialogueOpen, setDialogueOpen] = useState(false);
   const [talkedToWreck, setTalkedToWreck] = useState(false);
-  const [quizDone, setQuizDone] = useState(false);
-  const [quiz, setQuiz] = useState<TutorialQuizPublic | null>(null);
-  const [showQuiz, setShowQuiz] = useState(false);
-  const [quizSubmitting, setQuizSubmitting] = useState(false);
-  const [quizResult, setQuizResult] = useState<{
-    score: number;
-    total: number;
-    correct: number;
-    missed: string[];
-    hints: string[];
-  } | null>(null);
-  const [quizError, setQuizError] = useState<string | null>(null);
   const [hint, setHint] = useState<string | null>(
     "Tap the wreck — or use WASD. Rho follows you."
   );
   const [confirmLeave, setConfirmLeave] = useState(false);
   const [leaving, setLeaving] = useState(false);
+  const [showTimers, setShowTimers] = useState(false);
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const pendingQuizRef = useRef(false);
   const wreckOpeningRef = useRef(false);
+  const openQuizRef = useRef<(() => Promise<{ alreadyDone: boolean } | undefined>) | null>(null);
 
   const onTurnEnd = useCallback(() => {
     if (!pendingQuizRef.current) return;
     pendingQuizRef.current = false;
-    void openTutorialQuiz();
+    void openQuizRef.current?.().then((r) => {
+      if (r?.alreadyDone) setHint("The wreck is counted. Other sites are open.");
+    }).catch((e: unknown) => {
+      setHint(e instanceof Error ? e.message : "Could not open the crate lid.");
+    });
   }, []);
 
   const stream = useSessionStream(props.sessionId, onTurnEnd);
+  const learning = useLearningLoop(props.sessionId, captain, stream.sendMessage);
+  openQuizRef.current = learning.openTutorialQuiz;
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (window.localStorage.getItem(INTRO_KEY) === "1") setShowIntro(false);
+    setShowTimers(window.localStorage.getItem(TIMER_KEY) === "1");
   }, []);
+
+  useEffect(() => {
+    const tick = () => {
+      setElapsedSeconds(
+        secondsBetween(new Date(props.sessionStartedAt), new Date())
+      );
+    };
+    tick();
+    if (!showTimers) return;
+    const id = window.setInterval(tick, 15000);
+    return () => window.clearInterval(id);
+  }, [props.sessionStartedAt, showTimers]);
 
   useEffect(() => {
     if (!stream.loaded) return;
@@ -70,37 +84,6 @@ export default function PlayShell(props: {
       setShowIntro(false);
     }
   }, [stream.loaded, stream.messages.length]);
-
-  useEffect(() => {
-    fetch(`/api/session/${props.sessionId}/tutorial-quiz`)
-      .then((r) => r.json())
-      .then((d: { completed?: boolean }) => {
-        if (d.completed) setQuizDone(true);
-      })
-      .catch(() => undefined);
-  }, [props.sessionId]);
-
-  async function openTutorialQuiz() {
-    try {
-      const res = await fetch(`/api/session/${props.sessionId}/tutorial-quiz`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "start" }),
-      });
-      const data = (await res.json()) as { quiz?: TutorialQuizPublic; error?: string };
-      if (!res.ok || !data.quiz) throw new Error(data.error || "Quiz missing");
-      if (data.quiz.alreadyCompleted) {
-        setQuizDone(true);
-        setHint("The wreck is counted. Other sites are open.");
-        return;
-      }
-      setQuiz(data.quiz);
-      setQuizResult(null);
-      setShowQuiz(true);
-    } catch (e) {
-      setHint(e instanceof Error ? e.message : "Could not open the crate lid.");
-    }
-  }
 
   function skipIntro() {
     window.localStorage.setItem(INTRO_KEY, "1");
@@ -118,11 +101,21 @@ export default function PlayShell(props: {
       window.setTimeout(() => {
         if (!pendingQuizRef.current) return;
         pendingQuizRef.current = false;
-        void openTutorialQuiz();
+        void learning.openTutorialQuiz().catch((e: unknown) => {
+          setHint(e instanceof Error ? e.message : "Could not open the crate lid.");
+        });
       }, 8000);
       return;
     }
-    if (!quizDone && !showQuiz) void openTutorialQuiz();
+    if (!learning.quizDone && !learning.showQuiz) {
+      void learning.openTutorialQuiz().catch((e: unknown) => {
+        setHint(e instanceof Error ? e.message : "Could not open the crate lid.");
+      });
+      return;
+    }
+    if (learning.quizDone && !learning.reflectionDone) {
+      void learning.openReflection();
+    }
   }
 
   function onArriveAtPin(id: PinId) {
@@ -132,7 +125,7 @@ export default function PlayShell(props: {
       openWreckTalk();
       return;
     }
-    if (pin.lockedUntilQuiz && !quizDone) {
+    if (pin.lockedUntilQuiz && !learning.quizDone) {
       setHint("Rho: Salvage the wreck first, Captain. The rest can wait.");
       return;
     }
@@ -149,46 +142,6 @@ export default function PlayShell(props: {
   function callRho() {
     setDialogueOpen(true);
     void stream.sendMessage(HIDDEN_TURN.rhoCall);
-  }
-
-  async function submitQuiz(answers: Array<{ itemId: string; selectedIndex: number }>) {
-    if (!quiz) return;
-    setQuizSubmitting(true);
-    setQuizError(null);
-    try {
-      const res = await fetch(`/api/session/${props.sessionId}/tutorial-quiz`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          action: "submit",
-          completionId: quiz.completionId,
-          answers,
-        }),
-      });
-      const data = (await res.json()) as {
-        result?: {
-          score: number;
-          total: number;
-          correct: number;
-          missed: string[];
-          hints: string[];
-        };
-        error?: string;
-      };
-      if (!res.ok || !data.result) throw new Error(data.error || "Submit failed");
-      setQuizResult(data.result);
-      setQuizDone(true);
-      const miss = data.result.missed.length
-        ? `missed ${data.result.missed.join(", ")}`
-        : "all correct";
-      void stream.sendMessage(
-        `${HIDDEN_TURN.quizResultPrefix} ${captain} scored ${data.result.correct}/${data.result.total} (${miss}).`
-      );
-    } catch (e) {
-      setQuizError(e instanceof Error ? e.message : "Submit failed");
-    } finally {
-      setQuizSubmitting(false);
-    }
   }
 
   async function handleLeave() {
@@ -212,7 +165,7 @@ export default function PlayShell(props: {
 
   const portrait: StillKey = stream.streaming
     ? "rhoPortraitThinking"
-    : quizResult && quizResult.missed.length === 0
+    : learning.quizResult && learning.quizResult.missed.length === 0
       ? "rhoPortraitEncouraging"
       : "rhoPortraitNeutral";
 
@@ -227,18 +180,35 @@ export default function PlayShell(props: {
   return (
     <div className="relative h-screen overflow-hidden bg-[#0a3340]">
       <OverworldCanvas
-        paused={dialogueOpen || showQuiz}
-        quizDone={quizDone}
+        paused={dialogueOpen || learning.showQuiz || learning.showReflection}
+        quizDone={learning.quizDone}
         talkedToWreck={talkedToWreck}
         onArriveAtPin={onArriveAtPin}
         onWanderFromWreck={onWander}
       />
-      <ResourceHud captainName={captain} rations={3} xp={quizDone ? 12 : 0} hint={hint} />
+      <ResourceHud
+        captainName={captain}
+        rations={3}
+        xp={learning.quizDone ? 12 : 0}
+        hint={hint}
+        timerLabel={showTimers ? formatHiddenMinutes(elapsedSeconds) : null}
+      />
 
       <header className="pointer-events-none absolute right-3 top-3 z-[60] flex items-center gap-2">
         <span className="rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100/70">
           {props.subjectSlug.replace("_g3", "").replace("_", " ")}
         </span>
+        <button
+          type="button"
+          onClick={() => {
+            const next = !showTimers;
+            setShowTimers(next);
+            window.localStorage.setItem(TIMER_KEY, next ? "1" : "0");
+          }}
+          className="pointer-events-auto rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100/70 hover:bg-[#1a120c]"
+        >
+          {showTimers ? "Hide time" : "Time"}
+        </button>
         <Link
           href="/progress"
           className="pointer-events-auto rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100 hover:bg-[#1a120c]"
@@ -255,7 +225,7 @@ export default function PlayShell(props: {
       </header>
 
       <div className="pointer-events-none absolute bottom-4 left-3 z-20">
-        <RhoRadio onCall={callRho} disabled={showQuiz} />
+        <RhoRadio onCall={callRho} disabled={learning.showQuiz || learning.showReflection} />
       </div>
 
       {dialogueOpen && (
@@ -273,18 +243,30 @@ export default function PlayShell(props: {
         />
       )}
 
-      {showQuiz && quiz && (
+      {learning.showQuiz && learning.quiz && (
         <QuizOverlay
-          quiz={quiz}
-          submitting={quizSubmitting}
-          result={quizResult}
-          error={quizError}
-          onSubmit={(a) => void submitQuiz(a)}
+          quiz={learning.quiz}
+          submitting={learning.quizSubmitting}
+          result={learning.quizResult}
+          error={learning.quizError}
+          zpdStage={learning.zpdStage}
+          onSubmit={(a) => void learning.submitQuiz(a)}
+          onZpdAdvance={learning.advanceZpd}
           onDismiss={() => {
-            setShowQuiz(false);
+            learning.setShowQuiz(false);
             setDialogueOpen(true);
             setHint("The island is a little bigger than it looked.");
+            if (!learning.reflectionDone) void learning.openReflection();
           }}
+        />
+      )}
+
+      {learning.showReflection && learning.reflection && (
+        <ReflectionOverlay
+          reflection={learning.reflection}
+          submitting={learning.reflectionSubmitting}
+          error={learning.reflectionError}
+          onSubmit={(text) => void learning.submitReflection(text)}
         />
       )}
 

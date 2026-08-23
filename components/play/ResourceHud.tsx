@@ -5,6 +5,8 @@ export default function ResourceHud(props: {
   rations: number;
   xp: number;
   hint: string | null;
+  /** Hidden from the child by default (§4.14). */
+  timerLabel?: string | null;
 }) {
   return (
     <div className="pointer-events-none absolute left-3 top-3 z-20 max-w-[min(100%-6rem,20rem)]">
@@ -20,6 +22,11 @@ export default function ResourceHud(props: {
           <span aria-label={`${props.xp} experience`} className="text-amber-100/70">
             XP <span className="tabular-nums">{props.xp}</span>
           </span>
+          {props.timerLabel && (
+            <span className="text-amber-100/60" aria-label={`Time on the beach ${props.timerLabel}`}>
+              {props.timerLabel}
+            </span>
+          )}
         </div>
       </div>
       {props.hint && (

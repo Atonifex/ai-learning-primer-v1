@@ -165,6 +165,8 @@ export async function* streamSessionResponse(
       // Stills-pack loop (§11 Step 1): do not call generate_scene_image per turn.
       tools: [recordStandardObservationTool, generateLearningActivityTool],
       tool_choice: "auto",
+      // gpt-5.6-luna rejects function tools unless reasoning is off.
+      reasoning_effort: "none",
       stream: true,
       //4/7/2026: Experiment with max_completion_tokens to see if it helps with the length of the responses.
       //This is temporary; a more sophisticated solution will calculate max_completion_tokens or 
@@ -430,6 +432,7 @@ export async function* streamSessionResponse(
         {
           model: MODEL,
           messages: continuationMessages,
+          reasoning_effort: "none",
           stream: true,
         },
         { signal: abortSignal }

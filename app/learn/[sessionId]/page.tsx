@@ -24,6 +24,7 @@ export default async function SessionPlayPage({ params }: PageProps) {
       sessionId={sessionId}
       displayName={profile.displayName ?? "Captain"}
       subjectSlug={session.subjectSlug}
+      sessionStartedAt={session.startedAt.toISOString()}
     />
   );
 }

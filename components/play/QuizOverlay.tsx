@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { TutorialQuizPublic } from "../../lib/play/tutorialQuiz";
+import { WRECK_WORKED_EXAMPLE, type ZpdStage } from "../../lib/play/zpd";
 
 export default function QuizOverlay(props: {
   quiz: TutorialQuizPublic;
@@ -14,16 +15,23 @@ export default function QuizOverlay(props: {
     hints: string[];
   } | null;
   error?: string | null;
+  zpdStage: ZpdStage | null;
   onSubmit: (answers: Array<{ itemId: string; selectedIndex: number }>) => void;
+  onZpdAdvance: () => void;
   onDismiss: () => void;
 }) {
-  const { quiz, result } = props;
+  const { quiz, result, zpdStage } = props;
   const [selected, setSelected] = useState<Record<string, number>>({});
+  const [fadeTry, setFadeTry] = useState("");
 
   const canSubmit = useMemo(
     () => quiz.items.every((item) => typeof selected[item.id] === "number"),
     [quiz.items, selected]
   );
+
+  const missed = Boolean(result && result.missed.length > 0);
+  const canLeave =
+    Boolean(result) && (!missed || zpdStage === "done" || zpdStage === "fade");
 
   return (
     <div className="absolute inset-0 z-40 flex items-end justify-center bg-black/45 p-3 sm:items-center">
@@ -71,8 +79,27 @@ export default function QuizOverlay(props: {
               <p>
                 Rho checks the lids: {result.correct}/{result.total} right.
               </p>
-              {result.missed.length > 0 && result.hints[0] && (
-                <p className="mt-1 text-stone-700">Hint: {result.hints[0]}</p>
+              {zpdStage === "hint" && result.hints[0] && (
+                <p className="mt-2 text-stone-700">Hint: {result.hints[0]}</p>
+              )}
+              {zpdStage === "example" && (
+                <div className="mt-2 space-y-1 text-stone-700">
+                  <p className="font-medium">{WRECK_WORKED_EXAMPLE.crateLabel}</p>
+                  <p>Standard: {WRECK_WORKED_EXAMPLE.standardForm}</p>
+                  <p>Expanded: {WRECK_WORKED_EXAMPLE.expandedForm}</p>
+                  <p>Words: {WRECK_WORKED_EXAMPLE.wordForm}</p>
+                </div>
+              )}
+              {zpdStage === "fade" && (
+                <div className="mt-2">
+                  <p>{WRECK_WORKED_EXAMPLE.fadePrompt}</p>
+                  <input
+                    value={fadeTry}
+                    onChange={(e) => setFadeTry(e.target.value)}
+                    placeholder="1,000 + 200 + 4"
+                    className="mt-2 w-full rounded-lg border border-amber-900/20 bg-white px-3 py-2 text-sm"
+                  />
+                </div>
               )}
             </div>
           )}
@@ -95,13 +122,22 @@ export default function QuizOverlay(props: {
               >
                 {props.submitting ? "Checking…" : "Show Rho"}
               </button>
+            ) : missed && zpdStage !== "done" && zpdStage !== "fade" ? (
+              <button
+                type="button"
+                onClick={props.onZpdAdvance}
+                className="rounded-lg bg-teal-800 px-4 py-2 text-sm font-medium text-white"
+              >
+                {zpdStage === "hint" ? "Show a crate example" : "I’ll try one"}
+              </button>
             ) : (
               <button
                 type="button"
                 onClick={props.onDismiss}
-                className="rounded-lg bg-teal-800 px-4 py-2 text-sm font-medium text-white"
+                disabled={zpdStage === "fade" && fadeTry.trim().length < 2}
+                className="rounded-lg bg-teal-800 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
               >
-                Back to Rho
+                {canLeave ? "Leave a note for the engineer" : "Back to Rho"}
               </button>
             )}
           </div>

@@ -24,5 +24,6 @@ Response shape:
 - If memory shows a MISCONCEPTION on a related standard, scaffold with a concrete object (rope, stone, ration packet) before re-asking the abstract question.
 - Never ask the captain how hard they want it. Infer from what they actually do this turn.
 - Record evidence via record_standard_observation when the captain demonstrates, partially demonstrates, or shows a clear misconception on a standard from the STANDARDS block. Pick evidence_tier honestly (CONVERSATIONAL for light practice; GUIDED for scaffolded multi-turn work; CHECKPOINT after a substantive check-for-understanding).
-- Wrong answers stay in-world: a miscount means a hungry crew member shows up later, not "Try again!". Loop the consequence back into the scene.`,
+- Wrong answers stay in-world: a miscount means a hungry crew member shows up later, not "Try again!". Loop the consequence back into the scene.
+- ZPD: hint → worked crate example → fade support. Never the same static retry loop.`,
 };
