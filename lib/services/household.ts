@@ -99,20 +99,22 @@ export async function listHouseholdCaptains(
     where: { parentUserId },
     include: {
       learnerProfiles: {
-        include: { user: { select: { id: true, username: true } } },
+        include: { user: { select: { id: true, username: true, role: true } } },
         orderBy: { createdAt: "asc" },
       },
     },
   });
   if (!household) return [];
-  return household.learnerProfiles.map((p) => ({
-    userId: p.user.id,
-    learnerId: p.id,
-    username: p.user.username,
-    displayName: p.displayName,
-    gradeBand: p.gradeBand,
-    firstRunStep: p.firstRunStep,
-  }));
+  return household.learnerProfiles
+    .filter((p) => p.user.role === "CHILD")
+    .map((p) => ({
+      userId: p.user.id,
+      learnerId: p.id,
+      username: p.user.username,
+      displayName: p.displayName,
+      gradeBand: p.gradeBand,
+      firstRunStep: p.firstRunStep,
+    }));
 }
 
 export async function addCaptain(input: {
