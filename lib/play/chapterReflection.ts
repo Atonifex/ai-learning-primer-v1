@@ -146,5 +146,21 @@ export async function submitChapterReflection(params: {
     },
   });
 
+  const { completeActiveChapterAndActivateNext } = await import(
+    "../services/storyCurriculum"
+  );
+  const advanced = await completeActiveChapterAndActivateNext(params.learnerProfileId);
+  if (advanced?.nextTitle) {
+    await prisma.memoryItem.create({
+      data: {
+        learnerProfileId: params.learnerProfileId,
+        type: "STORY_BEAT",
+        content: `Chapter closed: ${advanced.completedTitle}. Next: ${advanced.nextTitle} (food / divide supplies).`,
+        confidence: 0.85,
+        sourceSessionId: params.sessionId,
+      },
+    });
+  }
+
   return { text };
 }

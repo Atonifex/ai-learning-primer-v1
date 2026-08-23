@@ -93,6 +93,8 @@ export async function POST(
             send(chunk);
           } else if (chunk.type === "activity_generated") {
             send(chunk);
+          } else if (chunk.type === "mission_open") {
+            send(chunk);
           } else if (chunk.type === "image_start") {
             send(chunk);
           } else if (chunk.type === "image_done") {

@@ -20,7 +20,12 @@ describe("beachMap", () => {
     expect(tileKind(0, 0)).toBe("water");
     expect(isWalkable(0, 5)).toBe(false);
     expect(isWalkable(SPAWN_COL, SPAWN_ROW)).toBe(true);
-    expect(tileKind(1, 5)).toBe("foam");
+    expect(tileKind(1, SPAWN_ROW)).toBe("foam");
+  });
+
+  it("seals the tutorial beach off from the unexplored north with a rock ridge", () => {
+    expect(tileKind(SPAWN_COL, SPAWN_ROW - 10)).toBe("rock");
+    expect(isWalkable(SPAWN_COL, SPAWN_ROW - 10)).toBe(false);
   });
 
   it("spawns south of the wreck so the first verb is walking to it", () => {

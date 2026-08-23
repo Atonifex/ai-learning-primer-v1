@@ -5,6 +5,14 @@ import { isHiddenTurn } from "../../lib/play/hiddenTurns";
 import type { Message } from "../session/MessageList";
 import type { GeneratedActivity, SessionStoryUi } from "../../lib/types";
 
+export type MissionOpenEvent = {
+  missionId: string;
+  subjectSlug: string;
+  activitySlug: string;
+  sessionId: string;
+  switched: boolean;
+};
+
 export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => void) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [streaming, setStreaming] = useState(false);
@@ -14,6 +22,7 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
   const [observationToasts, setObservationToasts] = useState<
     { id: string; standardCode: string; mastery: number }[]
   >([]);
+  const [pendingMissionOpen, setPendingMissionOpen] = useState<MissionOpenEvent | null>(null);
   const streamingIdRef = useRef(`streaming-${Date.now()}`);
   const streamAbortRef = useRef<AbortController | null>(null);
   const opSeqRef = useRef(0);
@@ -111,6 +120,11 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
                 activity?: GeneratedActivity;
                 standardCode?: string;
                 mastery?: number;
+                missionId?: string;
+                subjectSlug?: string;
+                activitySlug?: string;
+                sessionId?: string;
+                switched?: boolean;
               };
               if (data.type === "text" && data.content) {
                 gotText = true;
@@ -136,6 +150,20 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
                     ? prev
                     : [...prev, data.activity!]
                 );
+              } else if (
+                data.type === "mission_open" &&
+                data.missionId &&
+                data.activitySlug &&
+                data.subjectSlug &&
+                data.sessionId
+              ) {
+                setPendingMissionOpen({
+                  missionId: data.missionId,
+                  subjectSlug: data.subjectSlug,
+                  activitySlug: data.activitySlug,
+                  sessionId: data.sessionId,
+                  switched: Boolean(data.switched),
+                });
               } else if (data.type === "done" && data.messageId) {
                 setMessages((prev) =>
                   prev.map((m) =>
@@ -172,6 +200,8 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
     loaded,
     generatedActivities,
     observationToasts,
+    pendingMissionOpen,
+    clearPendingMissionOpen: () => setPendingMissionOpen(null),
     sendMessage,
     setStoryUi,
   };

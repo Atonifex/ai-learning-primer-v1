@@ -771,7 +771,7 @@ Existing code: `app/progress/*`, `lib/services/progress.ts`, `StandardsEvidence`
 
 Agents: inventory before coding.
 
-- Auth, onboarding (`displayName`, goals, interests, auto-enroll G3 cores)
+- Auth, onboarding (`displayName` + dive-in; goals/interests default; auto-enroll G3 cores)
 - Session start/stream/complete
 - ContextBuilder + SessionOrchestrator + MemoryExtractor + image tool
 - Standards catalogs + observation tools + mastery math
@@ -973,6 +973,7 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 - [x] Time tracking: session + activity
 - [x] **Chapter reflection** (spoken OK) persisted
 - [x] Memory `STORY_BEAT` on complete
+- [x] Mission Loop v1: HUD Jobs board + `/saga`; dune/treeline/creek/camp → seeded §4.6 overlays; session subject switch; Rho `suggest_next_mission` / `open_mission`; Ch1 reflection activates Ch2 food chapter
 
 **Step 1 closeout (2026-08-22) — done / leftover / debt**
 
@@ -982,7 +983,7 @@ Not this slice (still open above / P1+): TTS, parchment map overlay, Higgsfield 
 
 Technical debt (defer to end of this plan unless a later step naturally clears it):
 1. Per-turn `generate_scene_image` is **disabled** (stills pack). Handler remains; re-enable for full-MVP dynamic scenes.
-2. Overlay quiz uses MC items only from `g3-ma-wreck-number-forms` (drops the bank free-response item).
+2. Overlay quiz uses MC items only from bank slugs (drops free-response items). Mission Loop v1 covers wreck + four other pins; still not full-screen tools.
 3. Rations / XP HUD are client stubs — not persisted; not tied to chapter complete (P2).
 4. Ambient ocean bed is silent; mute control not wired (U15 placeholder).
 5. Intro Skip is `localStorage`, not per-learner server state.
@@ -1116,7 +1117,11 @@ Technical debt (defer to end of this plan unless a later step naturally clears i
 | `lib/play/stills.ts` | Tutorial stills paths + placeholder labels |
 | `lib/ai/models.ts` | Live model `gpt-5.6-luna` |
 | `app/api/stt/route.ts` | OpenAI STT; transcribe and discard |
-| `app/api/session/[id]/tutorial-quiz/route.ts` | Overlay salvage quiz start/submit |
+| `app/api/session/[id]/tutorial-quiz/route.ts` | Overlay salvage quiz start/submit (wreck alias) |
+| `app/api/session/[id]/overlay-quiz/route.ts` | Bank overlay quiz by slug (any §4.6 mission) |
+| `app/api/missions/route.ts` | Mission board for HUD + Rho prompt |
+| `app/saga/page.tsx` | Unit/chapter + job progress (not parent dashboard) |
+| `lib/play/missions.ts` | Static pin → bank slug catalog |
 | `app/api/session/[id]/reflection/route.ts` | Chapter 1 crew log (spoken or short text) |
 | `lib/play/chapterReflection.ts` | Persist reflection + STORY_BEAT |
 | `lib/play/zpd.ts` | Hint → example → fade ladder |
@@ -1247,6 +1252,32 @@ I will: (1) move remaining ★ answers into §4, (2) write `docs/CHAPTER_1_BUILD
 
 
 Agents append here. Newest first.
+
+### 2026-08-23 — Mission Loop v1 (pins + board + subject sessions)
+
+- HUD **Jobs** board + `/saga` show subject, theme, ~minutes, XP/ration/map-pin stubs. Dune/treeline/creek/camp now start seeded bank overlays (`g3-ela-context-clues-bulletin`, `g3-sci-plants-make-food`, `g3-ss-social-science-terms`, `g3-ma-search-grid-tens`) after wreck salvage; camp waits on Ch1 crew log. Starting a job `startOrContinue`s a session on that `subjectSlug` (not always `math_g3`). Completing the crew log marks Ch1 COMPLETED and activates Ch2 food planners.
+- Rho prompt includes available/completed missions. Tools: existing `record_standard_observation` + `generate_learning_activity`; new `suggest_next_mission` (read) and `open_mission` (opens overlay / client subject switch). Generated mini-quizzes use the same overlay as bank jobs.
+- Did **not** build parent dashboard, perk trees, or per-student LLM unit authoring. XP/rations remain HUD stubs from completed missions.
+- Files: `lib/play/{missions,overlayQuiz}.ts`, `lib/services/missions.ts`, `lib/ai/{standardsTool,sessionOrchestrator,contextBuilder}.ts`, `components/play/*`, `app/saga/page.tsx`, `app/api/missions/**`, `docs/MASTER_VISION_PLAN.md`.
+
+### 2026-08-23 — Uneven island, north unexplored landmass (U5)
+
+- `lib/play/beachMap.ts` now builds the map from one mask instead of a plain rectangle: a rock ridge (rows 30-33) seals the unchanged 18x12 tutorial beach (now south, rows 34-45) off from a new 30-row irregular landmass to the north (rows 0-29) — bays/peninsulas from two independent sine-blend coastlines (west/east edges computed separately so it reads as one uneven coast, not a drifting oval), tapering to a point at the map's north edge to imply the island keeps going. A small `TILE_OVERRIDES` map lets specific spots (a hand-carved cove today) be carved in without touching the formula — same pattern to reuse for future named landmarks.
+- Rationale: the walk-camera mask, tile art, and the future parchment overlay (U5 "grows like Elden Ring") should all read off the same shape instead of three hand-drawn ones. North of the ridge isn't reachable yet (no content there) — it exists purely so fog (and later parchment) reveal "the island is bigger than you thought" from minute one. `components/play/beachWorld.ts` gained a `rock` tile color for the ridge; still flat Pixi `Graphics` rects, no tile art yet (separate follow-up: a small Stardew-style tileset keyed off `TileKind`).
+- Added `scripts/preview-map.ts` (ASCII dump of the mask) for iterating on the coastline without booting the game. `lib/play/beachMap.test.ts` updated for the new coordinates (tutorial-band assertions now anchor off `SPAWN_ROW` instead of literal rows).
+- Files: `lib/play/beachMap.ts`, `lib/play/beachMap.test.ts`, `components/play/beachWorld.ts`, `scripts/preview-map.ts`, `docs/MASTER_VISION_PLAN.md`.
+
+### 2026-08-23 — Onboarding: name + dive-in
+
+- Removed goals / interests / “subjects ready” wizard steps. Onboarding is captain name (optional) → short dawn-ocean dive animation → `/learn`. Profile API no longer requires goals; `createProfile` fills story-default goals and empty interests; G3 core enroll + story chain unchanged.
+- Files: `components/onboarding/OnboardingWizard.tsx`, `app/globals.css`, `app/api/profile/route.ts`, `lib/services/profile.ts`, `docs/MASTER_VISION_PLAN.md`.
+
+### 2026-08-23 — Tutorial stills pack generated (§4.12)
+
+- Generated all 15 files in `public/stills/tutorial/README.md` via `gpt-image-1.5` (OpenAI Images), one-off scripts `scripts/{generate-tutorial-stills,fix-sprite-transparency}.ts`. Filenames match `lib/play/stills.ts` exactly; `TODO(stills)` placeholders are gone.
+- Rho's 3 portraits + overworld sprite share the same face/visor-eye/jacket language. Overworld sprites (`captain_placeholder_sprite.webp`, `rho_overworld_sprite.webp`) needed a PNG round-trip + `sharp` re-encode to actually get alpha transparency in the webp — plain `background: "transparent"` + `output_format: "webp"` on `images.generate` silently produced an opaque background.
+- Not done: background/location scenes (`cinematic_poster`, `crash_aftermath_beach`, `wreck_pile_close`, `dune`, `treeline`, `creek`, `camp_site_empty`, `map_parchment_unexplored`) came back ~2–2.3MB each at 1536×1024 high quality — worth a compression pass before shipping, not blocking.
+- Files: `public/stills/tutorial/*.webp`, `scripts/generate-tutorial-stills.ts`, `scripts/fix-sprite-transparency.ts`, `docs/MASTER_VISION_PLAN.md`.
 
 ### 2026-08-23 — Learning truth in the shell
 

@@ -3,8 +3,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { HIDDEN_TURN } from "../../lib/play/hiddenTurns";
 import type { ChapterReflectionPublic } from "../../lib/play/chapterReflection";
-import type { TutorialQuizPublic } from "../../lib/play/tutorialQuiz";
+import type { OverlayQuizPublic } from "../../lib/play/overlayQuiz";
+import { TUTORIAL_QUIZ_SLUG } from "../../lib/play/tutorialQuizSlug";
 import { WRECK_WORKED_EXAMPLE, nextZpdStage, type ZpdStage } from "../../lib/play/zpd";
+import type { GeneratedActivity } from "../../lib/types";
 
 type QuizResult = {
   score: number;
@@ -15,13 +17,30 @@ type QuizResult = {
   standardCodes?: string[];
 };
 
+function generatedToOverlay(activity: GeneratedActivity): OverlayQuizPublic {
+  return {
+    id: activity.id,
+    slug: `generated:${activity.id}`,
+    standardCode: activity.standardCode,
+    standardCodes: [activity.standardCode],
+    title: activity.title,
+    instructions: activity.instructions,
+    items: activity.items,
+    hints: [],
+    completionId: activity.id,
+    alreadyCompleted: false,
+    priorScore: null,
+    source: "generated",
+  };
+}
+
 export function useLearningLoop(
   sessionId: string,
   captain: string,
   sendMessage: (content: string) => Promise<void> | void
 ) {
   const [quizDone, setQuizDone] = useState(false);
-  const [quiz, setQuiz] = useState<TutorialQuizPublic | null>(null);
+  const [quiz, setQuiz] = useState<OverlayQuizPublic | null>(null);
   const [showQuiz, setShowQuiz] = useState(false);
   const [quizSubmitting, setQuizSubmitting] = useState(false);
   const [quizResult, setQuizResult] = useState<QuizResult | null>(null);
@@ -36,7 +55,9 @@ export function useLearningLoop(
 
   useEffect(() => {
     Promise.all([
-      fetch(`/api/session/${sessionId}/tutorial-quiz`).then((r) => r.json()),
+      fetch(`/api/session/${sessionId}/overlay-quiz?slug=${TUTORIAL_QUIZ_SLUG}`).then((r) =>
+        r.json()
+      ),
       fetch(`/api/session/${sessionId}/reflection`).then((r) => r.json()),
     ])
       .then(([quizData, reflectData]: [{ completed?: boolean }, { completed?: boolean }]) => {
@@ -46,28 +67,40 @@ export function useLearningLoop(
       .catch(() => undefined);
   }, [sessionId]);
 
-  const openTutorialQuiz = useCallback(async () => {
+  const openOverlayQuiz = useCallback(async (slug: string) => {
     try {
-      const res = await fetch(`/api/session/${sessionId}/tutorial-quiz`, {
+      const res = await fetch(`/api/session/${sessionId}/overlay-quiz`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "start" }),
+        body: JSON.stringify({ action: "start", slug }),
       });
-      const data = (await res.json()) as { quiz?: TutorialQuizPublic; error?: string };
+      const data = (await res.json()) as { quiz?: OverlayQuizPublic; error?: string };
       if (!res.ok || !data.quiz) throw new Error(data.error || "Quiz missing");
       if (data.quiz.alreadyCompleted) {
-        setQuizDone(true);
-        return { alreadyDone: true };
+        if (slug === TUTORIAL_QUIZ_SLUG) setQuizDone(true);
+        return { alreadyDone: true, slug };
       }
       setQuiz(data.quiz);
       setQuizResult(null);
       setZpdStage(null);
       setShowQuiz(true);
-      return { alreadyDone: false };
+      return { alreadyDone: false, slug };
     } catch (e) {
       throw e instanceof Error ? e : new Error("Could not open the crate lid.");
     }
   }, [sessionId]);
+
+  const openTutorialQuiz = useCallback(
+    () => openOverlayQuiz(TUTORIAL_QUIZ_SLUG),
+    [openOverlayQuiz]
+  );
+
+  const openGeneratedQuiz = useCallback((activity: GeneratedActivity) => {
+    setQuiz(generatedToOverlay(activity));
+    setQuizResult(null);
+    setZpdStage(null);
+    setShowQuiz(true);
+  }, []);
 
   const submitQuiz = useCallback(
     async (answers: Array<{ itemId: string; selectedIndex: number }>) => {
@@ -75,11 +108,41 @@ export function useLearningLoop(
       setQuizSubmitting(true);
       setQuizError(null);
       try {
-        const res = await fetch(`/api/session/${sessionId}/tutorial-quiz`, {
+        if (quiz.source === "generated") {
+          const res = await fetch(
+            `/api/session/${sessionId}/activity/${quiz.id}/submit`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ answers }),
+            }
+          );
+          const data = (await res.json()) as {
+            result?: { score: number; total: number; correct: number };
+            error?: string;
+          };
+          if (!res.ok || !data.result) throw new Error(data.error || "Submit failed");
+          const result: QuizResult = {
+            score: data.result.score,
+            total: data.result.total,
+            correct: data.result.correct,
+            missed: [],
+            hints: [],
+            standardCodes: quiz.standardCodes,
+          };
+          setQuizResult(result);
+          void sendMessage(
+            `${HIDDEN_TURN.quizResultPrefix} ${captain} scored ${result.correct}/${result.total} on ${quiz.standardCode}.`
+          );
+          return;
+        }
+
+        const res = await fetch(`/api/session/${sessionId}/overlay-quiz`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             action: "submit",
+            slug: quiz.slug,
             completionId: quiz.completionId,
             answers,
           }),
@@ -87,8 +150,9 @@ export function useLearningLoop(
         const data = (await res.json()) as { result?: QuizResult; error?: string };
         if (!res.ok || !data.result) throw new Error(data.error || "Submit failed");
         setQuizResult(data.result);
-        setQuizDone(true);
-        const next = nextZpdStage(null, data.result.missed.length);
+        if (quiz.slug === TUTORIAL_QUIZ_SLUG) setQuizDone(true);
+        const useZpd = quiz.slug === TUTORIAL_QUIZ_SLUG;
+        const next = useZpd ? nextZpdStage(null, data.result.missed.length) : "done";
         setZpdStage(next);
         const miss = data.result.missed.length
           ? `missed ${data.result.missed.join(", ")}`
@@ -187,6 +251,8 @@ export function useLearningLoop(
     quizError,
     zpdStage,
     openTutorialQuiz,
+    openOverlayQuiz,
+    openGeneratedQuiz,
     submitQuiz,
     advanceZpd,
     reflectionDone,

@@ -80,16 +80,21 @@ export async function hasProfile(userId: string): Promise<boolean> {
   return profile != null;
 }
 
+/** Story-default when onboarding skips goals (name + dive-in only). */
+export const DEFAULT_ONBOARDING_GOALS =
+  "Survey the wreck, find the crew, survive the island.";
+
 export interface CreateProfileInput {
   displayName?: string | null;
-  goals: string;
-  interests: string[];
+  goals?: string;
+  interests?: string[];
   primarySubjectSlug?: string;
 }
 
 /**
  * Transactional onboarding:
  *   1. Create LearnerProfile with `gradeBand="3"`, `primarySubjectSlug`, optional `displayName`.
+ *      Goals/interests default when omitted (UI is name + dive-in).
  *   2. Enroll learner in all 4 Grade 3 core subjects.
  *   3. Create the shared StoryWorld + StoryArc + Chapter 1 ("ensureLearnerStoryChain").
  *
@@ -122,8 +127,8 @@ export async function createProfile(
         primarySubjectSlug,
         activeLanguage: null,
         currentLevel: null,
-        goals: data.goals,
-        interests: data.interests,
+        goals: data.goals?.trim() || DEFAULT_ONBOARDING_GOALS,
+        interests: data.interests ?? [],
       },
       select: { id: true },
     });

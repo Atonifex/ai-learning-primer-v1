@@ -1,12 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-
-function pickRecorderMime(): string | undefined {
-  if (typeof MediaRecorder === "undefined") return undefined;
-  const types = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4"];
-  return types.find((t) => MediaRecorder.isTypeSupported(t));
-}
+import { pickRecorderMime, speechFilenameForMime } from "../../lib/play/sttAudio";
 
 export default function MicButton(props: {
   disabled?: boolean;
@@ -36,8 +31,11 @@ export default function MicButton(props: {
         setError("I didn’t catch that — try again, or type a little.");
         return;
       }
+      const mime = blob.type || "audio/webm";
+      const filename = speechFilenameForMime(mime);
+      const file = new File([blob], filename, { type: mime });
       const form = new FormData();
-      form.append("audio", blob, "speech.webm");
+      form.append("audio", file);
       const res = await fetch("/api/stt", { method: "POST", body: form });
       const data = (await res.json()) as { text?: string; error?: string };
       if (!res.ok) {
@@ -84,13 +82,15 @@ export default function MicButton(props: {
     };
     recorder.onstop = () => {
       const blob = new Blob(chunksRef.current, {
-        type: recorder.mimeType || "audio/webm",
+        type: recorder.mimeType || mime || "audio/webm",
       });
       releaseStream();
       setRecording(false);
       void finish(blob);
     };
-    recorder.start();
+    // Timeslice: some browsers emit a usable container only when chunks are
+    // flushed periodically; start() with no slice can yield invalid webm/mp4.
+    recorder.start(250);
     setRecording(true);
     timerRef.current = window.setTimeout(() => {
       if (recorder.state === "recording") recorder.stop();

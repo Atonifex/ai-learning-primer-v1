@@ -27,12 +27,15 @@ import {
   worldHeight,
   worldWidth,
   type PinId,
+  type TileKind,
 } from "../../lib/play/beachMap";
+import { TILE_VARIANTS, tileTextureSrc, tileVariantIndex } from "../../lib/play/tileset";
 
 export type BeachWorldHandle = {
   destroy: () => void;
   setPaused: (paused: boolean) => void;
   setQuizDone: (done: boolean) => void;
+  setUnlockedPins: (ids: PinId[]) => void;
   setTalkedToWreck: (talked: boolean) => void;
 };
 
@@ -47,6 +50,7 @@ const COLORS = {
   foam: 0x2a8a9a,
   sand: 0xe8d4a8,
   sandWet: 0xd4b896,
+  rock: 0x4a4a52,
   wreck: 0x5c4033,
   captain: 0xe07a5f,
   rho: 0x3d9b8f,
@@ -64,6 +68,23 @@ async function optionalTexture(url: string): Promise<Texture | null> {
   } catch {
     return null;
   }
+}
+
+/** Loads every ground tile texture once; falls back per-tile to flat Graphics if any are missing. */
+async function loadTileTextures(): Promise<Map<string, Texture>> {
+  const kinds = Object.keys(TILE_VARIANTS) as TileKind[];
+  const entries = kinds.flatMap((kind) =>
+    TILE_VARIANTS[kind].map((_, variant) => ({ kind, variant }))
+  );
+  const textures = await Promise.all(
+    entries.map(({ kind, variant }) => optionalTexture(tileTextureSrc(kind, variant)))
+  );
+  const map = new Map<string, Texture>();
+  entries.forEach(({ kind, variant }, i) => {
+    const tex = textures[i];
+    if (tex) map.set(`${kind}:${variant}`, tex);
+  });
+  return map;
 }
 
 function makeDot(color: number, radius: number): Graphics {
@@ -92,14 +113,33 @@ export async function createBeachWorld(
   const world = new Container();
   app.stage.addChild(world);
 
+  const tileTextures = await loadTileTextures();
+
   const ground = new Container();
   world.addChild(ground);
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
       const kind = tileKind(c, r);
+      const variantCount = TILE_VARIANTS[kind].length;
+      const variant = tileVariantIndex(c, r, variantCount);
+      const tex = tileTextures.get(`${kind}:${variant}`);
+      if (tex) {
+        const s = new Sprite(tex);
+        s.position.set(c * TILE, r * TILE);
+        s.width = TILE;
+        s.height = TILE;
+        ground.addChild(s);
+        continue;
+      }
       const g = new Graphics();
       const color =
-        kind === "water" ? COLORS.water : kind === "foam" ? COLORS.foam : COLORS.sand;
+        kind === "water"
+          ? COLORS.water
+          : kind === "foam"
+            ? COLORS.foam
+            : kind === "rock"
+              ? COLORS.rock
+              : COLORS.sand;
       const alt = kind === "sand" && (c + r) % 2 === 0 ? COLORS.sandWet : color;
       g.rect(c * TILE, r * TILE, TILE, TILE).fill(alt);
       ground.addChild(g);
@@ -327,11 +367,16 @@ export async function createBeachWorld(
     },
     setQuizDone(v) {
       quizDone = v;
+    },
+    setUnlockedPins(ids) {
+      const open = new Set(ids);
       for (const pin of TUTORIAL_PINS) {
         const mark = pinMarks.get(pin.id);
         if (!mark || pin.id === "wreck") continue;
         mark.clear();
-        mark.poly([0, -12, 10, 10, -10, 10]).fill(v ? 0xc4a574 : COLORS.pinLocked);
+        mark.poly([0, -12, 10, 10, -10, 10]).fill(
+          open.has(pin.id) ? 0xc4a574 : COLORS.pinLocked
+        );
       }
     },
     setTalkedToWreck(v) {

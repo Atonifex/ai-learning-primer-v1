@@ -1,11 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { TutorialQuizPublic } from "../../lib/play/tutorialQuiz";
+import type { OverlayQuizPublic } from "../../lib/play/overlayQuiz";
+import { TUTORIAL_QUIZ_SLUG } from "../../lib/play/tutorialQuizSlug";
 import { WRECK_WORKED_EXAMPLE, type ZpdStage } from "../../lib/play/zpd";
 
 export default function QuizOverlay(props: {
-  quiz: TutorialQuizPublic;
+  quiz: OverlayQuizPublic;
   submitting?: boolean;
   result?: {
     score: number;
@@ -21,6 +22,7 @@ export default function QuizOverlay(props: {
   onDismiss: () => void;
 }) {
   const { quiz, result, zpdStage } = props;
+  const isWreck = quiz.slug === TUTORIAL_QUIZ_SLUG;
   const [selected, setSelected] = useState<Record<string, number>>({});
   const [fadeTry, setFadeTry] = useState("");
 
@@ -30,15 +32,16 @@ export default function QuizOverlay(props: {
   );
 
   const missed = Boolean(result && result.missed.length > 0);
+  const wreckZpd = isWreck && missed;
   const canLeave =
-    Boolean(result) && (!missed || zpdStage === "done" || zpdStage === "fade");
+    Boolean(result) && (!wreckZpd || zpdStage === "done" || zpdStage === "fade");
 
   return (
     <div className="absolute inset-0 z-40 flex items-end justify-center bg-black/45 p-3 sm:items-center">
       <div className="w-full max-w-lg overflow-hidden rounded-2xl border-4 border-amber-800/80 bg-[#3d2914] shadow-2xl">
         <div className="bg-[#5c4033] px-4 py-2">
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-200/90">
-            Crate lid · salvage count
+            {isWreck ? "Crate lid · salvage count" : "Rho's slate · island job"}
           </p>
           <h2 className="text-lg font-semibold text-amber-50">{quiz.title}</h2>
         </div>
@@ -122,7 +125,7 @@ export default function QuizOverlay(props: {
               >
                 {props.submitting ? "Checking…" : "Show Rho"}
               </button>
-            ) : missed && zpdStage !== "done" && zpdStage !== "fade" ? (
+            ) : wreckZpd && zpdStage !== "done" && zpdStage !== "fade" ? (
               <button
                 type="button"
                 onClick={props.onZpdAdvance}
@@ -137,7 +140,7 @@ export default function QuizOverlay(props: {
                 disabled={zpdStage === "fade" && fadeTry.trim().length < 2}
                 className="rounded-lg bg-teal-800 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
               >
-                {canLeave ? "Leave a note for the engineer" : "Back to Rho"}
+                {isWreck && canLeave ? "Leave a note for the engineer" : "Back to Rho"}
               </button>
             )}
           </div>

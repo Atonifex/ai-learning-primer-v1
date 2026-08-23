@@ -247,6 +247,46 @@ export async function createChapterInArc(
   return { id: chapter.id };
 }
 
+/**
+ * After Ch1 reflection (or equivalent mission-set close), mark the active
+ * chapter COMPLETED and promote the next PLANNED chapter (Ch2 food planners).
+ */
+export async function completeActiveChapterAndActivateNext(
+  profileId: string
+): Promise<{ completedTitle: string; nextTitle: string | null } | null> {
+  const { chapterId } = await ensureLearnerStoryChain(profileId);
+  const current = await prisma.chapter.findUnique({
+    where: { id: chapterId },
+    select: { id: true, title: true, status: true, storyArcId: true, orderIndex: true },
+  });
+  if (!current || current.status !== "ACTIVE") return null;
+  // Reflection closes Tutorial Ch1 only — do not consume later chapters.
+  if (current.orderIndex !== 0) return null;
+
+  await prisma.chapter.update({
+    where: { id: current.id },
+    data: { status: "COMPLETED" },
+  });
+
+  const next = await prisma.chapter.findFirst({
+    where: { storyArcId: current.storyArcId, status: "PLANNED" },
+    orderBy: { orderIndex: "asc" },
+  });
+  if (!next) {
+    return { completedTitle: current.title, nextTitle: null };
+  }
+
+  await prisma.chapter.update({
+    where: { id: next.id },
+    data: { status: "ACTIVE" },
+  });
+  await prisma.session.updateMany({
+    where: { learnerProfileId: profileId, status: "ACTIVE" },
+    data: { chapterId: next.id },
+  });
+  return { completedTitle: current.title, nextTitle: next.title };
+}
+
 /** Backfill legacy sessions that have no `chapterId`. */
 export async function ensureSessionLinkedToChapter(
   sessionId: string

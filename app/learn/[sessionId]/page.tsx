@@ -6,10 +6,12 @@ import PlayShell from "../../../components/play/PlayShell";
 
 interface PageProps {
   params: Promise<{ sessionId: string }>;
+  searchParams: Promise<{ mission?: string }>;
 }
 
-export default async function SessionPlayPage({ params }: PageProps) {
+export default async function SessionPlayPage({ params, searchParams }: PageProps) {
   const { sessionId } = await params;
+  const { mission } = await searchParams;
   const user = await getCurrentUser();
   if (!user) redirect("/login");
 
@@ -25,6 +27,7 @@ export default async function SessionPlayPage({ params }: PageProps) {
       displayName={profile.displayName ?? "Captain"}
       subjectSlug={session.subjectSlug}
       sessionStartedAt={session.startedAt.toISOString()}
+      initialMission={typeof mission === "string" ? mission : undefined}
     />
   );
 }

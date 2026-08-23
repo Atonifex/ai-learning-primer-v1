@@ -11,6 +11,7 @@ export default function OverworldCanvas(props: {
   paused: boolean;
   quizDone: boolean;
   talkedToWreck: boolean;
+  unlockedPins: PinId[];
   onArriveAtPin: (id: PinId) => void;
   onWanderFromWreck: () => void;
 }) {
@@ -41,6 +42,7 @@ export default function OverworldCanvas(props: {
       world.setPaused(props.paused);
       world.setQuizDone(props.quizDone);
       world.setTalkedToWreck(props.talkedToWreck);
+      world.setUnlockedPins(props.unlockedPins);
     });
     return () => {
       cancelled = true;
@@ -58,6 +60,10 @@ export default function OverworldCanvas(props: {
   useEffect(() => {
     worldRef.current?.setQuizDone(props.quizDone);
   }, [props.quizDone]);
+
+  useEffect(() => {
+    worldRef.current?.setUnlockedPins(props.unlockedPins);
+  }, [props.unlockedPins]);
 
   useEffect(() => {
     worldRef.current?.setTalkedToWreck(props.talkedToWreck);

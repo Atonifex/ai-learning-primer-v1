@@ -23,6 +23,7 @@ describe("hidden turns", () => {
     expect(isHiddenTurn("__quiz_result__ score=0")).toBe(true);
     expect(isHiddenTurn("__zpd_hint__ crate")).toBe(true);
     expect(isHiddenTurn("__reflection__ note")).toBe(true);
+    expect(isHiddenTurn("__mission_start__ dune-ela")).toBe(true);
     expect(isHiddenTurn("hello Rho")).toBe(false);
     const expanded = expandHiddenTurn(HIDDEN_TURN.wreckApproach, "Hanzo");
     expect(expanded).toContain("Hanzo");

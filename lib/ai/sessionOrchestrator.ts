@@ -9,11 +9,14 @@ import {
 } from "./imageTool";
 import {
   generateLearningActivityTool,
+  openMissionTool,
   recordStandardObservationTool,
+  suggestNextMissionTool,
 } from "./standardsTool";
 import { getReferenceBuffersForScene } from "./referenceImages";
 import { recordStandardObservation } from "../services/standardsProgress";
 import { createGeneratedMiniQuiz } from "../services/learningActivities";
+import { getMissionBoard } from "../services/missions";
 import {
   formatStandardsBlock,
   getStandardCodesForSubject,
@@ -105,6 +108,7 @@ export async function* streamSessionResponse(
   const standards = await getStandardCodesForSubject(opts.subjectSlug);
   const standardsBlock = formatStandardsBlock(standards);
   const coherenceMap = extractCoherenceMap(opts.spine, opts.subjectSlug);
+  const missionBoard = await getMissionBoard(profile.id);
 
   const systemPrompt = buildSystemPrompt(
     profile,
@@ -117,6 +121,7 @@ export async function* streamSessionResponse(
       previouslyOn: opts.previouslyOn ?? null,
       standardsBlock,
       coherenceMap,
+      missionBoard: missionBoard.missions,
     }
   );
 
@@ -163,7 +168,12 @@ export async function* streamSessionResponse(
       model: MODEL,
       messages,
       // Stills-pack loop (§11 Step 1): do not call generate_scene_image per turn.
-      tools: [recordStandardObservationTool, generateLearningActivityTool],
+      tools: [
+        recordStandardObservationTool,
+        generateLearningActivityTool,
+        suggestNextMissionTool,
+        openMissionTool,
+      ],
       tool_choice: "auto",
       // gpt-5.6-luna rejects function tools unless reasoning is off.
       reasoning_effort: "none",
@@ -381,6 +391,104 @@ export async function* streamSessionResponse(
                 activityId: activity.id,
                 standardCode: activity.standardCode,
                 itemCount: activity.items.length,
+              }),
+            });
+          } catch (err) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: false,
+                error: err instanceof Error ? err.message : String(err),
+              }),
+            });
+          }
+        } else if (call.name === "suggest_next_mission") {
+          try {
+            const board = await getMissionBoard(profile.id);
+            const next = board.missions.find((m) => m.status === "available") ?? null;
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: true,
+                nextJob: next
+                  ? {
+                      id: next.id,
+                      pin: next.pinId,
+                      subject: next.subjectSlug,
+                      title: next.title,
+                      theme: next.theme,
+                    }
+                  : null,
+                missions: board.missions.map((m) => ({
+                  id: m.id,
+                  status: m.status,
+                  pin: m.pinId,
+                  subject: m.subjectSlug,
+                  title: m.title,
+                  theme: m.theme,
+                  minutes: m.estimatedMinutes,
+                  lockReason: m.lockReason,
+                })),
+              }),
+            });
+          } catch (err) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: false,
+                error: err instanceof Error ? err.message : String(err),
+              }),
+            });
+          }
+        } else if (call.name === "open_mission") {
+          const missionId = typeof args.mission_id === "string" ? args.mission_id.trim() : "";
+          if (!missionId) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({ success: false, error: "Missing mission_id" }),
+            });
+            continue;
+          }
+          try {
+            const board = await getMissionBoard(profile.id);
+            const mission = board.missions.find((m) => m.id === missionId);
+            if (!mission) {
+              toolResults.push({
+                tool_call_id: call.id,
+                content: JSON.stringify({ success: false, error: "Unknown mission" }),
+              });
+              continue;
+            }
+            if (mission.status === "locked") {
+              toolResults.push({
+                tool_call_id: call.id,
+                content: JSON.stringify({
+                  success: false,
+                  error: mission.lockReason || "That job is still locked.",
+                }),
+              });
+              continue;
+            }
+            const switched = mission.subjectSlug !== opts.subjectSlug;
+            yield {
+              type: "mission_open",
+              missionId: mission.id,
+              subjectSlug: mission.subjectSlug,
+              activitySlug: mission.activitySlug,
+              sessionId: opts.sessionId ?? "",
+              switched,
+            };
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: true,
+                missionId: mission.id,
+                pin: mission.pinId,
+                subjectSlug: mission.subjectSlug,
+                sessionSwitched: switched,
+                tellCaptain: switched
+                  ? `A new ${mission.subjectSlug} sitting is opening. Point them to the ${mission.pinId}.`
+                  : `The overlay job at the ${mission.pinId} is opening. Stay with them.`,
               }),
             });
           } catch (err) {

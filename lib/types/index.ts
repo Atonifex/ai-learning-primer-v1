@@ -170,4 +170,12 @@ export type StreamChunk =
     }
   | { type: "standard_observation"; standardCode: string; mastery: number }
   | { type: "activity_generated"; activity: GeneratedActivity }
+  | {
+      type: "mission_open";
+      missionId: string;
+      subjectSlug: string;
+      activitySlug: string;
+      sessionId: string;
+      switched: boolean;
+    }
   | { type: "done"; messageId: string };

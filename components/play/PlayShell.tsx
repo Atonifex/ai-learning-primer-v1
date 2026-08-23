@@ -1,13 +1,15 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { PinId } from "../../lib/play/beachMap";
-import { TUTORIAL_PINS } from "../../lib/play/beachMap";
 import { HIDDEN_TURN } from "../../lib/play/hiddenTurns";
+import { missionByPin } from "../../lib/play/missions";
+import { TUTORIAL_QUIZ_SLUG } from "../../lib/play/tutorialQuizSlug";
 import type { StillKey } from "../../lib/play/stills";
+import { SUBJECT_DISPLAY_NAMES, type Grade3SubjectSlug } from "../../lib/constants/subjects";
 import { formatHiddenMinutes, secondsBetween } from "../../lib/services/timeMath";
 import IntroCinematic from "./IntroCinematic";
 import ResourceHud from "./ResourceHud";
@@ -15,24 +17,36 @@ import RhoRadio from "./RhoRadio";
 import DialogueCutscene from "./DialogueCutscene";
 import QuizOverlay from "./QuizOverlay";
 import ReflectionOverlay from "./ReflectionOverlay";
+import MissionBoard from "./MissionBoard";
 import { useSessionStream } from "./useSessionStream";
 import { useLearningLoop } from "./useLearningLoop";
+import { useMissions } from "./useMissions";
 
 const OverworldCanvas = dynamic(() => import("./OverworldCanvas"), { ssr: false });
 
 const INTRO_KEY = "primer.introSkipped";
 const TIMER_KEY = "primer.showTimers";
 
+function subjectBadge(slug: string): string {
+  const full = SUBJECT_DISPLAY_NAMES[slug as Grade3SubjectSlug];
+  if (full) return full.replace("Grade 3 ", "");
+  return slug.replace("_g3", "").replaceAll("_", " ");
+}
+
 export default function PlayShell(props: {
   sessionId: string;
   displayName: string;
   subjectSlug: string;
   sessionStartedAt: string;
+  initialMission?: string;
 }) {
   const router = useRouter();
   const captain = props.displayName.trim() || "Captain";
+  const missions = useMissions();
   const [showIntro, setShowIntro] = useState(true);
   const [dialogueOpen, setDialogueOpen] = useState(false);
+  const [boardOpen, setBoardOpen] = useState(false);
+  const [startingId, setStartingId] = useState<string | null>(null);
   const [talkedToWreck, setTalkedToWreck] = useState(false);
   const [hint, setHint] = useState<string | null>(
     "Tap the wreck — or use WASD. Rho follows you."
@@ -43,21 +57,57 @@ export default function PlayShell(props: {
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const pendingQuizRef = useRef(false);
   const wreckOpeningRef = useRef(false);
-  const openQuizRef = useRef<(() => Promise<{ alreadyDone: boolean } | undefined>) | null>(null);
+  const openedMissionRef = useRef<string | null>(null);
+  const openedGeneratedRef = useRef<Set<string>>(new Set());
+  const openQuizRef = useRef<(() => Promise<{ alreadyDone: boolean } | undefined>) | null>(
+    null
+  );
 
   const onTurnEnd = useCallback(() => {
     if (!pendingQuizRef.current) return;
     pendingQuizRef.current = false;
-    void openQuizRef.current?.().then((r) => {
-      if (r?.alreadyDone) setHint("The wreck is counted. Other sites are open.");
-    }).catch((e: unknown) => {
-      setHint(e instanceof Error ? e.message : "Could not open the crate lid.");
-    });
+    void openQuizRef.current?.()
+      .then((r) => {
+        if (r?.alreadyDone) setHint("The wreck is counted. Other sites are open.");
+      })
+      .catch((e: unknown) => {
+        setHint(e instanceof Error ? e.message : "Could not open the crate lid.");
+      });
   }, []);
 
   const stream = useSessionStream(props.sessionId, onTurnEnd);
   const learning = useLearningLoop(props.sessionId, captain, stream.sendMessage);
   openQuizRef.current = learning.openTutorialQuiz;
+
+  const beginMission = useCallback(
+    async (missionId: string, opts?: { talk?: boolean }) => {
+      setStartingId(missionId);
+      try {
+        const started = await missions.startMission(missionId);
+        setBoardOpen(false);
+        if (started.switched && started.sessionId !== props.sessionId) {
+          router.push(`/learn/${started.sessionId}?mission=${started.mission.id}`);
+          return;
+        }
+        if (opts?.talk !== false) {
+          setDialogueOpen(true);
+          void stream.sendMessage(
+            `${HIDDEN_TURN.missionStartPrefix} ${started.mission.title} (${started.mission.subjectSlug}) at the ${started.mission.pinId}.`
+          );
+        }
+        const opened = await learning.openOverlayQuiz(started.mission.activitySlug);
+        if (opened.alreadyDone) {
+          setHint(`${started.mission.title} is already logged.`);
+        }
+        void missions.refresh();
+      } catch (e) {
+        setHint(e instanceof Error ? e.message : "Could not start that job.");
+      } finally {
+        setStartingId(null);
+      }
+    },
+    [learning, missions, props.sessionId, router, stream]
+  );
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -67,9 +117,7 @@ export default function PlayShell(props: {
 
   useEffect(() => {
     const tick = () => {
-      setElapsedSeconds(
-        secondsBetween(new Date(props.sessionStartedAt), new Date())
-      );
+      setElapsedSeconds(secondsBetween(new Date(props.sessionStartedAt), new Date()));
     };
     tick();
     if (!showTimers) return;
@@ -84,6 +132,34 @@ export default function PlayShell(props: {
       setShowIntro(false);
     }
   }, [stream.loaded, stream.messages.length]);
+
+  useEffect(() => {
+    const missionId = props.initialMission;
+    if (!missionId || openedMissionRef.current === missionId || showIntro) return;
+    openedMissionRef.current = missionId;
+    void beginMission(missionId, { talk: true });
+  }, [beginMission, props.initialMission, showIntro]);
+
+  useEffect(() => {
+    if (stream.streaming) return;
+    const pending = stream.pendingMissionOpen;
+    if (!pending) return;
+    stream.clearPendingMissionOpen();
+    if (pending.switched) {
+      void beginMission(pending.missionId);
+      return;
+    }
+    void learning.openOverlayQuiz(pending.activitySlug).catch((e: unknown) => {
+      setHint(e instanceof Error ? e.message : "Could not open that job.");
+    });
+  }, [beginMission, learning, stream]);
+
+  useEffect(() => {
+    const latest = stream.generatedActivities.at(-1);
+    if (!latest || openedGeneratedRef.current.has(latest.id)) return;
+    openedGeneratedRef.current.add(latest.id);
+    learning.openGeneratedQuiz(latest);
+  }, [learning, stream.generatedActivities]);
 
   function skipIntro() {
     window.localStorage.setItem(INTRO_KEY, "1");
@@ -119,17 +195,17 @@ export default function PlayShell(props: {
   }
 
   function onArriveAtPin(id: PinId) {
-    const pin = TUTORIAL_PINS.find((p) => p.id === id);
-    if (!pin) return;
     if (id === "wreck") {
       openWreckTalk();
       return;
     }
-    if (pin.lockedUntilQuiz && !learning.quizDone) {
-      setHint("Rho: Salvage the wreck first, Captain. The rest can wait.");
+    const mission = missionByPin(id);
+    const row = missions.missions.find((m) => m.id === mission?.id);
+    if (!row || row.status === "locked") {
+      setHint(row?.lockReason || "Rho: Salvage the wreck first, Captain. The rest can wait.");
       return;
     }
-    setHint(`Rho: ${pin.label} is marked. We can look closer later.`);
+    void beginMission(row.id);
   }
 
   function onWander() {
@@ -163,6 +239,14 @@ export default function PlayShell(props: {
     return () => window.removeEventListener("beforeunload", handler);
   }, [props.sessionId]);
 
+  const unlockedPins = useMemo(
+    () =>
+      missions.missions
+        .filter((m) => m.status !== "locked" && m.pinId !== "wreck")
+        .map((m) => m.pinId),
+    [missions.missions]
+  );
+
   const portrait: StillKey = stream.streaming
     ? "rhoPortraitThinking"
     : learning.quizResult && learning.quizResult.missed.length === 0
@@ -180,24 +264,38 @@ export default function PlayShell(props: {
   return (
     <div className="relative h-screen overflow-hidden bg-[#0a3340]">
       <OverworldCanvas
-        paused={dialogueOpen || learning.showQuiz || learning.showReflection}
-        quizDone={learning.quizDone}
+        paused={dialogueOpen || learning.showQuiz || learning.showReflection || boardOpen}
+        quizDone={learning.quizDone || missions.wreckQuizDone}
         talkedToWreck={talkedToWreck}
+        unlockedPins={unlockedPins}
         onArriveAtPin={onArriveAtPin}
         onWanderFromWreck={onWander}
       />
       <ResourceHud
         captainName={captain}
-        rations={3}
-        xp={learning.quizDone ? 12 : 0}
+        rations={missions.rations}
+        xp={missions.xp}
         hint={hint}
         timerLabel={showTimers ? formatHiddenMinutes(elapsedSeconds) : null}
       />
 
-      <header className="pointer-events-none absolute right-3 top-3 z-[60] flex items-center gap-2">
+      <header className="pointer-events-none absolute right-3 top-3 z-[60] flex flex-wrap items-center justify-end gap-2">
         <span className="rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100/70">
-          {props.subjectSlug.replace("_g3", "").replace("_", " ")}
+          {subjectBadge(props.subjectSlug)}
         </span>
+        <button
+          type="button"
+          onClick={() => setBoardOpen(true)}
+          className="pointer-events-auto rounded-full bg-amber-700/90 px-3 py-1.5 text-xs text-amber-50 hover:bg-amber-600"
+        >
+          Jobs
+        </button>
+        <Link
+          href="/saga"
+          className="pointer-events-auto rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100 hover:bg-[#1a120c]"
+        >
+          Saga
+        </Link>
         <button
           type="button"
           onClick={() => {
@@ -225,7 +323,10 @@ export default function PlayShell(props: {
       </header>
 
       <div className="pointer-events-none absolute bottom-4 left-3 z-20">
-        <RhoRadio onCall={callRho} disabled={learning.showQuiz || learning.showReflection} />
+        <RhoRadio
+          onCall={callRho}
+          disabled={learning.showQuiz || learning.showReflection}
+        />
       </div>
 
       {dialogueOpen && (
@@ -243,6 +344,16 @@ export default function PlayShell(props: {
         />
       )}
 
+      {boardOpen && (
+        <MissionBoard
+          missions={missions.missions}
+          chapterTitle={missions.activeChapterTitle}
+          startingId={startingId}
+          onClose={() => setBoardOpen(false)}
+          onStart={(id) => void beginMission(id)}
+        />
+      )}
+
       {learning.showQuiz && learning.quiz && (
         <QuizOverlay
           quiz={learning.quiz}
@@ -253,10 +364,12 @@ export default function PlayShell(props: {
           onSubmit={(a) => void learning.submitQuiz(a)}
           onZpdAdvance={learning.advanceZpd}
           onDismiss={() => {
+            const wreck = learning.quiz?.slug === TUTORIAL_QUIZ_SLUG;
             learning.setShowQuiz(false);
             setDialogueOpen(true);
             setHint("The island is a little bigger than it looked.");
-            if (!learning.reflectionDone) void learning.openReflection();
+            void missions.refresh();
+            if (wreck && !learning.reflectionDone) void learning.openReflection();
           }}
         />
       )}
@@ -266,7 +379,9 @@ export default function PlayShell(props: {
           reflection={learning.reflection}
           submitting={learning.reflectionSubmitting}
           error={learning.reflectionError}
-          onSubmit={(text) => void learning.submitReflection(text)}
+          onSubmit={(text) =>
+            void learning.submitReflection(text).then(() => missions.refresh())
+          }
         />
       )}
 

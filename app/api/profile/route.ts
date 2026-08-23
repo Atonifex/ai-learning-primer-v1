@@ -20,21 +20,18 @@ export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
   const displayName =
     typeof body?.displayName === "string" ? body.displayName : null;
-  const goals = typeof body?.goals === "string" ? body.goals.trim() : "";
+  // Goals/interests are optional — onboarding is name + dive-in; story defaults fill gaps.
+  const goals =
+    typeof body?.goals === "string" && body.goals.trim()
+      ? body.goals.trim()
+      : undefined;
   const interests = Array.isArray(body?.interests)
     ? body.interests.filter((v: unknown): v is string => typeof v === "string")
-    : [];
+    : undefined;
   const primarySubjectSlug =
     typeof body?.primarySubjectSlug === "string"
       ? body.primarySubjectSlug
       : undefined;
-
-  if (!goals) {
-    return NextResponse.json(
-      { error: "Goals are required" },
-      { status: 400 }
-    );
-  }
 
   try {
     const profile = await createProfile(user.userId, {

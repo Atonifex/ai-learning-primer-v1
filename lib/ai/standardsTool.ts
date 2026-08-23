@@ -58,3 +58,35 @@ export const generateLearningActivityTool = {
     },
   },
 };
+
+export const suggestNextMissionTool = {
+  type: "function" as const,
+  function: {
+    name: "suggest_next_mission",
+    description:
+      "Look up which island jobs are locked, available, or done. Call when the captain asks what to do next or how to advance.",
+    parameters: {
+      type: "object",
+      properties: {},
+    },
+  },
+};
+
+export const openMissionTool = {
+  type: "function" as const,
+  function: {
+    name: "open_mission",
+    description:
+      "Open a mission-board job for the captain (may switch the session subject). Use a mission id from the MISSION BOARD: wreck-math, dune-ela, treeline-sci, creek-ss, camp-math. Call when they agree to start that job.",
+    parameters: {
+      type: "object",
+      properties: {
+        mission_id: {
+          type: "string",
+          description: "Mission id from the board, e.g. dune-ela.",
+        },
+      },
+      required: ["mission_id"],
+    },
+  },
+};

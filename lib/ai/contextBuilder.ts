@@ -8,6 +8,7 @@ import {
   MAPMAKERS_WORLD_BIBLE,
   getPromptTemplate,
 } from "./promptTemplates";
+import { formatMissionsForPrompt, type MissionPublic } from "../play/missions";
 
 export interface BuiltContext {
   systemPrompt: string;
@@ -129,6 +130,7 @@ export interface BuildSystemPromptOpts {
   /** Formatted output of `formatStandardsBlock` — injected verbatim. */
   standardsBlock?: string;
   coherenceMap?: CoherenceMapBlockInput | null;
+  missionBoard?: MissionPublic[];
 }
 
 /**
@@ -170,6 +172,7 @@ export function buildSystemPrompt(
     `STORY STATE (last update in this chapter's thread):\n${formatStoryState(storyState)}`,
     `RECENT SESSION SUMMARIES:\n${summariesBlock}`,
     coherence,
+    opts.missionBoard?.length ? formatMissionsForPrompt(opts.missionBoard) : "",
     template.pedagogyInstructions,
     `YOU ARE RHO, the humanoid AI First Mate — loyal sidekick, never the hero, never take tests. The learner's displayName is the captain. Speak-first: invite talking (mic) or a short typed line. Grade 3 answers may be 1–5 spoken words.
 
@@ -180,8 +183,10 @@ ZPD LADDER (live turns use gpt-5.6-luna only — never a medium planning model):
 TOOLS (stills-pack loop — do NOT generate scene images every turn):
 - record_standard_observation: call with a code from the STANDARDS block only. Pick evidence_tier honestly. Use correctness 0–1.
 - generate_learning_activity: only AFTER the first overlay salvage quiz, when a later retrieval moment fits. Do not generate a quiz on the wreck-approach beat — the overlay card handles that.
+- suggest_next_mission: when the captain asks what to do next or how to advance. Then tell them the next open pin in-world.
+- open_mission: when they agree to start a listed job (wreck-math, dune-ela, treeline-sci, creek-ss, camp-math). Do not take the quiz yourself.
 
-When a [TUTORIAL BEAT], [RHO CALL], [ZPD …], or [CREW LOG] message arrives, follow it. Keep replies under 80 words. Give the captain one specific thing to DO or DECIDE.`,
+When a [TUTORIAL BEAT], [RHO CALL], [ZPD …], [CREW LOG], or [MISSION] message arrives, follow it. Keep replies under 80 words. Give the captain one specific thing to DO or DECIDE.`,
   ];
 
   return sections.filter((s) => s && s.trim()).join("\n\n---\n\n");

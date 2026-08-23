@@ -16,7 +16,8 @@ Operating router for the Primer codebase. **CLAUDE.md** (always loaded) has iden
 | **Large / ambiguous feature** | `docs/MASTER_VISION_PLAN.md` §0 + §11 | §4 locks; append §18 when done |
 | **Play shell / U4 flow / Pixi beach** | `components/play/PlayShell.tsx` | `beachWorld.ts`, `lib/play/beachMap.ts`, MASTER §4.7 / §4.10 / §7 |
 | **Dialogue cutscene / mic / speak-first** | `components/play/DialogueCutscene.tsx` | `components/session/InputBar.tsx`, `MicButton.tsx`, MASTER §4.8 |
-| **Overlay tutorial quiz** | `lib/play/tutorialQuiz.ts` | `app/api/session/[id]/tutorial-quiz/route.ts`, bank slug `g3-ma-wreck-number-forms` |
+| **Overlay tutorial quiz** | `lib/play/tutorialQuiz.ts` | `lib/play/overlayQuiz.ts`, `app/api/session/[id]/overlay-quiz/route.ts`, bank slugs in `lib/play/missions.ts` |
+| **Mission board / other pins** | `lib/play/missions.ts` | `components/play/MissionBoard.tsx`, `app/saga/page.tsx`, `lib/services/missions.ts`, MASTER §4.6 / A6 |
 | **Generate tutorial stills / art pack** | `public/stills/tutorial/README.md` | `lib/play/stills.ts`, MASTER §4.12; style: Stardew-like, not a clone; exact filenames |
 | **Intro cinematic / Skip** | `components/play/IntroCinematic.tsx` | `public/cinematics/README.md` |
 | **Change live model / router** | `lib/ai/models.ts` | `lib/ai/sessionOrchestrator.ts` — live turns stay `gpt-5.6-luna` |
@@ -28,7 +29,7 @@ Operating router for the Primer codebase. **CLAUDE.md** (always loaded) has iden
 | **Saga / wreck+food chapters** | `curriculum_resources/grade3_castaway_curriculum.ts` | `lib/services/castawayChapters.ts`, `storyCurriculum.ts` |
 | **Mastery / evidence / progress UI** | `lib/services/standardsProgress.ts` | `standardsMasteryMath.ts` — **do not redesign**; `app/progress/` |
 | **Auth / register / login** | `app/(auth)/` | `lib/auth/`, `app/api/auth/` |
-| **Onboarding (captain name)** | `components/onboarding/OnboardingWizard.tsx` | `app/api/profile/` |
+| **Onboarding (captain name + dive-in)** | `components/onboarding/OnboardingWizard.tsx` | `app/api/profile/` |
 | **Tests** | `npm test` | `docs/vitest-testing-guide.md`; play helpers under `lib/play/*.test.ts` |
 | **Deploy** | Vercel CLI `vercel` | Env: `OPENAI_API_KEY`, DB URL, JWT secret |
 
@@ -36,9 +37,9 @@ Operating router for the Primer codebase. **CLAUDE.md** (always loaded) has iden
 
 ## Current build phase (read before coding)
 
-**Done:** Step 0 data (G3 catalogs + activity bank + wreck/food chapters). Step 1 three-mode shell (intro → Pixi beach → dialogue → overlay quiz).
+**Done:** Step 0 data (G3 catalogs + activity bank + wreck/food chapters). Step 1 three-mode shell. Mission Loop v1 (Jobs board, `/saga`, other pins as §4.6 overlays, subject-switch sessions, Rho mission tools, Ch1 reflection → Ch2).
 
-**Open next (typical):** stills pack fill-in; chapter reflection; TTS; parchment map; Higgsfield mp4; then remaining tutorial / parent surfaces per MASTER §15.
+**Open next (typical):** TTS; parchment map; Higgsfield mp4; then remaining tutorial / parent surfaces per MASTER §15.
 
 **Explicitly out of first loop:** parent dashboard, mastery redesign, G4 catalogs, Three.js, graphic-novel-as-home, language-tutor as the product.
 
