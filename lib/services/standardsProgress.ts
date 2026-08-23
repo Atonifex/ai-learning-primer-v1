@@ -125,7 +125,17 @@ export async function recordStandardObservation(params: {
     select: { id: true, code: true },
   });
   if (!standard) {
-    throw new Error(`Standard not found for session subject: ${standardCode}`);
+    // Reject invented / wrong-subject codes — never write evidence against a ghost.
+    const existsAnywhere = await prisma.standard.findFirst({
+      where: { code: standardCode },
+      select: { id: true },
+    });
+    if (!existsAnywhere) {
+      throw new Error(`Unknown standard code: ${standardCode}`);
+    }
+    throw new Error(
+      `Standard code not in session subject catalog: ${standardCode}`,
+    );
   }
 
   const baseCorrectness = clamp(correctness ?? 0.7, 0, 1);

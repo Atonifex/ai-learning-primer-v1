@@ -1,9 +1,5 @@
 /**
- * Wire in a follow-up after catalog sync.
- *
- * Shared shapes for the Grade 3 activity bank and a future LearningActivity seed.
- * Do not import this from prisma/seed.ts until the G3 catalogs in prisma/seeds
- * match curriculum_resources authoring files.
+ * Shared shapes for the Grade 3 activity bank → LearningActivity seed.
  */
 
 export type SubjectSlug = "math_g3" | "ela_g3" | "science_g3" | "social_studies_g3";
@@ -54,7 +50,7 @@ export type ActivityTemplate = {
   unitId?: string;
   /** Student-facing, in-world. Bind captain name / location via storySkinNotes. */
   prompt: string;
-  scaffoldHints: [string, string, string];
+  scaffoldHints: string[];
   answerRubric: string;
   storySkinNotes: string;
   estimatedMinutes: number;
@@ -67,11 +63,21 @@ export type LearningActivitySeed = {
   slug: string;
   displayName: string;
   kind: PrismaActivityKind;
+  subjectSlug: SubjectSlug;
   description: string;
   narrativeContext: string;
   targetStandardCodes: string[];
   estimatedMinutes?: number;
   authoring: "HAND_AUTHORED";
+  content?: {
+    bankKind: BankActivityKind;
+    chapterId?: string;
+    unitId?: string;
+    scaffoldHints?: string[];
+    answerRubric?: string;
+    quizItems?: QuizItem[];
+    readingText?: string;
+  };
 };
 
 export const BANK_KIND_TO_PRISMA: Record<BankActivityKind, PrismaActivityKind> = {

@@ -6,7 +6,6 @@ import {
 } from "./contextBuilder";
 import {
   generateSceneImage,
-  generateSceneImageTool,
 } from "./imageTool";
 import {
   generateLearningActivityTool,
@@ -33,6 +32,8 @@ import type {
   StreamChunk,
   MessageData,
 } from "../types";
+import { LIVE_INTERACTION_MODEL } from "./models";
+import { expandHiddenTurn, isHiddenTurn } from "../play/hiddenTurns";
 
 function extractCoherenceMap(
   spine: StorySpineContext | null | undefined,
@@ -63,7 +64,8 @@ function extractCoherenceMap(
 }
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-const MODEL = "gpt-5.4-mini";
+/** Live child-facing turns — cheap model named in MASTER_VISION_PLAN §4.4. */
+const MODEL = LIVE_INTERACTION_MODEL;
 
 function throwIfAborted(signal: AbortSignal | undefined) {
   if (signal?.aborted) {
@@ -75,7 +77,7 @@ function throwIfAborted(signal: AbortSignal | undefined) {
 
 function toOpenAIMessages(messages: MessageData[]): ChatCompletionMessageParam[] {
   return messages
-    .filter((m) => m.content && m.content !== "__start__")
+    .filter((m) => m.content && !isHiddenTurn(m.content))
     .map((m) => ({
       role: m.role === "USER" ? ("user" as const) : ("assistant" as const),
       content: m.content,
@@ -119,19 +121,20 @@ export async function* streamSessionResponse(
   );
 
   const priorMessages = toOpenAIMessages(sessionMessages);
-  const isStart = userMessage === "__start__";
+  const captainName = profile.displayName?.trim() || "Captain";
+  const expandedUser = expandHiddenTurn(userMessage, captainName);
+  const isHidden = isHiddenTurn(userMessage);
 
   const messages: ChatCompletionMessageParam[] = [
     { role: "system", content: systemPrompt },
     ...priorMessages,
-    ...(isStart ? [] : [{ role: "user" as const, content: userMessage }]),
-    ...(isStart ? [{ role: "user" as const, content: "__start__" }] : []),
+    { role: "user" as const, content: expandedUser },
   ];
 
   if (isAiDebug()) {
     aiDebug("orchestrator", "turn_start", {
       model: MODEL,
-      turn: isStart ? "session_start" : "user_message",
+      turn: isHidden ? "hidden_tutorial_beat" : "user_message",
       systemPromptChars: systemPrompt.length,
       priorTurns: priorMessages.length,
       messagesOutline: summarizeMessagesForDebug(
@@ -159,7 +162,8 @@ export async function* streamSessionResponse(
     {
       model: MODEL,
       messages,
-      tools: [generateSceneImageTool, recordStandardObservationTool, generateLearningActivityTool],
+      // Stills-pack loop (§11 Step 1): do not call generate_scene_image per turn.
+      tools: [recordStandardObservationTool, generateLearningActivityTool],
       tool_choice: "auto",
       stream: true,
       //4/7/2026: Experiment with max_completion_tokens to see if it helps with the length of the responses.

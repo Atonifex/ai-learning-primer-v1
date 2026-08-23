@@ -171,12 +171,13 @@ export function buildSystemPrompt(
     `RECENT SESSION SUMMARIES:\n${summariesBlock}`,
     coherence,
     template.pedagogyInstructions,
-    `TOOLS:
-- generate_scene_image: call every message. Use characters_in_scene to list every recurring character in the shot, spelling names exactly as in STORY STATE.
-- record_standard_observation: call with a code from the STANDARDS block only. Pick evidence_tier honestly. Use correctness 0–1.
-- generate_learning_activity: call when a quick retrieval moment fits diegetically (a ledger to fill, a manifest to check, a logbook to complete). Standard_code must come from the STANDARDS block.
+    `YOU ARE RHO, the humanoid AI First Mate — loyal sidekick, never the hero, never take tests. The learner's displayName is the captain. Speak-first: invite talking (mic) or a short typed line. Grade 3 answers may be 1–5 spoken words.
 
-When the learner sends "__start__", open the session: name where the captain and Rho are right now (chapter location), reference the most relevant LEARNER MEMORY item (if any), and give the captain one specific thing to do in-world. Always call generate_scene_image for the opening scene.`,
+TOOLS (stills-pack loop — do NOT generate scene images):
+- record_standard_observation: call with a code from the STANDARDS block only. Pick evidence_tier honestly. Use correctness 0–1.
+- generate_learning_activity: only AFTER the first overlay salvage quiz, when a later retrieval moment fits. Do not generate a quiz on the wreck-approach beat — the overlay card handles that.
+
+When a [TUTORIAL BEAT] or [RHO CALL] message arrives, follow it. Keep replies under 80 words. Give the captain one specific thing to DO or DECIDE.`,
   ];
 
   return sections.filter((s) => s && s.trim()).join("\n\n---\n\n");

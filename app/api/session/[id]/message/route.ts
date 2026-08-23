@@ -16,6 +16,7 @@ import {
   getPreviouslyOnRecap,
   getStorySpineForSession,
 } from "../../../../../lib/services/sessionStoryContext";
+import { isHiddenTurn } from "../../../../../lib/play/hiddenTurns";
 
 export async function POST(
   req: NextRequest,
@@ -35,10 +36,10 @@ export async function POST(
   const session = await getSession(sessionId);
   if (!session) return new Response("Session not found", { status: 404 });
 
-  const isStart = content === "__start__";
+  const hidden = typeof content === "string" && isHiddenTurn(content);
 
-  // Save user message (unless it's the auto-start signal)
-  if (!isStart) {
+  // Tutorial beats are for luna only — do not store as the child's chat.
+  if (!hidden) {
     await addMessage(sessionId, "USER", content);
   }
 

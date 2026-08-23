@@ -21,6 +21,11 @@ import {
   MAPMAKERS_WORLD_BIBLE,
   MAPMAKERS_WORLD_TITLE,
 } from "../ai/promptTemplates/_shared_castaway_world";
+import {
+  getWreckAndFoodChapterTemplates,
+  wreckFoodPlannerJson,
+  WRECK_FOOD_CURRICULUM_IDS,
+} from "./castawayChapters";
 
 const DEFAULT_CATALOG_VERSION_BY_SLUG: Record<string, string> = {
   math_g3: "v1",
@@ -28,6 +33,12 @@ const DEFAULT_CATALOG_VERSION_BY_SLUG: Record<string, string> = {
   science_g3: "v1",
   social_studies_g3: "v1",
 };
+
+/** Six-chapter spine: curriculum wreck+food planners for Ch1–Ch2, shared templates for Ch3–Ch6. */
+function mapmakersChapterSpine() {
+  const [wreck, food] = getWreckAndFoodChapterTemplates();
+  return [wreck, food, ...MAPMAKERS_CHAPTERS.slice(2)];
+}
 
 async function resolveCatalogIdForSubject(
   subjectSlug: string
@@ -104,10 +115,14 @@ export async function ensureLearnerStoryChain(
       },
     });
 
-    // Seed all six shared chapters as PLANNED; activate the first.
-    for (let i = 0; i < MAPMAKERS_CHAPTERS.length; i++) {
-      const tpl = MAPMAKERS_CHAPTERS[i];
+    // Seed shared chapters as PLANNED; activate the first. Ch1–Ch2 planners
+    // come from grade3_castaway_curriculum (wreck + food).
+    const spine = mapmakersChapterSpine();
+    for (let i = 0; i < spine.length; i++) {
+      const tpl = spine[i];
       const chapterTags = refineChapterFocusTags(arcTags, i, tpl.title);
+      const curriculumId =
+        i < WRECK_FOOD_CURRICULUM_IDS.length ? WRECK_FOOD_CURRICULUM_IDS[i] : undefined;
       await prisma.chapter.create({
         data: {
           storyArcId: arc.id,
@@ -116,13 +131,15 @@ export async function ensureLearnerStoryChain(
           focusTags: chapterTags,
           status: i === 0 ? "ACTIVE" : "PLANNED",
           pathAheadWhisper: tpl.pathAheadWhisper ?? null,
-          plannerJson: {
-            sharedBeat: tpl.sharedBeat,
-            anchorQuestion: tpl.anchorQuestion,
-            chapterQuestion: tpl.chapterQuestion,
-            investigationQuestions: tpl.investigationQuestions,
-            subjectPlans: tpl.subjectPlans,
-          } as unknown as Prisma.InputJsonValue,
+          plannerJson: (curriculumId
+            ? wreckFoodPlannerJson(tpl, curriculumId)
+            : {
+                sharedBeat: tpl.sharedBeat,
+                anchorQuestion: tpl.anchorQuestion,
+                chapterQuestion: tpl.chapterQuestion,
+                investigationQuestions: tpl.investigationQuestions,
+                subjectPlans: tpl.subjectPlans,
+              }) as unknown as Prisma.InputJsonValue,
         },
       });
     }
@@ -162,6 +179,46 @@ export async function ensureLearnerStoryChain(
     },
   });
   return { chapterId: overflow.id };
+}
+
+/**
+ * Overlay curriculum wreck + food planners onto the learner's first two chapters
+ * (idempotent). Used by seed for the stable test captain and by migrations of thin planners.
+ */
+export async function syncWreckAndFoodChaptersForLearner(
+  profileId: string,
+): Promise<{ updated: number }> {
+  await ensureLearnerStoryChain(profileId);
+  const world = await prisma.storyWorld.findUniqueOrThrow({
+    where: { learnerProfileId: profileId },
+  });
+  const arc = await prisma.storyArc.findFirstOrThrow({
+    where: { storyWorldId: world.id, status: "ACTIVE" },
+    orderBy: { orderIndex: "desc" },
+  });
+  const chapters = await prisma.chapter.findMany({
+    where: { storyArcId: arc.id },
+    orderBy: { orderIndex: "asc" },
+    take: 2,
+  });
+  const templates = getWreckAndFoodChapterTemplates();
+  let updated = 0;
+  for (let i = 0; i < Math.min(chapters.length, templates.length); i++) {
+    const tpl = templates[i];
+    await prisma.chapter.update({
+      where: { id: chapters[i].id },
+      data: {
+        title: tpl.title,
+        pathAheadWhisper: tpl.pathAheadWhisper ?? null,
+        plannerJson: wreckFoodPlannerJson(
+          tpl,
+          WRECK_FOOD_CURRICULUM_IDS[i],
+        ) as unknown as Prisma.InputJsonValue,
+      },
+    });
+    updated += 1;
+  }
+  return { updated };
 }
 
 /**

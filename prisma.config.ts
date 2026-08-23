@@ -24,4 +24,7 @@ if (!migrateUrl) {
 
 export default defineConfig({
   datasource: { url: migrateUrl },
+  migrations: {
+    seed: "tsx prisma/seed.ts",
+  },
 });

@@ -203,7 +203,7 @@ If session 4 does not feel like **returning to the same island and camp**, the p
 | World language ES/ZH | Schema fields may stay nullable; **do not keep a live language-tutor product path.** Guild-trade language is post-MVP |
 | GTM sequence | **1)** D2C Florida stipend parents **2)** homeschool associations / Step Up **3)** AZ, UT, WV **4)** private schools TX/NY. Districts later. |
 | Under-13 | Parent-owned household; two logins; COPPA. Voice = transcribe-and-discard. |
-| Grade 3 science catalog | Authoritative full set: `curriculum_resources/standards_science_grade3.ts`. Prisma N-slice must be replaced. |
+| Grade 3 science catalog | Authoritative full set: `curriculum_resources/standards_science_grade3.ts` (seeded via re-export). |
 | Codebase strategy | **Stay in this repo. Prune vestigial language-tutor code.** |
 
 ### 4.1 COPPA, in plain language
@@ -249,7 +249,6 @@ Prune list for agents (do incrementally, not a big-bang rewrite):
 
 - Stop injecting language-tutor instructions into G3 sessions (if any remain).
 - Keep `Language?` / `targetLanguage` nullable in schema; do not build UI for them.
-- Mark `lib/ai/promptTemplates/language_es.ts` as unused; delete when nothing imports it.
 - Treat dated `docs/v1-*.md` as museum; this file wins.
 
 ### 4.3 Three ways to organize the home experience (locked recommendation)
@@ -423,7 +422,7 @@ Do **not** steal Undertale’s FIGHT/MERCY moral test or bullet-hell. The “dum
 
 ### 4.11 What to put in Prisma (E2) — recommendation
 
-**Why the 80 `seedGap` matters:** `prisma/seed.ts` still loads **thin** math/science/SS slices (and may import `OLDstandards_ela_grade3.ts`). About **80 Grade 3 codes** exist in `curriculum_resources/standards_*_grade3.ts` but **not** in the DB. `LearningActivityStandardLink` needs a real `Standard` row. That is why `prisma/seeds/activities/from_grade3_bank.ts` is **not** imported from `seed.ts` yet — linking 177 bank items would fail or silently skip codes.
+**Why the 80 `seedGap` mattered:** `prisma/seed.ts` used to load **thin** math/science/SS slices (and `OLDstandards_ela_grade3.ts`). About **80 Grade 3 codes** lived only in `curriculum_resources/`. **SUPERSEDED 2026-08-22:** seed imports the full authoring catalogs and `npx prisma db seed` loaded **127** `Standard` rows. Next Step 0: wire `from_grade3_bank.ts` (still unwired on purpose).
 
 | Layer | Put in Prisma? | When |
 |-------|----------------|------|
@@ -515,14 +514,14 @@ The AI does **not** invent standards. It **selects** activities and **narrates**
 
 Also present: `curriculum_resources/grade4_science_scraped.json` (scrape companion to science G4).
 
-**What Prisma actually loads today** (`prisma/seed.ts`) is a **subset**: G3 math/ELA/science/SS seed files. Science seed is Nature-of-Science only until replaced by the full `standards_science_grade3.ts`. Grade 4 and ELA G5 catalogs are **authored, not seeded**. ELA G3 seed wiring currently imports `OLDstandards_ela_grade3` — migrate to `prisma/seeds/standards_ela_grade3.ts`.
+**What Prisma actually loads today** (`prisma/seed.ts`): full Grade 3 catalogs from `curriculum_resources/standards_*_grade3.ts` (math, ELA, science, SS). `prisma/seeds/standards_*_grade3.ts` re-export those files. `OLDstandards_ela_grade3.ts` is unused legacy. Grade 4 and ELA G5 catalogs are **authored, not seeded**.
 
 | Grade | Domain | Canonical authoring file | Seed / runtime |
 |-------|--------|--------------------------|----------------|
-| 3 | ELA | `curriculum_resources/standards_ela_grade3.ts` | `prisma/seeds/standards_ela_grade3.ts` (seed.ts may still point at OLD file) |
-| 3 | Math | `curriculum_resources/standards_math_grade3.ts` | `prisma/seeds/standards_math_grade3.ts` (thinner than authoring file) |
-| 3 | Science | `curriculum_resources/standards_science_grade3.ts` | `prisma/seeds/standards_science_grade3.ts` — **N-slice; replace with authoring file** |
-| 3 | Social studies | `curriculum_resources/standards_social_studies_grade3.ts` | `prisma/seeds/standards_social_studies_grade3.ts` |
+| 3 | ELA | `curriculum_resources/standards_ela_grade3.ts` | seeded (re-export via `prisma/seeds/standards_ela_grade3.ts`) |
+| 3 | Math | `curriculum_resources/standards_math_grade3.ts` | seeded (re-export via `prisma/seeds/standards_math_grade3.ts`) |
+| 3 | Science | `curriculum_resources/standards_science_grade3.ts` | seeded (re-export via `prisma/seeds/standards_science_grade3.ts`) |
+| 3 | Social studies | `curriculum_resources/standards_social_studies_grade3.ts` | seeded (re-export via `prisma/seeds/standards_social_studies_grade3.ts`) |
 | 4 | ELA | `curriculum_resources/standards_ela_grade4.ts` | not seeded |
 | 4 | Math | `curriculum_resources/standards_math_grade4.ts` | not seeded |
 | 4 | Science | `curriculum_resources/standards_science_grade4.ts` | not seeded |
@@ -542,7 +541,7 @@ Supporting:
 **Rules:**
 
 - Codes in prompts must come from the catalog, never model memory.
-- **Authoring files in `curriculum_resources/` are the Layer 1 inventory.** Seeds lag. Expanding seeds is a data job, not optional flavor.
+- **Authoring files in `curriculum_resources/` are the Layer 1 inventory.** G3 seeds re-export them; expanding Grade 4+ into `prisma/seed.ts` is still a data job.
 - Grade 4 + ELA Grade 5 files exist on disk; wiring them into `prisma/seed.ts` is how the corpus becomes playable.
 - Science G3 authoring file includes N, E, P, L — not just Nature of Science.
 
@@ -609,7 +608,7 @@ select_activity({
 
 Implementation today: `LearningActivity*` models, `lib/services/learningActivities.ts` (mini-quiz), tools in `sessionOrchestrator.ts`.
 
-**Authoring rule:** templates tagged `chapterTag: "g3_chN"` **or** `curriculumUnitId` + `subjectSlug` + `targetStandardCodes[]`. Grade 3 bank: `curriculum_resources/grade3_castaway_curriculum.ts` + `grade3_activity_bank*.ts` (177 templates, 127/127 codes). **Do not seed activities into Prisma until catalogs sync** (`prisma/seeds/activities/from_grade3_bank.ts`). 80 codes are `seedGap`.
+**Authoring rule:** templates tagged `chapterTag: "g3_chN"` **or** `curriculumUnitId` + `subjectSlug` + `targetStandardCodes[]`. Grade 3 bank: `curriculum_resources/grade3_castaway_curriculum.ts` + `grade3_activity_bank*.ts` (177 templates, 127/127 codes). Bank is seeded via `from_grade3_bank.ts` in `prisma/seed.ts`.
 
 
 ### 5.3 Layer 3 — Story elements (multiple layers)
@@ -953,27 +952,44 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 ### P0 — Data + orchestrator truth
 
 - [x] Audit G3 seeds vs `curriculum_resources` — 127 authoring codes; **80 seedGap** (math 28, science 22, SS 30). ELA authoring seed is complete; `seed.ts` may still import OLD ELA.
-- [ ] Replace G3 prisma math/science/SS slices with full `curriculum_resources` catalogs; point `seed.ts` at `standards_ela_grade3.ts` (not OLD) — **do this before the activity bank**
-- [ ] Seed activity bank after catalog sync (`from_grade3_bank.ts`)
+- [x] Replace G3 prisma math/science/SS slices with full `curriculum_resources` catalogs; point `seed.ts` at authoring catalogs (not OLD) — **done before the activity bank**
+- [x] Seed activity bank after catalog sync (`from_grade3_bank.ts`)
 - [ ] Seed Grade 4 catalogs into Prisma (`ela/math/science/ss`) — after first playable loop is OK
 - [ ] `buildSystemPrompt` always includes shared castaway bible + chapter `plannerJson` + **session subject** standards only
-- [ ] `record_standard_observation` rejects unknown codes
-- [ ] Shared story chain: one world, one saga, four lenses (`ensureLearnerStoryChain`)
+- [x] `record_standard_observation` rejects unknown codes
+- [x] Shared story chain: one world, one saga, four lenses (`ensureLearnerStoryChain`)
 - [ ] Schema decision logged: `StoryArc.standardsCatalogId` vs shared arc
 
 ### P0 — Tutorial vertical slice
 
-- [ ] Chapter 1 plannerJson (wreck / First Mate / food) instantiated from `grade3_castaway_curriculum.ts`
-- [ ] Captain = `displayName`; Rho = humanoid AI First Mate (call + follower); never steals hero role
-- [ ] Intro poster slot + Skip (`public/cinematics/`); Higgsfield later
-- [ ] Pixi home: tiny beach, tap-to-move + WASD, fog, resource HUD, placeholder captain
-- [ ] U4: click wreck → dialogue (left/right) → overlay quiz
-- [ ] Stills placeholders (`public/stills/tutorial/`) — no crash if files missing
-- [ ] Speak-first mic in composer; STT when wired; short type fallback
-- [ ] Mini-quiz overlay + luna ZPD (no static retry-only)
-- [ ] Time tracking: session + activity
+- [x] Chapter 1 plannerJson (wreck / First Mate / food) instantiated from `grade3_castaway_curriculum.ts`
+- [x] Captain = `displayName`; Rho = humanoid AI First Mate (call + follower); never steals hero role
+- [x] Intro poster slot + Skip (`public/cinematics/`); Higgsfield later
+- [x] Pixi home: tiny beach, tap-to-move + WASD, fog, resource HUD, placeholder captain
+- [x] U4: click wreck → dialogue (left/right) → overlay quiz
+- [x] Stills placeholders (`public/stills/tutorial/`) — no crash if files missing
+- [x] Speak-first mic in composer; STT when wired; short type fallback
+- [x] Mini-quiz overlay + luna ZPD (no static retry-only) — overlay is bank MC; ZPD is luna after submit + scaffold hints
+- [x] Time tracking: session + activity
 - [ ] **Chapter reflection** (spoken OK) persisted
 - [ ] Memory `STORY_BEAT` on complete
+
+**Step 1 closeout (2026-08-22) — done / leftover / debt**
+
+Done: three-mode shell (intro → Pixi beach → dialogue cutscene → overlay quiz); Rho radio + follower; `gpt-5.6-luna` live turns; whisper STT (audio discarded); stills placeholders; session `startedAt`/`completedAt` + quiz `LearningActivityCompletion` start/end.
+
+Not this slice (still open above / P1+): chapter reflection, `STORY_BEAT` memory, TTS, parchment map overlay, Higgsfield mp4, real stills art, parent dashboard, mastery redesign, full-screen activity tools.
+
+Technical debt (defer to end of this plan unless a later step naturally clears it):
+1. Per-turn `generate_scene_image` is **disabled** (stills pack). Handler remains; re-enable for full-MVP dynamic scenes.
+2. Overlay quiz uses MC items only from `g3-ma-wreck-number-forms` (drops the bank free-response item).
+3. Rations / XP HUD are client stubs — not persisted; not tied to chapter complete (P2).
+4. Ambient ocean bed is silent; mute control not wired (U15 placeholder).
+5. Intro Skip is `localStorage`, not per-learner server state.
+6. Walk is straight-line + axis slide, not A* pathing.
+7. Graphic-novel `ScenePanel` is unused as home (kept for possible still reuse).
+8. STT is `whisper-1`, not luna; requires mic permission + `OPENAI_API_KEY`.
+9. `PlayShell` is slightly over the 250-line component guideline.
 
 ### P1 — Tutorial crew + camp
 
@@ -1008,7 +1024,7 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 
 ### Agent hygiene
 
-- [ ] Every shipped slice updates §18
+- [x] Every shipped slice updates §18
 - [ ] No parallel edits to orchestrator/schema
 - [ ] Quay packet: 1 worked chapter (this §13) + reporting screenshot
 
@@ -1054,11 +1070,11 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 | `curriculum_resources/grade4_science_scraped.json` | Science G4 scrape companion |
 | `curriculum_resources/grade3_*_standards.md` | Human-readable dumps |
 | `curriculum_resources/cpalms-standards-researcher-SKILL.md` | Fetch / verify more |
-| `prisma/seeds/standards_ela_grade3.ts` | G3 ELA seed (prefer over OLD) |
-| `prisma/seeds/OLDstandards_ela_grade3.ts` | Legacy; `seed.ts` may still import this |
-| `prisma/seeds/standards_math_grade3.ts` | G3 Math seed |
-| `prisma/seeds/standards_science_grade3.ts` | G3 Science seed (N-slice until replaced) |
-| `prisma/seeds/standards_social_studies_grade3.ts` | G3 SS seed |
+| `prisma/seeds/standards_ela_grade3.ts` | G3 ELA seed (re-exports authoring catalog) |
+| `prisma/seeds/OLDstandards_ela_grade3.ts` | Legacy thin ELA; unused by `seed.ts` |
+| `prisma/seeds/standards_math_grade3.ts` | G3 Math seed (re-exports authoring catalog) |
+| `prisma/seeds/standards_science_grade3.ts` | G3 Science seed (re-exports authoring catalog) |
+| `prisma/seeds/standards_social_studies_grade3.ts` | G3 SS seed (re-exports authoring catalog) |
 | `prisma/seeds/types.ts` | `SubjectSeed` |
 | `prisma/seed.ts` | Wiring |
 | `lib/services/standardsCatalog.ts` | Prompt injection |
@@ -1093,10 +1109,17 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 
 | File | Use |
 |------|-----|
-| `app/learn/[sessionId]/page.tsx` | Main play |
+| `app/learn/[sessionId]/page.tsx` | Playable loop shell (auth + PlayShell) |
+| `components/play/PlayShell.tsx` | Three-mode machine: intro / overworld / dialogue + overlay quiz |
+| `components/play/beachWorld.ts` | Pixi stub: tiles, 5 pins, tap-to-move, WASD, fog, Rho follower |
+| `lib/play/beachMap.ts` | Walkable tutorial beach + pin layout |
+| `lib/play/stills.ts` | Tutorial stills paths + placeholder labels |
+| `lib/ai/models.ts` | Live model `gpt-5.6-luna` |
+| `app/api/stt/route.ts` | OpenAI STT; transcribe and discard |
+| `app/api/session/[id]/tutorial-quiz/route.ts` | Overlay salvage quiz start/submit |
 | `lib/ai/contextBuilder.ts` | Prompt assembly |
 | `lib/ai/memoryExtractor.ts` | Memory |
-| `lib/ai/imageTool.ts` | Scenes |
+| `lib/ai/imageTool.ts` | Scenes (disabled on live turns until dynamic-stills MVP) |
 | `app/api/session/[id]/message/route.ts` | SSE |
 | `app/progress/**` | Measurement UI |
 
@@ -1110,7 +1133,7 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 
 ## 17. Open questions live in §20
 
-Answered 2026-08-22 items are in **§4**. Remaining: **§20 D (U1–U15)** blocks Pixi implementation. A3–A10, P1–P4, and IEP (I1–I5) should be answered soon but do not block seeding the §4.6 slice.
+Answered 2026-08-22 items are in **§4**. **§20 D (U1–U15) SUPERSEDED** — Pixi three-mode shell shipped 2026-08-22 (see §18). Remaining P1+ work is listed in §15.
 
 **E2 is locked:** copy full G3 catalogs into Prisma now.
 
@@ -1219,6 +1242,28 @@ I will: (1) move remaining ★ answers into §4, (2) write `docs/CHAPTER_1_BUILD
 
 
 Agents append here. Newest first.
+
+### 2026-08-22 — Three-mode playable shell (Step 1)
+
+- Home is a Pixi stub beach (tiles, ~5 pins, tap-to-move + WASD, soft fog, rations HUD, placeholder captain + Rho follower). Intro poster/video slot + Skip. U4: walk/click wreck → left-chat / right-Rho cutscene → overlay salvage quiz (`g3-ma-wreck-number-forms` MC). Live model **`gpt-5.6-luna`**. Mic in composer; OpenAI `whisper-1` STT (audio discarded). Missing stills render `TODO(stills)` rectangles.
+- Did **not** redesign mastery or build a parent dashboard. Session time = `Session.startedAt/completedAt`; activity time = `LearningActivityCompletion.startedAt/completedAt`.
+- Outstanding: chapter reflection, `STORY_BEAT` memory, TTS, parchment overlay, Higgsfield mp4, real stills. Debt listed under §15 Step 1 closeout (image tool off, FR quiz item dropped, HUD stubs, silent ambient, localStorage intro skip, no A* pathing).
+- Files: `components/play/*`, `lib/play/*`, `lib/ai/models.ts`, `lib/ai/sessionOrchestrator.ts`, `lib/ai/contextBuilder.ts`, `app/learn/[sessionId]/page.tsx`, `app/api/stt/route.ts`, `app/api/session/[id]/tutorial-quiz/route.ts`, `components/session/InputBar.tsx`, `docs/MASTER_VISION_PLAN.md`. Added `pixi.js` for the locked overworld renderer.
+
+### 2026-08-22 — Activity bank + wreck/food chapters (Step 0 items 3–4)
+
+- Wired `prisma/seeds/activities/from_grade3_bank.ts` into `prisma/seed.ts`: **177** `LearningActivity` rows, **285** standard links (throws on missing codes; no silent §4.6 skips).
+- Test learner `test_captain@primer.local` gets curriculum Ch1 wreck + Ch2 food planners via `syncWreckAndFoodChaptersForLearner` / `lib/services/castawayChapters.ts`. New learners use the same Ch1–Ch2 spine in `ensureLearnerStoryChain`.
+- `recordStandardObservation` rejects unknown codes (`Unknown standard code: …`) and wrong-subject codes.
+- Smoke: `prisma/scripts/prompt1Smoke.ts`. No Pixi/UI; mastery formula unchanged.
+- Files: `prisma/seed.ts`, `prisma/seeds/activities/*`, `lib/services/{storyCurriculum,castawayChapters,standardsProgress}.ts`, `docs/MASTER_VISION_PLAN.md`.
+
+### 2026-08-22 — Standards seed gap closed (Step 0 catalogs only)
+
+- Pointed `prisma/seed.ts` at full G3 catalogs in `curriculum_resources/standards_*_grade3.ts` (math, ELA, science, SS; **127 codes**). Stopped importing `OLDstandards_ela_grade3`.
+- Replaced thin `prisma/seeds/standards_{math,science,social_studies,ela}_grade3.ts` with re-exports of those authoring catalogs.
+- Wired Prisma 7 seed in `prisma.config.ts` (`migrations.seed`). **`npx prisma db seed` succeeded:** `Seeded 127 Grade 3 standards across 4 subjects.` Did **not** wire `from_grade3_bank.ts` yet (next Step 0 item).
+- Files: `prisma/seed.ts`, `prisma/seeds/standards_*_grade3.ts`, `prisma.config.ts`, `docs/MASTER_VISION_PLAN.md`.
 
 ### 2026-08-22 — Product-owner answers folded in (A/E/C)
 

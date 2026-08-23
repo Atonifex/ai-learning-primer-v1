@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import MessageCard from "./MessageCard";
 import UserBubble from "./UserBubble";
 import ConceptPopup from "./ConceptPopup";
+import { isHiddenTurn } from "../../lib/play/hiddenTurns";
 
 export interface Message {
   id: string;
@@ -92,7 +93,9 @@ export default function MessageList({ messages }: MessageListProps) {
     setPopup(null);
   }, []);
 
-  const visible = messages.filter((m) => m.content && m.content !== "__start__");
+  const visible = messages.filter(
+    (m) => m.content && !isHiddenTurn(m.content)
+  );
 
   return (
     <div className="flex-1 overflow-y-auto px-4 py-6 messages-scroll">
@@ -111,7 +114,9 @@ export default function MessageList({ messages }: MessageListProps) {
         )}
         {visible.length === 0 && (
           <div className="flex items-center justify-center h-32">
-            <p className="text-stone-400 text-sm">Beginning your session…</p>
+            <p className="text-stone-400 text-sm">
+              Rho is waiting — you can talk or type a little.
+            </p>
           </div>
         )}
         <div ref={bottomRef} />
