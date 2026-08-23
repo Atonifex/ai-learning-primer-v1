@@ -167,7 +167,7 @@ export default function HouseholdHome() {
         className="mt-10 space-y-3 rounded-2xl border border-stone-200 bg-stone-50 p-5"
       >
         <h2 className="text-sm font-semibold text-stone-800">
-          {fused ? "Create this captain’s login" : "Add a captain"}
+          {fused ? "Create this student’s profile" : "Create your student's profile"}
         </h2>
         {fused && (
           <p className="text-xs text-stone-500">

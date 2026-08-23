@@ -51,7 +51,7 @@ export default function CaptainLoginForm() {
           autoComplete="username"
           value={username}
           onChange={(e) => setUsername(e.target.value.toLowerCase())}
-          placeholder="maya"
+          placeholder="your student's name"
           required
           autoFocus
         />
