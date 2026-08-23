@@ -86,9 +86,11 @@ function formatStoryState(state: StoryStateData | null): string {
 
 function formatLearnerBlock(profile: LearnerProfileData): string {
   const name = profile.displayName?.trim() || "(no name given)";
+  const readingLevel = profile.readingLevel || profile.gradeBand;
   return [
     `Captain (displayName): ${name}`,
     `Grade: ${profile.gradeBand}`,
+    `Reading level (dialogue & passages): Grade ${readingLevel}`,
     `Goals: ${profile.goals}`,
     `Interests: ${profile.interests.join(", ") || "(none yet)"}`,
   ].join("\n");
@@ -137,8 +139,8 @@ export interface BuildSystemPromptOpts {
  * System prompt = shared world bible + subject lens + learner block +
  * standards block + memory block + coherence map + pedagogy instructions.
  *
- * Difficulty is NEVER a stored or asked field — the pedagogy block tells the
- * model to infer it from STRENGTH / MISCONCEPTION memory items.
+ * Reading level is stored on the profile (defaults to gradeBand). Task/ZPD
+ * difficulty still comes from STRENGTH / MISCONCEPTION memory items.
  */
 export function buildSystemPrompt(
   profile: LearnerProfileData,
@@ -148,6 +150,7 @@ export function buildSystemPrompt(
   opts: BuildSystemPromptOpts
 ): string {
   const template = getPromptTemplate(opts.subjectSlug);
+  const readingLevel = profile.readingLevel || profile.gradeBand;
 
   const summariesBlock = recentSummaries.length
     ? recentSummaries.map((s, i) => `Session ${i + 1}: ${s}`).join("\n")
@@ -160,12 +163,17 @@ export function buildSystemPrompt(
   const coherence = formatCoherenceMapBlock(opts.coherenceMap ?? null);
 
   const sections: string[] = [
-    `You are Primer, a personal AI tutor for a Grade ${profile.gradeBand} learner. Teach through one continuous story — never as a worksheet in a costume.`,
+    `You are Primer, a personal AI tutor for a Grade ${profile.gradeBand} learner (dialogue reading level: Grade ${readingLevel}). Teach through one continuous story — never as a worksheet in a costume.`,
     MAPMAKERS_WORLD_BIBLE,
     template.basePrompt,
     `LEARNER PROFILE:\n${formatLearnerBlock(profile)}`,
+    `READING LEVEL (hard rule for every spoken and written line you produce):
+- Target Grade ${readingLevel} vocabulary, sentence length, and passage difficulty.
+- Override any "Grade 3 vocabulary" wording in the subject lens above — use Grade ${readingLevel} instead.
+- Keep dialogue clear enough for a Grade ${readingLevel} reader to follow aloud or silently.
+- In-world texts (journals, briefings, logs) should also match Grade ${readingLevel}.`,
     standardsBlock,
-    `LEARNER MEMORY (use to open the session AND calibrate difficulty — this is the only difficulty signal):\n${formatMemoryItems(
+    `LEARNER MEMORY (use to open the session AND calibrate task difficulty — ZPD signal beyond reading level):\n${formatMemoryItems(
       memoryItems
     )}`,
     `STORY SPINE:\n${formatStorySpine(opts.spine ?? null, opts.previouslyOn ?? null)}`,
@@ -174,7 +182,7 @@ export function buildSystemPrompt(
     coherence,
     opts.missionBoard?.length ? formatMissionsForPrompt(opts.missionBoard) : "",
     template.pedagogyInstructions,
-    `YOU ARE RHO, the humanoid AI First Mate — loyal sidekick, never the hero, never take tests. The learner's displayName is the captain. Speak-first: invite talking (mic) or a short typed line. Grade 3 answers may be 1–5 spoken words.
+    `YOU ARE RHO, the humanoid AI First Mate — loyal sidekick, never the hero, never take tests. The learner's displayName is the captain. Speak-first: invite talking (mic) or a short typed line. Younger captains may answer in 1–5 spoken words.
 
 ZPD LADDER (live turns use gpt-5.6-luna only — never a medium planning model):
 - If the captain is wrong or stuck: (1) one new hint, (2) a worked example or in-world tool, (3) fade support and let them try. Do not loop the same static retry line.

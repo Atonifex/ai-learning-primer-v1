@@ -24,12 +24,14 @@ Operating router for the Primer codebase. **CLAUDE.md** (always loaded) has iden
 | **Prompt / Rho voice / subject lens** | `lib/ai/promptTemplates/` | `lib/ai/contextBuilder.ts`, shared bible `_shared_castaway_world.ts` |
 | **Session streaming / tools** | `lib/ai/sessionOrchestrator.ts` | `app/api/session/[id]/message/route.ts`, `lib/play/hiddenTurns.ts` |
 | **STT / Whisper** | `app/api/stt/route.ts` | Needs `OPENAI_API_KEY` in `.env`; discard audio (COPPA) |
+| **TTS / Rho voice** | `app/api/tts/route.ts` | `components/play/useRhoTts.ts` + DialogueCutscene; OpenAI `gpt-4o-mini-tts`; audio not stored |
 | **Seed DB / standards gap / activity bank** | `prisma/seed.ts` | `curriculum_resources/standards_*_grade3.ts`, `from_grade3_bank.ts`, MASTER §4.11 |
 | **Author a Florida standard or activity** | `curriculum_resources/` | Never invent codes; use CPALMS skill if verifying |
 | **Saga / wreck+food chapters** | `curriculum_resources/grade3_castaway_curriculum.ts` | `lib/services/castawayChapters.ts`, `storyCurriculum.ts` |
 | **Mastery / evidence / progress UI** | `lib/services/standardsProgress.ts` | `standardsMasteryMath.ts` — **do not redesign**; `app/progress/` |
 | **Auth / register / login** | `app/(auth)/` | `lib/auth/`, `app/api/auth/` |
-| **Onboarding (captain name + dive-in)** | `components/onboarding/OnboardingWizard.tsx` | `app/api/profile/` |
+| **Onboarding (captain name + grade + dive-in)** | `components/onboarding/OnboardingWizard.tsx` | `app/api/profile/` |
+| **Reading level / learner settings** | `app/settings/page.tsx` | `components/settings/ReadingLevelForm.tsx`, `PATCH /api/profile` |
 | **Tests** | `npm test` | `docs/vitest-testing-guide.md`; play helpers under `lib/play/*.test.ts` |
 | **Deploy** | Vercel CLI `vercel` | Env: `OPENAI_API_KEY`, DB URL, JWT secret |
 
@@ -37,9 +39,9 @@ Operating router for the Primer codebase. **CLAUDE.md** (always loaded) has iden
 
 ## Current build phase (read before coding)
 
-**Done:** Step 0 data (G3 catalogs + activity bank + wreck/food chapters). Step 1 three-mode shell. Mission Loop v1 (Jobs board, `/saga`, other pins as §4.6 overlays, subject-switch sessions, Rho mission tools, Ch1 reflection → Ch2).
+**Done:** Step 0 data (G3 catalogs + activity bank + wreck/food chapters). Step 1 three-mode shell. Mission Loop v1 (Jobs board, `/saga`, other pins as §4.6 overlays, subject-switch sessions, Rho mission tools, Ch1 reflection → Ch2). Rho TTS (OpenAI; mute + replay; audio discarded).
 
-**Open next (typical):** TTS; parchment map; Higgsfield mp4; then remaining tutorial / parent surfaces per MASTER §15.
+**Open next (typical):** parchment map; Higgsfield mp4; then remaining tutorial / parent surfaces per MASTER §15.
 
 **Explicitly out of first loop:** parent dashboard, mastery redesign, G4 catalogs, Three.js, graphic-novel-as-home, language-tutor as the product.
 

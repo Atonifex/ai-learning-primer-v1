@@ -19,7 +19,10 @@ model LearnerProfile {
   userId             String              @unique
   user               User                @relation(fields: [userId], references: [id])
   displayName        String?
+  /// Organizational / enrolled grade (3–8). Curriculum catalogs may still be G3-first.
   gradeBand          String              @default("3")
+  /// Dialogue / passage reading target. Defaults to gradeBand at onboarding; may diverge later (placement).
+  readingLevel       String              @default("3")
   primarySubjectSlug String              @default("math_g3")
   activeLanguage     Language?
   currentLevel       Level?

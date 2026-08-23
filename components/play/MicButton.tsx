@@ -6,6 +6,7 @@ import { pickRecorderMime, speechFilenameForMime } from "../../lib/play/sttAudio
 export default function MicButton(props: {
   disabled?: boolean;
   onTranscript: (text: string) => void;
+  onRecordingStart?: () => void;
 }) {
   const recorderRef = useRef<MediaRecorder | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
@@ -92,6 +93,7 @@ export default function MicButton(props: {
     // flushed periodically; start() with no slice can yield invalid webm/mp4.
     recorder.start(250);
     setRecording(true);
+    props.onRecordingStart?.();
     timerRef.current = window.setTimeout(() => {
       if (recorder.state === "recording") recorder.stop();
     }, 20000);

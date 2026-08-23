@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import type { StillKey } from "../../lib/play/stills";
 import type { Message } from "../session/MessageList";
 import MessageList from "../session/MessageList";
@@ -8,6 +9,7 @@ import PreviouslyOnCard from "../session/PreviouslyOnCard";
 import BranchPickPanel from "../session/BranchPickPanel";
 import type { SessionStoryUi } from "../../lib/types";
 import SafeStill from "./SafeStill";
+import { useRhoTts } from "./useRhoTts";
 
 export default function DialogueCutscene(props: {
   sessionId: string;
@@ -21,20 +23,60 @@ export default function DialogueCutscene(props: {
   onClose: () => void;
   onBranchResolved?: (nextId: string) => void;
 }) {
+  const tts = useRhoTts();
+  const speak = tts.speak;
+  const stop = tts.stop;
+  const wasStreaming = useRef(props.streaming);
+
+  useEffect(() => {
+    const was = wasStreaming.current;
+    wasStreaming.current = props.streaming;
+    if (props.streaming) {
+      if (!was) stop();
+      return;
+    }
+    if (!was) return;
+    const last = [...props.messages]
+      .reverse()
+      .find((m) => m.role === "ASSISTANT" && m.content.trim());
+    if (!last) return;
+    void speak(last.content, last.id);
+  }, [props.streaming, props.messages, speak, stop]);
+
+  function handlePortraitTap() {
+    if (tts.muted) tts.setMuted(false);
+    if (tts.playing) {
+      stop();
+      return;
+    }
+    tts.replayLast();
+  }
+
   return (
     <div className="absolute inset-0 z-30 flex min-h-0 flex-col bg-[#071820]/70 md:flex-row">
       <div className="flex min-h-0 min-w-0 flex-1 flex-col border-stone-800 bg-[#f7f1e4] md:border-r">
-        <div className="flex flex-shrink-0 items-center justify-between border-b border-amber-200/60 bg-[#efe4ce] px-3 py-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-900/80">
+        <div className="flex flex-shrink-0 items-center justify-between gap-2 border-b border-amber-200/60 bg-[#efe4ce] px-3 py-2.5">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-amber-900/80">
             Talking with Rho
           </p>
-          <button
-            type="button"
-            onClick={props.onClose}
-            className="rounded-lg px-2 py-1 text-xs text-stone-600 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-amber-500"
-          >
-            Back to beach
-          </button>
+          <div className="flex items-center gap-1">
+            <button
+              type="button"
+              aria-pressed={!tts.muted}
+              aria-label={tts.muted ? "Turn Rho's voice on" : "Turn Rho's voice off"}
+              onClick={() => tts.setMuted(!tts.muted)}
+              className="rounded-lg px-2.5 py-1.5 text-sm text-stone-600 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            >
+              {tts.muted ? "Voice off" : "Voice on"}
+            </button>
+            <button
+              type="button"
+              onClick={props.onClose}
+              className="rounded-lg px-2.5 py-1.5 text-sm text-stone-600 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            >
+              Back to beach
+            </button>
+          </div>
         </div>
         {props.storyUi?.showPreviouslyOn && props.storyUi.previouslyOn && (
           <PreviouslyOnCard
@@ -42,7 +84,15 @@ export default function DialogueCutscene(props: {
             text={props.storyUi.previouslyOn}
           />
         )}
-        <MessageList messages={props.messages} />
+        <MessageList
+          messages={props.messages}
+          hearingId={tts.playingId}
+          hearLoading={tts.loading}
+          onHear={(id, content) => {
+            if (tts.playingId === id) stop();
+            else void speak(content, id);
+          }}
+        />
         {props.storyUi?.branchPoint && (
           <BranchPickPanel
             sessionId={props.sessionId}
@@ -51,10 +101,11 @@ export default function DialogueCutscene(props: {
           />
         )}
         {props.streaming && (
-          <p className="flex-shrink-0 px-4 pb-1 text-xs text-stone-500">{props.thinkingLabel}</p>
+          <p className="flex-shrink-0 px-4 pb-1 text-sm text-stone-500">{props.thinkingLabel}</p>
         )}
         <InputBar
           onSend={props.onSend}
+          onMicStart={stop}
           disabled={props.streaming || Boolean(props.storyUi?.branchPoint)}
           speakFirst
           placeholder={`Tell Rho — talk or type a little, Captain ${props.captainName}…`}
@@ -62,11 +113,30 @@ export default function DialogueCutscene(props: {
       </div>
       <div className="relative h-[34vh] min-h-[180px] w-full flex-shrink-0 bg-[#0c2a32] md:h-auto md:w-[42%] md:min-h-0">
         <SafeStill still={props.portrait} alt="Rho, First Mate" />
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#071820] to-transparent px-4 py-3">
+        <button
+          type="button"
+          onClick={handlePortraitTap}
+          className="absolute inset-0 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-300"
+          aria-label={
+            tts.blocked
+              ? "Tap to hear Rho"
+              : tts.playing
+                ? "Stop Rho's voice"
+                : "Hear Rho again"
+          }
+        />
+        {tts.playing && (
+          <span className="pointer-events-none absolute right-3 top-3 h-3 w-3 rounded-full bg-teal-300 shadow-[0_0_12px_rgba(94,234,212,0.9)]" />
+        )}
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#071820] to-transparent px-4 py-3">
           <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-teal-200/80">
             First Mate
           </p>
           <p className="text-lg text-teal-50">Rho</p>
+          {tts.blocked && !tts.muted && (
+            <p className="mt-0.5 text-sm text-teal-100/90">Tap Rho to hear</p>
+          )}
+          {tts.loading && <p className="mt-0.5 text-sm text-teal-100/80">Rho is getting ready…</p>}
         </div>
       </div>
     </div>

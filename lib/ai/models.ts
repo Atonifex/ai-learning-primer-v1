@@ -16,3 +16,10 @@ export const PLANNING_MODEL = "gpt-5.4";
 
 /** Memory extraction / cheap utilities — not the child-facing loop. */
 export const UTILITY_MODEL = "gpt-5.4-nano";
+
+/**
+ * Rho's spoken voice (MASTER §7.2). Audio out only — not a chat model.
+ * `gpt-4o-mini-tts` accepts `instructions` so we can keep one First Mate timbre.
+ */
+export const RHO_TTS_MODEL = "gpt-4o-mini-tts";
+export const RHO_TTS_VOICE = "coral";

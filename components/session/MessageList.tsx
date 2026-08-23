@@ -24,9 +24,17 @@ interface PopupState {
 
 interface MessageListProps {
   messages: Message[];
+  hearingId?: string | null;
+  hearLoading?: boolean;
+  onHear?: (id: string, content: string) => void;
 }
 
-export default function MessageList({ messages }: MessageListProps) {
+export default function MessageList({
+  messages,
+  hearingId,
+  hearLoading,
+  onHear,
+}: MessageListProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
   const [popup, setPopup] = useState<PopupState | null>(null);
   const defineAbortRef = useRef<AbortController | null>(null);
@@ -107,6 +115,13 @@ export default function MessageList({ messages }: MessageListProps) {
               content={msg.content}
               isFirst={i === 0}
               onWordClick={handleWordClick}
+              hearing={hearingId === msg.id}
+              hearLoading={Boolean(hearLoading && hearingId === msg.id)}
+              onHear={
+                onHear && !msg.streaming
+                  ? () => onHear(msg.id, msg.content)
+                  : undefined
+              }
             />
           ) : (
             <UserBubble key={msg.id} content={msg.content} />
@@ -114,7 +129,7 @@ export default function MessageList({ messages }: MessageListProps) {
         )}
         {visible.length === 0 && (
           <div className="flex items-center justify-center h-32">
-            <p className="text-stone-400 text-sm">
+            <p className="text-base text-stone-400 md:text-lg">
               Rho is waiting — you can talk or type a little.
             </p>
           </div>

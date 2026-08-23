@@ -52,6 +52,7 @@ This Next.js has breaking changes vs older training data. Before writing App Rou
 | Session SSE / luna turns | `lib/ai/sessionOrchestrator.ts` + `app/api/session/[id]/message/route.ts` |
 | Prompt bible + subject lenses | `lib/ai/promptTemplates/` |
 | STT (Whisper; discard audio) | `app/api/stt/route.ts` |
+| TTS (Rho; OpenAI; discard audio) | `app/api/tts/route.ts` + `components/play/useRhoTts.ts` |
 | Overlay salvage quiz | `lib/play/tutorialQuiz.ts` + `app/api/session/[id]/tutorial-quiz/route.ts` |
 | Seed standards + activity bank | `prisma/seed.ts` + `curriculum_resources/` |
 | Florida G3 catalogs (authoring) | `curriculum_resources/standards_*_grade3.ts` |

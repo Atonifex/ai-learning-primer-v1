@@ -68,6 +68,8 @@ export interface LearnerProfileData {
   id: string;
   displayName: string | null;
   gradeBand: string;
+  /** Dialogue/passage reading target (grade string). Defaults to gradeBand at onboarding. */
+  readingLevel: string;
   primarySubjectSlug: string;
   goals: string;
   interests: string[];

@@ -2,6 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import {
+  DEFAULT_GRADE_BAND,
+  LEARNER_GRADE_BANDS,
+  type LearnerGradeBand,
+} from "../../lib/constants/grades";
 
 type Phase = "name" | "dive";
 
@@ -11,6 +16,8 @@ export default function OnboardingWizard() {
   const router = useRouter();
   const [phase, setPhase] = useState<Phase>("name");
   const [displayName, setDisplayName] = useState("");
+  const [gradeBand, setGradeBand] =
+    useState<LearnerGradeBand>(DEFAULT_GRADE_BAND);
   const [error, setError] = useState("");
   const [reducedMotion, setReducedMotion] = useState(false);
   const diveStartedAt = useRef(0);
@@ -34,6 +41,8 @@ export default function OnboardingWizard() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           displayName: displayName.trim() || null,
+          gradeBand,
+          // readingLevel defaults to gradeBand on the server
         }),
       });
       const data = await res.json().catch(() => ({}));
@@ -117,7 +126,8 @@ export default function OnboardingWizard() {
               Welcome, Captain
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-teal-100/75">
-              What should the crew call you? Then we dive straight onto the beach.
+              What should the crew call you, and what grade are you in? Then we
+              dive straight onto the beach.
             </p>
 
             <label htmlFor="displayName" className="sr-only">
@@ -136,6 +146,30 @@ export default function OnboardingWizard() {
               autoComplete="nickname"
               className="mt-8 w-full rounded-xl border border-teal-200/25 bg-[#0a2a36]/70 px-4 py-3.5 text-center text-base text-amber-50 placeholder:text-teal-200/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-sm focus:border-amber-300/50 focus:outline-none focus:ring-2 focus:ring-amber-400/30"
             />
+
+            <label
+              htmlFor="gradeBand"
+              className="mt-6 block text-left text-xs font-semibold uppercase tracking-[0.18em] text-teal-200/70"
+            >
+              Grade
+            </label>
+            <select
+              id="gradeBand"
+              value={gradeBand}
+              onChange={(e) =>
+                setGradeBand(e.target.value as LearnerGradeBand)
+              }
+              className="mt-2 w-full rounded-xl border border-teal-200/25 bg-[#0a2a36]/70 px-4 py-3.5 text-center text-base text-amber-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-sm focus:border-amber-300/50 focus:outline-none focus:ring-2 focus:ring-amber-400/30"
+            >
+              {LEARNER_GRADE_BANDS.map((g) => (
+                <option key={g} value={g} className="bg-[#0a2a36] text-amber-50">
+                  Grade {g}
+                </option>
+              ))}
+            </select>
+            <p className="mt-2 text-left text-xs text-teal-200/45">
+              Rho will talk and write at this reading level.
+            </p>
 
             {error && (
               <p className="mt-4 rounded-lg bg-red-950/50 px-3 py-2 text-sm text-red-200">

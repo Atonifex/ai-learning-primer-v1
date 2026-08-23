@@ -43,7 +43,7 @@ export default function PreviouslyOnCard({ sessionId, text }: PreviouslyOnCardPr
             Dismiss
           </button>
         </div>
-        <p className="text-sm leading-relaxed text-stone-800">{text}</p>
+        <p className="text-base leading-relaxed text-stone-800 md:text-lg">{text}</p>
       </div>
     </div>
   );

@@ -35,12 +35,20 @@ export default async function ProgressPage() {
             Explore growth by subject standards and cross-subject skills.
           </p>
         </div>
-        <Link
-          href="/progress/skills"
-          className="text-sm font-medium text-amber-700 hover:text-amber-900 hover:underline"
-        >
-          All skills →
-        </Link>
+        <div className="flex flex-wrap items-center gap-4">
+          <Link
+            href="/settings"
+            className="text-sm font-medium text-stone-600 hover:text-stone-900 hover:underline"
+          >
+            Settings
+          </Link>
+          <Link
+            href="/progress/skills"
+            className="text-sm font-medium text-amber-700 hover:text-amber-900 hover:underline"
+          >
+            All skills →
+          </Link>
+        </div>
       </div>
 
       <section className="mt-8 grid gap-3 md:grid-cols-2">

@@ -21,6 +21,7 @@ import MissionBoard from "./MissionBoard";
 import { useSessionStream } from "./useSessionStream";
 import { useLearningLoop } from "./useLearningLoop";
 import { useMissions } from "./useMissions";
+import { unlockRhoAudio } from "../../lib/play/rhoAudio";
 
 const OverworldCanvas = dynamic(() => import("./OverworldCanvas"), { ssr: false });
 
@@ -90,6 +91,7 @@ export default function PlayShell(props: {
           return;
         }
         if (opts?.talk !== false) {
+          unlockRhoAudio();
           setDialogueOpen(true);
           void stream.sendMessage(
             `${HIDDEN_TURN.missionStartPrefix} ${started.mission.title} (${started.mission.subjectSlug}) at the ${started.mission.pinId}.`
@@ -167,6 +169,7 @@ export default function PlayShell(props: {
   }
 
   function openWreckTalk() {
+    unlockRhoAudio();
     setDialogueOpen(true);
     setHint(null);
     if (!talkedToWreck && !wreckOpeningRef.current) {
@@ -210,12 +213,14 @@ export default function PlayShell(props: {
 
   function onWander() {
     if (talkedToWreck || dialogueOpen) return;
+    unlockRhoAudio();
     setDialogueOpen(true);
     setHint("Rho is calling.");
     void stream.sendMessage(HIDDEN_TURN.rhoWander);
   }
 
   function callRho() {
+    unlockRhoAudio();
     setDialogueOpen(true);
     void stream.sendMessage(HIDDEN_TURN.rhoCall);
   }
@@ -366,6 +371,7 @@ export default function PlayShell(props: {
           onDismiss={() => {
             const wreck = learning.quiz?.slug === TUTORIAL_QUIZ_SLUG;
             learning.setShowQuiz(false);
+            unlockRhoAudio();
             setDialogueOpen(true);
             setHint("The island is a little bigger than it looked.");
             void missions.refresh();

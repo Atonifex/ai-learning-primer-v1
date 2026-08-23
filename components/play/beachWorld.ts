@@ -192,12 +192,13 @@ export async function createBeachWorld(
     return makeDot(color, radius);
   }
 
-  const captain = actor(captainTex, COLORS.captain, 12, 28);
+  // Sprites ~1.2× tile so they stay readable when the camera shows the big map.
+  const captain = actor(captainTex, COLORS.captain, 20, 56);
   captain.position.set(spawn.x, spawn.y);
   world.addChild(captain);
 
-  const rho = actor(rhoTex, COLORS.rho, 9, 22);
-  rho.position.set(spawn.x - 22, spawn.y + 10);
+  const rho = actor(rhoTex, COLORS.rho, 16, 44);
+  rho.position.set(spawn.x - 36, spawn.y + 14);
   world.addChild(rho);
 
   const keys = new Set<string>();
@@ -319,8 +320,8 @@ export async function createBeachWorld(
     }
 
     const follow = 0.08;
-    rho.position.x += (captain.x - 20 - rho.x) * follow;
-    rho.position.y += (captain.y + 12 - rho.y) * follow;
+    rho.position.x += (captain.x - 36 - rho.x) * follow;
+    rho.position.y += (captain.y + 16 - rho.y) * follow;
 
     const { col, row } = pixelToTile(captain.x, captain.y);
     const pin = pinAt(col, row, 1);

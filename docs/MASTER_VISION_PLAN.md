@@ -979,13 +979,13 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 
 Done: three-mode shell (intro → Pixi beach → dialogue cutscene → overlay quiz); Rho radio + follower; `gpt-5.6-luna` live turns; whisper STT (audio discarded); stills placeholders; session `startedAt`/`completedAt` + quiz `LearningActivityCompletion` start/end.
 
-Not this slice (still open above / P1+): TTS, parchment map overlay, Higgsfield mp4, real stills art, parent dashboard, mastery redesign, full-screen activity tools.
+Not this slice (still open above / P1+): parchment map overlay, Higgsfield mp4, real stills art, parent dashboard, mastery redesign, full-screen activity tools.
 
 Technical debt (defer to end of this plan unless a later step naturally clears it):
 1. Per-turn `generate_scene_image` is **disabled** (stills pack). Handler remains; re-enable for full-MVP dynamic scenes.
 2. Overlay quiz uses MC items only from bank slugs (drops free-response items). Mission Loop v1 covers wreck + four other pins; still not full-screen tools.
 3. Rations / XP HUD are client stubs — not persisted; not tied to chapter complete (P2).
-4. Ambient ocean bed is silent; mute control not wired (U15 placeholder).
+4. Ambient ocean bed is silent; mute control not wired for ambient (U15 placeholder). Rho TTS has its own Voice on/off.
 5. Intro Skip is `localStorage`, not per-learner server state.
 6. Walk is straight-line + axis slide, not A* pathing.
 7. Graphic-novel `ScenePanel` is unused as home (kept for possible still reuse).
@@ -998,7 +998,7 @@ Technical debt (defer to end of this plan unless a later step naturally clears i
 - [ ] Parchment map overlay that grows; walk fog
 - [ ] Camp site choice branch
 - [ ] XP + camp pin (perk tree UI later)
-- [ ] TTS for Rho (OpenAI)
+- [x] TTS for Rho (OpenAI)
 - [ ] Parent account linked to child account(s) (COPPA-ready)
 - [ ] Parent dashboard + weekly email + weekly PDF (full MVP, after student loop)
 
@@ -1267,6 +1267,12 @@ Agents append here. Newest first.
 - Added `scripts/preview-map.ts` (ASCII dump of the mask) for iterating on the coastline without booting the game. `lib/play/beachMap.test.ts` updated for the new coordinates (tutorial-band assertions now anchor off `SPAWN_ROW` instead of literal rows).
 - Files: `lib/play/beachMap.ts`, `lib/play/beachMap.test.ts`, `components/play/beachWorld.ts`, `scripts/preview-map.ts`, `docs/MASTER_VISION_PLAN.md`.
 
+### 2026-08-23 — Rho TTS (OpenAI)
+
+- Rho speaks each finished dialogue turn via OpenAI `gpt-4o-mini-tts` (`coral` + First Mate instructions). `/api/tts` returns mp3 in memory; the client plays it and discards the blob (nothing stored). History is not auto-spoken on reopen; **Hear Rho** replays a line. **Voice on/off** persists in `localStorage`. Mic barge-in stops speech. Browser autoplay block → “Tap Rho to hear.”
+- Not done: line cache, ElevenLabs, ambient ocean bed / U15 map mute.
+- Files: `app/api/tts/route.ts`, `lib/play/{ttsText,rhoVoice}.ts`, `lib/ai/models.ts`, `components/play/{useRhoTts,DialogueCutscene,MicButton}.tsx`, `components/session/{MessageList,MessageCard,InputBar}.tsx`.
+
 ### 2026-08-23 — Onboarding: name + dive-in
 
 - Removed goals / interests / “subjects ready” wizard steps. Onboarding is captain name (optional) → short dawn-ocean dive animation → `/learn`. Profile API no longer requires goals; `createProfile` fills story-default goals and empty interests; G3 core enroll + story chain unchanged.
@@ -1278,6 +1284,19 @@ Agents append here. Newest first.
 - Rho's 3 portraits + overworld sprite share the same face/visor-eye/jacket language. Overworld sprites (`captain_placeholder_sprite.webp`, `rho_overworld_sprite.webp`) needed a PNG round-trip + `sharp` re-encode to actually get alpha transparency in the webp — plain `background: "transparent"` + `output_format: "webp"` on `images.generate` silently produced an opaque background.
 - Not done: background/location scenes (`cinematic_poster`, `crash_aftermath_beach`, `wreck_pile_close`, `dune`, `treeline`, `creek`, `camp_site_empty`, `map_parchment_unexplored`) came back ~2–2.3MB each at 1536×1024 high quality — worth a compression pass before shipping, not blocking.
 - Files: `public/stills/tutorial/*.webp`, `scripts/generate-tutorial-stills.ts`, `scripts/fix-sprite-transparency.ts`, `docs/MASTER_VISION_PLAN.md`.
+
+### 2026-08-23 — Reading level settings + G4 readiness note
+
+- **`/settings`** page lets parents/captains change `readingLevel` after onboarding (`PATCH /api/profile`); linked from `/progress`. Takes effect on the next dialogue turn.
+- **Grade 4 standards state (not playable yet):** full catalogs authored in `curriculum_resources/standards_*_grade4.ts` (`math_g4`, `ela_g4`, etc.) but **not seeded** to Prisma, no G4 activity bank/saga, no G4 prompt templates, enrollment/session start still hard-coded to G3 slugs. Next data step: re-export G4 catalogs in `prisma/seeds/` + wire `seed.ts` (same pattern as G3). Gameplay step after G3 loop is tested: G4 templates, checkpoint-driven subject advance, grade-aware enrollment.
+- Files: `lib/services/profile.ts`, `app/api/profile/route.ts`, `app/settings/page.tsx`, `components/settings/ReadingLevelForm.tsx`, `app/progress/page.tsx`, `CONTEXT.md`.
+
+### 2026-08-23 — Dialogue text size + reading level
+
+- Dialogue cutscene copy is larger (assistant/user bubbles ~lg–xl; composer `text-base`/`text-lg`).
+- Onboarding now asks **grade (3–8)**; persists `LearnerProfile.gradeBand` and sets `readingLevel` to the same value by default (new column + migration backfill).
+- Live prompts inject a hard READING LEVEL rule from `profile.readingLevel` so Rho vocabulary/passages track the captain (overrides hardcoded “Grade 3 vocabulary” in subject lenses).
+- Files: `prisma/schema.prisma`, `prisma/migrations/20260823050000_reading_level/`, `lib/{constants/grades,services/profile,types,ai/contextBuilder}.ts`, `app/api/profile/route.ts`, `components/onboarding/OnboardingWizard.tsx`, `components/{play/DialogueCutscene,session/*}.tsx`, `CONTEXT.md`.
 
 ### 2026-08-23 — Learning truth in the shell
 

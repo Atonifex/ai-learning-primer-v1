@@ -9,6 +9,8 @@ interface InputBarProps {
   placeholder?: string;
   /** ChatGPT/Claude placement: mic on the composer. Speak-first for Grade 3. */
   speakFirst?: boolean;
+  /** Stop Rho's TTS when the captain starts talking. */
+  onMicStart?: () => void;
 }
 
 export default function InputBar({
@@ -16,6 +18,7 @@ export default function InputBar({
   disabled,
   placeholder,
   speakFirst = false,
+  onMicStart,
 }: InputBarProps) {
   const [value, setValue] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -66,7 +69,11 @@ export default function InputBar({
     <div className="border-t border-stone-100 bg-white px-4 py-3">
       <div className="mx-auto flex max-w-2xl items-end gap-2">
         {speakFirst && (
-          <MicButton disabled={disabled} onTranscript={handleTranscript} />
+          <MicButton
+            disabled={disabled}
+            onTranscript={handleTranscript}
+            onRecordingStart={onMicStart}
+          />
         )}
         <textarea
           ref={textareaRef}
@@ -76,7 +83,7 @@ export default function InputBar({
           disabled={disabled}
           placeholder={ph}
           rows={1}
-          className="max-h-40 min-h-12 flex-1 resize-none overflow-y-auto rounded-xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 transition-colors focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/20 disabled:opacity-50"
+          className="max-h-40 min-h-12 flex-1 resize-none overflow-y-auto rounded-xl border border-stone-200 bg-stone-50 px-4 py-3 text-base text-stone-900 placeholder:text-stone-400 transition-colors focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/20 disabled:opacity-50 md:text-lg"
           style={{ height: "auto" }}
         />
         <button

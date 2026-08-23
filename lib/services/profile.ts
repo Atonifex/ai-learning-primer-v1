@@ -10,6 +10,11 @@ import {
   DEFAULT_PRIMARY_SUBJECT_SLUG,
   GRADE_3_CORE_SUBJECT_SLUGS,
 } from "../constants/subjects";
+import {
+  DEFAULT_GRADE_BAND,
+  parseLearnerGradeBand,
+  type LearnerGradeBand,
+} from "../constants/grades";
 import { enrollLearnerInGrade3CoreSubjects } from "./learnerSubjects";
 import { ensureLearnerStoryChain } from "./storyCurriculum";
 
@@ -43,6 +48,7 @@ function toLearnerProfileData(profile: ProfileWithSubjects): LearnerProfileData 
     id: profile.id,
     displayName: profile.displayName,
     gradeBand: profile.gradeBand,
+    readingLevel: profile.readingLevel,
     primarySubjectSlug: profile.primarySubjectSlug,
     goals: profile.goals,
     interests: profile.interests,
@@ -80,12 +86,16 @@ export async function hasProfile(userId: string): Promise<boolean> {
   return profile != null;
 }
 
-/** Story-default when onboarding skips goals (name + dive-in only). */
+/** Story-default when onboarding skips goals (name + grade + dive-in). */
 export const DEFAULT_ONBOARDING_GOALS =
   "Survey the wreck, find the crew, survive the island.";
 
 export interface CreateProfileInput {
   displayName?: string | null;
+  /** Enrolled grade 3–8. readingLevel defaults to this unless overridden. */
+  gradeBand?: string | null;
+  /** Optional override; defaults to gradeBand. */
+  readingLevel?: string | null;
   goals?: string;
   interests?: string[];
   primarySubjectSlug?: string;
@@ -93,9 +103,10 @@ export interface CreateProfileInput {
 
 /**
  * Transactional onboarding:
- *   1. Create LearnerProfile with `gradeBand="3"`, `primarySubjectSlug`, optional `displayName`.
- *      Goals/interests default when omitted (UI is name + dive-in).
- *   2. Enroll learner in all 4 Grade 3 core subjects.
+ *   1. Create LearnerProfile with gradeBand + readingLevel (defaults to grade),
+ *      primarySubjectSlug, optional displayName.
+ *      Goals/interests default when omitted (UI is name + grade + dive-in).
+ *   2. Enroll learner in all 4 Grade 3 core subjects (MVP curriculum still G3).
  *   3. Create the shared StoryWorld + StoryArc + Chapter 1 ("ensureLearnerStoryChain").
  *
  * Throws `ProfileAlreadyExistsError` if the user already has a profile.
@@ -112,6 +123,15 @@ export async function createProfile(
       ? data.primarySubjectSlug
       : DEFAULT_PRIMARY_SUBJECT_SLUG;
 
+  const gradeBand: LearnerGradeBand = parseLearnerGradeBand(
+    data.gradeBand,
+    DEFAULT_GRADE_BAND
+  );
+  const readingLevel: LearnerGradeBand = parseLearnerGradeBand(
+    data.readingLevel,
+    gradeBand
+  );
+
   const profileId = await prisma.$transaction(async (tx) => {
     const existing = await tx.learnerProfile.findUnique({
       where: { userId },
@@ -123,7 +143,8 @@ export async function createProfile(
       data: {
         userId,
         displayName: data.displayName?.trim() || null,
-        gradeBand: "3",
+        gradeBand,
+        readingLevel,
         primarySubjectSlug,
         activeLanguage: null,
         currentLevel: null,
@@ -144,6 +165,50 @@ export async function createProfile(
 
   const profile = await prisma.learnerProfile.findUniqueOrThrow({
     where: { id: profileId },
+    include: {
+      learnerSubjects: {
+        include: {
+          subject: {
+            select: { slug: true, displayName: true, domain: true },
+          },
+        },
+        orderBy: { enrolledAt: "asc" },
+      },
+    },
+  });
+  return toLearnerProfileData(profile);
+}
+
+export interface UpdateProfileInput {
+  readingLevel?: string | null;
+}
+
+/**
+ * Update mutable learner profile fields after onboarding.
+ * Reading level takes effect on the next dialogue turn (system prompt rebuild).
+ */
+export async function updateProfile(
+  userId: string,
+  data: UpdateProfileInput
+): Promise<LearnerProfileData> {
+  const existing = await prisma.learnerProfile.findUnique({
+    where: { userId },
+    select: { id: true },
+  });
+  if (!existing) {
+    throw new Error("Profile not found");
+  }
+
+  const readingLevel =
+    data.readingLevel != null
+      ? parseLearnerGradeBand(data.readingLevel, DEFAULT_GRADE_BAND)
+      : undefined;
+
+  const profile = await prisma.learnerProfile.update({
+    where: { userId },
+    data: {
+      ...(readingLevel != null ? { readingLevel } : {}),
+    },
     include: {
       learnerSubjects: {
         include: {
