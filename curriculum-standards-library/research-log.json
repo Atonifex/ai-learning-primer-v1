@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "meta.research-log",
+  "doc_type": "meta",
+  "system": null,
+  "programme": null,
+  "grade": null,
+  "grade_label": null,
+  "subject": null,
+  "status": "in_progress",
+  "content_labels": [],
+  "sections": {
+    "entry_schema": {
+      "date": "YYYY-MM-DD",
+      "type": "network_check | source_check | decision | note",
+      "summary": "",
+      "details": ""
+    },
+    "entries": [
+      {
+        "date": "2026-10-02",
+        "type": "network_check",
+        "summary": "All five official hosts blocked from the cloud sandbox.",
+        "details": {
+          "method": "curl through the agent proxy, plus WebFetch",
+          "results": {
+            "www.fldoe.org": "403 CONNECT tunnel failed",
+            "cdn.fldoe.org": "403",
+            "www.cpalms.org": "403",
+            "www.azed.gov": "403 (WebFetch: EGRESS_BLOCKED)",
+            "ibo.org": "403 (WebFetch: EGRESS_BLOCKED)"
+          },
+          "consequence": "No research performed. Phase 1 needs the domains allowed (D4)."
+        }
+      },
+      {
+        "date": "2026-10-02",
+        "type": "source_check",
+        "summary": "Seeded Arizona (6 verified by Ivan, 1 candidate), Florida (5 candidates), IB (1 verified, 5 to discover, 1 restricted). Nothing was opened by Claude.",
+        "details": "See sources/*.json and source-version-log.json."
+      },
+      {
+        "date": "2026-10-02",
+        "type": "note",
+        "summary": "Found earlier Florida Grade 3-5 work in curriculum_resources/ on primer-mvp and pre-mvp.",
+        "details": "Not on this branch; left untouched. Decision D5."
+      },
+      {
+        "date": "2026-10-02",
+        "type": "decision",
+        "summary": "All content is JSON; one file per document plus generated bundle.json.",
+        "details": "Per Ivan."
+      },
+      {
+        "date": "2026-10-02",
+        "type": "decision",
+        "summary": "Library placed in curriculum-standards-library/ at the repo root, with parallel florida/, arizona/, ib/, crosswalks/ trees using identical grade and file names.",
+        "details": "Keeps the legacy curriculum_resources/ separate."
+      },
+      {
+        "date": "2026-10-02",
+        "type": "decision",
+        "summary": "Doc ids: fl./az./xw./sum. prefixes; IB uses ib.<pyp|myp|dp-cp>.<grade>.<subject>; Kindergarten is grade 0 with slug 'kindergarten'.",
+        "details": "Build script checks id against path."
+      },
+      {
+        "date": "2026-10-02",
+        "type": "decision",
+        "summary": "Meta and source documents use the same envelope with system null.",
+        "details": "Citation rule applies to content documents only."
+      },
+      {
+        "date": "2026-10-02",
+        "type": "decision",
+        "summary": "Build script writes a deterministic bundle (sorted keys, date from newest last_updated) to avoid noisy diffs.",
+        "details": ""
+      }
+    ]
+  },
+  "citations": [],
+  "version_notes": [
+    "Created in Phase 0."
+  ],
+  "last_updated": "2026-10-02"
+}

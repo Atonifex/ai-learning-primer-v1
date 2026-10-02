@@ -1,0 +1,107 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "ib.pyp.grade-03.ela",
+  "doc_type": "ib_alignment",
+  "system": "ib",
+  "programme": "PYP",
+  "grade": 3,
+  "grade_label": "Grade 3",
+  "subject": "ela",
+  "status": "not_started",
+  "content_labels": [
+    "B",
+    "C"
+  ],
+  "sections": {
+    "applicable_programme": {
+      "programme": "PYP | MYP | DP_CP",
+      "age_range": "e.g. 3-12",
+      "grade_mapping_note": "PYP = K-5 here, MYP = 6-10, DP/CP = 11-12. Grade mapping is our convention (label C), not an IB statement.",
+      "shared_programme_block_ref": "doc_id or block id of the shared programme-level block (decision D2), or null",
+      "grade_specific_note": {
+        "label": "C",
+        "text": "short note for this grade only"
+      }
+    },
+    "subject_group_or_structure": {
+      "ib_subject_group_or_area": "official IB name (e.g. 'Language' in PYP, 'Language and literature' in MYP)",
+      "mapping_to_primer_subject": "how it relates to our subject",
+      "mapping_label": "C  (every judgment call in the mapping is ours)"
+    },
+    "framework_elements": {
+      "concepts": [],
+      "approaches_to_learning": [],
+      "learner_profile_attributes": [],
+      "global_contexts_or_transdisciplinary_themes": []
+    },
+    "official_requirements": [
+      {
+        "label": "B",
+        "text": "official programme requirement",
+        "citation_ids": [
+          "c1"
+        ],
+        "page": null
+      }
+    ],
+    "typical_fit": {
+      "label": "C",
+      "text": "where this typically fits at this grade, framed as typical"
+    },
+    "suggested_alignment_to_florida_and_arizona": {
+      "label": "C",
+      "florida": [],
+      "arizona": [],
+      "notes": ""
+    },
+    "access_limitations": [
+      "List any resource behind educator login or copyright limits, with the access limitation. Never reconstruct restricted content from memory."
+    ]
+  },
+  "citations": [
+    {
+      "id": "c1",
+      "url": "https://...",
+      "title": "...",
+      "publisher": "...",
+      "published_or_version_date": "YYYY-MM-DD or null",
+      "page": "page number or null",
+      "access_date": "YYYY-MM-DD",
+      "access_limitation": "null, or e.g. 'educator login required'"
+    }
+  ],
+  "version_notes": [],
+  "last_updated": "2026-10-02",
+  "_instructions": {
+    "labels": "A = official state standard. B = official IB framework or programme requirement. C = suggested alignment, unit idea, bridge or summary written by us (never official).",
+    "envelope": {
+      "schema_version": "Template version this document follows. Currently 0.1.0 (draft until Phase 1 finalizes it).",
+      "doc_id": "Unique id, derived from the path. Examples: fl.grade-03.ela, az.grade-03.ela, ib.pyp.grade-03.ela, ib.dp-cp.grade-11.ela, xw.grade-03.ela. Kindergarten uses 'kindergarten'. The build script rejects an id that does not match the file path.",
+      "doc_type": "state_standards | ib_alignment | crosswalk | summary | source_log | meta.",
+      "system": "florida | arizona | ib | crosswalk. null only for summary, source_log and meta documents.",
+      "programme": "null for Florida, Arizona, crosswalk. For IB: PYP (K-5), MYP (6-10) or DP_CP (11-12).",
+      "grade": "Integer 0-12 (0 = Kindergarten).",
+      "grade_label": "Human label, 'Kindergarten' or 'Grade 3'.",
+      "subject": "ela | mathematics | science | social-studies. Arizona calls social studies 'History and Social Science'; keep the slug and record the official name in sections.grade_and_subject.",
+      "status": "not_started | in_progress | drafted | reviewed | approved. Above not_started needs at least one citation.",
+      "content_labels": "List of A, B, C present in the document. Florida/Arizona docs: A and C only. IB docs: B and C only. Crosswalks: any, but their own text is C.",
+      "sections": "The doc_type-specific body, described below.",
+      "citations": "List of citation objects. Every document carries its own citations, not just a master bibliography. Fields: id, url, title, publisher, published_or_version_date, page, access_date, access_limitation.",
+      "version_notes": "List of short strings: what changed, when, and why. Append, do not rewrite.",
+      "last_updated": "YYYY-MM-DD of the last content change."
+    },
+    "critical_distinction": "IB is a programme framework, not a grade-by-grade checklist. Never label an IB item an official 'Grade X standard' unless a public official IB source explicitly says so. Grade placement here is our convention and is label C.",
+    "sections.applicable_programme": "Which programme applies and why. shared_programme_block_ref supports decision D2 (avoid copying the same PYP text into six grade files).",
+    "sections.subject_group_or_structure": "IB subject groups do not map one-to-one to our four subjects (decision D3). Every mapping judgment is label C.",
+    "sections.framework_elements": "Lists drawn from official IB documents only. Cite each source in citations.",
+    "sections.official_requirements": "Label B only. Each item needs citation_ids. If the source is restricted, put it in access_limitations instead.",
+    "sections.typical_fit": "Label C. Say 'typically' and avoid claiming IB requires it at this grade.",
+    "sections.suggested_alignment_to_florida_and_arizona": "Label C. Suggested, never official.",
+    "sections.access_limitations": "Honest list of what we could not read and why.",
+    "quality_rules": [
+      "Official ibo.org sources only.",
+      "No B label without a citation.",
+      "No invented URLs."
+    ]
+  }
+}
