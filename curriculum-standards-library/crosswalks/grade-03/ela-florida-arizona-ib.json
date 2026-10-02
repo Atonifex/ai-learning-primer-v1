@@ -1,0 +1,193 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-03.ela",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 3,
+  "grade_label": "Grade 3",
+  "subject": "ela",
+  "status": "drafted",
+  "content_labels": ["A", "B", "C"],
+  "sections": {
+    "scope_note": "Arizona standards deferred per Ivan (2026-10-03). This crosswalk covers Florida B.E.S.T. ELA ↔ IB PYP Language only.",
+    "rows": [
+      {
+        "row_id": "xw-g03-ela-001",
+        "topic_domain": "Reading Literary Text - Character Development",
+        "florida_standards": ["ELA.3.R.1.1"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Perspective", "PYP Language: Comprehending (reading phase outcomes)"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies character traits, feelings, and motivations. PYP frames this through inquiry into perspective and meaning-making.",
+        "suggested_instructional_bridge": "Use character perspective journals where students track a character's changing motivations through a story, connecting to PYP inquiry questions about perspective."
+      },
+      {
+        "row_id": "xw-g03-ela-002",
+        "topic_domain": "Reading Literary Text - Theme",
+        "florida_standards": ["ELA.3.R.1.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Connection", "PYP Language: Comprehending"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida requires explaining how theme develops using details. PYP emphasizes making connections across texts and to broader concepts.",
+        "suggested_instructional_bridge": "Create theme-tracking anchor charts that connect story details to larger life themes, supporting both explicit theme identification and PYP conceptual connections."
+      },
+      {
+        "row_id": "xw-g03-ela-003",
+        "topic_domain": "Reading Literary Text - Perspective and Point of View",
+        "florida_standards": ["ELA.3.R.1.3"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Perspective", "PYP Learner Profile: Open-minded"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida distinguishes perspective from narrative point of view. PYP integrates perspective as a key concept across all learning.",
+        "suggested_instructional_bridge": "Use perspective-taking activities where students rewrite scenes from different characters' viewpoints, developing both analytical and empathetic skills."
+      },
+      {
+        "row_id": "xw-g03-ela-004",
+        "topic_domain": "Reading Literary Text - Poetry Forms",
+        "florida_standards": ["ELA.3.R.1.4"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Transdisciplinary Theme: How we express ourselves", "PYP Language: Viewing and presenting"],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies four poem types (free verse, rhymed verse, haiku, limerick). PYP focuses on poetry as expression without mandating specific forms.",
+        "suggested_instructional_bridge": "Integrate poetry form study with 'How we express ourselves' unit, having students both identify forms and create their own poems as expressions of inquiry."
+      },
+      {
+        "row_id": "xw-g03-ela-005",
+        "topic_domain": "Reading Informational Text - Text Features and Structure",
+        "florida_standards": ["ELA.3.R.2.1"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Form", "PYP ATL: Research skills"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida lists specific structures (chronology, comparison, cause/effect). PYP emphasizes understanding how texts are organized to convey meaning.",
+        "suggested_instructional_bridge": "During unit research, explicitly teach text structure identification as a research skill, connecting to PYP inquiry into how information is organized."
+      },
+      {
+        "row_id": "xw-g03-ela-006",
+        "topic_domain": "Reading Informational Text - Central Idea and Details",
+        "florida_standards": ["ELA.3.R.2.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP ATL: Thinking skills", "PYP Language: Comprehending"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Both emphasize identifying main ideas and supporting details. PYP frames this as a thinking skill applied across transdisciplinary learning.",
+        "suggested_instructional_bridge": "Use graphic organizers for central idea/details across all subject inquiries, building transferable comprehension skills."
+      },
+      {
+        "row_id": "xw-g03-ela-007",
+        "topic_domain": "Reading Informational Text - Author's Evidence and Claims",
+        "florida_standards": ["ELA.3.R.2.3", "ELA.3.R.2.4"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP ATL: Thinking skills (critical thinking)", "PYP Concept: Causation"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida separates evidence identification from claim-evidence relationship. PYP develops critical thinking as an integrated skill.",
+        "suggested_instructional_bridge": "Build critical reading routines: 'What is the author claiming? What evidence supports it? Is it convincing?' aligned with PYP inquiry questioning."
+      },
+      {
+        "row_id": "xw-g03-ela-008",
+        "topic_domain": "Reading Across Genres - Figurative Language",
+        "florida_standards": ["ELA.3.R.3.1"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Transdisciplinary Theme: How we express ourselves", "PYP Language: Comprehending"],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies metaphor, personification, hyperbole. PYP addresses figurative language within broader language development without listing specific types.",
+        "suggested_instructional_bridge": "Create a class figurative language museum with examples from inquiry texts, connecting literary analysis to 'How we express ourselves' theme."
+      },
+      {
+        "row_id": "xw-g03-ela-009",
+        "topic_domain": "Reading Across Genres - Summarizing",
+        "florida_standards": ["ELA.3.R.3.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP ATL: Communication skills", "PYP Language: Comprehending"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies different summary elements for literary (plot+theme) vs. informational (central idea+details). PYP treats summarizing as a communication skill.",
+        "suggested_instructional_bridge": "Practice summarizing inquiry findings using genre-appropriate structures, building both comprehension and communication skills."
+      },
+      {
+        "row_id": "xw-g03-ela-010",
+        "topic_domain": "Writing - Narrative",
+        "florida_standards": ["ELA.3.C.1.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Language: Producing (writing)", "PYP Transdisciplinary Theme: How we express ourselves"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies sequence, description, dialogue, transitions, ending. PYP emphasizes writing for authentic purposes and audiences.",
+        "suggested_instructional_bridge": "Connect narrative writing to inquiry topics—students write stories that explore unit concepts, meeting both technical requirements and authentic purpose."
+      },
+      {
+        "row_id": "xw-g03-ela-011",
+        "topic_domain": "Writing - Opinion/Argument",
+        "florida_standards": ["ELA.3.C.1.3"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Language: Producing", "PYP Learner Profile: Principled, Communicators"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida requires text-based evidence and transitions. PYP emphasizes reasoned arguments and principled communication.",
+        "suggested_instructional_bridge": "Use debate and discussion protocols where students form opinions based on inquiry evidence, developing both writing and oral argumentation skills."
+      },
+      {
+        "row_id": "xw-g03-ela-012",
+        "topic_domain": "Writing - Expository/Informational",
+        "florida_standards": ["ELA.3.C.1.4"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Language: Producing", "PYP ATL: Research skills"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies introduction, facts, elaboration, transitions, conclusion. PYP frames expository writing as sharing inquiry learning.",
+        "suggested_instructional_bridge": "Use unit exhibition writing as authentic expository writing practice, applying Florida structural requirements to share inquiry findings."
+      },
+      {
+        "row_id": "xw-g03-ela-013",
+        "topic_domain": "Speaking and Listening - Oral Presentation",
+        "florida_standards": ["ELA.3.C.2.1"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Language: Oral communication", "PYP ATL: Communication skills"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies sequence, nonverbal cues, volume, pronunciation. PYP develops oral communication across all learning contexts.",
+        "suggested_instructional_bridge": "Integrate formal presentation skills into inquiry sharing, using rubrics that address both Florida requirements and PYP communication skills."
+      },
+      {
+        "row_id": "xw-g03-ela-014",
+        "topic_domain": "Language Conventions",
+        "florida_standards": ["ELA.3.C.3.1"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Language: Producing (conventions)"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida lists specific conventions to master (verb tenses, plurals, quotation marks, etc.). PYP develops conventions through authentic writing.",
+        "suggested_instructional_bridge": "Teach conventions explicitly but apply them in meaningful contexts—editing inquiry writing for publication, peer feedback on convention use."
+      },
+      {
+        "row_id": "xw-g03-ela-015",
+        "topic_domain": "Vocabulary Development",
+        "florida_standards": ["ELA.3.V.1.1", "ELA.3.V.1.2", "ELA.3.V.1.3"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Language: Word study", "PYP ATL: Thinking skills"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies academic vocabulary, Greek/Latin roots, and context clues. PYP develops vocabulary across transdisciplinary learning.",
+        "suggested_instructional_bridge": "Create unit vocabulary walls with academic terms, roots/affixes, and context strategies, building transferable word-learning skills across subjects."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-fl-ela",
+      "url": "https://www.cpalms.org/",
+      "title": "Florida B.E.S.T. Standards - English Language Arts",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": "2020",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-pyp",
+      "url": "https://ibo.org/programmes/primary-years-programme/",
+      "title": "IB Primary Years Programme",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Public overview; detailed scope and sequence requires IB educator login"
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Initial FL↔IB crosswalk. Arizona deferred per Ivan. Alignments are suggested (Label C) based on available Florida standards and public IB PYP framework documentation."
+  ],
+  "last_updated": "2026-10-03"
+}

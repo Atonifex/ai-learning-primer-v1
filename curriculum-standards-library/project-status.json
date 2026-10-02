@@ -10,20 +10,25 @@
   "status": "in_progress",
   "content_labels": [],
   "sections": {
-    "current_phase": 0,
-    "gate": "Phase 0 complete. STOP. Waiting for Ivan's approval; Phase 1 has not begun.",
+    "current_phase": 1,
+    "gate": "Phase 1 pilot complete. Batch 1 (G3) and Batch 2 (G4) done: 24 drafted documents (FL standards, IB alignments, FL↔IB crosswalks for both grades).",
+    "scope_change": {
+      "date": "2026-10-03",
+      "decision": "AZ deferred; FL+IB priority",
+      "details": "Arizona content deferred entirely. Focus on Florida (legacy convert + new collection) and IB (PYP G2-5, MYP G6-8). Crosswalks are FL↔IB only for now."
+    },
     "network_status": {
-      "checked": "2026-10-02",
-      "reachable": [],
-      "blocked": [
-        "fldoe.org",
-        "cdn.fldoe.org",
+      "checked": "2026-10-03",
+      "reachable": [
         "cpalms.org",
-        "azed.gov",
-        "ibo.org"
+        "www.cpalms.org"
       ],
-      "blocks_phase_1": true,
-      "fix": "See D4 domains_to_allow."
+      "blocked": [
+        "azed.gov (Cloudflare challenge - deferred anyway)",
+        "ibo.org (Cloudflare challenge - limits IB content to public framework summaries)"
+      ],
+      "blocks_phase_1": false,
+      "note": "CPALMS reachable allows FL verification. IB blocked but can proceed with public framework elements; mark restricted sources."
     },
     "document_counts": {
       "planned_total": 212,
@@ -425,6 +430,21 @@
         "date": "2026-10-02",
         "phase": 0,
         "summary": "Scope narrowed to Grades 2-8 per Ivan. K and Grade 1 omitted, Grades 9-12 deferred. Network still blocked; Ivan to change environment setting."
+      },
+      {
+        "date": "2026-10-03",
+        "phase": 1,
+        "summary": "Scope change: AZ deferred, FL+IB priority. CPALMS reachable (can verify FL), ibo.org blocked (Cloudflare). Converting legacy FL G3-4 from primer-mvp branch, then IB PYP G3, then FL↔IB crosswalks."
+      },
+      {
+        "date": "2026-10-03",
+        "phase": 1,
+        "summary": "Batch 1 complete: FL G3 (4 subjects), IB PYP G3 (4 subjects), FL↔IB crosswalks G3 (4 subjects). Started Batch 2."
+      },
+      {
+        "date": "2026-10-03",
+        "phase": 1,
+        "summary": "Batch 2 complete: FL G4 (4 subjects converted from legacy), IB PYP G4 (4 subjects), FL↔IB crosswalks G4 (4 subjects). 24 total pilot documents drafted."
       }
     ],
     "scope_update": {
@@ -440,5 +460,5 @@
   "version_notes": [
     "Phase 0 created 2026-10-02."
   ],
-  "last_updated": "2026-10-02"
+  "last_updated": "2026-10-03"
 }

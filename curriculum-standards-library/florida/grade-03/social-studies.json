@@ -1,0 +1,353 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-03.social-studies",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 3,
+  "grade_label": "Grade 3",
+  "subject": "social-studies",
+  "status": "drafted",
+  "content_labels": ["A", "C"],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "Social Studies",
+      "standards_system_name": "NGSSS (2014) + Florida State Academic Standards (2023 Civics/Government)",
+      "organization": "by_grade",
+      "courses": null
+    },
+    "domains": [
+      {
+        "domain_id": "SS.3.A.1",
+        "domain_name": "American History - Historical Inquiry and Analysis",
+        "standards": [
+          {
+            "id": "SS.3.A.1.1",
+            "text": "Analyze primary and secondary sources.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2961"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.A.1.2",
+            "text": "Utilize technology resources to gather information from primary and secondary sources.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2962"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.A.1.3",
+            "text": "Define terms related to the social sciences.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2963"],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.3.G.1",
+        "domain_name": "Geography - The World in Spatial Terms",
+        "standards": [
+          {
+            "id": "SS.3.G.1.1",
+            "text": "Use thematic maps, tables, charts, graphs, and photos to analyze geographic information.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2964"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.G.1.2",
+            "text": "Review basic map elements (coordinate grid, cardinal and intermediate directions, title, compass rose, scale, key/legend with symbols).",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2965"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.G.1.3",
+            "text": "Label the continents and oceans on a world map.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2966"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.G.1.4",
+            "text": "Name and identify the purpose of maps (physical, political, elevation, population).",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2967"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.G.1.5",
+            "text": "Compare maps and globes to develop an understanding of the concept of distortion.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2968"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.G.1.6",
+            "text": "Use maps to identify different types of scale to measure distances between two places.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2969"],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.3.G.2",
+        "domain_name": "Geography - Places and Regions",
+        "standards": [
+          {
+            "id": "SS.3.G.2.1",
+            "text": "Label the countries and commonwealths in North America (Canada, United States, Mexico) and in the Caribbean (Puerto Rico, Cuba, Bahamas, Dominican Republic, Haiti, Jamaica).",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2970"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.G.2.2",
+            "text": "Identify the five regions of the United States.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2971"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.G.2.3",
+            "text": "Label the states in each of the five regions of the United States.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2972"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.G.2.4",
+            "text": "Describe the physical features of the United States, Canada, Mexico, and the Caribbean.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2973"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.G.2.5",
+            "text": "Identify natural and man-made landmarks in the United States, Canada, Mexico, and the Caribbean.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2974"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.G.2.6",
+            "text": "Investigate how people perceive places and regions differently by conducting interviews, mental mapping and studying news, poems, legends, and songs about a region or area.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2975"],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.3.G.3",
+        "domain_name": "Geography - Physical Systems",
+        "standards": [
+          {
+            "id": "SS.3.G.3.1",
+            "text": "Describe the climate and vegetation in the United States, Canada, Mexico, and the Caribbean.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2976"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.G.3.2",
+            "text": "Describe the natural resources in the United States, Canada, Mexico, and the Caribbean.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2977"],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.3.G.4",
+        "domain_name": "Geography - Human Systems",
+        "standards": [
+          {
+            "id": "SS.3.G.4.1",
+            "text": "Explain how the environment influences settlement patterns in the United States, Canada, Mexico, and the Caribbean.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2978"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.G.4.2",
+            "text": "Identify the cultures that have settled the United States, Canada, Mexico, and the Caribbean.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2979"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.G.4.3",
+            "text": "Compare the cultural characteristics of diverse populations in one of the five regions of the United States with Canada, Mexico, or the Caribbean.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2980"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.G.4.4",
+            "text": "Identify contributions from various ethnic groups to the United States.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2981"],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.3.E.1",
+        "domain_name": "Economics - Beginning Economics",
+        "standards": [
+          {
+            "id": "SS.3.E.1.1",
+            "text": "Give examples of how scarcity results in trade.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2982"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.E.1.2",
+            "text": "List the characteristics of money.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2983"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.E.1.3",
+            "text": "Recognize that buyers and sellers interact to exchange goods and services through the use of trade or money.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2984"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.E.1.4",
+            "text": "Distinguish between currencies used in the United States, Canada, Mexico, and the Caribbean.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-2985"],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.3.CG.1",
+        "domain_name": "Civics and Government - Foundations of Government",
+        "standards": [
+          {
+            "id": "SS.3.CG.1.1",
+            "text": "Explain how the U.S. Constitution establishes the purpose and fulfills the need for government.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-16053"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.CG.1.2",
+            "text": "Describe how the U.S. government gains its power from the people.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-16054"],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.3.CG.2",
+        "domain_name": "Civics and Government - Civic and Political Participation",
+        "standards": [
+          {
+            "id": "SS.3.CG.2.1",
+            "text": "Describe how citizens demonstrate civility, cooperation, volunteerism, and other civic virtues.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-16055"],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.3.CG.2.2",
+            "text": "Identify ways citizens can make a positive contribution to their community.",
+            "text_mode": "exact",
+            "citation_ids": ["c-cpalms-16056"],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": null,
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Students analyze primary and secondary sources for historical inquiry.",
+        "Students read and interpret maps, understanding continents, regions, and scale.",
+        "Students describe physical features, climate, and natural resources of North America.",
+        "Students understand basic economics: scarcity, trade, money, and buyer-seller interactions.",
+        "Students learn about the U.S. Constitution and civic participation."
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "NGSSS (2014) + Florida State Academic Standards (2023 Civics)",
+      "adopted_or_effective_date": "2014 (History/Geography/Economics), 2023 (Civics)",
+      "notes": ["Converted from legacy primer-mvp branch content with CPALMS verification on 2026-10-03. Note: Social Studies uses mixed frameworks - NGSSS for History/Geography/Economics, 2023 Florida Standards for Civics."]
+    }
+  },
+  "citations": [
+    {"id": "c-cpalms-2961", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2961", "title": "SS.3.A.1.1 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2962", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2962", "title": "SS.3.A.1.2 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2963", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2963", "title": "SS.3.A.1.3 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2964", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2964", "title": "SS.3.G.1.1 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2965", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2965", "title": "SS.3.G.1.2 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2966", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2966", "title": "SS.3.G.1.3 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2967", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2967", "title": "SS.3.G.1.4 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2968", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2968", "title": "SS.3.G.1.5 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2969", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2969", "title": "SS.3.G.1.6 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2970", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2970", "title": "SS.3.G.2.1 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2971", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2971", "title": "SS.3.G.2.2 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2972", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2972", "title": "SS.3.G.2.3 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2973", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2973", "title": "SS.3.G.2.4 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2974", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2974", "title": "SS.3.G.2.5 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2975", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2975", "title": "SS.3.G.2.6 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2976", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2976", "title": "SS.3.G.3.1 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2977", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2977", "title": "SS.3.G.3.2 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2978", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2978", "title": "SS.3.G.4.1 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2979", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2979", "title": "SS.3.G.4.2 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2980", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2980", "title": "SS.3.G.4.3 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2981", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2981", "title": "SS.3.G.4.4 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2982", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2982", "title": "SS.3.E.1.1 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2983", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2983", "title": "SS.3.E.1.2 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2984", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2984", "title": "SS.3.E.1.3 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-2985", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2985", "title": "SS.3.E.1.4 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-16053", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/16053", "title": "SS.3.CG.1.1 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-16054", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/16054", "title": "SS.3.CG.1.2 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-16055", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/16055", "title": "SS.3.CG.2.1 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null},
+    {"id": "c-cpalms-16056", "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/16056", "title": "SS.3.CG.2.2 - CPALMS Standard", "publisher": "CPALMS / Florida Department of Education", "published_or_version_date": null, "page": null, "access_date": "2026-10-03", "access_limitation": null}
+  ],
+  "version_notes": [
+    "2026-10-03: Converted from legacy primer-mvp:curriculum_resources/standards_social_studies_grade3.ts. All standard IDs and text verified against CPALMS."
+  ],
+  "last_updated": "2026-10-03"
+}

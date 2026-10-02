@@ -1,0 +1,123 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "ib.pyp.grade-04.science",
+  "doc_type": "ib_alignment",
+  "system": "ib",
+  "programme": "PYP",
+  "grade": 4,
+  "grade_label": "Grade 4",
+  "subject": "science",
+  "status": "drafted",
+  "content_labels": ["B", "C"],
+  "sections": {
+    "applicable_programme": {
+      "programme": "PYP",
+      "age_range": "3-12",
+      "grade_mapping_note": "PYP covers ages 3-12; our Grade 4 mapping (typically age 9-10) is within the programme but is our convention, not an IB-specified grade boundary.",
+      "shared_programme_block_ref": null,
+      "grade_specific_note": {
+        "label": "C",
+        "text": "Grade 4 students in PYP science engage with evidence-based reasoning, explore properties of matter and energy transfer, understand life cycles and food chains, and investigate Earth's rotation and rock cycles."
+      }
+    },
+    "subject_group_or_structure": {
+      "ib_subject_group_or_area": "Science (within transdisciplinary framework)",
+      "mapping_to_primer_subject": "PYP does not have a standalone 'Science' subject; scientific concepts are explored through the transdisciplinary themes, particularly 'How the world works' and 'Sharing the planet'. This maps to our Science subject.",
+      "mapping_label": "C"
+    },
+    "framework_elements": {
+      "concepts": [
+        "Form - What is it like?",
+        "Function - How does it work?",
+        "Causation - Why is it like it is?",
+        "Change - How is it changing?",
+        "Connection - How is it connected to other things?",
+        "Perspective - What are the points of view?",
+        "Responsibility - What is our responsibility?"
+      ],
+      "approaches_to_learning": [
+        "Thinking skills",
+        "Research skills",
+        "Communication skills",
+        "Social skills",
+        "Self-management skills"
+      ],
+      "learner_profile_attributes": [
+        "Inquirers",
+        "Knowledgeable",
+        "Thinkers",
+        "Communicators",
+        "Principled",
+        "Open-minded",
+        "Caring",
+        "Risk-takers",
+        "Balanced",
+        "Reflective"
+      ],
+      "global_contexts_or_transdisciplinary_themes": [
+        "Who we are",
+        "Where we are in place and time",
+        "How we express ourselves",
+        "How the world works",
+        "How we organize ourselves",
+        "Sharing the planet"
+      ]
+    },
+    "official_requirements": [
+      {
+        "label": "B",
+        "text": "PYP Science Scope and Sequence covers four strands: Living things, Earth and space, Materials and matter, and Forces and energy.",
+        "citation_ids": ["c-ibo-pyp-science"],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Scientific inquiry in PYP develops through exploration, investigation, and communication phases, emphasizing the process of scientific thinking.",
+        "citation_ids": ["c-ibo-pyp-science"],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Science is typically embedded within units of inquiry under transdisciplinary themes, especially 'How the world works' and 'Sharing the planet'.",
+        "citation_ids": ["c-ibo-pyp-science"],
+        "page": null
+      }
+    ],
+    "typical_fit": {
+      "label": "C",
+      "text": "At Grade 4, PYP science learners typically: use evidence-based reasoning, explore properties of matter and magnetism, understand energy transfer and sound, investigate life cycles and food chains, and learn about Earth's rotation and rock types. These align with Florida NGSSS standards for physical science (SC.4.P), life science (SC.4.L), and earth/space science (SC.4.E)."
+    },
+    "suggested_alignment_to_florida_and_arizona": {
+      "label": "C",
+      "florida": [
+        {"standard_id": "SC.4.N.1.7", "alignment_note": "Evidence-based explanations aligns strongly with PYP inquiry approach."},
+        {"standard_id": "SC.4.P.8.1", "alignment_note": "Properties of matter aligns with PYP Materials and matter strand."},
+        {"standard_id": "SC.4.L.17.3", "alignment_note": "Food chains aligns with PYP Living things strand under 'Sharing the planet'."},
+        {"standard_id": "SC.4.E.5.3", "alignment_note": "Earth's rotation aligns with PYP Earth and space strand."},
+        {"standard_id": "SC.4.E.6.1", "alignment_note": "Rock types aligns with PYP Earth and space strand."}
+      ],
+      "arizona": [],
+      "notes": "Arizona standards deferred. These alignments are suggested starting points (Label C), not official IB-Florida mappings."
+    },
+    "access_limitations": [
+      "IB Programme Resource Centre (PRC) materials require educator login; detailed Science Scope and Sequence document not directly accessible.",
+      "Specific learning outcomes for each strand require PRC access."
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-ibo-pyp-science",
+      "url": "https://ibo.org/programmes/primary-years-programme/curriculum/",
+      "title": "PYP Curriculum - Science",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Public overview page reachable; detailed scope and sequence requires IB educator login"
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Initial draft. IB framework elements from public PYP documentation. Detailed learning outcomes require IB PRC access (restricted). ibo.org blocked by Cloudflare during this session."
+  ],
+  "last_updated": "2026-10-03"
+}

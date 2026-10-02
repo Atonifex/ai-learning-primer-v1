@@ -1,0 +1,193 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-03.science",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 3,
+  "grade_label": "Grade 3",
+  "subject": "science",
+  "status": "drafted",
+  "content_labels": ["A", "B", "C"],
+  "sections": {
+    "scope_note": "Arizona standards deferred per Ivan (2026-10-03). This crosswalk covers Florida NGSSS Science ↔ IB PYP Science only.",
+    "rows": [
+      {
+        "row_id": "xw-g03-sci-001",
+        "topic_domain": "Nature of Science - Scientific Inquiry",
+        "florida_standards": ["SC.3.N.1.1", "SC.3.N.1.2", "SC.3.N.1.3"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP ATL: Research skills", "PYP Learner Profile: Inquirers"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies raising questions, comparing observations across groups, and keeping records. PYP frames inquiry as fundamental to all learning through the Inquirer learner profile.",
+        "suggested_instructional_bridge": "Structure science investigations using the PYP inquiry cycle—tuning in, finding out, sorting out, going further—while explicitly teaching Florida's scientific method requirements."
+      },
+      {
+        "row_id": "xw-g03-sci-002",
+        "topic_domain": "Nature of Science - Scientific Communication",
+        "florida_standards": ["SC.3.N.1.4", "SC.3.N.1.5"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP ATL: Communication skills", "PYP Learner Profile: Communicators"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida emphasizes communication among scientists and peer review of evidence. PYP develops communication as an approach to learning across all subjects.",
+        "suggested_instructional_bridge": "Include peer review protocols in science investigations where students question, discuss, and check each other's explanations, building both scientific and communication skills."
+      },
+      {
+        "row_id": "xw-g03-sci-003",
+        "topic_domain": "Nature of Science - Evidence and Inference",
+        "florida_standards": ["SC.3.N.1.6", "SC.3.N.1.7"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP ATL: Thinking skills", "PYP Concept: Causation"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies inference from observation and understanding empirical evidence. PYP develops critical thinking and causation across transdisciplinary learning.",
+        "suggested_instructional_bridge": "Use 'What do you notice? What do you wonder? What's your evidence?' routines to develop inference skills, connecting observations to causal explanations."
+      },
+      {
+        "row_id": "xw-g03-sci-004",
+        "topic_domain": "Nature of Science - Models and Scientific Language",
+        "florida_standards": ["SC.3.N.3.1", "SC.3.N.3.2", "SC.3.N.3.3"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Form", "PYP ATL: Thinking skills"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida requires understanding scientific vocabulary and that models are approximations. PYP uses the concept of 'form' to understand representations.",
+        "suggested_instructional_bridge": "Build class scientific vocabulary walls and use multiple models (drawings, physical, digital) for the same phenomenon, discussing what each model shows well and what it misses."
+      },
+      {
+        "row_id": "xw-g03-sci-005",
+        "topic_domain": "Earth and Space - Stars and the Sun",
+        "florida_standards": ["SC.3.E.5.1", "SC.3.E.5.2", "SC.3.E.5.3", "SC.3.E.5.5"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Transdisciplinary Theme: Where we are in place and time", "PYP Science: Earth and space strand"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies star characteristics, Sun as energy source, and telescope observations. PYP explores Earth's place in space through 'Where we are in place and time'.",
+        "suggested_instructional_bridge": "Design a 'Where we are in place and time' unit on space, investigating star differences and the Sun's role while connecting to students' place in the universe."
+      },
+      {
+        "row_id": "xw-g03-sci-006",
+        "topic_domain": "Earth and Space - Gravity",
+        "florida_standards": ["SC.3.E.5.4"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Science: Forces and energy strand", "PYP Concept: Function"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies exploring gravity as a force that can be overcome. PYP examines forces through the concept of function—how does gravity work?",
+        "suggested_instructional_bridge": "Conduct hands-on gravity experiments (ramps, parachutes, rockets) exploring how gravity functions and can be overcome, connecting to both standards and conceptual understanding."
+      },
+      {
+        "row_id": "xw-g03-sci-007",
+        "topic_domain": "Earth Science - Heat and Energy from the Sun",
+        "florida_standards": ["SC.3.E.6.1"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Science: Forces and energy strand", "PYP Concept: Causation"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies demonstrating radiant energy heating and cooling. PYP explores causation—why do things heat and cool?",
+        "suggested_instructional_bridge": "Set up solar heating investigations—comparing temperatures in sun vs. shade, exploring what happens when energy source is removed—building causal understanding."
+      },
+      {
+        "row_id": "xw-g03-sci-008",
+        "topic_domain": "Physical Science - Properties of Matter",
+        "florida_standards": ["SC.3.P.8.1", "SC.3.P.8.2", "SC.3.P.8.3"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Science: Materials and matter strand", "PYP Concept: Form"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies measuring temperature, mass, volume and comparing properties. PYP explores the form of materials—what is matter like?",
+        "suggested_instructional_bridge": "Create a materials investigation center where students measure and compare properties, building both measurement skills and conceptual understanding of matter's forms."
+      },
+      {
+        "row_id": "xw-g03-sci-009",
+        "topic_domain": "Physical Science - States of Matter",
+        "florida_standards": ["SC.3.P.9.1"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Science: Materials and matter strand", "PYP Concept: Change"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida requires describing water's state changes using scientific terms. PYP examines change as a key concept.",
+        "suggested_instructional_bridge": "Investigate water's transformations through hands-on experiments, using scientific vocabulary while exploring the broader concept of how matter changes."
+      },
+      {
+        "row_id": "xw-g03-sci-010",
+        "topic_domain": "Physical Science - Forms of Energy",
+        "florida_standards": ["SC.3.P.10.1", "SC.3.P.10.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Science: Forces and energy strand", "PYP Concept: Function"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies identifying energy forms and recognizing energy causes motion/change. PYP explores how energy functions.",
+        "suggested_instructional_bridge": "Create an energy museum with stations for light, heat, sound, electrical, and mechanical energy, exploring how each form functions to cause motion or change."
+      },
+      {
+        "row_id": "xw-g03-sci-011",
+        "topic_domain": "Physical Science - Light",
+        "florida_standards": ["SC.3.P.10.3", "SC.3.P.10.4"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Science: Forces and energy strand", "PYP Transdisciplinary Theme: How the world works"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies light traveling in straight lines and being reflected/refracted/absorbed. PYP investigates how the world works through energy investigations.",
+        "suggested_instructional_bridge": "Design light investigations with mirrors, prisms, and various materials, exploring how light behaves as part of a 'How the world works' unit."
+      },
+      {
+        "row_id": "xw-g03-sci-012",
+        "topic_domain": "Physical Science - Energy Transfer",
+        "florida_standards": ["SC.3.P.11.1", "SC.3.P.11.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Science: Forces and energy strand", "PYP Concept: Connection"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies light producing heat and friction producing heat. PYP explores connections between energy forms.",
+        "suggested_instructional_bridge": "Investigate energy connections—light bulbs that heat, rubbing hands to warm—building understanding of how energy forms connect and transform."
+      },
+      {
+        "row_id": "xw-g03-sci-013",
+        "topic_domain": "Life Science - Plant Structures and Functions",
+        "florida_standards": ["SC.3.L.14.1", "SC.3.L.14.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Science: Living things strand", "PYP Concept: Function"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies plant structures, functions, and responses to stimuli. PYP explores living things through form and function concepts.",
+        "suggested_instructional_bridge": "Grow plants in classroom investigations, observing structures, functions (photosynthesis, support, reproduction), and responses to light and gravity."
+      },
+      {
+        "row_id": "xw-g03-sci-014",
+        "topic_domain": "Life Science - Animal and Plant Classification",
+        "florida_standards": ["SC.3.L.15.1", "SC.3.L.15.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Science: Living things strand", "PYP Concept: Form"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies classifying animals by major groups and plants by flowering/nonflowering. PYP examines living things' forms.",
+        "suggested_instructional_bridge": "Create classification systems for local animals and plants, discovering grouping criteria through inquiry while building toward Florida's specified categories."
+      },
+      {
+        "row_id": "xw-g03-sci-015",
+        "topic_domain": "Life Science - Interdependence",
+        "florida_standards": ["SC.3.L.17.1", "SC.3.L.17.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Transdisciplinary Theme: Sharing the planet", "PYP Concept: Connection"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies seasonal responses and photosynthesis. PYP explores interdependence through 'Sharing the planet' theme.",
+        "suggested_instructional_bridge": "Design a 'Sharing the planet' unit on ecosystems, investigating how plants and animals depend on each other and respond to seasonal changes."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-fl-science",
+      "url": "https://www.cpalms.org/",
+      "title": "Florida NGSSS - Science",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": "2008",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-pyp",
+      "url": "https://ibo.org/programmes/primary-years-programme/",
+      "title": "IB Primary Years Programme",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Public overview; detailed scope and sequence requires IB educator login"
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Initial FL↔IB crosswalk. Arizona deferred per Ivan. Alignments are suggested (Label C) based on available Florida standards and public IB PYP framework documentation."
+  ],
+  "last_updated": "2026-10-03"
+}

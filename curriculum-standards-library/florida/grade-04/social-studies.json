@@ -1,0 +1,959 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-04.social-studies",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 4,
+  "grade_label": "Grade 4",
+  "subject": "social-studies",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "C"
+  ],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "Social Studies",
+      "standards_system_name": "NGSSS (2014) + Florida State Academic Standards (2023 Civics/African American History)",
+      "organization": "by_grade",
+      "courses": null
+    },
+    "domains": [
+      {
+        "domain_id": "SS.4.A.1",
+        "domain_name": "American History - Historical Inquiry and Analysis",
+        "standards": [
+          {
+            "id": "SS.4.A.1.1",
+            "text": "Analyze primary and secondary resources to identify significant individuals and events throughout Florida history.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-2994"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.1.2",
+            "text": "Synthesize information related to Florida history through print and electronic media.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-2995"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.4.A.2",
+        "domain_name": "American History - Native Americans in Florida",
+        "standards": [
+          {
+            "id": "SS.4.A.2.1",
+            "text": "Compare Native American tribes in Florida.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-2996"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.4.A.3",
+        "domain_name": "American History - European Contact and Colonial Florida",
+        "standards": [
+          {
+            "id": "SS.4.A.3.1",
+            "text": "Identify explorers who came to Florida and the motivations for their expeditions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-2997"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.3.2",
+            "text": "Describe causes and effects of European colonization on the Native American tribes of Florida.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-2998"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.3.3",
+            "text": "Identify the significance of St. Augustine as the oldest permanent European settlement in the United States.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-2999"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.3.4",
+            "text": "Explain the purpose of and daily life on missions (San Luis de Talimali in present-day Tallahassee).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3000"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.3.5",
+            "text": "Identify the significance of Fort Mose as the first free African community in the United States.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3001"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.3.6",
+            "text": "Identify the effects of Spanish rule in Florida.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3002"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.3.7",
+            "text": "Identify nations (Spain, France, England) that controlled Florida before it became a United States territory.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3003"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.3.8",
+            "text": "Explain how the Seminole tribe formed and the purpose for their migration.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3004"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.3.9",
+            "text": "Explain how Florida (Adams-Onis Treaty) became a U.S. territory.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3005"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.3.10",
+            "text": "Identify the causes and effects of the Seminole Wars.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3006"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.4.A.4",
+        "domain_name": "American History - Territorial Florida",
+        "standards": [
+          {
+            "id": "SS.4.A.4.1",
+            "text": "Explain the effects of technological advances on Florida.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3007"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.4.2",
+            "text": "Describe pioneer life in Florida.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3008"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.4.A.5",
+        "domain_name": "American History - Civil War and Reconstruction",
+        "standards": [
+          {
+            "id": "SS.4.A.5.1",
+            "text": "Describe Florida's involvement (secession, blockades of ports, the battles of Ft. Pickens, Olustee, Ft. Brooke, Natural Bridge, food supply) in the Civil War.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3009"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.5.2",
+            "text": "Summarize challenges Floridians faced during Reconstruction.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3010"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.4.A.6",
+        "domain_name": "American History - Late 19th and Early 20th Century Florida",
+        "standards": [
+          {
+            "id": "SS.4.A.6.1",
+            "text": "Describe the economic development of Florida's major industries.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3011"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.6.2",
+            "text": "Summarize contributions immigrant groups made to Florida.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3012"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.6.3",
+            "text": "Describe the contributions of significant individuals to Florida.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3013"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.6.4",
+            "text": "Describe effects of the Spanish American War on Florida.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3014"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.4.A.7",
+        "domain_name": "American History - Florida in the 1920s-1940s",
+        "standards": [
+          {
+            "id": "SS.4.A.7.1",
+            "text": "Describe the causes and effects of the 1920's Florida land boom and bust.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3015"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.7.2",
+            "text": "Summarize challenges Floridians faced during the Great Depression.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3016"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.4.A.8",
+        "domain_name": "American History - Modern Florida",
+        "standards": [
+          {
+            "id": "SS.4.A.8.1",
+            "text": "Identify Florida's role in the Civil Rights Movement.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3017"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.8.2",
+            "text": "Describe how and why immigration impacts Florida today.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3018"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.8.3",
+            "text": "Describe the effect of the United States' space program on Florida's economy and growth.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3019"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.A.8.4",
+            "text": "Explain how tourism affects Florida's economy and growth.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3020"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.4.A.9",
+        "domain_name": "American History - Chronological Thinking",
+        "standards": [
+          {
+            "id": "SS.4.A.9.1",
+            "text": "Utilize timelines to sequence key events in Florida history.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3021"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.4.G.1",
+        "domain_name": "Geography - Florida Physical and Cultural Geography",
+        "standards": [
+          {
+            "id": "SS.4.G.1.1",
+            "text": "Identify physical features of Florida.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3022"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.G.1.2",
+            "text": "Locate and label cultural features on a Florida map.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3023"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.G.1.3",
+            "text": "Explain how weather impacts Florida.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3024"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.G.1.4",
+            "text": "Interpret political and physical maps using map elements (title, compass rose, cardinal directions, intermediate directions, symbols, legend, scale, longitude, latitude).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3025"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.4.E.1",
+        "domain_name": "Economics - Florida's Economy",
+        "standards": [
+          {
+            "id": "SS.4.E.1.1",
+            "text": "Identify entrepreneurs from various social and ethnic backgrounds who have influenced Florida and local economy.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3026"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.E.1.2",
+            "text": "Explain Florida's role in the national and international economy and conditions that attract businesses to the state.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-3027"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.4.CG.1",
+        "domain_name": "Civics and Government - Florida's Constitution",
+        "standards": [
+          {
+            "id": "SS.4.CG.1.1",
+            "text": "Explain why the Florida government has a written Constitution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-16062"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.4.CG.2",
+        "domain_name": "Civics and Government - Civic Participation and Representative Government",
+        "standards": [
+          {
+            "id": "SS.4.CG.2.1",
+            "text": "Identify and describe how citizens work with local and state governments to solve problems.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-16063"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.CG.2.2",
+            "text": "Explain the importance of voting, public service, and volunteerism to the state and nation.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-16064"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.CG.2.3",
+            "text": "Identify individuals who represent the citizens of Florida at the state level.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-16065"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.4.CG.3",
+        "domain_name": "Civics and Government - Structure of Government",
+        "standards": [
+          {
+            "id": "SS.4.CG.3.1",
+            "text": "Explain the structure and functions of the legislative, executive, and judicial branches of government in Florida.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-16066"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SS.4.CG.3.2",
+            "text": "Compare the structure, functions, and processes of local and state government.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-16067"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.4.AA.1",
+        "domain_name": "African American History - African American Community Leaders in Florida",
+        "standards": [
+          {
+            "id": "SS.4.AA.1.1",
+            "text": "Identify African American community leaders who made positive contributions in the state of Florida (e.g., Zora Neale Hurston, Florida Highwaymen, Mary McLeod Bethune, Evan B. Forde, Bessie Coleman, Gen. Daniel \"Chappie\" James, Bob Hayes, Sylvia Fowles).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-116280"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": null,
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Students analyze Florida history from Native American tribes through modern day.",
+        "Students understand European colonization, territorial period, and statehood.",
+        "Students identify Florida's physical and cultural geography features.",
+        "Students learn Florida's economic role and contributions of entrepreneurs.",
+        "Students understand Florida's constitution and three branches of state government."
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "NGSSS (2014) + Florida State Academic Standards (2023 Civics/AA)",
+      "adopted_or_effective_date": "2014 (History/Geography/Economics), 2023 (Civics/AA History)",
+      "notes": [
+        "Converted from legacy primer-mvp branch content with CPALMS verification on 2026-10-03. Note: Grade 4 focuses on Florida history. Social Studies uses mixed frameworks - NGSSS for History/Geography/Economics, 2023 Florida Standards for Civics and African American History."
+      ]
+    }
+  },
+  "citations": [
+    {
+      "id": "c-cpalms-2994",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2994",
+      "title": "SS.4.A.1.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-2995",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2995",
+      "title": "SS.4.A.1.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-2996",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2996",
+      "title": "SS.4.A.2.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-2997",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2997",
+      "title": "SS.4.A.3.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-2998",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2998",
+      "title": "SS.4.A.3.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-2999",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/2999",
+      "title": "SS.4.A.3.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3000",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3000",
+      "title": "SS.4.A.3.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3001",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3001",
+      "title": "SS.4.A.3.5 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3002",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3002",
+      "title": "SS.4.A.3.6 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3003",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3003",
+      "title": "SS.4.A.3.7 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3004",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3004",
+      "title": "SS.4.A.3.8 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3005",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3005",
+      "title": "SS.4.A.3.9 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3006",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3006",
+      "title": "SS.4.A.3.10 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3007",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3007",
+      "title": "SS.4.A.4.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3008",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3008",
+      "title": "SS.4.A.4.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3009",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3009",
+      "title": "SS.4.A.5.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3010",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3010",
+      "title": "SS.4.A.5.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3011",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3011",
+      "title": "SS.4.A.6.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3012",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3012",
+      "title": "SS.4.A.6.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3013",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3013",
+      "title": "SS.4.A.6.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3014",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3014",
+      "title": "SS.4.A.6.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3015",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3015",
+      "title": "SS.4.A.7.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3016",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3016",
+      "title": "SS.4.A.7.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3017",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3017",
+      "title": "SS.4.A.8.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3018",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3018",
+      "title": "SS.4.A.8.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3019",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3019",
+      "title": "SS.4.A.8.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3020",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3020",
+      "title": "SS.4.A.8.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3021",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3021",
+      "title": "SS.4.A.9.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3022",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3022",
+      "title": "SS.4.G.1.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3023",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3023",
+      "title": "SS.4.G.1.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3024",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3024",
+      "title": "SS.4.G.1.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3025",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3025",
+      "title": "SS.4.G.1.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3026",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3026",
+      "title": "SS.4.E.1.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-3027",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/3027",
+      "title": "SS.4.E.1.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-16062",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/16062",
+      "title": "SS.4.CG.1.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-16063",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/16063",
+      "title": "SS.4.CG.2.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-16064",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/16064",
+      "title": "SS.4.CG.2.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-16065",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/16065",
+      "title": "SS.4.CG.2.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-16066",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/16066",
+      "title": "SS.4.CG.3.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-16067",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/16067",
+      "title": "SS.4.CG.3.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-116280",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/116280",
+      "title": "SS.4.AA.1.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Converted from legacy primer-mvp:curriculum_resources/standards_social_studies_grade4.ts. All standard IDs and text verified against CPALMS."
+  ],
+  "last_updated": "2026-10-03"
+}

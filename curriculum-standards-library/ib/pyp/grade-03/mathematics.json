@@ -1,0 +1,123 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "ib.pyp.grade-03.mathematics",
+  "doc_type": "ib_alignment",
+  "system": "ib",
+  "programme": "PYP",
+  "grade": 3,
+  "grade_label": "Grade 3",
+  "subject": "mathematics",
+  "status": "drafted",
+  "content_labels": ["B", "C"],
+  "sections": {
+    "applicable_programme": {
+      "programme": "PYP",
+      "age_range": "3-12",
+      "grade_mapping_note": "PYP covers ages 3-12; our Grade 3 mapping (typically age 8-9) is within the programme but is our convention, not an IB-specified grade boundary.",
+      "shared_programme_block_ref": null,
+      "grade_specific_note": {
+        "label": "C",
+        "text": "Grade 3 students in PYP mathematics typically work with place value to 10,000, develop multiplication and division understanding, explore fractions, and apply mathematical thinking to real-world inquiries."
+      }
+    },
+    "subject_group_or_structure": {
+      "ib_subject_group_or_area": "Mathematics",
+      "mapping_to_primer_subject": "IB PYP Mathematics encompasses number, pattern and function, data handling, measurement, and shape and space. It emphasizes mathematical reasoning and real-world application through inquiry.",
+      "mapping_label": "C"
+    },
+    "framework_elements": {
+      "concepts": [
+        "Form - What is it like?",
+        "Function - How does it work?",
+        "Causation - Why is it like it is?",
+        "Change - How is it changing?",
+        "Connection - How is it connected to other things?",
+        "Perspective - What are the points of view?",
+        "Responsibility - What is our responsibility?"
+      ],
+      "approaches_to_learning": [
+        "Thinking skills",
+        "Research skills",
+        "Communication skills",
+        "Social skills",
+        "Self-management skills"
+      ],
+      "learner_profile_attributes": [
+        "Inquirers",
+        "Knowledgeable",
+        "Thinkers",
+        "Communicators",
+        "Principled",
+        "Open-minded",
+        "Caring",
+        "Risk-takers",
+        "Balanced",
+        "Reflective"
+      ],
+      "global_contexts_or_transdisciplinary_themes": [
+        "Who we are",
+        "Where we are in place and time",
+        "How we express ourselves",
+        "How the world works",
+        "How we organize ourselves",
+        "Sharing the planet"
+      ]
+    },
+    "official_requirements": [
+      {
+        "label": "B",
+        "text": "PYP Mathematics Scope and Sequence covers five strands: Number, Pattern and Function, Data Handling, Measurement, and Shape and Space.",
+        "citation_ids": ["c-ibo-pyp-math"],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Mathematical learning is developed through phases, with students moving through constructing meaning, transferring meaning, and applying with understanding.",
+        "citation_ids": ["c-ibo-pyp-math"],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Mathematics is taught in meaningful contexts, often integrated with units of inquiry, emphasizing real-world application.",
+        "citation_ids": ["c-ibo-pyp-math"],
+        "page": null
+      }
+    ],
+    "typical_fit": {
+      "label": "C",
+      "text": "At Grade 3, PYP mathematics learners typically: understand place value to thousands, develop multiplication and division concepts, explore fractions as parts of wholes, measure using standard units, and identify geometric properties. These align with Florida B.E.S.T. standards for number sense (MA.3.NSO), fractions (MA.3.FR), and geometry (MA.3.GR)."
+    },
+    "suggested_alignment_to_florida_and_arizona": {
+      "label": "C",
+      "florida": [
+        {"standard_id": "MA.3.NSO.1.1", "alignment_note": "Place value to 10,000 aligns with PYP Number strand's understanding of whole numbers."},
+        {"standard_id": "MA.3.NSO.2.4", "alignment_note": "Multiplication facts aligns with PYP Pattern and Function strand."},
+        {"standard_id": "MA.3.FR.1.1", "alignment_note": "Unit fractions aligns with PYP Number strand's development of fraction understanding."},
+        {"standard_id": "MA.3.GR.2.2", "alignment_note": "Area of rectangles aligns with PYP Measurement and Shape and Space strands."},
+        {"standard_id": "MA.3.AR.1.2", "alignment_note": "Real-world problems aligns with PYP emphasis on applying mathematics in context."}
+      ],
+      "arizona": [],
+      "notes": "Arizona standards deferred. These alignments are suggested starting points (Label C), not official IB-Florida mappings."
+    },
+    "access_limitations": [
+      "IB Programme Resource Centre (PRC) materials require educator login; detailed Mathematics Scope and Sequence document not directly accessible.",
+      "Specific phase indicators and learning continuums require PRC access."
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-ibo-pyp-math",
+      "url": "https://ibo.org/programmes/primary-years-programme/curriculum/",
+      "title": "PYP Curriculum - Mathematics",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Public overview page reachable; detailed scope and sequence requires IB educator login"
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Initial draft. IB framework elements from public PYP documentation. Detailed phase descriptors require IB PRC access (restricted). ibo.org blocked by Cloudflare during this session."
+  ],
+  "last_updated": "2026-10-03"
+}

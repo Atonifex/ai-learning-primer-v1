@@ -1,0 +1,629 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-04.ela",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 4,
+  "grade_label": "Grade 4",
+  "subject": "ela",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "C"
+  ],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "English Language Arts",
+      "standards_system_name": "B.E.S.T. Standards (Benchmarks for Excellent Student Thinking)",
+      "organization": "by_grade",
+      "courses": null
+    },
+    "domains": [
+      {
+        "domain_id": "ELA.4.R.1",
+        "domain_name": "Reading Prose and Poetry",
+        "standards": [
+          {
+            "id": "ELA.4.R.1.1",
+            "text": "Explain how setting, events, conflict, and character development contribute to the plot in a literary text.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14957"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "ELA.4.R.1.2",
+            "text": "Explain a stated or implied theme and how it develops, using details, in a literary text.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14958"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "ELA.4.R.1.3",
+            "text": "Identify the narrator's point of view and explain the difference between a narrator's point of view and character perspective in a literary text.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14959"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "ELA.4.R.1.4",
+            "text": "Explain how rhyme and structure create meaning in a poem.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14960"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.4.R.2",
+        "domain_name": "Reading Informational Text",
+        "standards": [
+          {
+            "id": "ELA.4.R.2.1",
+            "text": "Explain how text features contribute to the meaning and identify the text structures of problem/solution, sequence, and description in texts.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14961"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "ELA.4.R.2.2",
+            "text": "Explain how relevant details support the central idea, implied or explicit.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14962"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "ELA.4.R.2.3",
+            "text": "Explain an author's perspective toward a topic in an informational text.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14963"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "ELA.4.R.2.4",
+            "text": "Explain an author's claim and the reasons and evidence used to support the claim.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14964"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.4.R.3",
+        "domain_name": "Reading Across Genres",
+        "standards": [
+          {
+            "id": "ELA.4.R.3.1",
+            "text": "Explain how figurative language contributes to meaning in text(s).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14965"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "ELA.4.R.3.2",
+            "text": "Summarize a text to enhance comprehension. a. Include plot and theme for a literary text. b. Include the central idea and relevant details for an informational text.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14966"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "ELA.4.R.3.3",
+            "text": "Compare and contrast accounts of the same event using primary and/or secondary sources.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14967"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.4.C.1",
+        "domain_name": "Communicating Through Writing",
+        "standards": [
+          {
+            "id": "ELA.4.C.1.1",
+            "text": "Demonstrate legible cursive writing skills.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14968"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "ELA.4.C.1.2",
+            "text": "Write personal or fictional narratives using a logical sequence of events and demonstrating an effective use of techniques such as descriptions and transitional words and phrases.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14969"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "ELA.4.C.1.3",
+            "text": "Write to make a claim supporting a perspective with logical reasons, using evidence from multiple sources, elaboration, and an organizational structure with transitions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14970"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "ELA.4.C.1.4",
+            "text": "Write expository texts about a topic, using multiple sources, elaboration, and an organizational structure with transitions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14971"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "ELA.4.C.1.5",
+            "text": "Improve writing by planning, revising, and editing, with guidance and support from adults and feedback from peers.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14972"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.4.C.2",
+        "domain_name": "Communicating Orally",
+        "standards": [
+          {
+            "id": "ELA.4.C.2.1",
+            "text": "Present information orally, in a logical sequence, using nonverbal cues, appropriate volume, and clear pronunciation.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14973"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.4.C.3",
+        "domain_name": "Following Conventions",
+        "standards": [
+          {
+            "id": "ELA.4.C.3.1",
+            "text": "Follow the rules of standard English grammar, punctuation, capitalization, and spelling appropriate to grade level.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14974"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.4.C.4",
+        "domain_name": "Researching",
+        "standards": [
+          {
+            "id": "ELA.4.C.4.1",
+            "text": "Conduct research to answer a question, organizing information about the topic and using multiple valid sources.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14975"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.4.C.5",
+        "domain_name": "Creating and Collaborating",
+        "standards": [
+          {
+            "id": "ELA.4.C.5.1",
+            "text": "Arrange multimedia elements to create emphasis in oral or written tasks.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14976"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "ELA.4.C.5.2",
+            "text": "Use digital writing tools individually or collaboratively to plan, draft, and revise writing.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14977"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.4.V.1",
+        "domain_name": "Finding Meaning",
+        "standards": [
+          {
+            "id": "ELA.4.V.1.1",
+            "text": "Use grade-level academic vocabulary appropriately in speaking and writing.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14978"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "ELA.4.V.1.2",
+            "text": "Apply knowledge of common Greek and Latin roots, base words, and affixes to determine the meaning of unfamiliar words in grade-level content.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14979"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "ELA.4.V.1.3",
+            "text": "Use context clues, figurative language, word relationships, reference materials, and/or background knowledge to determine the meaning of multiple-meaning and unknown words and phrases, appropriate to grade level.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14980"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.4.F.1",
+        "domain_name": "Learning and Applying Foundational Reading Skills",
+        "standards": [
+          {
+            "id": "ELA.4.F.1.3",
+            "text": "Use knowledge of grade-level phonics and word-analysis skills to decode words. Apply knowledge of all letter-sound correspondences, syllabication patterns, and morphology to read and write unfamiliar single-syllable and multisyllabic words in and out of context.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14955"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "ELA.4.F.1.4",
+            "text": "Read grade-level texts with accuracy, automaticity, and appropriate prosody or expression.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-14956"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": null,
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Students explain how literary elements (setting, conflict, character, theme) contribute to plot.",
+        "Students identify author's perspective and claims with supporting evidence.",
+        "Students write narratives, arguments, and expository texts with multiple sources.",
+        "Students apply Greek/Latin roots and context clues to determine word meanings.",
+        "Students read grade-level texts with fluency and expression."
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "B.E.S.T. Standards (2020)",
+      "adopted_or_effective_date": "2020-07-20",
+      "notes": [
+        "Converted from legacy primer-mvp branch content with CPALMS verification on 2026-10-03."
+      ]
+    }
+  },
+  "citations": [
+    {
+      "id": "c-cpalms-14957",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14957",
+      "title": "ELA.4.R.1.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14958",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14958",
+      "title": "ELA.4.R.1.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14959",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14959",
+      "title": "ELA.4.R.1.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14960",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14960",
+      "title": "ELA.4.R.1.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14961",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14961",
+      "title": "ELA.4.R.2.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14962",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14962",
+      "title": "ELA.4.R.2.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14963",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14963",
+      "title": "ELA.4.R.2.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14964",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14964",
+      "title": "ELA.4.R.2.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14965",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14965",
+      "title": "ELA.4.R.3.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14966",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14966",
+      "title": "ELA.4.R.3.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14967",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14967",
+      "title": "ELA.4.R.3.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14968",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14968",
+      "title": "ELA.4.C.1.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14969",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14969",
+      "title": "ELA.4.C.1.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14970",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14970",
+      "title": "ELA.4.C.1.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14971",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14971",
+      "title": "ELA.4.C.1.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14972",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14972",
+      "title": "ELA.4.C.1.5 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14973",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14973",
+      "title": "ELA.4.C.2.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14974",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14974",
+      "title": "ELA.4.C.3.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14975",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14975",
+      "title": "ELA.4.C.4.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14976",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14976",
+      "title": "ELA.4.C.5.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14977",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14977",
+      "title": "ELA.4.C.5.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14978",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14978",
+      "title": "ELA.4.V.1.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14979",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14979",
+      "title": "ELA.4.V.1.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14980",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14980",
+      "title": "ELA.4.V.1.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14955",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14955",
+      "title": "ELA.4.F.1.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-14956",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/14956",
+      "title": "ELA.4.F.1.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Converted from legacy primer-mvp:curriculum_resources/standards_ela_grade4.ts. All standard IDs and text verified against CPALMS."
+  ],
+  "last_updated": "2026-10-03"
+}

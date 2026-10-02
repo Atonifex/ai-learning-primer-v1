@@ -1,0 +1,183 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-04.mathematics",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 4,
+  "grade_label": "Grade 4",
+  "subject": "mathematics",
+  "status": "drafted",
+  "content_labels": ["A", "B", "C"],
+  "sections": {
+    "scope_note": "Arizona standards deferred per Ivan (2026-10-03). This crosswalk covers Florida B.E.S.T. Mathematics ↔ IB PYP Mathematics only.",
+    "rows": [
+      {
+        "row_id": "xw-g04-math-001",
+        "topic_domain": "Number Sense - Place Value to Millions",
+        "florida_standards": ["MA.4.NSO.1.1", "MA.4.NSO.1.2", "MA.4.NSO.1.3", "MA.4.NSO.1.4"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Form", "PYP Mathematics: Number strand"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies numbers to 1,000,000 with standard, expanded, and word forms, plus rounding to nearest 10, 100, or 1,000. PYP develops place value through phases without specific number limits.",
+        "suggested_instructional_bridge": "Use inquiry-based exploration of large numbers in real contexts (population, distances), connecting place value patterns to the 'form' of our number system."
+      },
+      {
+        "row_id": "xw-g04-math-002",
+        "topic_domain": "Number Sense - Decimals",
+        "florida_standards": ["MA.4.NSO.1.5", "MA.4.NSO.2.6", "MA.4.NSO.2.7"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Connection", "PYP Mathematics: Number strand"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies decimals to hundredths, including plotting, ordering, and adding/subtracting. PYP connects decimals to fractions and real-world measurement.",
+        "suggested_instructional_bridge": "Explore decimals through money and measurement contexts, connecting decimal notation to fraction understanding and place value patterns."
+      },
+      {
+        "row_id": "xw-g04-math-003",
+        "topic_domain": "Operations - Multiplication",
+        "florida_standards": ["MA.4.NSO.2.1", "MA.4.NSO.2.2", "MA.4.NSO.2.3", "MA.4.NSO.2.5"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Function", "PYP Mathematics: Number strand"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida requires fact automaticity through 12×12, multiplying 3-digit by 2-digit with reliability, and standard algorithm for 2×2 with fluency. PYP emphasizes conceptual understanding.",
+        "suggested_instructional_bridge": "Build fact fluency through pattern exploration while developing multi-digit multiplication strategies, culminating in efficient algorithms with understanding."
+      },
+      {
+        "row_id": "xw-g04-math-004",
+        "topic_domain": "Operations - Division",
+        "florida_standards": ["MA.4.NSO.2.4"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Function", "PYP Mathematics: Number strand"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies 4-digit ÷ 1-digit with remainders as fractions. PYP develops division as inverse of multiplication in meaningful contexts.",
+        "suggested_instructional_bridge": "Explore division through sharing and grouping contexts, connecting remainders to fractions as parts of groups."
+      },
+      {
+        "row_id": "xw-g04-math-005",
+        "topic_domain": "Fractions - Equivalence and Decimal Connection",
+        "florida_standards": ["MA.4.FR.1.1", "MA.4.FR.1.2", "MA.4.FR.1.3", "MA.4.FR.1.4"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Connection", "PYP Mathematics: Number strand"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies tenths/hundredths equivalence, decimal notation for fractions, and comparing fractions with different denominators. PYP develops fraction understanding through part-whole relationships.",
+        "suggested_instructional_bridge": "Use visual models to connect fractions, decimals, and equivalence, building flexible number sense across representations."
+      },
+      {
+        "row_id": "xw-g04-math-006",
+        "topic_domain": "Fractions - Operations",
+        "florida_standards": ["MA.4.FR.2.1", "MA.4.FR.2.2", "MA.4.FR.2.3", "MA.4.FR.2.4"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Function", "PYP Mathematics: Number strand"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies decomposing fractions, adding/subtracting like denominators, adding tenths and hundredths, and multiplying fractions by whole numbers. PYP develops operations conceptually.",
+        "suggested_instructional_bridge": "Use visual models and real contexts (recipes, measurements) to develop fraction operations, connecting procedures to meaning."
+      },
+      {
+        "row_id": "xw-g04-math-007",
+        "topic_domain": "Algebraic Reasoning - Problem Solving",
+        "florida_standards": ["MA.4.AR.1.1", "MA.4.AR.1.2", "MA.4.AR.1.3"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Causation", "PYP ATL: Thinking skills"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies multi-step problems with all operations including fraction contexts. PYP emphasizes mathematical reasoning and real-world application.",
+        "suggested_instructional_bridge": "Pose authentic multi-step problems from unit inquiries, requiring students to determine operations and interpret results in context."
+      },
+      {
+        "row_id": "xw-g04-math-008",
+        "topic_domain": "Algebraic Reasoning - Equations and Equality",
+        "florida_standards": ["MA.4.AR.2.1", "MA.4.AR.2.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Function", "PYP Mathematics: Pattern and function strand"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies determining equation truth and writing equations with unknowns. PYP develops algebraic thinking through pattern and function exploration.",
+        "suggested_instructional_bridge": "Use balance models and number puzzles to develop equation understanding, connecting to the concept of mathematical function."
+      },
+      {
+        "row_id": "xw-g04-math-009",
+        "topic_domain": "Algebraic Reasoning - Factors and Patterns",
+        "florida_standards": ["MA.4.AR.3.1", "MA.4.AR.3.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Mathematics: Pattern and function strand", "PYP Concept: Change"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies factor pairs, prime/composite through 144, and numerical patterns with rules. PYP embeds pattern recognition across mathematical strands.",
+        "suggested_instructional_bridge": "Investigate factor relationships and number patterns through inquiry, discovering properties that change and properties that stay constant."
+      },
+      {
+        "row_id": "xw-g04-math-010",
+        "topic_domain": "Measurement - Tools and Conversions",
+        "florida_standards": ["MA.4.M.1.1", "MA.4.M.1.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Mathematics: Measurement strand", "PYP ATL: Research skills"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies appropriate tool selection and unit conversions within systems (length, mass, capacity, time). PYP develops measurement as inquiry skill.",
+        "suggested_instructional_bridge": "Integrate measurement tools and conversions into science and social studies inquiries, applying appropriate units to real investigations."
+      },
+      {
+        "row_id": "xw-g04-math-011",
+        "topic_domain": "Measurement - Problem Solving",
+        "florida_standards": ["MA.4.M.2.1", "MA.4.M.2.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Transdisciplinary Theme: How we organize ourselves", "PYP Mathematics: Measurement strand"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies two-step distance/time problems and money problems with decimals. PYP connects measurement to organizing daily life.",
+        "suggested_instructional_bridge": "Design real-world projects involving scheduling, budgeting, and planning that require distance, time, and money calculations."
+      },
+      {
+        "row_id": "xw-g04-math-012",
+        "topic_domain": "Geometry - Angles",
+        "florida_standards": ["MA.4.GR.1.1", "MA.4.GR.1.2", "MA.4.GR.1.3"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Mathematics: Shape and space strand", "PYP Concept: Form"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies angle classification, protractor measurement, and solving for unknown angles. PYP explores angles as attributes of shapes.",
+        "suggested_instructional_bridge": "Investigate angles in architecture and art, using protractors to measure and discover angle relationships."
+      },
+      {
+        "row_id": "xw-g04-math-013",
+        "topic_domain": "Geometry - Perimeter and Area",
+        "florida_standards": ["MA.4.GR.2.1", "MA.4.GR.2.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Mathematics: Measurement strand", "PYP Concept: Function"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies perimeter/area with unknown sides and exploring same perimeter/different area relationships. PYP connects measurement to function.",
+        "suggested_instructional_bridge": "Design garden beds, rooms, or game boards exploring how perimeter and area relate and differ, discovering measurement functions."
+      },
+      {
+        "row_id": "xw-g04-math-014",
+        "topic_domain": "Data Analysis - Collecting and Interpreting",
+        "florida_standards": ["MA.4.DP.1.1", "MA.4.DP.1.2", "MA.4.DP.1.3"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Mathematics: Data handling strand", "PYP ATL: Research skills"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies stem-and-leaf plots, line plots with fractions, and mode/median/range. PYP develops data handling as inquiry skill.",
+        "suggested_instructional_bridge": "Embed data collection in unit inquiries, using appropriate representations and measures of center to answer research questions."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-fl-math",
+      "url": "https://www.cpalms.org/",
+      "title": "Florida B.E.S.T. Standards - Mathematics",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": "2020",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-pyp",
+      "url": "https://ibo.org/programmes/primary-years-programme/",
+      "title": "IB Primary Years Programme",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Public overview; detailed scope and sequence requires IB educator login"
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Initial FL↔IB crosswalk. Arizona deferred per Ivan. Alignments are suggested (Label C) based on available Florida standards and public IB PYP framework documentation."
+  ],
+  "last_updated": "2026-10-03"
+}

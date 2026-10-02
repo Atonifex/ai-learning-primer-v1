@@ -1,0 +1,134 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "ib.pyp.grade-03.ela",
+  "doc_type": "ib_alignment",
+  "system": "ib",
+  "programme": "PYP",
+  "grade": 3,
+  "grade_label": "Grade 3",
+  "subject": "ela",
+  "status": "drafted",
+  "content_labels": ["B", "C"],
+  "sections": {
+    "applicable_programme": {
+      "programme": "PYP",
+      "age_range": "3-12",
+      "grade_mapping_note": "PYP covers ages 3-12; our Grade 3 mapping (typically age 8-9) is within the programme but is our convention, not an IB-specified grade boundary.",
+      "shared_programme_block_ref": null,
+      "grade_specific_note": {
+        "label": "C",
+        "text": "Grade 3 typically falls in the middle of PYP. Students at this level engage with increasingly complex texts and begin producing more structured written and oral communication. The transdisciplinary themes remain central."
+      }
+    },
+    "subject_group_or_structure": {
+      "ib_subject_group_or_area": "Language",
+      "mapping_to_primer_subject": "IB PYP 'Language' encompasses reading, writing, speaking, listening, and viewing/presenting. This maps to our ELA subject, though IB emphasizes multilingualism and language as a vehicle for inquiry.",
+      "mapping_label": "C"
+    },
+    "framework_elements": {
+      "concepts": [
+        "Form - What is it like?",
+        "Function - How does it work?",
+        "Causation - Why is it like it is?",
+        "Change - How is it changing?",
+        "Connection - How is it connected to other things?",
+        "Perspective - What are the points of view?",
+        "Responsibility - What is our responsibility?"
+      ],
+      "approaches_to_learning": [
+        "Thinking skills",
+        "Research skills",
+        "Communication skills",
+        "Social skills",
+        "Self-management skills"
+      ],
+      "learner_profile_attributes": [
+        "Inquirers",
+        "Knowledgeable",
+        "Thinkers",
+        "Communicators",
+        "Principled",
+        "Open-minded",
+        "Caring",
+        "Risk-takers",
+        "Balanced",
+        "Reflective"
+      ],
+      "global_contexts_or_transdisciplinary_themes": [
+        "Who we are",
+        "Where we are in place and time",
+        "How we express ourselves",
+        "How the world works",
+        "How we organize ourselves",
+        "Sharing the planet"
+      ]
+    },
+    "official_requirements": [
+      {
+        "label": "B",
+        "text": "PYP Language Scope and Sequence outlines learning continuums for oral language (listening and speaking), visual language (viewing and presenting), and written language (reading and writing).",
+        "citation_ids": ["c-ibo-pyp-lang"],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Students develop as readers through phases: emergent, early, transitional, self-extending, and advanced. Grade 3 students are typically at transitional or self-extending phases.",
+        "citation_ids": ["c-ibo-pyp-lang"],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Language learning in PYP is transdisciplinary: language is developed across all units of inquiry, not taught in isolation.",
+        "citation_ids": ["c-ibo-pyp-lang"],
+        "page": null
+      }
+    ],
+    "typical_fit": {
+      "label": "C",
+      "text": "At Grade 3, PYP language learners typically: read independently with comprehension, write for different purposes and audiences, participate in discussions with increasing depth, and begin to analyze texts for author's purpose and perspective. These align with Florida ELA standards for reading comprehension (ELA.3.R), writing (ELA.3.C.1), and oral communication (ELA.3.C.2)."
+    },
+    "suggested_alignment_to_florida_and_arizona": {
+      "label": "C",
+      "florida": [
+        {"standard_id": "ELA.3.R.1.1", "alignment_note": "Character development analysis aligns with PYP focus on perspective and inquiry into character motivations."},
+        {"standard_id": "ELA.3.R.1.2", "alignment_note": "Theme identification aligns with PYP concepts of connection and meaning-making across texts."},
+        {"standard_id": "ELA.3.R.2.2", "alignment_note": "Central idea and details aligns with PYP inquiry skills and research approaches."},
+        {"standard_id": "ELA.3.C.1.2", "alignment_note": "Narrative writing aligns with PYP emphasis on expression through written language."},
+        {"standard_id": "ELA.3.C.1.3", "alignment_note": "Opinion writing aligns with PYP development of reasoned arguments and perspective."},
+        {"standard_id": "ELA.3.C.2.1", "alignment_note": "Oral presentation aligns with PYP oral language and communication skills development."}
+      ],
+      "arizona": [],
+      "notes": "Arizona standards deferred. These alignments are suggested starting points (Label C), not official IB-Florida mappings."
+    },
+    "access_limitations": [
+      "IB Programme Resource Centre (PRC) materials require educator login; detailed Language Scope and Sequence document not directly accessible.",
+      "Specific phase descriptors and learning outcomes for each phase require PRC access."
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-ibo-pyp-lang",
+      "url": "https://ibo.org/programmes/primary-years-programme/curriculum/",
+      "title": "PYP Curriculum - Language",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Public overview page reachable; detailed scope and sequence requires IB educator login"
+    },
+    {
+      "id": "c-ibo-pyp-framework",
+      "url": "https://ibo.org/programmes/primary-years-programme/",
+      "title": "Primary Years Programme (PYP)",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Public overview page; network access to ibo.org blocked during verification"
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Initial draft. IB framework elements from public PYP documentation. Detailed phase descriptors require IB PRC access (restricted). ibo.org blocked by Cloudflare during this session; framework elements based on publicly available IB documentation."
+  ],
+  "last_updated": "2026-10-03"
+}
