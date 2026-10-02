@@ -11,7 +11,7 @@
   "content_labels": [],
   "sections": {
     "current_phase": 1,
-    "gate": "Phase 1 in progress. First batch: convert legacy FL G3-4, create IB PYP G3, create FL↔IB crosswalks for G3 all subjects.",
+    "gate": "Phase 1 pilot complete. Batch 1 (G3) and Batch 2 (G4) done: 24 drafted documents (FL standards, IB alignments, FL↔IB crosswalks for both grades).",
     "scope_change": {
       "date": "2026-10-03",
       "decision": "AZ deferred; FL+IB priority",
@@ -435,6 +435,16 @@
         "date": "2026-10-03",
         "phase": 1,
         "summary": "Scope change: AZ deferred, FL+IB priority. CPALMS reachable (can verify FL), ibo.org blocked (Cloudflare). Converting legacy FL G3-4 from primer-mvp branch, then IB PYP G3, then FL↔IB crosswalks."
+      },
+      {
+        "date": "2026-10-03",
+        "phase": 1,
+        "summary": "Batch 1 complete: FL G3 (4 subjects), IB PYP G3 (4 subjects), FL↔IB crosswalks G3 (4 subjects). Started Batch 2."
+      },
+      {
+        "date": "2026-10-03",
+        "phase": 1,
+        "summary": "Batch 2 complete: FL G4 (4 subjects converted from legacy), IB PYP G4 (4 subjects), FL↔IB crosswalks G4 (4 subjects). 24 total pilot documents drafted."
       }
     ],
     "scope_update": {
@@ -450,5 +460,5 @@
   "version_notes": [
     "Phase 0 created 2026-10-02."
   ],
-  "last_updated": "2026-10-02"
+  "last_updated": "2026-10-03"
 }

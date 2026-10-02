@@ -1,0 +1,183 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-04.social-studies",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 4,
+  "grade_label": "Grade 4",
+  "subject": "social-studies",
+  "status": "drafted",
+  "content_labels": ["A", "B", "C"],
+  "sections": {
+    "scope_note": "Arizona standards deferred per Ivan (2026-10-03). This crosswalk covers Florida Social Studies (NGSSS + 2023 Standards) ↔ IB PYP Social Studies only. Note: Florida Grade 4 focuses specifically on Florida state history, which creates partial alignment with PYP's global/transferable concepts.",
+    "rows": [
+      {
+        "row_id": "xw-g04-ss-001",
+        "topic_domain": "Historical Inquiry",
+        "florida_standards": ["SS.4.A.1.1", "SS.4.A.1.2", "SS.4.A.9.1"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP ATL: Research skills", "PYP ATL: Thinking skills"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies analyzing primary/secondary sources and synthesizing information about Florida history. PYP develops historical inquiry skills transferably.",
+        "suggested_instructional_bridge": "Use primary and secondary sources about Florida history to develop research skills transferable to any historical investigation."
+      },
+      {
+        "row_id": "xw-g04-ss-002",
+        "topic_domain": "Indigenous Peoples",
+        "florida_standards": ["SS.4.A.2.1"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Transdisciplinary Theme: Where we are in place and time", "PYP Concept: Perspective"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies comparing Florida Native American tribes. PYP addresses indigenous peoples through global perspective.",
+        "suggested_instructional_bridge": "Compare Florida tribes (Calusa, Timucua, Apalachee, Seminole), connecting to broader understanding of indigenous cultures through perspective concept."
+      },
+      {
+        "row_id": "xw-g04-ss-003",
+        "topic_domain": "European Exploration and Contact",
+        "florida_standards": ["SS.4.A.3.1", "SS.4.A.3.2", "SS.4.A.3.3", "SS.4.A.3.4", "SS.4.A.3.5", "SS.4.A.3.6", "SS.4.A.3.7"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Transdisciplinary Theme: Where we are in place and time", "PYP Concept: Causation"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies Spanish exploration, colonization effects, St. Augustine, missions, Fort Mose, and multi-nation control. PYP addresses colonization globally.",
+        "suggested_instructional_bridge": "Study Florida's colonial period as case study of exploration, colonization, and cultural exchange, connecting causes and effects to global patterns."
+      },
+      {
+        "row_id": "xw-g04-ss-004",
+        "topic_domain": "Seminole Formation and Conflicts",
+        "florida_standards": ["SS.4.A.3.8", "SS.4.A.3.9", "SS.4.A.3.10"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Causation", "PYP Concept: Change"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies Seminole formation, Adams-Onis Treaty, and Seminole Wars. PYP addresses migration and conflict through concepts.",
+        "suggested_instructional_bridge": "Analyze causes and effects of Seminole formation and conflicts, connecting to broader concepts of migration, resistance, and change."
+      },
+      {
+        "row_id": "xw-g04-ss-005",
+        "topic_domain": "Territorial Development",
+        "florida_standards": ["SS.4.A.4.1", "SS.4.A.4.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Change", "PYP Transdisciplinary Theme: Where we are in place and time"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies technology effects and pioneer life. PYP explores settlement and development through change concept.",
+        "suggested_instructional_bridge": "Investigate how technology changed Florida pioneer life, connecting to broader patterns of territorial development and change."
+      },
+      {
+        "row_id": "xw-g04-ss-006",
+        "topic_domain": "Civil War and Reconstruction",
+        "florida_standards": ["SS.4.A.5.1", "SS.4.A.5.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Causation", "PYP Concept: Change"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies Florida's Civil War role and Reconstruction challenges. PYP addresses conflict and societal change conceptually.",
+        "suggested_instructional_bridge": "Study Florida's Civil War experience (battles, blockades, aftermath) as window into broader causes and effects of national conflict."
+      },
+      {
+        "row_id": "xw-g04-ss-007",
+        "topic_domain": "Late 19th-Early 20th Century Growth",
+        "florida_standards": ["SS.4.A.6.1", "SS.4.A.6.2", "SS.4.A.6.3", "SS.4.A.6.4"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Transdisciplinary Theme: How we organize ourselves", "PYP Concept: Connection"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies industries, immigrant contributions, significant individuals, and Spanish-American War effects. PYP addresses economic systems globally.",
+        "suggested_instructional_bridge": "Investigate Florida's industrial growth and immigrant contributions, connecting to how societies organize economic and social systems."
+      },
+      {
+        "row_id": "xw-g04-ss-008",
+        "topic_domain": "Economic Challenges - 1920s-1940s",
+        "florida_standards": ["SS.4.A.7.1", "SS.4.A.7.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Causation", "PYP Transdisciplinary Theme: How we organize ourselves"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies the land boom/bust and Great Depression challenges. PYP addresses economic systems and their impacts.",
+        "suggested_instructional_bridge": "Analyze causes and effects of Florida's land boom, bust, and Depression, connecting to how economic systems affect communities."
+      },
+      {
+        "row_id": "xw-g04-ss-009",
+        "topic_domain": "Modern Florida",
+        "florida_standards": ["SS.4.A.8.1", "SS.4.A.8.2", "SS.4.A.8.3", "SS.4.A.8.4"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Transdisciplinary Theme: How we organize ourselves", "PYP Concept: Change"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies Civil Rights Movement, immigration, space program, and tourism effects. PYP addresses societal change and organization.",
+        "suggested_instructional_bridge": "Explore how Civil Rights, space exploration, immigration, and tourism shaped modern Florida, connecting to societal organization and change."
+      },
+      {
+        "row_id": "xw-g04-ss-010",
+        "topic_domain": "Geography - Physical and Cultural Features",
+        "florida_standards": ["SS.4.G.1.1", "SS.4.G.1.2", "SS.4.G.1.3", "SS.4.G.1.4"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Transdisciplinary Theme: Where we are in place and time", "PYP Concept: Form"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies Florida's physical features, cultural features, weather impacts, and map skills. PYP develops geographic thinking globally.",
+        "suggested_instructional_bridge": "Map Florida's physical and cultural geography, using map skills to understand how place shapes human experience."
+      },
+      {
+        "row_id": "xw-g04-ss-011",
+        "topic_domain": "Economics - Florida's Economy",
+        "florida_standards": ["SS.4.E.1.1", "SS.4.E.1.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Transdisciplinary Theme: How we organize ourselves", "PYP Concept: Function"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies entrepreneurs from diverse backgrounds and Florida's national/international economic role. PYP addresses economic systems conceptually.",
+        "suggested_instructional_bridge": "Study Florida entrepreneurs and economic connections, understanding how businesses function within larger economic systems."
+      },
+      {
+        "row_id": "xw-g04-ss-012",
+        "topic_domain": "Civics - Florida Constitution and Government",
+        "florida_standards": ["SS.4.CG.1.1", "SS.4.CG.3.1", "SS.4.CG.3.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Transdisciplinary Theme: How we organize ourselves", "PYP Concept: Function"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies state constitution purpose and three branches of state government. PYP addresses governance systems conceptually.",
+        "suggested_instructional_bridge": "Explore why Florida has a constitution and how its government functions, connecting to broader understanding of how societies organize governance."
+      },
+      {
+        "row_id": "xw-g04-ss-013",
+        "topic_domain": "Civics - Civic Participation",
+        "florida_standards": ["SS.4.CG.2.1", "SS.4.CG.2.2", "SS.4.CG.2.3"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Learner Profile: Principled, Caring", "PYP ATL: Social skills"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies citizen-government problem-solving, voting/service importance, and state representatives. PYP develops civic responsibility as learner attribute.",
+        "suggested_instructional_bridge": "Engage students in civic actions—researching local issues, understanding voting—connecting to principled participation in community."
+      },
+      {
+        "row_id": "xw-g04-ss-014",
+        "topic_domain": "African American History - Florida Leaders",
+        "florida_standards": ["SS.4.AA.1.1"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Learner Profile: Knowledgeable", "PYP Concept: Perspective"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies African American community leaders who contributed to Florida (Zora Neale Hurston, Mary McLeod Bethune, etc.). PYP develops understanding diverse perspectives.",
+        "suggested_instructional_bridge": "Study the contributions of African American Floridians across fields (arts, education, science, sports), developing appreciation for diverse perspectives and achievements."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-fl-ss",
+      "url": "https://www.cpalms.org/",
+      "title": "Florida Social Studies Standards (NGSSS + 2023 Civics/AA History)",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": "2014/2023",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-pyp",
+      "url": "https://ibo.org/programmes/primary-years-programme/",
+      "title": "IB Primary Years Programme",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Public overview; detailed scope and sequence requires IB educator login"
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Initial FL↔IB crosswalk. Arizona deferred per Ivan. Alignments are suggested (Label C) based on available Florida standards and public IB PYP framework documentation. Note: Florida Grade 4 Social Studies focuses on Florida state history; alignments emphasize transferable concepts and skills."
+  ],
+  "last_updated": "2026-10-03"
+}

@@ -1,0 +1,901 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-04.mathematics",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 4,
+  "grade_label": "Grade 4",
+  "subject": "mathematics",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "C"
+  ],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "Mathematics",
+      "standards_system_name": "B.E.S.T. Standards (Benchmarks for Excellent Student Thinking)",
+      "organization": "by_grade",
+      "courses": null
+    },
+    "domains": [
+      {
+        "domain_id": "MA.4.NSO.1",
+        "domain_name": "Number Sense and Operations - Place Value and Number Representations",
+        "standards": [
+          {
+            "id": "MA.4.NSO.1.1",
+            "text": "Express how the value of a digit in a multi-digit whole number changes if the digit moves one place to the left or right.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15341"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.NSO.1.2",
+            "text": "Read and write multi-digit whole numbers from 0 to 1,000,000 using standard form, expanded form and word form.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15342"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.NSO.1.3",
+            "text": "Plot, order and compare multi-digit whole numbers up to 1,000,000.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15343"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.NSO.1.4",
+            "text": "Round whole numbers from 0 to 10,000 to the nearest 10, 100 or 1,000.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15344"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.NSO.1.5",
+            "text": "Plot, order and compare decimals up to the hundredths.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15345"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.4.NSO.2",
+        "domain_name": "Number Sense and Operations - Operations with Multi-Digit Numbers and Decimals",
+        "standards": [
+          {
+            "id": "MA.4.NSO.2.1",
+            "text": "Recall multiplication facts with factors up to 12 and related division facts with automaticity.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15346"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.NSO.2.2",
+            "text": "Multiply two whole numbers, up to three digits by up to two digits, with procedural reliability.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15347"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.NSO.2.3",
+            "text": "Multiply two whole numbers, each up to two digits, including using a standard algorithm with procedural fluency.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15348"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.NSO.2.4",
+            "text": "Divide a whole number up to four digits by a one-digit whole number with procedural reliability. Represent remainders as fractional parts of the divisor.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15349"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.NSO.2.5",
+            "text": "Explore the multiplication and division of multi-digit whole numbers using estimation, rounding and place value.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15350"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.NSO.2.6",
+            "text": "Identify the number that is one-tenth more, one-tenth less, one-hundredth more and one-hundredth less than a given number.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15351"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.NSO.2.7",
+            "text": "Explore the addition and subtraction of multi-digit numbers with decimals to the hundredths.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15352"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.4.FR.1",
+        "domain_name": "Fractions - Fractions and Decimal Fractions",
+        "standards": [
+          {
+            "id": "MA.4.FR.1.1",
+            "text": "Model and express a fraction, including mixed numbers and fractions greater than one, with the denominator 10 as an equivalent fraction with the denominator 100.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15353"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.FR.1.2",
+            "text": "Use decimal notation to represent fractions with denominators of 10 or 100, including mixed numbers and fractions greater than 1, and use fractional notation with denominators of 10 or 100 to represent decimals.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15354"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.FR.1.3",
+            "text": "Identify and generate equivalent fractions, including fractions greater than one. Describe how the numerator and denominator are affected when the equivalent fraction is created.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15355"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.FR.1.4",
+            "text": "Plot, order and compare fractions, including mixed numbers and fractions greater than one, with different numerators and different denominators.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15356"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.4.FR.2",
+        "domain_name": "Fractions - Operations with Fractions",
+        "standards": [
+          {
+            "id": "MA.4.FR.2.1",
+            "text": "Decompose a fraction, including mixed numbers and fractions greater than one, into a sum of fractions with the same denominator in multiple ways. Demonstrate each decomposition with objects, drawings and equations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15357"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.FR.2.2",
+            "text": "Add and subtract fractions with like denominators, including mixed numbers and fractions greater than one, with procedural reliability.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15358"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.FR.2.3",
+            "text": "Explore the addition of a fraction with denominator of 10 to a fraction with denominator of 100 using equivalent fractions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15359"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.FR.2.4",
+            "text": "Extend previous understanding of multiplication to explore the multiplication of a fraction by a whole number or a whole number by a fraction.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15360"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.4.AR.1",
+        "domain_name": "Algebraic Reasoning - Solve Real-World Problems",
+        "standards": [
+          {
+            "id": "MA.4.AR.1.1",
+            "text": "Solve real-world problems involving multiplication and division of whole numbers including problems in which remainders must be interpreted within the context.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15361"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.AR.1.2",
+            "text": "Solve real-world problems involving addition and subtraction of fractions with like denominators, including mixed numbers and fractions greater than one.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15362"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.AR.1.3",
+            "text": "Solve real-world problems involving multiplication of a fraction by a whole number or a whole number by a fraction.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15363"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.4.AR.2",
+        "domain_name": "Algebraic Reasoning - Equality",
+        "standards": [
+          {
+            "id": "MA.4.AR.2.1",
+            "text": "Determine and explain whether an equation involving any of the four operations with whole numbers is true or false.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15364"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.AR.2.2",
+            "text": "Given a mathematical or real-world context, write an equation involving multiplication or division to determine the unknown whole number with the unknown in any position.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15365"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.4.AR.3",
+        "domain_name": "Algebraic Reasoning - Patterns",
+        "standards": [
+          {
+            "id": "MA.4.AR.3.1",
+            "text": "Determine factor pairs for a whole number from 0 to 144. Determine whether a whole number from 0 to 144 is prime, composite or neither.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15366"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.AR.3.2",
+            "text": "Generate, describe and extend a numerical pattern that follows a given rule.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15367"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.4.M.1",
+        "domain_name": "Measurement - Measure Attributes and Convert Units",
+        "standards": [
+          {
+            "id": "MA.4.M.1.1",
+            "text": "Select and use appropriate tools to measure attributes of objects.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15368"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.M.1.2",
+            "text": "Convert within a single system of measurement using the units: yards, feet, inches; kilometers, meters, centimeters, millimeters; pounds, ounces; kilograms, grams; gallons, quarts, pints, cups; liter, milliliter; and hours, minutes, seconds.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15369"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.4.M.2",
+        "domain_name": "Measurement - Solve Problems Involving Measurement",
+        "standards": [
+          {
+            "id": "MA.4.M.2.1",
+            "text": "Solve two-step real-world problems involving distances and intervals of time using any combination of the four operations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15370"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.M.2.2",
+            "text": "Solve one- and two-step addition and subtraction real-world problems involving money using decimal notation.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15371"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.4.GR.1",
+        "domain_name": "Geometric Reasoning - Angles and Two-Dimensional Figures",
+        "standards": [
+          {
+            "id": "MA.4.GR.1.1",
+            "text": "Informally explore angles as an attribute of two-dimensional figures. Identify and classify angles as acute, right, obtuse, straight or reflex.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15372"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.GR.1.2",
+            "text": "Estimate angle measures. Using a protractor, measure angles in whole-number degrees and draw angles of specified measure in whole-number degrees. Demonstrate that angle measure is additive.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15373"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.GR.1.3",
+            "text": "Solve real-world and mathematical problems involving unknown whole-number angle measures. Write an equation to represent the unknown.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15374"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.4.GR.2",
+        "domain_name": "Geometric Reasoning - Perimeter and Area",
+        "standards": [
+          {
+            "id": "MA.4.GR.2.1",
+            "text": "Solve perimeter and area mathematical and real-world problems, including problems with unknown sides, for rectangles with whole-number side lengths.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15375"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.GR.2.2",
+            "text": "Solve problems involving rectangles with the same perimeter and different areas or with the same area and different perimeters.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15376"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.4.DP.1",
+        "domain_name": "Data Analysis and Probability - Represent and Interpret Data",
+        "standards": [
+          {
+            "id": "MA.4.DP.1.1",
+            "text": "Collect and represent numerical data, including fractional values, using tables, stem-and-leaf plots or line plots.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15377"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.DP.1.2",
+            "text": "Determine the mode, median or range to interpret numerical data including fractional values, represented with tables, stem-and-leaf plots or line plots.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15378"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "MA.4.DP.1.3",
+            "text": "Solve real-world problems involving numerical data.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-15379"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": null,
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Students read, write, and compare numbers to 1,000,000 and decimals to hundredths.",
+        "Students multiply up to 3-digit by 2-digit numbers and divide 4-digit by 1-digit with procedural reliability.",
+        "Students add/subtract fractions with like denominators and explore fraction-whole number multiplication.",
+        "Students identify factor pairs, prime/composite numbers, and generate numerical patterns.",
+        "Students measure angles with protractors and solve perimeter/area problems."
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "B.E.S.T. Standards (2020)",
+      "adopted_or_effective_date": "2020-07-20",
+      "notes": [
+        "Converted from legacy primer-mvp branch content with CPALMS verification on 2026-10-03."
+      ]
+    }
+  },
+  "citations": [
+    {
+      "id": "c-cpalms-15341",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15341",
+      "title": "MA.4.NSO.1.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15342",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15342",
+      "title": "MA.4.NSO.1.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15343",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15343",
+      "title": "MA.4.NSO.1.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15344",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15344",
+      "title": "MA.4.NSO.1.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15345",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15345",
+      "title": "MA.4.NSO.1.5 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15346",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15346",
+      "title": "MA.4.NSO.2.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15347",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15347",
+      "title": "MA.4.NSO.2.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15348",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15348",
+      "title": "MA.4.NSO.2.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15349",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15349",
+      "title": "MA.4.NSO.2.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15350",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15350",
+      "title": "MA.4.NSO.2.5 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15351",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15351",
+      "title": "MA.4.NSO.2.6 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15352",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15352",
+      "title": "MA.4.NSO.2.7 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15353",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15353",
+      "title": "MA.4.FR.1.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15354",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15354",
+      "title": "MA.4.FR.1.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15355",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15355",
+      "title": "MA.4.FR.1.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15356",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15356",
+      "title": "MA.4.FR.1.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15357",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15357",
+      "title": "MA.4.FR.2.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15358",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15358",
+      "title": "MA.4.FR.2.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15359",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15359",
+      "title": "MA.4.FR.2.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15360",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15360",
+      "title": "MA.4.FR.2.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15361",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15361",
+      "title": "MA.4.AR.1.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15362",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15362",
+      "title": "MA.4.AR.1.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15363",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15363",
+      "title": "MA.4.AR.1.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15364",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15364",
+      "title": "MA.4.AR.2.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15365",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15365",
+      "title": "MA.4.AR.2.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15366",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15366",
+      "title": "MA.4.AR.3.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15367",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15367",
+      "title": "MA.4.AR.3.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15368",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15368",
+      "title": "MA.4.M.1.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15369",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15369",
+      "title": "MA.4.M.1.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15370",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15370",
+      "title": "MA.4.M.2.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15371",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15371",
+      "title": "MA.4.M.2.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15372",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15372",
+      "title": "MA.4.GR.1.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15373",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15373",
+      "title": "MA.4.GR.1.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15374",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15374",
+      "title": "MA.4.GR.1.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15375",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15375",
+      "title": "MA.4.GR.2.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15376",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15376",
+      "title": "MA.4.GR.2.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15377",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15377",
+      "title": "MA.4.DP.1.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15378",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15378",
+      "title": "MA.4.DP.1.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-15379",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/15379",
+      "title": "MA.4.DP.1.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Converted from legacy primer-mvp:curriculum_resources/standards_math_grade4.ts. All standard IDs and text verified against CPALMS."
+  ],
+  "last_updated": "2026-10-03"
+}
