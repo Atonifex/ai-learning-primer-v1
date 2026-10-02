@@ -1,0 +1,128 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "src.arizona",
+  "doc_type": "source_log",
+  "system": "arizona",
+  "programme": null,
+  "grade": null,
+  "grade_label": null,
+  "subject": null,
+  "status": "in_progress",
+  "content_labels": [
+    "A"
+  ],
+  "sections": {
+    "allowed_domains": [
+      "azed.gov"
+    ],
+    "status_values": [
+      "verified_reachable",
+      "candidate_unverified",
+      "to_discover",
+      "restricted"
+    ],
+    "sources": [
+      {
+        "source_id": "AZ-S01",
+        "url": "https://www.azed.gov/k-12-academic-standards",
+        "title": "K-12 Academic Standards (hub)",
+        "publisher": "Arizona Department of Education",
+        "published_or_version_date": null,
+        "page": null,
+        "access_date": "2026-10-02",
+        "status": "verified_reachable",
+        "access_limitation": null,
+        "notes": "Reachable per Ivan's manual check on 2026-10-02. Claude's own access from the cloud sandbox was blocked in Phase 0. Re-verify in Phase 1."
+      },
+      {
+        "source_id": "AZ-S02",
+        "url": "https://www.azed.gov/standards-practices/k-12standards/english-language-arts-standards",
+        "title": "English Language Arts Standards",
+        "publisher": "Arizona Department of Education",
+        "published_or_version_date": null,
+        "page": null,
+        "access_date": "2026-10-02",
+        "status": "verified_reachable",
+        "access_limitation": null,
+        "notes": "Reachable per Ivan's manual check on 2026-10-02. Claude's own access from the cloud sandbox was blocked in Phase 0. Re-verify in Phase 1."
+      },
+      {
+        "source_id": "AZ-S03",
+        "url": "https://www.azed.gov/standards-practices/k-12standards/mathematics-standards",
+        "title": "Mathematics Standards",
+        "publisher": "Arizona Department of Education",
+        "published_or_version_date": null,
+        "page": null,
+        "access_date": "2026-10-02",
+        "status": "verified_reachable",
+        "access_limitation": null,
+        "notes": "Reachable per Ivan's manual check on 2026-10-02. Claude's own access from the cloud sandbox was blocked in Phase 0. Re-verify in Phase 1."
+      },
+      {
+        "source_id": "AZ-S04",
+        "url": "https://www.azed.gov/standards-practices/k-12standards/standards-science",
+        "title": "Science Standards",
+        "publisher": "Arizona Department of Education",
+        "published_or_version_date": null,
+        "page": null,
+        "access_date": "2026-10-02",
+        "status": "verified_reachable",
+        "access_limitation": null,
+        "notes": "Reachable per Ivan's manual check on 2026-10-02. Claude's own access from the cloud sandbox was blocked in Phase 0. Re-verify in Phase 1."
+      },
+      {
+        "source_id": "AZ-S05",
+        "url": "https://www.azed.gov/standards-practices/k-12standards/standards-social-studies",
+        "title": "History and Social Science Standards (Arizona's name for social studies)",
+        "publisher": "Arizona Department of Education",
+        "published_or_version_date": null,
+        "page": null,
+        "access_date": "2026-10-02",
+        "status": "verified_reachable",
+        "access_limitation": null,
+        "notes": "Reachable per Ivan's manual check on 2026-10-02. Claude's own access from the cloud sandbox was blocked in Phase 0. Re-verify in Phase 1. Map to subject slug social-studies."
+      },
+      {
+        "source_id": "AZ-S06",
+        "url": "https://www.azed.gov/standards-practices/english-language-arts-and-math-essential-standards",
+        "title": "ELA and Math Essential Standards",
+        "publisher": "Arizona Department of Education",
+        "published_or_version_date": "2025 (grade 3-8 PDFs dated 2025 per Ivan)",
+        "page": null,
+        "access_date": "2026-10-02",
+        "status": "verified_reachable",
+        "access_limitation": null,
+        "notes": "Reachable per Ivan's manual check on 2026-10-02. Claude's own access from the cloud sandbox was blocked in Phase 0. Re-verify in Phase 1. Links grade 3-8 ELA and math PDFs."
+      },
+      {
+        "source_id": "AZ-S07",
+        "url": "https://www.azed.gov/sites/default/files/2025/03/ELA%20Grade%203%20Final%202025.pdf",
+        "title": "ELA Grade 3 Final 2025 (title unconfirmed)",
+        "publisher": "Arizona Department of Education",
+        "published_or_version_date": null,
+        "page": null,
+        "access_date": null,
+        "status": "candidate_unverified",
+        "access_limitation": null,
+        "notes": "Likely Grade 3 ELA pilot document. Link seen, not yet opened. Confirm title, version date and page numbers in Phase 1."
+      }
+    ],
+    "implementation_notes": [
+      {
+        "label": "C",
+        "note": "Per the Essential Standards page, essential standards get more test questions on the AASA exam starting 2025-26, but all standards remain assessed. Record as an implementation note only. It does not change the standards.",
+        "source_id": "AZ-S06",
+        "recheck": "Phase 1"
+      }
+    ],
+    "open_questions": [
+      "Which Arizona standards version and adoption year applies to each subject?",
+      "How are Grades 9-12 organized (by grade or by course)? See D1."
+    ]
+  },
+  "citations": [],
+  "version_notes": [
+    "Seeded in Phase 0 from Ivan's manual checks. No Claude-side access (network blocked)."
+  ],
+  "last_updated": "2026-10-02"
+}

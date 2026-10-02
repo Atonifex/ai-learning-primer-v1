@@ -1,0 +1,444 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "meta.project-status",
+  "doc_type": "meta",
+  "system": null,
+  "programme": null,
+  "grade": null,
+  "grade_label": null,
+  "subject": null,
+  "status": "in_progress",
+  "content_labels": [],
+  "sections": {
+    "current_phase": 0,
+    "gate": "Phase 0 complete. STOP. Waiting for Ivan's approval; Phase 1 has not begun.",
+    "network_status": {
+      "checked": "2026-10-02",
+      "reachable": [],
+      "blocked": [
+        "fldoe.org",
+        "cdn.fldoe.org",
+        "cpalms.org",
+        "azed.gov",
+        "ibo.org"
+      ],
+      "blocks_phase_1": true,
+      "fix": "See D4 domains_to_allow."
+    },
+    "document_counts": {
+      "planned_total": 212,
+      "grade_level_documents": 208,
+      "summaries": 4,
+      "per_system": 52,
+      "completed": 0,
+      "active_grade_level_documents": 112,
+      "active_grade_levels": 7,
+      "note": "planned_total 212 is the full library; the active plan covers Grades 2-8."
+    },
+    "existing_work": {
+      "location": "branches primer-mvp and pre-mvp, folder curriculum_resources/",
+      "coverage": "Florida Grades 3-5 (partial for 4 and 5)",
+      "handling": "Not touched. Referenced from inventory legacy_assets. See D5."
+    },
+    "layout_rationale": "New library lives in curriculum-standards-library/, parallel to the legacy flat curriculum_resources/. Florida, Arizona and IB use the same grade folder names and file names (grade-03/ela.json), so a Florida file, its Arizona twin, the IB file and the crosswalk are always at predictable sibling paths.",
+    "open_decisions": [
+      {
+        "id": "D1",
+        "title": "High school (Grades 9-12) is likely organized by course, not grade",
+        "status": "open",
+        "decide_in": "Phase 1, after seeing real structure",
+        "options": [
+          {
+            "key": "a",
+            "label": "Map courses to grades by typical sequence, flag as assumption",
+            "pros": [
+              "Simple grade-folder fit"
+            ],
+            "cons": [
+              "Invents precision; courses are taken in varied order",
+              "Easy to mislead teachers"
+            ]
+          },
+          {
+            "key": "b",
+            "label": "Keep grade folders, organize each file by course, grade placement labeled C 'typical, not official'",
+            "pros": [
+              "Keeps required structure",
+              "Honest about what is official",
+              "Course IDs stay intact"
+            ],
+            "cons": [
+              "Some files hold several courses; grade files are uneven in size"
+            ]
+          },
+          {
+            "key": "c",
+            "label": "Merge Grades 9-12 files by course",
+            "pros": [
+              "Matches how states publish"
+            ],
+            "cons": [
+              "Breaks the required grade folder structure and crosswalk symmetry"
+            ]
+          }
+        ],
+        "recommendation": "b",
+        "reasoning": "It preserves your folder contract and the official course structure at once. The only cost is uneven file sizes. The template already has organization (by_grade | by_course) and grade_placement_label fields to support this."
+      },
+      {
+        "id": "D2",
+        "title": "IB PYP spans K-5, so six grades x four subjects give many near-duplicate files",
+        "status": "open",
+        "decide_in": "Phase 1",
+        "options": [
+          {
+            "key": "a",
+            "label": "Full separate files for every grade",
+            "pros": [
+              "Simplest to consume; each file stands alone"
+            ],
+            "cons": [
+              "Heavy duplication; edits must be repeated six times; drift risk"
+            ]
+          },
+          {
+            "key": "b",
+            "label": "Shared programme-level block referenced by each file, plus a short grade-specific Label C note",
+            "pros": [
+              "No duplication",
+              "One place to correct",
+              "Grade note makes clear the grade fit is ours"
+            ],
+            "cons": [
+              "Consumer must resolve the reference (the bundle can inline it)"
+            ]
+          },
+          {
+            "key": "c",
+            "label": "Fewer files (one per programme and subject)",
+            "pros": [
+              "Least work"
+            ],
+            "cons": [
+              "Breaks the required folder structure"
+            ]
+          }
+        ],
+        "recommendation": "b",
+        "reasoning": "PYP does not change year by year in the way state standards do. Sharing the official block avoids implying false grade-level differences. The IB template already has shared_programme_block_ref and grade_specific_note."
+      },
+      {
+        "id": "D3",
+        "title": "IB subject groups do not map one-to-one to our four subjects",
+        "status": "open",
+        "decide_in": "Phase 1",
+        "options": [
+          {
+            "key": "a",
+            "label": "Build the mapping table from official IB sources, mark every judgment Label C",
+            "pros": [
+              "Traceable, honest"
+            ],
+            "cons": [
+              "Needs access to IB framework documents; some may be restricted"
+            ]
+          },
+          {
+            "key": "b",
+            "label": "Use one fixed mapping up front",
+            "pros": [
+              "Fast"
+            ],
+            "cons": [
+              "Would be written from memory, which the source rules forbid"
+            ]
+          }
+        ],
+        "recommendation": "a",
+        "reasoning": "It is the only option consistent with your source rules. Expect MYP 'Individuals and societies' to relate to social studies and PYP transdisciplinary themes to span subjects, but confirm from ibo.org before recording."
+      },
+      {
+        "id": "D4",
+        "title": "Cloud sessions may restrict network access",
+        "status": "blocking",
+        "finding": "Tested 2026-10-02: fldoe.org, cdn.fldoe.org, cpalms.org, azed.gov and ibo.org are all blocked (proxy returned 403; WebFetch reports EGRESS_BLOCKED).",
+        "options": [
+          {
+            "key": "a",
+            "label": "Environment network access set to Custom, add the five official domains (and keep package managers allowed)",
+            "pros": [
+              "Least exposure; only official sources reachable"
+            ],
+            "cons": [
+              "A PDF may redirect to another host; may need one more domain later"
+            ]
+          },
+          {
+            "key": "b",
+            "label": "Set network access to Full",
+            "pros": [
+              "No whack-a-mole"
+            ],
+            "cons": [
+              "Broad access; also allows non-official sources, so rule discipline falls on us"
+            ]
+          },
+          {
+            "key": "c",
+            "label": "Download PDFs yourself and add them to the repo",
+            "pros": [
+              "Works offline"
+            ],
+            "cons": [
+              "Manual work from your phone; no live version checks"
+            ]
+          }
+        ],
+        "recommendation": "a",
+        "reasoning": "Matches the 'official sources only' rule at the network level.",
+        "domains_to_allow": [
+          "fldoe.org",
+          "www.fldoe.org",
+          "cdn.fldoe.org",
+          "cpalms.org",
+          "www.cpalms.org",
+          "azed.gov",
+          "www.azed.gov",
+          "ibo.org",
+          "www.ibo.org"
+        ]
+      },
+      {
+        "id": "D5",
+        "title": "Reuse your existing Florida Grade 3-5 work (found while exploring the repo)",
+        "status": "open",
+        "decide_in": "Phase 1 pilot",
+        "context": "Branches primer-mvp and pre-mvp hold curriculum_resources/ with Florida Grade 3 ELA/math/science/SS, Grade 4 (ELA md+ts, math/science/SS ts) and Grade 5 ELA, as Markdown plus TypeScript seeds. It is not on this branch, so nothing here overwrites it.",
+        "options": [
+          {
+            "key": "a",
+            "label": "Convert legacy files to the JSON envelope, then re-verify each standard ID and text against CPALMS",
+            "pros": [
+              "Reuses real work",
+              "Per-standard CPALMS URLs give fast checks"
+            ],
+            "cons": [
+              "Legacy files contain app-oriented extras (primer notes, misconceptions) that must be split into Label C or dropped",
+              "Verification still needs network"
+            ]
+          },
+          {
+            "key": "b",
+            "label": "Ignore legacy and re-collect from scratch",
+            "pros": [
+              "Cleanest provenance"
+            ],
+            "cons": [
+              "Throws away weeks of work"
+            ]
+          },
+          {
+            "key": "c",
+            "label": "Convert without re-verifying",
+            "pros": [
+              "Fastest"
+            ],
+            "cons": [
+              "Violates the official-sources rule; unknown accuracy"
+            ]
+          }
+        ],
+        "recommendation": "a",
+        "reasoning": "Keeps the work and satisfies the source rules. Legacy .ts SubjectSeed files keep feeding the app unchanged; the library becomes the verified source they are later generated from."
+      }
+    ],
+    "effort_note": "Effort figures are rough ranges and will be recalibrated after the Grade 3 ELA pilot.",
+    "phases": [
+      {
+        "phase": 0,
+        "name": "Plan and scaffold",
+        "status": "complete_awaiting_approval",
+        "deliverables": [
+          "folder structure",
+          "templates",
+          "seed sources",
+          "inventory (212)",
+          "build_bundle.py",
+          "README",
+          "research log"
+        ]
+      },
+      {
+        "phase": 1,
+        "name": "Sources, templates, Grade 3 ELA pilot",
+        "status": "blocked_on_network_D4",
+        "scope": [
+          "Verify and log source locations and versions for Florida, Arizona, IB",
+          "Finalize templates (resolve D1-D3, D5)",
+          "Pilot: fl.grade-03.ela, az.grade-03.ela, ib.pyp.grade-03.ela, xw.grade-03.ela"
+        ],
+        "documents": 4,
+        "effort_estimate": "2-4 working sessions (source discovery is the unknown)",
+        "gate": "STOP and report source coverage, gaps and effort per grade"
+      },
+      {
+        "phase": 2,
+        "name": "One grade at a time",
+        "status": "not_started",
+        "rules": [
+          "Max two subjects per session",
+          "Update project-status.json and research-log.json after each session",
+          "Commit and push after each session",
+          "STOP after each grade for approval"
+        ],
+        "session_pattern": {
+          "A": "ELA + Mathematics (FL, AZ, IB, crosswalk) = 8 documents",
+          "B": "Science + Social Studies = 8 documents"
+        },
+        "sessions": 14,
+        "documents": 108,
+        "note": "Grade 3 session A holds 4 documents, since Grade 3 ELA is done in the pilot.",
+        "effort_estimate": "14 sessions at about 1-2 working sessions each: 14-28 total. Recalibrate after the pilot.",
+        "gate": "Approval after each grade (7 gates)",
+        "scope": "Grades 2-8 only, starting with Grade 2. Grade 3 session A holds 4 documents (ELA is in the pilot)."
+      },
+      {
+        "phase": 3,
+        "name": "Cross-grade QA, then summaries",
+        "status": "not_started",
+        "scope": [
+          "QA: citations, official terminology, broken links, duplicated standards, unsupported IB claims",
+          "Then vertical-progression",
+          "Then the three overview summaries"
+        ],
+        "documents": 4,
+        "effort_estimate": "3-6 working sessions"
+      }
+    ],
+    "phase_2_session_plan": [
+      {
+        "session": "P2-grade-02-A",
+        "subjects": [
+          "ela",
+          "mathematics"
+        ]
+      },
+      {
+        "session": "P2-grade-02-B",
+        "subjects": [
+          "science",
+          "social-studies"
+        ]
+      },
+      {
+        "session": "P2-grade-03-A",
+        "subjects": [
+          "ela",
+          "mathematics"
+        ]
+      },
+      {
+        "session": "P2-grade-03-B",
+        "subjects": [
+          "science",
+          "social-studies"
+        ]
+      },
+      {
+        "session": "P2-grade-04-A",
+        "subjects": [
+          "ela",
+          "mathematics"
+        ]
+      },
+      {
+        "session": "P2-grade-04-B",
+        "subjects": [
+          "science",
+          "social-studies"
+        ]
+      },
+      {
+        "session": "P2-grade-05-A",
+        "subjects": [
+          "ela",
+          "mathematics"
+        ]
+      },
+      {
+        "session": "P2-grade-05-B",
+        "subjects": [
+          "science",
+          "social-studies"
+        ]
+      },
+      {
+        "session": "P2-grade-06-A",
+        "subjects": [
+          "ela",
+          "mathematics"
+        ]
+      },
+      {
+        "session": "P2-grade-06-B",
+        "subjects": [
+          "science",
+          "social-studies"
+        ]
+      },
+      {
+        "session": "P2-grade-07-A",
+        "subjects": [
+          "ela",
+          "mathematics"
+        ]
+      },
+      {
+        "session": "P2-grade-07-B",
+        "subjects": [
+          "science",
+          "social-studies"
+        ]
+      },
+      {
+        "session": "P2-grade-08-A",
+        "subjects": [
+          "ela",
+          "mathematics"
+        ]
+      },
+      {
+        "session": "P2-grade-08-B",
+        "subjects": [
+          "science",
+          "social-studies"
+        ]
+      }
+    ],
+    "session_log": [
+      {
+        "date": "2026-10-02",
+        "phase": 0,
+        "summary": "Scaffolded folders, templates, sources, inventory, build script, README and research log. Network blocked."
+      },
+      {
+        "date": "2026-10-02",
+        "phase": 0,
+        "summary": "Scope narrowed to Grades 2-8 per Ivan. K and Grade 1 omitted, Grades 9-12 deferred. Network still blocked; Ivan to change environment setting."
+      }
+    ],
+    "scope_update": {
+      "date": "2026-10-02",
+      "active": "Grades 2-8",
+      "omitted": "Kindergarten, Grade 1",
+      "deferred": "Grades 9-12 (decide after Grades 2-8; see D1)",
+      "order": "Pilot Grade 3 ELA in Phase 1, then Phase 2 starts at Grade 2 and proceeds 3-8.",
+      "interpretation_to_confirm": "Ivan said 'start with 2nd grade' and 'start with grades 3-8'. Read as Grades 2-8 active, Grade 2 first in Phase 2, Grade 3 ELA pilot kept in Phase 1."
+    }
+  },
+  "citations": [],
+  "version_notes": [
+    "Phase 0 created 2026-10-02."
+  ],
+  "last_updated": "2026-10-02"
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-03.ela",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 3,
+  "grade_label": "Grade 3",
+  "subject": "ela",
+  "status": "not_started",
+  "content_labels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "sections": {
+    "rows": [
+      {
+        "row_id": "xw-g03-ela-001",
+        "topic_domain": "shared topic or domain name",
+        "florida_standards": [
+          "official FL IDs"
+        ],
+        "arizona_standards": [
+          "official AZ IDs"
+        ],
+        "ib_framework_elements": [
+          "IB element names, with the programme"
+        ],
+        "alignment_level": "Strong alignment | Partial alignment | State-specific requirement | IB-framework-only emphasis | Needs human curriculum review",
+        "key_differences": "what differs in scope, depth, wording or expectations",
+        "suggested_instructional_bridge": "Label C. Practical idea, never presented as official."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c1",
+      "url": "https://...",
+      "title": "...",
+      "publisher": "...",
+      "published_or_version_date": "YYYY-MM-DD or null",
+      "page": "page number or null",
+      "access_date": "YYYY-MM-DD",
+      "access_limitation": "null, or e.g. 'educator login required'"
+    }
+  ],
+  "version_notes": [],
+  "last_updated": "2026-10-02",
+  "_instructions": {
+    "labels": "A = official state standard. B = official IB framework or programme requirement. C = suggested alignment, unit idea, bridge or summary written by us (never official).",
+    "envelope": {
+      "schema_version": "Template version this document follows. Currently 0.1.0 (draft until Phase 1 finalizes it).",
+      "doc_id": "Unique id, derived from the path. Examples: fl.grade-03.ela, az.grade-03.ela, ib.pyp.grade-03.ela, ib.dp-cp.grade-11.ela, xw.grade-03.ela. Kindergarten uses 'kindergarten'. The build script rejects an id that does not match the file path.",
+      "doc_type": "state_standards | ib_alignment | crosswalk | summary | source_log | meta.",
+      "system": "florida | arizona | ib | crosswalk. null only for summary, source_log and meta documents.",
+      "programme": "null for Florida, Arizona, crosswalk. For IB: PYP (K-5), MYP (6-10) or DP_CP (11-12).",
+      "grade": "Integer 0-12 (0 = Kindergarten).",
+      "grade_label": "Human label, 'Kindergarten' or 'Grade 3'.",
+      "subject": "ela | mathematics | science | social-studies. Arizona calls social studies 'History and Social Science'; keep the slug and record the official name in sections.grade_and_subject.",
+      "status": "not_started | in_progress | drafted | reviewed | approved. Above not_started needs at least one citation.",
+      "content_labels": "List of A, B, C present in the document. Florida/Arizona docs: A and C only. IB docs: B and C only. Crosswalks: any, but their own text is C.",
+      "sections": "The doc_type-specific body, described below.",
+      "citations": "List of citation objects. Every document carries its own citations, not just a master bibliography. Fields: id, url, title, publisher, published_or_version_date, page, access_date, access_limitation.",
+      "version_notes": "List of short strings: what changed, when, and why. Append, do not rewrite.",
+      "last_updated": "YYYY-MM-DD of the last content change."
+    },
+    "sections.rows": "One row per topic/domain. florida_standards and arizona_standards hold IDs that exist in the matching state documents. alignment_level must be exactly one of the five allowed strings; the build script rejects anything else.",
+    "alignment_guidance": {
+      "Strong alignment": "Same skill at a comparable level of demand.",
+      "Partial alignment": "Overlap, but scope, depth or grade placement differs.",
+      "State-specific requirement": "Required by one state, no counterpart in the other.",
+      "IB-framework-only emphasis": "Appears in the IB framework, with no state standard counterpart.",
+      "Needs human curriculum review": "We cannot decide from the sources. Use freely when unsure."
+    },
+    "quality_rules": [
+      "Never claim Florida and Arizona standards are equivalent because the wording is similar.",
+      "Flag standards that do not map cleanly.",
+      "suggested_instructional_bridge is always label C."
+    ]
+  }
+}

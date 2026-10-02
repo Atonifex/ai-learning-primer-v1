@@ -1,0 +1,103 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-03.ela",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 3,
+  "grade_label": "Grade 3",
+  "subject": "ela",
+  "status": "not_started",
+  "content_labels": [
+    "A",
+    "C"
+  ],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "Name exactly as the state publishes it",
+      "standards_system_name": "e.g. B.E.S.T. Standards",
+      "organization": "by_grade | by_course  (high school may be by course, see decision D1)",
+      "courses": [
+        {
+          "course_name": "only when organization is by_course",
+          "grade_placement": "typical grade, or null",
+          "grade_placement_label": "A if the state officially assigns the grade, otherwise C ('typical, not official')"
+        }
+      ]
+    },
+    "domains": [
+      {
+        "domain_id": "official strand/domain code",
+        "domain_name": "official name",
+        "standards": [
+          {
+            "id": "official ID exactly as published",
+            "text": "standard text",
+            "text_mode": "exact | paraphrased",
+            "citation_ids": [
+              "c1"
+            ],
+            "page": "page number or null",
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": "Only what the state officially provides, with citation_ids. Otherwise null.",
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Teacher-friendly summary, plain language"
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "e.g. adoption/revision name",
+      "adopted_or_effective_date": "date or null",
+      "notes": []
+    }
+  },
+  "citations": [
+    {
+      "id": "c1",
+      "url": "https://...",
+      "title": "...",
+      "publisher": "...",
+      "published_or_version_date": "YYYY-MM-DD or null",
+      "page": "page number or null",
+      "access_date": "YYYY-MM-DD",
+      "access_limitation": "null, or e.g. 'educator login required'"
+    }
+  ],
+  "version_notes": [],
+  "last_updated": "2026-10-02",
+  "_instructions": {
+    "labels": "A = official state standard. B = official IB framework or programme requirement. C = suggested alignment, unit idea, bridge or summary written by us (never official).",
+    "envelope": {
+      "schema_version": "Template version this document follows. Currently 0.1.0 (draft until Phase 1 finalizes it).",
+      "doc_id": "Unique id, derived from the path. Examples: fl.grade-03.ela, az.grade-03.ela, ib.pyp.grade-03.ela, ib.dp-cp.grade-11.ela, xw.grade-03.ela. Kindergarten uses 'kindergarten'. The build script rejects an id that does not match the file path.",
+      "doc_type": "state_standards | ib_alignment | crosswalk | summary | source_log | meta.",
+      "system": "florida | arizona | ib | crosswalk. null only for summary, source_log and meta documents.",
+      "programme": "null for Florida, Arizona, crosswalk. For IB: PYP (K-5), MYP (6-10) or DP_CP (11-12).",
+      "grade": "Integer 0-12 (0 = Kindergarten).",
+      "grade_label": "Human label, 'Kindergarten' or 'Grade 3'.",
+      "subject": "ela | mathematics | science | social-studies. Arizona calls social studies 'History and Social Science'; keep the slug and record the official name in sections.grade_and_subject.",
+      "status": "not_started | in_progress | drafted | reviewed | approved. Above not_started needs at least one citation.",
+      "content_labels": "List of A, B, C present in the document. Florida/Arizona docs: A and C only. IB docs: B and C only. Crosswalks: any, but their own text is C.",
+      "sections": "The doc_type-specific body, described below.",
+      "citations": "List of citation objects. Every document carries its own citations, not just a master bibliography. Fields: id, url, title, publisher, published_or_version_date, page, access_date, access_limitation.",
+      "version_notes": "List of short strings: what changed, when, and why. Append, do not rewrite.",
+      "last_updated": "YYYY-MM-DD of the last content change."
+    },
+    "sections.grade_and_subject": "Names the grade and subject as the state does. Set organization to by_course when the state does not publish grade-by-grade (likely Grades 9-12). Never state a grade placement for a course as official unless the state does; label C otherwise.",
+    "sections.domains": "One entry per official strand/domain. standards[].id must be copied character for character. text_mode is 'exact' only when the text is a verbatim quote; use 'paraphrased' for anything shortened. label is always A here. citation_ids must exist in this document's citations.",
+    "sections.assessment_notes": "Include only if officially provided (for example Arizona essential standards getting more AASA test questions from 2025-26). Cite it. Otherwise null.",
+    "sections.key_learning_outcomes": "Our own teacher summary. Label C. Never mix official wording into it without a quote mark and citation.",
+    "sections.version_and_update_notes": "Which official version this file reflects and any known revisions.",
+    "quality_rules": [
+      "Preserve official standard IDs exactly.",
+      "Official sources only (FLDOE/CPALMS for Florida, azed.gov for Arizona).",
+      "Record a page number when the source has pages.",
+      "Do not guess; if a source is unreachable, say so in version_notes."
+    ]
+  }
+}

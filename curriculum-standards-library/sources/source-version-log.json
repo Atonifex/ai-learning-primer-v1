@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "src.version-log",
+  "doc_type": "source_log",
+  "system": null,
+  "programme": null,
+  "grade": null,
+  "grade_label": null,
+  "subject": null,
+  "status": "in_progress",
+  "content_labels": [],
+  "sections": {
+    "entry_schema": {
+      "source_id": "id from a sources file",
+      "checked_on": "YYYY-MM-DD",
+      "checked_by": "ivan_manual | claude",
+      "version_or_date_observed": "text or null",
+      "result": "reachable | blocked | changed | unchanged",
+      "notes": ""
+    },
+    "entries": [
+      {
+        "source_id": "AZ-S01..AZ-S06",
+        "checked_on": "2026-10-02",
+        "checked_by": "ivan_manual",
+        "version_or_date_observed": null,
+        "result": "reachable",
+        "notes": "Hub, four subject pages and Essential Standards page."
+      },
+      {
+        "source_id": "IB-S01",
+        "checked_on": "2026-10-02",
+        "checked_by": "ivan_manual",
+        "version_or_date_observed": null,
+        "result": "reachable",
+        "notes": "Programmes page."
+      },
+      {
+        "source_id": "FL-S01..FL-S05",
+        "checked_on": "2026-10-02",
+        "checked_by": "claude",
+        "version_or_date_observed": null,
+        "result": "blocked",
+        "notes": "Cloud sandbox proxy returned 403 for fldoe.org, cdn.fldoe.org, cpalms.org. Candidates remain unverified."
+      },
+      {
+        "source_id": "AZ-S01..AZ-S07",
+        "checked_on": "2026-10-02",
+        "checked_by": "claude",
+        "version_or_date_observed": null,
+        "result": "blocked",
+        "notes": "azed.gov blocked by the sandbox proxy."
+      },
+      {
+        "source_id": "IB-S01",
+        "checked_on": "2026-10-02",
+        "checked_by": "claude",
+        "version_or_date_observed": null,
+        "result": "blocked",
+        "notes": "ibo.org blocked by the sandbox proxy."
+      }
+    ]
+  },
+  "citations": [],
+  "version_notes": [
+    "Append-only log of source checks."
+  ],
+  "last_updated": "2026-10-02"
+}

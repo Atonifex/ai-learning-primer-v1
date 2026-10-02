@@ -1,0 +1,122 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "src.ib",
+  "doc_type": "source_log",
+  "system": "ib",
+  "programme": null,
+  "grade": null,
+  "grade_label": null,
+  "subject": null,
+  "status": "in_progress",
+  "content_labels": [
+    "B"
+  ],
+  "sections": {
+    "allowed_domains": [
+      "ibo.org"
+    ],
+    "status_values": [
+      "verified_reachable",
+      "candidate_unverified",
+      "to_discover",
+      "restricted"
+    ],
+    "sources": [
+      {
+        "source_id": "IB-S01",
+        "url": "https://ibo.org/programmes/",
+        "title": "IB Programmes",
+        "publisher": "International Baccalaureate Organization",
+        "published_or_version_date": null,
+        "page": null,
+        "access_date": "2026-10-02",
+        "status": "verified_reachable",
+        "access_limitation": null,
+        "notes": "Homepage reachable per Ivan's manual check on 2026-10-02. States four programmes for students aged 3 to 19. Claude's access was blocked in Phase 0."
+      },
+      {
+        "source_id": "IB-S02",
+        "url": null,
+        "title": "PYP programme page",
+        "publisher": "International Baccalaureate Organization",
+        "published_or_version_date": null,
+        "page": null,
+        "access_date": null,
+        "status": "to_discover",
+        "access_limitation": null,
+        "notes": "Discover the real URL on ibo.org in Phase 1. Do not invent."
+      },
+      {
+        "source_id": "IB-S03",
+        "url": null,
+        "title": "MYP programme page",
+        "publisher": "International Baccalaureate Organization",
+        "published_or_version_date": null,
+        "page": null,
+        "access_date": null,
+        "status": "to_discover",
+        "access_limitation": null,
+        "notes": "Discover on ibo.org in Phase 1."
+      },
+      {
+        "source_id": "IB-S04",
+        "url": null,
+        "title": "DP programme page",
+        "publisher": "International Baccalaureate Organization",
+        "published_or_version_date": null,
+        "page": null,
+        "access_date": null,
+        "status": "to_discover",
+        "access_limitation": null,
+        "notes": "Discover on ibo.org in Phase 1."
+      },
+      {
+        "source_id": "IB-S05",
+        "url": null,
+        "title": "CP programme page",
+        "publisher": "International Baccalaureate Organization",
+        "published_or_version_date": null,
+        "page": null,
+        "access_date": null,
+        "status": "to_discover",
+        "access_limitation": null,
+        "notes": "Discover on ibo.org in Phase 1."
+      },
+      {
+        "source_id": "IB-S06",
+        "url": null,
+        "title": "Public framework documents (PYP, MYP, DP, CP)",
+        "publisher": "International Baccalaureate Organization",
+        "published_or_version_date": null,
+        "page": null,
+        "access_date": null,
+        "status": "to_discover",
+        "access_limitation": null,
+        "notes": "Find which framework documents are public. Likely candidates are programme overviews and learner profile material; confirm before relying on them."
+      },
+      {
+        "source_id": "IB-S07",
+        "url": null,
+        "title": "Login-restricted IB resources (educator / Programme Resource Centre)",
+        "publisher": "International Baccalaureate Organization",
+        "published_or_version_date": null,
+        "page": null,
+        "access_date": null,
+        "status": "restricted",
+        "access_limitation": "Expected: educator login and/or copyright limits. Confirm in Phase 1.",
+        "notes": "Record each restricted resource with its access limitation. Never reconstruct restricted content from memory."
+      }
+    ],
+    "programme_mapping_convention": {
+      "label": "C",
+      "PYP": "ages 3-12; here K-5 (Pre-K out of scope)",
+      "MYP": "ages 11-16; here Grades 6-10",
+      "DP_CP": "ages 16-19; here Grades 11-12"
+    }
+  },
+  "citations": [],
+  "version_notes": [
+    "Seeded in Phase 0. Only the programmes homepage has been reached (by Ivan). Other URLs must be discovered, not guessed."
+  ],
+  "last_updated": "2026-10-02"
+}
