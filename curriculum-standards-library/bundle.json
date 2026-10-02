@@ -26,6 +26,7 @@
       "planned_phase": 2,
       "planned_session": "P2-kindergarten-A",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "ela",
       "system": "florida"
@@ -39,6 +40,7 @@
       "planned_phase": 2,
       "planned_session": "P2-kindergarten-A",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "ela",
       "system": "arizona"
@@ -52,6 +54,7 @@
       "planned_phase": 2,
       "planned_session": "P2-kindergarten-A",
       "programme": "PYP",
+      "scope": "omitted",
       "status": "not_started",
       "subject": "ela",
       "system": "ib"
@@ -65,6 +68,7 @@
       "planned_phase": 2,
       "planned_session": "P2-kindergarten-A",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "ela",
       "system": "crosswalk"
@@ -78,6 +82,7 @@
       "planned_phase": 2,
       "planned_session": "P2-kindergarten-A",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "mathematics",
       "system": "florida"
@@ -91,6 +96,7 @@
       "planned_phase": 2,
       "planned_session": "P2-kindergarten-A",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "mathematics",
       "system": "arizona"
@@ -104,6 +110,7 @@
       "planned_phase": 2,
       "planned_session": "P2-kindergarten-A",
       "programme": "PYP",
+      "scope": "omitted",
       "status": "not_started",
       "subject": "mathematics",
       "system": "ib"
@@ -117,6 +124,7 @@
       "planned_phase": 2,
       "planned_session": "P2-kindergarten-A",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "mathematics",
       "system": "crosswalk"
@@ -130,6 +138,7 @@
       "planned_phase": 2,
       "planned_session": "P2-kindergarten-B",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "science",
       "system": "florida"
@@ -143,6 +152,7 @@
       "planned_phase": 2,
       "planned_session": "P2-kindergarten-B",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "science",
       "system": "arizona"
@@ -156,6 +166,7 @@
       "planned_phase": 2,
       "planned_session": "P2-kindergarten-B",
       "programme": "PYP",
+      "scope": "omitted",
       "status": "not_started",
       "subject": "science",
       "system": "ib"
@@ -169,6 +180,7 @@
       "planned_phase": 2,
       "planned_session": "P2-kindergarten-B",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "science",
       "system": "crosswalk"
@@ -182,6 +194,7 @@
       "planned_phase": 2,
       "planned_session": "P2-kindergarten-B",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "social-studies",
       "system": "florida"
@@ -195,6 +208,7 @@
       "planned_phase": 2,
       "planned_session": "P2-kindergarten-B",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "social-studies",
       "system": "arizona"
@@ -208,6 +222,7 @@
       "planned_phase": 2,
       "planned_session": "P2-kindergarten-B",
       "programme": "PYP",
+      "scope": "omitted",
       "status": "not_started",
       "subject": "social-studies",
       "system": "ib"
@@ -221,6 +236,7 @@
       "planned_phase": 2,
       "planned_session": "P2-kindergarten-B",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "social-studies",
       "system": "crosswalk"
@@ -234,6 +250,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-01-A",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "ela",
       "system": "florida"
@@ -247,6 +264,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-01-A",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "ela",
       "system": "arizona"
@@ -260,6 +278,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-01-A",
       "programme": "PYP",
+      "scope": "omitted",
       "status": "not_started",
       "subject": "ela",
       "system": "ib"
@@ -273,6 +292,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-01-A",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "ela",
       "system": "crosswalk"
@@ -286,6 +306,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-01-A",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "mathematics",
       "system": "florida"
@@ -299,6 +320,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-01-A",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "mathematics",
       "system": "arizona"
@@ -312,6 +334,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-01-A",
       "programme": "PYP",
+      "scope": "omitted",
       "status": "not_started",
       "subject": "mathematics",
       "system": "ib"
@@ -325,6 +348,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-01-A",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "mathematics",
       "system": "crosswalk"
@@ -338,6 +362,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-01-B",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "science",
       "system": "florida"
@@ -351,6 +376,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-01-B",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "science",
       "system": "arizona"
@@ -364,6 +390,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-01-B",
       "programme": "PYP",
+      "scope": "omitted",
       "status": "not_started",
       "subject": "science",
       "system": "ib"
@@ -377,6 +404,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-01-B",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "science",
       "system": "crosswalk"
@@ -390,6 +418,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-01-B",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "social-studies",
       "system": "florida"
@@ -403,6 +432,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-01-B",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "social-studies",
       "system": "arizona"
@@ -416,6 +446,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-01-B",
       "programme": "PYP",
+      "scope": "omitted",
       "status": "not_started",
       "subject": "social-studies",
       "system": "ib"
@@ -429,6 +460,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-01-B",
       "programme": null,
+      "scope": "omitted",
       "status": "not_started",
       "subject": "social-studies",
       "system": "crosswalk"
@@ -442,6 +474,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-02-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "florida"
@@ -455,6 +488,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-02-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "arizona"
@@ -468,6 +502,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-02-A",
       "programme": "PYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "ib"
@@ -481,6 +516,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-02-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "crosswalk"
@@ -494,6 +530,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-02-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "florida"
@@ -507,6 +544,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-02-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "arizona"
@@ -520,6 +558,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-02-A",
       "programme": "PYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "ib"
@@ -533,6 +572,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-02-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "crosswalk"
@@ -546,6 +586,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-02-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "florida"
@@ -559,6 +600,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-02-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "arizona"
@@ -572,6 +614,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-02-B",
       "programme": "PYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "ib"
@@ -585,6 +628,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-02-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "crosswalk"
@@ -598,6 +642,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-02-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "florida"
@@ -611,6 +656,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-02-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "arizona"
@@ -624,6 +670,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-02-B",
       "programme": "PYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "ib"
@@ -637,6 +684,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-02-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "crosswalk"
@@ -668,6 +716,7 @@
       "planned_phase": 1,
       "planned_session": "P1-pilot",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "florida"
@@ -682,6 +731,7 @@
       "planned_phase": 1,
       "planned_session": "P1-pilot",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "arizona"
@@ -696,6 +746,7 @@
       "planned_phase": 1,
       "planned_session": "P1-pilot",
       "programme": "PYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "ib"
@@ -710,6 +761,7 @@
       "planned_phase": 1,
       "planned_session": "P1-pilot",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "crosswalk"
@@ -735,6 +787,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-03-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "florida"
@@ -748,6 +801,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-03-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "arizona"
@@ -761,6 +815,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-03-A",
       "programme": "PYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "ib"
@@ -774,6 +829,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-03-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "crosswalk"
@@ -799,6 +855,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-03-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "florida"
@@ -812,6 +869,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-03-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "arizona"
@@ -825,6 +883,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-03-B",
       "programme": "PYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "ib"
@@ -838,6 +897,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-03-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "crosswalk"
@@ -863,6 +923,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-03-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "florida"
@@ -876,6 +937,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-03-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "arizona"
@@ -889,6 +951,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-03-B",
       "programme": "PYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "ib"
@@ -902,6 +965,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-03-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "crosswalk"
@@ -927,6 +991,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-04-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "florida"
@@ -940,6 +1005,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-04-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "arizona"
@@ -953,6 +1019,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-04-A",
       "programme": "PYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "ib"
@@ -966,6 +1033,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-04-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "crosswalk"
@@ -986,6 +1054,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-04-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "florida"
@@ -999,6 +1068,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-04-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "arizona"
@@ -1012,6 +1082,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-04-A",
       "programme": "PYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "ib"
@@ -1025,6 +1096,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-04-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "crosswalk"
@@ -1050,6 +1122,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-04-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "florida"
@@ -1063,6 +1136,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-04-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "arizona"
@@ -1076,6 +1150,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-04-B",
       "programme": "PYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "ib"
@@ -1089,6 +1164,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-04-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "crosswalk"
@@ -1109,6 +1185,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-04-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "florida"
@@ -1122,6 +1199,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-04-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "arizona"
@@ -1135,6 +1213,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-04-B",
       "programme": "PYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "ib"
@@ -1148,6 +1227,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-04-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "crosswalk"
@@ -1173,6 +1253,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-05-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "florida"
@@ -1186,6 +1267,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-05-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "arizona"
@@ -1199,6 +1281,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-05-A",
       "programme": "PYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "ib"
@@ -1212,6 +1295,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-05-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "crosswalk"
@@ -1225,6 +1309,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-05-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "florida"
@@ -1238,6 +1323,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-05-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "arizona"
@@ -1251,6 +1337,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-05-A",
       "programme": "PYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "ib"
@@ -1264,6 +1351,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-05-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "crosswalk"
@@ -1277,6 +1365,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-05-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "florida"
@@ -1290,6 +1379,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-05-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "arizona"
@@ -1303,6 +1393,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-05-B",
       "programme": "PYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "ib"
@@ -1316,6 +1407,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-05-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "crosswalk"
@@ -1329,6 +1421,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-05-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "florida"
@@ -1342,6 +1435,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-05-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "arizona"
@@ -1355,6 +1449,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-05-B",
       "programme": "PYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "ib"
@@ -1368,6 +1463,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-05-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "crosswalk"
@@ -1381,6 +1477,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-06-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "florida"
@@ -1394,6 +1491,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-06-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "arizona"
@@ -1407,6 +1505,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-06-A",
       "programme": "MYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "ib"
@@ -1420,6 +1519,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-06-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "crosswalk"
@@ -1433,6 +1533,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-06-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "florida"
@@ -1446,6 +1547,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-06-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "arizona"
@@ -1459,6 +1561,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-06-A",
       "programme": "MYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "ib"
@@ -1472,6 +1575,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-06-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "crosswalk"
@@ -1485,6 +1589,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-06-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "florida"
@@ -1498,6 +1603,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-06-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "arizona"
@@ -1511,6 +1617,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-06-B",
       "programme": "MYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "ib"
@@ -1524,6 +1631,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-06-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "crosswalk"
@@ -1537,6 +1645,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-06-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "florida"
@@ -1550,6 +1659,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-06-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "arizona"
@@ -1563,6 +1673,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-06-B",
       "programme": "MYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "ib"
@@ -1576,6 +1687,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-06-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "crosswalk"
@@ -1589,6 +1701,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-07-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "florida"
@@ -1602,6 +1715,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-07-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "arizona"
@@ -1615,6 +1729,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-07-A",
       "programme": "MYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "ib"
@@ -1628,6 +1743,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-07-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "crosswalk"
@@ -1641,6 +1757,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-07-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "florida"
@@ -1654,6 +1771,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-07-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "arizona"
@@ -1667,6 +1785,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-07-A",
       "programme": "MYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "ib"
@@ -1680,6 +1799,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-07-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "crosswalk"
@@ -1693,6 +1813,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-07-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "florida"
@@ -1706,6 +1827,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-07-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "arizona"
@@ -1719,6 +1841,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-07-B",
       "programme": "MYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "ib"
@@ -1732,6 +1855,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-07-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "crosswalk"
@@ -1745,6 +1869,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-07-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "florida"
@@ -1758,6 +1883,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-07-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "arizona"
@@ -1771,6 +1897,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-07-B",
       "programme": "MYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "ib"
@@ -1784,6 +1911,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-07-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "crosswalk"
@@ -1797,6 +1925,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-08-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "florida"
@@ -1810,6 +1939,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-08-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "arizona"
@@ -1823,6 +1953,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-08-A",
       "programme": "MYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "ib"
@@ -1836,6 +1967,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-08-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "ela",
       "system": "crosswalk"
@@ -1849,6 +1981,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-08-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "florida"
@@ -1862,6 +1995,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-08-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "arizona"
@@ -1875,6 +2009,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-08-A",
       "programme": "MYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "ib"
@@ -1888,6 +2023,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-08-A",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "mathematics",
       "system": "crosswalk"
@@ -1901,6 +2037,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-08-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "florida"
@@ -1914,6 +2051,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-08-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "arizona"
@@ -1927,6 +2065,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-08-B",
       "programme": "MYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "ib"
@@ -1940,6 +2079,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-08-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "science",
       "system": "crosswalk"
@@ -1953,6 +2093,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-08-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "florida"
@@ -1966,6 +2107,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-08-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "arizona"
@@ -1979,6 +2121,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-08-B",
       "programme": "MYP",
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "ib"
@@ -1992,6 +2135,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-08-B",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": "social-studies",
       "system": "crosswalk"
@@ -2005,6 +2149,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-09-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "ela",
       "system": "florida"
@@ -2018,6 +2163,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-09-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "ela",
       "system": "arizona"
@@ -2031,6 +2177,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-09-A",
       "programme": "MYP",
+      "scope": "deferred",
       "status": "not_started",
       "subject": "ela",
       "system": "ib"
@@ -2044,6 +2191,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-09-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "ela",
       "system": "crosswalk"
@@ -2057,6 +2205,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-09-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "mathematics",
       "system": "florida"
@@ -2070,6 +2219,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-09-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "mathematics",
       "system": "arizona"
@@ -2083,6 +2233,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-09-A",
       "programme": "MYP",
+      "scope": "deferred",
       "status": "not_started",
       "subject": "mathematics",
       "system": "ib"
@@ -2096,6 +2247,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-09-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "mathematics",
       "system": "crosswalk"
@@ -2109,6 +2261,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-09-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "science",
       "system": "florida"
@@ -2122,6 +2275,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-09-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "science",
       "system": "arizona"
@@ -2135,6 +2289,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-09-B",
       "programme": "MYP",
+      "scope": "deferred",
       "status": "not_started",
       "subject": "science",
       "system": "ib"
@@ -2148,6 +2303,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-09-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "science",
       "system": "crosswalk"
@@ -2161,6 +2317,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-09-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "social-studies",
       "system": "florida"
@@ -2174,6 +2331,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-09-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "social-studies",
       "system": "arizona"
@@ -2187,6 +2345,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-09-B",
       "programme": "MYP",
+      "scope": "deferred",
       "status": "not_started",
       "subject": "social-studies",
       "system": "ib"
@@ -2200,6 +2359,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-09-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "social-studies",
       "system": "crosswalk"
@@ -2213,6 +2373,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-10-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "ela",
       "system": "florida"
@@ -2226,6 +2387,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-10-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "ela",
       "system": "arizona"
@@ -2239,6 +2401,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-10-A",
       "programme": "MYP",
+      "scope": "deferred",
       "status": "not_started",
       "subject": "ela",
       "system": "ib"
@@ -2252,6 +2415,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-10-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "ela",
       "system": "crosswalk"
@@ -2265,6 +2429,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-10-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "mathematics",
       "system": "florida"
@@ -2278,6 +2443,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-10-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "mathematics",
       "system": "arizona"
@@ -2291,6 +2457,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-10-A",
       "programme": "MYP",
+      "scope": "deferred",
       "status": "not_started",
       "subject": "mathematics",
       "system": "ib"
@@ -2304,6 +2471,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-10-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "mathematics",
       "system": "crosswalk"
@@ -2317,6 +2485,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-10-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "science",
       "system": "florida"
@@ -2330,6 +2499,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-10-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "science",
       "system": "arizona"
@@ -2343,6 +2513,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-10-B",
       "programme": "MYP",
+      "scope": "deferred",
       "status": "not_started",
       "subject": "science",
       "system": "ib"
@@ -2356,6 +2527,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-10-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "science",
       "system": "crosswalk"
@@ -2369,6 +2541,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-10-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "social-studies",
       "system": "florida"
@@ -2382,6 +2555,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-10-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "social-studies",
       "system": "arizona"
@@ -2395,6 +2569,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-10-B",
       "programme": "MYP",
+      "scope": "deferred",
       "status": "not_started",
       "subject": "social-studies",
       "system": "ib"
@@ -2408,6 +2583,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-10-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "social-studies",
       "system": "crosswalk"
@@ -2421,6 +2597,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-11-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "ela",
       "system": "florida"
@@ -2434,6 +2611,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-11-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "ela",
       "system": "arizona"
@@ -2447,6 +2625,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-11-A",
       "programme": "DP_CP",
+      "scope": "deferred",
       "status": "not_started",
       "subject": "ela",
       "system": "ib"
@@ -2460,6 +2639,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-11-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "ela",
       "system": "crosswalk"
@@ -2473,6 +2653,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-11-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "mathematics",
       "system": "florida"
@@ -2486,6 +2667,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-11-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "mathematics",
       "system": "arizona"
@@ -2499,6 +2681,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-11-A",
       "programme": "DP_CP",
+      "scope": "deferred",
       "status": "not_started",
       "subject": "mathematics",
       "system": "ib"
@@ -2512,6 +2695,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-11-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "mathematics",
       "system": "crosswalk"
@@ -2525,6 +2709,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-11-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "science",
       "system": "florida"
@@ -2538,6 +2723,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-11-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "science",
       "system": "arizona"
@@ -2551,6 +2737,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-11-B",
       "programme": "DP_CP",
+      "scope": "deferred",
       "status": "not_started",
       "subject": "science",
       "system": "ib"
@@ -2564,6 +2751,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-11-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "science",
       "system": "crosswalk"
@@ -2577,6 +2765,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-11-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "social-studies",
       "system": "florida"
@@ -2590,6 +2779,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-11-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "social-studies",
       "system": "arizona"
@@ -2603,6 +2793,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-11-B",
       "programme": "DP_CP",
+      "scope": "deferred",
       "status": "not_started",
       "subject": "social-studies",
       "system": "ib"
@@ -2616,6 +2807,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-11-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "social-studies",
       "system": "crosswalk"
@@ -2629,6 +2821,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-12-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "ela",
       "system": "florida"
@@ -2642,6 +2835,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-12-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "ela",
       "system": "arizona"
@@ -2655,6 +2849,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-12-A",
       "programme": "DP_CP",
+      "scope": "deferred",
       "status": "not_started",
       "subject": "ela",
       "system": "ib"
@@ -2668,6 +2863,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-12-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "ela",
       "system": "crosswalk"
@@ -2681,6 +2877,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-12-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "mathematics",
       "system": "florida"
@@ -2694,6 +2891,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-12-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "mathematics",
       "system": "arizona"
@@ -2707,6 +2905,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-12-A",
       "programme": "DP_CP",
+      "scope": "deferred",
       "status": "not_started",
       "subject": "mathematics",
       "system": "ib"
@@ -2720,6 +2919,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-12-A",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "mathematics",
       "system": "crosswalk"
@@ -2733,6 +2933,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-12-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "science",
       "system": "florida"
@@ -2746,6 +2947,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-12-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "science",
       "system": "arizona"
@@ -2759,6 +2961,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-12-B",
       "programme": "DP_CP",
+      "scope": "deferred",
       "status": "not_started",
       "subject": "science",
       "system": "ib"
@@ -2772,6 +2975,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-12-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "science",
       "system": "crosswalk"
@@ -2785,6 +2989,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-12-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "social-studies",
       "system": "florida"
@@ -2798,6 +3003,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-12-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "social-studies",
       "system": "arizona"
@@ -2811,6 +3017,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-12-B",
       "programme": "DP_CP",
+      "scope": "deferred",
       "status": "not_started",
       "subject": "social-studies",
       "system": "ib"
@@ -2824,6 +3031,7 @@
       "planned_phase": 2,
       "planned_session": "P2-grade-12-B",
       "programme": null,
+      "scope": "deferred",
       "status": "not_started",
       "subject": "social-studies",
       "system": "crosswalk"
@@ -2837,6 +3045,7 @@
       "planned_phase": 3,
       "planned_session": "P3-summaries",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": null,
       "system": null
@@ -2850,6 +3059,7 @@
       "planned_phase": 3,
       "planned_session": "P3-summaries",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": null,
       "system": null
@@ -2863,6 +3073,7 @@
       "planned_phase": 3,
       "planned_session": "P3-summaries",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": null,
       "system": null
@@ -2876,6 +3087,7 @@
       "planned_phase": 3,
       "planned_session": "P3-vertical",
       "programme": null,
+      "scope": "active",
       "status": "not_started",
       "subject": null,
       "system": null
@@ -2894,7 +3106,10 @@
       "schema_version": "0.1.0",
       "sections": {
         "counts": {
+          "active_grade_level_documents": 112,
+          "deferred_documents": 64,
           "grade_level_documents": 208,
+          "omitted_documents": 32,
           "summaries": 4,
           "total": 212
         },
@@ -2908,6 +3123,7 @@
             "planned_phase": 2,
             "planned_session": "P2-kindergarten-A",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "ela",
             "system": "florida"
@@ -2921,6 +3137,7 @@
             "planned_phase": 2,
             "planned_session": "P2-kindergarten-A",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "ela",
             "system": "arizona"
@@ -2934,6 +3151,7 @@
             "planned_phase": 2,
             "planned_session": "P2-kindergarten-A",
             "programme": "PYP",
+            "scope": "omitted",
             "status": "not_started",
             "subject": "ela",
             "system": "ib"
@@ -2947,6 +3165,7 @@
             "planned_phase": 2,
             "planned_session": "P2-kindergarten-A",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "ela",
             "system": "crosswalk"
@@ -2960,6 +3179,7 @@
             "planned_phase": 2,
             "planned_session": "P2-kindergarten-A",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "mathematics",
             "system": "florida"
@@ -2973,6 +3193,7 @@
             "planned_phase": 2,
             "planned_session": "P2-kindergarten-A",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "mathematics",
             "system": "arizona"
@@ -2986,6 +3207,7 @@
             "planned_phase": 2,
             "planned_session": "P2-kindergarten-A",
             "programme": "PYP",
+            "scope": "omitted",
             "status": "not_started",
             "subject": "mathematics",
             "system": "ib"
@@ -2999,6 +3221,7 @@
             "planned_phase": 2,
             "planned_session": "P2-kindergarten-A",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "mathematics",
             "system": "crosswalk"
@@ -3012,6 +3235,7 @@
             "planned_phase": 2,
             "planned_session": "P2-kindergarten-B",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "science",
             "system": "florida"
@@ -3025,6 +3249,7 @@
             "planned_phase": 2,
             "planned_session": "P2-kindergarten-B",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "science",
             "system": "arizona"
@@ -3038,6 +3263,7 @@
             "planned_phase": 2,
             "planned_session": "P2-kindergarten-B",
             "programme": "PYP",
+            "scope": "omitted",
             "status": "not_started",
             "subject": "science",
             "system": "ib"
@@ -3051,6 +3277,7 @@
             "planned_phase": 2,
             "planned_session": "P2-kindergarten-B",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "science",
             "system": "crosswalk"
@@ -3064,6 +3291,7 @@
             "planned_phase": 2,
             "planned_session": "P2-kindergarten-B",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "social-studies",
             "system": "florida"
@@ -3077,6 +3305,7 @@
             "planned_phase": 2,
             "planned_session": "P2-kindergarten-B",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "social-studies",
             "system": "arizona"
@@ -3090,6 +3319,7 @@
             "planned_phase": 2,
             "planned_session": "P2-kindergarten-B",
             "programme": "PYP",
+            "scope": "omitted",
             "status": "not_started",
             "subject": "social-studies",
             "system": "ib"
@@ -3103,6 +3333,7 @@
             "planned_phase": 2,
             "planned_session": "P2-kindergarten-B",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "social-studies",
             "system": "crosswalk"
@@ -3116,6 +3347,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-01-A",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "ela",
             "system": "florida"
@@ -3129,6 +3361,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-01-A",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "ela",
             "system": "arizona"
@@ -3142,6 +3375,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-01-A",
             "programme": "PYP",
+            "scope": "omitted",
             "status": "not_started",
             "subject": "ela",
             "system": "ib"
@@ -3155,6 +3389,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-01-A",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "ela",
             "system": "crosswalk"
@@ -3168,6 +3403,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-01-A",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "mathematics",
             "system": "florida"
@@ -3181,6 +3417,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-01-A",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "mathematics",
             "system": "arizona"
@@ -3194,6 +3431,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-01-A",
             "programme": "PYP",
+            "scope": "omitted",
             "status": "not_started",
             "subject": "mathematics",
             "system": "ib"
@@ -3207,6 +3445,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-01-A",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "mathematics",
             "system": "crosswalk"
@@ -3220,6 +3459,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-01-B",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "science",
             "system": "florida"
@@ -3233,6 +3473,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-01-B",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "science",
             "system": "arizona"
@@ -3246,6 +3487,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-01-B",
             "programme": "PYP",
+            "scope": "omitted",
             "status": "not_started",
             "subject": "science",
             "system": "ib"
@@ -3259,6 +3501,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-01-B",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "science",
             "system": "crosswalk"
@@ -3272,6 +3515,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-01-B",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "social-studies",
             "system": "florida"
@@ -3285,6 +3529,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-01-B",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "social-studies",
             "system": "arizona"
@@ -3298,6 +3543,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-01-B",
             "programme": "PYP",
+            "scope": "omitted",
             "status": "not_started",
             "subject": "social-studies",
             "system": "ib"
@@ -3311,6 +3557,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-01-B",
             "programme": null,
+            "scope": "omitted",
             "status": "not_started",
             "subject": "social-studies",
             "system": "crosswalk"
@@ -3324,6 +3571,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-02-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "florida"
@@ -3337,6 +3585,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-02-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "arizona"
@@ -3350,6 +3599,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-02-A",
             "programme": "PYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "ib"
@@ -3363,6 +3613,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-02-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "crosswalk"
@@ -3376,6 +3627,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-02-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "florida"
@@ -3389,6 +3641,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-02-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "arizona"
@@ -3402,6 +3655,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-02-A",
             "programme": "PYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "ib"
@@ -3415,6 +3669,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-02-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "crosswalk"
@@ -3428,6 +3683,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-02-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "florida"
@@ -3441,6 +3697,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-02-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "arizona"
@@ -3454,6 +3711,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-02-B",
             "programme": "PYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "ib"
@@ -3467,6 +3725,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-02-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "crosswalk"
@@ -3480,6 +3739,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-02-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "florida"
@@ -3493,6 +3753,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-02-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "arizona"
@@ -3506,6 +3767,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-02-B",
             "programme": "PYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "ib"
@@ -3519,6 +3781,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-02-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "crosswalk"
@@ -3550,6 +3813,7 @@
             "planned_phase": 1,
             "planned_session": "P1-pilot",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "florida"
@@ -3564,6 +3828,7 @@
             "planned_phase": 1,
             "planned_session": "P1-pilot",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "arizona"
@@ -3578,6 +3843,7 @@
             "planned_phase": 1,
             "planned_session": "P1-pilot",
             "programme": "PYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "ib"
@@ -3592,6 +3858,7 @@
             "planned_phase": 1,
             "planned_session": "P1-pilot",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "crosswalk"
@@ -3617,6 +3884,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-03-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "florida"
@@ -3630,6 +3898,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-03-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "arizona"
@@ -3643,6 +3912,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-03-A",
             "programme": "PYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "ib"
@@ -3656,6 +3926,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-03-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "crosswalk"
@@ -3681,6 +3952,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-03-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "florida"
@@ -3694,6 +3966,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-03-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "arizona"
@@ -3707,6 +3980,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-03-B",
             "programme": "PYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "ib"
@@ -3720,6 +3994,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-03-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "crosswalk"
@@ -3745,6 +4020,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-03-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "florida"
@@ -3758,6 +4034,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-03-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "arizona"
@@ -3771,6 +4048,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-03-B",
             "programme": "PYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "ib"
@@ -3784,6 +4062,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-03-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "crosswalk"
@@ -3809,6 +4088,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-04-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "florida"
@@ -3822,6 +4102,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-04-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "arizona"
@@ -3835,6 +4116,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-04-A",
             "programme": "PYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "ib"
@@ -3848,6 +4130,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-04-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "crosswalk"
@@ -3868,6 +4151,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-04-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "florida"
@@ -3881,6 +4165,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-04-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "arizona"
@@ -3894,6 +4179,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-04-A",
             "programme": "PYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "ib"
@@ -3907,6 +4193,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-04-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "crosswalk"
@@ -3932,6 +4219,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-04-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "florida"
@@ -3945,6 +4233,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-04-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "arizona"
@@ -3958,6 +4247,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-04-B",
             "programme": "PYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "ib"
@@ -3971,6 +4261,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-04-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "crosswalk"
@@ -3991,6 +4282,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-04-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "florida"
@@ -4004,6 +4296,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-04-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "arizona"
@@ -4017,6 +4310,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-04-B",
             "programme": "PYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "ib"
@@ -4030,6 +4324,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-04-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "crosswalk"
@@ -4055,6 +4350,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-05-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "florida"
@@ -4068,6 +4364,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-05-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "arizona"
@@ -4081,6 +4378,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-05-A",
             "programme": "PYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "ib"
@@ -4094,6 +4392,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-05-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "crosswalk"
@@ -4107,6 +4406,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-05-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "florida"
@@ -4120,6 +4420,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-05-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "arizona"
@@ -4133,6 +4434,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-05-A",
             "programme": "PYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "ib"
@@ -4146,6 +4448,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-05-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "crosswalk"
@@ -4159,6 +4462,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-05-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "florida"
@@ -4172,6 +4476,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-05-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "arizona"
@@ -4185,6 +4490,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-05-B",
             "programme": "PYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "ib"
@@ -4198,6 +4504,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-05-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "crosswalk"
@@ -4211,6 +4518,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-05-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "florida"
@@ -4224,6 +4532,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-05-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "arizona"
@@ -4237,6 +4546,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-05-B",
             "programme": "PYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "ib"
@@ -4250,6 +4560,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-05-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "crosswalk"
@@ -4263,6 +4574,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-06-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "florida"
@@ -4276,6 +4588,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-06-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "arizona"
@@ -4289,6 +4602,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-06-A",
             "programme": "MYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "ib"
@@ -4302,6 +4616,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-06-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "crosswalk"
@@ -4315,6 +4630,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-06-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "florida"
@@ -4328,6 +4644,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-06-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "arizona"
@@ -4341,6 +4658,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-06-A",
             "programme": "MYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "ib"
@@ -4354,6 +4672,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-06-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "crosswalk"
@@ -4367,6 +4686,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-06-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "florida"
@@ -4380,6 +4700,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-06-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "arizona"
@@ -4393,6 +4714,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-06-B",
             "programme": "MYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "ib"
@@ -4406,6 +4728,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-06-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "crosswalk"
@@ -4419,6 +4742,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-06-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "florida"
@@ -4432,6 +4756,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-06-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "arizona"
@@ -4445,6 +4770,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-06-B",
             "programme": "MYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "ib"
@@ -4458,6 +4784,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-06-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "crosswalk"
@@ -4471,6 +4798,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-07-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "florida"
@@ -4484,6 +4812,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-07-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "arizona"
@@ -4497,6 +4826,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-07-A",
             "programme": "MYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "ib"
@@ -4510,6 +4840,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-07-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "crosswalk"
@@ -4523,6 +4854,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-07-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "florida"
@@ -4536,6 +4868,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-07-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "arizona"
@@ -4549,6 +4882,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-07-A",
             "programme": "MYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "ib"
@@ -4562,6 +4896,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-07-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "crosswalk"
@@ -4575,6 +4910,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-07-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "florida"
@@ -4588,6 +4924,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-07-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "arizona"
@@ -4601,6 +4938,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-07-B",
             "programme": "MYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "ib"
@@ -4614,6 +4952,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-07-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "crosswalk"
@@ -4627,6 +4966,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-07-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "florida"
@@ -4640,6 +4980,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-07-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "arizona"
@@ -4653,6 +4994,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-07-B",
             "programme": "MYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "ib"
@@ -4666,6 +5008,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-07-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "crosswalk"
@@ -4679,6 +5022,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-08-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "florida"
@@ -4692,6 +5036,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-08-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "arizona"
@@ -4705,6 +5050,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-08-A",
             "programme": "MYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "ib"
@@ -4718,6 +5064,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-08-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "ela",
             "system": "crosswalk"
@@ -4731,6 +5078,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-08-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "florida"
@@ -4744,6 +5092,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-08-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "arizona"
@@ -4757,6 +5106,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-08-A",
             "programme": "MYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "ib"
@@ -4770,6 +5120,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-08-A",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "mathematics",
             "system": "crosswalk"
@@ -4783,6 +5134,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-08-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "florida"
@@ -4796,6 +5148,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-08-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "arizona"
@@ -4809,6 +5162,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-08-B",
             "programme": "MYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "ib"
@@ -4822,6 +5176,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-08-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "science",
             "system": "crosswalk"
@@ -4835,6 +5190,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-08-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "florida"
@@ -4848,6 +5204,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-08-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "arizona"
@@ -4861,6 +5218,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-08-B",
             "programme": "MYP",
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "ib"
@@ -4874,6 +5232,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-08-B",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": "social-studies",
             "system": "crosswalk"
@@ -4887,6 +5246,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-09-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "ela",
             "system": "florida"
@@ -4900,6 +5260,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-09-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "ela",
             "system": "arizona"
@@ -4913,6 +5274,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-09-A",
             "programme": "MYP",
+            "scope": "deferred",
             "status": "not_started",
             "subject": "ela",
             "system": "ib"
@@ -4926,6 +5288,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-09-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "ela",
             "system": "crosswalk"
@@ -4939,6 +5302,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-09-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "mathematics",
             "system": "florida"
@@ -4952,6 +5316,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-09-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "mathematics",
             "system": "arizona"
@@ -4965,6 +5330,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-09-A",
             "programme": "MYP",
+            "scope": "deferred",
             "status": "not_started",
             "subject": "mathematics",
             "system": "ib"
@@ -4978,6 +5344,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-09-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "mathematics",
             "system": "crosswalk"
@@ -4991,6 +5358,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-09-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "science",
             "system": "florida"
@@ -5004,6 +5372,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-09-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "science",
             "system": "arizona"
@@ -5017,6 +5386,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-09-B",
             "programme": "MYP",
+            "scope": "deferred",
             "status": "not_started",
             "subject": "science",
             "system": "ib"
@@ -5030,6 +5400,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-09-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "science",
             "system": "crosswalk"
@@ -5043,6 +5414,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-09-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "social-studies",
             "system": "florida"
@@ -5056,6 +5428,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-09-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "social-studies",
             "system": "arizona"
@@ -5069,6 +5442,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-09-B",
             "programme": "MYP",
+            "scope": "deferred",
             "status": "not_started",
             "subject": "social-studies",
             "system": "ib"
@@ -5082,6 +5456,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-09-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "social-studies",
             "system": "crosswalk"
@@ -5095,6 +5470,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-10-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "ela",
             "system": "florida"
@@ -5108,6 +5484,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-10-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "ela",
             "system": "arizona"
@@ -5121,6 +5498,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-10-A",
             "programme": "MYP",
+            "scope": "deferred",
             "status": "not_started",
             "subject": "ela",
             "system": "ib"
@@ -5134,6 +5512,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-10-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "ela",
             "system": "crosswalk"
@@ -5147,6 +5526,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-10-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "mathematics",
             "system": "florida"
@@ -5160,6 +5540,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-10-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "mathematics",
             "system": "arizona"
@@ -5173,6 +5554,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-10-A",
             "programme": "MYP",
+            "scope": "deferred",
             "status": "not_started",
             "subject": "mathematics",
             "system": "ib"
@@ -5186,6 +5568,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-10-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "mathematics",
             "system": "crosswalk"
@@ -5199,6 +5582,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-10-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "science",
             "system": "florida"
@@ -5212,6 +5596,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-10-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "science",
             "system": "arizona"
@@ -5225,6 +5610,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-10-B",
             "programme": "MYP",
+            "scope": "deferred",
             "status": "not_started",
             "subject": "science",
             "system": "ib"
@@ -5238,6 +5624,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-10-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "science",
             "system": "crosswalk"
@@ -5251,6 +5638,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-10-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "social-studies",
             "system": "florida"
@@ -5264,6 +5652,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-10-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "social-studies",
             "system": "arizona"
@@ -5277,6 +5666,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-10-B",
             "programme": "MYP",
+            "scope": "deferred",
             "status": "not_started",
             "subject": "social-studies",
             "system": "ib"
@@ -5290,6 +5680,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-10-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "social-studies",
             "system": "crosswalk"
@@ -5303,6 +5694,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-11-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "ela",
             "system": "florida"
@@ -5316,6 +5708,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-11-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "ela",
             "system": "arizona"
@@ -5329,6 +5722,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-11-A",
             "programme": "DP_CP",
+            "scope": "deferred",
             "status": "not_started",
             "subject": "ela",
             "system": "ib"
@@ -5342,6 +5736,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-11-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "ela",
             "system": "crosswalk"
@@ -5355,6 +5750,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-11-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "mathematics",
             "system": "florida"
@@ -5368,6 +5764,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-11-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "mathematics",
             "system": "arizona"
@@ -5381,6 +5778,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-11-A",
             "programme": "DP_CP",
+            "scope": "deferred",
             "status": "not_started",
             "subject": "mathematics",
             "system": "ib"
@@ -5394,6 +5792,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-11-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "mathematics",
             "system": "crosswalk"
@@ -5407,6 +5806,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-11-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "science",
             "system": "florida"
@@ -5420,6 +5820,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-11-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "science",
             "system": "arizona"
@@ -5433,6 +5834,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-11-B",
             "programme": "DP_CP",
+            "scope": "deferred",
             "status": "not_started",
             "subject": "science",
             "system": "ib"
@@ -5446,6 +5848,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-11-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "science",
             "system": "crosswalk"
@@ -5459,6 +5862,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-11-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "social-studies",
             "system": "florida"
@@ -5472,6 +5876,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-11-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "social-studies",
             "system": "arizona"
@@ -5485,6 +5890,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-11-B",
             "programme": "DP_CP",
+            "scope": "deferred",
             "status": "not_started",
             "subject": "social-studies",
             "system": "ib"
@@ -5498,6 +5904,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-11-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "social-studies",
             "system": "crosswalk"
@@ -5511,6 +5918,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-12-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "ela",
             "system": "florida"
@@ -5524,6 +5932,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-12-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "ela",
             "system": "arizona"
@@ -5537,6 +5946,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-12-A",
             "programme": "DP_CP",
+            "scope": "deferred",
             "status": "not_started",
             "subject": "ela",
             "system": "ib"
@@ -5550,6 +5960,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-12-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "ela",
             "system": "crosswalk"
@@ -5563,6 +5974,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-12-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "mathematics",
             "system": "florida"
@@ -5576,6 +5988,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-12-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "mathematics",
             "system": "arizona"
@@ -5589,6 +6002,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-12-A",
             "programme": "DP_CP",
+            "scope": "deferred",
             "status": "not_started",
             "subject": "mathematics",
             "system": "ib"
@@ -5602,6 +6016,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-12-A",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "mathematics",
             "system": "crosswalk"
@@ -5615,6 +6030,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-12-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "science",
             "system": "florida"
@@ -5628,6 +6044,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-12-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "science",
             "system": "arizona"
@@ -5641,6 +6058,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-12-B",
             "programme": "DP_CP",
+            "scope": "deferred",
             "status": "not_started",
             "subject": "science",
             "system": "ib"
@@ -5654,6 +6072,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-12-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "science",
             "system": "crosswalk"
@@ -5667,6 +6086,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-12-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "social-studies",
             "system": "florida"
@@ -5680,6 +6100,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-12-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "social-studies",
             "system": "arizona"
@@ -5693,6 +6114,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-12-B",
             "programme": "DP_CP",
+            "scope": "deferred",
             "status": "not_started",
             "subject": "social-studies",
             "system": "ib"
@@ -5706,6 +6128,7 @@
             "planned_phase": 2,
             "planned_session": "P2-grade-12-B",
             "programme": null,
+            "scope": "deferred",
             "status": "not_started",
             "subject": "social-studies",
             "system": "crosswalk"
@@ -5719,6 +6142,7 @@
             "planned_phase": 3,
             "planned_session": "P3-summaries",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": null,
             "system": null
@@ -5732,6 +6156,7 @@
             "planned_phase": 3,
             "planned_session": "P3-summaries",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": null,
             "system": null
@@ -5745,6 +6170,7 @@
             "planned_phase": 3,
             "planned_session": "P3-summaries",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": null,
             "system": null
@@ -5758,6 +6184,7 @@
             "planned_phase": 3,
             "planned_session": "P3-vertical",
             "programme": null,
+            "scope": "active",
             "status": "not_started",
             "subject": null,
             "system": null
@@ -5765,7 +6192,8 @@
         ],
         "notes": [
           "208 = 4 subjects x 13 grade levels x 4 types (Florida, Arizona, IB, crosswalk).",
-          "legacy_assets lists earlier Florida Grade 3-5 work (not on this branch). Those files are Markdown/TypeScript, unaudited, and are never overwritten by the library."
+          "legacy_assets lists earlier Florida Grade 3-5 work (not on this branch). Those files are Markdown/TypeScript, unaudited, and are never overwritten by the library.",
+          "scope: active = Grades 2-8 (plus summaries); omitted = Kindergarten and Grade 1 (Ivan, 2026-10-02); deferred = Grades 9-12 until Ivan decides (high school may be organized differently, see D1). Entries and folders are kept so ids stay stable."
         ]
       },
       "status": "in_progress",
@@ -5788,8 +6216,11 @@
       "sections": {
         "current_phase": 0,
         "document_counts": {
+          "active_grade_level_documents": 112,
+          "active_grade_levels": 7,
           "completed": 0,
           "grade_level_documents": 208,
+          "note": "planned_total 212 is the full library; the active plan covers Grades 2-8.",
           "per_system": 52,
           "planned_total": 212,
           "summaries": 4
@@ -6028,34 +6459,6 @@
         ],
         "phase_2_session_plan": [
           {
-            "session": "P2-kindergarten-A",
-            "subjects": [
-              "ela",
-              "mathematics"
-            ]
-          },
-          {
-            "session": "P2-kindergarten-B",
-            "subjects": [
-              "science",
-              "social-studies"
-            ]
-          },
-          {
-            "session": "P2-grade-01-A",
-            "subjects": [
-              "ela",
-              "mathematics"
-            ]
-          },
-          {
-            "session": "P2-grade-01-B",
-            "subjects": [
-              "science",
-              "social-studies"
-            ]
-          },
-          {
             "session": "P2-grade-02-A",
             "subjects": [
               "ela",
@@ -6152,62 +6555,6 @@
               "science",
               "social-studies"
             ]
-          },
-          {
-            "session": "P2-grade-09-A",
-            "subjects": [
-              "ela",
-              "mathematics"
-            ]
-          },
-          {
-            "session": "P2-grade-09-B",
-            "subjects": [
-              "science",
-              "social-studies"
-            ]
-          },
-          {
-            "session": "P2-grade-10-A",
-            "subjects": [
-              "ela",
-              "mathematics"
-            ]
-          },
-          {
-            "session": "P2-grade-10-B",
-            "subjects": [
-              "science",
-              "social-studies"
-            ]
-          },
-          {
-            "session": "P2-grade-11-A",
-            "subjects": [
-              "ela",
-              "mathematics"
-            ]
-          },
-          {
-            "session": "P2-grade-11-B",
-            "subjects": [
-              "science",
-              "social-studies"
-            ]
-          },
-          {
-            "session": "P2-grade-12-A",
-            "subjects": [
-              "ela",
-              "mathematics"
-            ]
-          },
-          {
-            "session": "P2-grade-12-B",
-            "subjects": [
-              "science",
-              "social-studies"
-            ]
           }
         ],
         "phases": [
@@ -6239,9 +6586,9 @@
             "status": "blocked_on_network_D4"
           },
           {
-            "documents": 204,
-            "effort_estimate": "26 sessions at about 1-2 working sessions each: 26-52 total. Lower for K-5 and grades with Arizona/Florida grade-level standards, higher for high-school courses and IB DP/CP.",
-            "gate": "Approval after each grade (13 gates)",
+            "documents": 108,
+            "effort_estimate": "14 sessions at about 1-2 working sessions each: 14-28 total. Recalibrate after the pilot.",
+            "gate": "Approval after each grade (7 gates)",
             "name": "One grade at a time",
             "note": "Grade 3 session A holds 4 documents, since Grade 3 ELA is done in the pilot.",
             "phase": 2,
@@ -6251,11 +6598,12 @@
               "Commit and push after each session",
               "STOP after each grade for approval"
             ],
+            "scope": "Grades 2-8 only, starting with Grade 2. Grade 3 session A holds 4 documents (ELA is in the pilot).",
             "session_pattern": {
               "A": "ELA + Mathematics (FL, AZ, IB, crosswalk) = 8 documents",
               "B": "Science + Social Studies = 8 documents"
             },
-            "sessions": 26,
+            "sessions": 14,
             "status": "not_started"
           },
           {
@@ -6271,11 +6619,24 @@
             "status": "not_started"
           }
         ],
+        "scope_update": {
+          "active": "Grades 2-8",
+          "date": "2026-10-02",
+          "deferred": "Grades 9-12 (decide after Grades 2-8; see D1)",
+          "interpretation_to_confirm": "Ivan said 'start with 2nd grade' and 'start with grades 3-8'. Read as Grades 2-8 active, Grade 2 first in Phase 2, Grade 3 ELA pilot kept in Phase 1.",
+          "omitted": "Kindergarten, Grade 1",
+          "order": "Pilot Grade 3 ELA in Phase 1, then Phase 2 starts at Grade 2 and proceeds 3-8."
+        },
         "session_log": [
           {
             "date": "2026-10-02",
             "phase": 0,
             "summary": "Scaffolded folders, templates, sources, inventory, build script, README and research log. Network blocked."
+          },
+          {
+            "date": "2026-10-02",
+            "phase": 0,
+            "summary": "Scope narrowed to Grades 2-8 per Ivan. K and Grade 1 omitted, Grades 9-12 deferred. Network still blocked; Ivan to change environment setting."
           }
         ]
       },
@@ -6342,7 +6703,7 @@
           "No PDF or Word output until the JSON is reviewed."
         ],
         "rebuild": "python3 curriculum-standards-library/tools/build_bundle.py  (add --check to validate only)",
-        "status": "Phase 0 scaffold. No standards content collected yet.",
+        "status": "Phase 0 scaffold. No standards content collected yet. Active scope: Grades 2-8 (K and Grade 1 omitted; Grades 9-12 deferred).",
         "users": [
           "Teachers",
           "School leaders",
@@ -6425,6 +6786,12 @@
             "date": "2026-10-02",
             "details": "",
             "summary": "Build script writes a deterministic bundle (sorted keys, date from newest last_updated) to avoid noisy diffs.",
+            "type": "decision"
+          },
+          {
+            "date": "2026-10-02",
+            "details": "Inventory entries carry a scope field; folders kept.",
+            "summary": "Scope narrowed: Grades 2-8 active, K and Grade 1 omitted, Grades 9-12 deferred.",
             "type": "decision"
           }
         ],

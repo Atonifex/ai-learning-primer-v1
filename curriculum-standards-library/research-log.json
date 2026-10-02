@@ -74,6 +74,12 @@
         "type": "decision",
         "summary": "Build script writes a deterministic bundle (sorted keys, date from newest last_updated) to avoid noisy diffs.",
         "details": ""
+      },
+      {
+        "date": "2026-10-02",
+        "type": "decision",
+        "summary": "Scope narrowed: Grades 2-8 active, K and Grade 1 omitted, Grades 9-12 deferred.",
+        "details": "Inventory entries carry a scope field; folders kept."
       }
     ]
   },

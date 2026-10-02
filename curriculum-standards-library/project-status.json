@@ -30,7 +30,10 @@
       "grade_level_documents": 208,
       "summaries": 4,
       "per_system": 52,
-      "completed": 0
+      "completed": 0,
+      "active_grade_level_documents": 112,
+      "active_grade_levels": 7,
+      "note": "planned_total 212 is the full library; the active plan covers Grades 2-8."
     },
     "existing_work": {
       "location": "branches primer-mvp and pre-mvp, folder curriculum_resources/",
@@ -292,11 +295,12 @@
           "A": "ELA + Mathematics (FL, AZ, IB, crosswalk) = 8 documents",
           "B": "Science + Social Studies = 8 documents"
         },
-        "sessions": 26,
-        "documents": 204,
+        "sessions": 14,
+        "documents": 108,
         "note": "Grade 3 session A holds 4 documents, since Grade 3 ELA is done in the pilot.",
-        "effort_estimate": "26 sessions at about 1-2 working sessions each: 26-52 total. Lower for K-5 and grades with Arizona/Florida grade-level standards, higher for high-school courses and IB DP/CP.",
-        "gate": "Approval after each grade (13 gates)"
+        "effort_estimate": "14 sessions at about 1-2 working sessions each: 14-28 total. Recalibrate after the pilot.",
+        "gate": "Approval after each grade (7 gates)",
+        "scope": "Grades 2-8 only, starting with Grade 2. Grade 3 session A holds 4 documents (ELA is in the pilot)."
       },
       {
         "phase": 3,
@@ -312,34 +316,6 @@
       }
     ],
     "phase_2_session_plan": [
-      {
-        "session": "P2-kindergarten-A",
-        "subjects": [
-          "ela",
-          "mathematics"
-        ]
-      },
-      {
-        "session": "P2-kindergarten-B",
-        "subjects": [
-          "science",
-          "social-studies"
-        ]
-      },
-      {
-        "session": "P2-grade-01-A",
-        "subjects": [
-          "ela",
-          "mathematics"
-        ]
-      },
-      {
-        "session": "P2-grade-01-B",
-        "subjects": [
-          "science",
-          "social-studies"
-        ]
-      },
       {
         "session": "P2-grade-02-A",
         "subjects": [
@@ -437,62 +413,6 @@
           "science",
           "social-studies"
         ]
-      },
-      {
-        "session": "P2-grade-09-A",
-        "subjects": [
-          "ela",
-          "mathematics"
-        ]
-      },
-      {
-        "session": "P2-grade-09-B",
-        "subjects": [
-          "science",
-          "social-studies"
-        ]
-      },
-      {
-        "session": "P2-grade-10-A",
-        "subjects": [
-          "ela",
-          "mathematics"
-        ]
-      },
-      {
-        "session": "P2-grade-10-B",
-        "subjects": [
-          "science",
-          "social-studies"
-        ]
-      },
-      {
-        "session": "P2-grade-11-A",
-        "subjects": [
-          "ela",
-          "mathematics"
-        ]
-      },
-      {
-        "session": "P2-grade-11-B",
-        "subjects": [
-          "science",
-          "social-studies"
-        ]
-      },
-      {
-        "session": "P2-grade-12-A",
-        "subjects": [
-          "ela",
-          "mathematics"
-        ]
-      },
-      {
-        "session": "P2-grade-12-B",
-        "subjects": [
-          "science",
-          "social-studies"
-        ]
       }
     ],
     "session_log": [
@@ -500,8 +420,21 @@
         "date": "2026-10-02",
         "phase": 0,
         "summary": "Scaffolded folders, templates, sources, inventory, build script, README and research log. Network blocked."
+      },
+      {
+        "date": "2026-10-02",
+        "phase": 0,
+        "summary": "Scope narrowed to Grades 2-8 per Ivan. K and Grade 1 omitted, Grades 9-12 deferred. Network still blocked; Ivan to change environment setting."
       }
-    ]
+    ],
+    "scope_update": {
+      "date": "2026-10-02",
+      "active": "Grades 2-8",
+      "omitted": "Kindergarten, Grade 1",
+      "deferred": "Grades 9-12 (decide after Grades 2-8; see D1)",
+      "order": "Pilot Grade 3 ELA in Phase 1, then Phase 2 starts at Grade 2 and proceeds 3-8.",
+      "interpretation_to_confirm": "Ivan said 'start with 2nd grade' and 'start with grades 3-8'. Read as Grades 2-8 active, Grade 2 first in Phase 2, Grade 3 ELA pilot kept in Phase 1."
+    }
   },
   "citations": [],
   "version_notes": [

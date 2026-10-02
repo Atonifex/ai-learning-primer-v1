@@ -12,7 +12,7 @@
   "sections": {
     "name": "K-12 Curriculum Standards Library",
     "purpose": "A research-backed, version-controlled library comparing Florida standards, Arizona standards and IB frameworks for Kindergarten through Grade 12 in ELA, mathematics, science and social studies. It feeds the AI Learning Primer.",
-    "status": "Phase 0 scaffold. No standards content collected yet.",
+    "status": "Phase 0 scaffold. No standards content collected yet. Active scope: Grades 2-8 (K and Grade 1 omitted; Grades 9-12 deferred).",
     "users": [
       "Teachers",
       "School leaders",

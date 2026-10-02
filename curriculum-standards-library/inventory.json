@@ -13,11 +13,15 @@
     "counts": {
       "total": 212,
       "grade_level_documents": 208,
-      "summaries": 4
+      "summaries": 4,
+      "active_grade_level_documents": 112,
+      "omitted_documents": 32,
+      "deferred_documents": 64
     },
     "notes": [
       "208 = 4 subjects x 13 grade levels x 4 types (Florida, Arizona, IB, crosswalk).",
-      "legacy_assets lists earlier Florida Grade 3-5 work (not on this branch). Those files are Markdown/TypeScript, unaudited, and are never overwritten by the library."
+      "legacy_assets lists earlier Florida Grade 3-5 work (not on this branch). Those files are Markdown/TypeScript, unaudited, and are never overwritten by the library.",
+      "scope: active = Grades 2-8 (plus summaries); omitted = Kindergarten and Grade 1 (Ivan, 2026-10-02); deferred = Grades 9-12 until Ivan decides (high school may be organized differently, see D1). Entries and folders are kept so ids stay stable."
     ],
     "entries": [
       {
@@ -31,7 +35,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-kindergarten-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "az.kindergarten.ela",
@@ -44,7 +49,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-kindergarten-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "ib.pyp.kindergarten.ela",
@@ -57,7 +63,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-kindergarten-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "xw.kindergarten.ela",
@@ -70,7 +77,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-kindergarten-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "fl.kindergarten.mathematics",
@@ -83,7 +91,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-kindergarten-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "az.kindergarten.mathematics",
@@ -96,7 +105,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-kindergarten-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "ib.pyp.kindergarten.mathematics",
@@ -109,7 +119,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-kindergarten-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "xw.kindergarten.mathematics",
@@ -122,7 +133,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-kindergarten-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "fl.kindergarten.science",
@@ -135,7 +147,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-kindergarten-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "az.kindergarten.science",
@@ -148,7 +161,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-kindergarten-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "ib.pyp.kindergarten.science",
@@ -161,7 +175,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-kindergarten-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "xw.kindergarten.science",
@@ -174,7 +189,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-kindergarten-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "fl.kindergarten.social-studies",
@@ -187,7 +203,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-kindergarten-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "az.kindergarten.social-studies",
@@ -200,7 +217,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-kindergarten-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "ib.pyp.kindergarten.social-studies",
@@ -213,7 +231,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-kindergarten-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "xw.kindergarten.social-studies",
@@ -226,7 +245,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-kindergarten-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "fl.grade-01.ela",
@@ -239,7 +259,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-01-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "az.grade-01.ela",
@@ -252,7 +273,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-01-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "ib.pyp.grade-01.ela",
@@ -265,7 +287,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-01-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "xw.grade-01.ela",
@@ -278,7 +301,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-01-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "fl.grade-01.mathematics",
@@ -291,7 +315,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-01-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "az.grade-01.mathematics",
@@ -304,7 +329,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-01-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "ib.pyp.grade-01.mathematics",
@@ -317,7 +343,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-01-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "xw.grade-01.mathematics",
@@ -330,7 +357,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-01-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "fl.grade-01.science",
@@ -343,7 +371,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-01-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "az.grade-01.science",
@@ -356,7 +385,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-01-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "ib.pyp.grade-01.science",
@@ -369,7 +399,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-01-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "xw.grade-01.science",
@@ -382,7 +413,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-01-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "fl.grade-01.social-studies",
@@ -395,7 +427,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-01-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "az.grade-01.social-studies",
@@ -408,7 +441,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-01-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "ib.pyp.grade-01.social-studies",
@@ -421,7 +455,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-01-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "xw.grade-01.social-studies",
@@ -434,7 +469,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-01-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "omitted"
       },
       {
         "doc_id": "fl.grade-02.ela",
@@ -447,7 +483,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-02-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-02.ela",
@@ -460,7 +497,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-02-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.pyp.grade-02.ela",
@@ -473,7 +511,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-02-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-02.ela",
@@ -486,7 +525,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-02-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-02.mathematics",
@@ -499,7 +539,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-02-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-02.mathematics",
@@ -512,7 +553,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-02-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.pyp.grade-02.mathematics",
@@ -525,7 +567,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-02-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-02.mathematics",
@@ -538,7 +581,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-02-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-02.science",
@@ -551,7 +595,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-02-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-02.science",
@@ -564,7 +609,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-02-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.pyp.grade-02.science",
@@ -577,7 +623,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-02-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-02.science",
@@ -590,7 +637,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-02-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-02.social-studies",
@@ -603,7 +651,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-02-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-02.social-studies",
@@ -616,7 +665,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-02-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.pyp.grade-02.social-studies",
@@ -629,7 +679,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-02-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-02.social-studies",
@@ -642,7 +693,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-02-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-03.ela",
@@ -673,7 +725,8 @@
             "path": "curriculum_resources/grade3_8_benchmarks_ela_standards_ELA.3.R.1-ELA.3.R.2.md",
             "state": "legacy_unaudited_not_json"
           }
-        ]
+        ],
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-03.ela",
@@ -687,7 +740,8 @@
         "planned_phase": 1,
         "planned_session": "P1-pilot",
         "status": "not_started",
-        "is_pilot": true
+        "is_pilot": true,
+        "scope": "active"
       },
       {
         "doc_id": "ib.pyp.grade-03.ela",
@@ -701,7 +755,8 @@
         "planned_phase": 1,
         "planned_session": "P1-pilot",
         "status": "not_started",
-        "is_pilot": true
+        "is_pilot": true,
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-03.ela",
@@ -715,7 +770,8 @@
         "planned_phase": 1,
         "planned_session": "P1-pilot",
         "status": "not_started",
-        "is_pilot": true
+        "is_pilot": true,
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-03.mathematics",
@@ -740,7 +796,8 @@
             "path": "curriculum_resources/standards_math_grade3.ts",
             "state": "legacy_unaudited_not_json"
           }
-        ]
+        ],
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-03.mathematics",
@@ -753,7 +810,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-03-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.pyp.grade-03.mathematics",
@@ -766,7 +824,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-03-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-03.mathematics",
@@ -779,7 +838,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-03-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-03.science",
@@ -804,7 +864,8 @@
             "path": "curriculum_resources/standards_science_grade3.ts",
             "state": "legacy_unaudited_not_json"
           }
-        ]
+        ],
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-03.science",
@@ -817,7 +878,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-03-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.pyp.grade-03.science",
@@ -830,7 +892,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-03-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-03.science",
@@ -843,7 +906,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-03-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-03.social-studies",
@@ -868,7 +932,8 @@
             "path": "curriculum_resources/standards_social_studies_grade3.ts",
             "state": "legacy_unaudited_not_json"
           }
-        ]
+        ],
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-03.social-studies",
@@ -881,7 +946,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-03-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.pyp.grade-03.social-studies",
@@ -894,7 +960,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-03-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-03.social-studies",
@@ -907,7 +974,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-03-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-04.ela",
@@ -932,7 +1000,8 @@
             "path": "curriculum_resources/standards_ela_grade4.ts",
             "state": "legacy_unaudited_not_json"
           }
-        ]
+        ],
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-04.ela",
@@ -945,7 +1014,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-04-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.pyp.grade-04.ela",
@@ -958,7 +1028,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-04-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-04.ela",
@@ -971,7 +1042,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-04-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-04.mathematics",
@@ -991,7 +1063,8 @@
             "path": "curriculum_resources/standards_math_grade4.ts",
             "state": "legacy_unaudited_not_json"
           }
-        ]
+        ],
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-04.mathematics",
@@ -1004,7 +1077,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-04-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.pyp.grade-04.mathematics",
@@ -1017,7 +1091,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-04-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-04.mathematics",
@@ -1030,7 +1105,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-04-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-04.science",
@@ -1055,7 +1131,8 @@
             "path": "curriculum_resources/grade4_science_scraped.json",
             "state": "legacy_unaudited_not_json"
           }
-        ]
+        ],
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-04.science",
@@ -1068,7 +1145,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-04-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.pyp.grade-04.science",
@@ -1081,7 +1159,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-04-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-04.science",
@@ -1094,7 +1173,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-04-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-04.social-studies",
@@ -1114,7 +1194,8 @@
             "path": "curriculum_resources/standards_social_studies_grade4.ts",
             "state": "legacy_unaudited_not_json"
           }
-        ]
+        ],
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-04.social-studies",
@@ -1127,7 +1208,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-04-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.pyp.grade-04.social-studies",
@@ -1140,7 +1222,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-04-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-04.social-studies",
@@ -1153,7 +1236,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-04-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-05.ela",
@@ -1178,7 +1262,8 @@
             "path": "curriculum_resources/standards_ela_grade5.ts",
             "state": "legacy_unaudited_not_json"
           }
-        ]
+        ],
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-05.ela",
@@ -1191,7 +1276,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-05-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.pyp.grade-05.ela",
@@ -1204,7 +1290,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-05-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-05.ela",
@@ -1217,7 +1304,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-05-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-05.mathematics",
@@ -1230,7 +1318,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-05-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-05.mathematics",
@@ -1243,7 +1332,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-05-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.pyp.grade-05.mathematics",
@@ -1256,7 +1346,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-05-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-05.mathematics",
@@ -1269,7 +1360,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-05-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-05.science",
@@ -1282,7 +1374,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-05-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-05.science",
@@ -1295,7 +1388,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-05-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.pyp.grade-05.science",
@@ -1308,7 +1402,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-05-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-05.science",
@@ -1321,7 +1416,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-05-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-05.social-studies",
@@ -1334,7 +1430,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-05-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-05.social-studies",
@@ -1347,7 +1444,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-05-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.pyp.grade-05.social-studies",
@@ -1360,7 +1458,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-05-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-05.social-studies",
@@ -1373,7 +1472,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-05-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-06.ela",
@@ -1386,7 +1486,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-06-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-06.ela",
@@ -1399,7 +1500,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-06-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.myp.grade-06.ela",
@@ -1412,7 +1514,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-06-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-06.ela",
@@ -1425,7 +1528,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-06-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-06.mathematics",
@@ -1438,7 +1542,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-06-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-06.mathematics",
@@ -1451,7 +1556,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-06-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.myp.grade-06.mathematics",
@@ -1464,7 +1570,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-06-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-06.mathematics",
@@ -1477,7 +1584,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-06-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-06.science",
@@ -1490,7 +1598,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-06-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-06.science",
@@ -1503,7 +1612,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-06-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.myp.grade-06.science",
@@ -1516,7 +1626,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-06-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-06.science",
@@ -1529,7 +1640,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-06-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-06.social-studies",
@@ -1542,7 +1654,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-06-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-06.social-studies",
@@ -1555,7 +1668,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-06-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.myp.grade-06.social-studies",
@@ -1568,7 +1682,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-06-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-06.social-studies",
@@ -1581,7 +1696,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-06-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-07.ela",
@@ -1594,7 +1710,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-07-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-07.ela",
@@ -1607,7 +1724,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-07-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.myp.grade-07.ela",
@@ -1620,7 +1738,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-07-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-07.ela",
@@ -1633,7 +1752,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-07-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-07.mathematics",
@@ -1646,7 +1766,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-07-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-07.mathematics",
@@ -1659,7 +1780,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-07-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.myp.grade-07.mathematics",
@@ -1672,7 +1794,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-07-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-07.mathematics",
@@ -1685,7 +1808,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-07-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-07.science",
@@ -1698,7 +1822,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-07-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-07.science",
@@ -1711,7 +1836,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-07-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.myp.grade-07.science",
@@ -1724,7 +1850,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-07-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-07.science",
@@ -1737,7 +1864,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-07-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-07.social-studies",
@@ -1750,7 +1878,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-07-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-07.social-studies",
@@ -1763,7 +1892,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-07-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.myp.grade-07.social-studies",
@@ -1776,7 +1906,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-07-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-07.social-studies",
@@ -1789,7 +1920,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-07-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-08.ela",
@@ -1802,7 +1934,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-08-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-08.ela",
@@ -1815,7 +1948,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-08-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.myp.grade-08.ela",
@@ -1828,7 +1962,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-08-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-08.ela",
@@ -1841,7 +1976,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-08-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-08.mathematics",
@@ -1854,7 +1990,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-08-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-08.mathematics",
@@ -1867,7 +2004,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-08-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.myp.grade-08.mathematics",
@@ -1880,7 +2018,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-08-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-08.mathematics",
@@ -1893,7 +2032,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-08-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-08.science",
@@ -1906,7 +2046,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-08-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-08.science",
@@ -1919,7 +2060,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-08-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.myp.grade-08.science",
@@ -1932,7 +2074,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-08-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-08.science",
@@ -1945,7 +2088,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-08-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-08.social-studies",
@@ -1958,7 +2102,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-08-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "az.grade-08.social-studies",
@@ -1971,7 +2116,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-08-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "ib.myp.grade-08.social-studies",
@@ -1984,7 +2130,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-08-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "xw.grade-08.social-studies",
@@ -1997,7 +2144,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-08-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "fl.grade-09.ela",
@@ -2010,7 +2158,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-09-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "az.grade-09.ela",
@@ -2023,7 +2172,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-09-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "ib.myp.grade-09.ela",
@@ -2036,7 +2186,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-09-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "xw.grade-09.ela",
@@ -2049,7 +2200,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-09-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "fl.grade-09.mathematics",
@@ -2062,7 +2214,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-09-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "az.grade-09.mathematics",
@@ -2075,7 +2228,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-09-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "ib.myp.grade-09.mathematics",
@@ -2088,7 +2242,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-09-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "xw.grade-09.mathematics",
@@ -2101,7 +2256,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-09-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "fl.grade-09.science",
@@ -2114,7 +2270,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-09-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "az.grade-09.science",
@@ -2127,7 +2284,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-09-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "ib.myp.grade-09.science",
@@ -2140,7 +2298,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-09-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "xw.grade-09.science",
@@ -2153,7 +2312,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-09-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "fl.grade-09.social-studies",
@@ -2166,7 +2326,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-09-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "az.grade-09.social-studies",
@@ -2179,7 +2340,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-09-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "ib.myp.grade-09.social-studies",
@@ -2192,7 +2354,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-09-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "xw.grade-09.social-studies",
@@ -2205,7 +2368,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-09-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "fl.grade-10.ela",
@@ -2218,7 +2382,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-10-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "az.grade-10.ela",
@@ -2231,7 +2396,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-10-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "ib.myp.grade-10.ela",
@@ -2244,7 +2410,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-10-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "xw.grade-10.ela",
@@ -2257,7 +2424,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-10-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "fl.grade-10.mathematics",
@@ -2270,7 +2438,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-10-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "az.grade-10.mathematics",
@@ -2283,7 +2452,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-10-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "ib.myp.grade-10.mathematics",
@@ -2296,7 +2466,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-10-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "xw.grade-10.mathematics",
@@ -2309,7 +2480,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-10-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "fl.grade-10.science",
@@ -2322,7 +2494,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-10-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "az.grade-10.science",
@@ -2335,7 +2508,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-10-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "ib.myp.grade-10.science",
@@ -2348,7 +2522,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-10-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "xw.grade-10.science",
@@ -2361,7 +2536,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-10-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "fl.grade-10.social-studies",
@@ -2374,7 +2550,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-10-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "az.grade-10.social-studies",
@@ -2387,7 +2564,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-10-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "ib.myp.grade-10.social-studies",
@@ -2400,7 +2578,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-10-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "xw.grade-10.social-studies",
@@ -2413,7 +2592,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-10-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "fl.grade-11.ela",
@@ -2426,7 +2606,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-11-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "az.grade-11.ela",
@@ -2439,7 +2620,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-11-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "ib.dp-cp.grade-11.ela",
@@ -2452,7 +2634,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-11-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "xw.grade-11.ela",
@@ -2465,7 +2648,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-11-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "fl.grade-11.mathematics",
@@ -2478,7 +2662,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-11-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "az.grade-11.mathematics",
@@ -2491,7 +2676,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-11-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "ib.dp-cp.grade-11.mathematics",
@@ -2504,7 +2690,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-11-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "xw.grade-11.mathematics",
@@ -2517,7 +2704,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-11-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "fl.grade-11.science",
@@ -2530,7 +2718,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-11-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "az.grade-11.science",
@@ -2543,7 +2732,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-11-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "ib.dp-cp.grade-11.science",
@@ -2556,7 +2746,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-11-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "xw.grade-11.science",
@@ -2569,7 +2760,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-11-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "fl.grade-11.social-studies",
@@ -2582,7 +2774,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-11-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "az.grade-11.social-studies",
@@ -2595,7 +2788,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-11-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "ib.dp-cp.grade-11.social-studies",
@@ -2608,7 +2802,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-11-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "xw.grade-11.social-studies",
@@ -2621,7 +2816,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-11-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "fl.grade-12.ela",
@@ -2634,7 +2830,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-12-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "az.grade-12.ela",
@@ -2647,7 +2844,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-12-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "ib.dp-cp.grade-12.ela",
@@ -2660,7 +2858,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-12-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "xw.grade-12.ela",
@@ -2673,7 +2872,8 @@
         "subject": "ela",
         "planned_phase": 2,
         "planned_session": "P2-grade-12-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "fl.grade-12.mathematics",
@@ -2686,7 +2886,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-12-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "az.grade-12.mathematics",
@@ -2699,7 +2900,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-12-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "ib.dp-cp.grade-12.mathematics",
@@ -2712,7 +2914,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-12-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "xw.grade-12.mathematics",
@@ -2725,7 +2928,8 @@
         "subject": "mathematics",
         "planned_phase": 2,
         "planned_session": "P2-grade-12-A",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "fl.grade-12.science",
@@ -2738,7 +2942,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-12-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "az.grade-12.science",
@@ -2751,7 +2956,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-12-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "ib.dp-cp.grade-12.science",
@@ -2764,7 +2970,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-12-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "xw.grade-12.science",
@@ -2777,7 +2984,8 @@
         "subject": "science",
         "planned_phase": 2,
         "planned_session": "P2-grade-12-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "fl.grade-12.social-studies",
@@ -2790,7 +2998,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-12-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "az.grade-12.social-studies",
@@ -2803,7 +3012,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-12-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "ib.dp-cp.grade-12.social-studies",
@@ -2816,7 +3026,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-12-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "xw.grade-12.social-studies",
@@ -2829,7 +3040,8 @@
         "subject": "social-studies",
         "planned_phase": 2,
         "planned_session": "P2-grade-12-B",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "deferred"
       },
       {
         "doc_id": "sum.florida-vs-arizona-overview",
@@ -2842,7 +3054,8 @@
         "subject": null,
         "planned_phase": 3,
         "planned_session": "P3-summaries",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "sum.ib-alignment-overview",
@@ -2855,7 +3068,8 @@
         "subject": null,
         "planned_phase": 3,
         "planned_session": "P3-summaries",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "sum.key-differences-by-grade-band",
@@ -2868,7 +3082,8 @@
         "subject": null,
         "planned_phase": 3,
         "planned_session": "P3-summaries",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       },
       {
         "doc_id": "sum.vertical-progression",
@@ -2881,7 +3096,8 @@
         "subject": null,
         "planned_phase": 3,
         "planned_session": "P3-vertical",
-        "status": "not_started"
+        "status": "not_started",
+        "scope": "active"
       }
     ]
   },
