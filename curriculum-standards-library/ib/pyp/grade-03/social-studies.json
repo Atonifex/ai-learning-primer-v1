@@ -1,0 +1,123 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "ib.pyp.grade-03.social-studies",
+  "doc_type": "ib_alignment",
+  "system": "ib",
+  "programme": "PYP",
+  "grade": 3,
+  "grade_label": "Grade 3",
+  "subject": "social-studies",
+  "status": "drafted",
+  "content_labels": ["B", "C"],
+  "sections": {
+    "applicable_programme": {
+      "programme": "PYP",
+      "age_range": "3-12",
+      "grade_mapping_note": "PYP covers ages 3-12; our Grade 3 mapping (typically age 8-9) is within the programme but is our convention, not an IB-specified grade boundary.",
+      "shared_programme_block_ref": null,
+      "grade_specific_note": {
+        "label": "C",
+        "text": "Grade 3 students in PYP social studies explore communities, geography, history, and civic concepts, typically through transdisciplinary units connecting to themes like 'Where we are in place and time' and 'How we organize ourselves'."
+      }
+    },
+    "subject_group_or_structure": {
+      "ib_subject_group_or_area": "Social Studies (within transdisciplinary framework)",
+      "mapping_to_primer_subject": "PYP does not have a standalone 'Social Studies' subject; social studies concepts are explored through transdisciplinary themes, particularly 'Who we are', 'Where we are in place and time', 'How we organize ourselves', and 'Sharing the planet'. This maps to our Social Studies subject.",
+      "mapping_label": "C"
+    },
+    "framework_elements": {
+      "concepts": [
+        "Form - What is it like?",
+        "Function - How does it work?",
+        "Causation - Why is it like it is?",
+        "Change - How is it changing?",
+        "Connection - How is it connected to other things?",
+        "Perspective - What are the points of view?",
+        "Responsibility - What is our responsibility?"
+      ],
+      "approaches_to_learning": [
+        "Thinking skills",
+        "Research skills",
+        "Communication skills",
+        "Social skills",
+        "Self-management skills"
+      ],
+      "learner_profile_attributes": [
+        "Inquirers",
+        "Knowledgeable",
+        "Thinkers",
+        "Communicators",
+        "Principled",
+        "Open-minded",
+        "Caring",
+        "Risk-takers",
+        "Balanced",
+        "Reflective"
+      ],
+      "global_contexts_or_transdisciplinary_themes": [
+        "Who we are",
+        "Where we are in place and time",
+        "How we express ourselves",
+        "How the world works",
+        "How we organize ourselves",
+        "Sharing the planet"
+      ]
+    },
+    "official_requirements": [
+      {
+        "label": "B",
+        "text": "PYP Social Studies Scope and Sequence covers five strands: Human systems and economic activities, Social organization and culture, Continuity and change through time, Human and natural environments, and Resources and the environment.",
+        "citation_ids": ["c-ibo-pyp-ss"],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Social studies in PYP emphasizes perspective-taking, understanding multiple viewpoints, and developing responsible citizenship.",
+        "citation_ids": ["c-ibo-pyp-ss"],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Social studies learning is embedded within units of inquiry, particularly under 'Where we are in place and time' and 'How we organize ourselves'.",
+        "citation_ids": ["c-ibo-pyp-ss"],
+        "page": null
+      }
+    ],
+    "typical_fit": {
+      "label": "C",
+      "text": "At Grade 3, PYP social studies learners typically: explore map skills and geographic features, understand community organization and government, investigate cultural diversity and contributions, and examine economic concepts like trade and resources. These align with Florida standards for geography (SS.3.G), economics (SS.3.E), and civics (SS.3.CG)."
+    },
+    "suggested_alignment_to_florida_and_arizona": {
+      "label": "C",
+      "florida": [
+        {"standard_id": "SS.3.G.1.1", "alignment_note": "Map analysis aligns with PYP Human and natural environments strand."},
+        {"standard_id": "SS.3.G.2.2", "alignment_note": "US regions aligns with PYP geographic inquiry under 'Where we are in place and time'."},
+        {"standard_id": "SS.3.G.4.2", "alignment_note": "Cultural diversity aligns with PYP Social organization and culture strand."},
+        {"standard_id": "SS.3.E.1.1", "alignment_note": "Scarcity and trade aligns with PYP Human systems and economic activities strand."},
+        {"standard_id": "SS.3.CG.1.2", "alignment_note": "Government and people aligns with PYP emphasis on civic responsibility and 'How we organize ourselves'."}
+      ],
+      "arizona": [],
+      "notes": "Arizona standards deferred. These alignments are suggested starting points (Label C), not official IB-Florida mappings."
+    },
+    "access_limitations": [
+      "IB Programme Resource Centre (PRC) materials require educator login; detailed Social Studies Scope and Sequence document not directly accessible.",
+      "Specific learning outcomes for each strand require PRC access."
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-ibo-pyp-ss",
+      "url": "https://ibo.org/programmes/primary-years-programme/curriculum/",
+      "title": "PYP Curriculum - Social Studies",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Public overview page reachable; detailed scope and sequence requires IB educator login"
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Initial draft. IB framework elements from public PYP documentation. Detailed learning outcomes require IB PRC access (restricted). ibo.org blocked by Cloudflare during this session."
+  ],
+  "last_updated": "2026-10-03"
+}

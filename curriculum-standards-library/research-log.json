@@ -80,6 +80,32 @@
         "type": "decision",
         "summary": "Scope narrowed: Grades 2-8 active, K and Grade 1 omitted, Grades 9-12 deferred.",
         "details": "Inventory entries carry a scope field; folders kept."
+      },
+      {
+        "date": "2026-10-03",
+        "type": "decision",
+        "summary": "Scope change: Arizona deferred entirely; Florida + IB priority.",
+        "details": "Per Ivan: deliver full FL + IB coverage for Grades 2-8. AZ content files deferred. Crosswalks are FL↔IB only for now (AZ columns empty or omitted)."
+      },
+      {
+        "date": "2026-10-03",
+        "type": "network_check",
+        "summary": "Re-tested network access. CPALMS reachable, azed.gov and ibo.org blocked by Cloudflare.",
+        "details": {
+          "method": "curl with headers",
+          "results": {
+            "www.cpalms.org": "200 OK (via 302 redirect)",
+            "www.azed.gov": "403 Cloudflare challenge",
+            "ibo.org": "403 Cloudflare challenge"
+          },
+          "consequence": "FL verification possible via CPALMS. IB limited to public framework summaries; detailed scope/sequence docs inaccessible. AZ deferred anyway."
+        }
+      },
+      {
+        "date": "2026-10-03",
+        "type": "source_check",
+        "summary": "Legacy FL G3-4 content found on primer-mvp branch; converting to JSON envelope per D5 option (a).",
+        "details": "Files: standards_ela_grade3.ts, standards_math_grade3.ts, standards_science_grade3.ts, standards_social_studies_grade3.ts, plus Grade 4 equivalents. Each contains CPALMS source URLs per standard."
       }
     ]
   },
@@ -87,5 +113,5 @@
   "version_notes": [
     "Created in Phase 0."
   ],
-  "last_updated": "2026-10-02"
+  "last_updated": "2026-10-03"
 }

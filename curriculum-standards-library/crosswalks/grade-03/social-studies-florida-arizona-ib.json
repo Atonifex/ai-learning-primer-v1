@@ -1,0 +1,183 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-03.social-studies",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 3,
+  "grade_label": "Grade 3",
+  "subject": "social-studies",
+  "status": "drafted",
+  "content_labels": ["A", "B", "C"],
+  "sections": {
+    "scope_note": "Arizona standards deferred per Ivan (2026-10-03). This crosswalk covers Florida Social Studies (NGSSS + 2023 Civics) ↔ IB PYP Social Studies only.",
+    "rows": [
+      {
+        "row_id": "xw-g03-ss-001",
+        "topic_domain": "Historical Inquiry - Primary and Secondary Sources",
+        "florida_standards": ["SS.3.A.1.1", "SS.3.A.1.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP ATL: Research skills", "PYP Transdisciplinary Theme: Where we are in place and time"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies analyzing primary/secondary sources and using technology for research. PYP develops research skills across transdisciplinary learning.",
+        "suggested_instructional_bridge": "Embed source analysis in 'Where we are in place and time' units, teaching students to distinguish primary from secondary sources while investigating historical questions."
+      },
+      {
+        "row_id": "xw-g03-ss-002",
+        "topic_domain": "Historical Inquiry - Social Science Vocabulary",
+        "florida_standards": ["SS.3.A.1.3"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP ATL: Communication skills", "PYP Concept: Form"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies defining social science terms. PYP develops academic vocabulary through meaningful context.",
+        "suggested_instructional_bridge": "Build a social studies word wall with terms introduced through inquiry, connecting vocabulary to concepts students are actively investigating."
+      },
+      {
+        "row_id": "xw-g03-ss-003",
+        "topic_domain": "Geography - Map Skills",
+        "florida_standards": ["SS.3.G.1.1", "SS.3.G.1.2", "SS.3.G.1.4", "SS.3.G.1.5", "SS.3.G.1.6"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Social Studies: Human and natural environments strand", "PYP ATL: Research skills"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies map elements, types, distortion, and scale. PYP uses maps as research tools for geographic inquiry.",
+        "suggested_instructional_bridge": "Teach map skills through authentic inquiry tasks—planning trips, comparing regions, investigating local-global connections—building technical skills with purpose."
+      },
+      {
+        "row_id": "xw-g03-ss-004",
+        "topic_domain": "Geography - World Geography",
+        "florida_standards": ["SS.3.G.1.3", "SS.3.G.2.1"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Transdisciplinary Theme: Where we are in place and time", "PYP Social Studies: Human and natural environments strand"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies labeling continents, oceans, and North American countries. PYP develops global awareness through place-based inquiry.",
+        "suggested_instructional_bridge": "Use continent and ocean mapping as entry points for 'Where we are in place and time' inquiries, connecting location knowledge to deeper geographic understanding."
+      },
+      {
+        "row_id": "xw-g03-ss-005",
+        "topic_domain": "Geography - United States Regions",
+        "florida_standards": ["SS.3.G.2.2", "SS.3.G.2.3"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Form", "PYP Social Studies: Human and natural environments strand"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies identifying and labeling the five US regions and their states. PYP explores regional characteristics through inquiry.",
+        "suggested_instructional_bridge": "Investigate US regions through comparison projects—climate, culture, economy—building geographic knowledge while exploring what gives each region its form."
+      },
+      {
+        "row_id": "xw-g03-ss-006",
+        "topic_domain": "Geography - Physical Features and Landmarks",
+        "florida_standards": ["SS.3.G.2.4", "SS.3.G.2.5"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Social Studies: Human and natural environments strand", "PYP Concept: Connection"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies physical features and natural/man-made landmarks. PYP examines connections between people and places.",
+        "suggested_instructional_bridge": "Research landmark investigations where students explore why landmarks exist where they do, connecting physical geography to human decisions."
+      },
+      {
+        "row_id": "xw-g03-ss-007",
+        "topic_domain": "Geography - Climate, Resources, and Environment",
+        "florida_standards": ["SS.3.G.3.1", "SS.3.G.3.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Social Studies: Resources and the environment strand", "PYP Transdisciplinary Theme: Sharing the planet"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies climate, vegetation, and natural resources across North America. PYP explores resource use and environmental responsibility.",
+        "suggested_instructional_bridge": "Design 'Sharing the planet' units investigating how climate affects resources and how communities use resources responsibly."
+      },
+      {
+        "row_id": "xw-g03-ss-008",
+        "topic_domain": "Geography - Human Settlement and Environment",
+        "florida_standards": ["SS.3.G.4.1"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Causation", "PYP Social Studies: Human and natural environments strand"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies how environment influences settlement. PYP explores causation—why do people live where they do?",
+        "suggested_instructional_bridge": "Investigate settlement patterns through 'Why here?' inquiries, examining how water, climate, and resources caused communities to develop in specific locations."
+      },
+      {
+        "row_id": "xw-g03-ss-009",
+        "topic_domain": "Geography - Cultural Diversity",
+        "florida_standards": ["SS.3.G.4.2", "SS.3.G.4.3", "SS.3.G.4.4"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Social Studies: Social organization and culture strand", "PYP Learner Profile: Open-minded"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies identifying cultures, comparing characteristics, and recognizing ethnic contributions. PYP develops open-mindedness toward diverse perspectives.",
+        "suggested_instructional_bridge": "Create cultural celebration projects where students research and share diverse cultural contributions, building both knowledge and open-minded attitudes."
+      },
+      {
+        "row_id": "xw-g03-ss-010",
+        "topic_domain": "Geography - Perception of Place",
+        "florida_standards": ["SS.3.G.2.6"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Concept: Perspective", "PYP ATL: Research skills"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies investigating perceptions through interviews, mental mapping, and media. PYP emphasizes perspective as a key concept.",
+        "suggested_instructional_bridge": "Conduct perception investigations—mental maps, interviews with community members, analysis of songs/stories about places—exploring how perspective shapes our view of regions."
+      },
+      {
+        "row_id": "xw-g03-ss-011",
+        "topic_domain": "Economics - Scarcity and Trade",
+        "florida_standards": ["SS.3.E.1.1", "SS.3.E.1.3"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Social Studies: Human systems and economic activities strand", "PYP Transdisciplinary Theme: How we organize ourselves"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies scarcity causing trade and buyer-seller interactions. PYP examines economic organization through 'How we organize ourselves'.",
+        "suggested_instructional_bridge": "Design classroom market simulations exploring scarcity, trade, and exchange, connecting to broader inquiries about how communities organize economic activity."
+      },
+      {
+        "row_id": "xw-g03-ss-012",
+        "topic_domain": "Economics - Money and Currency",
+        "florida_standards": ["SS.3.E.1.2", "SS.3.E.1.4"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Social Studies: Human systems and economic activities strand", "PYP Concept: Function"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies money characteristics and distinguishing currencies. PYP explores how money functions in economic systems.",
+        "suggested_instructional_bridge": "Compare currencies from US, Canada, Mexico, and Caribbean nations, investigating how money functions across different economic systems."
+      },
+      {
+        "row_id": "xw-g03-ss-013",
+        "topic_domain": "Civics - Constitutional Government",
+        "florida_standards": ["SS.3.CG.1.1", "SS.3.CG.1.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Transdisciplinary Theme: How we organize ourselves", "PYP Concept: Function"],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies US Constitution and government power from the people. PYP explores government through broader inquiry without US-specific content.",
+        "suggested_instructional_bridge": "Frame constitutional study within 'How we organize ourselves' inquiry—why do we need rules and systems? How does the Constitution function to organize our society?"
+      },
+      {
+        "row_id": "xw-g03-ss-014",
+        "topic_domain": "Civics - Citizenship and Civic Virtue",
+        "florida_standards": ["SS.3.CG.2.1", "SS.3.CG.2.2"],
+        "arizona_standards": [],
+        "ib_framework_elements": ["PYP Learner Profile: Principled, Caring", "PYP Concept: Responsibility"],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies civility, cooperation, volunteerism, and community contribution. PYP develops principled, caring citizens through the learner profile.",
+        "suggested_instructional_bridge": "Design service learning projects where students identify community needs and take responsible action, developing both civic virtue and principled character."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-fl-ss",
+      "url": "https://www.cpalms.org/",
+      "title": "Florida NGSSS and State Academic Standards - Social Studies",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": "2014/2023",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-pyp",
+      "url": "https://ibo.org/programmes/primary-years-programme/",
+      "title": "IB Primary Years Programme",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Public overview; detailed scope and sequence requires IB educator login"
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Initial FL↔IB crosswalk. Arizona deferred per Ivan. Alignments are suggested (Label C) based on available Florida standards and public IB PYP framework documentation."
+  ],
+  "last_updated": "2026-10-03"
+}

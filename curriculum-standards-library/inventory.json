@@ -706,8 +706,8 @@
         "grade_label": "Grade 3",
         "subject": "ela",
         "planned_phase": 1,
-        "planned_session": "P1-pilot",
-        "status": "not_started",
+        "planned_session": "P1-first-batch",
+        "status": "drafted",
         "is_pilot": true,
         "legacy_assets": [
           {
@@ -753,8 +753,8 @@
         "grade_label": "Grade 3",
         "subject": "ela",
         "planned_phase": 1,
-        "planned_session": "P1-pilot",
-        "status": "not_started",
+        "planned_session": "P1-first-batch",
+        "status": "drafted",
         "is_pilot": true,
         "scope": "active"
       },
@@ -768,8 +768,8 @@
         "grade_label": "Grade 3",
         "subject": "ela",
         "planned_phase": 1,
-        "planned_session": "P1-pilot",
-        "status": "not_started",
+        "planned_session": "P1-first-batch",
+        "status": "drafted",
         "is_pilot": true,
         "scope": "active"
       },
@@ -782,9 +782,9 @@
         "grade": 3,
         "grade_label": "Grade 3",
         "subject": "mathematics",
-        "planned_phase": 2,
-        "planned_session": "P2-grade-03-A",
-        "status": "not_started",
+        "planned_phase": 1,
+        "planned_session": "P1-first-batch",
+        "status": "drafted",
         "legacy_assets": [
           {
             "branch": "primer-mvp",
@@ -822,9 +822,9 @@
         "grade": 3,
         "grade_label": "Grade 3",
         "subject": "mathematics",
-        "planned_phase": 2,
-        "planned_session": "P2-grade-03-A",
-        "status": "not_started",
+        "planned_phase": 1,
+        "planned_session": "P1-first-batch",
+        "status": "drafted",
         "scope": "active"
       },
       {
@@ -836,9 +836,9 @@
         "grade": 3,
         "grade_label": "Grade 3",
         "subject": "mathematics",
-        "planned_phase": 2,
-        "planned_session": "P2-grade-03-A",
-        "status": "not_started",
+        "planned_phase": 1,
+        "planned_session": "P1-first-batch",
+        "status": "drafted",
         "scope": "active"
       },
       {
@@ -850,9 +850,9 @@
         "grade": 3,
         "grade_label": "Grade 3",
         "subject": "science",
-        "planned_phase": 2,
-        "planned_session": "P2-grade-03-B",
-        "status": "not_started",
+        "planned_phase": 1,
+        "planned_session": "P1-first-batch",
+        "status": "drafted",
         "legacy_assets": [
           {
             "branch": "primer-mvp",
@@ -890,9 +890,9 @@
         "grade": 3,
         "grade_label": "Grade 3",
         "subject": "science",
-        "planned_phase": 2,
-        "planned_session": "P2-grade-03-B",
-        "status": "not_started",
+        "planned_phase": 1,
+        "planned_session": "P1-first-batch",
+        "status": "drafted",
         "scope": "active"
       },
       {
@@ -904,9 +904,9 @@
         "grade": 3,
         "grade_label": "Grade 3",
         "subject": "science",
-        "planned_phase": 2,
-        "planned_session": "P2-grade-03-B",
-        "status": "not_started",
+        "planned_phase": 1,
+        "planned_session": "P1-first-batch",
+        "status": "drafted",
         "scope": "active"
       },
       {
@@ -918,9 +918,9 @@
         "grade": 3,
         "grade_label": "Grade 3",
         "subject": "social-studies",
-        "planned_phase": 2,
-        "planned_session": "P2-grade-03-B",
-        "status": "not_started",
+        "planned_phase": 1,
+        "planned_session": "P1-first-batch",
+        "status": "drafted",
         "legacy_assets": [
           {
             "branch": "primer-mvp",
@@ -958,9 +958,9 @@
         "grade": 3,
         "grade_label": "Grade 3",
         "subject": "social-studies",
-        "planned_phase": 2,
-        "planned_session": "P2-grade-03-B",
-        "status": "not_started",
+        "planned_phase": 1,
+        "planned_session": "P1-first-batch",
+        "status": "drafted",
         "scope": "active"
       },
       {
@@ -972,9 +972,9 @@
         "grade": 3,
         "grade_label": "Grade 3",
         "subject": "social-studies",
-        "planned_phase": 2,
-        "planned_session": "P2-grade-03-B",
-        "status": "not_started",
+        "planned_phase": 1,
+        "planned_session": "P1-first-batch",
+        "status": "drafted",
         "scope": "active"
       },
       {
@@ -3105,5 +3105,5 @@
   "version_notes": [
     "Generated in Phase 0."
   ],
-  "last_updated": "2026-10-02"
+  "last_updated": "2026-10-03"
 }
