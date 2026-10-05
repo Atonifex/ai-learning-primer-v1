@@ -32,13 +32,14 @@ export const generateLearningActivityTool = {
   function: {
     name: "generate_learning_activity",
     description:
-      "Generate an AI mini-quiz tied to one standard in the active session subject.",
+      "Generate and save an AI mini-quiz tied to one standard in the active session subject. It appears as ready work at the chosen map location; the captain chooses when to open it. Tell them where it is, or use show_world_map when they ask to see it.",
     parameters: {
       type: "object",
       properties: {
         standard_code: { type: "string", description: "Benchmark code to target." },
         title: { type: "string", description: "Short learner-facing quiz title." },
         instructions: { type: "string", description: "One concise instruction sentence." },
+        map_location_id: { type: "string", description: "Available location ID from LIVING ISLAND MAP where this work belongs. Defaults to camp. Never invent a location." },
         items: {
           type: "array",
           description: "3-5 quiz items.",
@@ -109,7 +110,7 @@ export const openCrewLogTool = {
   function: {
     name: "open_crew_log",
     description:
-      "Open the on-screen crew-log slate so the captain can leave a note for the missing engineer. Call this yourself when camp-math is locked on the crew log and they have not given a note yet. Never ask them to type the tool name.",
+      "Optional: open the on-screen crew-log slate so the captain can leave a note for the missing engineer. Jobs (including camp-math) do not wait on this. Never ask them to type the tool name.",
     parameters: {
       type: "object",
       properties: {},
@@ -122,7 +123,7 @@ export const saveCrewLogTool = {
   function: {
     name: "save_crew_log",
     description:
-      "Save the captain's crew-log note from this conversation (or a short paraphrase of what they said). Call this yourself when they already wrote or spoke the note in chat — do not make them retype it on a slate unless they prefer that. Unlocks camp-math when successful. Never ask them to type the tool name.",
+      "Optional: save the captain's crew-log note from this conversation (or a short paraphrase). Jobs do not wait on this. Never ask them to type the tool name.",
     parameters: {
       type: "object",
       properties: {

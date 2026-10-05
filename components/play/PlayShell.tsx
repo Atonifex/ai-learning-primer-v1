@@ -1,12 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import type { PinId } from "../../lib/play/beachMap";
+import { SPAWN_COL, SPAWN_ROW, tileCenter } from "../../lib/play/beachMap";
 import { HIDDEN_TURN } from "../../lib/play/hiddenTurns";
-import { missionByPin } from "../../lib/play/missions";
 import { TUTORIAL_QUIZ_SLUG } from "../../lib/play/tutorialQuizSlug";
 import type { StillKey } from "../../lib/play/stills";
 import { SUBJECT_DISPLAY_NAMES, type PlayableCoreSubjectSlug } from "../../lib/constants/subjects";
@@ -29,7 +28,13 @@ import { useLearningLoop } from "./useLearningLoop";
 import { useMissions } from "./useMissions";
 import { unlockRhoAudio } from "../../lib/play/rhoAudio";
 import { isClientAiDebug } from "../../lib/play/clientAiDebug";
-import { shouldOpenCrewLogAfterWreckQuiz } from "../../lib/play/crewLogCandidate";
+import { shouldHideDialogueForOverlay } from "../../lib/play/overlayWorkMode";
+import { useWorldMap } from "./useWorldMap";
+import WorldMapPanel from "./WorldMapPanel";
+import WorldHud from "./WorldHud";
+import type { MapTask, WorldNode } from "../../lib/play/worldMap";
+import type { GeneratedActivity } from "../../lib/types";
+import "./worldMap.css";
 import {
   clipReflectionMessage,
   LEARNING_CLIP_FIXTURE,
@@ -87,7 +92,12 @@ export default function PlayShell(props: {
   const pendingQuizRef = useRef(false);
   const wreckOpeningRef = useRef(false);
   const openedMissionRef = useRef<string | null>(null);
-  const openedGeneratedRef = useRef<Set<string>>(new Set());
+  const [mapOpen, setMapOpen] = useState(false);
+  const [selectedPlace, setSelectedPlace] = useState<string | null>(null);
+  const [position, setPosition] = useState(() => tileCenter(SPAWN_COL, SPAWN_ROW));
+  const [travel, setTravel] = useState<{ id: string; sequence: number } | null>(null);
+  const [activityBusy, setActivityBusy] = useState(false);
+  const [mapActionError, setMapActionError] = useState<string | null>(null);
   const openQuizRef = useRef<(() => Promise<{ alreadyDone: boolean } | undefined>) | null>(
     null
   );
@@ -105,6 +115,8 @@ export default function PlayShell(props: {
   }, []);
 
   const stream = useSessionStream(props.sessionId, onTurnEnd);
+  const worldMap = useWorldMap(props.sessionId, stream.worldVersion);
+  const selectedNode = worldMap.world?.nodes.find((n) => n.id === selectedPlace);
   const learning = useLearningLoop(props.sessionId, captain, stream.sendMessage);
   openQuizRef.current = learning.openTutorialQuiz;
 
@@ -114,18 +126,21 @@ export default function PlayShell(props: {
       try {
         const started = await missions.startMission(missionId);
         setBoardOpen(false);
+        setMapOpen(false);
+        setFocusOpen(false);
+        setDialogueOpen(false);
         if (started.switched && started.sessionId !== props.sessionId) {
           router.push(`/learn/${started.sessionId}?mission=${started.mission.id}`);
           return;
         }
-        if (opts?.talk !== false) {
+        void stream.sendMessage(
+          `${HIDDEN_TURN.missionStartPrefix} ${started.mission.title} (${started.mission.subjectSlug}) at the ${started.mission.pinId}.`
+        );
+        const opened = await learning.openOverlayQuiz(started.mission.activitySlug);
+        if (opts?.talk === true && opened.alreadyDone) {
           unlockRhoAudio();
           setDialogueOpen(true);
-          void stream.sendMessage(
-            `${HIDDEN_TURN.missionStartPrefix} ${started.mission.title} (${started.mission.subjectSlug}) at the ${started.mission.pinId}.`
-          );
         }
-        const opened = await learning.openOverlayQuiz(started.mission.activitySlug);
         if (opened.alreadyDone) {
           setHint(`${started.mission.title} is already logged.`);
         }
@@ -166,8 +181,20 @@ export default function PlayShell(props: {
     if (!missionId || openedMissionRef.current === missionId) return;
     if (!firstRun.complete) return;
     openedMissionRef.current = missionId;
-    void beginMission(missionId, { talk: true });
+    void beginMission(missionId);
   }, [beginMission, props.initialMission, firstRun.complete]);
+
+  useEffect(() => {
+    if (
+      shouldHideDialogueForOverlay({
+        showQuiz: learning.showQuiz,
+        showReflection: learning.showReflection,
+      })
+    ) {
+      setDialogueOpen(false);
+      setMapOpen(false);
+    }
+  }, [learning.showQuiz, learning.showReflection]);
 
   useEffect(() => {
     if (stream.streaming) return;
@@ -178,6 +205,7 @@ export default function PlayShell(props: {
       void beginMission(pending.missionId);
       return;
     }
+    setDialogueOpen(false);
     void learning.openOverlayQuiz(pending.activitySlug).catch((e: unknown) => {
       setHint(e instanceof Error ? e.message : "Could not open that job.");
     });
@@ -186,6 +214,7 @@ export default function PlayShell(props: {
   useEffect(() => {
     if (!stream.pendingMissionBoardOpen) return;
     stream.clearPendingMissionBoardOpen();
+    setMapOpen(false);
     void missions.refresh();
     setBoardOpen(true);
   }, [stream.pendingMissionBoardOpen, stream, missions.refresh]);
@@ -193,6 +222,7 @@ export default function PlayShell(props: {
   useEffect(() => {
     if (!stream.pendingCrewLogOpen) return;
     stream.clearPendingCrewLogOpen();
+    setMapOpen(false);
     void learning.openReflection();
   }, [stream.pendingCrewLogOpen, stream, learning]);
 
@@ -200,6 +230,7 @@ export default function PlayShell(props: {
     const pending = stream.pendingLearningClip;
     if (!pending) return;
     stream.clearPendingLearningClip();
+    setMapOpen(false);
     setClip(pending);
   }, [stream.pendingLearningClip, stream]);
 
@@ -219,11 +250,52 @@ export default function PlayShell(props: {
   }, [stream.pendingCrewLogSaved, stream, learning, missions]);
 
   useEffect(() => {
-    const latest = stream.generatedActivities.at(-1);
-    if (!latest || openedGeneratedRef.current.has(latest.id)) return;
-    openedGeneratedRef.current.add(latest.id);
-    learning.openGeneratedQuiz(latest);
-  }, [learning, stream.generatedActivities]);
+    if (!stream.pendingMapOpen) return;
+    if (stream.pendingMapOpen.nodeId) setSelectedPlace(stream.pendingMapOpen.nodeId);
+    setMapOpen(true);
+    stream.clearPendingMapOpen();
+    void worldMap.refresh();
+  }, [stream.pendingMapOpen, stream, worldMap.refresh]);
+
+  useEffect(() => {
+    if (!stream.worldUpdate) return;
+    if (stream.worldUpdate.nodeId) setSelectedPlace(stream.worldUpdate.nodeId);
+    setHint(stream.worldUpdate.reason);
+  }, [stream.worldUpdate]);
+
+  useEffect(() => {
+    const key = (e: KeyboardEvent) => {
+      if (!firstRun.complete || e.ctrlKey || e.metaKey || e.altKey || e.repeat) return;
+      if (e.target instanceof HTMLElement && (e.target.closest("input,textarea,select,dialog") || e.target.isContentEditable)) return;
+      if (e.key.toLowerCase() === "m" && !learning.showQuiz && !learning.showReflection && !clip && !focusOpen && !boardOpen) { e.preventDefault(); setMapOpen((open) => !open); }
+    };
+    window.addEventListener("keydown", key); return () => window.removeEventListener("keydown", key);
+  }, [firstRun.complete, learning.showQuiz, learning.showReflection, clip, focusOpen, boardOpen]);
+
+  function walkToPlace(node: WorldNode) {
+    setMapOpen(false); setDialogueOpen(false); setBoardOpen(false); setFocusOpen(false);
+    setSelectedPlace(node.id); setTravel({ id: node.id, sequence: Date.now() });
+  }
+
+  function askAboutPlace(node: WorldNode) {
+    setMapOpen(false); setBoardOpen(false); setFocusOpen(false); setDialogueOpen(true);
+    unlockRhoAudio();
+    if (!stream.streaming) void stream.sendMessage(`Let's talk about ${node.title} on our map. What can we do here for our chapter problem?`);
+  }
+
+  async function openMapActivity(task: MapTask) {
+    if (activityBusy) return;
+    setActivityBusy(true);
+    setMapActionError(null);
+    try {
+      const response = await fetch(`/api/world/activity/${encodeURIComponent(task.id)}`);
+      const data = await response.json() as { activity: GeneratedActivity; sessionId: string; error?: string };
+      if (!response.ok) throw new Error(data.error ?? "Could not open this work.");
+      setMapOpen(false); setDialogueOpen(false);
+      learning.openGeneratedQuiz(data.activity, data.sessionId);
+    } catch (e) { setMapActionError(e instanceof Error ? e.message : "Could not open this work. Try opening it again."); }
+    finally { setActivityBusy(false); }
+  }
 
   function skipIntro() {
     void firstRun.advance("video_done");
@@ -249,10 +321,6 @@ export default function PlayShell(props: {
       void learning.openTutorialQuiz().catch((e: unknown) => {
         setHint(e instanceof Error ? e.message : "Could not open the crate lid.");
       });
-      return;
-    }
-    if (learning.quizDone && !learning.reflectionDone) {
-      void learning.openReflection();
     }
   }
 
@@ -264,35 +332,18 @@ export default function PlayShell(props: {
     }
   }
 
-  function onArriveAtPin(id: PinId) {
-    if (id === "wreck") {
+  function onArriveAtPin(id: string) {
+    setSelectedPlace(id); setTravel(null);
+    if (id === "wreck" && !firstRun.complete) {
       openWreckTalk();
-      return;
     }
-    const mission = missionByPin(id);
-    const row = missions.missions.find((m) => m.id === mission?.id);
-    if (!row || row.status === "locked") {
-      setHint(row?.lockReason || "Rho: Salvage the wreck first, Captain. The rest can wait.");
-      return;
-    }
-    void beginMission(row.id);
-  }
-
-  function onWander() {
-    if (talkedToWreck || dialogueOpen) return;
-    if (firstRun.step === "video" || firstRun.step === "name" || firstRun.step === "move") {
-      return;
-    }
-    unlockRhoAudio();
-    setDialogueOpen(true);
-    setHint("Rho is calling.");
-    void stream.sendMessage(HIDDEN_TURN.rhoWander);
   }
 
   function callRho() {
     unlockRhoAudio();
+    setMapOpen(false); setBoardOpen(false); setFocusOpen(false);
     setDialogueOpen(true);
-    void stream.sendMessage(HIDDEN_TURN.rhoCall);
+    if (!stream.messages.length && !stream.streaming) void stream.sendMessage(HIDDEN_TURN.rhoCall);
   }
 
   async function handleLeave() {
@@ -313,16 +364,6 @@ export default function PlayShell(props: {
     window.addEventListener("beforeunload", handler);
     return () => window.removeEventListener("beforeunload", handler);
   }, [props.sessionId]);
-
-  const unlockedPins = useMemo(
-    () =>
-      firstRun.complete
-        ? missions.missions
-            .filter((m) => m.status !== "locked" && m.pinId !== "wreck")
-            .map((m) => m.pinId)
-        : [],
-    [firstRun.complete, missions.missions]
-  );
 
   const portrait: StillKey = stream.streaming
     ? "rhoPortraitThinking"
@@ -354,7 +395,7 @@ export default function PlayShell(props: {
   const chrome = firstRun.chrome;
 
   return (
-    <div className="relative h-screen overflow-hidden bg-[#0a3340]">
+    <div className="play-world relative h-dvh overflow-hidden bg-[#195563]">
       <OverworldCanvas
         paused={
           dialogueOpen ||
@@ -362,13 +403,18 @@ export default function PlayShell(props: {
           learning.showReflection ||
           boardOpen ||
           focusOpen ||
+          mapOpen ||
+          confirmLeave ||
           Boolean(clip)
         }
-        quizDone={firstRun.complete && (learning.quizDone || missions.wreckQuizDone)}
-        talkedToWreck={talkedToWreck}
-        unlockedPins={unlockedPins}
-        onArriveAtPin={onArriveAtPin}
-        onWanderFromWreck={onWander}
+        world={worldMap.world}
+        travel={travel}
+        onArrive={onArriveAtPin}
+        onSelect={(id) => {
+          if (!firstRun.complete && id === "wreck") setTravel({ id, sequence: Date.now() });
+          else setSelectedPlace(id);
+        }}
+        onPosition={setPosition}
       />
       <ResourceHud
         captainName={captain}
@@ -379,8 +425,9 @@ export default function PlayShell(props: {
       />
 
       <header
-        className={`pointer-events-none absolute right-3 top-3 z-[60] flex flex-wrap items-center justify-end gap-2 ${dialogueOpen ? "hidden" : ""}`}
+        className={`world-toolbar pointer-events-none absolute right-3 top-3 z-20 flex flex-wrap items-center justify-end gap-2 ${dialogueOpen || focusOpen || boardOpen || learning.showQuiz || learning.showReflection || Boolean(clip) ? "hidden" : ""}`}
       >
+        {chrome.jobs && <button type="button" className="pointer-events-auto map-button primary" onClick={() => setMapOpen(true)}>Island map</button>}
         {chrome.subjectBadge && (
           <span className="rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100/70">
             {subjectBadge(subjectSlug)}
@@ -445,6 +492,18 @@ export default function PlayShell(props: {
         )}
       </header>
 
+      {firstRun.complete && !dialogueOpen && !focusOpen && !boardOpen && !learning.showQuiz && !learning.showReflection && !clip && <WorldHud
+        world={worldMap.world} selected={selectedNode} position={position} error={worldMap.error}
+        travelTitle={travel ? selectedNode?.title : undefined}
+        onMap={() => setMapOpen(true)} onAsk={askAboutPlace} onWalk={walkToPlace} onDismiss={() => setSelectedPlace(null)} />}
+
+      {mapOpen && <WorldMapPanel world={worldMap.world} selectedId={selectedPlace} position={position}
+        onSelect={setSelectedPlace} onClose={() => setMapOpen(false)} onWalk={walkToPlace} onAsk={askAboutPlace}
+        onMission={(id) => void beginMission(id)} onActivity={(task) => void openMapActivity(task)}
+        onFocus={() => { setMapOpen(false); setDialogueOpen(false); setFocusOpen(true); }}
+        onSaveNote={worldMap.saveNote} error={worldMap.error ?? mapActionError} refreshing={worldMap.refreshing}
+        onRefresh={() => { setMapActionError(null); void worldMap.refresh(); }} busy={activityBusy || Boolean(startingId)} conversationBusy={stream.streaming} />}
+
       {chrome.radio && (
         <div className="pointer-events-none absolute bottom-4 left-3 z-20">
           <RhoRadio
@@ -467,6 +526,9 @@ export default function PlayShell(props: {
           thinkingLabel={stream.streaming ? "Rho is listening…" : ""}
           portrait={portrait}
           storyUi={stream.storyUi}
+          onOpenMap={() => setMapOpen(true)}
+          mapContext={selectedNode ? `${selectedNode.title} · ${selectedNode.tasks.filter((t) => !t.completed).length} things to try` : worldMap.world?.chapterTitle}
+          worldUpdate={stream.worldUpdate?.reason}
           onSend={onCaptainSend}
           onClose={() => setDialogueOpen(false)}
           onBranchResolved={(id) => router.push(`/learn/${id}`)}
@@ -476,7 +538,7 @@ export default function PlayShell(props: {
       {focusOpen && (
         <SubjectFocusPanel
           sessionId={props.sessionId}
-          onClose={() => setFocusOpen(false)}
+          onClose={() => { setFocusOpen(false); void worldMap.refresh(); }}
           onSubjectChanged={setSubjectSlug}
         />
       )}
@@ -521,16 +583,9 @@ export default function PlayShell(props: {
             setDialogueOpen(true);
             setHint("The island is a little bigger than it looked.");
             void missions.refresh();
+            void worldMap.refresh();
             if (wreck && firstRun.step === "work") {
               void firstRun.advance("work_done");
-            }
-            if (
-              shouldOpenCrewLogAfterWreckQuiz({
-                isWreckQuiz: Boolean(wreck),
-                reflectionDone: learning.reflectionDone,
-              })
-            ) {
-              void learning.openReflection();
             }
           }}
         />

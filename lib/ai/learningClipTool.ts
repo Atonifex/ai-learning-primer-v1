@@ -3,7 +3,7 @@ export const offerLearningClipTool = {
   function: {
     name: "offer_learning_clip",
     description:
-      "Open one allowlisted learning clip on screen for the current mission, with questions to hold while watching. Call when a short explainer would help. Never invent a video URL or send the captain to YouTube. If this returns no clip, teach the idea yourself. Do not call again for the same goal after they come back.",
+      "Open one evaluated learning clip on screen for the current mission, with questions to hold while watching. Call when a short explainer would help. Never invent a video URL or send the captain to YouTube. If this returns no clip, teach the idea yourself. Do not call again for the same goal after they come back.",
     parameters: {
       type: "object",
       properties: {

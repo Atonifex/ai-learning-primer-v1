@@ -1,0 +1,130 @@
+[
+  {
+    "id": "a01",
+    "expected": "Captain, we have a job for you and your crew.",
+    "heard": "Captain, we have a job for you and your crew.",
+    "matches": true,
+    "equivalentWords": true,
+    "note": "Numeral percent notation, punctuation and alright spelling may differ without changing the spoken content."
+  },
+  {
+    "id": "a02",
+    "expected": "Trade moves things from world to world. It helps us build homes, send food, and travel.",
+    "heard": "Trade moves things from world to world. It helps us build homes, send food, and travel.",
+    "matches": true,
+    "equivalentWords": true,
+    "note": "Numeral percent notation, punctuation and alright spelling may differ without changing the spoken content."
+  },
+  {
+    "id": "a03a",
+    "expected": "No one lives on this island. It may have oil, or rocks with gold and silver.",
+    "heard": "No one lives on this island. It may have oil or rocks with gold and silver.",
+    "matches": true,
+    "equivalentWords": true,
+    "note": "Numeral percent notation, punctuation and alright spelling may differ without changing the spoken content."
+  },
+  {
+    "id": "a03b",
+    "expected": "Find what's there. Our company can get these things, sell them, and make money.",
+    "heard": "Find what's there. Our company can get these things, sell them, and make money.",
+    "matches": true,
+    "equivalentWords": true,
+    "note": "Numeral percent notation, punctuation and alright spelling may differ without changing the spoken content."
+  },
+  {
+    "id": "a04a",
+    "expected": "You can build your own base and lead your own crew. Profit is the money left after costs.",
+    "heard": "You can build your own base and lead your own crew. Profit is the money left after costs.",
+    "matches": true,
+    "equivalentWords": true,
+    "note": "Numeral percent notation, punctuation and alright spelling may differ without changing the spoken content."
+  },
+  {
+    "id": "a04b",
+    "expected": "You'll get ten percent of that profit. Sound good?",
+    "heard": "you'll get 10% of that profit. Sound good?",
+    "matches": false,
+    "equivalentWords": true,
+    "note": "Numeral percent notation, punctuation and alright spelling may differ without changing the spoken content."
+  },
+  {
+    "id": "n15",
+    "expected": "Oh! You want more. All right. Fifteen percent. Sound good?",
+    "heard": "Hmm. Oh, you want more. Alright, 15%. Sound good?",
+    "matches": false,
+    "equivalentWords": true,
+    "note": "Minor generated Hmm interjection retained in captions."
+  },
+  {
+    "id": "n20",
+    "expected": "Again? Oh, all right! Twenty percent. That's my last offer.",
+    "heard": "Again? Oh, alright. 20%. That's my last offer.",
+    "matches": false,
+    "equivalentWords": true,
+    "note": "Numeral percent notation, punctuation and alright spelling may differ without changing the spoken content."
+  },
+  {
+    "id": "yes",
+    "expected": "We have a deal!",
+    "heard": "We have a deal.",
+    "matches": true,
+    "equivalentWords": true,
+    "note": "Numeral percent notation, punctuation and alright spelling may differ without changing the spoken content."
+  },
+  {
+    "id": "a05",
+    "expected": "Let me show you your crew. First, meet Rho, your first mate.",
+    "heard": "Let me show you your crew. First, meet Ro, your first mate.",
+    "matches": false,
+    "equivalentWords": true,
+    "note": "Transcript Ro represents the intended pronunciation row; caption spelling corrected to Rho."
+  },
+  {
+    "id": "a06",
+    "expected": "Hi, Captain. I'm glad we're a team.",
+    "heard": "Hi, Captain. I'm glad we're a team.",
+    "matches": true,
+    "equivalentWords": true,
+    "note": "Numeral percent notation, punctuation and alright spelling may differ without changing the spoken content."
+  },
+  {
+    "id": "a07a",
+    "expected": "This is a learning game. We'll use science, math, English, and social studies.",
+    "heard": "This is a learning game. We'll use science, math, English, and social studies.",
+    "matches": true,
+    "equivalentWords": true,
+    "note": "Numeral percent notation, punctuation and alright spelling may differ without changing the spoken content."
+  },
+  {
+    "id": "a07b",
+    "expected": "Ask questions. Try things. Learn from what goes wrong.",
+    "heard": "Ask questions. Try things. Learn from what goes wrong.",
+    "matches": true,
+    "equivalentWords": true,
+    "note": "Numeral percent notation, punctuation and alright spelling may differ without changing the spoken content."
+  },
+  {
+    "id": "a07c",
+    "expected": "We don't know what's on the island. That's why we need you to lead us.",
+    "heard": "We don't know what's on the island. That's why we need you to lead us.",
+    "matches": true,
+    "equivalentWords": true,
+    "note": "Numeral percent notation, punctuation and alright spelling may differ without changing the spoken content."
+  },
+  {
+    "id": "a09",
+    "expected": "Ready, Captain? Let's fly.",
+    "heard": "Ready, Captain? Let's fly!",
+    "matches": true,
+    "equivalentWords": true,
+    "note": "Numeral percent notation, punctuation and alright spelling may differ without changing the spoken content."
+  },
+  {
+    "id": "a11",
+    "expected": "Captain... look ahead.",
+    "heard": "Captain, look ahead.",
+    "matches": true,
+    "equivalentWords": true,
+    "note": "Numeral percent notation, punctuation and alright spelling may differ without changing the spoken content."
+  }
+]

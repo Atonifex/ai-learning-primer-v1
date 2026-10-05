@@ -103,6 +103,8 @@ export async function POST(
             send(chunk);
           } else if (chunk.type === "mission_board_open") {
             send(chunk);
+          } else if (chunk.type === "world_map_open" || chunk.type === "world_updated") {
+            send(chunk);
           } else if (chunk.type === "learning_clip_open") {
             send(chunk);
           } else if (chunk.type === "crew_log_open") {

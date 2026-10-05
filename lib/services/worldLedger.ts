@@ -130,6 +130,7 @@ export async function getChapterHandoffForSession(
       learnerProfileId: session.learnerProfileId,
       chapterId: previous.id,
       mustReuse: true,
+      label: { not: "camp_product" },
     },
     orderBy: { createdAt: "asc" },
   });
@@ -190,7 +191,7 @@ export async function getLearnerLedger(
   ]);
 
   return {
-    entries,
+    entries: entries.filter((entry) => entry.label !== "camp_product"),
     handoffTitle: handoff?.title ?? null,
     handoffSummary: handoff?.handoffSummary ?? null,
   };

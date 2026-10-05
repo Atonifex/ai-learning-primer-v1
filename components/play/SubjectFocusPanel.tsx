@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ladderForSubject } from "../../lib/play/subjectChecks";
 import MathCheck from "./MathCheck";
+import SubjectCheck from "./SubjectCheck";
 
 type Choice = { slug: string; label: string };
 type StandardRow = {
@@ -28,7 +30,7 @@ export default function SubjectFocusPanel(props: {
   const [pending, setPending] = useState<{ to: string; prompt: string } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
-  const [mathCheckOpen, setMathCheckOpen] = useState(false);
+  const [checkOpen, setCheckOpen] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -73,7 +75,7 @@ export default function SubjectFocusPanel(props: {
       return;
     }
     setPending(null);
-    setMathCheckOpen(false);
+    setCheckOpen(false);
     setSittingSubject(data.subjectSlug);
     setChosen({
       subjectSlug: data.subjectSlug,
@@ -160,17 +162,22 @@ export default function SubjectFocusPanel(props: {
             </div>
           )}
           {error && <p className="text-sm text-red-800">{error}</p>}
-          {chosen?.subjectSlug.startsWith("math_") && (
+          {chosen && ladderForSubject(chosen.subjectSlug) && (
             <button
               type="button"
-              onClick={() => setMathCheckOpen(true)}
+              onClick={() => setCheckOpen(true)}
               className="rounded-lg bg-stone-900 px-3 py-1.5 text-xs font-medium text-white"
             >
               Find where I should start
             </button>
           )}
-          {mathCheckOpen && chosen?.subjectSlug.startsWith("math_") && <MathCheck />}
-          {chosen && !mathCheckOpen && (
+          {checkOpen && chosen?.subjectSlug.startsWith("math_") && (
+            <MathCheck />
+          )}
+          {checkOpen && chosen && !chosen.subjectSlug.startsWith("math_") && ladderForSubject(chosen.subjectSlug) && (
+            <SubjectCheck ladder={ladderForSubject(chosen.subjectSlug)!} />
+          )}
+          {chosen && !checkOpen && (
             <div>
               <p className="text-sm font-medium text-stone-800">{chosen.summaryLine}</p>
               <div className="mt-2 space-y-3">

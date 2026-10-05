@@ -12,13 +12,13 @@
  *  - RIDGE_ROWS:    a rock ridge sealing the tutorial beach off from the
  *                   north until later content opens a path through it.
  *  - TUTORIAL_ROWS: the original tiny first-room beach (Undertale beat,
- *                   §4.10) — unchanged shape/pins, just shifted south.
+ *                   §4.10) — irregular shore with established pin positions.
  */
 
 export const TILE = 48;
 export const COLS = 18;
 
-const TUTORIAL_ROWS = 12; // legacy tiny beach, geometry preserved exactly
+const TUTORIAL_ROWS = 12;
 const RIDGE_ROWS = 4; // rock barrier rows
 const NORTH_ROWS = 30; // unexplored landmass rows
 
@@ -95,13 +95,23 @@ function landBounds(row: number): { west: number; east: number } {
   return { west: Math.min(west, east - 1), east };
 }
 
-/** Exact reproduction of the original 18x12 tutorial rectangle's tile rule. */
+/** Authored irregular shore. Pins and spawn retain their established coordinates. */
 function southTileKind(col: number, localRow: number): TileKind {
-  const edge = col === 0 || localRow === 0 || col === COLS - 1 || localRow === TUTORIAL_ROWS - 1;
-  if (edge) return "water";
-  const foam = col === 1 || localRow === 1 || col === COLS - 2 || localRow === TUTORIAL_ROWS - 2;
-  if (foam) return "foam";
+  const bounds = [[6, 11], [4, 13], [2, 15], [1, 16], [1, 16], [2, 16], [1, 15], [1, 16], [1, 16], [1, 16], [3, 14], [6, 11]];
+  const [west, east] = bounds[localRow] ?? [COLS, -1];
+  if (col < west || col > east) return "water";
+  if (col === west || col === east || localRow === 0 || localRow === TUTORIAL_ROWS - 1) return "foam";
   return "sand";
+}
+
+/** Rounded display contour follows the same authored coastline as movement. */
+export function southShoreOutline(): Array<{ x: number; y: number }> {
+  const west: Array<{ x: number; y: number }> = [], east: typeof west = [];
+  for (let row = SOUTH_START; row < ROWS; row++) {
+    const cols = Array.from({ length: COLS }, (_, col) => col).filter((col) => southTileKind(col, row - SOUTH_START) !== "water");
+    west.push({ x: cols[0], y: row + .5 }); east.push({ x: cols.at(-1)! + 1, y: row + .5 });
+  }
+  return [...west, ...east.reverse()];
 }
 
 export function worldWidth(): number {

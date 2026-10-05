@@ -1,6 +1,6 @@
 # Kling MCP — production credit budget
 
-Verified public information 2026-10-05. No purchase/generation submitted; account balance and available models not yet queried. Read `PROJECT_MEMORY.md` before production and update it after meaningful discoveries; record accepted spending caps and actual task charges, never credentials.
+Latest actual production, 2026-10-05: Premier; V03's19 completed jobs cost1,504 credits, leaving6,096 checked credits. Five new ChatGPT reference images used no Kling credits. Previous pilot40 and V1360 remain archived/library history. OAuth official CLI works; native MCP tools remain absent. See `public/cinematics/prologue-v3/README.md` for exact completed assets and costs; public rate estimates below are historical planning, not a fresh checkout quote. Read `PROJECT_MEMORY.md` before production and update meaningful discoveries; never retain credentials.
 
 ## How the connection works
 

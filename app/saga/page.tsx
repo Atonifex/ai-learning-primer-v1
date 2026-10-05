@@ -88,7 +88,7 @@ export default async function SagaPage() {
         </div>
         <p className="mt-3 text-xs text-stone-500">
           Wreck salvage: {saga.wreckQuizDone ? "done" : "open"} · Crew log:{" "}
-          {saga.chapter1ReflectionDone ? "written (Ch2 food unlocked)" : "not yet"}
+          {saga.chapter1ReflectionDone ? "written" : "optional / not yet"}
         </p>
       </section>
     </main>

@@ -1,8 +1,10 @@
 import type { SubjectDomain } from "../constants/subjects";
 
 /**
- * Trusted channels only. IDs checked against youtube.com/channel on 2026-10-05.
- * No allowlist match means Rho teaches without a clip.
+ * Known educational sources. Channel IDs checked 2026-10-05.
+ * A match is a plus for the ranker. During development it is not required:
+ * an unknown channel can still be offered when the rubric passes.
+ * See docs/LEARNING_CLIP_EVALUATION.md.
  */
 export type ClipChannel = {
   channelId: string;
@@ -54,6 +56,104 @@ export const CLIP_CHANNELS: ClipChannel[] = [
     subjects: ["math", "ela"],
     minGrade: 3,
     maxGrade: 3,
+  },
+  {
+    channelId: "UCsooa4yRKGN_zEE8iknghZA",
+    name: "TED-Ed",
+    subjects: ["math", "ela", "science", "social_studies"],
+    minGrade: 3,
+    maxGrade: 8,
+  },
+  {
+    channelId: "UCX6b17PVsYBQ0ip5gyeme-Q",
+    name: "Crash Course",
+    subjects: ["math", "ela", "science", "social_studies"],
+    minGrade: 4,
+    maxGrade: 8,
+  },
+  {
+    channelId: "UCZYTClx2T1of7BRZ86-8fow",
+    name: "SciShow",
+    subjects: ["science"],
+    minGrade: 4,
+    maxGrade: 8,
+  },
+  {
+    channelId: "UCsXVk37bltHxD1rDPwtNM8Q",
+    name: "Kurzgesagt",
+    subjects: ["science", "social_studies"],
+    minGrade: 5,
+    maxGrade: 8,
+  },
+  {
+    channelId: "UCb2GCoLSBXjmI_Qj1vk-44g",
+    name: "Amoeba Sisters",
+    subjects: ["science"],
+    minGrade: 6,
+    maxGrade: 8,
+  },
+  {
+    channelId: "UCfPyVJEBD7Di1YYjTdS2v8g",
+    name: "Homeschool Pop",
+    subjects: ["math", "ela", "science", "social_studies"],
+    minGrade: 3,
+    maxGrade: 6,
+  },
+  {
+    channelId: "UCebMFnw6WxozGmqGekJHOJg",
+    name: "FreeSchool",
+    subjects: ["math", "ela", "science", "social_studies"],
+    minGrade: 3,
+    maxGrade: 6,
+  },
+  {
+    channelId: "UCpVm7bg6pXKo1Pr6k5kxG9A",
+    name: "National Geographic",
+    subjects: ["science", "social_studies"],
+    minGrade: 3,
+    maxGrade: 8,
+  },
+  {
+    channelId: "UCHnyfMqiRRG1u-2MsSQLbXA",
+    name: "Veritasium",
+    subjects: ["science", "math"],
+    minGrade: 5,
+    maxGrade: 8,
+  },
+  {
+    channelId: "UCYO_jab_esuFRV4b17AJtAw",
+    name: "3Blue1Brown",
+    subjects: ["math"],
+    minGrade: 6,
+    maxGrade: 8,
+  },
+  {
+    channelId: "UC6107grRI4m0o2-emgoDnAA",
+    name: "SmarterEveryDay",
+    subjects: ["science"],
+    minGrade: 4,
+    maxGrade: 8,
+  },
+  {
+    channelId: "UCoxcjq-8xIDTYp3uz647V5A",
+    name: "Numberphile",
+    subjects: ["math"],
+    minGrade: 5,
+    maxGrade: 8,
+  },
+  {
+    channelId: "UCHZwMwa96o5gwBmVaIj_zVA",
+    name: "Art of Problem Solving",
+    subjects: ["math"],
+    minGrade: 5,
+    maxGrade: 8,
+  },
+  {
+    channelId: "UCtBtcQJ8_jsrjPzb8i1tOsA",
+    name: "Mashup Math",
+    subjects: ["math"],
+    minGrade: 3,
+    maxGrade: 8,
   },
 ];
 
@@ -123,7 +223,7 @@ export function maxClipSeconds(gradeBand: string): number {
   return gradeNumber(gradeBand) <= 4 ? 8 * 60 : 12 * 60;
 }
 
-/** At most three channels, to keep YouTube search quota small. */
+/** Known sources that fit this subject and grade. Not a cap on search. */
 export function channelsFor(subjectSlug: string, gradeBand: string): ClipChannel[] {
   const domain = subjectDomainFromSlug(subjectSlug);
   if (!domain) return [];
@@ -133,7 +233,11 @@ export function channelsFor(subjectSlug: string, gradeBand: string): ClipChannel
       channel.subjects.includes(domain) &&
       grade >= channel.minGrade &&
       grade <= channel.maxGrade
-  ).slice(0, 3);
+  );
+}
+
+export function knownSourceFor(channelId: string): ClipChannel | null {
+  return CLIP_CHANNELS.find((channel) => channel.channelId === channelId) ?? null;
 }
 
 export function parseIsoDurationSeconds(iso: string): number {
@@ -153,18 +257,20 @@ export function isAllowedVideoId(videoId: string): boolean {
   return VIDEO_ID.test(videoId);
 }
 
+/**
+ * Hard fails only: identity, deny list, embeddable, not live, duration, blocked text.
+ * An unknown channel is not a fail. The ranker decides topical fit.
+ */
 export function clipGateReason(
   candidate: ClipCandidate,
   opts: {
     gradeBand: string;
-    allowedChannelIds: Set<string>;
     denyIds?: Set<string>;
   }
 ): string | null {
   const deny = opts.denyIds ?? CLIP_DENY_VIDEO_IDS;
   if (!isAllowedVideoId(candidate.videoId)) return "bad_id";
   if (deny.has(candidate.videoId)) return "denied";
-  if (!opts.allowedChannelIds.has(candidate.channelId)) return "off_allowlist";
   if (!candidate.embeddable) return "not_embeddable";
   if (candidate.liveBroadcastContent !== "none") return "live";
   if (candidate.durationSeconds < MIN_CLIP_SECONDS) return "too_short";
@@ -177,7 +283,6 @@ export function gateCandidates(
   candidates: ClipCandidate[],
   opts: {
     gradeBand: string;
-    allowedChannelIds: Set<string>;
     denyIds?: Set<string>;
   }
 ): ClipCandidate[] {

@@ -1,5 +1,20 @@
 # Primer working memory
 
+## Written camp sentence removed — 2026-10-05
+Ivan rejected the sentence box after the try. It does not save, add a ration, or show on a job. The try and feedback stay.
+
+## Subject try after placement — 2026-10-05
+After an ELA, science, or social studies check reaches a starting point, the same view shows one new case of that idea, then feedback. Two misses at the bottom still do not invent an earlier code and do not open the try.
+
+## Subject starting points — 2026-10-05
+ELA, science, and social studies use the same check as math: example, then a different item, on a three-rung Grade 3 ladder from the tonight slice. Two misses at the bottom do not invent an earlier code.
+
+## Math try after placement — 2026-10-05
+After the math check reaches a starting point, the same subject view shows one new case of that idea, then feedback about the quantity. No camp product is saved.
+
+## Learning clip sources — 2026-10-05
+Development search is one open YouTube query, not a six-channel door. Known educational channels are a plus for the ranker. Unknown channels can pass when duration, embed, blocklist, and topical fit pass. Rubric: `docs/LEARNING_CLIP_EVALUATION.md`. Child consent in P0 is unchanged.
+
 ## P0 — Child data security — 2026-10-05
 High priority for every future slice, not only learning clips. Third-party embeds, analytics, ads, and media vendors need a COPPA decision before a child can use them. YouTube clips stay off unless `PRIMER_LEARNING_CLIPS=1` plus `YOUTUBE_API_KEY`. That flag is not parent consent. A nocookie iframe can still let Google see the viewer. Do not send the child’s name or voice to YouTube. Do not enable clips on a child-facing deploy until verifiable parent consent and a privacy policy that names Google. Full deferred list: `docs/FUTURE_STORY_IDEAS.md` P0 and MASTER §4.1.
 
@@ -9,8 +24,8 @@ Show a visual example, then the child does the next one. Drawing tool is later. 
 ## Rho auto-read — 2026-10-05
 Talking with Rho top bar has an Auto read switch. Off (`localStorage` `primer.rhoTtsAutoRead=0`) skips `/api/tts` on finished turns. `next dev` starts off when nothing is saved; production starts on. Hear Rho and Voice on/off stay separate.
 
-## Crew log + AI debug — 2026-10-05
-Camp-math unlocks only after the Ch1 crew log is persisted (`g3-reflect-u1-ch1`). Rho can call `open_crew_log` (slate) or `save_crew_log` (note from chat) — never ask the captain to type tool names. Chat notes count when Rho saves them via the tool.
+## Crew log gate removed — 2026-10-05
+Camp-math no longer waits on the Ch1 crew log. After wreck salvage, camp unlocks with dune/treeline/creek (`lockedUntil: "wreck-quiz"`). Crew log tools remain optional for story/handoff. Wreck dismiss no longer auto-opens the reflection overlay.
 
 Developer visibility (off unless env set):
 - `PRIMER_AI_DEBUG=1` — server logs tool calls **and** results; SSE `debug_tool` events
@@ -20,7 +35,7 @@ Developer visibility (off unless env set):
 Visible UI changes need `npm test`, `npx tsc --noEmit`, and `npm run test:e2e` (Playwright, `e2e/`). Close the reply with results, then offer 2–4 clickable choices for the next build slice. Jobs board “Start job” buttons are separate. Rule text is in `.cursor/rules/test-and-next-step.mdc`, `CLAUDE.md`, and `AGENTS.md`.
 
 ## Agent playtest harness — 2026-10-05
-Local `/dev/agent` + `POST /api/dev/agent-bootstrap` logs in seeded `testcaptain`/`1234`, forces `firstRunStep=complete`, returns `/learn/{id}?dialogue=1` or `?board=1`. Docs: `docs/AGENT_PLAYTEST.md`. Use this for Cursor/Grok browser checks instead of Pixi/first-run.
+Local `/dev/agent` + `POST /api/dev/agent-bootstrap` logs in seeded `testcaptain`/`1234`; normal modes force first-run complete. New `open:intro` / Play new intro resets only seeded captain's intro deal and sets first-run video for the cinematic branch test. Docs: `docs/AGENT_PLAYTEST.md`. Playwright uses one worker because fixtures share this captain.
 
 ## Mission board tool — 2026-10-05
 Rho live turns = session orchestrator + tools. Added `show_mission_board` → SSE `mission_board_open` → opens `MissionBoard` overlay (not dialogue-only). Tool-first rule: new captain-facing features should usually be orchestrator tools; ask Ivan if unsure. HUD Jobs button still works.
@@ -30,9 +45,11 @@ Ch1 crew log now writes `WorldLedgerEntry` (note + missing-engineer thread) and 
 
 ## Current objective — 2026-10-05
 
-Latest user request expands opening: Grade3-level spoken language, captain's own base/crew and10% reward; No triggers15%, second No triggers20% final offer then Yes only. App adds bubbles over one reusable silent loop with matched endpoints; no UI baked into video. Same officer physically introduces Rho; handshake; first-person corridor with Rho left explaining learning science/math/English/social studies; first-person takeoff, matching exterior flight, then concerned weather turn. Completed full draft, one explicitly requested critique round and final prompt/timecode package `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md` (supersedes V02 proposal). Approx111s immediate-Yes path, +8s each No and untimed waits; timing not read-through verified. Concrete two/three/four coins per twenty explain10/15/20; spoken “company/get” avoid Corporation/extract/profits/percent. No new media/jobs/app changes or charge.
+Completed Ivan's authorized V03 production and onboarding integration. Five new matched ChatGPT reference images, 19 completed Kling v3.0 jobs, reusable officer/Rho Elements with synthetic voice references, clean branch assets and stitched 111.02/119.02/127.02s review cuts are in `public/cinematics/prologue-v3/README.md`; exact prompts/settings in `shots.json`. Actual charge1,504 credits; checked Premier balance6,096 (2026-10-05 13:23 UTC). OAuth CLI used; supplied separate API key untouched. V1 preserved. Grade3-target dialogue says company/get and ten/fifteen/twenty percent. Recorded benefit line: “You can build your own base and lead your own crew. Profit is the money left after costs.” Same physical officer/Rho, handshake, learning corridor, same-ship launch/exterior flight/weather turn; editable VTT/SRT, original clips/native source mixes and separate picture/mixed audio retained.
 
-Pending clarifications presented: same shuttle/scout ship throughout with briefing/corridor at off-island launch port; share of mission money after costs vs all sales. Both currently proposals. Need matched physical-officer/handshake/corridor/boarding/exterior stills and consistent voices before generation; existing images don't lock new views. Forced final Yes is requested bargaining, not true opt-out; frustration should be comic and respectful. Grade3 language is editorial target, not certified every-word placement. Detailed honest learning/test disclosure remains separate; corridor explicitly calls this a learning game.
+Ivan confirmed shuttle/scout ship is the same vehicle and accepted gross-profit wording with a simple definition; recorded mission-share explanation above uses money after costs. `IntroCinematic` and `/api/profile/intro` now show app-owned bubbles after audio:10% Yes/No →No15% Yes/No →No20% Yes only; shared acceptance/continuation. Six-second silent forward/reverse loop has matching inspected endpoints. Accepted share/resumable progress persists in existing STORY_CONTINUITY memory, not an accounting/payout engine. Sound/captions/pause/Skip and save-failure retry are available. Shared live world bible includes planet-resource survey and uses saved accepted share; later lithium/fusion discoveries remain hidden. Local `/dev/agent` has Play new intro; reset affects seeded captain only. Actual crash and post-crash objective footage remain unbuilt: current onboarding uses beach still/text bridge after weather turn. Tutorials deferred. Forced final Yes is requested; Skip is available. Detailed learning/test disclosure remains separate, corridor honestly names learning game.
+
+Verification:94 unit tests and final TypeScript pass; all five intro browser scenarios pass. Live browser watched full two-No path, accepted20%, reached beach bridge, and Go to the beach opened existing captain-name onboarding; screenshot `public/cinematics/prologue-v3/onboarding-choices-review.png`. Seven VTT files have ordered positive-duration non-overlapping cues. Whole E2E suite sequentially14/15; separate Jobs→quiz test does not open quiz overlay. Parallel suite initially caused shared testcaptain fixture resets racing; Playwright now one worker. Five-frame samples and loop endpoints inspected; transcript word-content checks recovered intended speech (numeric formatting, Rho spelling corrected, minor N15 “Hmm” retained), not pronunciation certification. Full human playback/voice/lip-sync review remains before release; generated corridor also shows established officer escorting crew and A11 concern softens late. No paid retries. Failed CLI approach: npm `.cmd` stripped JSON quotes in `--elements` and rejected before job creation; direct Node invocation of official CLI preserves argument JSON, no charge from rejected submissions.
 
 Ivan rejected first-prologue pacing as disconnected equal-five-second facts and reports P01 "corporation" pronounced "corprotation." Preserve all V1 footage/sources as reusable history (`public/cinematics/prologue-v1/LIBRARY.md`); not release-approved. Completed two editorial critique/revision rounds via three explicitly simulated professional lenses in `docs/PROLOGUE_SCRIPT_REVISION_02.md`. Final proposal: continuous mission briefing with motivated trade inserts → assignment/commercial purpose → captain accepts → Rho partnership → approaching-weather turn, approximately30–35s with flexible beats. Script not yet read-through timed or generated; no new credit charges.
 

@@ -1,0 +1,397 @@
+{
+  "version": 3,
+  "model": "kling-video-v3_0",
+  "resolution": "1080p",
+  "authorized": "2026-10-05: user asked to generate pictures, videos, stitch and integrate onboarding choices.",
+  "startingCredits": 7600,
+  "profitDefinition": "Profit is the money left after costs. User called share gross profits; simplified fictional mission dialogue, no business accounting engine implemented.",
+  "scenes": [
+    {
+      "id": "a01",
+      "duration": 5,
+      "ref": "public/cinematics/prologue-v3/references/briefing-anchor.png",
+      "line": "Captain, we have a job for you and your crew.",
+      "speaker": "Officer",
+      "audio": true,
+      "elements": [
+        {
+          "id": "323176976314135",
+          "bindName": "Officer"
+        }
+      ],
+      "tail": null,
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Officer is <<<323176976314135>>>: same woman with medium brown skin, tiedback dark curly hair, teal uniform cream collar compass emblem. Use her supplied voice. Same physical officer centered behind desk, direct friendly professional eye contact, gestures toward briefing display; hands at rest and captain no thumbs-up yet. Only Officer speaks, others remain silent. Exact line, once: \"Captain, we have a job for you and your crew.\". Leave a small pause before and after, do not rush or add words. No background music or added voices. "
+    },
+    {
+      "id": "a02",
+      "duration": 9,
+      "ref": "public/cinematics/prologue-v1/references/p04-trade.png",
+      "line": "Trade moves things from world to world. It helps us build homes, send food, and travel.",
+      "speaker": "Narrator",
+      "audio": true,
+      "elements": [],
+      "tail": null,
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Follow a plain teal cargo crate trolley through same inhabited off-island port; food cargo, home construction, civilian travel implied by established scene. Smooth motion; this is a briefing illustration, not island settlement. Only an off-screen calm warm narrator speaks; no visible speaking person. Exact line, once: \"Trade moves things from world to world. It helps us build homes, send food, and travel.\". Leave a small pause before and after, do not rush or add words. No background music or added voices. "
+    },
+    {
+      "id": "a03a",
+      "duration": 8,
+      "ref": "public/cinematics/prologue-v3/references/briefing-anchor.png",
+      "line": "No one lives on this island. It may have oil, or rocks with gold and silver.",
+      "speaker": "Officer",
+      "audio": true,
+      "elements": [
+        {
+          "id": "323176976314135",
+          "bindName": "Officer"
+        }
+      ],
+      "tail": null,
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Officer is <<<323176976314135>>>: same woman with medium brown skin, tiedback dark curly hair, teal uniform cream collar compass emblem. Use her supplied voice. Same officer and briefing room; she points to text-free island picture to her left. Possible resource targets, not confirmed finds; no island buildings. Only Officer speaks, others remain silent. Exact line, once: \"No one lives on this island. It may have oil, or rocks with gold and silver.\". Leave a small pause before and after, do not rush or add words. No background music or added voices. "
+    },
+    {
+      "id": "a03b",
+      "duration": 8,
+      "ref": "public/cinematics/prologue-v3/references/briefing-anchor.png",
+      "line": "Find what's there. Our company can get these things, sell them, and make money.",
+      "speaker": "Officer",
+      "audio": true,
+      "elements": [
+        {
+          "id": "323176976314135",
+          "bindName": "Officer"
+        }
+      ],
+      "tail": null,
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Officer is <<<323176976314135>>>: same woman with medium brown skin, tiedback dark curly hair, teal uniform cream collar compass emblem. Use her supplied voice. Same room/medium camera; officer warmly explains the clear survey job with a small open hand gesture, attentive professional eyes. No resets or standing up. Only Officer speaks, others remain silent. Exact line, once: \"Find what's there. Our company can get these things, sell them, and make money.\". Leave a small pause before and after, do not rush or add words. No background music or added voices. "
+    },
+    {
+      "id": "a04a",
+      "duration": 10,
+      "ref": "public/cinematics/prologue-v3/references/briefing-anchor.png",
+      "line": "You can build your own base and lead your own crew. Profit is the money left after costs.",
+      "speaker": "Officer",
+      "audio": true,
+      "elements": [
+        {
+          "id": "323176976314135",
+          "bindName": "Officer"
+        }
+      ],
+      "tail": null,
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Officer is <<<323176976314135>>>: same woman with medium brown skin, tiedback dark curly hair, teal uniform cream collar compass emblem. Use her supplied voice. Same officer speaks earnestly about captain benefit, slight smile and open palm. Future base is not visible on untouched island. Explain profit clearly. Only Officer speaks, others remain silent. Exact line, once: \"You can build your own base and lead your own crew. Profit is the money left after costs.\". Leave a small pause before and after, do not rush or add words. No background music or added voices. "
+    },
+    {
+      "id": "a04b",
+      "duration": 7,
+      "ref": "public/cinematics/prologue-v3/references/briefing-anchor.png",
+      "line": "You'll get ten percent of that profit. Sound good?",
+      "speaker": "Officer",
+      "audio": true,
+      "elements": [
+        {
+          "id": "323176976314135",
+          "bindName": "Officer"
+        }
+      ],
+      "tail": "public/cinematics/prologue-v3/references/briefing-anchor.png",
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Officer is <<<323176976314135>>>: same woman with medium brown skin, tiedback dark curly hair, teal uniform cream collar compass emblem. Use her supplied voice. Same fixed camera officer offers deal, restrained inviting smile. End hands resting on desk/mouth closed exactly at input anchor frame, no captain acceptance yet. Only Officer speaks, others remain silent. Exact line, once: \"You'll get ten percent of that profit. Sound good?\". Leave a small pause before and after, do not rush or add words. No background music or added voices. "
+    },
+    {
+      "id": "n15",
+      "duration": 8,
+      "ref": "public/cinematics/prologue-v3/references/briefing-anchor.png",
+      "line": "Oh! You want more. All right. Fifteen percent. Sound good?",
+      "speaker": "Officer",
+      "audio": true,
+      "elements": [
+        {
+          "id": "323176976314135",
+          "bindName": "Officer"
+        }
+      ],
+      "tail": "public/cinematics/prologue-v3/references/briefing-anchor.png",
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Officer is <<<323176976314135>>>: same woman with medium brown skin, tiedback dark curly hair, teal uniform cream collar compass emblem. Use her supplied voice. Fixed camera. Brief unhappy expression, lifted brow and small sigh; then warm professional counteroffer. Comic bargaining, no shame or accusation. Return to exact input neutral waiting pose with mouth closed and hands on desk. Only Officer speaks, others remain silent. Exact line, once: \"Oh! You want more. All right. Fifteen percent. Sound good?\". Leave a small pause before and after, do not rush or add words. No background music or added voices. "
+    },
+    {
+      "id": "n20",
+      "duration": 8,
+      "ref": "public/cinematics/prologue-v3/references/briefing-anchor.png",
+      "line": "Again? Oh, all right! Twenty percent. That's my last offer.",
+      "speaker": "Officer",
+      "audio": true,
+      "elements": [
+        {
+          "id": "323176976314135",
+          "bindName": "Officer"
+        }
+      ],
+      "tail": "public/cinematics/prologue-v3/references/briefing-anchor.png",
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Officer is <<<323176976314135>>>: same woman with medium brown skin, tiedback dark curly hair, teal uniform cream collar compass emblem. Use her supplied voice. Fixed camera. Dramatic comic exasperation: brief upward glance, slumped shoulders, palms lifted and theatrical exhale. No yelling/insults. Straighten and firmly give final offer. End exactly at input neutral waiting pose, closed mouth hands on desk. Only Officer speaks, others remain silent. Exact line, once: \"Again? Oh, all right! Twenty percent. That's my last offer.\". Leave a small pause before and after, do not rush or add words. No background music or added voices. "
+    },
+    {
+      "id": "wait",
+      "duration": 3,
+      "ref": "public/cinematics/prologue-v3/references/briefing-anchor.png",
+      "line": "",
+      "speaker": null,
+      "audio": false,
+      "elements": [
+        {
+          "id": "323176976314135",
+          "bindName": "Officer"
+        }
+      ],
+      "tail": "public/cinematics/prologue-v3/references/briefing-anchor.png",
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Officer is <<<323176976314135>>>: same woman with medium brown skin, tiedback dark curly hair, teal uniform cream collar compass emblem. Use her supplied voice. Locked camera seamless idle. Same closed-mouth waiting smile/hands on desk/captain still. Tiny breathing completes full cycle returning exactly to same pose. First and last frame must match. No blink over seam, no camera movement or lighting changes. Completely silent picture; no voices, music or audio effects. "
+    },
+    {
+      "id": "yes",
+      "duration": 3,
+      "ref": "public/cinematics/prologue-v3/references/briefing-anchor.png",
+      "line": "We have a deal!",
+      "speaker": "Officer",
+      "audio": true,
+      "elements": [
+        {
+          "id": "323176976314135",
+          "bindName": "Officer"
+        }
+      ],
+      "tail": null,
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Officer is <<<323176976314135>>>: same woman with medium brown skin, tiedback dark curly hair, teal uniform cream collar compass emblem. Use her supplied voice. Officer brightens approving nod; captain RIGHT gloved hand briefly gives thumbs-up then lowers. Same physical set, no numeric statement because this clip works for all accepted shares. Only Officer speaks, others remain silent. Exact line, once: \"We have a deal!\". Leave a small pause before and after, do not rush or add words. No background music or added voices. "
+    },
+    {
+      "id": "a05",
+      "duration": 7,
+      "ref": "public/cinematics/prologue-v3/references/briefing-anchor.png",
+      "line": "Let me show you your crew. First, meet Rho, your first mate.",
+      "speaker": "Officer",
+      "audio": true,
+      "elements": [
+        {
+          "id": "323176976314135",
+          "bindName": "Officer"
+        },
+        {
+          "id": "323176998308923",
+          "bindName": "Rho"
+        }
+      ],
+      "tail": "public/cinematics/prologue-v3/references/rho-handshake.png",
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Officer is <<<323176976314135>>>: same woman with medium brown skin, tiedback dark curly hair, teal uniform cream collar compass emblem. Use her supplied voice. Rho is <<<323176998308923>>>: same young adult humanoid AI first mate, short sideswept blond hair amber eyes thin clear teal visor metal cheek/neck brown jacket teal shoulders cream shirt. Use her supplied voice; Rho is pronounced row. Same officer gestures to frame-right doorway. Rho <<<323176998308923>>> enters from that doorway and approaches camera greeting distance, softly smiling without speaking. Officer remains at desk. Preserve room and Rho supplied identity, no extra crew. Only Officer speaks, others remain silent. Exact line, once: \"Let me show you your crew. First, meet Rho, your first mate.\". Leave a small pause before and after, do not rush or add words. No background music or added voices. "
+    },
+    {
+      "id": "a06",
+      "duration": 5,
+      "ref": "public/cinematics/prologue-v3/references/rho-handshake.png",
+      "line": "Hi, Captain. I'm glad we're a team.",
+      "speaker": "Rho",
+      "audio": true,
+      "elements": [
+        {
+          "id": "323176998308923",
+          "bindName": "Rho"
+        },
+        {
+          "id": "323176976314135",
+          "bindName": "Officer"
+        }
+      ],
+      "tail": null,
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Officer is <<<323176976314135>>>: same woman with medium brown skin, tiedback dark curly hair, teal uniform cream collar compass emblem. Use her supplied voice. Rho is <<<323176998308923>>>: same young adult humanoid AI first mate, short sideswept blond hair amber eyes thin clear teal visor metal cheek/neck brown jacket teal shoulders cream shirt. Use her supplied voice; Rho is pronounced row. Same room officer silent in background. Rho right hand meets captain RIGHT navy-cuffed gloved hand, one gentle anatomically correct handshake then release. Rho turns toward exit and starts moving viewer-left. No extra fingers or altered clothes. Only Rho speaks, others remain silent. Exact line, once: \"Hi, Captain. I'm glad we're a team.\". Leave a small pause before and after, do not rush or add words. No background music or added voices. "
+    },
+    {
+      "id": "a07a",
+      "duration": 8,
+      "ref": "public/cinematics/prologue-v3/references/rho-corridor.png",
+      "line": "This is a learning game. We'll use science, math, English, and social studies.",
+      "speaker": "Rho",
+      "audio": true,
+      "elements": [
+        {
+          "id": "323176998308923",
+          "bindName": "Rho"
+        }
+      ],
+      "tail": null,
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Rho is <<<323176998308923>>>: same young adult humanoid AI first mate, short sideswept blond hair amber eyes thin clear teal visor metal cheek/neck brown jacket teal shoulders cream shirt. Use her supplied voice; Rho is pronounced row. First-person gentle forward walk down same off-island launch-port corridor toward docked teal/brass scout airship. Rho on viewer LEFT walks beside captain, naturally turns toward viewer while speaking. Do not walk backwards, keep ship ahead. Only Rho speaks, others remain silent. Exact line, once: \"This is a learning game. We'll use science, math, English, and social studies.\". Leave a small pause before and after, do not rush or add words. No background music or added voices. "
+    },
+    {
+      "id": "a07b",
+      "duration": 7,
+      "ref": "public/cinematics/prologue-v3/references/rho-corridor.png",
+      "line": "Ask questions. Try things. Learn from what goes wrong.",
+      "speaker": "Rho",
+      "audio": true,
+      "elements": [
+        {
+          "id": "323176998308923",
+          "bindName": "Rho"
+        }
+      ],
+      "tail": null,
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Rho is <<<323176998308923>>>: same young adult humanoid AI first mate, short sideswept blond hair amber eyes thin clear teal visor metal cheek/neck brown jacket teal shoulders cream shirt. Use her supplied voice; Rho is pronounced row. Continue same walk, Rho stays left at same distance, warm encouragement with small gesture. Slow forward drift, same rail/brass arches and ship ahead. No abrupt camera movement or extra person. Only Rho speaks, others remain silent. Exact line, once: \"Ask questions. Try things. Learn from what goes wrong.\". Leave a small pause before and after, do not rush or add words. No background music or added voices. "
+    },
+    {
+      "id": "a07c",
+      "duration": 9,
+      "ref": "public/cinematics/prologue-v3/references/rho-corridor.png",
+      "line": "We don't know what's on the island. That's why we need you to lead us.",
+      "speaker": "Rho",
+      "audio": true,
+      "elements": [
+        {
+          "id": "323176998308923",
+          "bindName": "Rho"
+        }
+      ],
+      "tail": null,
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Rho is <<<323176998308923>>>: same young adult humanoid AI first mate, short sideswept blond hair amber eyes thin clear teal visor metal cheek/neck brown jacket teal shoulders cream shirt. Use her supplied voice; Rho is pronounced row. Continue same corridor with Rho left; she glances ahead toward docked ship then back to captain with thoughtful curiosity and trust. Same ship and entry door, no new hallway or setting. Only Rho speaks, others remain silent. Exact line, once: \"We don't know what's on the island. That's why we need you to lead us.\". Leave a small pause before and after, do not rush or add words. No background music or added voices. "
+    },
+    {
+      "id": "a08",
+      "duration": 4,
+      "ref": "public/cinematics/prologue-v3/references/cockpit-docked.png",
+      "line": "",
+      "speaker": null,
+      "audio": false,
+      "elements": [
+        {
+          "id": "323176998308923",
+          "bindName": "Rho"
+        }
+      ],
+      "tail": null,
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Rho is <<<323176998308923>>>: same young adult humanoid AI first mate, short sideswept blond hair amber eyes thin clear teal visor metal cheek/neck brown jacket teal shoulders cream shirt. Use her supplied voice; Rho is pronounced row. First-person settles into captain seat in docked cockpit, ONLY hands/navy cuffs come to wheel. Rho already stands viewer-left rail ready to depart, smiling closed mouth; same brass arches/gauges/left-wall blue escape handle. Establish port and calm sea outside before takeoff. Completely silent picture; no voices, music or audio effects. "
+    },
+    {
+      "id": "a09",
+      "duration": 8,
+      "ref": "public/cinematics/prologue-v3/references/cockpit-docked.png",
+      "line": "Ready, Captain? Let's fly.",
+      "speaker": "Rho",
+      "audio": true,
+      "elements": [
+        {
+          "id": "323176998308923",
+          "bindName": "Rho"
+        }
+      ],
+      "tail": null,
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Rho is <<<323176998308923>>>: same young adult humanoid AI first mate, short sideswept blond hair amber eyes thin clear teal visor metal cheek/neck brown jacket teal shoulders cream shirt. Use her supplied voice; Rho is pronounced row. First-person piloting same teal/brass civilian scout airship. Hands keep wheel steady as ship smoothly rises forward out of port over calm sea; pier/port falls beneath window. Rho left warm excited smile, then looks ahead; no body/back, no external cut. Only Rho speaks, others remain silent. Exact line, once: \"Ready, Captain? Let's fly.\". Leave a small pause before and after, do not rush or add words. No background music or added voices. "
+    },
+    {
+      "id": "a10",
+      "duration": 7,
+      "ref": "public/cinematics/prologue-v3/references/ship-flight.png",
+      "line": "",
+      "speaker": null,
+      "audio": false,
+      "elements": [],
+      "tail": null,
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Exact referenced ship silhouette, rounded teal/cream hull, brass seams, side propellers and front cockpit. Smooth flight above sea toward same untouched island with beach flat river plain hills forest inland mountains. Distant dark clouds start gathering ahead. Gentle exterior follow, no new wings/rockets/airship design. Completely silent picture; no voices, music or audio effects. "
+    },
+    {
+      "id": "a11",
+      "duration": 6,
+      "ref": "public/cinematics/references/3d-v1/s02-storm-bridge.png",
+      "line": "Captain... look ahead.",
+      "speaker": "Rho",
+      "audio": true,
+      "elements": [
+        {
+          "id": "323176998308923",
+          "bindName": "Rho"
+        }
+      ],
+      "tail": null,
+      "prompt": "Polished stylized 3D family adventure matching supplied image, keep exact faces, clothes, head/body proportions, room/cockpit and geography. Warm cinematic teal/brass/navy/brown style. First-person player has ONLY gloved hands/navy cuffs, no player face/head/back/body. No lettering, captions, numerals, speech bubbles, buttons or UI. No blood/injury/weapons/horror. One continuous shot, no automatic camera cuts, no music, no extra speech. Clearly pronounced simple English, natural unhurried delivery with lip sync. Preserve supplied reusable subjects and their supplied voices. Rho is <<<323176998308923>>>: same young adult humanoid AI first mate, short sideswept blond hair amber eyes thin clear teal visor metal cheek/neck brown jacket teal shoulders cream shirt. Use her supplied voice; Rho is pronounced row. First-person hands on wheel same cockpit, Rho viewer-left braces at rail. Her smile gone, worried eyes/tight brow. Wind ruffles chart, dark cloud bank over same untouched island ahead. Concern not screaming, no crash yet, no lightning flashes, keep left blue handle. Only Rho speaks, others remain silent. Exact line, once: \"Captain... look ahead.\". Leave a small pause before and after, do not rush or add words. No background music or added voices. "
+    }
+  ],
+  "edits": {
+    "briefing": [
+      "a01",
+      "a02",
+      "a03a",
+      "a03b",
+      "a04a",
+      "a04b"
+    ],
+    "continuation": [
+      "yes",
+      "a05",
+      "a06",
+      "a07a",
+      "a07b",
+      "a07c",
+      "a08",
+      "a09",
+      "a10",
+      "a11"
+    ],
+    "offer15": [
+      "n15"
+    ],
+    "offer20": [
+      "n20"
+    ],
+    "preview10": [
+      "a01",
+      "a02",
+      "a03a",
+      "a03b",
+      "a04a",
+      "a04b",
+      "yes",
+      "a05",
+      "a06",
+      "a07a",
+      "a07b",
+      "a07c",
+      "a08",
+      "a09",
+      "a10",
+      "a11"
+    ],
+    "preview15": [
+      "a01",
+      "a02",
+      "a03a",
+      "a03b",
+      "a04a",
+      "a04b",
+      "n15",
+      "yes",
+      "a05",
+      "a06",
+      "a07a",
+      "a07b",
+      "a07c",
+      "a08",
+      "a09",
+      "a10",
+      "a11"
+    ],
+    "preview20": [
+      "a01",
+      "a02",
+      "a03a",
+      "a03b",
+      "a04a",
+      "a04b",
+      "n15",
+      "n20",
+      "yes",
+      "a05",
+      "a06",
+      "a07a",
+      "a07b",
+      "a07c",
+      "a08",
+      "a09",
+      "a10",
+      "a11"
+    ]
+  }
+}

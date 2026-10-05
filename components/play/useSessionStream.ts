@@ -35,6 +35,9 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
   >([]);
   const [pendingMissionOpen, setPendingMissionOpen] = useState<MissionOpenEvent | null>(null);
   const [pendingMissionBoardOpen, setPendingMissionBoardOpen] = useState(false);
+  const [pendingMapOpen, setPendingMapOpen] = useState<{ nodeId?: string } | null>(null);
+  const [worldVersion, setWorldVersion] = useState(0);
+  const [worldUpdate, setWorldUpdate] = useState<{ reason: string; nodeId?: string } | null>(null);
   const [pendingCrewLogOpen, setPendingCrewLogOpen] = useState(false);
   const [pendingLearningClip, setPendingLearningClip] = useState<LearningClipOffer | null>(
     null
@@ -173,6 +176,8 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
                 ok?: boolean;
                 detail?: string;
                 phase?: string;
+                nodeId?: string;
+                reason?: string;
               };
               if (data.type === "text" && data.content) {
                 gotText = true;
@@ -216,6 +221,11 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
                 });
               } else if (data.type === "mission_board_open") {
                 setPendingMissionBoardOpen(true);
+              } else if (data.type === "world_map_open") {
+                setPendingMapOpen({ nodeId: data.nodeId });
+              } else if (data.type === "world_updated") {
+                setWorldVersion((v) => v + 1);
+                setWorldUpdate({ reason: data.reason ?? "Your map changed", nodeId: data.nodeId });
               } else if (
                 data.type === "learning_clip_open" &&
                 data.videoId &&
@@ -277,6 +287,7 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
         if (mySeq !== opSeqRef.current) return;
         streamingRef.current = false;
         setStreaming(false);
+        setWorldVersion((v) => v + 1);
         if (gotText) endCbRef.current?.();
       }
     },
@@ -293,6 +304,10 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
     pendingMissionOpen,
     clearPendingMissionOpen: () => setPendingMissionOpen(null),
     pendingMissionBoardOpen,
+    pendingMapOpen,
+    clearPendingMapOpen: () => setPendingMapOpen(null),
+    worldVersion,
+    worldUpdate,
     clearPendingMissionBoardOpen: () => setPendingMissionBoardOpen(false),
     pendingCrewLogOpen,
     clearPendingCrewLogOpen: () => setPendingCrewLogOpen(false),

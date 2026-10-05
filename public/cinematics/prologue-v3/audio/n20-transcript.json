@@ -1,0 +1,83 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 8.029999732971191,
+  "text": "Again? Oh, alright. 20%. That's my last offer.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0.8999999761581421,
+      "end": 7.480000019073486,
+      "text": " Again? Oh, alright. 20%. That's my last offer.",
+      "tokens": [
+        50364,
+        3764,
+        30,
+        876,
+        11,
+        5845,
+        13,
+        945,
+        6856,
+        663,
+        311,
+        452,
+        1036,
+        2626,
+        13,
+        50714
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.534591019153595,
+      "compression_ratio": 0.8518518805503845,
+      "no_speech_prob": 0.10455582290887833
+    }
+  ],
+  "words": [
+    {
+      "word": "Again",
+      "start": 0.8999999761581421,
+      "end": 1.7799999713897705
+    },
+    {
+      "word": "Oh",
+      "start": 2.559999942779541,
+      "end": 3.440000057220459
+    },
+    {
+      "word": "alright",
+      "start": 3.819999933242798,
+      "end": 4.5
+    },
+    {
+      "word": "20",
+      "start": 4.960000038146973,
+      "end": 5.820000171661377
+    },
+    {
+      "word": "That's",
+      "start": 5.820000171661377,
+      "end": 6.5
+    },
+    {
+      "word": "my",
+      "start": 6.5,
+      "end": 6.760000228881836
+    },
+    {
+      "word": "last",
+      "start": 6.760000228881836,
+      "end": 7.179999828338623
+    },
+    {
+      "word": "offer",
+      "start": 7.179999828338623,
+      "end": 7.480000019073486
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 9
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 5.03000020980835,
+  "text": "Captain, we have a job for you and your crew.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0,
+      "end": 4.5,
+      "text": " Captain, we have a job for you and your crew.",
+      "tokens": [
+        50364,
+        10873,
+        11,
+        321,
+        362,
+        257,
+        1691,
+        337,
+        291,
+        293,
+        428,
+        7260,
+        13,
+        50614
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.3053417503833771,
+      "compression_ratio": 0.8999999761581421,
+      "no_speech_prob": 0.029872309416532516
+    }
+  ],
+  "words": [
+    {
+      "word": "Captain",
+      "start": 0,
+      "end": 0.800000011920929
+    },
+    {
+      "word": "we",
+      "start": 1.2000000476837158,
+      "end": 1.6399999856948853
+    },
+    {
+      "word": "have",
+      "start": 1.6399999856948853,
+      "end": 1.9199999570846558
+    },
+    {
+      "word": "a",
+      "start": 1.9199999570846558,
+      "end": 2.2799999713897705
+    },
+    {
+      "word": "job",
+      "start": 2.2799999713897705,
+      "end": 2.700000047683716
+    },
+    {
+      "word": "for",
+      "start": 2.700000047683716,
+      "end": 3.059999942779541
+    },
+    {
+      "word": "you",
+      "start": 3.059999942779541,
+      "end": 3.380000114440918
+    },
+    {
+      "word": "and",
+      "start": 3.380000114440918,
+      "end": 3.7799999713897705
+    },
+    {
+      "word": "your",
+      "start": 3.7799999713897705,
+      "end": 4.239999771118164
+    },
+    {
+      "word": "crew",
+      "start": 4.239999771118164,
+      "end": 4.5
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 6
+  }
+}

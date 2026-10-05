@@ -13,6 +13,7 @@ Read `PROJECT_MEMORY.md` before project work and update it concisely after meani
 - **Date / origin:** 2026-10-05, Ivan. He asked that data-security for kids be recorded where deferred work lives, and marked high priority.
 - **Status:** Locked in MASTER §4.1. The one-clip tool can play a privacy-enhanced YouTube embed only when `PRIMER_LEARNING_CLIPS=1` and `YOUTUBE_API_KEY` are set. That flag is not parent consent. Do not enable it on a child-facing deploy until the items below are done.
 - **Rule for every future slice:** Any new third-party embed, analytics pixel, ad network, or media vendor is a COPPA decision before a child can reach it. A feature flag, a nocookie player, or “it is just a video” is not consent.
+- **Source list during development (2026-10-05):** Ivan asked that the channel list not be a small closed door. Search may return channels outside `CLIP_CHANNELS`. Our rubric in `docs/LEARNING_CLIP_EVALUATION.md` decides fit. Known sources are preferred, not required. This does not relax the consent rule above.
 - **Learning clips, still required before a real child uses them:**
   - Verifiable parent consent, and a privacy policy that names Google. A lawyer review is already required before stipend money (MASTER §4.1). This vendor is part of that review.
   - Do not send the child’s name, account id, or voice to YouTube. The embed can still let Google see the viewer (IP and player identifiers). Say that plainly. Do not describe the nocookie player as private.

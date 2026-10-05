@@ -1,0 +1,105 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 7.03000020980835,
+  "text": "Let me show you your crew. First, meet Ro, your first mate.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0,
+      "end": 6.920000076293945,
+      "text": " Let me show you your crew. First, meet Ro, your first mate.",
+      "tokens": [
+        50364,
+        961,
+        385,
+        855,
+        291,
+        428,
+        7260,
+        13,
+        2386,
+        11,
+        1677,
+        3101,
+        11,
+        428,
+        700,
+        11709,
+        13,
+        50714
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.46679937839508057,
+      "compression_ratio": 1.0535714626312256,
+      "no_speech_prob": 0.08738206326961517
+    }
+  ],
+  "words": [
+    {
+      "word": "Let",
+      "start": 0,
+      "end": 0.9399999976158142
+    },
+    {
+      "word": "me",
+      "start": 0.9399999976158142,
+      "end": 1.1200000047683716
+    },
+    {
+      "word": "show",
+      "start": 1.1200000047683716,
+      "end": 1.2799999713897705
+    },
+    {
+      "word": "you",
+      "start": 1.2799999713897705,
+      "end": 1.440000057220459
+    },
+    {
+      "word": "your",
+      "start": 1.440000057220459,
+      "end": 1.7000000476837158
+    },
+    {
+      "word": "crew",
+      "start": 1.7000000476837158,
+      "end": 1.9800000190734863
+    },
+    {
+      "word": "First",
+      "start": 2.8399999141693115,
+      "end": 2.940000057220459
+    },
+    {
+      "word": "meet",
+      "start": 3.700000047683716,
+      "end": 3.880000114440918
+    },
+    {
+      "word": "Ro",
+      "start": 3.880000114440918,
+      "end": 5.460000038146973
+    },
+    {
+      "word": "your",
+      "start": 5.71999979019165,
+      "end": 6.079999923706055
+    },
+    {
+      "word": "first",
+      "start": 6.079999923706055,
+      "end": 6.639999866485596
+    },
+    {
+      "word": "mate",
+      "start": 6.639999866485596,
+      "end": 6.920000076293945
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 8
+  }
+}

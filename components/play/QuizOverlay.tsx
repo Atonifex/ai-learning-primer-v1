@@ -37,7 +37,10 @@ export default function QuizOverlay(props: {
     Boolean(result) && (!wreckZpd || zpdStage === "done" || zpdStage === "fade");
 
   return (
-    <div className="absolute inset-0 z-40 flex items-end justify-center bg-black/45 p-3 sm:items-center">
+    <div
+      className="absolute inset-0 z-50 flex items-end justify-center bg-black/45 p-3 sm:items-center"
+      data-testid="quiz-overlay"
+    >
       <div className="w-full max-w-lg overflow-hidden rounded-2xl border-4 border-amber-800/80 bg-[#3d2914] shadow-2xl">
         <div className="bg-[#5c4033] px-4 py-2">
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-200/90">

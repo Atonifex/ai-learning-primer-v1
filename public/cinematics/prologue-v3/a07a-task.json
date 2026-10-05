@@ -1,0 +1,9 @@
+{
+  "generationId": "ARsEa5j9Nt2q6id6aZOruFarh9dOjG_mblwC20DpVTMUuxQ7yk9V4SJdqDa_yim6KT_83V7E",
+  "status": "QUEUING",
+  "model": "kling-video-v3_0",
+  "creditsConsumed": 96,
+  "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+  "credits_consumed": 96,
+  "generation_id": "ARsEa5j9Nt2q6id6aZOruFarh9dOjG_mblwC20DpVTMUuxQ7yk9V4SJdqDa_yim6KT_83V7E"
+}

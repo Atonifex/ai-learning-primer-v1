@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
   const openRaw = typeof body?.open === "string" ? body.open : "dialogue";
   const open: AgentPlayOpen =
-    openRaw === "board" || openRaw === "none" || openRaw === "dialogue" || openRaw === "clip"
+    openRaw === "board" || openRaw === "none" || openRaw === "dialogue" || openRaw === "clip" || openRaw === "intro"
       ? openRaw
       : "dialogue";
 
@@ -59,8 +59,12 @@ export async function POST(req: NextRequest) {
 
   await prisma.learnerProfile.update({
     where: { id: user.learnerProfile.id },
-    data: { firstRunStep: "complete" },
+    data: { firstRunStep: open === "intro" ? "video" : "complete" },
   });
+
+  if (open === "intro") {
+    await prisma.memoryItem.deleteMany({ where: { id: `${user.learnerProfile.id}:intro:v3` } });
+  }
 
   const profile = await getProfile(user.id);
   if (!profile) {
@@ -86,7 +90,7 @@ export async function POST(req: NextRequest) {
     username: TEST_CAPTAIN_USERNAME,
     pin: TEST_CAPTAIN_PIN,
     displayName: profile.displayName,
-    firstRunStep: "complete",
+    firstRunStep: open === "intro" ? "video" : "complete",
     sessionId,
     subjectSlug: profile.primarySubjectSlug,
     learnUrl,

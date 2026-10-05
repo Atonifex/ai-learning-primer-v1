@@ -1,0 +1,86 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 7.03000020980835,
+  "text": "Ask questions. Try things. Learn from what goes wrong.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0,
+      "end": 5.820000171661377,
+      "text": " Ask questions. Try things. Learn from what goes wrong.",
+      "tokens": [
+        50364,
+        12320,
+        1651,
+        13,
+        6526,
+        721,
+        13,
+        17216,
+        490,
+        437,
+        1709,
+        2085,
+        13,
+        50704
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.27001991868019104,
+      "compression_ratio": 0.8999999761581421,
+      "no_speech_prob": 0.1581309735774994
+    }
+  ],
+  "words": [
+    {
+      "word": "Ask",
+      "start": 0,
+      "end": 0.4399999976158142
+    },
+    {
+      "word": "questions",
+      "start": 0.4399999976158142,
+      "end": 1.159999966621399
+    },
+    {
+      "word": "Try",
+      "start": 2.819999933242798,
+      "end": 2.819999933242798
+    },
+    {
+      "word": "things",
+      "start": 2.819999933242798,
+      "end": 3.3399999141693115
+    },
+    {
+      "word": "Learn",
+      "start": 4.71999979019165,
+      "end": 4.71999979019165
+    },
+    {
+      "word": "from",
+      "start": 4.71999979019165,
+      "end": 4.980000019073486
+    },
+    {
+      "word": "what",
+      "start": 4.980000019073486,
+      "end": 5.199999809265137
+    },
+    {
+      "word": "goes",
+      "start": 5.199999809265137,
+      "end": 5.460000038146973
+    },
+    {
+      "word": "wrong",
+      "start": 5.460000038146973,
+      "end": 5.820000171661377
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 8
+  }
+}

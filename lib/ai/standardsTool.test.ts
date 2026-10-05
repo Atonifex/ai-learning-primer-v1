@@ -36,21 +36,19 @@ describe("mission board tools", () => {
     );
   });
 
-  it("exposes open_crew_log and save_crew_log for the camp unlock gate", () => {
+  it("keeps crew-log tools optional and not a job unlock gate", () => {
     expect(openCrewLogTool.function.name).toBe("open_crew_log");
     expect(saveCrewLogTool.function.name).toBe("save_crew_log");
+    expect(openCrewLogTool.function.description.toLowerCase()).toContain("optional");
+    expect(saveCrewLogTool.function.description.toLowerCase()).toContain("optional");
     expect(openCrewLogTool.function.description.toLowerCase()).toContain(
-      "never ask them to type the tool name"
-    );
-    expect(saveCrewLogTool.function.description.toLowerCase()).toContain(
-      "already wrote or spoke"
+      "do not wait"
     );
   });
 
   it("instructs Rho to call tools instead of only narrating the board", () => {
     const missions = decorateMissions({
       wreckQuizDone: false,
-      chapter1ReflectionDone: false,
       completedSlugs: new Set(),
     });
     const prompt = buildSystemPrompt(profile, [], null, [], {
@@ -60,20 +58,18 @@ describe("mission board tools", () => {
     expect(prompt).toContain("show_mission_board");
     expect(prompt).toContain("Do not only describe a wooden board");
     expect(prompt).toContain("open_mission");
-    expect(prompt).toContain("open_crew_log");
-    expect(prompt).toContain("save_crew_log");
+    expect(prompt).toContain("no crew-log gate");
     expect(prompt).toContain("never ask the captain to type a tool name");
   });
 
-  it("tells Rho to save or open the crew log when camp is locked", () => {
+  it("does not tell Rho that camp waits on a crew log", () => {
     const missions = decorateMissions({
       wreckQuizDone: true,
-      chapter1ReflectionDone: false,
       completedSlugs: new Set(["g3-ma-wreck-number-forms"]),
     });
     const board = formatMissionsForPrompt(missions);
-    expect(board).toContain("save_crew_log");
-    expect(board).toContain("open_crew_log");
-    expect(board).toContain("never ask them to type a tool name");
+    expect(board).toContain("camp-math [available]");
+    expect(board).not.toContain("locked on the crew log");
+    expect(board).not.toContain("save_crew_log");
   });
 });

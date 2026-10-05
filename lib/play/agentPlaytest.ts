@@ -15,7 +15,7 @@ export function isAgentPlaytestEnabled(
   return host === "localhost" || host === "127.0.0.1";
 }
 
-export type AgentPlayOpen = "dialogue" | "board" | "clip" | "none";
+export type AgentPlayOpen = "dialogue" | "board" | "clip" | "intro" | "none";
 
 export function buildAgentLearnUrl(
   sessionId: string,

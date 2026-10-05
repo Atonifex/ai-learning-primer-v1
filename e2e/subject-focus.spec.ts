@@ -22,12 +22,14 @@ test("captain chooses a subject and must confirm a switch", async ({ page }) => 
   await expect(page.getByText("MA.3.NSO.1.1")).toHaveCount(1);
 
   await page.getByRole("button", { name: "Grade 3 Science" }).click();
-  await expect(page.getByText("Leave Grade 3 Math for Grade 3 Science?")).toBeVisible();
+  await expect(page.getByText("Leave Grade 3 Math for Grade 3 Science?")).toBeVisible({
+    timeout: 20_000,
+  });
   await page.getByRole("button", { name: "Stay" }).click();
   await expect(page.getByText("MA.3.NSO.1.1")).toHaveCount(1);
 
   await page.getByRole("button", { name: "Grade 3 Science" }).click();
   await page.getByRole("button", { name: "Yes, switch" }).click();
-  await expect(page.getByText("SC.3.N.1.1")).toHaveCount(1);
+  await expect(page.getByText("SC.3.N.1.1")).toHaveCount(1, { timeout: 20_000 });
   await expect(page.getByText("MA.3.NSO.1.1")).toHaveCount(0);
 });

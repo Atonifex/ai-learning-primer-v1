@@ -185,6 +185,8 @@ export type StreamChunk =
       switched: boolean;
     }
   | { type: "mission_board_open" }
+  | { type: "world_map_open"; nodeId?: string }
+  | { type: "world_updated"; reason: string; nodeId?: string }
   | {
       type: "learning_clip_open";
       videoId: string;

@@ -8,6 +8,8 @@ import {
   mathPlacementCopy,
   type MathDiagnosticState,
 } from "../../lib/play/mathDiagnostic";
+import { practiceForPlacement } from "../../lib/play/mathPractice";
+import MathPractice from "./MathPractice";
 
 type Stage = "example" | "question" | "feedback";
 
@@ -19,10 +21,12 @@ export default function MathCheck() {
   const doneCopy = mathPlacementCopy(state.placement);
 
   if (doneCopy && stage !== "feedback") {
+    const practice = practiceForPlacement(state.placement);
     return (
       <div className="rounded-xl border border-amber-900/20 bg-white p-3">
         <h3 className="text-sm font-semibold text-stone-900">Starting point</h3>
         <p className="mt-1 text-sm text-stone-800">{doneCopy}</p>
+        {practice && <MathPractice item={practice} />}
       </div>
     );
   }

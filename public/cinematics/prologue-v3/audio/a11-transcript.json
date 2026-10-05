@@ -1,0 +1,49 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 6.03000020980835,
+  "text": "Captain, look ahead.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 4.039999961853027,
+      "end": 5.739999771118164,
+      "text": " Captain, look ahead.",
+      "tokens": [
+        50364,
+        10873,
+        11,
+        574,
+        2286,
+        13,
+        50652
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.7092920541763306,
+      "compression_ratio": 0.7142857313156128,
+      "no_speech_prob": 0.06449441611766815
+    }
+  ],
+  "words": [
+    {
+      "word": "Captain",
+      "start": 4.039999961853027,
+      "end": 4.71999979019165
+    },
+    {
+      "word": "look",
+      "start": 4.71999979019165,
+      "end": 5.400000095367432
+    },
+    {
+      "word": "ahead",
+      "start": 5.400000095367432,
+      "end": 5.739999771118164
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 7
+  }
+}

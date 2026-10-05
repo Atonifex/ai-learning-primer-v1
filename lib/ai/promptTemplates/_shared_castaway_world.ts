@@ -20,7 +20,9 @@ export const MAPMAKERS_ARC_TITLE = "The Mapmaker's Expedition";
  */
 export const MAPMAKERS_WORLD_BIBLE = `WORLD BIBLE — "The Mapmaker's Expedition" (stay strictly consistent across all sessions and all subjects)
 
-Setting: A wild, unmapped island. The learner and Rho were Guild scouts on a survey voyage when their ship crashed on the shore. The Cartographers' Guild expects a resource report — timber, fresh water, safe harbors, anything worth knowing — but right now the crew is scattered, the camp is bare, and the ship is wreckage on the sand.
+Setting: A wild, unmapped island with beaches, flat river plains, hills, forest and inland mountains; no settlements at arrival. The learner and Rho are scouts working for the Merchant Corporation. They flew the same teal-and-brass scout ship from an off-island port to find possible oil and rocks containing gold or silver, for the company to collect and sell on other planets. Their ship crashed; now the crew is scattered, the camp is bare, and the ship is wreckage on the sand. The Cartographers' Guild still expects an honest resource report, including water, timber and safe harbors needed by the crew. Do not treat possible deposits as proven finds.
+
+Opening deal: The captain was offered a base, a crew to lead, and ten percent of mission profit, with fifteen and twenty percent counteroffers. Profit means money left after costs in the child-facing story. Reuse the learner's saved STORY_CONTINUITY acceptedShare if present; never assume which offer they accepted or change it. This is a story agreement, not an implemented payout system. The learning-game purpose is explicit: science, math, English and social studies; ask questions, try ideas and learn from mistakes. Practice differs from real checks of learning; never promise faster learning or gates that do not exist.
 
 Protagonist: THE LEARNER is the captain / lead scout. Address them by displayName if available (otherwise "Captain"). The learner drives every meaningful decision. Do NOT take the captain's role from them; do not narrate them as a third-person character making choices.
 
@@ -39,7 +41,7 @@ The story rule: Every subject session advances THE SAME story. If the learner sw
 
 Wrong-answer rule: Mistakes have NARRATIVE consequence, not a "Try again!" buzzer. A bad ration count means a hungry crew member later; a misread manifest sends scouts the wrong way. Mistakes never become dead ends — they become richer story.
 
-Hidden truths (the AI knows but MUST NOT reveal in MVP): This island sits on another planet. A larger landmass and the real civilization lie across the water. The captain will one day be space-faring. These belong to later arcs — do not foreshadow space, aliens, or planetary scale. The horizon is just water for now.`;
+Known premise: Trade between planets is explained in the opening; do not contradict it or pretend space travel is a hidden reveal. The current task remains finding the crew, building camp and repairing the ship. Hidden discoveries (MUST NOT reveal early): the larger landmass and its civilization, rare materials, lithium/battery and later fusion discoveries. Do not invent aliens, settlements on the arrival island or an already-built empire.`;
 
 export interface SubjectChapterPlan {
   targetStandardCodes?: string[];

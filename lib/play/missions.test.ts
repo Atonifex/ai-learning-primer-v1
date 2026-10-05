@@ -18,13 +18,12 @@ describe("mission catalog", () => {
     expect(missionByPin("dune")?.subjectSlug).toBe("ela_g3");
     expect(missionByPin("treeline")?.subjectSlug).toBe("science_g3");
     expect(missionByPin("creek")?.subjectSlug).toBe("social_studies_g3");
-    expect(missionByPin("camp")?.lockedUntil).toBe("ch1-reflection");
+    expect(missionByPin("camp")?.lockedUntil).toBe("wreck-quiz");
   });
 
-  it("keeps other pins locked until wreck salvage, camp until crew log", () => {
+  it("keeps other pins locked until wreck salvage, including camp", () => {
     const gates = {
       wreckQuizDone: false,
-      chapter1ReflectionDone: false,
       completedSlugs: new Set<string>(),
     };
     expect(resolveMissionStatus(missionByPin("wreck")!, gates).status).toBe("available");
@@ -33,25 +32,22 @@ describe("mission catalog", () => {
 
     gates.wreckQuizDone = true;
     expect(resolveMissionStatus(missionByPin("dune")!, gates).status).toBe("available");
-    expect(resolveMissionStatus(missionByPin("camp")!, gates).status).toBe("locked");
-
-    gates.chapter1ReflectionDone = true;
     expect(resolveMissionStatus(missionByPin("camp")!, gates).status).toBe("available");
   });
 
   it("marks a slug completed and injects next open job into Rho's prompt", () => {
     const missions = decorateMissions({
       wreckQuizDone: true,
-      chapter1ReflectionDone: false,
       completedSlugs: new Set(["g3-ma-wreck-number-forms"]),
     });
     expect(missions[0]?.status).toBe("completed");
     const prompt = formatMissionsForPrompt(missions);
     expect(prompt).toContain("dune-ela [available]");
+    expect(prompt).toContain("camp-math [available]");
     expect(prompt).toContain("Next open job: dune-ela");
     expect(prompt).toContain("show_mission_board");
     expect(prompt).toContain("open the on-screen Jobs overlay");
-    expect(prompt).toContain("save_crew_log");
-    expect(prompt).toContain("open_crew_log");
+    expect(prompt).not.toContain("Crew log still needed");
+    expect(prompt).not.toContain("locked on the crew log");
   });
 });

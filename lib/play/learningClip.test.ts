@@ -5,6 +5,7 @@ import type { LearnerProfileData } from "../types";
 import {
   channelsFor,
   clipGateReason,
+  knownSourceFor,
   clipReflectionMessage,
   fallbackWatchQuestions,
   LEARNING_CLIP_FIXTURE,
@@ -16,7 +17,6 @@ import {
 } from "./learningClip";
 import { findLearningClip } from "./learningClipSearch";
 
-const MATH_ANTICS = "UCBuMwlP7kHkNxdPAqtFSJTw";
 const KHAN = "UC4a-Gbdw7vOaccHmFo40b9g";
 const OFF_LIST = "UCnotallowed0000000000";
 
@@ -33,8 +33,6 @@ function candidate(overrides: Partial<ClipCandidate> = {}): ClipCandidate {
     ...overrides,
   };
 }
-
-const allowed = new Set([KHAN, MATH_ANTICS]);
 
 function jsonResponse(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
@@ -60,9 +58,11 @@ const profile: LearnerProfileData = {
 };
 
 describe("learning clip gates", () => {
-  it("rejects off-allowlist, overlong, blocked, and live videos", () => {
-    const opts = { gradeBand: "3", allowedChannelIds: allowed };
-    expect(clipGateReason(candidate({ channelId: OFF_LIST }), opts)).toBe("off_allowlist");
+  it("rejects overlong, blocked, and live videos, and still allows an unknown channel", () => {
+    const opts = { gradeBand: "3" };
+    expect(clipGateReason(candidate({ channelId: OFF_LIST }), opts)).toBeNull();
+    expect(knownSourceFor(OFF_LIST)).toBeNull();
+    expect(knownSourceFor(KHAN)?.name).toBe("Khan Academy");
     expect(clipGateReason(candidate({ durationSeconds: 20 * 60 }), opts)).toBe("too_long");
     expect(clipGateReason(candidate({ durationSeconds: 30 }), opts)).toBe("too_short");
     expect(clipGateReason(candidate({ title: "Fortnite prank challenge" }), opts)).toBe(
@@ -73,25 +73,22 @@ describe("learning clip gates", () => {
     expect(clipGateReason(candidate(), opts)).toBeNull();
   });
 
-  it("allows a longer clip for older grades and keeps the channel list short", () => {
+  it("allows a longer clip for older grades and keeps the known-source list broad", () => {
     expect(parseIsoDurationSeconds("PT9M30S")).toBe(570);
-    expect(
-      clipGateReason(candidate({ durationSeconds: 570 }), {
-        gradeBand: "3",
-        allowedChannelIds: allowed,
-      })
-    ).toBe("too_long");
-    expect(
-      clipGateReason(candidate({ durationSeconds: 570 }), {
-        gradeBand: "6",
-        allowedChannelIds: allowed,
-      })
-    ).toBeNull();
-    const math = channelsFor("math_g3", "3");
-    expect(math.length).toBeLessThanOrEqual(3);
-    expect(math.map((channel) => channel.name)).toContain("Math Antics");
-    expect(math.map((channel) => channel.name)).not.toContain("SciShow Kids");
-    expect(channelsFor("ela_g4", "5").map((channel) => channel.name)).toEqual(["Khan Academy"]);
+    expect(clipGateReason(candidate({ durationSeconds: 570 }), { gradeBand: "3" })).toBe(
+      "too_long"
+    );
+    expect(clipGateReason(candidate({ durationSeconds: 570 }), { gradeBand: "6" })).toBeNull();
+    const math = channelsFor("math_g3", "3").map((channel) => channel.name);
+    expect(math.length).toBeGreaterThan(3);
+    expect(math).toContain("Math Antics");
+    expect(math).toContain("TED-Ed");
+    expect(math).toContain("Mashup Math");
+    const ela = channelsFor("ela_g4", "5").map((channel) => channel.name);
+    expect(ela).toContain("Khan Academy");
+    expect(ela).toContain("TED-Ed");
+    expect(ela).toContain("Crash Course");
+    expect(ela).toContain("Homeschool Pop");
   });
 
   it("does not open a clip when the ranker says none or names an unknown id", () => {
@@ -152,19 +149,21 @@ describe("findLearningClip", () => {
     };
   }
 
-  it("returns no id for an off-allowlist or overlong video, and none when the ranker abstains", async () => {
+  it("can offer an unknown channel, still drops an overlong video, and none when the ranker abstains", async () => {
     const fetchImpl = async (input: RequestInfo | URL) => {
       const url = new URL(String(input));
       if (url.pathname.endsWith("/search")) {
-        return jsonResponse(searchBody(OFF_LIST, "aaaaaaaaaaa", "Mystery video"));
+        expect(url.searchParams.get("channelId")).toBeNull();
+        expect(url.searchParams.get("safeSearch")).toBe("strict");
+        return jsonResponse(searchBody(OFF_LIST, "aaaaaaaaaaa", "Equal pieces of a ration bar"));
       }
       return jsonResponse({
         items: [
           {
             id: "aaaaaaaaaaa",
             snippet: {
-              title: "Mystery video",
-              description: "n/a",
+              title: "Equal pieces of a ration bar",
+              description: "Split one bar into equal pieces.",
               channelId: OFF_LIST,
               channelTitle: "Someone",
               liveBroadcastContent: "none",
@@ -184,8 +183,10 @@ describe("findLearningClip", () => {
       },
       { env, fetchImpl, cache: new Map(), rank: async () => ({ videoId: "aaaaaaaaaaa", questions: [] }) }
     );
-    expect(offList.status).toBe("none");
-    expect(JSON.stringify(offList)).not.toContain("aaaaaaaaaaa");
+    expect(offList).toMatchObject({
+      status: "clip",
+      clip: { videoId: "aaaaaaaaaaa", channelId: OFF_LIST },
+    });
 
     const longFetch = async (input: RequestInfo | URL) => {
       const url = new URL(String(input));

@@ -73,6 +73,7 @@ Stuck loops, too much reading, dialogue blocking work, unclear “what do I do n
 
 | Priority | Fix or build | Why |
 |----------|--------------|-----|
+| P0 | Quiz/crew-log overlays close dialogue cutscene | Kids must tap answers without Rho chat on top (`overlayWorkMode`, `e2e/quiz-over-dialogue.spec.ts`) |
 | P0 | … | … |
 | P1 | … | … |
 | P2 | … | … |
@@ -85,5 +86,18 @@ Stuck loops, too much reading, dialogue blocking work, unclear “what do I do n
 - **P2** — Polish, engagement, or parent-facing; after core loop stable
 
 ## Latest snapshot (2026-10-05 — crew log → camp-math)
+
+## Playtest — 2026-10-05 — V03 branching intro
+
+**Setup:** local seeded testcaptain, `/dev/agent` → Play new intro. No learner content sent to media providers; synthetic production only.
+**Scenario/evidence:** real-time browser briefing →10% offer →No →15% →No →20% final Yes-only →Yes/common continuation. Sound enabled through UI. Screenshot: `public/cinematics/prologue-v3/onboarding-choices-review.png`. Five automated intro scenarios also cover accepted-share persistence/reload, playback controls/Skip and failed-save retry.
+
+1. **Functionality:** spoken offers hide bubbles; loop waits silently; final20% has only Yes. State/save guard prevents double clicks; source captions are editable.
+2. **Curriculum — working:** corridor honestly calls this a learning game and names all four subjects; question/try/learn message connects learning to captain leadership.
+3. **Curriculum — gaps:** formal test/writing/speaking progression disclosure remains separate design text. No child reading/comprehension study or functioning profit payout system claimed.
+4. **Student — working:** personal base/crew benefit, clear percentage choices, first-person handshake/launch, sound/captions/pause/Skip.
+5. **Student — gaps:** final forced Yes is deliberately limited agency; Skip available. Actual crash/objective sequence still needs production, currently a beach still/text bridge. Model acting/voice/lip-sync needs human playback approval; corridor includes officer escort and last alert softens.
+
+**Checks:**94 unit tests + TypeScript pass. Whole browser suite14/15 sequentially; unrelated Jobs→quiz overlay test fails. All five intro scenarios pass. Earlier parallel fixture collisions corrected with one worker. Next priorities: investigate Jobs→quiz failure; human review of V03 before paid revisions; then script/generate same-ship crash and post-crash learning/leadership objective.
 
 See project chat / MASTER §18. Verified: natural *show the mission board*; one chat message with crew-log sentence + camp request → `save_crew_log` path, toast, camp overlay; API `camp-math` → `available`.

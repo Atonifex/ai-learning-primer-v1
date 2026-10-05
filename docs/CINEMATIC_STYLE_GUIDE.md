@@ -4,6 +4,8 @@ Locked by Ivan, 2026-10-05: **the A candidates' polished 3D family-adventure ani
 
 Before any cinematic work, read `PROJECT_MEMORY.md`, this guide and the relevant script. After meaningful discoveries, update memory concisely with accepted decisions, asset versions and costs. Never include credentials. Use active references below; older A/B candidates are history, and ARCHIVED assets are excluded from generation inputs.
 
+**Production reference extension, 2026-10-05:** V03 adds matched physical briefing officer, Rho handshake/corridor, docked cockpit and ship exterior in `public/cinematics/prologue-v3/references/`. Use these for new camera views alongside existing approved 3D identities. `public/cinematics/prologue-v3/README.md` records generated footage, editable materials and remaining playback-review limitations. The same shuttle/scout ship appears throughout; no second vehicle.
+
 ## Visual style
 
 - Clearly animated 3D: appealing sculpted forms, soft illustrative skin, expressive eyes, simplified tactile cloth/wood/metal, cinematic depth and light. Avoid photorealistic humans, uncanny faces, plastic dolls, pixel art or a drift into painted 2D characters.
@@ -64,7 +66,7 @@ For trade-port shots, replace the surveyed-island clause with the explicit popul
 
 ## Review before video spending
 
-Latest proposed scene package: `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md`; its branching room/handshake/corridor scenes require matched new reference views of existing identities, not redesigns. Same physical officer and set across offer clips; silent waiting anchor matches first/last frames; UI/choices remain app overlays. V03 proposes one scout ship throughout (confirmation pending), left-side Rho/escape-handle continuity. Spoken language targets Grade 3; use simple “company/get,” concrete coin-share explanations, and short sentences. User's specific one-round request overrides the default two-cycle count for this revision.
+Latest proposed scene package: `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md`; its branching room/handshake/corridor scenes require matched new reference views of existing identities, not redesigns. Same physical officer and set across offer clips; silent waiting anchor matches first/last frames; UI/choices remain app overlays. V03 proposes one scout ship throughout (confirmation pending), left-side Rho/escape-handle continuity. Spoken language targets Grade 3; use simple “company/get” and short sentences; Ivan explicitly accepts ten/fifteen/twenty percent in spoken offers instead of coin-share explanations. User's specific one-round request overrides the default two-cycle count for this revision.
 
 For script iteration, follow `docs/CREATIVE_IMPROVEMENT_CYCLE.md`. Current prologue rewrite: `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md` (proposal); V02 is prior editorial history. Let dramatic beats and accepted dialogue determine edit duration, not uniform generation slots. Listen for pronunciation and consistent performance; transcription alone is insufficient.
 

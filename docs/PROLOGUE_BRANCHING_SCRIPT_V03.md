@@ -1,14 +1,16 @@
 # Prologue V03 — The deal, the crew, the flight
 
-2026-10-05. Status: final proposed script/prompt package after one requested critique round; no Kling submissions or new images. Supersedes V02 for future prologue authoring. Existing media remain library/history. Read `PROJECT_MEMORY.md` and `docs/CINEMATIC_STYLE_GUIDE.md` before production and update meaningful decisions, verified costs and asset locations. Never retain secrets.
+2026-10-05. Status: generated and integrated into onboarding under Ivan's authorization. Five new reference images and 19 Kling video sources are preserved in `public/cinematics/prologue-v3/`; see its `README.md` and `shots.json` for actual prompts, timings, checks and limitations. Supersedes V02. Read `PROJECT_MEMORY.md` and `docs/CINEMATIC_STYLE_GUIDE.md` before production and update meaningful decisions, verified costs and asset locations. Never retain secrets.
+
+**User wording correction:** Ivan accepts “percent” in spoken dialogue. Use ten/fifteen/twenty percent in the final offers, not coins out of twenty. The earlier coin suggestion in the critique below is retained as editorial history and superseded by this correction. Other dialogue stays simple; timing estimates remain provisional.
 
 ## Accepted user direction and open assumptions
 
-Ivan requests simple Grade 3 spoken language; personal benefit for captain (own base, crew, initial10% share); Yes/No bargaining with15% after first No,20% final offer after second No, then Yes only; reusable silent loop behind app-rendered bubbles; same officer introduces Rho, who walks up and shakes the player's hand; first-person corridor walk with Rho on left explaining learning/leadership; first-person takeoff; exterior calm flight with gathering clouds; then worried Rho/weather turn. Duration may expand. This pass writes prompts/scripts; it does not build the app or generate paid media.
+Ivan requests simple Grade 3 spoken language; personal benefit for captain (own base, crew, initial10% share); Yes/No bargaining with15% after first No,20% final offer after second No, then Yes only; reusable silent loop behind app-rendered bubbles; same officer introduces Rho, who walks up and shakes the player's hand; first-person corridor walk with Rho on left explaining learning/leadership; first-person takeoff; exterior calm flight with gathering clouds; then worried Rho/weather turn. This direction is generated and integrated; final production resolutions below supersede the original planning checklist.
 
-Pending questions already presented to Ivan:
-- Proposal: “shuttle” means the same civilian teal-and-brass scout ship/airship that later crashes, not a second vehicle. Briefing/corridor are at an off-island launch port. Current ship exterior is not a locked turnaround.
-- Proposal: the percentage is the captain's share of the **mission's** money left after its costs, not all company-wide profits or total sales. Script uses this meaning; sales-before-costs would require different lines.
+Confirmed for production:
+- Ivan confirms “shuttle” is the same civilian teal-and-brass scout ship/airship that later crashes. Briefing/corridor are at an off-island launch port; new exterior reference fixes the visual direction.
+- Ivan accepts gross-profit wording explained simply; recorded captain share uses mission money left after costs. This is fictional story continuity, not a company-wide payout engine.
 
 The base and crew reward is a story promise, not verified app/economy functionality. It does not imply infrastructure already exists on the island. No newly named worlds, officer, crew members or discoveries introduced. Spoken “company” replaces the harder formal name Merchant Corporation without renaming that entity. Technical crew title “first mate” and requested school subject names are retained; other spoken words and short sentences target Grade 3 comprehension. This is editorial judgment, not a verified grade placement of every word.
 
@@ -84,7 +86,9 @@ Each asset below uses the production foundation and relevant character/set locks
 
 ### A04 — What the captain gets — 00:30–00:47 (17s)
 
-**Officer:** “You can build your own base and lead your own crew. We pay the costs first. Then you get two coins out of each twenty left. Sound good?”
+**Officer (recorded A04a, 10s):** “You can build your own base and lead your own crew. Profit is the money left after costs.”
+
+**Officer (recorded A04b, 7s):** “You'll get ten percent of that profit. Sound good?”
 
 **Prompt:** Same locked officer medium shot, sincere smile as she describes captain's future, small open-palm gesture for the deal. This is10% of mission profit under the proposed accounting meaning. No generated percentage/coin numerals, no imagined base cutaway on island, no thumbs-up. After the question, return hands to desk and mouth closed; gaze steady, shoulders relaxed. End exactly in neutral waiting anchor W. Spoken line may use two matched takes if model limits require; no mechanical five-second resets.
 
@@ -98,13 +102,13 @@ Reuse this one loop after A04, N15 and N20. All three dialogue assets must end a
 
 ### N15 — First No: better offer — local00:00–00:08 (8s)
 
-**Officer:** “Oh! You want more. All right. Three coins out of each twenty. Sound good?”
+**Officer:** “Oh! You want more. All right. Fifteen percent. Sound good?”
 
 **Prompt:** Start at W. Same officer briefly loses her smile, eyebrows lift, gives one small disappointed sigh without spoken additions. Regains professional composure and offers15% with an open-palm gesture. Her frustration is with the bargaining, not an attack on the child. Same face, costume, voice, room, lens and light. End at W, mouth closed. No generated Yes/No bubbles or coin/percentage graphics.
 
 ### N20 — Second No: last offer — local00:00–00:08 (8s)
 
-**Officer:** “Again? Oh, all right! Four coins out of each twenty. That's my last offer.”
+**Officer:** “Again? Oh, all right! Twenty percent. That's my last offer.”
 
 **Prompt:** Start at W. Same officer, larger comic reaction: raised brows, brief upward glance, shoulder slump, palms up, one theatrical exhale. Exasperated but safe and respectful; no yelling, insult, blame or threat. Straightens, speaks final20% offer firmly and clearly, then returns hands/mouth/pose to W. No extra dialogue or generated UI. Only Yes is presented by app after this asset, as requested.
 
@@ -163,7 +167,7 @@ Carry one voice/ambience performance through seams. Use exact endpoint/start ref
 
 **Prompt:** Cut back to established first-person cockpit with hands on same wheel, Rho at viewer-left rail, blue escape handle still left. Island/coast/ridge/cloud bank align with exterior approach. A gust rattles a chart edge; Rho sees dark weather ahead, smile falls, brows draw together, eyes widen slightly, mouth tenses. She braces at rail, looks toward windshield, then alerts captain. No cheerful grin, panic scream, lightning flash sequence or crash yet. Last view and wind lead directly into the later storm/crash scene from the same direction of flight. Don't move escape handle or introduce island buildings.
 
-## Branch contract for later app work — specification only
+## Branch contract — implemented in onboarding
 
 ```text
 A01 → A02 → A03 → A04 → W [app: Yes / No, offer10]
@@ -175,24 +179,25 @@ A01 → A02 → A03 → A04 → W [app: Yes / No, offer10]
 Y → A05 → A06 → A07 → A08 → A09 → A10 → A11 → later crash
 ```
 
-The app, not Kling, owns bubbles, accessible labels, branch selection, persisted accepted share and resumable progress. Do not silently reset an accepted share on resume/replay. Hide/disable choices during spoken response clips; show them after the offer completes; no replayed speech while W loops. Final Yes-only is intentional requested behavior, not a genuine final refusal option. Common Y has no numeric line so all accepted paths merge cleanly. No choice-state app code implemented here.
+The app owns bubbles, accessible labels, branch selection, persisted accepted share and resumable progress (`IntroCinematic`, `introDeal`, `/api/profile/intro`). Choices appear after spoken responses; W loops silently. Final Yes-only is intentional requested behavior. Common Y has no numeric line so paths merge cleanly. Accepted share is story memory, not an implemented payout system.
 
-## Production preparation and validation
+## Original production checklist — historical planning
 
 - Keep existing V1 and ARCHIVED/history assets intact; no overwritten masters. V03 lives in its own future asset folder when authorized. Some V1 off-island inserts may be reusable; V1 communicator-only officer picture cannot automatically become the in-person room shot.
 - Before paid video, make/approve matched stills: officer in physical briefing room and waiting anchor; Rho handshake start/contact/end; corridor entry/middle/boarding door; cockpit docked/takeoff; same ship exterior; calm-to-storm approach with stable island layout. Dedicated character views/expression references should derive from existing active identities. No new stills generated in this pass.
 - Each Kling submission needs foundation + character/set locks + its shot prompt + exact dialogue and relevant attached references. File names written in a prompt do not attach an image by themselves. Verify live provider duration, multi-reference/end-frame, voice and audio options before mapping editorial shots to supported jobs; do not claim this document is a tested API payload.
-- All “company” wording is intentionally simpler; do not restore “extract,” “profits,” “percent,” “uninhabited,” “exposition,” “metacognition” or “Corporation” to spoken lines. Canonical formal entity remains Merchant Corporation in project documentation. Percent values can be represented later by app overlay alongside coin explanation; do not generate them in picture.
-- Rehearse full shortest and longest paths before timing lock. Listen for Rho ("row"), subject names, twenty and all coin numbers. Record/cast consistent officer/narrator/Rho voices. Review pronunciation, pacing, vocal identity and visible lip-sync by listening/playback; transcription alone insufficient.
+- All “company” wording is intentionally simpler; do not restore “extract,” “profits,” “uninhabited,” “exposition,” “metacognition” or “Corporation” to spoken lines. Ivan explicitly accepts “percent”: use ten/fifteen/twenty percent instead of the superseded coin explanation. Canonical formal entity remains Merchant Corporation in project documentation. Any displayed percentages are added by the app; do not generate them in picture.
+- Rehearse full shortest and longest paths before timing lock. Listen for Rho ("row"), subject names, ten/fifteen/twenty and “percent.” Record/cast consistent officer/narrator/Rho voices. Review pronunciation, pacing, vocal identity and visible lip-sync by listening/playback; transcription alone insufficient.
 - No automatic expectation of isolated stems from native audio. Prefer approved separately recorded narration for A02 and a continuous corridor voice; visible speech requires compatible lip-sync workflow. Keep clean picture, actual separate dialogue/music/effects where possible, source mixed audio where native, editable timeline and VTT/SRT. Never call an extracted mix an isolated dialogue stem.
 - Captions follow accepted audio, not paper timestamps. Local caption files for each branch plus common sequence allow synchronization after pauses; no single fixed-time SRT should include mutually exclusive branches. Waiting W has no dialogue captions; meaningful audio cues can be app/edit tracks. Bubbles and captions need separate reserved space in later UI.
 - Inspect motion/identity/handshake, island/ship continuity and first/last loop frames; preview W several times after each offer and both No paths. Check shortest path111s, one-No119s, two-No127s only after measured assembly. These are estimates, not tested durations or a credit quote.
 - No paid generation authorized or made by this writing request. Provider account/pricing not queried this turn. Current remaining balance is not freshly verified; prior production recorded7,600 credits.
 
-## Final unresolved questions
+## Production resolutions and remaining review
 
-1. Is the shuttle the same scout ship that crashes? Proposed yes; physical briefing and corridor are at an off-island port.
-2. Is captain's share from mission money after costs? Proposed yes, not company-wide profit. If revenue share is intended, rewrite the money lines before recording.
-3. Are comic bargaining and a required final Yes the intended player experience? Script follows user's exact branch rule; officer is unhappy/exasperated without shaming the child. A genuine opt-out would require a separate design change, not an unrequested extra branch.
-4. Physical officer/handshake/corridor/ship exterior reference designs and consistent voices still need preparation/approval before paid generation. No existing image locks all those new angles.
-5. Exact audio timings and live Kling-supported job settings are production checks still outstanding, not creative questions answered by this document.
+1. Ivan confirmed the shuttle is the same ship. Briefing/corridor remain at an off-island launch port.
+2. Ivan accepted gross profits with a simple explanation; recorded mission-share definition is “Profit is the money left after costs,” followed by ten/fifteen/twenty percent. No accounting system is implied.
+3. Requested comic bargaining and required final Yes are implemented; Skip remains available.
+4. Five matched references and reusable officer/Rho Elements with synthetic voice references were created; 19 jobs completed for 1,504 credits. Remaining checked balance: 6,096.
+5. Measured cuts: 111.02/119.02/127.02s plus untimed app choice pauses. Editable branch captions and clean/source mixes are retained. Pronunciation, acting and lip-sync still need human playback review; transcript matching alone is insufficient. Generated corridor includes the established officer escorting the crew, and the alert expression softens late in A11.
+6. Actual crash and leadership-objective footage remain future production. Onboarding currently uses a beach still/text bridge after the storm approach; tutorial videos remain deferred.

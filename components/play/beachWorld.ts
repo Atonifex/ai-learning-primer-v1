@@ -1,387 +1,112 @@
-import {
-  Application,
-  Assets,
-  Container,
-  Graphics,
-  Sprite,
-  Text,
-  Texture,
-} from "pixi.js";
-import { stillSrc } from "../../lib/play/stills";
-import {
-  COLS,
-  ROWS,
-  SPAWN_COL,
-  SPAWN_ROW,
-  TILE,
-  TUTORIAL_PINS,
-  clampToWalkable,
-  fogAlpha,
-  isWalkable,
-  pinAt,
-  pixelToTile,
-  revealFog,
-  createFogGrid,
-  tileCenter,
-  tileKind,
-  worldHeight,
-  worldWidth,
-  type PinId,
-  type TileKind,
-} from "../../lib/play/beachMap";
-import { TILE_VARIANTS, tileTextureSrc, tileVariantIndex } from "../../lib/play/tileset";
+import { Application, Container, Graphics } from "pixi.js";
+import { TILE, SPAWN_COL, SPAWN_ROW, tileCenter, worldWidth, worldHeight } from "../../lib/play/beachMap";
+import type { WorldSnapshot } from "../../lib/play/worldMap";
+import { findWorldPath, worldWalkable } from "../../lib/play/worldNavigation";
+import { islandTerrain } from "./islandTerrain";
+import { createLandmark } from "./islandLandmarks";
 
 export type BeachWorldHandle = {
-  destroy: () => void;
-  setPaused: (paused: boolean) => void;
-  setQuizDone: (done: boolean) => void;
-  setUnlockedPins: (ids: PinId[]) => void;
-  setTalkedToWreck: (talked: boolean) => void;
+  destroy: () => void; setPaused: (paused: boolean) => void;
+  setWorld: (world: WorldSnapshot) => void; walkTo: (id: string) => void;
 };
-
 export type BeachWorldCallbacks = {
-  onArriveAtPin: (id: PinId) => void;
-  onWanderFromWreck: () => void;
+  onArrive: (id: string) => void; onSelect: (id: string) => void;
+  onPosition: (position: { x: number; y: number }) => void;
 };
 
-const COLORS = {
-  water: 0x0e4a5c,
-  waterDeep: 0x0a3340,
-  foam: 0x2a8a9a,
-  sand: 0xe8d4a8,
-  sandWet: 0xd4b896,
-  rock: 0x4a4a52,
-  wreck: 0x5c4033,
-  captain: 0xe07a5f,
-  rho: 0x3d9b8f,
-  fog: 0x071820,
-  pinLocked: 0x6b7280,
-};
-
-async function optionalTexture(url: string): Promise<Texture | null> {
-  try {
-    const res = await fetch(url);
-    if (!res.ok) return null;
-    const ct = res.headers.get("content-type") || "";
-    if (!ct.startsWith("image/")) return null;
-    return await Assets.load(url);
-  } catch {
-    return null;
-  }
-}
-
-/** Loads every ground tile texture once; falls back per-tile to flat Graphics if any are missing. */
-async function loadTileTextures(): Promise<Map<string, Texture>> {
-  const kinds = Object.keys(TILE_VARIANTS) as TileKind[];
-  const entries = kinds.flatMap((kind) =>
-    TILE_VARIANTS[kind].map((_, variant) => ({ kind, variant }))
-  );
-  const textures = await Promise.all(
-    entries.map(({ kind, variant }) => optionalTexture(tileTextureSrc(kind, variant)))
-  );
-  const map = new Map<string, Texture>();
-  entries.forEach(({ kind, variant }, i) => {
-    const tex = textures[i];
-    if (tex) map.set(`${kind}:${variant}`, tex);
-  });
-  return map;
-}
-
-function makeDot(color: number, radius: number): Graphics {
+function actor(color: number, robot = false) {
   const g = new Graphics();
-  g.circle(0, 0, radius).fill(color);
-  g.stroke({ width: 2, color: 0x1a120c, alpha: 0.45 });
+  g.ellipse(1, 10, 12, 5).fill({ color: 0x163b38, alpha: .25 });
+  g.roundRect(-8, -10, 16, 20, 5).fill(color).stroke({ color: 0xfff0ce, width: 2 });
+  g.circle(0, -15, 8).fill(robot ? 0xa7d4c3 : 0xbf8d67);
+  if (robot) { g.roundRect(-6, -18, 12, 6, 2).fill(0x245154); g.circle(-3, -15, 1.5).fill(0xeaffca); g.circle(3, -15, 1.5).fill(0xeaffca); }
+  else { g.ellipse(0, -20, 11, 4).fill(0xf2dda6); g.roundRect(-6, -27, 12, 8, 3).fill(0xf2dda6); }
   return g;
 }
 
-export async function createBeachWorld(
-  host: HTMLDivElement,
-  callbacks: BeachWorldCallbacks
-): Promise<BeachWorldHandle> {
+export async function createBeachWorld(host: HTMLDivElement, callbacks: BeachWorldCallbacks): Promise<BeachWorldHandle> {
   const app = new Application();
-  await app.init({
-    background: COLORS.waterDeep,
-    resizeTo: host,
-    antialias: true,
-  });
-  host.appendChild(app.canvas);
-  app.canvas.style.display = "block";
-  app.canvas.style.width = "100%";
-  app.canvas.style.height = "100%";
-
+  await app.init({ background: 0x195563, resizeTo: host, antialias: true, resolution: Math.min(window.devicePixelRatio || 1, 2), autoDensity: true });
+  host.appendChild(app.canvas); app.canvas.style.display = "block";
+  app.ticker.maxFPS = 30;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const world = new Container();
-  app.stage.addChild(world);
-
-  const tileTextures = await loadTileTextures();
-
-  const ground = new Container();
-  world.addChild(ground);
-  for (let r = 0; r < ROWS; r++) {
-    for (let c = 0; c < COLS; c++) {
-      const kind = tileKind(c, r);
-      const variantCount = TILE_VARIANTS[kind].length;
-      const variant = tileVariantIndex(c, r, variantCount);
-      const tex = tileTextures.get(`${kind}:${variant}`);
-      if (tex) {
-        const s = new Sprite(tex);
-        s.position.set(c * TILE, r * TILE);
-        s.width = TILE;
-        s.height = TILE;
-        ground.addChild(s);
-        continue;
-      }
-      const g = new Graphics();
-      const color =
-        kind === "water"
-          ? COLORS.water
-          : kind === "foam"
-            ? COLORS.foam
-            : kind === "rock"
-              ? COLORS.rock
-              : COLORS.sand;
-      const alt = kind === "sand" && (c + r) % 2 === 0 ? COLORS.sandWet : color;
-      g.rect(c * TILE, r * TILE, TILE, TILE).fill(alt);
-      ground.addChild(g);
-    }
-  }
-
-  const pinLayer = new Container();
-  world.addChild(pinLayer);
-  const pinMarks = new Map<PinId, Graphics>();
-  for (const pin of TUTORIAL_PINS) {
-    const { x, y } = tileCenter(pin.col, pin.row);
-    const mark = new Graphics();
-    if (pin.id === "wreck") {
-      mark.roundRect(-16, -12, 32, 24, 4).fill(COLORS.wreck);
-      mark.rect(-18, -4, 8, 14).fill(0x3d2914);
-    } else {
-      mark.poly([0, -12, 10, 10, -10, 10]).fill(COLORS.pinLocked);
-    }
-    mark.position.set(x, y);
-    mark.eventMode = "static";
-    mark.cursor = "pointer";
-    const label = new Text({
-      text: pin.label,
-      style: { fontFamily: "Georgia, serif", fontSize: 11, fill: 0xf4f0e6 },
-    });
-    label.anchor.set(0.5, 0);
-    label.position.set(x, y + 14);
-    pinLayer.addChild(mark, label);
-    pinMarks.set(pin.id, mark);
-  }
-
-  const fogGfx = new Graphics();
-  world.addChild(fogGfx);
-  const explored = createFogGrid();
-
-  const spawn = tileCenter(SPAWN_COL, SPAWN_ROW);
-  const [captainTex, rhoTex] = await Promise.all([
-    optionalTexture(stillSrc("captainPlaceholderSprite")),
-    optionalTexture(stillSrc("rhoOverworldSprite")),
-  ]);
-
-  function actor(tex: Texture | null, color: number, radius: number, size: number) {
-    if (tex) {
-      const s = new Sprite(tex);
-      s.anchor.set(0.5);
-      s.width = size;
-      s.height = size;
-      return s;
-    }
-    return makeDot(color, radius);
-  }
-
-  // Sprites ~1.2× tile so they stay readable when the camera shows the big map.
-  const captain = actor(captainTex, COLORS.captain, 20, 56);
-  captain.position.set(spawn.x, spawn.y);
-  world.addChild(captain);
-
-  const rho = actor(rhoTex, COLORS.rho, 16, 44);
-  rho.position.set(spawn.x - 36, spawn.y + 14);
-  world.addChild(rho);
-
+  const world = new Container(), terrain = islandTerrain(), pass = new Graphics(), fog = new Graphics();
+  const route = new Graphics(), landmarks = new Container(), actors = new Container();
+  app.stage.addChild(world); world.addChild(terrain.layer, pass, fog, route, landmarks, actors);
+  const captain = actor(0xd77852), rho = actor(0x519f95, true), spawn = tileCenter(SPAWN_COL, SPAWN_ROW);
+  captain.position.set(spawn.x, spawn.y); rho.position.set(spawn.x - 27, spawn.y + 12); actors.addChild(rho, captain);
+  let state: WorldSnapshot | null = null, paused = false, destroyed = false;
+  let path: Array<{ x: number; y: number }> = [], destination: string | null = null;
+  let lastPosition = "", lastNear: string | null = null, clock = 0;
   const keys = new Set<string>();
-  let dest: { x: number; y: number } | null = null;
-  let paused = false;
-  let quizDone = false;
-  let talkedToWreck = false;
-  let wanderFired = false;
-  const insidePin = new Set<PinId>();
-
+  const access = () => state ?? { northUnlocked: false, northLimit: 34 };
+  const clearRoute = () => { path = []; destination = null; route.clear(); };
+  function setRoute(x: number, y: number, id: string | null) {
+    path = findWorldPath(captain, { x, y }, access()); destination = id;
+    route.clear();
+    for (const point of path) route.circle(point.x, point.y, 3).fill({ color: 0xfff4cb, alpha: .85 });
+    const end = path.at(-1); if (end) route.circle(end.x, end.y, 13).stroke({ color: 0xe7835f, width: 3 });
+  }
+  function updateCamera(snap = false) {
+    const width = app.screen.width, height = app.screen.height;
+    const scale = Math.max(.65, Math.min(1.55, width / 1000, height / 640));
+    world.scale.set(scale);
+    const viewW = width / scale, viewH = height / scale;
+    const x = worldWidth() < viewW ? (worldWidth() - viewW) / 2 : Math.max(-50, Math.min(worldWidth() - viewW + 50, captain.x - viewW / 2));
+    const y = Math.max(0, Math.min(worldHeight() - viewH + 65, captain.y - viewH * .56));
+    const factor = snap || reduceMotion ? 1 : .12;
+    world.x += (-x * scale - world.x) * factor; world.y += (-y * scale - world.y) * factor;
+  }
+  function move(x: number, y: number) {
+    if (worldWalkable(Math.floor(x / TILE), Math.floor(y / TILE), access())) captain.position.set(x, y);
+  }
   const onKeyDown = (e: KeyboardEvent) => {
-    if (paused) return;
-    const t = e.target as HTMLElement | null;
-    if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) {
-      return;
-    }
+    if (paused || (e.target instanceof HTMLElement && (e.target.closest("input,textarea,select,button,dialog") || e.target.isContentEditable))) return;
     const k = e.key.toLowerCase();
-    if (["w", "a", "s", "d", "arrowup", "arrowdown", "arrowleft", "arrowright"].includes(k)) {
-      e.preventDefault();
-      keys.add(k);
-      dest = null;
-    }
+    if (["w", "a", "s", "d", "arrowup", "arrowdown", "arrowleft", "arrowright"].includes(k)) { e.preventDefault(); keys.add(k); clearRoute(); }
   };
-  const onKeyUp = (e: KeyboardEvent) => {
-    keys.delete(e.key.toLowerCase());
-  };
-  window.addEventListener("keydown", onKeyDown);
-  window.addEventListener("keyup", onKeyUp);
-
-  app.stage.eventMode = "static";
-  app.stage.hitArea = app.screen;
-  app.stage.on("pointertap", (ev) => {
-    if (paused) return;
-    const local = world.toLocal(ev.global);
-    const clamped = clampToWalkable(local.x, local.y);
-    dest = clamped;
-  });
-
-  function tryMove(nx: number, ny: number) {
-    const { col, row } = pixelToTile(nx, ny);
-    if (isWalkable(col, row)) {
-      captain.position.set(nx, ny);
-      return;
-    }
-    const { col: cx } = pixelToTile(nx, captain.y);
-    if (isWalkable(cx, pixelToTile(captain.x, captain.y).row)) {
-      captain.position.x = nx;
-    }
-    const { row: ry } = pixelToTile(captain.x, ny);
-    if (isWalkable(pixelToTile(captain.x, captain.y).col, ry)) {
-      captain.position.y = ny;
-    }
-  }
-
-  function updateFog() {
-    const { col, row } = pixelToTile(captain.x, captain.y);
-    revealFog(explored, col, row, 3.2);
-    fogGfx.clear();
-    for (let r = 0; r < ROWS; r++) {
-      for (let c = 0; c < COLS; c++) {
-        const dc = c - col;
-        const dr = r - row;
-        const dist = Math.sqrt(dc * dc + dr * dr);
-        const a = fogAlpha(explored[r][c], dist);
-        if (a <= 0) continue;
-        fogGfx.rect(c * TILE, r * TILE, TILE, TILE).fill({ color: COLORS.fog, alpha: a });
-      }
-    }
-  }
-
-  function updateCamera() {
-    const viewW = app.screen.width;
-    const viewH = app.screen.height;
-    const ww = worldWidth();
-    const wh = worldHeight();
-    let x = captain.x - viewW / 2;
-    let y = captain.y - viewH / 2;
-    if (ww <= viewW) x = (ww - viewW) / 2;
-    else x = Math.max(0, Math.min(ww - viewW, x));
-    if (wh <= viewH) y = (wh - viewH) / 2;
-    else y = Math.max(0, Math.min(wh - viewH, y));
-    if (reduceMotion) {
-      world.position.set(-x, -y);
-    } else {
-      world.position.x += (-x - world.position.x) * 0.12;
-      world.position.y += (-y - world.position.y) * 0.12;
-    }
-  }
-
-  const wreck = TUTORIAL_PINS.find((p) => p.id === "wreck")!;
-  const wreckPos = tileCenter(wreck.col, wreck.row);
-  const spawnX = spawn.x;
-  const spawnY = spawn.y;
-  let destroyed = false;
-
-  app.ticker.add((ticker) => {
-    if (paused || destroyed) return;
-    const dt = ticker.deltaMS / 1000;
-    const speed = 130;
-    let vx = 0;
-    let vy = 0;
-    if (keys.has("w") || keys.has("arrowup")) vy -= 1;
-    if (keys.has("s") || keys.has("arrowdown")) vy += 1;
-    if (keys.has("a") || keys.has("arrowleft")) vx -= 1;
-    if (keys.has("d") || keys.has("arrowright")) vx += 1;
-    if (vx !== 0 || vy !== 0) {
-      const len = Math.hypot(vx, vy) || 1;
-      tryMove(captain.x + (vx / len) * speed * dt, captain.y + (vy / len) * speed * dt);
-    } else if (dest) {
-      const dx = dest.x - captain.x;
-      const dy = dest.y - captain.y;
-      const dist = Math.hypot(dx, dy);
-      if (dist < 4) {
-        captain.position.set(dest.x, dest.y);
-        dest = null;
-      } else {
-        tryMove(captain.x + (dx / dist) * speed * dt, captain.y + (dy / dist) * speed * dt);
-      }
-    }
-
-    const follow = 0.08;
-    rho.position.x += (captain.x - 36 - rho.x) * follow;
-    rho.position.y += (captain.y + 16 - rho.y) * follow;
-
-    const { col, row } = pixelToTile(captain.x, captain.y);
-    const pin = pinAt(col, row, 1);
-    if (pin) {
-      if (!insidePin.has(pin.id)) {
-        insidePin.add(pin.id);
-        callbacks.onArriveAtPin(pin.id);
-      }
-    } else {
-      insidePin.clear();
-    }
-
-    const wreckDist = Math.hypot(captain.x - wreckPos.x, captain.y - wreckPos.y) / TILE;
-    const moved = Math.hypot(captain.x - spawnX, captain.y - spawnY) > 20;
-    if (moved && !talkedToWreck && !wanderFired && wreckDist > 3.8) {
-      wanderFired = true;
-      callbacks.onWanderFromWreck();
-    }
-
-    updateFog();
+  const onKeyUp = (e: KeyboardEvent) => { keys.delete(e.key.toLowerCase()); };
+  const onBlur = () => keys.clear();
+  window.addEventListener("keydown", onKeyDown); window.addEventListener("keyup", onKeyUp); window.addEventListener("blur", onBlur);
+  app.stage.eventMode = "static"; app.stage.hitArea = app.screen;
+  app.stage.on("pointertap", (event) => { if (!paused) { const p = world.toLocal(event.global); setRoute(p.x, p.y, null); } });
+  app.ticker.add((tick) => {
+    if (destroyed) return;
     updateCamera();
+    if (paused) return;
+    const dt = Math.min(tick.deltaMS / 1000, .05); clock += dt;
+    if (!reduceMotion) terrain.waves.alpha = .72 + Math.sin(clock * .65) * .2;
+    let vx = Number(keys.has("d") || keys.has("arrowright")) - Number(keys.has("a") || keys.has("arrowleft"));
+    let vy = Number(keys.has("s") || keys.has("arrowdown")) - Number(keys.has("w") || keys.has("arrowup"));
+    if (vx || vy) { const len = Math.hypot(vx, vy); vx /= len; vy /= len; move(captain.x + vx * 190 * dt, captain.y + vy * 190 * dt); }
+    else if (path.length) {
+      const target = path[0], dx = target.x - captain.x, dy = target.y - captain.y, distance = Math.hypot(dx, dy);
+      if (distance <= 190 * dt) { move(target.x, target.y); path.shift(); }
+      else move(captain.x + dx / distance * 190 * dt, captain.y + dy / distance * 190 * dt);
+      if (!path.length) { const arrived = destination; clearRoute(); callbacks.onPosition({ x: captain.x, y: captain.y }); if (arrived) { lastNear = arrived; callbacks.onArrive(arrived); } }
+    }
+    rho.x += (captain.x - 27 - rho.x) * Math.min(1, dt * 6); rho.y += (captain.y + 12 - rho.y) * Math.min(1, dt * 6);
+    const near = state?.nodes.find((n) => Math.hypot(captain.x - (n.col + .5) * TILE, captain.y - (n.row + .5) * TILE) < 29);
+    if (near && near.id !== lastNear && !destination) { lastNear = near.id; callbacks.onArrive(near.id); }
+    if (!near) lastNear = null;
+    const pos = `${Math.round(captain.x / 8)}:${Math.round(captain.y / 8)}`;
+    if (pos !== lastPosition) { lastPosition = pos; callbacks.onPosition({ x: captain.x, y: captain.y }); }
   });
-
-  updateFog();
-  updateCamera();
-
+  updateCamera(true);
   return {
-    destroy() {
-      if (destroyed) return;
-      destroyed = true;
-      paused = true;
-      window.removeEventListener("keydown", onKeyDown);
-      window.removeEventListener("keyup", onKeyUp);
-      app.ticker.stop();
-      try {
-        app.destroy({ removeView: true });
-      } catch {
-        // React Strict Mode may tear down twice.
-      }
+    destroy() { if (destroyed) return; destroyed = true; window.removeEventListener("keydown", onKeyDown); window.removeEventListener("keyup", onKeyUp); window.removeEventListener("blur", onBlur); app.destroy({ removeView: true }, { children: true }); },
+    setPaused(value) { paused = value; if (value) { keys.clear(); app.ticker.stop(); updateCamera(true); app.render(); } else app.ticker.start(); },
+    setWorld(value) {
+      state = value;
+      for (const child of landmarks.removeChildren()) child.destroy({ children: true });
+      for (const node of value.nodes) landmarks.addChild(createLandmark(node, () => { if (!paused) callbacks.onSelect(node.id); }));
+      fog.clear().rect(-100, 0, worldWidth() + 200, value.northLimit * TILE).fill({ color: 0x204750, alpha: .91 });
+      for (let i = 0; i < 5; i++) fog.rect(-100, value.northLimit * TILE + i * 12, worldWidth() + 200, 12).fill({ color: 0x204750, alpha: .5 - i * .09 });
+      pass.clear();
+      if (value.northUnlocked) pass.roundRect(8 * TILE, 27 * TILE, TILE * 2, TILE * 9, 15).fill(0xcac59a);
+      if (!worldWalkable(Math.floor(captain.x / TILE), Math.floor(captain.y / TILE), value)) { captain.position.set(spawn.x, spawn.y); clearRoute(); }
+      if (paused) app.render();
     },
-    setPaused(v) {
-      paused = v;
-      if (v) keys.clear();
-    },
-    setQuizDone(v) {
-      quizDone = v;
-    },
-    setUnlockedPins(ids) {
-      const open = new Set(ids);
-      for (const pin of TUTORIAL_PINS) {
-        const mark = pinMarks.get(pin.id);
-        if (!mark || pin.id === "wreck") continue;
-        mark.clear();
-        mark.poly([0, -12, 10, 10, -10, 10]).fill(
-          open.has(pin.id) ? 0xc4a574 : COLORS.pinLocked
-        );
-      }
-    },
-    setTalkedToWreck(v) {
-      talkedToWreck = v;
-    },
+    walkTo(id) { const node = state?.nodes.find((n) => n.id === id); if (!node || node.status === "locked") return; const p = tileCenter(node.col, node.row); setRoute(p.x, p.y, id); },
   };
 }

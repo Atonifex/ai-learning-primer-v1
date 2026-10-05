@@ -1,79 +1,35 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import {
-  createBeachWorld,
-  type BeachWorldHandle,
-} from "./beachWorld";
-import type { PinId } from "../../lib/play/beachMap";
+import { useEffect, useRef, useState } from "react";
+import { createBeachWorld, type BeachWorldHandle } from "./beachWorld";
+import type { WorldSnapshot } from "../../lib/play/worldMap";
 
 export default function OverworldCanvas(props: {
-  paused: boolean;
-  quizDone: boolean;
-  talkedToWreck: boolean;
-  unlockedPins: PinId[];
-  onArriveAtPin: (id: PinId) => void;
-  onWanderFromWreck: () => void;
+  paused: boolean; world: WorldSnapshot | null; travel: { id: string; sequence: number } | null;
+  onArrive: (id: string) => void; onSelect: (id: string) => void;
+  onPosition: (p: { x: number; y: number }) => void;
 }) {
-  const hostRef = useRef<HTMLDivElement>(null);
-  const worldRef = useRef<BeachWorldHandle | null>(null);
-  const cbRef = useRef({
-    onArriveAtPin: props.onArriveAtPin,
-    onWanderFromWreck: props.onWanderFromWreck,
-  });
-  cbRef.current = {
-    onArriveAtPin: props.onArriveAtPin,
-    onWanderFromWreck: props.onWanderFromWreck,
-  };
-
+  const host = useRef<HTMLDivElement>(null), handle = useRef<BeachWorldHandle | null>(null);
+  const latest = useRef(props); latest.current = props;
+  const [error, setError] = useState(false);
   useEffect(() => {
-    const host = hostRef.current;
-    if (!host) return;
-    let cancelled = false;
-    void createBeachWorld(host, {
-      onArriveAtPin: (id) => cbRef.current.onArriveAtPin(id),
-      onWanderFromWreck: () => cbRef.current.onWanderFromWreck(),
+    if (!host.current) return;
+    let disposed = false;
+    void createBeachWorld(host.current, {
+      onArrive: (id) => latest.current.onArrive(id), onSelect: (id) => latest.current.onSelect(id),
+      onPosition: (p) => latest.current.onPosition(p),
     }).then((world) => {
-      if (cancelled) {
-        world.destroy();
-        return;
-      }
-      worldRef.current = world;
-      world.setPaused(props.paused);
-      world.setQuizDone(props.quizDone);
-      world.setTalkedToWreck(props.talkedToWreck);
-      world.setUnlockedPins(props.unlockedPins);
-    });
-    return () => {
-      cancelled = true;
-      worldRef.current?.destroy();
-      worldRef.current = null;
-    };
-    // Init once — live flags are pushed below.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      if (disposed) { world.destroy(); return; }
+      handle.current = world; world.setPaused(latest.current.paused);
+      if (latest.current.world) world.setWorld(latest.current.world);
+      if (latest.current.travel) world.walkTo(latest.current.travel.id);
+    }).catch(() => { if (!disposed) setError(true); });
+    return () => { disposed = true; handle.current?.destroy(); handle.current = null; };
   }, []);
-
-  useEffect(() => {
-    worldRef.current?.setPaused(props.paused);
-  }, [props.paused]);
-
-  useEffect(() => {
-    worldRef.current?.setQuizDone(props.quizDone);
-  }, [props.quizDone]);
-
-  useEffect(() => {
-    worldRef.current?.setUnlockedPins(props.unlockedPins);
-  }, [props.unlockedPins]);
-
-  useEffect(() => {
-    worldRef.current?.setTalkedToWreck(props.talkedToWreck);
-  }, [props.talkedToWreck]);
-
-  return (
-    <div
-      ref={hostRef}
-      className="h-full w-full touch-none bg-[#0a3340]"
-      aria-label="Island beach. Tap to walk. WASD on a keyboard."
-    />
-  );
+  useEffect(() => { handle.current?.setPaused(props.paused); }, [props.paused]);
+  useEffect(() => { if (props.world) handle.current?.setWorld(props.world); }, [props.world]);
+  useEffect(() => { if (props.travel) handle.current?.walkTo(props.travel.id); }, [props.travel]);
+  return <div ref={host} className="h-full w-full touch-none bg-[#195563]" aria-label="Island beach. Tap to walk. WASD or arrow keys on a keyboard.">
+    {error && <p role="alert" className="absolute left-4 top-32 rounded-xl bg-white p-4">The walking view could not load. Open Island map to keep exploring and talking with Rho.</p>}
+  </div>;
 }

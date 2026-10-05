@@ -448,7 +448,7 @@ Do **not** steal Undertale’s FIGHT/MERCY moral test or bullet-hell. The “dum
 
 ### 4.12 Higgsfield intro + stills pack
 
-**Latest script request, 2026-10-05:** Ivan expands the prologue to captain benefit and10/15/20 share bargaining (Yes/No twice, final Yes-only), an app-overlaid silent waiting loop, physical introduction/handshake with Rho, corridor learning message with Rho left, first-person takeoff, same-ship exterior approach and worried weather turn. Final proposed script/prompts after one requested critique: `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md`, shortest estimated111s plus8s per No and untimed choice pauses. Earlier30s prologue target is superseded for this authoring proposal; crash/objective remain separate. Spoken language targets Grade3; “company/get” and concrete coin shares replace harder words. Same shuttle/scout ship and mission-profit-after-costs meaning await clarification; no new media or app behavior implemented.
+**Current production, 2026-10-05:** V03 captain benefit/10–15–20% bargaining, physical Rho handshake, learning walk and same-ship launch/flight/weather approach are generated and integrated into onboarding. Five matched references, 19 video sources and measured111.02/119.02/127.02s review cuts are preserved in `public/cinematics/prologue-v3/README.md`; script/prompts in `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md` and `shots.json`. Choices appear over a silent matching-endpoint loop after audio; accepted share/progress saves. Recorded profit definition is money left after costs. Paid jobs1,504 credits; checked balance6,096. Earlier30s target is superseded. Actual crash/objective footage remains separate/unbuilt; current app uses beach still/text bridge. Historical direction below is superseded where noted; tutorials deferred.
 
 **Locked 2026-10-05 after candidate review:** Ivan chose A's 3D animation for all future videos. Visual authority: `docs/CINEMATIC_STYLE_GUIDE.md`; active references: `public/cinematics/references/3d-v1/REVIEW.md`. Briefing captain gives thumbs-up; officer positive and professionally serious. Bridge is first-person with only hands/navy cuffs at wheel, no captain's back. Arrival island uninhabited, no buildings/lights/roads/ruins, varied beaches/flat river plains/hills/mountains. Rho conveys readable stress/concern in danger rather than always smiling. Three corrected static images + accepted trade-port A are saved. No further Kling jobs; earlier eight-option round remains history.
 
@@ -456,7 +456,7 @@ Do **not** steal Undertale’s FIGHT/MERCY moral test or bullet-hell. The “dum
 
 **2026-10-05 cinematic update (Ivan, revised):** Use Kling via `https://kling.ai/mcp` for the intro. Realistic cinematic visuals, simple language for Grades 3–8, exciting but school-appropriate action, no blood or on-screen harm. This supersedes the illustrated/non-photoreal preference in the historical prompt below for cinematics; Pixi home remains locked. Intro now comprises **30s mission prologue + 30s crash**, approximately **60s total**; earlier 20–30s total targets are superseded. Codex MCP registration and OAuth succeeded; models, balance, pricing, and generation remain unverified in this session. **Tutorial videos deferred by Ivan**; existing tutorial text remains.
 
-**Mission premise (Ivan):** The expedition works for the **Merchant Corporation** to investigate island natural resources that can be extracted, shipped, and sold on different planets to make the company money. Interplanetary commerce is explained upfront, superseding earlier blanket instructions to hide space/planet references for this premise. Other later discoveries remain unrevealed. Proposed relationship: the Cartographers' Guild briefs the survey crew on behalf of the corporation; exact organizational structure is not yet locked. The live shared prompt still contains the older prohibition and needs synchronization before video release.
+**Mission premise (Ivan):** The expedition works for the **Merchant Corporation** to investigate island natural resources that can be collected, shipped, and sold on different planets to make the company money. Interplanetary commerce is explained upfront and now synchronized in the live shared prompt, superseding the older blanket space/planet prohibition. Later discoveries remain unrevealed. Proposed relationship: the Cartographers' Guild briefs the survey crew on behalf of the corporation; exact organizational structure is not yet locked. Live Rho should reuse the saved accepted mission share, not invent a default.
 
 **Resources/trade clarification (Ivan, 2026-10-05):** Initial targets are oil and metal ores including gold/silver; rare/unknown materials are later discoveries. Prologue contains a proposed 5s trade explanation connecting trade to homes, food delivery, and fictional interplanetary transport. Lithium/batteries and later deuterium/tritium/fusion ideas belong in `docs/FUTURE_STORY_IDEAS.md`; no initial reveal/current implementation. Grade ~6 for fusion is tentative, not verified standards mapping. Future-idea capture is now in AGENTS/CLAUDE/CONTEXT.
 
@@ -516,7 +516,7 @@ Record: **lifetime**, **per session** (wall clock, even if they jump lessons), *
 
 **Build order (after Mission Loop v1 is stable):** (1) world ledger schema, (2) region graph + node-type catalog + stamps on north slots, (3) Chapter Compiler job, (4) Rho world tools wired to packs only, (5) complexity ladder (MC → create modules), (6) disguised placement diagnostic (§4.4).
 
-**Status today:** Ch1 crew-log ledger + `Chapter.handoffSummary` are written and injected into the next Rho turn. North terrain exists (unreachable). **No** compiler, ration-plan artifact, or `stamp_node`. Learning products come before map stamps. See §9.
+**2026-10-05 map expansion authorized by Ivan:** implement the living map in `docs/LIVING_WORLD_MAP.md`: one snapshot from saved chapters/missions/generated work/notes, Pixi and parchment views, validated catalog map stamps from `plannerJson`, deterministic fallback chapter markers, and Rho map/note tools. Only active/completed chapter packs reveal northern terrain; arbitrary live terrain generation stays excluded. Keep subject-focus learning as the session driver. A medium-model Chapter Compiler remains future work; projection of existing saved chapters is not a claim that one exists.
 
 ### 4.16 Session focus (locked 2026-10-05)
 
@@ -852,7 +852,7 @@ Existing code: `app/progress/*`, `lib/services/progress.ts`, `StandardsEvidence`
 | Saga spine | **PARTIAL** | Static TS templates → `StoryWorld` / 6 chapters per learner; Ch1–2 from `grade3_castaway_curriculum`; **not** LLM-customized per child |
 | Three-mode shell | **DONE** | Intro → Pixi home → dialogue (left/right) → overlay quiz/reflection |
 | Mission Loop v1 | **SUPERSEDED as the session model** | Five pin jobs still run. They are not how a sitting chooses work |
-| Subject focus §4.16 | **PARTIAL** | After first-run, the captain picks one subject and sees that subject's standards. A different subject asks for a deliberate yes. At-bats and the camp product are not built |
+| Subject focus §4.16 | **PARTIAL** | After first-run, the captain picks one subject and sees that subject's standards. A different subject asks for a deliberate yes. A try follows a starting point. The written sentence after the try was removed |
 | First-run tutorial | **DONE** | Video/poster → name → move → talk → work; per-learner `firstRunStep` |
 | Household auth | **DONE** | Parent email + child username/PIN; `/household`; child JWT scoped to one captain |
 | Rho live loop | **PARTIAL** | `gpt-5.6-luna`; ZPD; mission context in prompt; tools: observe, generate_activity, suggest/show board/open mission |
@@ -893,7 +893,7 @@ Overlay MC-only; straight-line walk; ambient ocean silent; XP/rations not persis
 
 1. **Math diagnostic (§4.4)** — show a visual example, then a fresh item. Step up after two right, down after two misses. Math first. The same engine later for the other subjects. Do not assign a math dive until this starting point exists. Grade 2 codes are not seeded; do not invent them.
 2. **Subject-focus sitting (§4.16)** — captain chooses one subject and sees that subject's standards. A switch needs a deliberate yes. The chooser is built. The dive waits on the diagnostic.
-3. **Math product after the starting point** — equal groups (`MA.3.NSO.2.2`) only if placement says that idea is the work. Saved to the ledger, not a new beach pin.
+3. **Written camp sentence removed** — Ivan rejected the sentence box after the try. It no longer saves, adds a ration, or appears on a job.
 4. **Evidence across subjects** — `/progress` and the in-session standards view agree after a dive.
 
 **P1 — World feels alive (next coding slices)**
@@ -1079,7 +1079,9 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 
 ## 15. Master checklist
 
-- [x] Author expanded branching prologue, captain coin-share incentives, silent loop/interface contract, Rho handshake/learning walk, flight continuity and final Kling shot prompts after one critique round (2026-10-05); `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md`. Reference prep/audio timing/clarifications and production remain open.
+- [x] Generate V03 matched references and branching prologue; integrate video/10–15–20% choices, silent loop, saved deal/progress and playback controls into onboarding (2026-10-05). 19 jobs cost1,504 credits; balance6,096. Library: `public/cinematics/prologue-v3/README.md`. Measured cuts111.02/119.02/127.02s. Human performance review and actual crash/objective footage remain open; beach still/text bridges current ending.
+
+- [x] Author expanded branching prologue, captain percentage-share incentives, silent loop/interface contract, Rho handshake/learning walk, flight continuity and final Kling shot prompts after one critique round (2026-10-05); `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md`. Generated/integrated as V03; human performance review remains open.
 
 - [x] Review first prologue through two critique/revision rounds; preserve V1 as reusable library, record pronunciation/transcription failure and lock project creative-improvement habit (2026-10-05). Proposed replacement: `docs/PROLOGUE_SCRIPT_REVISION_02.md`; no replacement footage or paid generation yet.
 
@@ -1122,8 +1124,8 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 - [x] Ch1 world ledger + handoff: crew log is a must-reuse artifact on `Chapter.handoffSummary` and in the next Rho prompt (`WorldLedgerEntry`)
 - [x] **§4.16 subject view:** captain chooses one subject, sees that subject's standards, and must confirm before switching. Opens after first-run
 - [x] **Math placement engine and screen:** example, then a fresh item, from the math subject view. Two misses on the easiest item say the check will not guess a grade 2 code (`MathCheck.tsx`)
-- [ ] **Math diagnostic on screen,** then the same engine for ELA, science, and social studies. Assigned dives wait on the starting point
-- [ ] **§4.16 dive:** one idea, shown first, then the child does the next one and gets feedback, then a product the camp uses
+- [x] **Starting-point check** for math, ELA, science, and social studies: example, then a different item, two right to step up, two misses at the bottom refuse an earlier code. After a starting point, each subject shows one new case of that idea and feedback.
+- [ ] **§4.16 dive, product half:** the written sentence after the try was removed. A product the camp uses is not built.
 
 **Step 1 closeout (2026-08-22) — done / leftover / debt**
 
@@ -1332,11 +1334,52 @@ If a new ★ question appears, add the answer to **§4** or **§17** — do not 
 
 ## 18. Implementation log
 
+### 2026-10-05 — V03 media and interactive onboarding
+
+- Ivan confirmed same shuttle/scout ship and authorized pictures/videos/stitching plus onboarding code. Five matched ChatGPT images and 19 Kling v3.0 sources completed; preserved V1 and exact production manifest. Recorded explanation defines profit as money left after costs, then offers ten/fifteen/twenty percent.
+- App now plays briefing, counteroffers and common continuation; overlays choices on silent matching-endpoint loop; final20% offers Yes only. Accepted share/progress persists in STORY_CONTINUITY with authenticated learner route, no schema migration or payout engine. Captions/sound/pause/Skip/retry included. Live premise synchronized to planet trade and saved share; later discoveries hidden.
+- Editable branch/review VTT/SRT, native source mixes, separate picture/audio and captioned/selectable-caption review outputs retained. Measured paths111.02/119.02/127.02s plus choice pauses. Cost1,504; verified balance6,096. No aesthetic retries; provided API key untouched.
+- 94 unit tests and TypeScript pass; all five intro E2E scenarios pass. Sequential broader browser suite14/15: separate Jobs→quiz overlay test fails. Parallel shared-captain fixture collisions corrected with one Playwright worker. Live browser reaches initial offer correctly. Full playback/performance review remains; actual crash/objective videos not yet generated, current app uses beach still/text bridge.
+
 ### 2026-10-05 — Branching prologue screenplay/prompt package
 
 - Incorporated Ivan's captain reward,10/15/20 negotiation with app choices over a silent loop, physical officer/Rho handshake, left-side corridor learning conversation, same-ship takeoff/exterior flight and concerned storm handoff. Wrote draft, one requested three-lens critique and final package `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md` with exact lines, prompts, branch graph and estimated local/global timing.
-- Proposed coin-share explanation avoids percent/profits/extract in Grade3-target dialogue. Estimated shortest111s, one No119s, two No127s plus choice waits; not measured performances. Same-ship/off-island port and mission-share-after-costs assumptions await user clarification; new matched reference views/voices still needed.
+- Initial coin-share suggestion superseded by Ivan accepting spoken ten/fifteen/twenty percent; other Grade3-target dialogue still avoids profits/extract. Estimated shortest111s, one No119s, two No127s plus choice waits; not measured performances. Same-ship/off-island port and mission-share-after-costs assumptions await user clarification; new matched reference views/voices still needed.
 - Updated brief/style/project memory without replacing existing footage. Documentation-only: no new assets, paid generation, account balance query, runtime changes or runtime tests. App branch contract is a specification, not implemented behavior.
+
+### 2026-10-05 — Written camp sentence removed
+
+- Ivan rejected the sentence the captain wrote after the try. The box, the ledger save, the extra ration, the job quote, and the camp-notebook quote are gone. The try and its feedback stay.
+
+### 2026-10-05 — The camp uses the saved line
+
+- Each saved camp line sets aside 1 ration on the HUD and is quoted on the next open job. Rho’s mission prompt includes that line. It does not add a pin or change the map.
+- Not in this slice: map stamps.
+
+### 2026-10-05 — Camp line after the try
+
+- After feedback, the captain writes one line for that idea. It is stored as a must-reuse ledger artifact on the current chapter and added to Rho’s next prompt. A blank line is refused. Saving it does not record a standard observation.
+- Not in this slice: the camp changing rations, the map, or a job because of the line.
+
+### 2026-10-05 — Try after the ELA, science, and social studies check
+
+- When one of those checks finishes on a seeded code, the same subject view shows one new case of that idea: an example, then the captain’s try, then feedback. It stays hidden before a starting point, including two misses at the bottom.
+- Not in this slice: saving that try as a camp product.
+
+### 2026-10-05 — Starting-point check for ELA, science, and social studies
+
+- The math placement engine now runs the same way on a three-rung Grade 3 ladder for ELA, science, and social studies. Every code is from the seeded tonight slice. Two misses on the easiest item still refuse to invent an earlier grade’s code.
+- Not in this slice: a follow-up try after those checks, or a camp product.
+
+### 2026-10-05 — Math try after the starting point
+
+- When the math check finishes on a seeded code, the same subject view shows one new case of that idea: an example, then the captain’s try, then feedback that names the quantity. It does not appear before a starting point, and a miss at the bottom still does not invent a grade 2 code.
+- Not in this slice: saving that try as a camp product on the ledger. Other subjects still wait on their own checks.
+
+### 2026-10-05 — Learning-clip sources opened for development
+
+- Ivan did not want the clip search limited to a short channel list while the product is still in development. Search is one safe, embeddable YouTube query. Known educational channels are a plus. An unknown channel can be offered when the duration, embed, blocklist, and topical ranker pass. Rubric: `docs/LEARNING_CLIP_EVALUATION.md`.
+- Child-facing consent is unchanged. Clips stay off unless `PRIMER_LEARNING_CLIPS=1` and `YOUTUBE_API_KEY` are set.
 
 ### 2026-10-05 — One learning clip, still off for children
 
@@ -1382,11 +1425,15 @@ Agents append here. Newest first.
 - Saved watermark-free originals and task metadata, normalized1920×1080/24fps edit, clean30s H.264/AAC master, separate picture/audio and per-shot extracted mixes, VTT/SRT, selectable subtitles and captioned review copy in `public/cinematics/prologue-v1`. Exact shot prompts/lines and reproducible orchestration/assembly/transcription/export scripts retained.
 - Whisper recovered all six lines; minor P04 singular “food shipment” captured in captions. Validated caption timing/coverage/two-line wrapping, media metadata and sampled frames/subtitle rendering. Full unit suite54 and TypeScript typecheck passed. User playback needed for voice/motion/lip-sync acceptance. No webpage/player integration, crash/objective/tutorial jobs, retries or music commissioning.
 
+### 2026-10-05 — Crew log no longer gates camp-math
+
+- Product change: camp-math unlocks after wreck salvage only (same as dune/treeline/creek). Ch1 crew log stays optional for story/handoff; wreck dismiss no longer auto-opens the reflection overlay.
+- Files: `lib/play/missions.ts`, `lib/ai/{standardsTool,sessionOrchestrator,contextBuilder}.ts`, `components/play/PlayShell.tsx`, tests.
+
 ### 2026-10-05 — Crew log tools + orchestrator debug visibility
 
-- Fixed camp-math stuck loop: chat notes never unlocked camp because only ReflectionOverlay writes the gate. Added `open_crew_log` / `save_crew_log`; wreck-quiz dismiss no longer skips the slate via stale `firstRun.complete`. If `open_mission(camp-math)` is locked but a prior chat note exists, orchestrator auto-saves then opens camp — never asks for tool-name keywords.
+- Earlier fix for camp stuck when crew log *was* a gate: `open_crew_log` / `save_crew_log`, tool-result debug. Gate later removed (see entry above); tools kept as optional.
 - Developer debug: `PRIMER_AI_DEBUG=1` logs tool **results** + SSE `debug_tool`; `NEXT_PUBLIC_PRIMER_AI_DEBUG=1` shows a PlayShell strip. Both off for real players.
-- Files: `lib/ai/{standardsTool,sessionOrchestrator,contextBuilder}.ts`, `lib/play/{chapterReflection,missions,crewLogCandidate,clientAiDebug}.ts`, `components/play/{PlayShell,useSessionStream,useLearningLoop,AiDebugPanel}.tsx`, `e2e/crew-log-debug.spec.ts`.
 
 ### 2026-10-05 — Auto-read switch on Talking with Rho
 

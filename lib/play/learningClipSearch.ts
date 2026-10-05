@@ -1,10 +1,10 @@
 import OpenAI from "openai";
 import { UTILITY_MODEL } from "../ai/models";
 import {
-  channelsFor,
   clipCacheKey,
   CLIP_DENY_VIDEO_IDS,
   gateCandidates,
+  knownSourceFor,
   learningClipsEnabled,
   offerFromVerdict,
   parseIsoDurationSeconds,
@@ -118,12 +118,17 @@ function applyVideoDetails(candidates: ClipCandidate[], body: unknown): ClipCand
 async function defaultRank(
   candidates: ClipCandidate[],
   goal: string,
-  apiKey: string | undefined
+  apiKey: string | undefined,
+  gradeBand: string
 ): Promise<{ videoId: string | null; questions: string[] }> {
   if (!apiKey || candidates.length === 0) return { videoId: null, questions: [] };
   const lines = candidates.map((candidate, index) => {
     const description = candidate.description.replace(/\s+/g, " ").trim().slice(0, 400);
-    return `${index + 1}. id=${candidate.videoId} channel=${candidate.channelTitle} title=${candidate.title} description=${description}`;
+    const known = knownSourceFor(candidate.channelId);
+    const source = known
+      ? `knownSource=yes aimedAt=${known.minGrade}-${known.maxGrade}`
+      : "knownSource=no";
+    return `${index + 1}. id=${candidate.videoId} channel=${candidate.channelTitle} ${source} title=${candidate.title} description=${description}`;
   });
   try {
     const openai = new OpenAI({ apiKey });
@@ -133,11 +138,11 @@ async function defaultRank(
         {
           role: "system",
           content:
-            "You choose one educational video id from the list, or NONE. Reply with JSON only: {\"videoId\":\"id or NONE\",\"questions\":[\"...\",\"...\"]}. Questions must help a child hold the learning goal. Do not invent what the video shows beyond its title and description. Prefer NONE over a weak fit.",
+            "You choose one educational video id from the list, or NONE. Reply with JSON only: {\"videoId\":\"id or NONE\",\"questions\":[\"...\",\"...\"]}. The child is in the given grade band. A known educational source is a plus, not a requirement. An unknown channel is allowed when the title and description clearly teach the goal. Questions must help the child hold the learning goal. Do not invent what the video shows beyond its title and description. Prefer NONE over a weak or off-topic fit.",
         },
         {
           role: "user",
-          content: `Learning goal: ${goal}\n\n${lines.join("\n")}`,
+          content: `Grade band: ${gradeBand}\nLearning goal: ${goal}\n\n${lines.join("\n")}`,
         },
       ],
     });
@@ -152,8 +157,8 @@ async function defaultRank(
 }
 
 /**
- * Search allowlisted channels only. Never receives the child's name or voice.
- * ChatGPT, Gemini, and Exa do not pick the video id.
+ * One open YouTube search (safe search, embeddable). Known sources are a plus.
+ * Never receives the child's name or voice. The model does not pick the video id.
  */
 export async function findLearningClip(
   input: {
@@ -189,40 +194,34 @@ export async function findLearningClip(
   const cached = cache.get(key);
   if (cached && !denyIds.has(cached.videoId)) return { status: "clip", clip: cached };
 
-  const channels = channelsFor(input.subjectSlug, input.gradeBand);
-  if (channels.length === 0) return { status: "none", reason: "no_channels" };
-
   const fetchImpl = deps.fetchImpl ?? fetch;
   const apiKey = env.YOUTUBE_API_KEY?.trim() ?? "";
-  const found: ClipCandidate[] = [];
-  let searchFailed = 0;
-  for (const channel of channels) {
-    try {
-      const body = await youtubeGet(
-        fetchImpl,
-        apiKey,
-        "search",
-        {
-          part: "snippet",
-          type: "video",
-          safeSearch: "strict",
-          videoEmbeddable: "true",
-          videoSyndicated: "true",
-          channelId: channel.channelId,
-          q: topic,
-          maxResults: "5",
-          relevanceLanguage: "en",
-        },
-        input.signal
-      );
-      found.push(...searchHits(body));
-    } catch (err) {
-      searchFailed += 1;
-      console.error(
-        "Learning clip search failed",
-        err instanceof Error ? err.message : "unknown"
-      );
-    }
+  let found: ClipCandidate[] = [];
+  let searchFailed = false;
+  try {
+    const body = await youtubeGet(
+      fetchImpl,
+      apiKey,
+      "search",
+      {
+        part: "snippet",
+        type: "video",
+        safeSearch: "strict",
+        videoEmbeddable: "true",
+        videoSyndicated: "true",
+        q: topic,
+        maxResults: "10",
+        relevanceLanguage: "en",
+      },
+      input.signal
+    );
+    found = searchHits(body);
+  } catch (err) {
+    searchFailed = true;
+    console.error(
+      "Learning clip search failed",
+      err instanceof Error ? err.message : "unknown"
+    );
   }
 
   const unique = new Map<string, ClipCandidate>();
@@ -233,7 +232,7 @@ export async function findLearningClip(
   if (ids.length === 0) {
     return {
       status: "none",
-      reason: searchFailed === channels.length ? "search_failed" : "no_results",
+      reason: searchFailed ? "search_failed" : "no_results",
     };
   }
 
@@ -255,17 +254,16 @@ export async function findLearningClip(
     return { status: "none", reason: "details_failed" };
   }
 
-  const allowedChannelIds = new Set(channels.map((channel) => channel.channelId));
   const gated = gateCandidates(detailed, {
     gradeBand: input.gradeBand,
-    allowedChannelIds,
     denyIds,
-  }).slice(0, 5);
+  }).slice(0, 8);
   if (gated.length === 0) return { status: "none", reason: "none_passed_gates" };
 
   const rank =
     deps.rank ??
-    ((candidates, learningGoal) => defaultRank(candidates, learningGoal, env.OPENAI_API_KEY));
+    ((candidates, learningGoal) =>
+      defaultRank(candidates, learningGoal, env.OPENAI_API_KEY, input.gradeBand));
   const verdict = await rank(gated, goal);
   const clip = offerFromVerdict(gated, verdict, goal);
   if (!clip) return { status: "none", reason: "ranker_none" };

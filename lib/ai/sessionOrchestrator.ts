@@ -31,7 +31,6 @@ import {
   hasCompletedChapterReflection,
   saveChapterReflectionFromNote,
 } from "../play/chapterReflection";
-import { findCrewLogNoteCandidate } from "../play/crewLogCandidate";
 import {
   aiDebug,
   isAiDebug,
@@ -48,6 +47,9 @@ import type {
 } from "../types";
 import { storySpineSubjectSlug } from "../constants/subjects";
 import { expandHiddenTurn, isHiddenTurn } from "../play/hiddenTurns";
+import { showWorldMapTool, saveMapNoteTool } from "./worldMapTools";
+import { getWorldSnapshot, saveMapNote } from "../services/worldMap";
+import { worldMapPrompt } from "../play/worldMap";
 
 function extractCoherenceMap(
   spine: StorySpineContext | null | undefined,
@@ -124,6 +126,7 @@ export async function* streamSessionResponse(
   const standardsBlock = formatStandardsBlock(standards);
   const coherenceMap = extractCoherenceMap(opts.spine, opts.subjectSlug);
   const missionBoard = await getMissionBoard(profile.id);
+  const world = await getWorldSnapshot(profile.id);
 
   const systemPrompt = buildSystemPrompt(
     profile,
@@ -147,7 +150,7 @@ export async function* streamSessionResponse(
   const isHidden = isHiddenTurn(userMessage);
 
   const messages: ChatCompletionMessageParam[] = [
-    { role: "system", content: systemPrompt },
+    { role: "system", content: systemPrompt + "\n\n" + worldMapPrompt(world) },
     ...priorMessages,
     { role: "user" as const, content: expandedUser },
   ];
@@ -193,6 +196,8 @@ export async function* streamSessionResponse(
         openCrewLogTool,
         saveCrewLogTool,
         offerLearningClipTool,
+        showWorldMapTool,
+        saveMapNoteTool,
       ],
       tool_choice: "auto",
       // gpt-5.6-luna rejects function tools unless reasoning is off.
@@ -271,7 +276,23 @@ export async function* streamSessionResponse(
           continue;
         }
 
-        if (call.name === "generate_scene_image") {
+        if (call.name === "show_world_map" || call.name === "save_map_note") {
+          try {
+            const latestWorld = await getWorldSnapshot(profile.id);
+            const nodeId = typeof args.node_id === "string" ? args.node_id : undefined;
+            if (nodeId && !latestWorld.nodes.some((n) => n.id === nodeId)) throw new Error("Use a location ID from the saved map.");
+            if (call.name === "save_map_note") {
+              await saveMapNote(profile.id, { nodeId, note: args.note });
+              yield { type: "world_updated", reason: "Captain's note saved", nodeId };
+            } else {
+              yield { type: "world_map_open", nodeId };
+            }
+            toolResults.push({ tool_call_id: call.id, content: JSON.stringify({ success: true, nodeId,
+              message: call.name === "save_map_note" ? "Note saved on the map. No unlock or reward." : "Map is open. The captain chooses whether to walk or start work." }) });
+          } catch (error) {
+            toolResults.push({ tool_call_id: call.id, content: JSON.stringify({ success: false, error: error instanceof Error ? error.message : "Could not update map" }) });
+          }
+        } else if (call.name === "generate_scene_image") {
           const prompt = typeof args.prompt === "string" ? args.prompt : "";
           const charactersInScene = Array.isArray(args.characters_in_scene)
             ? args.characters_in_scene.filter((v): v is string => typeof v === "string")
@@ -392,6 +413,10 @@ export async function* streamSessionResponse(
           }
 
           try {
+            const locationId = typeof args.map_location_id === "string" ? args.map_location_id : "camp";
+            const latestWorld = await getWorldSnapshot(profile.id);
+            const location = latestWorld.nodes.find((n) => n.id === locationId);
+            if (!location || location.status === "locked") throw new Error("Choose an available map location.");
             const activity = await createGeneratedMiniQuiz({
               sessionId,
               standardCode,
@@ -402,8 +427,10 @@ export async function* streamSessionResponse(
                   ? args.instructions
                   : "Pick the best answer for each question.",
               items: args.items,
+              mapLocationId: locationId,
             });
             yield { type: "activity_generated", activity };
+            yield { type: "world_updated", reason: `New work at ${location.title}`, nodeId: locationId };
             toolResults.push({
               tool_call_id: call.id,
               content: JSON.stringify({
@@ -509,71 +536,14 @@ export async function* streamSessionResponse(
               continue;
             }
             if (mission.status === "locked") {
-              const needsCrewLog = mission.lockedUntil === "ch1-reflection";
-              if (needsCrewLog && opts.sessionId) {
-                const candidate = findCrewLogNoteCandidate(
-                  userMessage,
-                  sessionMessages.map((m) => ({ role: m.role, content: m.content }))
-                );
-                if (candidate) {
-                  try {
-                    const saved = await saveChapterReflectionFromNote({
-                      sessionId: opts.sessionId,
-                      learnerProfileId: profile.id,
-                      note: candidate,
-                    });
-                    yield {
-                      type: "crew_log_saved",
-                      text: saved.text,
-                      handoffSummary: saved.handoffSummary,
-                      alreadyCompleted: saved.alreadyCompleted,
-                    };
-                    const boardAfter = await getMissionBoard(profile.id);
-                    const unlocked = boardAfter.missions.find((m) => m.id === missionId);
-                    if (unlocked && unlocked.status !== "locked") {
-                      const switched = unlocked.subjectSlug !== opts.subjectSlug;
-                      yield {
-                        type: "mission_open",
-                        missionId: unlocked.id,
-                        subjectSlug: unlocked.subjectSlug,
-                        activitySlug: unlocked.activitySlug,
-                        sessionId: opts.sessionId,
-                        switched,
-                      };
-                      toolResults.push({
-                        tool_call_id: call.id,
-                        content: JSON.stringify({
-                          success: true,
-                          missionId: unlocked.id,
-                          pin: unlocked.pinId,
-                          subjectSlug: unlocked.subjectSlug,
-                          sessionSwitched: switched,
-                          crewLogSaved: true,
-                          note: saved.text,
-                          tellCaptain:
-                            "You saved their crew-log note from chat and opened camp-math. Thank them briefly. Do not ask them to retype the note or a tool name.",
-                        }),
-                      });
-                      continue;
-                    }
-                  } catch (err) {
-                    aiDebug("orchestrator", "crew_log_autosave_failed", {
-                      error: err instanceof Error ? err.message : String(err),
-                    });
-                  }
-                }
-              }
               toolResults.push({
                 tool_call_id: call.id,
                 content: JSON.stringify({
                   success: false,
                   error: mission.lockReason || "That job is still locked.",
-                  nextAction: needsCrewLog
-                    ? "save_crew_log_or_open_crew_log"
-                    : "show_mission_board",
-                  tellCaptain: needsCrewLog
-                    ? "Do not ask them to type tool names. If they already wrote a crew-log note in chat, call save_crew_log with that note. Otherwise call open_crew_log."
-                    : "Explain the lock briefly; open the board if helpful.",
+                  nextAction: "show_mission_board",
+                  tellCaptain:
+                    "Explain the lock briefly in-world. Do not invent a crew-log gate. Open the Jobs board if helpful.",
                 }),
               });
               continue;

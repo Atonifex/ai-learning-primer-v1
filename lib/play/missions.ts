@@ -13,7 +13,7 @@ export type MissionId =
   | "creek-ss"
   | "camp-math";
 
-export type MissionLock = "none" | "wreck-quiz" | "ch1-reflection";
+export type MissionLock = "none" | "wreck-quiz";
 
 export type MissionRewardStub = {
   xp: number;
@@ -88,7 +88,7 @@ export const TUTORIAL_MISSIONS: MissionDef[] = [
     theme: "Search-grid from camp",
     estimatedMinutes: 8,
     rewards: { xp: 14, rations: 2, mapPin: "Camp founded" },
-    lockedUntil: "ch1-reflection",
+    lockedUntil: "wreck-quiz",
   },
 ];
 
@@ -113,7 +113,7 @@ export function missionBySlug(slug: string): MissionDef | null {
 
 export function resolveMissionStatus(
   mission: MissionDef,
-  gates: { wreckQuizDone: boolean; chapter1ReflectionDone: boolean; completedSlugs: Set<string> }
+  gates: { wreckQuizDone: boolean; chapter1ReflectionDone?: boolean; completedSlugs: Set<string> }
 ): { status: MissionStatus; lockReason: string | null } {
   if (gates.completedSlugs.has(mission.activitySlug)) {
     return { status: "completed", lockReason: null };
@@ -124,18 +124,12 @@ export function resolveMissionStatus(
       lockReason: "Salvage the wreck first, Captain. The rest can wait.",
     };
   }
-  if (mission.lockedUntil === "ch1-reflection" && !gates.chapter1ReflectionDone) {
-    return {
-      status: "locked",
-      lockReason: "Leave a crew-log note after the wreck, then camp work opens.",
-    };
-  }
   return { status: "available", lockReason: null };
 }
 
 export function decorateMissions(gates: {
   wreckQuizDone: boolean;
-  chapter1ReflectionDone: boolean;
+  chapter1ReflectionDone?: boolean;
   completedSlugs: Set<string>;
 }): MissionPublic[] {
   return TUTORIAL_MISSIONS.map((mission) => {
@@ -166,19 +160,12 @@ export function formatMissionsForPrompt(missions: MissionPublic[]): string {
     return `- ${m.id} [${m.status}] ${m.title} (${m.subjectSlug}, ${m.theme}, ~${m.estimatedMinutes} min, ${reward})${m.lockReason ? ` — locked: ${m.lockReason}` : ""}`;
   });
   const next = missions.find((m) => m.status === "available");
-  const campLocked = missions.find(
-    (m) => m.id === "camp-math" && m.status === "locked" && m.lockedUntil === "ch1-reflection"
-  );
   const nextLine = next
     ? `Next open job: ${next.id} at the ${next.pinId} (${next.subjectSlug}). If they ask to see jobs/tasks/the board, call show_mission_board. If they agree to start a job, call open_mission yourself — never ask them to type a tool name or keyword.`
     : "No open jobs — praise completed work and invite a recap.";
-  const crewLine = campLocked
-    ? "Camp-math is locked on the crew log. If the captain already wrote a note in chat, call save_crew_log with that note. If not, call open_crew_log. Do not collect the note only in dialogue without saving."
-    : null;
   return [
     `MISSION BOARD (guide the captain; never take the quiz yourself). Call show_mission_board to open the on-screen Jobs overlay — do not only narrate a wooden board:`,
     ...lines,
     nextLine,
-    ...(crewLine ? [crewLine] : []),
   ].join("\n");
 }

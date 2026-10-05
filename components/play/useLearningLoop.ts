@@ -41,6 +41,7 @@ export function useLearningLoop(
 ) {
   const [quizDone, setQuizDone] = useState(false);
   const [quiz, setQuiz] = useState<OverlayQuizPublic | null>(null);
+  const [generatedSessionId, setGeneratedSessionId] = useState(sessionId);
   const [showQuiz, setShowQuiz] = useState(false);
   const [quizSubmitting, setQuizSubmitting] = useState(false);
   const [quizResult, setQuizResult] = useState<QuizResult | null>(null);
@@ -97,12 +98,13 @@ export function useLearningLoop(
     [openOverlayQuiz]
   );
 
-  const openGeneratedQuiz = useCallback((activity: GeneratedActivity) => {
+  const openGeneratedQuiz = useCallback((activity: GeneratedActivity, sourceSessionId?: string) => {
+    setGeneratedSessionId(sourceSessionId ?? sessionId);
     setQuiz(generatedToOverlay(activity));
     setQuizResult(null);
     setZpdStage(null);
     setShowQuiz(true);
-  }, []);
+  }, [sessionId]);
 
   const submitQuiz = useCallback(
     async (answers: Array<{ itemId: string; selectedIndex: number }>) => {
@@ -112,7 +114,7 @@ export function useLearningLoop(
       try {
         if (quiz.source === "generated") {
           const res = await fetch(
-            `/api/session/${sessionId}/activity/${quiz.id}/submit`,
+            `/api/session/${generatedSessionId}/activity/${quiz.id}/submit`,
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -174,7 +176,7 @@ export function useLearningLoop(
         setQuizSubmitting(false);
       }
     },
-    [captain, quiz, sendMessage, sessionId]
+    [captain, quiz, sendMessage, sessionId, generatedSessionId]
   );
 
   const advanceZpd = useCallback(() => {

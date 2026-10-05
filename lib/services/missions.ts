@@ -44,7 +44,6 @@ export async function getMissionBoard(learnerProfileId: string): Promise<Mission
     chapter1ReflectionDone,
     completedSlugs: new Set(completedSlugs),
   });
-
   return {
     missions,
     wreckQuizDone,

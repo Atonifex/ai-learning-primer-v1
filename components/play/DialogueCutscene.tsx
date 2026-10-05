@@ -22,6 +22,9 @@ export default function DialogueCutscene(props: {
   onSend: (content: string) => void;
   onClose: () => void;
   onBranchResolved?: (nextId: string) => void;
+  onOpenMap?: () => void;
+  mapContext?: string;
+  worldUpdate?: string;
 }) {
   const tts = useRhoTts();
   const speak = tts.speak;
@@ -60,6 +63,7 @@ export default function DialogueCutscene(props: {
             Talking with Rho
           </p>
           <div className="flex flex-wrap items-center gap-1">
+            {props.onOpenMap && <button type="button" onClick={props.onOpenMap} className="rounded-lg bg-teal-800 px-3 py-2 text-sm text-teal-50">Island map</button>}
             <button
               type="button"
               role="switch"
@@ -97,6 +101,7 @@ export default function DialogueCutscene(props: {
             </button>
           </div>
         </div>
+        {props.onOpenMap && <button type="button" onClick={props.onOpenMap} className="conversation-map-link"><span aria-hidden>✧</span><span>{props.worldUpdate ?? props.mapContext ?? "Our island"}</span><strong>View on map</strong></button>}
         {props.storyUi?.showPreviouslyOn && props.storyUi.previouslyOn && (
           <PreviouslyOnCard
             sessionId={props.sessionId}

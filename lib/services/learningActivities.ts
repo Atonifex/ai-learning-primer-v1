@@ -70,6 +70,7 @@ export async function createGeneratedMiniQuiz(params: {
   title: string;
   instructions: string;
   items: unknown;
+  mapLocationId?: string;
 }): Promise<GeneratedActivityPublic> {
   const session = await prisma.session.findUnique({
     where: { id: params.sessionId },
@@ -106,6 +107,7 @@ export async function createGeneratedMiniQuiz(params: {
         standardCode: standard.code,
         instructions: safeInstructions,
         items: parsedItems,
+        mapLocationId: params.mapLocationId ?? "camp",
       } as unknown as Prisma.InputJsonValue,
       authoring: "AI_GENERATED",
       generatedFromSessionId: params.sessionId,
@@ -138,6 +140,11 @@ export async function submitGeneratedMiniQuiz(params: {
   activityId: string;
   answers: Array<{ itemId: string; selectedIndex: number }>;
 }): Promise<{ score: number; total: number; correct: number; mastery: number }> {
+  const owner = await prisma.session.findFirst({
+    where: { id: params.sessionId, learnerProfileId: params.learnerProfileId },
+    select: { id: true },
+  });
+  if (!owner) throw new Error("Session not found");
   const activity = await prisma.learningActivity.findUnique({
     where: { id: params.activityId },
     include: {
