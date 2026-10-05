@@ -18,6 +18,7 @@ import DialogueCutscene from "./DialogueCutscene";
 import QuizOverlay from "./QuizOverlay";
 import ReflectionOverlay from "./ReflectionOverlay";
 import MissionBoard from "./MissionBoard";
+import LearningClipPanel from "./LearningClipPanel";
 import SubjectFocusPanel from "./SubjectFocusPanel";
 import AiDebugPanel from "./AiDebugPanel";
 import CaptainAwakening from "../onboarding/CaptainAwakening";
@@ -29,6 +30,11 @@ import { useMissions } from "./useMissions";
 import { unlockRhoAudio } from "../../lib/play/rhoAudio";
 import { isClientAiDebug } from "../../lib/play/clientAiDebug";
 import { shouldOpenCrewLogAfterWreckQuiz } from "../../lib/play/crewLogCandidate";
+import {
+  clipReflectionMessage,
+  LEARNING_CLIP_FIXTURE,
+  type LearningClipOffer,
+} from "../../lib/play/learningClip";
 
 const OverworldCanvas = dynamic(() => import("./OverworldCanvas"), { ssr: false });
 
@@ -53,6 +59,8 @@ export default function PlayShell(props: {
   autoOpenBoard?: boolean;
   /** Open the subject-focus view. Learning sittings start here after first-run. */
   autoOpenFocus?: boolean;
+  /** Playtest: open the one-clip panel with a fixture, no YouTube search. */
+  autoOpenClip?: boolean;
 }) {
   const router = useRouter();
   const [captainName, setCaptainName] = useState(
@@ -64,6 +72,9 @@ export default function PlayShell(props: {
   const [dialogueOpen, setDialogueOpen] = useState(() => Boolean(props.autoOpenDialogue));
   const [boardOpen, setBoardOpen] = useState(() => Boolean(props.autoOpenBoard));
   const [focusOpen, setFocusOpen] = useState(() => Boolean(props.autoOpenFocus));
+  const [clip, setClip] = useState<LearningClipOffer | null>(() =>
+    props.autoOpenClip ? LEARNING_CLIP_FIXTURE : null
+  );
   const [subjectSlug, setSubjectSlug] = useState(props.subjectSlug);
   const [startingId, setStartingId] = useState<string | null>(null);
   const [talkedToWreck, setTalkedToWreck] = useState(false);
@@ -184,6 +195,13 @@ export default function PlayShell(props: {
     stream.clearPendingCrewLogOpen();
     void learning.openReflection();
   }, [stream.pendingCrewLogOpen, stream, learning]);
+
+  useEffect(() => {
+    const pending = stream.pendingLearningClip;
+    if (!pending) return;
+    stream.clearPendingLearningClip();
+    setClip(pending);
+  }, [stream.pendingLearningClip, stream]);
 
   useEffect(() => {
     const saved = stream.pendingCrewLogSaved;
@@ -339,7 +357,12 @@ export default function PlayShell(props: {
     <div className="relative h-screen overflow-hidden bg-[#0a3340]">
       <OverworldCanvas
         paused={
-          dialogueOpen || learning.showQuiz || learning.showReflection || boardOpen || focusOpen
+          dialogueOpen ||
+          learning.showQuiz ||
+          learning.showReflection ||
+          boardOpen ||
+          focusOpen ||
+          Boolean(clip)
         }
         quizDone={firstRun.complete && (learning.quizDone || missions.wreckQuizDone)}
         talkedToWreck={talkedToWreck}
@@ -426,7 +449,7 @@ export default function PlayShell(props: {
         <div className="pointer-events-none absolute bottom-4 left-3 z-20">
           <RhoRadio
             onCall={callRho}
-            disabled={learning.showQuiz || learning.showReflection}
+            disabled={learning.showQuiz || learning.showReflection || Boolean(clip)}
           />
         </div>
       )}
@@ -455,6 +478,20 @@ export default function PlayShell(props: {
           sessionId={props.sessionId}
           onClose={() => setFocusOpen(false)}
           onSubjectChanged={setSubjectSlug}
+        />
+      )}
+
+      {clip && (
+        <LearningClipPanel
+          clip={clip}
+          onClose={() => setClip(null)}
+          onReflect={(note) => {
+            const content = clipReflectionMessage(clip, note);
+            setClip(null);
+            unlockRhoAudio();
+            setDialogueOpen(true);
+            void stream.sendMessage(content);
+          }}
         />
       )}
 

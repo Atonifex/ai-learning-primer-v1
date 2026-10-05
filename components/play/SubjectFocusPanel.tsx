@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import MathCheck from "./MathCheck";
 
 type Choice = { slug: string; label: string };
 type StandardRow = {
@@ -27,6 +28,7 @@ export default function SubjectFocusPanel(props: {
   const [pending, setPending] = useState<{ to: string; prompt: string } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [mathCheckOpen, setMathCheckOpen] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -71,6 +73,7 @@ export default function SubjectFocusPanel(props: {
       return;
     }
     setPending(null);
+    setMathCheckOpen(false);
     setSittingSubject(data.subjectSlug);
     setChosen({
       subjectSlug: data.subjectSlug,
@@ -111,6 +114,9 @@ export default function SubjectFocusPanel(props: {
           </button>
         </div>
         <div className="space-y-3 overflow-y-auto px-4 py-3">
+          {choices.length === 0 && !error && (
+            <p className="text-sm text-stone-600">Loading subjects…</p>
+          )}
           <div className="grid grid-cols-2 gap-2">
             {choices.map((choice) => {
               const active = sittingSubject === choice.slug;
@@ -154,7 +160,17 @@ export default function SubjectFocusPanel(props: {
             </div>
           )}
           {error && <p className="text-sm text-red-800">{error}</p>}
-          {chosen && (
+          {chosen?.subjectSlug.startsWith("math_") && (
+            <button
+              type="button"
+              onClick={() => setMathCheckOpen(true)}
+              className="rounded-lg bg-stone-900 px-3 py-1.5 text-xs font-medium text-white"
+            >
+              Find where I should start
+            </button>
+          )}
+          {mathCheckOpen && chosen?.subjectSlug.startsWith("math_") && <MathCheck />}
+          {chosen && !mathCheckOpen && (
             <div>
               <p className="text-sm font-medium text-stone-800">{chosen.summaryLine}</p>
               <div className="mt-2 space-y-3">

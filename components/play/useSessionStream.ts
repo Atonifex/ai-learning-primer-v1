@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { isClientAiDebug } from "../../lib/play/clientAiDebug";
 import { isHiddenTurn } from "../../lib/play/hiddenTurns";
 import type { Message } from "../session/MessageList";
+import type { LearningClipOffer } from "../../lib/play/learningClip";
 import type { GeneratedActivity, SessionStoryUi } from "../../lib/types";
 import type { AiDebugEntry } from "./AiDebugPanel";
 
@@ -35,6 +36,9 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
   const [pendingMissionOpen, setPendingMissionOpen] = useState<MissionOpenEvent | null>(null);
   const [pendingMissionBoardOpen, setPendingMissionBoardOpen] = useState(false);
   const [pendingCrewLogOpen, setPendingCrewLogOpen] = useState(false);
+  const [pendingLearningClip, setPendingLearningClip] = useState<LearningClipOffer | null>(
+    null
+  );
   const [pendingCrewLogSaved, setPendingCrewLogSaved] = useState<CrewLogSavedEvent | null>(
     null
   );
@@ -158,6 +162,11 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
                 sessionId?: string;
                 switched?: boolean;
                 text?: string;
+                videoId?: string;
+                title?: string;
+                channelTitle?: string;
+                questions?: string[];
+                missionPrompt?: string;
                 handoffSummary?: string | null;
                 alreadyCompleted?: boolean;
                 name?: string;
@@ -207,6 +216,22 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
                 });
               } else if (data.type === "mission_board_open") {
                 setPendingMissionBoardOpen(true);
+              } else if (
+                data.type === "learning_clip_open" &&
+                data.videoId &&
+                data.title &&
+                data.channelTitle &&
+                data.missionPrompt &&
+                Array.isArray(data.questions)
+              ) {
+                setPendingLearningClip({
+                  videoId: data.videoId,
+                  title: data.title,
+                  channelId: "",
+                  channelTitle: data.channelTitle,
+                  questions: data.questions.filter((q): q is string => typeof q === "string"),
+                  missionPrompt: data.missionPrompt,
+                });
               } else if (data.type === "crew_log_open") {
                 setPendingCrewLogOpen(true);
               } else if (data.type === "crew_log_saved" && typeof data.text === "string") {
@@ -271,6 +296,8 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
     clearPendingMissionBoardOpen: () => setPendingMissionBoardOpen(false),
     pendingCrewLogOpen,
     clearPendingCrewLogOpen: () => setPendingCrewLogOpen(false),
+    pendingLearningClip,
+    clearPendingLearningClip: () => setPendingLearningClip(null),
     pendingCrewLogSaved,
     clearPendingCrewLogSaved: () => setPendingCrewLogSaved(null),
     aiDebugEntries,

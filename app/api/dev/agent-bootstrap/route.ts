@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
   const openRaw = typeof body?.open === "string" ? body.open : "dialogue";
   const open: AgentPlayOpen =
-    openRaw === "board" || openRaw === "none" || openRaw === "dialogue"
+    openRaw === "board" || openRaw === "none" || openRaw === "dialogue" || openRaw === "clip"
       ? openRaw
       : "dialogue";
 

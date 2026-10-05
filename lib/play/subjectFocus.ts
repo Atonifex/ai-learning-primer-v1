@@ -105,8 +105,11 @@ export function shouldOpenSubjectFocus(input: {
   dialogueQuery: boolean;
   boardQuery: boolean;
   missionQuery: boolean;
+  clipQuery?: boolean;
 }): boolean {
   if (!isFirstRunComplete(parseFirstRunStep(input.firstRunStep))) return false;
-  if (input.dialogueQuery || input.boardQuery || input.missionQuery) return false;
+  if (input.dialogueQuery || input.boardQuery || input.missionQuery || input.clipQuery) {
+    return false;
+  }
   return true;
 }

@@ -2,6 +2,8 @@
 
 Use this instead of walking the first-run tutorial or fighting Pixi.
 
+**After a session, write up findings with the five-lens template in [`PLAYTEST_REVIEW.md`](./PLAYTEST_REVIEW.md).**
+
 ## Prerequisites
 
 1. `npm run dev` on `http://localhost:3000`
@@ -18,6 +20,7 @@ Bootstrap is **local-only** (`NODE_ENV=development`, or `PRIMER_AGENT_PLAYTEST=1
 3. First-run is forced to `complete`. Jobs HUD is available.
 4. To test `show_mission_board`: in dialogue say **show the mission board**.
 5. UI-only board check: bootstrap with `{"open":"board"}` — no LLM needed.
+6. UI-only learning clip: bootstrap with `{"open":"clip"}` — fixture panel, no YouTube search and no LLM. Live search stays off unless `PRIMER_LEARNING_CLIPS=1` and `YOUTUBE_API_KEY` are set.
 
 ## Manual login (fallback)
 

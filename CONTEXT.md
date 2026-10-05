@@ -21,8 +21,9 @@ Operating router for the Primer codebase. **CLAUDE.md** (always loaded) has iden
 | **New Rho/captain-facing feature** | Prefer an orchestrator tool (SSE → UI). Ask Ivan if unsure whether it should be callable. | `lib/ai/sessionOrchestrator.ts`, `CLAUDE.md` tool-first rule |
 | **Generate tutorial stills / art pack** | `public/stills/tutorial/README.md` | `lib/play/stills.ts`, MASTER §4.12; style: Stardew-like, not a clone; exact filenames |
 | **Intro cinematic / Skip** | `components/play/IntroCinematic.tsx` | `public/cinematics/README.md` |
-| **Cinematic style / video references / character continuity** | `docs/CINEMATIC_STYLE_GUIDE.md` | `public/cinematics/references/3d-v1/REVIEW.md`; `PROJECT_MEMORY.md`; script in `docs/KLING_VIDEO_PRODUCTION_BRIEF.md` |
-| **Future story / discovery idea outside current scope** | `docs/FUTURE_STORY_IDEAS.md` | `PROJECT_MEMORY.md`; capture proposal without implementing; promote reviewed work into MASTER later |
+| **Cinematic style / video references / character continuity** | `docs/CINEMATIC_STYLE_GUIDE.md` | `public/cinematics/references/3d-v1/REVIEW.md`; `PROJECT_MEMORY.md`; latest proposed script/prompts in `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md`, production history in `docs/KLING_VIDEO_PRODUCTION_BRIEF.md` |
+| **Future story / discovery idea outside current scope** | `docs/FUTURE_STORY_IDEAS.md` | `PROJECT_MEMORY.md`; capture proposal without implementing; promote reviewed work into MASTER later. Read **P0 child data security** first — it outranks story ideas |
+| **Child data / third-party media** | `docs/FUTURE_STORY_IDEAS.md` P0 and MASTER §4.1 | Any new embed, analytics vendor, or outside player needs parent consent before a child launch. YouTube clips stay off without `PRIMER_LEARNING_CLIPS=1` |
 | **Change live model / router** | `lib/ai/models.ts` | `lib/ai/sessionOrchestrator.ts` — live turns stay `gpt-5.6-luna` |
 | **Prompt / Rho voice / subject lens** | `lib/ai/promptTemplates/` | `lib/ai/contextBuilder.ts`, shared bible `_shared_castaway_world.ts` |
 | **Session streaming / tools** | `lib/ai/sessionOrchestrator.ts` | `app/api/session/[id]/message/route.ts`, `lib/play/hiddenTurns.ts` |
@@ -45,7 +46,7 @@ Operating router for the Primer codebase. **CLAUDE.md** (always loaded) has iden
 
 **Done:** Step 0 data (G3 **and G4** catalogs + G3 activity bank + wreck/food chapters). Step 1 three-mode shell. Mission Loop v1. Rho TTS. Onboarding grade → G3 or G4 subject enrollment.
 
-**Open next (typical):** §4.16 dive inside the subject view — one idea, quick at-bats with feedback, then a product the camp uses. The subject picker is in. Do not add more short pin jobs. Map stamps and the Chapter Compiler stay after a learning product exists.
+**Open next (typical):** Put the math diagnostic on screen (example, then a fresh item, up/down stop rules in `lib/play/mathDiagnostic.ts`). Grade 2 codes are not seeded — do not invent them. Other subjects reuse the same engine after math. Do not assign a math dive until placement returns a starting point.
 
 **Explicitly out of first loop:** parent dashboard, mastery redesign, G5+ catalogs, Three.js, graphic-novel-as-home, language-tutor as the product.
 

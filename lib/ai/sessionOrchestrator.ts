@@ -8,6 +8,8 @@ import {
 import {
   generateSceneImage,
 } from "./imageTool";
+import { offerLearningClipTool } from "./learningClipTool";
+import { findLearningClip } from "../play/learningClipSearch";
 import {
   generateLearningActivityTool,
   openCrewLogTool,
@@ -190,6 +192,7 @@ export async function* streamSessionResponse(
         openMissionTool,
         openCrewLogTool,
         saveCrewLogTool,
+        offerLearningClipTool,
       ],
       tool_choice: "auto",
       // gpt-5.6-luna rejects function tools unless reasoning is off.
@@ -692,6 +695,86 @@ export async function* streamSessionResponse(
                 content: JSON.stringify({
                   success: false,
                   error: err instanceof Error ? err.message : String(err),
+                }),
+              });
+            }
+          }
+        } else if (call.name === "offer_learning_clip") {
+          const learningGoal =
+            typeof args.learning_goal === "string" ? args.learning_goal.trim() : "";
+          const topicQuery =
+            typeof args.topic_query === "string" ? args.topic_query.trim() : "";
+          if (!learningGoal || !topicQuery) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: false,
+                opened: false,
+                error: "Missing learning_goal or topic_query",
+                tellCaptain: "Teach this yourself. Do not invent a video or a link.",
+              }),
+            });
+          } else {
+            try {
+              throwIfAborted(abortSignal);
+              const found = await findLearningClip({
+                gradeBand: profile.gradeBand,
+                subjectSlug: opts.subjectSlug,
+                learningGoal,
+                topicQuery,
+                signal: abortSignal,
+              });
+              if (found.status === "clip") {
+                yield {
+                  type: "learning_clip_open",
+                  videoId: found.clip.videoId,
+                  title: found.clip.title,
+                  channelTitle: found.clip.channelTitle,
+                  questions: found.clip.questions,
+                  missionPrompt: found.clip.missionPrompt,
+                };
+                toolResults.push({
+                  tool_call_id: call.id,
+                  content: JSON.stringify({
+                    success: true,
+                    opened: true,
+                    title: found.clip.title,
+                    channel: found.clip.channelTitle,
+                    tellCaptain:
+                      "The clip is on screen with questions. Stop talking and let them watch. When they come back, connect their note to the mission. Do not offer another clip for this goal.",
+                  }),
+                });
+              } else if (found.status === "off") {
+                toolResults.push({
+                  tool_call_id: call.id,
+                  content: JSON.stringify({
+                    success: false,
+                    opened: false,
+                    reason: "clips_off",
+                    tellCaptain:
+                      "Learning clips are off. Teach this yourself in one short example. Do not invent a YouTube link.",
+                  }),
+                });
+              } else {
+                toolResults.push({
+                  tool_call_id: call.id,
+                  content: JSON.stringify({
+                    success: true,
+                    opened: false,
+                    reason: found.reason,
+                    tellCaptain:
+                      "No suitable clip. Teach this yourself. Do not invent a video or a link.",
+                  }),
+                });
+              }
+            } catch (err) {
+              toolResults.push({
+                tool_call_id: call.id,
+                content: JSON.stringify({
+                  success: false,
+                  opened: false,
+                  error: err instanceof Error ? err.message : String(err),
+                  tellCaptain: "Teach this yourself. Do not invent a video or a link.",
                 }),
               });
             }

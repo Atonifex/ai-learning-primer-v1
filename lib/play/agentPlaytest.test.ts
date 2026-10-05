@@ -11,6 +11,7 @@ describe("agent playtest", () => {
   it("builds learn URLs that skip first-run friction", () => {
     expect(buildAgentLearnUrl("sess1", "dialogue")).toBe("/learn/sess1?dialogue=1");
     expect(buildAgentLearnUrl("sess1", "board")).toBe("/learn/sess1?board=1");
+    expect(buildAgentLearnUrl("sess1", "clip")).toBe("/learn/sess1?clip=1");
     expect(buildAgentLearnUrl("sess1", "none")).toBe("/learn/sess1");
   });
 

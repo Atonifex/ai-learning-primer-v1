@@ -127,8 +127,7 @@ export function resolveMissionStatus(
   if (mission.lockedUntil === "ch1-reflection" && !gates.chapter1ReflectionDone) {
     return {
       status: "locked",
-      lockReason:
-        "Crew log still needed. Call save_crew_log with their note from chat, or open_crew_log — never ask them to type a tool name.",
+      lockReason: "Leave a crew-log note after the wreck, then camp work opens.",
     };
   }
   return { status: "available", lockReason: null };

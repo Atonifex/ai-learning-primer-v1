@@ -86,5 +86,14 @@ describe("subject focus sitting", () => {
         missionQuery: false,
       })
     ).toBe(false);
+    expect(
+      shouldOpenSubjectFocus({
+        firstRunStep: "complete",
+        dialogueQuery: false,
+        boardQuery: false,
+        missionQuery: false,
+        clipQuery: true,
+      })
+    ).toBe(false);
   });
 });

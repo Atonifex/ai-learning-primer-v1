@@ -1,5 +1,7 @@
 # Prologue production — first 3D edit
 
+**Playback review update, 2026-10-05:** Ivan reports P01 “corporation” mispronounced as “corprotation” and rejects the edit's disconnected five-second pacing. Preserve this version and sources as library/history; see `LIBRARY.md`. Whisper's word recovery below did not certify pronunciation. Future dialogue needs listening review and future edits need timings driven by story/performance. Proposed replacement script: `docs/PROLOGUE_SCRIPT_REVISION_02.md`. No revised video generated in this editorial pass.
+
 Ivan authorized creation/assembly of the first prologue on 2026-10-05. Read `PROJECT_MEMORY.md`, `docs/CINEMATIC_STYLE_GUIDE.md` and the approved script before continuing. Record meaningful discoveries/costs and preserve source versions; never store credentials. This folder is production media, not learner data.
 
 Six scenes, five seconds each: welcome/acceptance, why resources matter, island assignment, trade, report/discovery, Rho introduction. Native audio and lip-sync requested for direct-address scenes; off-screen narration requested for trade scenes. Target30s. No crash, objective or tutorials generated in this pass.

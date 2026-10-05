@@ -185,7 +185,7 @@ If session 4 does not feel like **returning to the same island and camp**, the p
 | Pedagogy | Amplify coherence in `plannerJson`; **ZPD** hints/tools/examples (not static retry); struggle is OK; Duolingo-like encouragement, deeper thought |
 | Measurement | `Standard` → evidence → progress; **school-equivalent tests** at chapter/unit end (after a mini in-game project / boss); chapter **reflections** = active recall + parent report, framed in-world for the child |
 | Difficulty | Inferred; **tutorial = placement test**. Units/chapters generated to the student; saga spine is shared. Grade band is a starting guess. |
-| Session shape | **§4.16 (locked 2026-10-05).** One subject per sitting, chosen by the captain, with that subject's standards progress in the same view. One chapter problem, quick at-bats with feedback, then a product the camp uses. A subject switch mid-session is deliberate. SUPERSEDES "one or two subjects" and pin-hopping as the learning driver |
+| Session shape | **§4.16 (locked 2026-10-05).** One subject per sitting, chosen by the captain, with that subject's standards progress in the same view. One chapter problem. Practice means the child predicts or tries, then gets feedback — that is how learning happens, not a separate feature. Then a product the camp uses. A subject switch mid-session is deliberate. SUPERSEDES "one or two subjects" and pin-hopping as the learning driver |
 | Tonight slice | ~**10 standards per subject** (math, ELA, SS, science), grouped by topic — not the full catalogs |
 | Full MVP curriculum | **All Grade 3 and Grade 4** cores from `curriculum_resources/standards_*.ts` (user: “/standards folder”) |
 | Framework | **Florida only** for MVP. Comment in code: later NGSS / Common Core. Next markets: AZ, UT, WV homeschool, then private TX/NY |
@@ -202,7 +202,7 @@ If session 4 does not feel like **returning to the same island and camp**, the p
 | Hidden lore | Island is on another world; larger civilization nearby; space-faring future. **Do not reveal in Tutorial/Building first loop.** |
 | World language ES/ZH | Schema fields may stay nullable; **do not keep a live language-tutor product path.** Guild-trade language is post-MVP |
 | GTM sequence | **1)** D2C Florida stipend parents **2)** homeschool associations / Step Up **3)** AZ, UT, WV **4)** private schools TX/NY. Districts later. |
-| Under-13 | Parent-owned household; two logins; COPPA. Voice = transcribe-and-discard. |
+| Under-13 | Parent-owned household; two logins; COPPA. Voice = transcribe-and-discard. Third-party video stays off until verifiable parent consent. A nocookie embed is not that consent. |
 | Grade 3 science catalog | Authoritative full set: `curriculum_resources/standards_science_grade3.ts` (seeded via re-export). |
 | Codebase strategy | **Stay in this repo. Prune vestigial language-tutor code.** |
 
@@ -220,6 +220,8 @@ If Primer is used by third graders, you are almost certainly a COPPA "operator."
 - **Florida ESA / homeschool** does not replace COPPA. Selling to parents helps (parent is the customer) but you still need the consent + data-minimization design.
 
 **Product implication we are locking:** **two logins, one household** (§4.5). The parent User owns billing, consent, and the dashboard. Each child has a separate login (username + PIN or simple password) tied to a `LearnerProfile`. Voice and chat belong to the child profile, visible to the parent. Do not ship classmate testing or paid Florida D2C without this shape.
+
+**High priority (2026-10-05) — third-party media.** Any new embed, analytics vendor, ad network, or outside player is a COPPA decision before a child can use it. Learning clips use a privacy-enhanced YouTube iframe and stay **off** unless `PRIMER_LEARNING_CLIPS=1`. That flag is not parent consent. The embed can still let Google see the viewer. Do not send the child’s name or voice to YouTube. Do not enable clips on a child-facing deploy until a parent gives verifiable consent and the privacy policy names Google. Deferred detail lives at the top of `docs/FUTURE_STORY_IDEAS.md` (P0) and outranks story backlog items.
 
 This is **not legal advice**; before taking stipend money, have a lawyer glance at COPPA + Florida student-privacy rules. It is enough of a product constraint to design now.
 
@@ -292,7 +294,8 @@ The old `/learn` **graphic-novel page as home** is rejected. It felt like a chat
 - **Live interaction:** `gpt-5.6-luna` (write this name in code comments / model router). Cheap, fast, every hint and turn.
 - **Unit/chapter authoring or revision:** medium-reasoning model. Runs when tutorial/placement finishes, when evidence says the sequence is wrong, or when a parent/teacher requests a plan update — not every message.
 - **ZPD:** If the child is stuck, give hints, tools, worked examples, then fade support. Do not loop the same static narrative. Encouragement can feel Duolingo-like; the *task* must require thought (not only MC).
-- **Tutorial = placement (product lock; transparency clarified 2026-10-05).** The first ~30 minutes uses low-pressure in-world diagnostic jobs: Rho probes math, reading, science observation, and social-studies reasoning. **Tell the learner these first jobs help estimate what they already know and what to practice; do not hide the educational/assessment purpose.** This supersedes the older hidden-purpose preference while retaining the wreck/camp framing. Distinguish these diagnostic jobs from clearly labeled independent tests. Start items from the **onboarding grade band** (the parent’s guess), but **do not assume the child is on-grade**. Skills will often split — e.g. grade 4 reading and grade 2 math. Branch up/down per **subject**, not one global level. After this window, give the parent a **benchmark report** across sampled standards (what was solid, shaky, unknown). Then generate Units/Chapters from that map. Revise from later play. Design the item pool, stop rules, student/parent copy, and assessment constraints before implementation. The diagnostic is not built yet.
+- **Show, then do (locked 2026-10-05).** A new idea is shown first as a visual example the child can copy. Then the child does the next one. A drawing tool comes later. It is not part of this slice.
+- **Diagnostic before assigned work (locked 2026-10-05).** Do not hand the captain a grade-level pile of jobs and hope. Each subject gets its own short placement. **Math is first.** The same stop-rules then repeat for ELA, science, and social studies. The result picks the starting work. Assigned work that ignores it will feel basic. Tell the child the check is to find a starting point. It is not a scored test and it does not write mastery. Start from the onboarding grade, then step up or down. Skills split by subject. Parent benchmark copy is still later. Grade 2 math codes are not in the repo yet — do not invent them. Below the seeded ladder, the result is “below this catalog,” not a made-up code. Stop rules live in `lib/play/mathDiagnostic.ts`.
 
 - **Scoring:** Keep current `standardsMasteryMath` / evidence tiers for the **10-standard slice**. Redesign after that slice produces data. **Do not block** the playable loop. School-equivalent chapter/unit tests must be defensible **before ESA sales** — that is the hard deadline, not tonight.
 
@@ -445,6 +448,8 @@ Do **not** steal Undertale’s FIGHT/MERCY moral test or bullet-hell. The “dum
 
 ### 4.12 Higgsfield intro + stills pack
 
+**Latest script request, 2026-10-05:** Ivan expands the prologue to captain benefit and10/15/20 share bargaining (Yes/No twice, final Yes-only), an app-overlaid silent waiting loop, physical introduction/handshake with Rho, corridor learning message with Rho left, first-person takeoff, same-ship exterior approach and worried weather turn. Final proposed script/prompts after one requested critique: `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md`, shortest estimated111s plus8s per No and untimed choice pauses. Earlier30s prologue target is superseded for this authoring proposal; crash/objective remain separate. Spoken language targets Grade3; “company/get” and concrete coin shares replace harder words. Same shuttle/scout ship and mission-profit-after-costs meaning await clarification; no new media or app behavior implemented.
+
 **Locked 2026-10-05 after candidate review:** Ivan chose A's 3D animation for all future videos. Visual authority: `docs/CINEMATIC_STYLE_GUIDE.md`; active references: `public/cinematics/references/3d-v1/REVIEW.md`. Briefing captain gives thumbs-up; officer positive and professionally serious. Bridge is first-person with only hands/navy cuffs at wheel, no captain's back. Arrival island uninhabited, no buildings/lights/roads/ruins, varied beaches/flat river plains/hills/mountains. Rho conveys readable stress/concern in danger rather than always smiling. Three corrected static images + accepted trade-port A are saved. No further Kling jobs; earlier eight-option round remains history.
 
 **Latest 2026-10-05 direction:** Ivan rejected the realistic Rho pilot as creepy with a head too small for the body. Use animated cinematics with friendly faces and balanced proportions; this supersedes realism in the earlier update and prompts. Archived rejected reference under `public/cinematics/references/ARCHIVED`; never use it as a generation input. Eight static options (A 3D / B painted 2D characters) for briefing, resource exposition, Rho ship introduction and storm bridge are in `public/cinematics/references/animated-v1/REVIEW.md`. User feedback precedes reusable character sheets and further Kling videos. Built-in image tool used; zero additional Kling credits. Story, school-appropriate action, editable captions, deferred tutorials and Pixi home requirements remain.
@@ -522,7 +527,7 @@ A learning sitting has one shape:
 1. **The captain chooses the subject** for this sitting: math, ELA, science, or social studies. Rho may name a thin cluster. The captain decides.
 2. **The same view shows progress** toward the standards in that subject, from the seeded catalog for the captain's grade. Standards stay the hidden map in the story. This view is where the captain can see the cluster, what is already observed, and what is still ahead. It is not a second app.
 3. **The island keeps one chapter problem** (the food will not last; the beach is unsafe after dark). Today's subject is the lens on that problem. The map does not deal the next subject.
-4. **The dive is one idea.** Rho models the move once. Then several quick at-bats on that same idea, each with immediate feedback and one hint before the answer is given away. Then one transfer item. Then one spoken or written product the camp uses. That product is the ledger artifact.
+4. **The dive is one idea, after placement.** Teaching a new idea starts with a visual example the child can see, then the child does the next one (§4.4). Practice is predicting or trying, then getting feedback. It is not its own mode or button. Then they say or write a product the camp uses. That product is the ledger artifact. Do not assign that dive until the subject’s diagnostic has a starting point.
 5. **Switching subject is allowed and deliberate.** The captain can leave the dive from this same view. Rho names what is unfinished and asks for a clear yes before the lens changes. Curiosity can open another subject. The default is to finish the idea in front of them.
 6. **Other subjects connect across sittings**, through the ledger. A math ration plan is evidence a later reading or science sitting can reuse. Connection is not four pins in one afternoon.
 
@@ -886,10 +891,10 @@ Overlay MC-only; straight-line walk; ambient ocean silent; XP/rations not persis
 
 **P0 — Make the current loop trustworthy (tomorrow)**
 
-1. **Subject-focus sitting (§4.16)** — captain chooses one subject, sees that subject's standards progress in the same view, and can switch only by a deliberate yes. Then one chapter problem, at-bats with feedback, and one product. Do not add more short pin jobs as the learning path.
-2. **Math product inside that dive** — the biscuit / equal-groups work (`MA.3.NSO.2.2`) becomes the product of a math sitting, saved to the ledger, not a new beach pin.
-3. **Evidence across subjects** — `/progress` and the in-session standards view agree after a dive.
-4. **Disguised placement design doc** — item pool, stop rules, parent benchmark copy (§4.4); implement after the subject-focus sitting is playable.
+1. **Math diagnostic (§4.4)** — show a visual example, then a fresh item. Step up after two right, down after two misses. Math first. The same engine later for the other subjects. Do not assign a math dive until this starting point exists. Grade 2 codes are not seeded; do not invent them.
+2. **Subject-focus sitting (§4.16)** — captain chooses one subject and sees that subject's standards. A switch needs a deliberate yes. The chooser is built. The dive waits on the diagnostic.
+3. **Math product after the starting point** — equal groups (`MA.3.NSO.2.2`) only if placement says that idea is the work. Saved to the ledger, not a new beach pin.
+4. **Evidence across subjects** — `/progress` and the in-session standards view agree after a dive.
 
 **P1 — World feels alive (next coding slices)**
 
@@ -1074,6 +1079,10 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 
 ## 15. Master checklist
 
+- [x] Author expanded branching prologue, captain coin-share incentives, silent loop/interface contract, Rho handshake/learning walk, flight continuity and final Kling shot prompts after one critique round (2026-10-05); `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md`. Reference prep/audio timing/clarifications and production remain open.
+
+- [x] Review first prologue through two critique/revision rounds; preserve V1 as reusable library, record pronunciation/transcription failure and lock project creative-improvement habit (2026-10-05). Proposed replacement: `docs/PROLOGUE_SCRIPT_REVISION_02.md`; no replacement footage or paid generation yet.
+
 ### P0 — Data + orchestrator truth
 
 - [x] Audit G3 seeds vs `curriculum_resources` — 127 authoring codes; **80 seedGap** (math 28, science 22, SS 30). ELA authoring seed is complete; `seed.ts` may still import OLD ELA.
@@ -1112,7 +1121,9 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 - [x] Mission Loop v1: HUD Jobs board + `/saga`; dune/treeline/creek/camp → seeded §4.6 overlays; session subject switch; Rho `suggest_next_mission` / `show_mission_board` / `open_mission`; Ch1 reflection activates Ch2 food chapter
 - [x] Ch1 world ledger + handoff: crew log is a must-reuse artifact on `Chapter.handoffSummary` and in the next Rho prompt (`WorldLedgerEntry`)
 - [x] **§4.16 subject view:** captain chooses one subject, sees that subject's standards, and must confirm before switching. Opens after first-run
-- [ ] **§4.16 dive:** one idea, quick at-bats with feedback, then a product the camp uses. Five pin jobs are not that dive
+- [x] **Math placement engine and screen:** example, then a fresh item, from the math subject view. Two misses on the easiest item say the check will not guess a grade 2 code (`MathCheck.tsx`)
+- [ ] **Math diagnostic on screen,** then the same engine for ELA, science, and social studies. Assigned dives wait on the starting point
+- [ ] **§4.16 dive:** one idea, shown first, then the child does the next one and gets feedback, then a product the camp uses
 
 **Step 1 closeout (2026-08-22) — done / leftover / debt**
 
@@ -1139,6 +1150,7 @@ Technical debt (defer to end of this plan unless a later step naturally clears i
 - [ ] XP + camp pin (perk tree UI later)
 - [x] TTS for Rho (OpenAI)
 - [x] Parent account linked to child account(s) (COPPA-ready)
+- [ ] **HIGH PRIORITY — child data security:** verifiable parent consent and a privacy policy that names Google before any child-facing YouTube clip. Nocookie embed and `PRIMER_LEARNING_CLIPS` are not consent. See `docs/FUTURE_STORY_IDEAS.md` P0 and §4.1.
 - [ ] Parent dashboard + weekly email + weekly PDF (full MVP, after student loop)
 
 ### P2 — Immersion + measurement
@@ -1320,18 +1332,47 @@ If a new ★ question appears, add the answer to **§4** or **§17** — do not 
 
 ## 18. Implementation log
 
+### 2026-10-05 — Branching prologue screenplay/prompt package
+
+- Incorporated Ivan's captain reward,10/15/20 negotiation with app choices over a silent loop, physical officer/Rho handshake, left-side corridor learning conversation, same-ship takeoff/exterior flight and concerned storm handoff. Wrote draft, one requested three-lens critique and final package `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md` with exact lines, prompts, branch graph and estimated local/global timing.
+- Proposed coin-share explanation avoids percent/profits/extract in Grade3-target dialogue. Estimated shortest111s, one No119s, two No127s plus choice waits; not measured performances. Same-ship/off-island port and mission-share-after-costs assumptions await user clarification; new matched reference views/voices still needed.
+- Updated brief/style/project memory without replacing existing footage. Documentation-only: no new assets, paid generation, account balance query, runtime changes or runtime tests. App branch contract is a specification, not implemented behavior.
+
+### 2026-10-05 — One learning clip, still off for children
+
+- Rho can call `offer_learning_clip`. The server searches the YouTube Data API inside an allowlist (safe search, embeddable, duration, blocklist, then a text ranker). A none result does not open a player. The captain gets one nocookie clip, one or two questions, then a note back to the mission. Watching does not record mastery.
+- Clips stay off unless `PRIMER_LEARNING_CLIPS=1` and `YOUTUBE_API_KEY` are set. Playtest `?clip=1` opens a fixture panel and does not search.
+- **High priority, not done:** parent consent before a child-facing launch. Recorded in §4.1 and `docs/FUTURE_STORY_IDEAS.md` P0. A nocookie player can still let Google see the viewer. Do not send the child’s name or voice to YouTube.
+
+### 2026-10-05 — Prologue editorial improvement cycle
+
+- Ivan reports P01 mispronouncing Corporation and finds the fixed five-second facts disjointed. Preserved all V1 assets and added `public/cinematics/prologue-v1/LIBRARY.md` with reuse limitations. The first cut is not release-approved.
+- Completed two critique/revision rounds with three explicitly simulated professional perspectives; saved the approximately30–35s continuous-briefing/acceptance/Rho/weather-turn proposal in `docs/PROLOGUE_SCRIPT_REVISION_02.md`. Timing awaits an actual read-through; replacement script/footage not yet accepted or generated.
+- Recorded the requested recurring creative-improvement workflow in `docs/CREATIVE_IMPROVEMENT_CYCLE.md`, AGENTS, CLAUDE, style guide and project memory. Transcript word matching cannot certify pronunciation; future dialogue needs listening review. Documentation/editorial review only; no app changes, runtime test rerun, media generation or new credit charges.
+
 
 Agents append here. Newest first.
+
+### 2026-10-05 — Show-then-do, and math placement before assigned work
+
+- Ivan: teach a new idea by showing a visual example first, then the child does the next one. A drawing tool is later.
+- The diagnostic is the next build, not an optional placement doc. Math first. The same stop-rules are the engine for the other subjects. Assigned work waits on that starting point.
+- Engine only: `lib/play/mathDiagnostic.ts`. Two correct steps up, two misses step down, eight items max. Below the seeded Grade 3 ladder the result is "below this catalog." No Grade 2 codes were invented. Not on screen yet.
+
+### 2026-10-05 — Math pedagogy research, not a new lock
+
+- Ivan clarified that practice (predict or try, then feedback) is how learning happens, not a feature called at-bats. §4.16 wording updated.
+- Research for his review is in `docs/MATH_PEDAGOGY_RESEARCH.md`: Adding It Up, two IES practice guides, ST Math / DreamBox / Zearn / Khan / IXL / Prodigy evidence limits, and Kumon's small-step sequence versus bare drill. No philosophy lock and no math-dive build until he responds.
 
 ### 2026-10-05 — Subject-focus view
 
 - After the wreck lesson, a learning sitting opens on “What do you want to work on?” The captain picks one catalog subject and sees every standard in it, marked seen or not yet. Choosing a different subject asks for a deliberate yes before the session lens changes.
-- Not in this slice: at-bats, feedback, or the camp product. The five pin jobs still open from Jobs.
+- Not in this slice: the practice-with-feedback dive, or the camp product. The five pin jobs still open from Jobs.
 - Files: `lib/play/subjectFocus.ts`, `components/play/SubjectFocusPanel.tsx`, `app/api/session/[id]/subject-focus/route.ts`, `e2e/subject-focus.spec.ts`.
 
 ### 2026-10-05 — Session focus locked (§4.16)
 
-- Ivan stopped the five short pin jobs as the learning model. A sitting asks which subject the captain wants, shows progress toward the standards in that subject in the same view, and stays on one chapter problem: quick at-bats with feedback, then a product the camp uses.
+- Ivan stopped the five short pin jobs as the learning model. A sitting asks which subject the captain wants, shows progress toward the standards in that subject in the same view, and stays on one chapter problem: the child practices by predicting or trying and getting feedback, then makes a product the camp uses.
 - A mid-session subject switch is allowed and must be a deliberate yes. The aim is depth and curiosity. The wreck walk remains the one-time movement lesson.
 - Not built yet. Mission Loop v1 still runs until the subject-focus view replaces it.
 

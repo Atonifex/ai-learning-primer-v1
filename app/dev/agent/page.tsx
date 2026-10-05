@@ -21,7 +21,7 @@ export default function AgentPlaytestPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function bootstrap(open: "dialogue" | "board" | "none") {
+  async function bootstrap(open: "dialogue" | "board" | "clip" | "none") {
     setLoading(true);
     setError("");
     try {
@@ -74,6 +74,14 @@ export default function AgentPlaytestPage() {
           className="rounded-lg border border-stone-300 bg-white px-4 py-3 text-sm font-medium disabled:opacity-50"
         >
           Enter play (Jobs board open)
+        </button>
+        <button
+          type="button"
+          disabled={loading}
+          onClick={() => void bootstrap("clip")}
+          className="rounded-lg border border-stone-300 bg-white px-4 py-3 text-sm font-medium disabled:opacity-50"
+        >
+          Enter play (one learning clip)
         </button>
         <button
           type="button"

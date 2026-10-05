@@ -103,6 +103,8 @@ export async function POST(
             send(chunk);
           } else if (chunk.type === "mission_board_open") {
             send(chunk);
+          } else if (chunk.type === "learning_clip_open") {
+            send(chunk);
           } else if (chunk.type === "crew_log_open") {
             send(chunk);
           } else if (chunk.type === "crew_log_saved") {

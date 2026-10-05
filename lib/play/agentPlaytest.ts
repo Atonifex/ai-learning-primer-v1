@@ -15,7 +15,7 @@ export function isAgentPlaytestEnabled(
   return host === "localhost" || host === "127.0.0.1";
 }
 
-export type AgentPlayOpen = "dialogue" | "board" | "none";
+export type AgentPlayOpen = "dialogue" | "board" | "clip" | "none";
 
 export function buildAgentLearnUrl(
   sessionId: string,
@@ -24,5 +24,6 @@ export function buildAgentLearnUrl(
   const base = `/learn/${sessionId}`;
   if (open === "dialogue") return `${base}?dialogue=1`;
   if (open === "board") return `${base}?board=1`;
+  if (open === "clip") return `${base}?clip=1`;
   return base;
 }

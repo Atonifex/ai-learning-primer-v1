@@ -64,6 +64,10 @@ For trade-port shots, replace the surveyed-island clause with the explicit popul
 
 ## Review before video spending
 
+Latest proposed scene package: `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md`; its branching room/handshake/corridor scenes require matched new reference views of existing identities, not redesigns. Same physical officer and set across offer clips; silent waiting anchor matches first/last frames; UI/choices remain app overlays. V03 proposes one scout ship throughout (confirmation pending), left-side Rho/escape-handle continuity. Spoken language targets Grade 3; use simple “company/get,” concrete coin-share explanations, and short sentences. User's specific one-round request overrides the default two-cycle count for this revision.
+
+For script iteration, follow `docs/CREATIVE_IMPROVEMENT_CYCLE.md`. Current prologue rewrite: `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md` (proposal); V02 is prior editorial history. Let dramatic beats and accepted dialogue determine edit duration, not uniform generation slots. Listen for pronunciation and consistent performance; transcription alone is insufficient.
+
 Inspect identity, proportions, natural hands, readable emotion, camera viewpoint, terrain, prop side and any accidental text. Preserve one active version per shot while retaining prior candidates as history. Generate static corrections before spending video credits. A still reference helps continuity but does not guarantee motion or lip-sync quality.
 
 All spoken audio needs editable external captions. Keep clean picture and separate dialogue/music/effects/text/edit sources. No baked-in subtitles in the sole master image/video. Keep danger school-appropriate: no blood, injuries, on-screen harm or fireball; crash occurs after visible safe escape. Tutorials remain deferred. More Kling video work requires the user's next authorization; style acceptance is not permission for a batch.

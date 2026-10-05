@@ -9,7 +9,12 @@ test("captain chooses a subject and must confirm a switch", async ({ page }) => 
 
   await page.goto(body.learnUrl);
   await expect(page.getByRole("heading", { name: "What do you want to work on?" })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Grade 3 Math" })).toBeVisible();
+  const sessionId = new URL(body.learnUrl, "http://localhost:3000").pathname.split("/").pop();
+  const focus = await page.request.get(`/api/session/${sessionId}/subject-focus`);
+  expect(focus.ok(), await focus.text()).toBeTruthy();
+  await expect(page.getByRole("button", { name: "Grade 3 Math" })).toBeVisible({
+    timeout: 20_000,
+  });
   await expect(page.getByRole("button", { name: "Grade 3 Science" })).toBeVisible();
 
   await page.getByRole("button", { name: "Grade 3 Math" }).click();

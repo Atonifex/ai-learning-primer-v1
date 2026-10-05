@@ -6,6 +6,22 @@ Living backlog, created 2026-10-05. Product source of truth remains `MASTER_VISI
 
 Read `PROJECT_MEMORY.md` before project work and update it concisely after meaningful discoveries. When Ivan proposes an idea outside the active slice, add or revise an entry here: date, user-requested idea, status, story/learning purpose, prerequisites, proposed treatment, real-world facts versus fiction, sources where needed, unresolved choices, and what would justify promoting it into MASTER. Do not invent Florida standard codes or mark a guessed grade as verified. Keep accepted creative ideas distinct from proposed mechanisms; merge duplicates and retain significant changed decisions with dated context. Avoid unrelated client data, secrets, or private learner records.
 
+**P0 below outranks every story idea.** Child data-security constraints apply to all future development. Read them before adding an embed, analytics vendor, ad network, or outside media player.
+
+## P0 — Child data security (high priority, all future work)
+
+- **Date / origin:** 2026-10-05, Ivan. He asked that data-security for kids be recorded where deferred work lives, and marked high priority.
+- **Status:** Locked in MASTER §4.1. The one-clip tool can play a privacy-enhanced YouTube embed only when `PRIMER_LEARNING_CLIPS=1` and `YOUTUBE_API_KEY` are set. That flag is not parent consent. Do not enable it on a child-facing deploy until the items below are done.
+- **Rule for every future slice:** Any new third-party embed, analytics pixel, ad network, or media vendor is a COPPA decision before a child can reach it. A feature flag, a nocookie player, or “it is just a video” is not consent.
+- **Learning clips, still required before a real child uses them:**
+  - Verifiable parent consent, and a privacy policy that names Google. A lawyer review is already required before stipend money (MASTER §4.1). This vendor is part of that review.
+  - Do not send the child’s name, account id, or voice to YouTube. The embed can still let Google see the viewer (IP and player identifiers). Say that plainly. Do not describe the nocookie player as private.
+  - Do not cover the YouTube player to hide the title link. Do not strip ads. End screens can still appear in the last seconds; the channel allowlist and closing our player are the controls we have.
+  - Watching is not mastery. Do not record a standard only because a clip finished.
+  - Do not search with ChatGPT, Gemini, or Exa, and do not let a model invent a video URL. YouTube Data API plus the allowlist is the index.
+- **Deferred quality check:** Gemini may later watch one public finalist we already selected and cache yes/no. That is a reviewer, not a search engine, and it is not a reason to turn clips on for children early.
+- **Promotion:** Consent UX and the privacy-policy line are the remaining work. Until they exist, keep the flag off for any deploy a child uses.
+
 ## F03 — Session subject focus, not a pin sampler
 
 - **Date / origin:** 2026-10-05, Ivan. Hold on treating the five short beach jobs as the learning model.

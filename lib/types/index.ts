@@ -185,6 +185,14 @@ export type StreamChunk =
       switched: boolean;
     }
   | { type: "mission_board_open" }
+  | {
+      type: "learning_clip_open";
+      videoId: string;
+      title: string;
+      channelTitle: string;
+      questions: string[];
+      missionPrompt: string;
+    }
   | { type: "crew_log_open" }
   | {
       type: "crew_log_saved";

@@ -26,6 +26,13 @@ export default function PrivacyPage() {
         Before taking stipend money, Primer will have a lawyer review COPPA and
         Florida student-privacy rules.
       </p>
+      <p className="mt-3 text-sm leading-relaxed text-stone-600">
+        Outside learning clips stay off until a deployment turns them on. When
+        one plays, it is a single video in a privacy-enhanced YouTube player.
+        That player can still let Google see the viewer. Primer does not send
+        the captain’s name or voice to YouTube. Turning clips on for children
+        waits on verifiable parent consent. A nocookie player is not that consent.
+      </p>
     </main>
   );
 }

@@ -31,6 +31,7 @@ Do not treat a green typecheck alone as validation. Do not invent Florida standa
 
 ## Working memory and future ideas
 
+- Creative improvement requests ("iterate upon this", "reflect and improve", "do an improvement cycle") default to two critique/revision rounds through screenwriter, director and producer/editor lenses; follow `docs/CREATIVE_IMPROVEMENT_CYCLE.md`. Optimize clear, compelling, emotionally engaging scripts. Simulated perspectives must be labeled; critique does not authorize paid generation.
 - Read `PROJECT_MEMORY.md` before substantive project work; update it concisely after meaningful discoveries or changed decisions.
 - Capture user ideas outside the current development slice in `docs/FUTURE_STORY_IDEAS.md`, following its entry convention. Reuse/update related entries rather than losing ideas or expanding current scope.
 - Distinguish user-requested ideas, proposed story mechanisms, verified science, and unverified grade/standards mappings. No invented standard codes.
