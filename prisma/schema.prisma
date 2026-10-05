@@ -70,6 +70,7 @@ model LearnerProfile {
   activityCompletions LearningActivityCompletion[]
   assessmentResults  AssessmentResult[]
   reviewItems        ReviewItem[]
+  worldLedgerEntries WorldLedgerEntry[]
 }
 
 enum Language {
@@ -256,6 +257,7 @@ model Chapter {
   sessions         Session[]
   branchPoints     BranchPoint[]
   incomingBranches BranchOption[] @relation("BranchNextChapter")
+  worldLedgerEntries WorldLedgerEntry[]
 }
 
 enum ChapterStatus {
@@ -583,6 +585,33 @@ model AssessmentResult {
   perStandardScores Json?
   itemResults      Json?
   attemptedAt      DateTime       @default(now())
+}
+
+/// Durable work the next chapter must be able to reuse. Not StoryState prose.
+model WorldLedgerEntry {
+  id                 String          @id @default(cuid())
+  learnerProfileId   String
+  learnerProfile     LearnerProfile  @relation(fields: [learnerProfileId], references: [id], onDelete: Cascade)
+  chapterId          String?
+  chapter            Chapter?        @relation(fields: [chapterId], references: [id], onDelete: SetNull)
+  kind               WorldLedgerKind
+  /// Stable label, e.g. crew_log or missing_engineer.
+  label              String
+  text               String
+  standardCodes      String[]        @default([])
+  activitySlug       String?
+  /// Set on the artifact that came from a completion. Open threads leave this null.
+  sourceCompletionId String?         @unique
+  mustReuse          Boolean         @default(false)
+  createdAt          DateTime        @default(now())
+
+  @@index([learnerProfileId, createdAt])
+}
+
+enum WorldLedgerKind {
+  ARTIFACT
+  DECISION
+  OPEN_THREAD
 }
 
 model BranchPoint {

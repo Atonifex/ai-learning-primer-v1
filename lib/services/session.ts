@@ -177,6 +177,28 @@ export async function updateMessageImage(
   });
 }
 
+export async function setSessionSubject(
+  sessionId: string,
+  subjectSlug: string
+): Promise<void> {
+  const subject = await prisma.subject.findUnique({
+    where: { slug: subjectSlug },
+    select: { id: true, targetLanguage: true },
+  });
+  if (!subject) {
+    throw new Error(
+      `Subject "${subjectSlug}" is not seeded. Run \`npm run db:seed\` before changing a sitting.`
+    );
+  }
+  await prisma.session.update({
+    where: { id: sessionId },
+    data: {
+      subjectId: subject.id,
+      targetLanguage: subject.targetLanguage,
+    },
+  });
+}
+
 export async function completeSession(sessionId: string, summary: string): Promise<void> {
   const { stampSessionClock } = await import("./timeTracking");
   await stampSessionClock(sessionId, "COMPLETED", summary);

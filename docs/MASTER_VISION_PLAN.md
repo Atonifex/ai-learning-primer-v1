@@ -166,8 +166,8 @@ If session 4 does not feel like **returning to the same island and camp**, the p
 | MVP audience | Homeschool families; child is the player; parent is the economic buyer |
 | Grade proof | Florida Grade 3 + Grade 4 catalogs as the test corpus; UI may still default Grade 3 |
 | Subjects in one world | `math_g3`, `ela_g3`, `science_g3`, `social_studies_g3` (and G4 equivalents when seeded) share **one** `StoryWorld` + **one** saga |
-| First session | Tutorial is guided (wreck → talk → mini-game) and **is a placement test**. After that, the **student picks** missions/lessons |
-| Mission cards | Each pickable job shows **subject, theme, ~minutes, in-game reward** (resources + XP + items/perks/world change) |
+| First session | Tutorial wreck walk stays guided (talk → movement → one placement mini-game). Learning sittings follow **§4.16** |
+| Mission cards | **SUPERSEDED as the session driver by §4.16 (2026-10-05).** The five pin jobs remain in code until the subject-focus view replaces them |
 | Protagonist | Learner `displayName` = captain |
 | Companion | **Rho = humanoid AI First Mate.** Tutorial NPC, sidekick, never the protagonist. ZPD support. **Does not take tests.** |
 | Crew age | **Young adults** (not child-peers, not middle-aged officers) |
@@ -185,7 +185,7 @@ If session 4 does not feel like **returning to the same island and camp**, the p
 | Pedagogy | Amplify coherence in `plannerJson`; **ZPD** hints/tools/examples (not static retry); struggle is OK; Duolingo-like encouragement, deeper thought |
 | Measurement | `Standard` → evidence → progress; **school-equivalent tests** at chapter/unit end (after a mini in-game project / boss); chapter **reflections** = active recall + parent report, framed in-world for the child |
 | Difficulty | Inferred; **tutorial = placement test**. Units/chapters generated to the student; saga spine is shared. Grade band is a starting guess. |
-| Session shape | One or two subjects per sitting; **≥15 minutes** of real depth; interleaving + spaced repetition across days. Units/chapters = bundles of standards. |
+| Session shape | **§4.16 (locked 2026-10-05).** One subject per sitting, chosen by the captain, with that subject's standards progress in the same view. One chapter problem, quick at-bats with feedback, then a product the camp uses. A subject switch mid-session is deliberate. SUPERSEDES "one or two subjects" and pin-hopping as the learning driver |
 | Tonight slice | ~**10 standards per subject** (math, ELA, SS, science), grouped by topic — not the full catalogs |
 | Full MVP curriculum | **All Grade 3 and Grade 4** cores from `curriculum_resources/standards_*.ts` (user: “/standards folder”) |
 | Framework | **Florida only** for MVP. Comment in code: later NGSS / Common Core. Next markets: AZ, UT, WV homeschool, then private TX/NY |
@@ -287,10 +287,12 @@ The old `/learn` **graphic-novel page as home** is rejected. It felt like a chat
 
 ### 4.4 Models, ZPD, placement, scoring order
 
+**2026-10-05 learning transparency update (Ivan):** Explicitly communicate that Primer is a learning platform: standards, AI dialogue/questions, reflection, and learning how to learn serve the learning goal. Real tests plus writing/speaking demonstrations determine progression in the intended product. Keep practice support distinct from independent assessment. Do not promise “far faster” until Primer has evidence. Detailed copy, rubrics, gate criteria, and UI are proposals in `docs/LEARNING_PURPOSE_AND_PROGRESSION.md`; no mastery formula or runtime behavior changed in this authoring slice.
+
 - **Live interaction:** `gpt-5.6-luna` (write this name in code comments / model router). Cheap, fast, every hint and turn.
 - **Unit/chapter authoring or revision:** medium-reasoning model. Runs when tutorial/placement finishes, when evidence says the sequence is wrong, or when a parent/teacher requests a plan update — not every message.
 - **ZPD:** If the child is stuck, give hints, tools, worked examples, then fade support. Do not loop the same static narrative. Encouragement can feel Duolingo-like; the *task* must require thought (not only MC).
-- **Tutorial = placement (product lock).** The first ~30 minutes is **not** a labeled test. It is a Kumon-style diagnostic **hidden inside the wreck/camp story**: Rho asks in-world jobs that probe math, reading, science observation, and social-studies reasoning. Start items from the **onboarding grade band** (the parent’s guess), but **do not assume the child is on-grade**. Skills will often split — e.g. grade 4 reading and grade 2 math. Branch up/down per **subject**, not one global level. After this window, give the parent a **benchmark report** across sampled standards (what was solid, shaky, unknown). Then generate Units/Chapters from that map. Revise from later play. Design this diagnostic carefully (item pool, stop rules, parent copy) before coding it as a named “placement test.”
+- **Tutorial = placement (product lock; transparency clarified 2026-10-05).** The first ~30 minutes uses low-pressure in-world diagnostic jobs: Rho probes math, reading, science observation, and social-studies reasoning. **Tell the learner these first jobs help estimate what they already know and what to practice; do not hide the educational/assessment purpose.** This supersedes the older hidden-purpose preference while retaining the wreck/camp framing. Distinguish these diagnostic jobs from clearly labeled independent tests. Start items from the **onboarding grade band** (the parent’s guess), but **do not assume the child is on-grade**. Skills will often split — e.g. grade 4 reading and grade 2 math. Branch up/down per **subject**, not one global level. After this window, give the parent a **benchmark report** across sampled standards (what was solid, shaky, unknown). Then generate Units/Chapters from that map. Revise from later play. Design the item pool, stop rules, student/parent copy, and assessment constraints before implementation. The diagnostic is not built yet.
 
 - **Scoring:** Keep current `standardsMasteryMath` / evidence tiers for the **10-standard slice**. Redesign after that slice produces data. **Do not block** the playable loop. School-equivalent chapter/unit tests must be defensible **before ESA sales** — that is the hard deadline, not tonight.
 
@@ -443,9 +445,25 @@ Do **not** steal Undertale’s FIGHT/MERCY moral test or bullet-hell. The “dum
 
 ### 4.12 Higgsfield intro + stills pack
 
+**Locked 2026-10-05 after candidate review:** Ivan chose A's 3D animation for all future videos. Visual authority: `docs/CINEMATIC_STYLE_GUIDE.md`; active references: `public/cinematics/references/3d-v1/REVIEW.md`. Briefing captain gives thumbs-up; officer positive and professionally serious. Bridge is first-person with only hands/navy cuffs at wheel, no captain's back. Arrival island uninhabited, no buildings/lights/roads/ruins, varied beaches/flat river plains/hills/mountains. Rho conveys readable stress/concern in danger rather than always smiling. Three corrected static images + accepted trade-port A are saved. No further Kling jobs; earlier eight-option round remains history.
+
+**Latest 2026-10-05 direction:** Ivan rejected the realistic Rho pilot as creepy with a head too small for the body. Use animated cinematics with friendly faces and balanced proportions; this supersedes realism in the earlier update and prompts. Archived rejected reference under `public/cinematics/references/ARCHIVED`; never use it as a generation input. Eight static options (A 3D / B painted 2D characters) for briefing, resource exposition, Rho ship introduction and storm bridge are in `public/cinematics/references/animated-v1/REVIEW.md`. User feedback precedes reusable character sheets and further Kling videos. Built-in image tool used; zero additional Kling credits. Story, school-appropriate action, editable captions, deferred tutorials and Pixi home requirements remain.
+
+**2026-10-05 cinematic update (Ivan, revised):** Use Kling via `https://kling.ai/mcp` for the intro. Realistic cinematic visuals, simple language for Grades 3–8, exciting but school-appropriate action, no blood or on-screen harm. This supersedes the illustrated/non-photoreal preference in the historical prompt below for cinematics; Pixi home remains locked. Intro now comprises **30s mission prologue + 30s crash**, approximately **60s total**; earlier 20–30s total targets are superseded. Codex MCP registration and OAuth succeeded; models, balance, pricing, and generation remain unverified in this session. **Tutorial videos deferred by Ivan**; existing tutorial text remains.
+
+**Mission premise (Ivan):** The expedition works for the **Merchant Corporation** to investigate island natural resources that can be extracted, shipped, and sold on different planets to make the company money. Interplanetary commerce is explained upfront, superseding earlier blanket instructions to hide space/planet references for this premise. Other later discoveries remain unrevealed. Proposed relationship: the Cartographers' Guild briefs the survey crew on behalf of the corporation; exact organizational structure is not yet locked. The live shared prompt still contains the older prohibition and needs synchronization before video release.
+
+**Resources/trade clarification (Ivan, 2026-10-05):** Initial targets are oil and metal ores including gold/silver; rare/unknown materials are later discoveries. Prologue contains a proposed 5s trade explanation connecting trade to homes, food delivery, and fictional interplanetary transport. Lithium/batteries and later deuterium/tritium/fusion ideas belong in `docs/FUTURE_STORY_IDEAS.md`; no initial reveal/current implementation. Grade ~6 for fusion is tentative, not verified standards mapping. Future-idea capture is now in AGENTS/CLAUDE/CONTEXT.
+
+**Credit planning (public rules verified 2026-10-05):** `docs/KLING_CREDIT_BUDGET.md` records paid Personal MCP credits only, current public monthly plans, and a proposed **3,000–5,000 credit** production allowance for the 90s opening with a few takes/reference setup. Pro monthly is the staged starting recommendation; Premier monthly gives more retry room. No account balance, charge approval, generation or subscription purchase yet.
+
+**Draft for review:** `docs/KLING_VIDEO_PRODUCTION_BRIEF.md` contains the direct-address/exposition prologue, crash/parachute/beach script, and per-shot prompts. Parked tutorial scripts are outside current production. Editable subtitle draft for every spoken line and meaningful sound cue: `public/cinematics/intro.en.vtt`; align to final audio before release. Preserve separate clean picture, voice/music/effects stems, text layers, and edit project. Current intro autoplays muted and has fixed overlay copy; external captions, sound controls, and final copy need a later implementation slice. No generated assets or player changes yet.
+
+**Post-crash objective (Ivan, 2026-10-05):** Captain learns leadership, gathers crew, builds camp, rebuilds ship, rises in the world, and leads a space empire. Brief includes a proposed separate **30s** objective clip; cinematic sequence would total approximately **90s**. Duration and peaceful trade/council montage are proposals, and empire arc remains future scope. Editable local caption draft: `public/cinematics/leadership_objective.en.vtt`. Explicit learning-purpose communication belongs around the opening and during play; control tutorial videos stay deferred.
+
 **Tonight:** `public/cinematics/README.md` + poster slot. Skip control. **Do not block on video.**
 
-**Aspirations for `crash_landing.mp4` (45–90s, Ivan later):** Guild scout ship in weather; young-adult crew; **Rho** (humanoid AI) calm on the bridge; violent weather **without gore**; crash implied, survivors on a dawn beach; fog; the island already feels larger than the wreck; end on the child-captain waking so Pixi can take over. Wonder + urgency + safety. No exoplanet reveal.
+**Historical aspirations for `crash_landing.mp4` (duration/style/space concealment superseded above):** Guild scout ship in weather; young-adult crew; **Rho** (humanoid AI) calm on the bridge; violent weather **without gore**; crash implied, survivors on a dawn beach; fog; the island already feels larger than the wreck; end on the child-captain waking so Pixi can take over. Wonder + urgency + safety.
 
 **Video / image generation prompt (Higgsfield, Runway, or similar):**
 
@@ -493,7 +511,24 @@ Record: **lifetime**, **per session** (wall clock, even if they jump lessons), *
 
 **Build order (after Mission Loop v1 is stable):** (1) world ledger schema, (2) region graph + node-type catalog + stamps on north slots, (3) Chapter Compiler job, (4) Rho world tools wired to packs only, (5) complexity ladder (MC → create modules), (6) disguised placement diagnostic (§4.4).
 
-**Status today:** north terrain exists (unreachable); five tutorial pins + Mission Loop v1; **no** ledger, compiler, or `stamp_node`. See §9.
+**Status today:** Ch1 crew-log ledger + `Chapter.handoffSummary` are written and injected into the next Rho turn. North terrain exists (unreachable). **No** compiler, ration-plan artifact, or `stamp_node`. Learning products come before map stamps. See §9.
+
+### 4.16 Session focus (locked 2026-10-05)
+
+The five beach jobs are a subject sampler. They stay in the code until this view replaces them. They are no longer the model for how a child learns.
+
+A learning sitting has one shape:
+
+1. **The captain chooses the subject** for this sitting: math, ELA, science, or social studies. Rho may name a thin cluster. The captain decides.
+2. **The same view shows progress** toward the standards in that subject, from the seeded catalog for the captain's grade. Standards stay the hidden map in the story. This view is where the captain can see the cluster, what is already observed, and what is still ahead. It is not a second app.
+3. **The island keeps one chapter problem** (the food will not last; the beach is unsafe after dark). Today's subject is the lens on that problem. The map does not deal the next subject.
+4. **The dive is one idea.** Rho models the move once. Then several quick at-bats on that same idea, each with immediate feedback and one hint before the answer is given away. Then one transfer item. Then one spoken or written product the camp uses. That product is the ledger artifact.
+5. **Switching subject is allowed and deliberate.** The captain can leave the dive from this same view. Rho names what is unfinished and asks for a clear yes before the lens changes. Curiosity can open another subject. The default is to finish the idea in front of them.
+6. **Other subjects connect across sittings**, through the ledger. A math ration plan is evidence a later reading or science sitting can reuse. Connection is not four pins in one afternoon.
+
+The one-time wreck walk (§4.7 U4) still teaches movement and can place the captain. After that, learning starts at this view.
+
+Reward follows the product: the camp acts on the plan, the log, or the explanation. XP is not the reason to switch subjects.
 
 ---
 
@@ -777,6 +812,8 @@ Without this, Primer is a pretty game. With this, it is an **ESA-eligible learni
 
 **Learner-facing:** mastery as qualitative ("Rho trusts your measuring") plus map/camp unlocks. Reflections are **in-world** ("write the missing engineer so she can follow the ration plan") — the pedagogical purpose is active recall; the game purpose is a crew message. Do not dump `ELA.3.R.1.1` on an 8-year-old unless they ask.
 
+**2026-10-05 transparency requirement:** Explain learning standards in plain language and let learners inspect skills/evidence. A story purpose and an explicit educational purpose coexist. Clearly distinguish practice with AI help from real tests and independent writing/speaking checks. Intended progression depends on relevant demonstrated skills, not chat volume or time; detailed rubric/gate design remains open and current mastery math is unchanged. Prototype copy must distinguish implemented missions from planned tests/unlocks/empire progression. Communication proposal and sources: `docs/LEARNING_PURPOSE_AND_PROGRESSION.md`.
+
 **Parent-facing (lock):**
 
 - Dashboard: time spent **by day and week** (and later per lesson/chapter/unit); mastery of standards **across subjects**; succeeding vs struggling standards
@@ -809,10 +846,11 @@ Existing code: `app/progress/*`, `lib/services/progress.ts`, `StandardsEvidence`
 | G4 standards in Prisma | **DONE** | Seeded; enrollment when onboarding grade ≥ 4; sessions remap G3 job slugs → G4 lens |
 | Saga spine | **PARTIAL** | Static TS templates → `StoryWorld` / 6 chapters per learner; Ch1–2 from `grade3_castaway_curriculum`; **not** LLM-customized per child |
 | Three-mode shell | **DONE** | Intro → Pixi home → dialogue (left/right) → overlay quiz/reflection |
-| Mission Loop v1 | **DONE** | Jobs HUD + `/saga`; 5 pins → bank overlays; per-mission `subjectSlug`; Rho `suggest_next_mission` / `open_mission` |
+| Mission Loop v1 | **SUPERSEDED as the session model** | Five pin jobs still run. They are not how a sitting chooses work |
+| Subject focus §4.16 | **PARTIAL** | After first-run, the captain picks one subject and sees that subject's standards. A different subject asks for a deliberate yes. At-bats and the camp product are not built |
 | First-run tutorial | **DONE** | Video/poster → name → move → talk → work; per-learner `firstRunStep` |
 | Household auth | **DONE** | Parent email + child username/PIN; `/household`; child JWT scoped to one captain |
-| Rho live loop | **PARTIAL** | `gpt-5.6-luna`; ZPD; mission context in prompt; tools: observe, generate_activity, suggest/open mission |
+| Rho live loop | **PARTIAL** | `gpt-5.6-luna`; ZPD; mission context in prompt; tools: observe, generate_activity, suggest/show board/open mission |
 | Rho TTS | **DONE** | OpenAI TTS; discard audio; Voice on/off; mic barge-in |
 | STT | **DONE** | Whisper; transcribe + discard |
 | Stills pack | **DONE** | 15 files in `public/stills/tutorial/` |
@@ -820,7 +858,7 @@ Existing code: `app/progress/*`, `lib/services/progress.ts`, `StandardsEvidence`
 | Parchment map overlay | **NOT BUILT** | Fog only on walk camera |
 | Disguised placement | **NOT BUILT** | §4.4 Kumon-in-story diagnostic + parent benchmark report |
 | Chapter Compiler | **NOT BUILT** | `PLANNING_MODEL` constant only; no job |
-| World ledger | **NOT BUILT** | `StoryState` is narrative thread only; no decision/artifact ledger |
+| World ledger | **PARTIAL** | Ch1 crew log writes `WorldLedgerEntry` rows + `Chapter.handoffSummary`; next Rho turn must reuse them. No decisions, no Ch2 ration-plan artifact |
 | Full-screen activity tools | **NOT BUILT** | Overlay MC quizzes only; FR items dropped in overlay path |
 | Parent dashboard / email / PDF | **NOT BUILT** | `/progress` only; `/settings` for reading level |
 | Per-turn scene images | **OFF** | Stills pack; re-enable in full MVP |
@@ -848,14 +886,14 @@ Overlay MC-only; straight-line walk; ambient ocean silent; XP/rations not persis
 
 **P0 — Make the current loop trustworthy (tomorrow)**
 
-1. **Manual QA pass** — full first-run + all five missions + Ch1 reflection → Ch2 on `/saga` (see §19 test script).
-2. **Ch2 food missions** — wire food-chapter bank slugs to new pins or Jobs entries (today Ch2 activates in DB but gameplay may still be Ch1 mission set).
-3. **Evidence across subjects** — confirm `/progress` shows ELA/SCI/SS codes after non-wreck missions, not only math.
-4. **Disguised placement design doc** — item pool, stop rules, parent benchmark copy (§4.4); implement after loop is stable.
+1. **Subject-focus sitting (§4.16)** — captain chooses one subject, sees that subject's standards progress in the same view, and can switch only by a deliberate yes. Then one chapter problem, at-bats with feedback, and one product. Do not add more short pin jobs as the learning path.
+2. **Math product inside that dive** — the biscuit / equal-groups work (`MA.3.NSO.2.2`) becomes the product of a math sitting, saved to the ledger, not a new beach pin.
+3. **Evidence across subjects** — `/progress` and the in-session standards view agree after a dive.
+4. **Disguised placement design doc** — item pool, stop rules, parent benchmark copy (§4.4); implement after the subject-focus sitting is playable.
 
 **P1 — World feels alive (next coding slices)**
 
-5. **World ledger** — decisions + artifacts (ration plan text, branch choices) feeding next chapter handoff.
+5. **World ledger** — Ch1 crew-log handoff is written. The next artifact is the product of a §4.16 dive, not another pin. Map stamps stay after a learning product exists.
 6. **Parchment map overlay** — shares `beachMap` mask; grows as fog peels (U5).
 7. **Persist rewards** — XP/rations tied to `LearningActivityCompletion` / chapter complete.
 8. **Full-screen tools** — ship’s log, plan writing, measure (one module at a time); keep overlay for quick MC.
@@ -1052,6 +1090,17 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 - [x] Chapter 1 plannerJson (wreck / First Mate / food) instantiated from `grade3_castaway_curriculum.ts`
 - [x] Captain = `displayName`; Rho = humanoid AI First Mate (call + follower); never steals hero role
 - [x] Intro poster slot + Skip (`public/cinematics/`); Higgsfield later
+- [x] Draft Kling 30s mission prologue + 30s crash and editable subtitle source for review; realistic cinematic direction recorded (2026-10-05)
+- [x] Draft post-crash leadership objective clip/captions and honest learning-purpose communication proposal (2026-10-05)
+- [x] Specify oil/gold/silver resource mission + short trade explanation; research MCP billing and save future lithium/fusion discoveries (2026-10-05)
+- [ ] Generate/review intro footage, confirm account costs, export `crash_landing.mp4`, and verify website playback
+- [x] Generate candidate realistic Rho/beach reference and complete one authorized 5s Kling pilot (2026-10-05); actual charge40 credits, visual direction rejected; see animated candidates below
+- [x] Archive rejected realistic Rho reference and generate eight animated scene candidates with prompts/comparison (2026-10-05); user selection and dedicated character references pending
+- [x] Lock selected3D style, author reusable cinematic style guide/project routing, and correct briefing/arrival/storm references to feedback (2026-10-05); dedicated character sheets and more video remain open
+- [x] Generate/assemble first six-shot3D prologue (~30s), with native speech, separate picture/audio, editable VTT/SRT and captioned review export (2026-10-05);360 credits, balance7,600, user playback review pending
+- [ ] Wire editable external captions and sound controls; sync live story prompt to Merchant Corporation/interplanetary premise before release
+- [ ] Review/implement transparent practice/checkpoint copy, defensible writing/speaking rubrics, and evidence-based story gates; keep existing mastery formula until separately authorized
+- [ ] Deferred: tutorial video production/playback (Ivan, 2026-10-05); keep existing text tutorial
 - [x] Pixi home: tiny beach, tap-to-move + WASD, fog, resource HUD, placeholder captain
 - [x] U4: click wreck → dialogue (left/right) → overlay quiz
 - [x] Stills placeholders (`public/stills/tutorial/`) — no crash if files missing
@@ -1060,7 +1109,10 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 - [x] Time tracking: session + activity
 - [x] **Chapter reflection** (spoken OK) persisted
 - [x] Memory `STORY_BEAT` on complete
-- [x] Mission Loop v1: HUD Jobs board + `/saga`; dune/treeline/creek/camp → seeded §4.6 overlays; session subject switch; Rho `suggest_next_mission` / `open_mission`; Ch1 reflection activates Ch2 food chapter
+- [x] Mission Loop v1: HUD Jobs board + `/saga`; dune/treeline/creek/camp → seeded §4.6 overlays; session subject switch; Rho `suggest_next_mission` / `show_mission_board` / `open_mission`; Ch1 reflection activates Ch2 food chapter
+- [x] Ch1 world ledger + handoff: crew log is a must-reuse artifact on `Chapter.handoffSummary` and in the next Rho prompt (`WorldLedgerEntry`)
+- [x] **§4.16 subject view:** captain chooses one subject, sees that subject's standards, and must confirm before switching. Opens after first-run
+- [ ] **§4.16 dive:** one idea, quick at-bats with feedback, then a product the camp uses. Five pin jobs are not that dive
 
 **Step 1 closeout (2026-08-22) — done / leftover / debt**
 
@@ -1271,6 +1323,108 @@ If a new ★ question appears, add the answer to **§4** or **§17** — do not 
 
 Agents append here. Newest first.
 
+### 2026-10-05 — Subject-focus view
+
+- After the wreck lesson, a learning sitting opens on “What do you want to work on?” The captain picks one catalog subject and sees every standard in it, marked seen or not yet. Choosing a different subject asks for a deliberate yes before the session lens changes.
+- Not in this slice: at-bats, feedback, or the camp product. The five pin jobs still open from Jobs.
+- Files: `lib/play/subjectFocus.ts`, `components/play/SubjectFocusPanel.tsx`, `app/api/session/[id]/subject-focus/route.ts`, `e2e/subject-focus.spec.ts`.
+
+### 2026-10-05 — Session focus locked (§4.16)
+
+- Ivan stopped the five short pin jobs as the learning model. A sitting asks which subject the captain wants, shows progress toward the standards in that subject in the same view, and stays on one chapter problem: quick at-bats with feedback, then a product the camp uses.
+- A mid-session subject switch is allowed and must be a deliberate yes. The aim is depth and curiosity. The wreck walk remains the one-time movement lesson.
+- Not built yet. Mission Loop v1 still runs until the subject-focus view replaces it.
+
+### 2026-10-05 — First prologue assembled with editable captions/audio
+
+- Ivan authorized first prologue videos and assembly. Generated three missing scene reference frames with built-in image tool, then six5s1080p Kling3.0 jobs with native direct-address dialogue/off-screen narration, one take each. Actual charges360; final Premier balance7,600. OAuth used; API key untouched.
+- Saved watermark-free originals and task metadata, normalized1920×1080/24fps edit, clean30s H.264/AAC master, separate picture/audio and per-shot extracted mixes, VTT/SRT, selectable subtitles and captioned review copy in `public/cinematics/prologue-v1`. Exact shot prompts/lines and reproducible orchestration/assembly/transcription/export scripts retained.
+- Whisper recovered all six lines; minor P04 singular “food shipment” captured in captions. Validated caption timing/coverage/two-line wrapping, media metadata and sampled frames/subtitle rendering. Full unit suite54 and TypeScript typecheck passed. User playback needed for voice/motion/lip-sync acceptance. No webpage/player integration, crash/objective/tutorial jobs, retries or music commissioning.
+
+### 2026-10-05 — Crew log tools + orchestrator debug visibility
+
+- Fixed camp-math stuck loop: chat notes never unlocked camp because only ReflectionOverlay writes the gate. Added `open_crew_log` / `save_crew_log`; wreck-quiz dismiss no longer skips the slate via stale `firstRun.complete`. If `open_mission(camp-math)` is locked but a prior chat note exists, orchestrator auto-saves then opens camp — never asks for tool-name keywords.
+- Developer debug: `PRIMER_AI_DEBUG=1` logs tool **results** + SSE `debug_tool`; `NEXT_PUBLIC_PRIMER_AI_DEBUG=1` shows a PlayShell strip. Both off for real players.
+- Files: `lib/ai/{standardsTool,sessionOrchestrator,contextBuilder}.ts`, `lib/play/{chapterReflection,missions,crewLogCandidate,clientAiDebug}.ts`, `components/play/{PlayShell,useSessionStream,useLearningLoop,AiDebugPanel}.tsx`, `e2e/crew-log-debug.spec.ts`.
+
+### 2026-10-05 — Auto-read switch on Talking with Rho
+
+- Top bar of the dialogue cutscene has an **Auto read** switch. Off skips the paid `/api/tts` call on each finished Rho turn and persists in `localStorage` (`primer.rhoTtsAutoRead`). On `next dev`, a missing preference starts off so local testing does not pay for speech; an explicit on still sticks. Production with no saved preference stays on. Manual **Hear Rho** still speaks. Existing **Voice on/off** still mutes both. Beach HUD (Jobs, Saga, Leave) hides during the cutscene so the switch stays clickable.
+- Files: `lib/play/rhoAutoRead.ts`, `components/play/{useRhoTts,DialogueCutscene}.tsx`, `e2e/rho-auto-read.spec.ts`.
+
+### 2026-10-05 — Playwright gate for visible UI
+
+- Visible behavior changes now need a Playwright spec (`npm run test:e2e`) plus the existing Vitest and typecheck gate. Agents close a slice by offering the next build slice as clickable choices.
+- First spec: `e2e/progress-handoff.spec.ts` signs in through the local agent bootstrap and checks `/progress` for the carried-forward section.
+- Same instructions in `.cursor/rules/test-and-next-step.mdc`, `CLAUDE.md`, and `AGENTS.md`.
+
+### 2026-10-05 — Agent playtest bootstrap (local)
+
+- AI browser agents were stuck on login + first-run + Pixi. Added local-only `POST /api/dev/agent-bootstrap` and `/dev/agent`: seed captain cookie, `firstRunStep=complete`, ready `/learn` URL with `?dialogue=1` or `?board=1`. Documented in `docs/AGENT_PLAYTEST.md`.
+- Files: `lib/play/{agentPlaytest,testCaptain}.ts`, `app/api/dev/agent-bootstrap/route.ts`, `app/dev/agent/page.tsx`, `PlayShell` auto-open flags, CONTEXT/CLAUDE.
+
+### 2026-10-05 — show_mission_board tool + tool-first rule
+
+- Rho can call `show_mission_board` to open the on-screen Jobs overlay (`mission_board_open` SSE → PlayShell). Prompt forbids narrating a wooden board without opening the UI. Distinct from `suggest_next_mission` (read) and `open_mission` (start quiz).
+- **Product rule locked:** new child-facing features Rho/the captain can invoke should usually become orchestrator tools; if uncertain, ask Ivan before implementing. Documented in `CLAUDE.md` / `AGENTS.md`.
+- Files: `lib/ai/{standardsTool,sessionOrchestrator,contextBuilder}.ts`, `lib/play/missions.ts`, `lib/types/index.ts`, `app/api/session/[id]/message/route.ts`, `components/play/{useSessionStream,PlayShell,MissionBoard}.tsx`, tests, workspace rules.
+
+### 2026-10-05 — Ch1 world ledger + chapter handoff
+
+- Saving the Chapter 1 crew log now writes two ledger facts (the note, and “the engineer is still missing”), stores `Chapter.handoffSummary`, and advances Ch2 as before.
+- The next live turn injects a CHAPTER HANDOFF block that requires Rho to reuse that note. `/progress` shows the handoff. The crew-log overlay shows the carried-forward summary before Rho speaks.
+- Not built: Ch2 ration-plan (or other make) artifact, Chapter Compiler, map stamps.
+- Files: `prisma/schema.prisma`, `prisma/migrations/20261005120000_world_ledger/`, `lib/play/chapterHandoff.ts`, `lib/services/worldLedger.ts`, `lib/play/chapterReflection.ts`, `lib/ai/contextBuilder.ts`, `components/play/ReflectionOverlay.tsx`, `app/progress/page.tsx`.
+
+
+
+### 2026-10-05 — 3D style locked; POV, terrain, emotional acting corrected
+
+- Ivan selected3D A versions and requested guide for all future videos. Added `docs/CINEMATIC_STYLE_GUIDE.md`, AGENTS rule and CONTEXT route. Guides identity/proportions, palette/light, emotional range, first-person hands, geography, props, reference provenance and editable audio/captions; leaves Pixi game art unchanged.
+- Revised three stills with built-in image tool: briefing thumbs-up + restrained professional officer, Rho introduction with untouched varied terrain, storm from captain's eyes with only hands at wheel and concerned/stressed Rho. Copied accepted P02A trade-port into active `3d-v1` folder. Viewed outputs; saved full prompts and gallery.
+- Updated shot/script directions and memory. Original candidates remain history; realism stays ARCHIVED. No Kling calls/credit charges, no new video/character sheets/app-code changes.
+
+### 2026-10-05 — Animated direction; eight scene candidates
+
+- Ivan rejected realistic Rho as creepy and head too small; animated direction supersedes realism. Moved reference into `public/cinematics/references/ARCHIVED` and marked it excluded from future generation inputs. Previous video remains a rejected pilot.
+- Generated exactly eight static images with built-in ChatGPT image tool: P01 briefing, P02 narrated resource exposition, S01 Rho introduction on ship, S02 storm bridge, each A 3D/B painted 2D characters. Saved PNGs, full prompts and labeled comparison in `public/cinematics/references/animated-v1`.
+- Viewed all outputs. Friendly animated Rho, costume and escape-handle side carried within each style; background island settlements are unapproved and need cleanup before production. Candidate styles/characters are not locked. Await user feedback before reusable character sheets or video. No Kling calls/credits, no game-art or app-code changes.
+
+### 2026-10-05 — Premier reported; single pilot reference prepared
+
+- Ivan reports purchasing Premier and authorizes one short video test before further production. Generated a realistic Rho/beach candidate using the built-in image tool, preserving existing pixel portrait design; saved `public/cinematics/references/rho-dawn-v1.png`. Game art unchanged.
+- Prepared five-second silent image-to-video prompt in `docs/KLING_PILOT_01.md`; public 1080p VIDEO 3.0 baseline estimate 40 credits, actual account/model verification pending. No batch or retries authorized.
+- Native MCP tools absent; official global CLI OAuth succeeded. Account confirms Premier/8,000 initial credits. Completed one silent `kling-video-v3_0` pilot, charged40; verified remaining7,960. Saved `public/cinematics/pilots/rho-dawn-pilot-01.mp4`; verified H.264,1916×1080,24fps,5.04s,no audio. Five sampled frames preserve identity/setting but brief mouth movement violates the closed-mouth request; user playback/identity review pending. Task ID in pilot document. API key untouched; no credentials recorded. No app-code changes or further jobs.
+
+### 2026-10-05 — Resources, trade, credits, future-idea capture
+
+- Ivan specified oil/gold/silver ores, later rare materials/lithium, a 5s trade explanation, and a later abundant deuterium/tritium discovery tied to chemistry/fusion and energy/space travel. Revised prologue/subtitles; tutorials stay deferred.
+- Created future-story backlog (no relevant active idea file found) and capture instructions in AGENTS/CLAUDE/CONTEXT. Automated lithium-based tritium replenishment is a proposed fictional explanation; Grade ~6 remains unverified. DOE/NRC facts distinguish isotope science from future technology.
+- Verified rendered official MCP FAQ and live public membership plan: paid Personal credits only, no bonus/free off-peak MCP generations. Budget estimate 3,000–5,000 credits, not authorization; native tools/account balance still unavailable in this chat.
+- Files: video brief, intro VTT, credit budget, future ideas, project instructions/router, this plan, project memory. No app-code changes, asset generations, or purchases.
+
+### 2026-10-05 — Leadership objective + honest learning purpose
+
+- Ivan requested post-crash captain/crew/camp/ship/world/space-empire objective and explicit learning-purpose communication, including standards, AI questions/reflection/metacognition, real tests, and writing/speaking evidence for progression.
+- Added proposed 30s objective video + editable VTT and a communication design with opening disclosure, mission skill labels, practice versus independent-test labels, metacognition prompts, feedback/retry proposals, and no unsupported speed claim.
+- Updated §4.4 hidden-purpose placement wording toward explicit low-pressure diagnostic disclosure. Recorded that checkpoint gates, writing/speaking scoring, and empire arc are not implemented; no mastery math or runtime changes.
+- Sources: EEF metacognition guidance and IES learning practice guide; general evidence does not establish Primer acceleration. Files: production brief, learning-purpose proposal, objective VTT, cinematic README, this plan, project memory. No generation/purchase.
+
+### 2026-10-05 — Mission prologue + editable captions; tutorials deferred
+
+- Ivan clarified Merchant Corporation employment and the resource-survey → extraction → sale on other planets → company profit mission. Interplanetary commerce is now explicit in the opening; older blanket space concealment is superseded for this premise.
+- Added a proposed 30s prologue alternating first-person officer/Rho address with exposition narration; combined intro target is 60s. Removed repeat Rho introduction on the beach. Guild/corporation organizational relationship remains a proposal.
+- Added editable `public/cinematics/intro.en.vtt` covering all dialogue and meaningful sound cues; timing is draft pending final audio. Preserve separate picture/audio/text sources. Player caption/audio integration and live prompt synchronization remain open.
+- Deferred tutorial videos per Ivan; parked drafts retained, no generation or app-code changes. Files: production brief, VTT draft, cinematic README, this plan, project memory.
+
+### 2026-10-05 — Kling connection + cinematic script draft
+
+- Registered global Codex `kling` MCP at Ivan's endpoint; OAuth login succeeded and CLI reports enabled/OAuth. No generation or purchase submitted; account balance, model capabilities, and per-job costs not yet verified.
+- Ivan's realistic cinematic style supersedes the older illustrated cinematic preference. Draft follows Guild airship → escape/parachutes → implied crash → safe dawn beach, with the captain taking the key action.
+- Added 30s shot list, prompts, and four proposed how-to-play clips. Tutorials use real UI recordings for controls; skill video system remains unbuilt. Scripts await review.
+- Observed integration limits: intro autoplays muted, uses `object-cover`, and has fixed overlay text. No app code changed or runtime tests run.
+- Files: `docs/KLING_VIDEO_PRODUCTION_BRIEF.md`, this plan, `public/cinematics/README.md`, `PROJECT_MEMORY.md`. Global MCP configuration is outside the repository; credentials are not recorded here.
+
 ### 2026-08-23 — Master plan sync (state + roadmap + world architecture)
 
 - Bumped doc version to **2026-08-23**. Replaced stale **§9** inventory (old “Pixi not built / G4 not seeded”) with **§9 status matrix** + **§9.1 priority order**.
@@ -1310,7 +1464,7 @@ Agents append here. Newest first.
 
 ### 2026-08-23 — Rho TTS (OpenAI)
 
-- Rho speaks each finished dialogue turn via OpenAI `gpt-4o-mini-tts` (`coral` + First Mate instructions). `/api/tts` returns mp3 in memory; the client plays it and discards the blob (nothing stored). History is not auto-spoken on reopen; **Hear Rho** replays a line. **Voice on/off** persists in `localStorage`. Mic barge-in stops speech. Browser autoplay block → “Tap Rho to hear.”
+- Rho speaks each finished dialogue turn via OpenAI `gpt-4o-mini-tts` (`coral` + First Mate instructions) when **Auto read** is on. The Talking with Rho top bar switch turns that off and persists in `localStorage`, so development turns do not call `/api/tts`. **Hear Rho** still speaks one line. `/api/tts` returns mp3 in memory; the client plays it and discards the blob (nothing stored). History is not auto-spoken on reopen. **Voice on/off** persists in `localStorage` and mutes both paths. Mic barge-in stops speech. Browser autoplay block → “Tap Rho to hear.”
 - Not done: line cache, ElevenLabs, ambient ocean bed / U15 map mute.
 - Files: `app/api/tts/route.ts`, `lib/play/{ttsText,rhoVoice}.ts`, `lib/ai/models.ts`, `components/play/{useRhoTts,DialogueCutscene,MicButton}.tsx`, `components/session/{MessageList,MessageCard,InputBar}.tsx`.
 

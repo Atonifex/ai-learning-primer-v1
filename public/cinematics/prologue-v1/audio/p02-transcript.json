@@ -1,0 +1,98 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 5,
+  "text": "Other planets need oil, gold, and silver to make useful things.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0,
+      "end": 4.900000095367432,
+      "text": " Other planets need oil, gold, and silver to make useful things.",
+      "tokens": [
+        50364,
+        5358,
+        15126,
+        643,
+        3184,
+        11,
+        3821,
+        11,
+        293,
+        8753,
+        281,
+        652,
+        4420,
+        721,
+        13,
+        50614
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.3079502582550049,
+      "compression_ratio": 0.9545454382896423,
+      "no_speech_prob": 0.2810453176498413
+    }
+  ],
+  "words": [
+    {
+      "word": "Other",
+      "start": 0,
+      "end": 0.9399999976158142
+    },
+    {
+      "word": "planets",
+      "start": 0.9399999976158142,
+      "end": 1.4199999570846558
+    },
+    {
+      "word": "need",
+      "start": 1.4199999570846558,
+      "end": 1.8600000143051147
+    },
+    {
+      "word": "oil",
+      "start": 1.8600000143051147,
+      "end": 2.359999895095825
+    },
+    {
+      "word": "gold",
+      "start": 2.9000000953674316,
+      "end": 2.9000000953674316
+    },
+    {
+      "word": "and",
+      "start": 3.0399999618530273,
+      "end": 3.5399999618530273
+    },
+    {
+      "word": "silver",
+      "start": 3.5399999618530273,
+      "end": 3.5399999618530273
+    },
+    {
+      "word": "to",
+      "start": 3.5399999618530273,
+      "end": 3.819999933242798
+    },
+    {
+      "word": "make",
+      "start": 3.819999933242798,
+      "end": 4.079999923706055
+    },
+    {
+      "word": "useful",
+      "start": 4.079999923706055,
+      "end": 4.539999961853027
+    },
+    {
+      "word": "things",
+      "start": 4.539999961853027,
+      "end": 4.900000095367432
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 5
+  }
+}

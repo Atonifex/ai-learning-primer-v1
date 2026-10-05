@@ -1,0 +1,83 @@
+WEBVTT
+
+NOTE Draft 2026-10-05: combined 30s prologue + 30s crash storyboard.
+Align every cue to final recorded speech and effects before shipping.
+Captions are external and editable; this file is not yet wired into the player.
+
+prologue-01
+00:00:00.000 --> 00:00:05.000
+GUILD OFFICER: Welcome, Captain.
+Your crew works for the Merchant Corporation.
+
+prologue-02
+00:00:05.000 --> 00:00:10.000
+NARRATOR: Other planets need oil, gold,
+and silver to make useful things.
+
+prologue-03
+00:00:10.000 --> 00:00:15.000
+GUILD OFFICER: Explore this island.
+Look for ores—rocks that hold valuable metals.
+
+prologue-04
+00:00:15.000 --> 00:00:20.000
+NARRATOR: Trade brings materials for homes,
+food shipments, and travel between planets.
+
+prologue-05
+00:00:20.000 --> 00:00:25.000
+GUILD OFFICER: Your discoveries could help the company
+earn money—and reveal new materials.
+
+prologue-06
+00:00:25.000 --> 00:00:30.000
+RHO: I'm Rho, your first mate.
+Ready, Captain? Let's explore.
+
+crash-01-fx
+00:00:30.000 --> 00:00:31.000
+[Wind and rain rise; tense music]
+
+crash-01
+00:00:31.000 --> 00:00:35.000
+RHO: Captain!
+The storm is pushing us down!
+
+crash-02-fx
+00:00:35.000 --> 00:00:35.700
+[Metal groans; alarm sounds]
+
+crash-02
+00:00:35.700 --> 00:00:40.000
+RHO: We can't stay on the ship.
+Pull the blue handle!
+
+crash-03-fx
+00:00:40.000 --> 00:00:42.000
+[Escape seats release; wind rushes]
+
+crash-03
+00:00:42.000 --> 00:00:45.000
+RHO: The parachutes are open!
+
+crash-04-fx
+00:00:45.000 --> 00:00:48.000
+[Distant crash and splash]
+
+crash-04-surf
+00:00:48.000 --> 00:00:50.000
+[Gentle surf]
+
+crash-05
+00:00:50.000 --> 00:00:54.000
+RHO: You're safe, Captain.
+Our crew is out there.
+
+crash-05-music
+00:00:54.000 --> 00:00:55.000
+[Hopeful music rises]
+
+crash-06
+00:00:55.000 --> 00:01:00.000
+RHO: Let's find our supplies.
+Then we'll find the crew.

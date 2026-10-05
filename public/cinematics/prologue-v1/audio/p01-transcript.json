@@ -1,0 +1,87 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 5,
+  "text": "Welcome, Captain. Your crew works for the Merchant Corporation.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 1.100000023841858,
+      "end": 4.760000228881836,
+      "text": " Welcome, Captain. Your crew works for the Merchant Corporation.",
+      "tokens": [
+        50364,
+        4027,
+        11,
+        10873,
+        13,
+        2260,
+        7260,
+        1985,
+        337,
+        264,
+        6124,
+        24628,
+        26464,
+        13,
+        50614
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.387463241815567,
+      "compression_ratio": 0.9130434989929199,
+      "no_speech_prob": 0.11213869601488113
+    }
+  ],
+  "words": [
+    {
+      "word": "Welcome",
+      "start": 1.100000023841858,
+      "end": 1.7400000095367432
+    },
+    {
+      "word": "Captain",
+      "start": 2.299999952316284,
+      "end": 2.299999952316284
+    },
+    {
+      "word": "Your",
+      "start": 2.559999942779541,
+      "end": 2.9200000762939453
+    },
+    {
+      "word": "crew",
+      "start": 2.9200000762939453,
+      "end": 3.1600000858306885
+    },
+    {
+      "word": "works",
+      "start": 3.1600000858306885,
+      "end": 3.5
+    },
+    {
+      "word": "for",
+      "start": 3.5,
+      "end": 3.6600000858306885
+    },
+    {
+      "word": "the",
+      "start": 3.6600000858306885,
+      "end": 3.819999933242798
+    },
+    {
+      "word": "Merchant",
+      "start": 3.819999933242798,
+      "end": 4.139999866485596
+    },
+    {
+      "word": "Corporation",
+      "start": 4.139999866485596,
+      "end": 4.760000228881836
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 5
+  }
+}

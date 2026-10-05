@@ -25,7 +25,9 @@ Primary users: Grades 3–8 (Florida homeschool / ESA first; Grade 3–4 as the 
 - No live language-tutor product path (Spanish/Chinese tutor is post-MVP at most).
 - Stay in this repo and prune vestigial code on contact — do not greenfield or fork.
 - Ask clarifying questions before assuming product direction. When unsure, say so.
+- **Tool-first for live features:** New child-facing features the captain can invoke through Rho (boards, overlays, quizzes, world actions, UI modes) should almost always become **callable tools** on the session orchestrator (`lib/ai/sessionOrchestrator.ts` + tool defs + SSE → PlayShell). Rho's live turns *are* that orchestrator (luna + tools); do not ship dialogue-only descriptions of UIs that exist on screen. If it is unclear whether something should be a tool, **ask Ivan explicitly** before implementing.
 - Concise over comprehensive. Prefer pointed changes over drive-by refactors.
+- Read `PROJECT_MEMORY.md` before substantive work and update meaningful discoveries concisely. Capture out-of-slice user ideas in `docs/FUTURE_STORY_IDEAS.md` using its convention; distinguish requests, proposals, verified science, and unverified grade mapping. Backlog entries do not authorize current implementation; promote reviewed ideas into MASTER before building.
 - Do not create giant components over ~250 lines unless justified.
 - Do not add libraries without explaining why.
 - COPPA: voice is personal data — STT transcribes and **discards** audio (`app/api/stt/route.ts`).
@@ -62,7 +64,8 @@ This Next.js has breaking changes vs older training data. Before writing App Rou
 | Progress / mastery (do not redesign yet) | `lib/services/standardsMasteryMath.ts` + `app/progress/` |
 | Auth / profile / onboarding | `lib/auth/` + `app/onboarding/` + `components/onboarding/` |
 | Scene image tool (off on live turns for stills pack) | `lib/ai/imageTool.ts` + `docs/decisions-scene-images.md` if present |
-| Tests | `npm test` (Vitest); `docs/vitest-testing-guide.md` |
+| Tests | `npm test` (Vitest); `npm run test:e2e` (Playwright, `e2e/`); `docs/vitest-testing-guide.md` |
+| Browser / agent playtest | `docs/AGENT_PLAYTEST.md` + `/dev/agent` |
 | Historical specs (read-only) | `docs/archive-OLD-DO-NOT-USE/` |
 
 ---
@@ -164,14 +167,25 @@ Do not load the whole repo into context.
 
 ## Preferred stack
 
-Next.js · TypeScript · Tailwind · shadcn/ui · Postgres · Prisma · PixiJS · Vitest · OpenAI (luna live turns, Whisper STT, optional Images for stills pack)
+Next.js · TypeScript · Tailwind · shadcn/ui · Postgres · Prisma · PixiJS · Vitest · Playwright · OpenAI (luna live turns, Whisper STT, optional Images for stills pack)
 
 ---
 
 ## Agent hygiene
 
 1. Prefer the smallest testable increment that matches §11.
-2. After a slice: `npx tsc --noEmit`, `npm test`, update MASTER §15 checkboxes you actually finished + §18 log.
+2. After a slice: follow **Test and next step** below, then update MASTER §15 checkboxes you actually finished + §18 log.
 3. Never parallel-edit `prisma/schema.prisma` and `sessionOrchestrator.ts` with another agent without a written contract.
 4. Record technical debt in §15 / §18 rather than silently expanding scope.
 5. Use working memory documents or a planning file with checklists if a scope is going to be very big.
+
+## Test and next step
+
+After any change to behavior, data, prompts, or UI:
+
+1. Add or update a unit test that fails if the new behavior disappears. Prefer a test of the rule itself (a handoff prompt must contain the child's note).
+2. Run `npm test` and `npx tsc --noEmit`. Fix failures before saying the slice is done.
+3. When the change is visible in the app, add or update a Playwright spec under `e2e/` and run `npm run test:e2e`. Also exercise that flow in the browser. A screenshot of a static render is not enough. If login, a missing key, or no running server blocks a check, say exactly what you could not verify.
+4. Close the reply with what you tested, what passed, and what you could not verify. Then offer the next build slice as clickable choices. Offer 2–4 options. Put the recommended learning slice first and mark it recommended. These choices are the next piece of work. The in-game Jobs board is separate. Do not propose world generation unless Ivan asked for the world.
+
+Do not treat a green typecheck alone as validation. Do not invent Florida standard codes while testing. Cursor copy: `.cursor/rules/test-and-next-step.mdc`.

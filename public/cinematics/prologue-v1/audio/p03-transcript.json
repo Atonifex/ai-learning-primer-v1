@@ -1,0 +1,100 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 5,
+  "text": "Explore this island. Look for ores, rocks that hold valuable metals.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0,
+      "end": 4.980000019073486,
+      "text": " Explore this island. Look for ores, rocks that hold valuable metals.",
+      "tokens": [
+        50364,
+        12514,
+        418,
+        341,
+        6077,
+        13,
+        2053,
+        337,
+        277,
+        495,
+        11,
+        10989,
+        300,
+        1797,
+        8263,
+        22548,
+        13,
+        50614
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.3096253573894501,
+      "compression_ratio": 0.9577465057373047,
+      "no_speech_prob": 0.20534244179725647
+    }
+  ],
+  "words": [
+    {
+      "word": "Explore",
+      "start": 0,
+      "end": 0.8799999952316284
+    },
+    {
+      "word": "this",
+      "start": 0.8799999952316284,
+      "end": 1.159999966621399
+    },
+    {
+      "word": "island",
+      "start": 1.159999966621399,
+      "end": 1.5199999809265137
+    },
+    {
+      "word": "Look",
+      "start": 2.359999895095825,
+      "end": 2.359999895095825
+    },
+    {
+      "word": "for",
+      "start": 2.359999895095825,
+      "end": 3.0199999809265137
+    },
+    {
+      "word": "ores",
+      "start": 3.0199999809265137,
+      "end": 3.0199999809265137
+    },
+    {
+      "word": "rocks",
+      "start": 3.619999885559082,
+      "end": 3.619999885559082
+    },
+    {
+      "word": "that",
+      "start": 3.619999885559082,
+      "end": 3.8399999141693115
+    },
+    {
+      "word": "hold",
+      "start": 3.8399999141693115,
+      "end": 4.079999923706055
+    },
+    {
+      "word": "valuable",
+      "start": 4.079999923706055,
+      "end": 4.559999942779541
+    },
+    {
+      "word": "metals",
+      "start": 4.559999942779541,
+      "end": 4.980000019073486
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 5
+  }
+}

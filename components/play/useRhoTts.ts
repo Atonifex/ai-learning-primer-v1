@@ -3,11 +3,19 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { prepareTtsText } from "../../lib/play/ttsText";
 import { getRhoAudioContext, unlockRhoAudio } from "../../lib/play/rhoAudio";
+import {
+  RHO_AUTO_READ_KEY,
+  rhoSpeechPlan,
+  storedRhoAutoRead,
+  type RhoSpeechMode,
+} from "../../lib/play/rhoAutoRead";
 
 const MUTE_KEY = "primer.rhoTtsMuted";
+const devAutoReadOff = process.env.NODE_ENV === "development";
 
 export function useRhoTts() {
   const [muted, setMutedState] = useState(false);
+  const [autoRead, setAutoReadState] = useState(!devAutoReadOff);
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
   const [playingId, setPlayingId] = useState<string | null>(null);
@@ -18,6 +26,7 @@ export function useRhoTts() {
   const bufferRef = useRef<AudioBuffer | null>(null);
   const lastRef = useRef<{ text: string; id: string | null } | null>(null);
   const mutedRef = useRef(false);
+  const autoReadRef = useRef(!devAutoReadOff);
 
   const stop = useCallback(() => {
     abortRef.current?.abort();
@@ -39,7 +48,12 @@ export function useRhoTts() {
 
   useEffect(() => {
     mutedRef.current = window.localStorage.getItem(MUTE_KEY) === "1";
+    autoReadRef.current = storedRhoAutoRead(
+      window.localStorage.getItem(RHO_AUTO_READ_KEY),
+      devAutoReadOff
+    );
     setMutedState(mutedRef.current);
+    setAutoReadState(autoReadRef.current);
     return () => stop();
   }, [stop]);
 
@@ -49,6 +63,16 @@ export function useRhoTts() {
       setMutedState(next);
       window.localStorage.setItem(MUTE_KEY, next ? "1" : "0");
       if (next) stop();
+    },
+    [stop]
+  );
+
+  const setAutoRead = useCallback(
+    (next: boolean) => {
+      autoReadRef.current = next;
+      setAutoReadState(next);
+      window.localStorage.setItem(RHO_AUTO_READ_KEY, next ? "1" : "0");
+      if (!next) stop();
     },
     [stop]
   );
@@ -98,8 +122,13 @@ export function useRhoTts() {
   );
 
   const speak = useCallback(
-    async (raw: string, id?: string) => {
-      if (mutedRef.current) return;
+    async (raw: string, id?: string, mode: RhoSpeechMode = "manual") => {
+      const plan = rhoSpeechPlan({
+        mode,
+        autoRead: autoReadRef.current,
+        muted: mutedRef.current,
+      });
+      if (plan === "skip") return;
       const text = prepareTtsText(raw);
       if (!text) return;
 
@@ -152,7 +181,12 @@ export function useRhoTts() {
   );
 
   const replayLast = useCallback(() => {
-    if (mutedRef.current) return;
+    if (
+      rhoSpeechPlan({ mode: "manual", autoRead: autoReadRef.current, muted: mutedRef.current }) ===
+      "skip"
+    ) {
+      return;
+    }
     unlockRhoAudio();
     const buf = bufferRef.current;
     if (buf) {
@@ -167,6 +201,8 @@ export function useRhoTts() {
   return {
     muted,
     setMuted,
+    autoRead,
+    setAutoRead,
     playing,
     loading,
     playingId,

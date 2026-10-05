@@ -10,8 +10,11 @@ import {
 } from "./imageTool";
 import {
   generateLearningActivityTool,
+  openCrewLogTool,
   openMissionTool,
   recordStandardObservationTool,
+  saveCrewLogTool,
+  showMissionBoardTool,
   suggestNextMissionTool,
 } from "./standardsTool";
 import { getReferenceBuffersForScene } from "./referenceImages";
@@ -22,6 +25,11 @@ import {
   formatStandardsBlock,
   getStandardCodesForSubject,
 } from "../services/standardsCatalog";
+import {
+  hasCompletedChapterReflection,
+  saveChapterReflectionFromNote,
+} from "../play/chapterReflection";
+import { findCrewLogNoteCandidate } from "../play/crewLogCandidate";
 import {
   aiDebug,
   isAiDebug,
@@ -104,6 +112,7 @@ export async function* streamSessionResponse(
     abortSignal?: AbortSignal;
     spine?: StorySpineContext | null;
     previouslyOn?: string | null;
+    chapterHandoff?: string | null;
     sessionId?: string;
   }
 ): AsyncGenerator<StreamChunk> {
@@ -126,6 +135,7 @@ export async function* streamSessionResponse(
       standardsBlock,
       coherenceMap,
       missionBoard: missionBoard.missions,
+      chapterHandoff: opts.chapterHandoff ?? null,
     }
   );
 
@@ -176,7 +186,10 @@ export async function* streamSessionResponse(
         recordStandardObservationTool,
         generateLearningActivityTool,
         suggestNextMissionTool,
+        showMissionBoardTool,
         openMissionTool,
+        openCrewLogTool,
+        saveCrewLogTool,
       ],
       tool_choice: "auto",
       // gpt-5.6-luna rejects function tools unless reasoning is off.
@@ -444,6 +457,35 @@ export async function* streamSessionResponse(
               }),
             });
           }
+        } else if (call.name === "show_mission_board") {
+          try {
+            const board = await getMissionBoard(profile.id);
+            yield { type: "mission_board_open" };
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: true,
+                opened: true,
+                tellCaptain:
+                  "The Jobs board is on screen. Briefly name the open jobs; wait for them to pick before open_mission.",
+                missions: board.missions.map((m) => ({
+                  id: m.id,
+                  status: m.status,
+                  pin: m.pinId,
+                  title: m.title,
+                  lockReason: m.lockReason,
+                })),
+              }),
+            });
+          } catch (err) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: false,
+                error: err instanceof Error ? err.message : String(err),
+              }),
+            });
+          }
         } else if (call.name === "open_mission") {
           const missionId = typeof args.mission_id === "string" ? args.mission_id.trim() : "";
           if (!missionId) {
@@ -464,11 +506,71 @@ export async function* streamSessionResponse(
               continue;
             }
             if (mission.status === "locked") {
+              const needsCrewLog = mission.lockedUntil === "ch1-reflection";
+              if (needsCrewLog && opts.sessionId) {
+                const candidate = findCrewLogNoteCandidate(
+                  userMessage,
+                  sessionMessages.map((m) => ({ role: m.role, content: m.content }))
+                );
+                if (candidate) {
+                  try {
+                    const saved = await saveChapterReflectionFromNote({
+                      sessionId: opts.sessionId,
+                      learnerProfileId: profile.id,
+                      note: candidate,
+                    });
+                    yield {
+                      type: "crew_log_saved",
+                      text: saved.text,
+                      handoffSummary: saved.handoffSummary,
+                      alreadyCompleted: saved.alreadyCompleted,
+                    };
+                    const boardAfter = await getMissionBoard(profile.id);
+                    const unlocked = boardAfter.missions.find((m) => m.id === missionId);
+                    if (unlocked && unlocked.status !== "locked") {
+                      const switched = unlocked.subjectSlug !== opts.subjectSlug;
+                      yield {
+                        type: "mission_open",
+                        missionId: unlocked.id,
+                        subjectSlug: unlocked.subjectSlug,
+                        activitySlug: unlocked.activitySlug,
+                        sessionId: opts.sessionId,
+                        switched,
+                      };
+                      toolResults.push({
+                        tool_call_id: call.id,
+                        content: JSON.stringify({
+                          success: true,
+                          missionId: unlocked.id,
+                          pin: unlocked.pinId,
+                          subjectSlug: unlocked.subjectSlug,
+                          sessionSwitched: switched,
+                          crewLogSaved: true,
+                          note: saved.text,
+                          tellCaptain:
+                            "You saved their crew-log note from chat and opened camp-math. Thank them briefly. Do not ask them to retype the note or a tool name.",
+                        }),
+                      });
+                      continue;
+                    }
+                  } catch (err) {
+                    aiDebug("orchestrator", "crew_log_autosave_failed", {
+                      error: err instanceof Error ? err.message : String(err),
+                    });
+                  }
+                }
+              }
               toolResults.push({
                 tool_call_id: call.id,
                 content: JSON.stringify({
                   success: false,
                   error: mission.lockReason || "That job is still locked.",
+                  nextAction: needsCrewLog
+                    ? "save_crew_log_or_open_crew_log"
+                    : "show_mission_board",
+                  tellCaptain: needsCrewLog
+                    ? "Do not ask them to type tool names. If they already wrote a crew-log note in chat, call save_crew_log with that note. Otherwise call open_crew_log."
+                    : "Explain the lock briefly; open the board if helpful.",
                 }),
               });
               continue;
@@ -504,11 +606,131 @@ export async function* streamSessionResponse(
               }),
             });
           }
+        } else if (call.name === "open_crew_log") {
+          try {
+            const alreadyDone = await hasCompletedChapterReflection(profile.id);
+            if (alreadyDone) {
+              toolResults.push({
+                tool_call_id: call.id,
+                content: JSON.stringify({
+                  success: true,
+                  alreadyCompleted: true,
+                  tellCaptain:
+                    "The crew log is already saved. If they want camp-math, call open_mission with camp-math.",
+                }),
+              });
+            } else {
+              yield { type: "crew_log_open" };
+              toolResults.push({
+                tool_call_id: call.id,
+                content: JSON.stringify({
+                  success: true,
+                  opened: true,
+                  tellCaptain:
+                    "The crew-log slate is on screen. Invite a short note; wait for them. Do not invent that it is already saved.",
+                }),
+              });
+            }
+          } catch (err) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: false,
+                error: err instanceof Error ? err.message : String(err),
+              }),
+            });
+          }
+        } else if (call.name === "save_crew_log") {
+          const note = typeof args.note === "string" ? args.note.trim() : "";
+          const sessionId = opts?.sessionId;
+          if (!note) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: false,
+                error: "Missing note",
+                tellCaptain:
+                  "Ask for one short crew-log sentence, then call save_crew_log again.",
+              }),
+            });
+          } else if (!sessionId) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: false,
+                error: "Missing sessionId",
+              }),
+            });
+          } else {
+            try {
+              const saved = await saveChapterReflectionFromNote({
+                sessionId,
+                learnerProfileId: profile.id,
+                note,
+              });
+              yield {
+                type: "crew_log_saved",
+                text: saved.text,
+                handoffSummary: saved.handoffSummary,
+                alreadyCompleted: saved.alreadyCompleted,
+              };
+              toolResults.push({
+                tool_call_id: call.id,
+                content: JSON.stringify({
+                  success: true,
+                  alreadyCompleted: saved.alreadyCompleted,
+                  note: saved.text,
+                  handoffSummary: saved.handoffSummary,
+                  tellCaptain: saved.alreadyCompleted
+                    ? "Crew log was already on file. Camp-math should be open — call open_mission if they want it."
+                    : "Crew log saved. Thank them briefly. Camp-math is unlocked — call open_mission with camp-math if they want to start it now.",
+                }),
+              });
+            } catch (err) {
+              toolResults.push({
+                tool_call_id: call.id,
+                content: JSON.stringify({
+                  success: false,
+                  error: err instanceof Error ? err.message : String(err),
+                }),
+              });
+            }
+          }
         } else {
           toolResults.push({
             tool_call_id: call.id,
             content: JSON.stringify({ success: false, error: `Unknown tool: ${call.name}` }),
           });
+        }
+      }
+
+      for (const row of toolResults) {
+        const call = orderedCalls.find((c) => c.id === row.tool_call_id);
+        let success = false;
+        let error: string | undefined;
+        try {
+          const parsed = JSON.parse(row.content) as {
+            success?: boolean;
+            error?: string;
+          };
+          success = parsed.success === true;
+          error = typeof parsed.error === "string" ? parsed.error : undefined;
+        } catch {
+          // keep defaults
+        }
+        aiDebug("orchestrator", "tool_result", {
+          toolName: call?.name,
+          toolCallId: row.tool_call_id,
+          success,
+          error,
+        });
+        if (isAiDebug()) {
+          yield {
+            type: "debug_tool",
+            name: call?.name ?? "unknown",
+            ok: success,
+            detail: error ?? (success ? "ok" : row.content.slice(0, 240)),
+          };
         }
       }
 

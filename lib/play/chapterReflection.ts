@@ -18,6 +18,9 @@ const IN_WORLD_PROMPT =
 async function loadReflectionActivity() {
   const activity = await prisma.learningActivity.findUnique({
     where: { slug: CHAPTER_REFLECTION_SLUG },
+    include: {
+      standardLinks: { select: { standard: { select: { code: true } } } },
+    },
   });
   if (!activity) {
     throw new Error(
@@ -107,7 +110,7 @@ export async function submitChapterReflection(params: {
   learnerProfileId: string;
   completionId: string;
   text: string;
-}): Promise<{ text: string }> {
+}): Promise<{ text: string; handoffSummary: string | null }> {
   const activity = await loadReflectionActivity();
   const completion = await prisma.learningActivityCompletion.findUnique({
     where: { id: params.completionId },
@@ -146,21 +149,66 @@ export async function submitChapterReflection(params: {
     },
   });
 
+  const { recordCh1CrewLogHandoff } = await import("../services/worldLedger");
   const { completeActiveChapterAndActivateNext } = await import(
     "../services/storyCurriculum"
   );
-  const advanced = await completeActiveChapterAndActivateNext(params.learnerProfileId);
+  const handoff = await recordCh1CrewLogHandoff({
+    learnerProfileId: params.learnerProfileId,
+    note: text,
+    sourceCompletionId: completion.id,
+    activitySlug: activity.slug,
+    standardCodes: activity.standardLinks.map((link) => link.standard.code),
+  });
+  const advanced =
+    handoff ??
+    (await completeActiveChapterAndActivateNext(params.learnerProfileId));
   if (advanced?.nextTitle) {
     await prisma.memoryItem.create({
       data: {
         learnerProfileId: params.learnerProfileId,
         type: "STORY_BEAT",
-        content: `Chapter closed: ${advanced.completedTitle}. Next: ${advanced.nextTitle} (food / divide supplies).`,
+        content: `Chapter closed: ${advanced.completedTitle}. Next: ${advanced.nextTitle}.${
+          handoff?.summary ? ` Handoff: ${handoff.summary}` : ""
+        }`,
         confidence: 0.85,
         sourceSessionId: params.sessionId,
       },
     });
   }
 
-  return { text };
+  return { text, handoffSummary: handoff?.summary ?? null };
+}
+
+/**
+ * Orchestrator path: persist a crew-log note the captain already said in chat
+ * (or an equivalent short note Rho captured). Opens a completion if needed.
+ */
+export async function saveChapterReflectionFromNote(params: {
+  sessionId: string;
+  learnerProfileId: string;
+  note: string;
+}): Promise<{
+  text: string;
+  handoffSummary: string | null;
+  alreadyCompleted: boolean;
+}> {
+  const started = await startChapterReflection({
+    learnerProfileId: params.learnerProfileId,
+    sessionId: params.sessionId,
+  });
+  if (started.alreadyCompleted) {
+    return {
+      text: started.priorText?.trim() || params.note.trim(),
+      handoffSummary: null,
+      alreadyCompleted: true,
+    };
+  }
+  const saved = await submitChapterReflection({
+    sessionId: params.sessionId,
+    learnerProfileId: params.learnerProfileId,
+    completionId: started.completionId,
+    text: params.note,
+  });
+  return { ...saved, alreadyCompleted: false };
 }

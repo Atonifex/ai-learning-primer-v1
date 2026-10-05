@@ -52,6 +52,8 @@ export function useLearningLoop(
   const [showReflection, setShowReflection] = useState(false);
   const [reflectionSubmitting, setReflectionSubmitting] = useState(false);
   const [reflectionError, setReflectionError] = useState<string | null>(null);
+  const [carriedForward, setCarriedForward] = useState<string | null>(null);
+  const [savedCrewNote, setSavedCrewNote] = useState<string | null>(null);
 
   useEffect(() => {
     Promise.all([
@@ -227,9 +229,17 @@ export function useLearningLoop(
             text,
           }),
         });
-        const data = (await res.json()) as { result?: { text: string }; error?: string };
+        const data = (await res.json()) as {
+          result?: { text: string; handoffSummary?: string | null };
+          error?: string;
+        };
         if (!res.ok || !data.result) throw new Error(data.error || "Could not save");
         setReflectionDone(true);
+        if (data.result.handoffSummary) {
+          setSavedCrewNote(data.result.text);
+          setCarriedForward(data.result.handoffSummary);
+          return;
+        }
         setShowReflection(false);
         void sendMessage(`${HIDDEN_TURN.reflectionPrefix} ${data.result.text}`);
       } catch (e) {
@@ -240,6 +250,23 @@ export function useLearningLoop(
     },
     [reflection, sendMessage, sessionId]
   );
+
+  const continueAfterHandoff = useCallback(() => {
+    const note = savedCrewNote;
+    setShowReflection(false);
+    setCarriedForward(null);
+    setSavedCrewNote(null);
+    if (!note) return;
+    void sendMessage(`${HIDDEN_TURN.reflectionPrefix} ${note}`);
+  }, [savedCrewNote, sendMessage]);
+
+  const markReflectionDoneFromTool = useCallback((text: string, _handoffSummary: string | null) => {
+    setReflectionDone(true);
+    setShowReflection(false);
+    setCarriedForward(null);
+    setSavedCrewNote(null);
+    void text;
+  }, []);
 
   return {
     quizDone,
@@ -260,7 +287,10 @@ export function useLearningLoop(
     showReflection,
     reflectionSubmitting,
     reflectionError,
+    carriedForward,
     openReflection,
     submitReflection,
+    continueAfterHandoff,
+    markReflectionDoneFromTool,
   };
 }

@@ -1,0 +1,15 @@
+---
+description: Require unit tests, Playwright for visible UI, and clickable next-step choices
+alwaysApply: true
+---
+
+# Test, validate, then offer the next step
+
+After any change to behavior, data, prompts, or UI:
+
+1. Add or update a unit test that fails if the new behavior disappears. Prefer a test of the rule itself (a handoff prompt must contain the child's note).
+2. Run `npm test` and `npx tsc --noEmit`. Fix failures before saying the slice is done.
+3. When the change is visible in the app (page, overlay, navigation, client state), add or update a Playwright spec under `e2e/` and run `npm run test:e2e`. Also exercise that flow in the browser. A screenshot of a static render is not enough. If login, a missing key, or no running server blocks a check, say exactly what you could not verify.
+4. Close the reply with what you tested, what passed, and what you could not verify. Then offer the next build slice as clickable choices (`AskQuestion` or the client's choice buttons). Offer 2–4 options. Put the recommended learning slice first and mark it recommended. These choices are the next piece of work. The in-game Jobs board is separate. Do not propose world generation unless Ivan asked for the world.
+
+Do not treat a green typecheck alone as validation. Do not invent Florida standard codes while testing.

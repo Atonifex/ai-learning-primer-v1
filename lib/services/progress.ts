@@ -156,3 +156,10 @@ export async function getLatestChapterReflection(profileId: string) {
 }
 
 export { getLearnerTimeSummary };
+
+export async function getChapterHandoffForProgress(
+  profileId: string
+): Promise<import("./worldLedger").LearnerLedgerView> {
+  const { getLearnerLedger } = await import("./worldLedger");
+  return getLearnerLedger(profileId);
+}

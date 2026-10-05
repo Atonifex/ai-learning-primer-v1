@@ -40,7 +40,7 @@ export default function DialogueCutscene(props: {
       .reverse()
       .find((m) => m.role === "ASSISTANT" && m.content.trim());
     if (!last) return;
-    void speak(last.content, last.id);
+    void speak(last.content, last.id, "automatic");
   }, [props.streaming, props.messages, speak, stop]);
 
   function handlePortraitTap() {
@@ -55,11 +55,30 @@ export default function DialogueCutscene(props: {
   return (
     <div className="absolute inset-0 z-30 flex min-h-0 flex-col bg-[#071820]/70 md:flex-row">
       <div className="flex min-h-0 min-w-0 flex-1 flex-col border-stone-800 bg-[#f7f1e4] md:border-r">
-        <div className="flex flex-shrink-0 items-center justify-between gap-2 border-b border-amber-200/60 bg-[#efe4ce] px-3 py-2.5">
+        <div className="flex flex-shrink-0 flex-wrap items-center justify-between gap-2 border-b border-amber-200/60 bg-[#efe4ce] px-3 py-2.5">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-amber-900/80">
             Talking with Rho
           </p>
-          <div className="flex items-center gap-1">
+          <div className="flex flex-wrap items-center gap-1">
+            <button
+              type="button"
+              role="switch"
+              aria-checked={tts.autoRead}
+              aria-label="Automatic reading by Rho"
+              title="Turn off to skip paid speech on new lines. Hear Rho still works."
+              onClick={() => tts.setAutoRead(!tts.autoRead)}
+              className="flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-sm text-stone-600 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            >
+              <span>{tts.autoRead ? "Auto read" : "Auto read off"}</span>
+              <span
+                aria-hidden
+                className={`relative inline-flex h-5 w-9 shrink-0 rounded-full ${tts.autoRead ? "bg-teal-700" : "bg-stone-400"}`}
+              >
+                <span
+                  className={`absolute top-0.5 size-4 rounded-full bg-[#f7f1e4] shadow transition-transform ${tts.autoRead ? "translate-x-4" : "translate-x-0.5"}`}
+                />
+              </span>
+            </button>
             <button
               type="button"
               aria-pressed={!tts.muted}

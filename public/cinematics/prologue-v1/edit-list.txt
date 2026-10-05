@@ -1,0 +1,6 @@
+file 'sources/p01-edit.mp4'
+file 'sources/p02-edit.mp4'
+file 'sources/p03-edit.mp4'
+file 'sources/p04-edit.mp4'
+file 'sources/p05-edit.mp4'
+file 'sources/p06-edit.mp4'

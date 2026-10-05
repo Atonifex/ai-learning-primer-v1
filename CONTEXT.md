@@ -17,14 +17,17 @@ Operating router for the Primer codebase. **CLAUDE.md** (always loaded) has iden
 | **Play shell / U4 flow / Pixi beach** | `components/play/PlayShell.tsx` | `beachWorld.ts`, `lib/play/beachMap.ts`, MASTER §4.7 / §4.10 / §7 |
 | **Dialogue cutscene / mic / speak-first** | `components/play/DialogueCutscene.tsx` | `components/session/InputBar.tsx`, `MicButton.tsx`, MASTER §4.8 |
 | **Overlay tutorial quiz** | `lib/play/tutorialQuiz.ts` | `lib/play/overlayQuiz.ts`, `app/api/session/[id]/overlay-quiz/route.ts`, bank slugs in `lib/play/missions.ts` |
-| **Mission board / other pins** | `lib/play/missions.ts` | `components/play/MissionBoard.tsx`, `app/saga/page.tsx`, `lib/services/missions.ts`, MASTER §4.6 / A6 |
+| **Mission board / other pins** | `lib/play/missions.ts` | `components/play/MissionBoard.tsx`, Rho tool `show_mission_board` in `lib/ai/standardsTool.ts`, `app/saga/page.tsx`, `lib/services/missions.ts`, MASTER §4.6 / A6 |
+| **New Rho/captain-facing feature** | Prefer an orchestrator tool (SSE → UI). Ask Ivan if unsure whether it should be callable. | `lib/ai/sessionOrchestrator.ts`, `CLAUDE.md` tool-first rule |
 | **Generate tutorial stills / art pack** | `public/stills/tutorial/README.md` | `lib/play/stills.ts`, MASTER §4.12; style: Stardew-like, not a clone; exact filenames |
 | **Intro cinematic / Skip** | `components/play/IntroCinematic.tsx` | `public/cinematics/README.md` |
+| **Cinematic style / video references / character continuity** | `docs/CINEMATIC_STYLE_GUIDE.md` | `public/cinematics/references/3d-v1/REVIEW.md`; `PROJECT_MEMORY.md`; script in `docs/KLING_VIDEO_PRODUCTION_BRIEF.md` |
+| **Future story / discovery idea outside current scope** | `docs/FUTURE_STORY_IDEAS.md` | `PROJECT_MEMORY.md`; capture proposal without implementing; promote reviewed work into MASTER later |
 | **Change live model / router** | `lib/ai/models.ts` | `lib/ai/sessionOrchestrator.ts` — live turns stay `gpt-5.6-luna` |
 | **Prompt / Rho voice / subject lens** | `lib/ai/promptTemplates/` | `lib/ai/contextBuilder.ts`, shared bible `_shared_castaway_world.ts` |
 | **Session streaming / tools** | `lib/ai/sessionOrchestrator.ts` | `app/api/session/[id]/message/route.ts`, `lib/play/hiddenTurns.ts` |
 | **STT / Whisper** | `app/api/stt/route.ts` | Needs `OPENAI_API_KEY` in `.env`; discard audio (COPPA) |
-| **TTS / Rho voice** | `app/api/tts/route.ts` | `components/play/useRhoTts.ts` + DialogueCutscene; OpenAI `gpt-4o-mini-tts`; audio not stored |
+| **TTS / Rho voice** | `app/api/tts/route.ts` | `components/play/useRhoTts.ts` + DialogueCutscene; OpenAI `gpt-4o-mini-tts`; **Auto read** switch skips paid speech on new lines; audio not stored |
 | **Seed DB / standards gap / activity bank** | `prisma/seed.ts` | `curriculum_resources/standards_*_grade3.ts` + `*_grade4.ts`, `from_grade3_bank.ts`, MASTER §4.11 |
 | **Author a Florida standard or activity** | `curriculum_resources/` | Never invent codes; use CPALMS skill if verifying |
 | **Saga / wreck+food chapters** | `curriculum_resources/grade3_castaway_curriculum.ts` | `lib/services/castawayChapters.ts`, `storyCurriculum.ts` |
@@ -32,7 +35,8 @@ Operating router for the Primer codebase. **CLAUDE.md** (always loaded) has iden
 | **Auth / register / login** | `app/(auth)/` | `lib/auth/`, `app/api/auth/`, `/household` |
 | **Onboarding / first-run tutorial** | `lib/play/firstRun.ts` | `components/onboarding/CaptainAwakening.tsx`, `PlayShell`, `app/household/` |
 | **Reading level / learner settings** | `app/settings/page.tsx` | `components/settings/ReadingLevelForm.tsx`, `PATCH /api/profile` |
-| **Tests** | `npm test` | `docs/vitest-testing-guide.md`; play helpers under `lib/play/*.test.ts` |
+| **Tests** | `npm test` and `npm run test:e2e` | Vitest: `docs/vitest-testing-guide.md`, `lib/**/*.test.ts`. Playwright: `e2e/`, needs `npm run dev` or reuses port 3000 |
+| **Browser / AI agent playtest** | `docs/AGENT_PLAYTEST.md` | `/dev/agent` + `POST /api/dev/agent-bootstrap` → seeded `testcaptain` / `1234`, first-run skipped |
 | **Deploy** | Vercel CLI `vercel` | Env: `OPENAI_API_KEY`, DB URL, JWT secret |
 
 ---
@@ -41,7 +45,7 @@ Operating router for the Primer codebase. **CLAUDE.md** (always loaded) has iden
 
 **Done:** Step 0 data (G3 **and G4** catalogs + G3 activity bank + wreck/food chapters). Step 1 three-mode shell. Mission Loop v1. Rho TTS. Onboarding grade → G3 or G4 subject enrollment.
 
-**Open next (typical):** disguised first-30-min placement (MASTER §4.4); parchment map; Higgsfield mp4; then remaining tutorial / parent surfaces per MASTER §15.
+**Open next (typical):** §4.16 dive inside the subject view — one idea, quick at-bats with feedback, then a product the camp uses. The subject picker is in. Do not add more short pin jobs. Map stamps and the Chapter Compiler stay after a learning product exists.
 
 **Explicitly out of first loop:** parent dashboard, mastery redesign, G5+ catalogs, Three.js, graphic-novel-as-home, language-tutor as the product.
 

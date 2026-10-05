@@ -19,6 +19,7 @@ import {
   getPreviouslyOnRecap,
   getStorySpineForSession,
 } from "../../../../../lib/services/sessionStoryContext";
+import { getChapterHandoffForSession } from "../../../../../lib/services/worldLedger";
 import { isHiddenTurn } from "../../../../../lib/play/hiddenTurns";
 
 export async function POST(
@@ -46,13 +47,15 @@ export async function POST(
   }
 
   // Load context (story state scoped to this chapter when possible)
-  const [memoryItems, recentSummaries, storyState, spine, previouslyOn] = await Promise.all([
-    getRelevantMemory(profile.id),
-    getRecentSummaries(profile.id),
-    getStoryStateForSessionContext(sessionId),
-    getStorySpineForSession(sessionId),
-    getPreviouslyOnRecap(sessionId),
-  ]);
+  const [memoryItems, recentSummaries, storyState, spine, previouslyOn, chapterHandoff] =
+    await Promise.all([
+      getRelevantMemory(profile.id),
+      getRecentSummaries(profile.id),
+      getStoryStateForSessionContext(sessionId),
+      getStorySpineForSession(sessionId),
+      getPreviouslyOnRecap(sessionId),
+      getChapterHandoffForSession(sessionId),
+    ]);
 
   const encoder = new TextEncoder();
   let assistantText = "";
@@ -81,6 +84,7 @@ export async function POST(
             abortSignal: req.signal,
             spine,
             previouslyOn,
+            chapterHandoff: chapterHandoff?.block ?? null,
             sessionId,
           }
         );
@@ -96,6 +100,14 @@ export async function POST(
           } else if (chunk.type === "activity_generated") {
             send(chunk);
           } else if (chunk.type === "mission_open") {
+            send(chunk);
+          } else if (chunk.type === "mission_board_open") {
+            send(chunk);
+          } else if (chunk.type === "crew_log_open") {
+            send(chunk);
+          } else if (chunk.type === "crew_log_saved") {
+            send(chunk);
+          } else if (chunk.type === "debug_tool") {
             send(chunk);
           } else if (chunk.type === "image_start") {
             send(chunk);

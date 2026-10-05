@@ -64,7 +64,7 @@ export function expandHiddenTurn(content: string, displayName: string): string {
   }
   if (content.startsWith(HIDDEN_TURN.reflectionPrefix)) {
     const payload = content.slice(HIDDEN_TURN.reflectionPrefix.length).trim();
-    return `[CREW LOG] ${captain} left a note for the missing engineer: ${payload || "(short note)"}. Thank them in-world. Do not grade like a worksheet. Mention camp work is opening (food chapter). Under 50 words.`;
+    return `[CREW LOG] ${captain} left a note for the missing engineer: ${payload || "(short note)"}. If CHAPTER HANDOFF is in your instructions, quote or paraphrase that note in this reply. Do not restart the wreck. Thank them in-world. Do not grade like a worksheet. Mention the next chapter uses this note. Under 60 words.`;
   }
   if (content.startsWith(HIDDEN_TURN.missionStartPrefix)) {
     const payload = content.slice(HIDDEN_TURN.missionStartPrefix.length).trim();

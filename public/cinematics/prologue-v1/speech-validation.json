@@ -1,0 +1,50 @@
+[
+  {
+    "id": "p01",
+    "expected": "Welcome, Captain. Your crew works for the Merchant Corporation.",
+    "heard": "Welcome, Captain. Your crew works for the Merchant Corporation.",
+    "matches": true,
+    "start": 1.100000023841858,
+    "end": 4.760000228881836
+  },
+  {
+    "id": "p02",
+    "expected": "Other planets need oil, gold, and silver to make useful things.",
+    "heard": "Other planets need oil, gold, and silver to make useful things.",
+    "matches": true,
+    "start": 0,
+    "end": 4.900000095367432
+  },
+  {
+    "id": "p03",
+    "expected": "Explore this island. Look for ores, rocks that hold valuable metals.",
+    "heard": "Explore this island. Look for ores, rocks that hold valuable metals.",
+    "matches": true,
+    "start": 0,
+    "end": 4.980000019073486
+  },
+  {
+    "id": "p04",
+    "expected": "Trade brings materials for homes, food shipments, and travel between planets.",
+    "heard": "Trade brings materials for homes, food shipment, and travel between planets.",
+    "matches": false,
+    "start": 0,
+    "end": 4.880000114440918
+  },
+  {
+    "id": "p05",
+    "expected": "Your discoveries could help the company earn money, and reveal new materials.",
+    "heard": "Your discoveries could help the company earn money and reveal new materials.",
+    "matches": true,
+    "start": 0,
+    "end": 4.579999923706055
+  },
+  {
+    "id": "p06",
+    "expected": "I'm Rho, your first mate. Ready, Captain? Let's explore.",
+    "heard": "I'm Rho, your first mate. Ready, Captain? Let's explore.",
+    "matches": true,
+    "start": 0,
+    "end": 3.7799999713897705
+  }
+]

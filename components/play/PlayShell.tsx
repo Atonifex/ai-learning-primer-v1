@@ -18,6 +18,8 @@ import DialogueCutscene from "./DialogueCutscene";
 import QuizOverlay from "./QuizOverlay";
 import ReflectionOverlay from "./ReflectionOverlay";
 import MissionBoard from "./MissionBoard";
+import SubjectFocusPanel from "./SubjectFocusPanel";
+import AiDebugPanel from "./AiDebugPanel";
 import CaptainAwakening from "../onboarding/CaptainAwakening";
 import FirstRunCoach from "./FirstRunCoach";
 import { useFirstRunTutorial } from "./useFirstRunTutorial";
@@ -25,6 +27,8 @@ import { useSessionStream } from "./useSessionStream";
 import { useLearningLoop } from "./useLearningLoop";
 import { useMissions } from "./useMissions";
 import { unlockRhoAudio } from "../../lib/play/rhoAudio";
+import { isClientAiDebug } from "../../lib/play/clientAiDebug";
+import { shouldOpenCrewLogAfterWreckQuiz } from "../../lib/play/crewLogCandidate";
 
 const OverworldCanvas = dynamic(() => import("./OverworldCanvas"), { ssr: false });
 
@@ -43,6 +47,12 @@ export default function PlayShell(props: {
   sessionStartedAt: string;
   initialMission?: string;
   firstRunStep?: string;
+  /** Agent playtest: open dialogue cutscene on mount. */
+  autoOpenDialogue?: boolean;
+  /** Agent playtest: open Jobs board on mount. */
+  autoOpenBoard?: boolean;
+  /** Open the subject-focus view. Learning sittings start here after first-run. */
+  autoOpenFocus?: boolean;
 }) {
   const router = useRouter();
   const [captainName, setCaptainName] = useState(
@@ -51,8 +61,10 @@ export default function PlayShell(props: {
   const captain = captainName;
   const firstRun = useFirstRunTutorial(props.firstRunStep ?? "video", captain);
   const missions = useMissions();
-  const [dialogueOpen, setDialogueOpen] = useState(false);
-  const [boardOpen, setBoardOpen] = useState(false);
+  const [dialogueOpen, setDialogueOpen] = useState(() => Boolean(props.autoOpenDialogue));
+  const [boardOpen, setBoardOpen] = useState(() => Boolean(props.autoOpenBoard));
+  const [focusOpen, setFocusOpen] = useState(() => Boolean(props.autoOpenFocus));
+  const [subjectSlug, setSubjectSlug] = useState(props.subjectSlug);
   const [startingId, setStartingId] = useState<string | null>(null);
   const [talkedToWreck, setTalkedToWreck] = useState(false);
   const [hint, setHint] = useState<string | null>(null);
@@ -60,6 +72,7 @@ export default function PlayShell(props: {
   const [leaving, setLeaving] = useState(false);
   const [showTimers, setShowTimers] = useState(false);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const [crewLogToast, setCrewLogToast] = useState<string | null>(null);
   const pendingQuizRef = useRef(false);
   const wreckOpeningRef = useRef(false);
   const openedMissionRef = useRef<string | null>(null);
@@ -158,6 +171,34 @@ export default function PlayShell(props: {
       setHint(e instanceof Error ? e.message : "Could not open that job.");
     });
   }, [beginMission, learning, stream]);
+
+  useEffect(() => {
+    if (!stream.pendingMissionBoardOpen) return;
+    stream.clearPendingMissionBoardOpen();
+    void missions.refresh();
+    setBoardOpen(true);
+  }, [stream.pendingMissionBoardOpen, stream, missions.refresh]);
+
+  useEffect(() => {
+    if (!stream.pendingCrewLogOpen) return;
+    stream.clearPendingCrewLogOpen();
+    void learning.openReflection();
+  }, [stream.pendingCrewLogOpen, stream, learning]);
+
+  useEffect(() => {
+    const saved = stream.pendingCrewLogSaved;
+    if (!saved) return;
+    stream.clearPendingCrewLogSaved();
+    learning.markReflectionDoneFromTool(saved.text, saved.handoffSummary);
+    void missions.refresh();
+    setCrewLogToast(
+      saved.alreadyCompleted
+        ? "Crew log already on file. Camp work can open."
+        : "Crew log saved. Camp work unlocked."
+    );
+    const t = window.setTimeout(() => setCrewLogToast(null), 4500);
+    return () => window.clearTimeout(t);
+  }, [stream.pendingCrewLogSaved, stream, learning, missions]);
 
   useEffect(() => {
     const latest = stream.generatedActivities.at(-1);
@@ -297,7 +338,9 @@ export default function PlayShell(props: {
   return (
     <div className="relative h-screen overflow-hidden bg-[#0a3340]">
       <OverworldCanvas
-        paused={dialogueOpen || learning.showQuiz || learning.showReflection || boardOpen}
+        paused={
+          dialogueOpen || learning.showQuiz || learning.showReflection || boardOpen || focusOpen
+        }
         quizDone={firstRun.complete && (learning.quizDone || missions.wreckQuizDone)}
         talkedToWreck={talkedToWreck}
         unlockedPins={unlockedPins}
@@ -312,11 +355,23 @@ export default function PlayShell(props: {
         timerLabel={chrome.leave && showTimers ? formatHiddenMinutes(elapsedSeconds) : null}
       />
 
-      <header className="pointer-events-none absolute right-3 top-3 z-[60] flex flex-wrap items-center justify-end gap-2">
+      <header
+        className={`pointer-events-none absolute right-3 top-3 z-[60] flex flex-wrap items-center justify-end gap-2 ${dialogueOpen ? "hidden" : ""}`}
+      >
         {chrome.subjectBadge && (
           <span className="rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100/70">
-            {subjectBadge(props.subjectSlug)}
+            {subjectBadge(subjectSlug)}
           </span>
+        )}
+        {chrome.jobs && (
+          <button
+            type="button"
+            onClick={() => setFocusOpen((open) => !open)}
+            aria-expanded={focusOpen}
+            className="pointer-events-auto rounded-full bg-amber-100 px-3 py-1.5 text-xs font-medium text-stone-900 hover:bg-amber-50"
+          >
+            Focus
+          </button>
         )}
         {chrome.jobs && (
           <button
@@ -395,6 +450,14 @@ export default function PlayShell(props: {
         />
       )}
 
+      {focusOpen && (
+        <SubjectFocusPanel
+          sessionId={props.sessionId}
+          onClose={() => setFocusOpen(false)}
+          onSubjectChanged={setSubjectSlug}
+        />
+      )}
+
       {boardOpen && (
         <MissionBoard
           missions={missions.missions}
@@ -424,7 +487,12 @@ export default function PlayShell(props: {
             if (wreck && firstRun.step === "work") {
               void firstRun.advance("work_done");
             }
-            if (wreck && !learning.reflectionDone && firstRun.complete) {
+            if (
+              shouldOpenCrewLogAfterWreckQuiz({
+                isWreckQuiz: Boolean(wreck),
+                reflectionDone: learning.reflectionDone,
+              })
+            ) {
               void learning.openReflection();
             }
           }}
@@ -436,9 +504,11 @@ export default function PlayShell(props: {
           reflection={learning.reflection}
           submitting={learning.reflectionSubmitting}
           error={learning.reflectionError}
+          carriedForward={learning.carriedForward}
           onSubmit={(text) =>
             void learning.submitReflection(text).then(() => missions.refresh())
           }
+          onContinue={learning.continueAfterHandoff}
         />
       )}
 
@@ -450,6 +520,23 @@ export default function PlayShell(props: {
           Progress saved: {t.standardCode}
         </div>
       ))}
+
+      {crewLogToast && (
+        <div
+          className="absolute bottom-24 left-1/2 z-50 -translate-x-1/2 rounded-lg bg-teal-50 px-3 py-2 text-xs text-teal-950"
+          data-testid="crew-log-saved-toast"
+        >
+          {crewLogToast}
+        </div>
+      )}
+
+      {isClientAiDebug() && (
+        <AiDebugPanel
+          entries={stream.aiDebugEntries}
+          thinkingPhase={stream.aiThinkingPhase}
+          streamError={stream.streamError}
+        />
+      )}
 
       {confirmLeave && (
         <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/50 px-4">

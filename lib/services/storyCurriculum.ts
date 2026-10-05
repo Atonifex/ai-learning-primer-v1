@@ -256,7 +256,8 @@ export async function createChapterInArc(
  * chapter COMPLETED and promote the next PLANNED chapter (Ch2 food planners).
  */
 export async function completeActiveChapterAndActivateNext(
-  profileId: string
+  profileId: string,
+  opts?: { handoffSummary?: string }
 ): Promise<{ completedTitle: string; nextTitle: string | null } | null> {
   const { chapterId } = await ensureLearnerStoryChain(profileId);
   const current = await prisma.chapter.findUnique({
@@ -269,7 +270,10 @@ export async function completeActiveChapterAndActivateNext(
 
   await prisma.chapter.update({
     where: { id: current.id },
-    data: { status: "COMPLETED" },
+    data: {
+      status: "COMPLETED",
+      ...(opts?.handoffSummary ? { handoffSummary: opts.handoffSummary } : {}),
+    },
   });
 
   const next = await prisma.chapter.findFirst({

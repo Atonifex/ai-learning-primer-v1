@@ -127,7 +127,8 @@ export function resolveMissionStatus(
   if (mission.lockedUntil === "ch1-reflection" && !gates.chapter1ReflectionDone) {
     return {
       status: "locked",
-      lockReason: "Leave a crew-log note after the wreck, then camp work opens.",
+      lockReason:
+        "Crew log still needed. Call save_crew_log with their note from chat, or open_crew_log — never ask them to type a tool name.",
     };
   }
   return { status: "available", lockReason: null };
@@ -166,10 +167,19 @@ export function formatMissionsForPrompt(missions: MissionPublic[]): string {
     return `- ${m.id} [${m.status}] ${m.title} (${m.subjectSlug}, ${m.theme}, ~${m.estimatedMinutes} min, ${reward})${m.lockReason ? ` — locked: ${m.lockReason}` : ""}`;
   });
   const next = missions.find((m) => m.status === "available");
-  const nextLine = next
-    ? `Next open job: ${next.id} at the ${next.pinId} (${next.subjectSlug}). If the captain asks how to advance, point them there or call open_mission.`
-    : "No open jobs — praise completed work and invite a recap.";
-  return [`MISSION BOARD (guide the captain; never take the quiz yourself):`, ...lines, nextLine].join(
-    "\n"
+  const campLocked = missions.find(
+    (m) => m.id === "camp-math" && m.status === "locked" && m.lockedUntil === "ch1-reflection"
   );
+  const nextLine = next
+    ? `Next open job: ${next.id} at the ${next.pinId} (${next.subjectSlug}). If they ask to see jobs/tasks/the board, call show_mission_board. If they agree to start a job, call open_mission yourself — never ask them to type a tool name or keyword.`
+    : "No open jobs — praise completed work and invite a recap.";
+  const crewLine = campLocked
+    ? "Camp-math is locked on the crew log. If the captain already wrote a note in chat, call save_crew_log with that note. If not, call open_crew_log. Do not collect the note only in dialogue without saving."
+    : null;
+  return [
+    `MISSION BOARD (guide the captain; never take the quiz yourself). Call show_mission_board to open the on-screen Jobs overlay — do not only narrate a wooden board:`,
+    ...lines,
+    nextLine,
+    ...(crewLine ? [crewLine] : []),
+  ].join("\n");
 }

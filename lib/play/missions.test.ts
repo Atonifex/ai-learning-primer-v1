@@ -49,5 +49,9 @@ describe("mission catalog", () => {
     const prompt = formatMissionsForPrompt(missions);
     expect(prompt).toContain("dune-ela [available]");
     expect(prompt).toContain("Next open job: dune-ela");
+    expect(prompt).toContain("show_mission_board");
+    expect(prompt).toContain("open the on-screen Jobs overlay");
+    expect(prompt).toContain("save_crew_log");
+    expect(prompt).toContain("open_crew_log");
   });
 });

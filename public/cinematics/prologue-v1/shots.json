@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-05",
+  "scope": "Six-shot prologue authorized by Ivan; first take per shot",
+  "model": "kling-video-v3_0",
+  "resolution": "1080p",
+  "audio": true,
+  "styleGuide": "docs/CINEMATIC_STYLE_GUIDE.md",
+  "scenes": [
+    {
+      "id": "p01",
+      "ref": "references/3d-v1/p01-briefing.png",
+      "line": "Welcome, Captain. Your crew works for the Merchant Corporation.",
+      "speaker": "Officer",
+      "voice": "Warm confident young-adult female voice, clear neutral American English, professional composed delivery, same officer voice throughout the prologue.",
+      "action": "First-person console view, captain's raised thumbs-up accepts assignment. Officer on monitor speaks directly to the viewer with restrained professional warmth, modest hand motion. Captain's hand lowers gently to console after acceptance.",
+      "duration": 5,
+      "prompt": "One continuous five-second shot in polished stylized 3D family-adventure animation EXACTLY matching reference. Preserve identity, costume, balanced animated proportions, readable eyes, warm brass/teal/navy palette and physical staging. No photorealism or 2D style drift, extra characters, captain head/back/body, captions, subtitles, letters or logos added. Survey island must have NO buildings, roads, lights, ruins: sandy shore, flat river plains, rolling hills and inland mountains. No gore, weapons or horror. Keep camera nearly steady and motions small. First-person console view, captain's raised thumbs-up accepts assignment. Officer on monitor speaks directly to the viewer with restrained professional warmth, modest hand motion. Captain's hand lowers gently to console after acceptance. AUDIO: Warm confident young-adult female voice, clear neutral American English, professional composed delivery, same officer voice throughout the prologue. Say EXACTLY this line, once, completing it naturally within five seconds: \"Welcome, Captain. Your crew works for the Merchant Corporation.\". No extra words. No music, sound effects or background chatter. Natural lip-sync aligned to this spoken line; emotional acting matches the professional/welcoming beat."
+    },
+    {
+      "id": "p02",
+      "ref": "references/3d-v1/p02-resources.png",
+      "line": "Other planets need oil, gold, and silver to make useful things.",
+      "speaker": "Narrator",
+      "voice": "Warm adult male documentary narrator, clear neutral American English, calm engaging delivery; off-screen voiceover, not a visible worker speaking.",
+      "action": "Slow readable camera drift across foreground sealed oil drums and gold/silver ore samples, cargo crane gently lowers one securely packed crate beside civilian transport. Populated port on a different planet, not the uninhabited survey island.",
+      "duration": 5,
+      "prompt": "One continuous five-second shot in polished stylized 3D family-adventure animation EXACTLY matching reference. Preserve identity, costume, balanced animated proportions, readable eyes, warm brass/teal/navy palette and physical staging. No photorealism or 2D style drift, extra characters, captain head/back/body, captions, subtitles, letters or logos added. Survey island must have NO buildings, roads, lights, ruins: sandy shore, flat river plains, rolling hills and inland mountains. No gore, weapons or horror. Keep camera nearly steady and motions small. Slow readable camera drift across foreground sealed oil drums and gold/silver ore samples, cargo crane gently lowers one securely packed crate beside civilian transport. Populated port on a different planet, not the uninhabited survey island. AUDIO: Warm adult male documentary narrator, clear neutral American English, calm engaging delivery; off-screen voiceover, not a visible worker speaking. Say EXACTLY this line, once, completing it naturally within five seconds: \"Other planets need oil, gold, and silver to make useful things.\". No extra words. No music, sound effects or background chatter. Voiceover only; visible characters must not lip-sync."
+    },
+    {
+      "id": "p03",
+      "ref": "prologue-v1/references/p03-island-mission.png",
+      "line": "Explore this island. Look for ores, rocks that hold valuable metals.",
+      "speaker": "Officer",
+      "voice": "Warm confident young-adult female voice, clear neutral American English, professional composed delivery, same officer voice throughout the prologue.",
+      "action": "Officer on monitor speaks directly to captain, gestures once toward an uninhabited island survey map and ore specimen. First-person navy-sleeved hands at console. No deposits marked as proven findings.",
+      "duration": 5,
+      "prompt": "One continuous five-second shot in polished stylized 3D family-adventure animation EXACTLY matching reference. Preserve identity, costume, balanced animated proportions, readable eyes, warm brass/teal/navy palette and physical staging. No photorealism or 2D style drift, extra characters, captain head/back/body, captions, subtitles, letters or logos added. Survey island must have NO buildings, roads, lights, ruins: sandy shore, flat river plains, rolling hills and inland mountains. No gore, weapons or horror. Keep camera nearly steady and motions small. Officer on monitor speaks directly to captain, gestures once toward an uninhabited island survey map and ore specimen. First-person navy-sleeved hands at console. No deposits marked as proven findings. AUDIO: Warm confident young-adult female voice, clear neutral American English, professional composed delivery, same officer voice throughout the prologue. Say EXACTLY this line, once, completing it naturally within five seconds: \"Explore this island. Look for ores, rocks that hold valuable metals.\". No extra words. No music, sound effects or background chatter. Natural lip-sync aligned to this spoken line; emotional acting matches the professional/welcoming beat."
+    },
+    {
+      "id": "p04",
+      "ref": "prologue-v1/references/p04-trade.png",
+      "line": "Trade brings materials for homes, food shipments, and travel between planets.",
+      "speaker": "Narrator",
+      "voice": "Warm adult male documentary narrator, clear neutral American English, calm engaging delivery; off-screen voiceover, no visible character speaking.",
+      "action": "Peaceful inhabited interplanetary port: workers pass a packaged food crate onto a transport trolley; nearby materials and a modest home under construction connect resource trade to daily life. One clear action, no rapid montage. This is a different inhabited location, not the survey island.",
+      "duration": 5,
+      "prompt": "One continuous five-second shot in polished stylized 3D family-adventure animation EXACTLY matching reference. Preserve identity, costume, balanced animated proportions, readable eyes, warm brass/teal/navy palette and physical staging. No photorealism or 2D style drift, extra characters, captain head/back/body, captions, subtitles, letters or logos added. Survey island must have NO buildings, roads, lights, ruins: sandy shore, flat river plains, rolling hills and inland mountains. No gore, weapons or horror. Keep camera nearly steady and motions small. Peaceful inhabited interplanetary port: workers pass a packaged food crate onto a transport trolley; nearby materials and a modest home under construction connect resource trade to daily life. One clear action, no rapid montage. This is a different inhabited location, not the survey island. AUDIO: Warm adult male documentary narrator, clear neutral American English, calm engaging delivery; off-screen voiceover, no visible character speaking. Say EXACTLY this line, once, completing it naturally within five seconds: \"Trade brings materials for homes, food shipments, and travel between planets.\". No extra words. No music, sound effects or background chatter. Voiceover only; visible characters must not lip-sync."
+    },
+    {
+      "id": "p05",
+      "ref": "prologue-v1/references/p05-report.png",
+      "line": "Your discoveries could help the company earn money, and reveal new materials.",
+      "speaker": "Officer",
+      "voice": "Warm confident young-adult female voice, clear neutral American English, professional composed delivery, same officer voice throughout the prologue.",
+      "action": "Same officer on same physical monitor speaks directly to captain, gestures modestly toward a blank survey-record display and specimen case; professional encouraging expression. No actual findings claimed, no new material names.",
+      "duration": 5,
+      "prompt": "One continuous five-second shot in polished stylized 3D family-adventure animation EXACTLY matching reference. Preserve identity, costume, balanced animated proportions, readable eyes, warm brass/teal/navy palette and physical staging. No photorealism or 2D style drift, extra characters, captain head/back/body, captions, subtitles, letters or logos added. Survey island must have NO buildings, roads, lights, ruins: sandy shore, flat river plains, rolling hills and inland mountains. No gore, weapons or horror. Keep camera nearly steady and motions small. Same officer on same physical monitor speaks directly to captain, gestures modestly toward a blank survey-record display and specimen case; professional encouraging expression. No actual findings claimed, no new material names. AUDIO: Warm confident young-adult female voice, clear neutral American English, professional composed delivery, same officer voice throughout the prologue. Say EXACTLY this line, once, completing it naturally within five seconds: \"Your discoveries could help the company earn money, and reveal new materials.\". No extra words. No music, sound effects or background chatter. Natural lip-sync aligned to this spoken line; emotional acting matches the professional/welcoming beat."
+    },
+    {
+      "id": "p06",
+      "ref": "references/3d-v1/s01-rho-introduction.png",
+      "line": "I'm Rho, your first mate. Ready, Captain? Let's explore.",
+      "speaker": "Rho",
+      "voice": "Friendly bright young-adult female voice, clear neutral American English, lightly adventurous and reassuring, distinct from the briefing officer.",
+      "action": "Rho welcomes the unseen captain with one open-hand gesture, speaks directly toward the camera, then looks ahead to the untouched island; clouds subtly gather to set up next sequence. First-person hands only, blue escape handle stays left; no storm impact yet.",
+      "duration": 5,
+      "prompt": "One continuous five-second shot in polished stylized 3D family-adventure animation EXACTLY matching reference. Preserve identity, costume, balanced animated proportions, readable eyes, warm brass/teal/navy palette and physical staging. No photorealism or 2D style drift, extra characters, captain head/back/body, captions, subtitles, letters or logos added. Survey island must have NO buildings, roads, lights, ruins: sandy shore, flat river plains, rolling hills and inland mountains. No gore, weapons or horror. Keep camera nearly steady and motions small. Rho welcomes the unseen captain with one open-hand gesture, speaks directly toward the camera, then looks ahead to the untouched island; clouds subtly gather to set up next sequence. First-person hands only, blue escape handle stays left; no storm impact yet. AUDIO: Friendly bright young-adult female voice, clear neutral American English, lightly adventurous and reassuring, distinct from the briefing officer. Say EXACTLY this line, once, completing it naturally within five seconds: \"I'm Rho, your first mate. Ready, Captain? Let's explore.\". No extra words. No music, sound effects or background chatter. Natural lip-sync aligned to this spoken line; emotional acting matches the professional/welcoming beat."
+    }
+  ]
+}

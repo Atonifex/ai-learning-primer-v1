@@ -184,4 +184,18 @@ export type StreamChunk =
       sessionId: string;
       switched: boolean;
     }
+  | { type: "mission_board_open" }
+  | { type: "crew_log_open" }
+  | {
+      type: "crew_log_saved";
+      text: string;
+      handoffSummary: string | null;
+      alreadyCompleted: boolean;
+    }
+  | {
+      type: "debug_tool";
+      name: string;
+      ok: boolean;
+      detail?: string;
+    }
   | { type: "done"; messageId: string };

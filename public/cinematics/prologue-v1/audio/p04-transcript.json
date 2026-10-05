@@ -1,0 +1,98 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 5,
+  "text": "Trade brings materials for homes, food shipment, and travel between planets.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0,
+      "end": 4.880000114440918,
+      "text": " Trade brings materials for homes, food shipment, and travel between planets.",
+      "tokens": [
+        50364,
+        23923,
+        5607,
+        5319,
+        337,
+        7388,
+        11,
+        1755,
+        49991,
+        11,
+        293,
+        3147,
+        1296,
+        15126,
+        13,
+        50614
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.3266923129558563,
+      "compression_ratio": 1.0410958528518677,
+      "no_speech_prob": 0.057714834809303284
+    }
+  ],
+  "words": [
+    {
+      "word": "Trade",
+      "start": 0,
+      "end": 0.7799999713897705
+    },
+    {
+      "word": "brings",
+      "start": 0.7799999713897705,
+      "end": 1.100000023841858
+    },
+    {
+      "word": "materials",
+      "start": 1.100000023841858,
+      "end": 1.6200000047683716
+    },
+    {
+      "word": "for",
+      "start": 1.6200000047683716,
+      "end": 2
+    },
+    {
+      "word": "homes",
+      "start": 2,
+      "end": 2.380000114440918
+    },
+    {
+      "word": "food",
+      "start": 3,
+      "end": 3.0399999618530273
+    },
+    {
+      "word": "shipment",
+      "start": 3.0399999618530273,
+      "end": 3.380000114440918
+    },
+    {
+      "word": "and",
+      "start": 3.640000104904175,
+      "end": 3.799999952316284
+    },
+    {
+      "word": "travel",
+      "start": 3.799999952316284,
+      "end": 4.119999885559082
+    },
+    {
+      "word": "between",
+      "start": 4.119999885559082,
+      "end": 4.519999980926514
+    },
+    {
+      "word": "planets",
+      "start": 4.519999980926514,
+      "end": 4.880000114440918
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 5
+  }
+}

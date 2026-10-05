@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { requireChildPage } from "../../lib/auth/pageGuards";
 import {
+  getChapterHandoffForProgress,
   getLatestChapterReflection,
   getLearnerTimeSummary,
   getRecentObservations,
@@ -12,12 +13,13 @@ import { formatHiddenMinutes } from "../../lib/services/timeMath";
 export default async function ProgressPage() {
   const { profile } = await requireChildPage();
 
-  const [subjects, skills, observations, crewLog, time] = await Promise.all([
+  const [subjects, skills, observations, crewLog, time, ledger] = await Promise.all([
     getSubjectProgressOverview(profile.id),
     getSkillProgressOverview(profile.id),
     getRecentObservations(profile.id, 6),
     getLatestChapterReflection(profile.id),
     getLearnerTimeSummary(profile.id),
+    getChapterHandoffForProgress(profile.id),
   ]);
   const topSkills = skills.slice(0, 8);
 
@@ -73,6 +75,32 @@ export default async function ProgressPage() {
             </p>
           )}
         </div>
+      </section>
+
+      <section className="mt-8 rounded-xl border border-stone-200 bg-white p-4">
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-stone-500">
+          Carried into the next chapter
+        </h2>
+        {ledger.handoffSummary ? (
+          <p className="mt-2 text-sm text-stone-800">{ledger.handoffSummary}</p>
+        ) : (
+          <p className="mt-2 text-sm text-stone-500">
+            Nothing is carried forward until the chapter crew log is saved.
+          </p>
+        )}
+        {ledger.entries.length > 0 && (
+          <ul className="mt-3 space-y-2">
+            {ledger.entries.map((entry) => (
+              <li key={entry.id} className="text-sm text-stone-800">
+                <span className="font-medium text-stone-500">
+                  {entry.mustReuse ? "Must reuse" : entry.kind} · {entry.label}
+                  {entry.chapter?.title ? ` · ${entry.chapter.title}` : ""}
+                </span>
+                <span className="mt-0.5 block">{entry.text}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
 
       <section className="mt-8">

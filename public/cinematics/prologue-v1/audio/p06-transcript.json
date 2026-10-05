@@ -1,0 +1,91 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 5,
+  "text": "I'm Rho, your first mate. Ready, Captain? Let's explore.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0,
+      "end": 3.7799999713897705,
+      "text": " I'm Rho, your first mate. Ready, Captain? Let's explore.",
+      "tokens": [
+        50364,
+        286,
+        478,
+        497,
+        1289,
+        11,
+        428,
+        700,
+        11709,
+        13,
+        9944,
+        11,
+        10873,
+        30,
+        961,
+        311,
+        6839,
+        13,
+        50564
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.35146957635879517,
+      "compression_ratio": 0.875,
+      "no_speech_prob": 0.02852332964539528
+    }
+  ],
+  "words": [
+    {
+      "word": "I'm",
+      "start": 0,
+      "end": 0.5799999833106995
+    },
+    {
+      "word": "Rho",
+      "start": 0.5799999833106995,
+      "end": 0.7599999904632568
+    },
+    {
+      "word": "your",
+      "start": 0.8799999952316284,
+      "end": 1.059999942779541
+    },
+    {
+      "word": "first",
+      "start": 1.059999942779541,
+      "end": 1.399999976158142
+    },
+    {
+      "word": "mate",
+      "start": 1.399999976158142,
+      "end": 1.7200000286102295
+    },
+    {
+      "word": "Ready",
+      "start": 2.0399999618530273,
+      "end": 2.200000047683716
+    },
+    {
+      "word": "Captain",
+      "start": 2.619999885559082,
+      "end": 2.619999885559082
+    },
+    {
+      "word": "Let's",
+      "start": 2.9000000953674316,
+      "end": 3.3399999141693115
+    },
+    {
+      "word": "explore",
+      "start": 3.3399999141693115,
+      "end": 3.7799999713897705
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 5
+  }
+}

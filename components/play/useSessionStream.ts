@@ -1,9 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { isClientAiDebug } from "../../lib/play/clientAiDebug";
 import { isHiddenTurn } from "../../lib/play/hiddenTurns";
 import type { Message } from "../session/MessageList";
 import type { GeneratedActivity, SessionStoryUi } from "../../lib/types";
+import type { AiDebugEntry } from "./AiDebugPanel";
 
 export type MissionOpenEvent = {
   missionId: string;
@@ -12,6 +14,14 @@ export type MissionOpenEvent = {
   sessionId: string;
   switched: boolean;
 };
+
+export type CrewLogSavedEvent = {
+  text: string;
+  handoffSummary: string | null;
+  alreadyCompleted: boolean;
+};
+
+const DEBUG_RING = 24;
 
 export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => void) {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -23,12 +33,21 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
     { id: string; standardCode: string; mastery: number }[]
   >([]);
   const [pendingMissionOpen, setPendingMissionOpen] = useState<MissionOpenEvent | null>(null);
+  const [pendingMissionBoardOpen, setPendingMissionBoardOpen] = useState(false);
+  const [pendingCrewLogOpen, setPendingCrewLogOpen] = useState(false);
+  const [pendingCrewLogSaved, setPendingCrewLogSaved] = useState<CrewLogSavedEvent | null>(
+    null
+  );
+  const [aiDebugEntries, setAiDebugEntries] = useState<AiDebugEntry[]>([]);
+  const [aiThinkingPhase, setAiThinkingPhase] = useState<string | null>(null);
+  const [streamError, setStreamError] = useState<string | null>(null);
   const streamingIdRef = useRef(`streaming-${Date.now()}`);
   const streamAbortRef = useRef<AbortController | null>(null);
   const opSeqRef = useRef(0);
   const streamingRef = useRef(false);
   const endCbRef = useRef(onAssistantTurnEnd);
   endCbRef.current = onAssistantTurnEnd;
+  const clientDebug = isClientAiDebug();
 
   useEffect(() => {
     if (!sessionId) return;
@@ -61,6 +80,16 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
       .catch(() => setLoaded(true));
   }, [sessionId]);
 
+  const pushDebug = useCallback(
+    (entry: Omit<AiDebugEntry, "id">) => {
+      if (!clientDebug) return;
+      setAiDebugEntries((prev) =>
+        [...prev, { ...entry, id: `dbg-${Date.now()}-${prev.length}` }].slice(-DEBUG_RING)
+      );
+    },
+    [clientDebug]
+  );
+
   const sendMessage = useCallback(
     async (content: string) => {
       if (!sessionId) return;
@@ -70,6 +99,8 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
 
       const mySeq = ++opSeqRef.current;
       const hidden = isHiddenTurn(content);
+      setStreamError(null);
+      setAiThinkingPhase(null);
 
       if (!hidden) {
         setMessages((prev) => [
@@ -116,6 +147,7 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
               const data = JSON.parse(line.slice(6)) as {
                 type?: string;
                 content?: string;
+                message?: string;
                 messageId?: string;
                 activity?: GeneratedActivity;
                 standardCode?: string;
@@ -125,6 +157,13 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
                 activitySlug?: string;
                 sessionId?: string;
                 switched?: boolean;
+                text?: string;
+                handoffSummary?: string | null;
+                alreadyCompleted?: boolean;
+                name?: string;
+                ok?: boolean;
+                detail?: string;
+                phase?: string;
               };
               if (data.type === "text" && data.content) {
                 gotText = true;
@@ -135,6 +174,8 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
                       : m
                   )
                 );
+              } else if (data.type === "assistant_thinking" && data.phase) {
+                if (clientDebug) setAiThinkingPhase(data.phase);
               } else if (data.type === "standard_observation" && data.standardCode) {
                 const id = `obs-${Date.now()}`;
                 setObservationToasts((prev) => [
@@ -164,7 +205,28 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
                   sessionId: data.sessionId,
                   switched: Boolean(data.switched),
                 });
+              } else if (data.type === "mission_board_open") {
+                setPendingMissionBoardOpen(true);
+              } else if (data.type === "crew_log_open") {
+                setPendingCrewLogOpen(true);
+              } else if (data.type === "crew_log_saved" && typeof data.text === "string") {
+                setPendingCrewLogSaved({
+                  text: data.text,
+                  handoffSummary: data.handoffSummary ?? null,
+                  alreadyCompleted: Boolean(data.alreadyCompleted),
+                });
+              } else if (data.type === "debug_tool" && data.name) {
+                pushDebug({
+                  name: data.name,
+                  ok: Boolean(data.ok),
+                  detail: data.detail,
+                });
+              } else if (data.type === "error") {
+                const msg = data.message || "An error occurred";
+                setStreamError(msg);
+                console.warn("[Primer AI] stream error", msg);
               } else if (data.type === "done" && data.messageId) {
+                setAiThinkingPhase(null);
                 setMessages((prev) =>
                   prev.map((m) =>
                     m.id === streamingId
@@ -181,6 +243,9 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
       } catch (err) {
         const aborted = err instanceof Error && err.name === "AbortError";
         if (!aborted) {
+          const msg = err instanceof Error ? err.message : "Stream failed";
+          setStreamError(msg);
+          console.warn("[Primer AI] stream failed", msg);
           setMessages((prev) => prev.filter((m) => m.id !== streamingId));
         }
       } finally {
@@ -190,7 +255,7 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
         if (gotText) endCbRef.current?.();
       }
     },
-    [sessionId]
+    [clientDebug, pushDebug, sessionId]
   );
 
   return {
@@ -202,6 +267,15 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
     observationToasts,
     pendingMissionOpen,
     clearPendingMissionOpen: () => setPendingMissionOpen(null),
+    pendingMissionBoardOpen,
+    clearPendingMissionBoardOpen: () => setPendingMissionBoardOpen(false),
+    pendingCrewLogOpen,
+    clearPendingCrewLogOpen: () => setPendingCrewLogOpen(false),
+    pendingCrewLogSaved,
+    clearPendingCrewLogSaved: () => setPendingCrewLogSaved(null),
+    aiDebugEntries,
+    aiThinkingPhase,
+    streamError,
     sendMessage,
     setStoryUi,
   };

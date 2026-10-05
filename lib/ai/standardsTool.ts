@@ -90,3 +90,49 @@ export const openMissionTool = {
     },
   },
 };
+
+export const showMissionBoardTool = {
+  type: "function" as const,
+  function: {
+    name: "show_mission_board",
+    description:
+      "Open the on-screen Mission board (Jobs overlay) for the captain. Call when they ask to see the board, check jobs/tasks, or you invite them to pick the next job. Does not start a quiz — use open_mission after they choose.",
+    parameters: {
+      type: "object",
+      properties: {},
+    },
+  },
+};
+
+export const openCrewLogTool = {
+  type: "function" as const,
+  function: {
+    name: "open_crew_log",
+    description:
+      "Open the on-screen crew-log slate so the captain can leave a note for the missing engineer. Call this yourself when camp-math is locked on the crew log and they have not given a note yet. Never ask them to type the tool name.",
+    parameters: {
+      type: "object",
+      properties: {},
+    },
+  },
+};
+
+export const saveCrewLogTool = {
+  type: "function" as const,
+  function: {
+    name: "save_crew_log",
+    description:
+      "Save the captain's crew-log note from this conversation (or a short paraphrase of what they said). Call this yourself when they already wrote or spoke the note in chat — do not make them retype it on a slate unless they prefer that. Unlocks camp-math when successful. Never ask them to type the tool name.",
+    parameters: {
+      type: "object",
+      properties: {
+        note: {
+          type: "string",
+          description:
+            "The captain's crew-log sentence in their words (fix spelling lightly if needed).",
+        },
+      },
+      required: ["note"],
+    },
+  },
+};

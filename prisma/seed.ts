@@ -19,6 +19,12 @@ import {
   ensureParentHousehold,
   listHouseholdCaptains,
 } from "../lib/services/household";
+import {
+  TEST_CAPTAIN_PIN,
+  TEST_CAPTAIN_USERNAME,
+  TEST_PARENT_EMAIL,
+  TEST_PARENT_PASSWORD,
+} from "../lib/play/testCaptain";
 import bcrypt from "bcryptjs";
 
 const asJson = (value: unknown): Prisma.InputJsonValue | Prisma.NullableJsonNullValueInput | undefined =>
@@ -67,11 +73,6 @@ const SECTION_46_CODES = new Set([
   "SS.3.E.1.3",
   "SS.3.CG.2.1",
 ]);
-
-const TEST_PARENT_EMAIL = "test_parent@primer.local";
-const TEST_CAPTAIN_USERNAME = "testcaptain";
-const TEST_CAPTAIN_PIN = "1234";
-const TEST_PARENT_PASSWORD = "test-parent-login";
 
 const subjectSeeds: SubjectSeed[] = [
   standardsMathGrade3,

@@ -21,7 +21,7 @@ export default function MissionBoard(props: {
   startingId: string | null;
 }) {
   return (
-    <div className="absolute inset-0 z-40 flex items-end justify-center bg-black/50 p-3 sm:items-center">
+    <div className="absolute inset-0 z-50 flex items-end justify-center bg-black/50 p-3 sm:items-center">
       <div className="w-full max-w-lg overflow-hidden rounded-2xl border-4 border-amber-800/80 bg-[#3d2914] shadow-2xl">
         <div className="flex items-center justify-between bg-[#5c4033] px-4 py-2">
           <div>
