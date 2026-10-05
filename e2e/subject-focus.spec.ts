@@ -8,6 +8,7 @@ test("captain chooses a subject and must confirm a switch", async ({ page }) => 
   const body = (await boot.json()) as { learnUrl: string };
 
   await page.goto(body.learnUrl);
+  await page.getByRole("button", { name: "Focus" }).click();
   await expect(page.getByRole("heading", { name: "What do you want to work on?" })).toBeVisible();
   const sessionId = new URL(body.learnUrl, "http://localhost:3000").pathname.split("/").pop();
   const focus = await page.request.get(`/api/session/${sessionId}/subject-focus`);

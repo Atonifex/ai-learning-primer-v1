@@ -1,0 +1,63 @@
+{
+  "shot": {
+    "id": "g06",
+    "duration": 12,
+    "ref": "fortuna-aerial",
+    "line": "It's far from our main base. It may have oil, gold, and useful wood. But storms and wild animals may make the trip dangerous.",
+    "speaker": "Wilhelm VO",
+    "action": "Clean aerial landscape. Slow approach to river beach plains forest and north ridge; distant storm north, small partly hidden animal movement. No hands, people, buildings or cockpit.",
+    "role": "briefing",
+    "retries": 0,
+    "status": "planned"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character, proportions, costume, set, geography and craft. One continuous shot, no automatic camera cuts. No text, lettering, subtitles, UI, weapons, blood, injuries or horror. NO MUSIC; continuous edit score is added separately. Use <<<323205940306534>>> ONLY for the same low mature male voice timbre. Never depict Wilhelm or any speaking person; landscape only. Clean aerial landscape. Slow approach to river beach plains forest and north ridge; distant storm north, small partly hidden animal movement. No hands, people, buildings or cockpit. ONLY OFFSCREEN Wilhelm narration, NO visible person on landscape. Speak exact simple English line once, clear unhurried natural voice with lip-sync where visible: \"It's far from our main base. It may have oil, gold, and useful wood. But storms and wild animals may make the trip dangerous.\". No added words/voices. "
+      },
+      {
+        "name": "duration",
+        "value": "12"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      },
+      {
+        "name": "elements",
+        "value": "[{\"id\":\"323205940306534\",\"bindName\":\"Wilhelm\"}]"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qSQoGdXBsb2FkEg55bGFiLXN0dW50LXNncBovYWdlbnRfdXBsb2FkLzE3OTEyMzcxNjUvdGJId3A0cHA3bC9nMDUtdGFpbC5wbmc.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized V05 regeneration. Sequentially reviewed prior segment; preserve approved identities and camera geometry, variable scene pacing, native sounds without isolated music clips."
+  },
+  "task": {
+    "generationId": "AVfLH1Bhvd2A8FEHtBZ1PVdWDVKw9boBt3GhMERH7W03PUErnbgkSpdWdNHWfJLkOLRlsOgt",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 144,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "credits_consumed": 144,
+    "generation_id": "AVfLH1Bhvd2A8FEHtBZ1PVdWDVKw9boBt3GhMERH7W03PUErnbgkSpdWdNHWfJLkOLRlsOgt"
+  }
+}

@@ -22,6 +22,14 @@ import SubjectFocusPanel from "./SubjectFocusPanel";
 import AiDebugPanel from "./AiDebugPanel";
 import CaptainAwakening from "../onboarding/CaptainAwakening";
 import FirstRunCoach from "./FirstRunCoach";
+import LearningPurposeCard from "./LearningPurposeCard";
+import {
+  campNeedsMissions,
+  campNeedsTitle,
+  CHAPTER_PROBLEM,
+  day0AllDone,
+  day0Checklist,
+} from "../../lib/play/day0";
 import { useFirstRunTutorial } from "./useFirstRunTutorial";
 import { useSessionStream } from "./useSessionStream";
 import { useLearningLoop } from "./useLearningLoop";
@@ -62,7 +70,7 @@ export default function PlayShell(props: {
   autoOpenDialogue?: boolean;
   /** Agent playtest: open Jobs board on mount. */
   autoOpenBoard?: boolean;
-  /** Open the subject-focus view. Learning sittings start here after first-run. */
+  /** Open the subject-focus view after a math starting point is saved. */
   autoOpenFocus?: boolean;
   /** Playtest: open the one-clip panel with a fixture, no YouTube search. */
   autoOpenClip?: boolean;
@@ -383,6 +391,14 @@ export default function PlayShell(props: {
     );
   }
 
+  if (firstRun.step === "purpose") {
+    return (
+      <div className="h-screen">
+        <LearningPurposeCard onContinue={() => void firstRun.advance("purpose_done")} />
+      </div>
+    );
+  }
+
   if (firstRun.step === "name") {
     return (
       <div className="h-screen">
@@ -397,6 +413,11 @@ export default function PlayShell(props: {
   }
 
   const chrome = firstRun.chrome;
+  const day0 = day0Checklist({
+    firstRunStep: firstRun.step,
+    wreckQuizDone: missions.wreckQuizDone,
+    campFounded: missions.camp.founded,
+  });
 
   return (
     <div className="play-world relative h-dvh overflow-hidden bg-[#195563]">
@@ -424,8 +445,10 @@ export default function PlayShell(props: {
       />
       <ResourceHud
         captainName={captain}
-        rations={missions.rations}
+        camp={missions.camp}
         xp={missions.xp}
+        chapterProblem={CHAPTER_PROBLEM}
+        checklist={day0AllDone(day0) ? null : day0}
         hint={firstRun.coach ? null : hint}
         timerLabel={chrome.leave && showTimers ? formatHiddenMinutes(elapsedSeconds) : null}
       />
@@ -458,7 +481,7 @@ export default function PlayShell(props: {
             onClick={() => setBoardOpen(true)}
             className="pointer-events-auto rounded-full bg-amber-700/90 px-3 py-1.5 text-xs text-amber-50 hover:bg-amber-600"
           >
-            Jobs
+            {campNeedsTitle()}
           </button>
         )}
         {chrome.saga && (
@@ -568,9 +591,11 @@ export default function PlayShell(props: {
 
       {boardOpen && (
         <MissionBoard
-          missions={missions.missions}
+          missions={campNeedsMissions(missions.missions)}
+          boardTitle={campNeedsTitle()}
           chapterTitle={missions.activeChapterTitle}
           startingId={startingId}
+          loading={!missions.loaded}
           onClose={() => setBoardOpen(false)}
           onStart={(id) => void beginMission(id)}
         />
@@ -634,7 +659,7 @@ export default function PlayShell(props: {
 
       {isClientAiDebug() && (
         <AiDebugPanel
-          entries={stream.aiDebugEntries}
+          turns={stream.aiDebugTurns}
           thinkingPhase={stream.aiThinkingPhase}
           streamError={stream.streamError}
         />

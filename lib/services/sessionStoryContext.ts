@@ -15,6 +15,8 @@ export async function getStorySpineForSession(sessionId: string): Promise<StoryS
           focusTags: true,
           actCurrent: true,
           actTotal: true,
+          orderIndex: true,
+          status: true,
           pathAheadWhisper: true,
           plannerJson: true,
           storyArc: {
@@ -47,6 +49,8 @@ export async function getStorySpineForSession(sessionId: string): Promise<StoryS
     arcFocusTags: arc.focusTags,
     chapterTitle: ch.title,
     chapterFocusTags: ch.focusTags,
+    chapterOrderIndex: ch.orderIndex,
+    chapterStatus: ch.status,
     actCurrent: ch.actCurrent,
     actTotal: ch.actTotal,
     pathAheadWhisper: ch.pathAheadWhisper,

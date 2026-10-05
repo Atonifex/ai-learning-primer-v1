@@ -71,6 +71,7 @@ model LearnerProfile {
   assessmentResults  AssessmentResult[]
   reviewItems        ReviewItem[]
   worldLedgerEntries WorldLedgerEntry[]
+  campState          CampState?
 }
 
 enum Language {
@@ -606,6 +607,23 @@ model WorldLedgerEntry {
   createdAt          DateTime        @default(now())
 
   @@index([learnerProfileId, createdAt])
+}
+
+/// Persistent Day 0 camp: four resource piles, five crew slots, visual stage.
+model CampState {
+  id               String         @id @default(cuid())
+  learnerProfileId String         @unique
+  learnerProfile   LearnerProfile @relation(fields: [learnerProfileId], references: [id], onDelete: Cascade)
+  stage            String         @default("clearing")
+  rations          Int            @default(0)
+  scrap            Int            @default(0)
+  timber           Int            @default(0)
+  canvas           Int            @default(0)
+  appliedGrantIds  String[]       @default([])
+  /// Five named slots from lib/play/camp.ts. Status only; names live in code.
+  crew             Json
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
 }
 
 enum WorldLedgerKind {

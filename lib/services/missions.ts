@@ -3,7 +3,6 @@ import {
   decorateMissions,
   formatMissionsForPrompt,
   missionById,
-  stubRationsFromMissions,
   stubXpFromMissions,
   TUTORIAL_MISSIONS,
   type MissionPublic,
@@ -14,6 +13,8 @@ import { hasCompletedChapterReflection } from "../play/chapterReflection";
 import { remapCoreSubjectToGrade } from "../constants/subjects";
 import { completeSession, startSession } from "./session";
 import { ensureLearnerStoryChain } from "./storyCurriculum";
+import { ensureCampForLearner } from "./camp";
+import type { CampPublic } from "../play/camp";
 
 export type MissionBoardPayload = {
   missions: MissionPublic[];
@@ -23,15 +24,17 @@ export type MissionBoardPayload = {
   activeChapterStatus: string | null;
   xp: number;
   rations: number;
+  camp: CampPublic;
 };
 
 export async function getMissionBoard(learnerProfileId: string): Promise<MissionBoardPayload> {
   const slugs = TUTORIAL_MISSIONS.map((m) => m.activitySlug);
-  const [completedSlugs, wreckQuizDone, chapter1ReflectionDone, chain] = await Promise.all([
+  const [completedSlugs, wreckQuizDone, chapter1ReflectionDone, chain, camp] = await Promise.all([
     listCompletedActivitySlugs(learnerProfileId, slugs),
     hasCompletedActivitySlug(learnerProfileId, TUTORIAL_QUIZ_SLUG),
     hasCompletedChapterReflection(learnerProfileId),
     ensureLearnerStoryChain(learnerProfileId),
+    ensureCampForLearner(learnerProfileId),
   ]);
 
   const chapter = await prisma.chapter.findUnique({
@@ -51,13 +54,14 @@ export async function getMissionBoard(learnerProfileId: string): Promise<Mission
     activeChapterTitle: chapter?.title ?? null,
     activeChapterStatus: chapter?.status ?? null,
     xp: stubXpFromMissions(missions),
-    rations: stubRationsFromMissions(missions),
+    rations: camp.rations,
+    camp,
   };
 }
 
 export async function getMissionPromptBlock(learnerProfileId: string): Promise<string> {
   const board = await getMissionBoard(learnerProfileId);
-  return formatMissionsForPrompt(board.missions);
+  return formatMissionsForPrompt(board.missions, board.camp);
 }
 
 export async function startOrContinueSubjectSession(

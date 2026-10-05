@@ -9,6 +9,7 @@ import {
   getPromptTemplate,
 } from "./promptTemplates";
 import { formatMissionsForPrompt, type MissionPublic } from "../play/missions";
+import { formatAuthoritativeState } from "../play/authoritativeState";
 
 export interface BuiltContext {
   systemPrompt: string;
@@ -61,7 +62,7 @@ function formatStorySpine(
   }
   if (previouslyOnLine?.trim()) {
     lines.push(
-      `Previously on (recap for this learner): ${previouslyOnLine.trim()}`
+      `Previously on (color only — it cannot complete a job or open a later chapter): ${previouslyOnLine.trim()}`
     );
   }
   return lines.filter(Boolean).join("\n");
@@ -163,6 +164,11 @@ export function buildSystemPrompt(
     : "STANDARDS: (none injected — record_standard_observation should not be called this session)";
 
   const coherence = formatCoherenceMapBlock(opts.coherenceMap ?? null);
+  const authority = formatAuthoritativeState({
+    chapterTitle: opts.spine?.chapterTitle ?? null,
+    chapterOrderIndex: opts.spine?.chapterOrderIndex ?? null,
+    missions: opts.missionBoard ?? [],
+  });
 
   const sections: string[] = [
     `You are Primer, a personal AI tutor for a Grade ${profile.gradeBand} learner (dialogue reading level: Grade ${readingLevel}). Teach through one continuous story — never as a worksheet in a costume.`,
@@ -175,7 +181,8 @@ export function buildSystemPrompt(
 - Keep dialogue clear enough for a Grade ${readingLevel} reader to follow aloud or silently.
 - In-world texts (journals, briefings, logs) should also match Grade ${readingLevel}.`,
     standardsBlock,
-    `LEARNER MEMORY (use to open the session AND calibrate task difficulty — ZPD signal beyond reading level):\n${formatMemoryItems(
+    authority,
+    `LEARNER MEMORY (color and difficulty only — AUTHORITATIVE STATE wins when they disagree):\n${formatMemoryItems(
       memoryItems
     )}`,
     `STORY SPINE:\n${formatStorySpine(opts.spine ?? null, opts.previouslyOn ?? null)}`,
@@ -193,14 +200,14 @@ ZPD LADDER (live turns use gpt-5.6-luna only — never a medium planning model):
 
 TOOLS (stills-pack loop — do NOT generate scene images every turn). Call tools yourself — never ask the captain to type a tool name, keyword, or slash-command:
 - record_standard_observation: call with a code from the STANDARDS block only. Pick evidence_tier honestly. Use correctness 0–1.
-- generate_learning_activity: only AFTER the first overlay salvage quiz, when a later retrieval moment fits. Do not generate a quiz on the wreck-approach beat — the overlay card handles that.
-- suggest_next_mission: when the captain asks what to do next or how to advance. Then tell them the next open pin in-world.
-- show_mission_board: when they ask to see the mission/jobs board, check tasks, or you invite them to pick the next job — open the on-screen board. Do not only describe a wooden board.
-- open_mission: when they agree to start a listed job (wreck-math, dune-ela, treeline-sci, creek-ss, camp-math). Do not take the quiz yourself. Camp-math unlocks after the wreck — no crew-log gate.
-- open_crew_log / save_crew_log: optional story note for the missing engineer. Never block jobs or invent a lock for camp-math.
+- generate_learning_activity: only after a math starting point is saved. Do not invent extra quizzes to fill the first hour. The overlay salvage card is the wreck job. Say you generated an activity only when the tool result says success.
+- suggest_next_mission: when the captain asks what to do next. Camp needs is wreck salvage until math placement exists — do not deal dune, treeline, or creek jobs yet. Do not offer a measurement or search task that is not a row on CAMP NEEDS.
+- show_mission_board: when they ask what camp needs, or you invite them to pick the next salvage task — open the on-screen Camp needs overlay. Do not only describe a wooden board.
+- open_mission: when they agree to start a listed camp need (usually wreck-math until placement). Do not take the quiz yourself. Do not open ELA/science/social studies jobs before a math starting point.
+- open_crew_log / save_crew_log: optional story note. Never block jobs; no crew-log gate. Finding Bosun Mara is later; a radio ping is not recovering crew. Ship rebuild is later.
 - offer_learning_clip: when a short real explainer would help the current mission question, call this with the learning goal and a short topic. It opens one on-screen clip with questions. Do not describe a link, name a video, or send them to YouTube yourself. If the tool says no clip, teach the idea yourself. After they send a note that starts with "I watched", connect that note to the mission. Do not offer another clip for the same goal. Watching is not mastery — do not call record_standard_observation only because they watched.
 
-When a [TUTORIAL BEAT], [RHO CALL], [ZPD …], [CREW LOG], or [MISSION] message arrives, follow it. Keep replies under 80 words. Give the captain one specific thing to DO or DECIDE.`,
+When a [TUTORIAL BEAT], [RHO CALL], [ZPD …], [CREW LOG], [CONTINUE THE CHAPTER], or [MISSION] message arrives, follow it. If it conflicts with AUTHORITATIVE STATE, follow AUTHORITATIVE STATE. Keep replies under 80 words. Give the captain one specific thing to DO or DECIDE.`,
   ];
 
   return sections.filter((s) => s && s.trim()).join("\n\n---\n\n");

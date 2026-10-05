@@ -1,0 +1,63 @@
+{
+  "shot": {
+    "id": "g02",
+    "duration": 9,
+    "ref": "briefing-anchor",
+    "line": "I know you're coming to our planet for the first time, and your skills will come in handy.",
+    "speaker": "Wilhelm",
+    "action": "Continue same camera, attentive composed face. No reset or new gesture.",
+    "role": "briefing",
+    "retries": 0,
+    "status": "planned"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character, proportions, costume, set, geography and craft. One continuous shot, no automatic camera cuts. No text, lettering, subtitles, UI, weapons, blood, injuries or horror. NO MUSIC; continuous edit score is added separately. Use <<<323205940306534>>> for Wilhelm identity AND same low mature male voice. Mustache stays. Wilhelm VILL-helm, Maya MY-uh. Continue same camera, attentive composed face. No reset or new gesture. Only Wilhelm speaks. Speak exact simple English line once, clear unhurried natural voice with lip-sync where visible: \"I know you're coming to our planet for the first time, and your skills will come in handy.\". No added words/voices. "
+      },
+      {
+        "name": "duration",
+        "value": "9"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      },
+      {
+        "name": "elements",
+        "value": "[{\"id\":\"323205940306534\",\"bindName\":\"Wilhelm\"}]"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qSQoGdXBsb2FkEg55bGFiLXN0dW50LXNncBovYWdlbnRfdXBsb2FkLzE3OTEyMzQ2ODAvSUlic0hBRzR2dS9nMDEtdGFpbC5wbmc.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized V05 regeneration. Sequentially reviewed prior segment; preserve approved identities and camera geometry, variable scene pacing, native sounds without isolated music clips."
+  },
+  "task": {
+    "generationId": "AQSZcCJE7PiD4baDNNB6bEIdCVeSovfu6D3m4LWMI623SOfFxNcLcPs3S9NftogrBi2verDy",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 108,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "credits_consumed": 108,
+    "generation_id": "AQSZcCJE7PiD4baDNNB6bEIdCVeSovfu6D3m4LWMI623SOfFxNcLcPs3S9NftogrBi2verDy"
+  }
+}

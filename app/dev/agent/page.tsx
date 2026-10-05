@@ -74,7 +74,7 @@ export default function AgentPlaytestPage() {
           onClick={() => void bootstrap("board")}
           className="rounded-lg border border-stone-300 bg-white px-4 py-3 text-sm font-medium disabled:opacity-50"
         >
-          Enter play (Jobs board open)
+          Enter play (Camp needs board open)
         </button>
         <button
           type="button"

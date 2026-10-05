@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import type { MissionPublic } from "../../lib/play/missions";
+import { emptyCamp, toCampPublic, type CampPublic } from "../../lib/play/camp";
 
 type BoardPayload = {
   missions: MissionPublic[];
@@ -10,6 +11,7 @@ type BoardPayload = {
   activeChapterTitle: string | null;
   xp: number;
   rations: number;
+  camp: CampPublic;
 };
 
 export function useMissions() {
@@ -54,7 +56,9 @@ export function useMissions() {
     chapter1ReflectionDone: board?.chapter1ReflectionDone ?? false,
     activeChapterTitle: board?.activeChapterTitle ?? null,
     xp: board?.xp ?? 0,
-    rations: board?.rations ?? 3,
+    rations: board?.camp.rations ?? 0,
+    camp: board?.camp ?? toCampPublic(emptyCamp()),
+    loaded: board != null,
     refresh,
     startMission,
   };

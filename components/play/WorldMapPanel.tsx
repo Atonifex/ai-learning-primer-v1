@@ -18,7 +18,8 @@ export default function WorldMapPanel(props: {
   const selected = props.world?.nodes.find((n) => n.id === props.selectedId) ?? props.world?.nodes[0];
   const nodes = filterWorldNodes(props.world?.nodes ?? [], filter);
   return <dialog ref={dialog} onCancel={(e) => { e.preventDefault(); props.onClose(); }} className="world-atlas" aria-labelledby="atlas-title" data-testid="world-map">
-    <header className="atlas-header"><div><h2 id="atlas-title">Our island</h2><p>{props.world?.chapterTitle ?? "Unfolding your map…"}</p></div>
+    <header className="atlas-header"><div><h2 id="atlas-title">Our island</h2><p>{props.world?.chapterTitle ?? "Unfolding your map…"}</p>
+      {props.world && <p data-testid="atlas-camp">{props.world.camp.stageLabel} · rations {props.world.camp.rations} · crew {props.world.camp.crewFound} of {props.world.camp.crewTotal}</p>}</div>
       <button type="button" onClick={props.onClose} autoFocus className="map-button">Close map <span aria-hidden>×</span></button></header>
     <div className="atlas-objective"><span aria-hidden>⚑</span><p>{props.world?.objective ?? "Finding your expedition…"}</p><button className="map-link" onClick={props.onFocus}>Choose a subject</button></div>
     {props.error && <div role="alert" className="map-error">{props.error} <button onClick={props.onRefresh}>Try again</button></div>}
@@ -43,6 +44,7 @@ function LocationDetail(props: Parameters<typeof WorldMapPanel>[0] & { node: Wor
   return <section className="atlas-detail" aria-label={`${node.title} details`}>
     <div className={`landmark-sketch sketch-${node.kind}`} aria-hidden><span>{PLACE_SYMBOLS[node.kind]}</span></div>
     <h3>{node.title}</h3><p>{node.description}</p>
+    {node.kind === "camp" && node.campStage && <p data-testid="camp-place-stage">This camp is a {node.campStage === "clearing" ? "bare clearing" : node.campStage === "crates" ? "crate pile" : node.campStage}.</p>}
     {node.status === "locked" ? <p className="map-lock">{node.lockReason ?? "Keep exploring with Rho to open this place."}</p> : <div className="atlas-actions"><button className="map-button primary" onClick={() => props.onWalk(node)}>Walk here</button><button className="map-button" disabled={props.conversationBusy} onClick={() => props.onAsk(node)}>{props.conversationBusy ? "Rho is finishing…" : "Ask Rho about this"}</button></div>}
     <h4>At this place</h4>
     {node.missionId && <button className="map-task" disabled={props.busy || node.status !== "available"} onClick={() => props.onMission(node.missionId!)}><span>{node.status === "completed" ? "✓" : "◇"}</span><span>{node.status === "completed" ? "Shore job complete" : "Open shore job"}<small>{node.status === "locked" ? "Not open yet" : "A job from our first expedition"}</small></span></button>}

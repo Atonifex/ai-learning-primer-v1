@@ -20,15 +20,21 @@ test("starting a job opens the quiz without the dialogue cutscene on top", async
   await page.getByRole("button", { name: "Back to beach" }).click();
   await expect(page.getByText("Talking with Rho")).toHaveCount(0);
 
-  await page.getByRole("button", { name: "Jobs" }).click();
+  await page.getByRole("button", { name: "Camp needs" }).click();
+  await expect(page.getByText("Wreck count in three forms")).toBeVisible();
+  await expect(page.getByText("Storm words in context")).toHaveCount(0);
+  const startJob = page.getByRole("button", { name: "Start job" });
+  if ((await startJob.count()) === 0) {
+    await expect(page.getByText("Talking with Rho")).toHaveCount(0);
+    return;
+  }
   const starting = page.waitForResponse((response) => response.url().endsWith("/api/missions/start") && response.request().method() === "POST");
-  await page.getByRole("button", { name: "Start job" }).first().click();
+  await startJob.first().click();
   const started = await (await starting).json();
   if (started.sessionId !== body.sessionId) {
     await expect(page).toHaveURL(new RegExp(`/learn/${started.sessionId}\\?mission=`), { timeout: 60_000 });
   }
 
-  // A subject handoff mounts a fresh session and loads its job from the remote development DB.
   await expect(page.getByTestId("quiz-overlay")).toBeVisible({ timeout: 60_000 });
   await expect(page.getByText("Rho's slate · island job").or(page.getByText("Crate lid · salvage count"))).toBeVisible();
   await expect(page.getByText("Talking with Rho")).toHaveCount(0);

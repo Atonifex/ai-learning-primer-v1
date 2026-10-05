@@ -9,7 +9,7 @@ test("Talking with Rho can turn off automatic reading", async ({ page }) => {
 
   await page.goto(body.learnUrl);
   await expect(page.getByText("Talking with Rho")).toBeVisible();
-  await expect(page.getByRole("button", { name: "Jobs" })).toBeHidden();
+  await expect(page.getByRole("button", { name: "Camp needs" })).toBeHidden();
 
   const autoRead = page.getByRole("switch", { name: "Automatic reading by Rho" });
   await expect(autoRead).toHaveAttribute("aria-checked", "false");

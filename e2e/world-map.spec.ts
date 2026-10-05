@@ -11,7 +11,7 @@ async function boot(page: Page) {
   return (await response.json()) as { learnUrl: string; sessionId: string };
 }
 function fixture() {
-  return buildWorldSnapshot({ worldId: "map-test", missions: decorateMissions({ wreckQuizDone: true, chapter1ReflectionDone: false, completedSlugs: new Set() }),
+  return buildWorldSnapshot({ worldId: "map-test", missions: decorateMissions({ wreckQuizDone: true, chapter1ReflectionDone: false, completedSlugs: new Set(), placementReady: true }),
     chapters: [{ id: "ch1", title: "The first shore", orderIndex: 0, status: "ACTIVE", plannerJson: { chapterQuestion: "How can our supplies help the crew?" } }], tasks: [], notes: [], products: [] });
 }
 
@@ -87,7 +87,7 @@ test("a chapter update reveals a new place and Rho focuses it without a page rel
   let world = fixture();
   await page.route("**/api/world", (route) => route.fulfill({ json: world }));
   await page.route("**/api/session/*/message", async (route) => {
-    world = buildWorldSnapshot({ worldId: "map-test", missions: decorateMissions({ wreckQuizDone: true, chapter1ReflectionDone: false, completedSlugs: new Set() }),
+    world = buildWorldSnapshot({ worldId: "map-test", missions: decorateMissions({ wreckQuizDone: true, chapter1ReflectionDone: false, completedSlugs: new Set(), placementReady: true }),
       chapters: [{ id: "chapter-three", title: "Leaves and light", orderIndex: 2, status: "ACTIVE", plannerJson: { chapterQuestion: "Where do young plants thrive?", mapStamps: [{ key: "grove", nodeType: "grove", slot: "ridge-west", title: "Sunlit grove", description: "Compare leaves at the edge of the trees." }] } }], tasks: [], notes: [], products: [] });
     const events = [{ type: "world_updated", reason: "A new chapter is on your map", nodeId: "chapter:chapter-three:grove" },
       { type: "world_map_open", nodeId: "chapter:chapter-three:grove" }, { type: "text", content: "Here is our next place to explore." }, { type: "done", messageId: "chapter-map" }];

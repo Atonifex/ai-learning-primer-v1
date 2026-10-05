@@ -1,0 +1,66 @@
+{
+  "title": "Fortuna expedition",
+  "origin": "Original procedural instrumental composed for this project; no borrowed samples",
+  "seconds": 40,
+  "chords": [
+    [
+      52,
+      59,
+      64,
+      67
+    ],
+    [
+      48,
+      55,
+      60,
+      64
+    ],
+    [
+      55,
+      62,
+      67,
+      71
+    ],
+    [
+      50,
+      57,
+      62,
+      66
+    ]
+  ],
+  "melody": [
+    64,
+    67,
+    71,
+    69,
+    67,
+    64,
+    62,
+    59,
+    60,
+    64,
+    67,
+    66,
+    64,
+    62,
+    60,
+    59,
+    67,
+    71,
+    74,
+    72,
+    71,
+    67,
+    66,
+    64,
+    62,
+    66,
+    69,
+    67,
+    66,
+    64,
+    62,
+    59
+  ],
+  "notes": "Quiet adventurous harmonic cue. Mix under briefing and safe recovery; fade out before takeoff. Engine/wind/alarms carry flight and emergency."
+}

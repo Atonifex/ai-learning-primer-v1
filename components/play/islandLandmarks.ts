@@ -1,6 +1,32 @@
 import { Container, Graphics, Text } from "pixi.js";
 import { tileCenter } from "../../lib/play/beachMap";
+import type { CampStage } from "../../lib/play/camp";
 import type { WorldNode } from "../../lib/play/worldMap";
+
+function drawCamp(g: Graphics, stage: CampStage) {
+  g.ellipse(2, 18, 36, 12).fill({ color: 0x173f3c, alpha: 0.17 });
+  g.ellipse(0, 16, 28, 10).fill(0xd7c08a);
+  if (stage === "clearing") {
+    g.circle(-12, 14, 4).fill(0x8d7a55);
+    g.circle(6, 12, 3).fill(0x9a8660);
+    g.circle(16, 16, 4).fill(0x7d6b4a);
+    return;
+  }
+  g.roundRect(-28, 6, 16, 14, 2).fill(0xb69259).stroke({ color: 0x745839, width: 2 });
+  g.roundRect(-10, 8, 14, 12, 2).fill(0xc4a06a).stroke({ color: 0x745839, width: 2 });
+  g.roundRect(6, 7, 12, 13, 2).fill(0xa98452).stroke({ color: 0x745839, width: 2 });
+  if (stage === "crates") return;
+  g.poly([-35, 15, -5, -30, 31, 15]).fill(0xbf7149);
+  g.poly([-5, -30, 8, 15, 31, 15]).fill(0xf3deb1);
+  g.poly([-17, 15, -4, -10, 7, 15]).fill(0x514b38);
+  g.moveTo(-38, 16).lineTo(-5, -32).lineTo(34, 16).stroke({ color: 0x826544, width: 3 });
+  if (stage === "tent") {
+    g.ellipse(37, 26, 12, 7).fill(0x8d8c76);
+    return;
+  }
+  g.ellipse(37, 26, 12, 7).fill(0x5c4030);
+  g.poly([30, 27, 35, 10, 40, 20, 43, 13, 45, 27]).fill(0xe7a957);
+}
 
 export function createLandmark(node: WorldNode, onSelect: () => void) {
   const group = new Container(), g = new Graphics();
@@ -13,12 +39,7 @@ export function createLandmark(node: WorldNode, onSelect: () => void) {
     g.poly([0, -51, 28, -37, 0, -24]).fill(0xf3e6bd);
     g.roundRect(-44, 10, 18, 17, 3).fill(0xb69259).stroke({ color: 0x745839, width: 2 });
   } else if (node.kind === "camp" || node.kind === "shelter") {
-    g.poly([-35, 15, -5, -30, 31, 15]).fill(node.status === "completed" ? 0xbf7149 : 0xc7b58a);
-    g.poly([-5, -30, 8, 15, 31, 15]).fill(0xf3deb1);
-    g.poly([-17, 15, -4, -10, 7, 15]).fill(0x514b38);
-    g.moveTo(-38, 16).lineTo(-5, -32).lineTo(34, 16).stroke({ color: 0x826544, width: 3 });
-    g.ellipse(37, 26, 12, 7).fill(0x8d8c76);
-    g.poly([30, 27, 35, 10, 40, 20, 43, 13, 45, 27]).fill(node.status === "completed" ? 0xe7a957 : 0x737b63);
+    drawCamp(g, node.kind === "camp" ? (node.campStage ?? "clearing") : "tent");
   } else if (node.kind === "creek") {
     g.roundRect(-31, -9, 57, 24, 5).fill(0xbb9963);
     for (let i = 0; i < 6; i++) g.moveTo(-26 + i * 9, -8).lineTo(-26 + i * 9, 14).stroke({ color: 0x7d7251, width: 2 });

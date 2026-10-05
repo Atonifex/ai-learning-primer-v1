@@ -2,6 +2,7 @@
 
 export const FIRST_RUN_STEPS = [
   "video",
+  "purpose",
   "name",
   "move",
   "talk",
@@ -13,6 +14,7 @@ export type FirstRunStep = (typeof FIRST_RUN_STEPS)[number];
 
 export type FirstRunEvent =
   | "video_done"
+  | "purpose_done"
   | "name_saved"
   | "walked_to_wreck"
   | "spoke_to_rho"
@@ -20,11 +22,12 @@ export type FirstRunEvent =
 
 const ORDER: Record<FirstRunStep, number> = {
   video: 0,
-  name: 1,
-  move: 2,
-  talk: 3,
-  work: 4,
-  complete: 5,
+  purpose: 1,
+  name: 2,
+  move: 3,
+  talk: 4,
+  work: 5,
+  complete: 6,
 };
 
 export function isFirstRunStep(value: string): value is FirstRunStep {
@@ -68,19 +71,33 @@ export function firstRunCoach(step: FirstRunStep, captain: string): string | nul
     case "talk":
       return `At the wreck, tell Rho — hold the mic or type a word.`;
     case "work":
-      return `The crate lid is the job. Tap an answer that fits.`;
+      return `Salvage what we can. Tap an answer that fits.`;
     default:
       return null;
   }
 }
 
 const EVENT_TO_STEP: Record<FirstRunEvent, FirstRunStep> = {
-  video_done: "name",
+  video_done: "purpose",
+  purpose_done: "name",
   name_saved: "move",
   walked_to_wreck: "talk",
   spoke_to_rho: "work",
   work_done: "complete",
 };
+
+/**
+ * A captain stuck on the wreck tutorial after Chapter 1 should leave that tutorial.
+ * video / purpose / name stay put so a deliberate replay of the opening still plays.
+ */
+export function reconcileFirstRunStep(
+  step: FirstRunStep,
+  chapterOrderIndex: number | null
+): FirstRunStep {
+  if (chapterOrderIndex == null || chapterOrderIndex < 1) return step;
+  if (step === "move" || step === "talk" || step === "work") return "complete";
+  return step;
+}
 
 /** Advance only forward. Ignore events that belong to an earlier beat. */
 export function applyFirstRunEvent(

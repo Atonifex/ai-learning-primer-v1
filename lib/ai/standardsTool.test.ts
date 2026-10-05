@@ -32,7 +32,7 @@ describe("mission board tools", () => {
     expect(openMissionTool.function.name).toBe("open_mission");
     expect(suggestNextMissionTool.function.name).toBe("suggest_next_mission");
     expect(showMissionBoardTool.function.description.toLowerCase()).toContain(
-      "mission board"
+      "camp needs"
     );
   });
 
@@ -60,6 +60,8 @@ describe("mission board tools", () => {
     expect(prompt).toContain("open_mission");
     expect(prompt).toContain("no crew-log gate");
     expect(prompt).toContain("never ask the captain to type a tool name");
+    expect(prompt).toContain("only after a math starting point is saved");
+    expect(prompt).toContain("Finding Bosun Mara is later");
   });
 
   it("does not tell Rho that camp waits on a crew log", () => {
@@ -68,7 +70,8 @@ describe("mission board tools", () => {
       completedSlugs: new Set(["g3-ma-wreck-number-forms"]),
     });
     const board = formatMissionsForPrompt(missions);
-    expect(board).toContain("camp-math [available]");
+    expect(board).toContain("camp-math [locked]");
+    expect(board).toContain("dune-ela [locked]");
     expect(board).not.toContain("locked on the crew log");
     expect(board).not.toContain("save_crew_log");
   });

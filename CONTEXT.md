@@ -21,7 +21,7 @@ Operating router for the Primer codebase. **CLAUDE.md** (always loaded) has iden
 | **New Rho/captain-facing feature** | Prefer an orchestrator tool (SSE → UI). Ask Ivan if unsure whether it should be callable. | `lib/ai/sessionOrchestrator.ts`, `CLAUDE.md` tool-first rule |
 | **Generate tutorial stills / art pack** | `public/stills/tutorial/README.md` | `lib/play/stills.ts`, MASTER §4.12; style: Stardew-like, not a clone; exact filenames |
 | **Intro cinematic / Skip** | `components/play/IntroCinematic.tsx` | `public/cinematics/README.md` |
-| **Cinematic style / video references / character continuity** | `docs/CINEMATIC_STYLE_GUIDE.md` | `PROJECT_MEMORY.md`; latest screenplay/three-review-cycle/shot plan in `docs/OPENING_SCREENPLAY_V04.md`; working V03 media in `public/cinematics/prologue-v3/README.md`; production history in `docs/KLING_VIDEO_PRODUCTION_BRIEF.md` |
+| **Cinematic style / video references / character continuity** | `docs/CINEMATIC_STYLE_GUIDE.md` | `PROJECT_MEMORY.md`; current condensed Maya/Fortuna/Sergeant Wilhelm screenplay in `docs/OPENING_SCREENPLAY_V05.md`; prior three-cycle design in V04; working V03 media in `public/cinematics/prologue-v3/README.md`; production history in `docs/KLING_VIDEO_PRODUCTION_BRIEF.md` |
 | **Future story / discovery idea outside current scope** | `docs/FUTURE_STORY_IDEAS.md` | `PROJECT_MEMORY.md`; capture proposal without implementing; promote reviewed work into MASTER later. Read **P0 child data security** first — it outranks story ideas |
 | **Child data / third-party media** | `docs/FUTURE_STORY_IDEAS.md` P0 and MASTER §4.1 | Any new embed, analytics vendor, or outside player needs parent consent before a child launch. YouTube clips stay off without `PRIMER_LEARNING_CLIPS=1` |
 | **Learning clip sources / rubric** | `docs/LEARNING_CLIP_EVALUATION.md` | Known channels are a plus. Development search is not limited to that list |
@@ -45,9 +45,9 @@ Operating router for the Primer codebase. **CLAUDE.md** (always loaded) has iden
 
 ## Current build phase (read before coding)
 
-**Done:** Step 0 data (G3 **and G4** catalogs + G3 activity bank + wreck/food chapters). Step 1 three-mode shell. Mission Loop v1. Rho TTS. Onboarding grade → G3 or G4 subject enrollment.
+**Done:** Step 0 data (G3 **and G4** catalogs + G3 activity bank + wreck/food chapters). Step 1 three-mode shell. Mission Loop v1. Rho TTS. Onboarding grade → G3 or G4 subject enrollment. Camp/crew v0 (resources, 5 crew slots, 4 visual stages).
 
-**Open next (typical):** Put the math diagnostic on screen (example, then a fresh item, up/down stop rules in `lib/play/mathDiagnostic.ts`). Grade 2 codes are not seeded — do not invent them. Other subjects reuse the same engine after math. Do not assign a math dive until placement returns a starting point.
+**Open next (typical):** Full-screen **5-question** math diagnostic (progress bar, MC buttons, persist snapshot, write mastery through existing evidence). That unfreezes `generate_learning_activity` and the other-subject buffet. Do not invent Grade 2 codes. Tent/fire/crew radio-ping grants hang off that check.
 
 **Explicitly out of first loop:** parent dashboard, mastery redesign, G5+ catalogs, Three.js, graphic-novel-as-home, language-tutor as the product.
 

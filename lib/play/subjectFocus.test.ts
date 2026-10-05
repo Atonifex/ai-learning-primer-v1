@@ -61,13 +61,22 @@ describe("subject focus sitting", () => {
     ).toBe("2 of 3 standards seen");
   });
 
-  it("opens the focus view after the wreck lesson unless another mode was requested", () => {
+  it("does not open the four-subject focus buffet until a math starting point is saved", () => {
     expect(
       shouldOpenSubjectFocus({
         firstRunStep: "complete",
         dialogueQuery: false,
         boardQuery: false,
         missionQuery: false,
+      })
+    ).toBe(false);
+    expect(
+      shouldOpenSubjectFocus({
+        firstRunStep: "complete",
+        dialogueQuery: false,
+        boardQuery: false,
+        missionQuery: false,
+        placementReady: true,
       })
     ).toBe(true);
     expect(
@@ -76,6 +85,7 @@ describe("subject focus sitting", () => {
         dialogueQuery: true,
         boardQuery: false,
         missionQuery: false,
+        placementReady: true,
       })
     ).toBe(false);
     expect(
@@ -84,6 +94,7 @@ describe("subject focus sitting", () => {
         dialogueQuery: false,
         boardQuery: false,
         missionQuery: false,
+        placementReady: true,
       })
     ).toBe(false);
     expect(
@@ -93,6 +104,7 @@ describe("subject focus sitting", () => {
         boardQuery: false,
         missionQuery: false,
         clipQuery: true,
+        placementReady: true,
       })
     ).toBe(false);
   });

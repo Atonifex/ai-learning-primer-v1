@@ -448,7 +448,9 @@ Do **not** steal Undertale’s FIGHT/MERCY moral test or bullet-hell. The “dum
 
 ### 4.12 Higgsfield intro + stills pack
 
-**Latest authoring request, 2026-10-05:** V03 is improved but not final-approved. Three critique/rewrite rounds and full revised briefing/crash/beach screenplay: `docs/OPENING_SCREENPLAY_V04.md`. User names officer Sara, a Director at Merchant Corporation; oil/lumber/gold trade across space, first planet visit, newly found remote island with unknown resources/weather/animals; survey/report before base/collection. Names Vela/Farreach are proposals. Requested runway takeoff requires a consistent aircraft design; proposed fixed-wing twin-prop keeps teal/cream/brass identity. Professional Rho, no romantic walk or diegetic “learning game” line; learning disclosure stays outside fiction. One thumbs-up only after accepted bargain; external landscapes have no hands. Safe escape before unoccupied crash; dawn crew/camp/ship objectives and future empire ambition. ~4:47 shortest plus19s two-No and waits is an unrecorded paper estimate. Existing app/media remain V03; no new generation/charges/code from this authoring pass.
+**Current revision,2026-10-05:** confirmed planet **Maya**, island **Fortuna**; male military briefing officer **Sergeant Wilhelm**, friendly but stern, with a **mustache**, representing **Merchant Corp**. Ordered greeting/resource shortage rationale → wall-map push-in/aerial Fortuna → survey/report/conditional base → bargain → professional Rho → runway flight → lightning engine fire/power loss/descent → safe escape/empty crash → island objective. Condensed script after two review passes: `docs/OPENING_SCREENPLAY_V05.md`, paper target~3:10 immediateYes/~3:24 twoNo plus waits, about34% shorter than V04. Occasional dry/visual/sound comedy is accepted ongoing direction; don't joke during danger. Wilhelm later conflict saved as F04, not an intro spoiler. New male identity/voice and aircraft references required; no new assets/jobs/charges/runtime changes. V03 stays playable until reviewed replacement.
+
+**Earlier V04 authoring request, 2026-10-05 (superseded identity/names/timing):** V03 is improved but not final-approved. Three critique/rewrite rounds and full revised briefing/crash/beach screenplay: `docs/OPENING_SCREENPLAY_V04.md`. User names officer Sara, a Director at Merchant Corporation; oil/lumber/gold trade across space, first planet visit, newly found remote island with unknown resources/weather/animals; survey/report before base/collection. Names Vela/Farreach are proposals. Requested runway takeoff requires a consistent aircraft design; proposed fixed-wing twin-prop keeps teal/cream/brass identity. Professional Rho, no romantic walk or diegetic “learning game” line; learning disclosure stays outside fiction. One thumbs-up only after accepted bargain; external landscapes have no hands. Safe escape before unoccupied crash; dawn crew/camp/ship objectives and future empire ambition. ~4:47 shortest plus19s two-No and waits is an unrecorded paper estimate. Existing app/media remain V03; no new generation/charges/code from this authoring pass.
 
 **Current production, 2026-10-05:** V03 captain benefit/10–15–20% bargaining, physical Rho handshake, learning walk and same-ship launch/flight/weather approach are generated and integrated into onboarding. Five matched references, 19 video sources and measured111.02/119.02/127.02s review cuts are preserved in `public/cinematics/prologue-v3/README.md`; script/prompts in `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md` and `shots.json`. Choices appear over a silent matching-endpoint loop after audio; accepted share/progress saves. Recorded profit definition is money left after costs. Paid jobs1,504 credits; checked balance6,096. Earlier30s target is superseded. Actual crash/objective footage remains separate/unbuilt; current app uses beach still/text bridge. Historical direction below is superseded where noted; tutorials deferred.
 
@@ -855,9 +857,9 @@ Existing code: `app/progress/*`, `lib/services/progress.ts`, `StandardsEvidence`
 | Three-mode shell | **DONE** | Intro → Pixi home → dialogue (left/right) → overlay quiz/reflection |
 | Mission Loop v1 | **SUPERSEDED as the session model** | Five pin jobs still run. They are not how a sitting chooses work |
 | Subject focus §4.16 | **PARTIAL** | After first-run, the captain picks one subject and sees that subject's standards. A different subject asks for a deliberate yes. A try follows a starting point. The written sentence after the try was removed |
-| First-run tutorial | **DONE** | Video/poster → name → move → talk → work; per-learner `firstRunStep` |
+| First-run tutorial | **DONE** | Video/poster → purpose card → name → move → talk → work; per-learner `firstRunStep` |
 | Household auth | **DONE** | Parent email + child username/PIN; `/household`; child JWT scoped to one captain |
-| Rho live loop | **PARTIAL** | `gpt-5.6-luna`; ZPD; mission context in prompt; tools: observe, generate_activity, suggest/show board/open mission |
+| Rho live loop | **PARTIAL** | `gpt-5.6-luna`; ZPD; mission context in prompt; tools: observe, suggest/show board/open mission. `generate_learning_activity` frozen until a math starting point is saved |
 | Rho TTS | **DONE** | OpenAI TTS; discard audio; Voice on/off; mic barge-in |
 | STT | **DONE** | Whisper; transcribe + discard |
 | Stills pack | **DONE** | 15 files in `public/stills/tutorial/` |
@@ -866,17 +868,19 @@ Existing code: `app/progress/*`, `lib/services/progress.ts`, `StandardsEvidence`
 | Disguised placement | **NOT BUILT** | §4.4 Kumon-in-story diagnostic + parent benchmark report |
 | Chapter Compiler | **NOT BUILT** | `PLANNING_MODEL` constant only; no job |
 | World ledger | **PARTIAL** | Ch1 crew log writes `WorldLedgerEntry` rows + `Chapter.handoffSummary`; next Rho turn must reuse them. No decisions, no Ch2 ration-plan artifact |
+| Camp / crew engine | **PARTIAL** | Persisted `CampState`: 4 resources, 5 named crew slots, 4 visual stages. Wreck salvage grants a crate pile. Tent/fire/found crew wait on later grants |
 | Full-screen activity tools | **NOT BUILT** | Overlay MC quizzes only; FR items dropped in overlay path |
 | Parent dashboard / email / PDF | **NOT BUILT** | `/progress` only; `/settings` for reading level |
 | Per-turn scene images | **OFF** | Stills pack; re-enable in full MVP |
 | Skill tutorial videos | **NOT BUILT** | Intro cinematic only |
-| XP / rations persistence | **NOT BUILT** | HUD stubs from mission complete |
+| XP / rations persistence | **PARTIAL** | Rations/scrap/timber/canvas persist on `CampState`. XP HUD is still a mission-complete stub |
 | G4 activity bank + G4 saga | **NOT BUILT** | G4 standards + prompt lenses only |
 
 ### Key files (do not rebuild)
 
-- **Play shell:** `components/play/PlayShell.tsx`, `OverworldCanvas.tsx`, `beachWorld.ts`, `MissionBoard.tsx`, `FirstRunCoach.tsx`
+- **Play shell:** `components/play/PlayShell.tsx`, `OverworldCanvas.tsx`, `beachWorld.ts`, `MissionBoard.tsx`, `FirstRunCoach.tsx`, `ResourceHud.tsx`
 - **Map:** `lib/play/beachMap.ts` (tutorial south + ridge + north landmass)
+- **Camp:** `lib/play/camp.ts`, `lib/services/camp.ts`
 - **Missions:** `lib/play/missions.ts`, `lib/services/missions.ts`, `app/api/missions/**`, `app/saga/page.tsx`
 - **Learning:** `lib/play/overlayQuiz.ts`, `chapterReflection.ts`, `zpd.ts`, `hiddenTurns.ts`
 - **AI:** `lib/ai/sessionOrchestrator.ts`, `contextBuilder.ts`, `models.ts` (`LIVE_INTERACTION_MODEL`, `PLANNING_MODEL`)
@@ -902,7 +906,7 @@ Overlay MC-only; straight-line walk; ambient ocean silent; XP/rations not persis
 
 5. **World ledger** — Ch1 crew-log handoff is written. The next artifact is the product of a §4.16 dive, not another pin. Map stamps stay after a learning product exists.
 6. **Parchment map overlay** — shares `beachMap` mask; grows as fog peels (U5).
-7. **Persist rewards** — XP/rations tied to `LearningActivityCompletion` / chapter complete.
+7. **Persist rewards** — Rations/scrap/timber/canvas persist on `CampState`. XP is still a stub. Later diagnostics should grant tent/crew through `applyCampGrant`, not by rewriting HUD math.
 8. **Full-screen tools** — ship’s log, plan writing, measure (one module at a time); keep overlay for quick MC.
 
 **P2 — Compiler + expansion**
@@ -1081,6 +1085,9 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 
 ## 15. Master checklist
 
+- [x] Correct V05 officer to Sergeant Wilhelm with a mustache; add Rho first-mate/planet/island guide introduction (2026-10-05). Script and continuity docs only; not yet generated.
+- [x] Condense opening to V05 with Maya/Fortuna, male military Sergeant Wilhelm with a mustache, resource shortage/wall-map aerial transition, lightning/fire/power-loss crash and occasional comic-beat plan (2026-10-05); `docs/OPENING_SCREENPLAY_V05.md`. ~3:10 paper target plus branches/waits; no new production. Future Wilhelm conflict in F04; humor preference persisted.
+
 - [x] Write V04 expanded Sara briefing, resource/mystery/danger inserts, professional Rho handoff, coherent runway/escape/crash and post-crash leadership screenplay after three critique/rewrite rounds (2026-10-05); `docs/OPENING_SCREENPLAY_V04.md`. Camera/reuse/animatic validation plan saved. Names/aircraft design proposed; actual reference/animatic/media/app replacement not yet made.
 
 - [x] Generate V03 matched references and branching prologue; integrate video/10–15–20% choices, silent loop, saved deal/progress and playback controls into onboarding (2026-10-05). 19 jobs cost1,504 credits; balance6,096. Library: `public/cinematics/prologue-v3/README.md`. Measured cuts111.02/119.02/127.02s. Human performance review and actual crash/objective footage remain open; beach still/text bridges current ending.
@@ -1130,6 +1137,7 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 - [x] **§4.16 subject view:** captain chooses one subject, sees that subject's standards, and must confirm before switching. Opens after first-run
 - [x] **Math placement engine and screen:** example, then a fresh item, from the math subject view. Two misses on the easiest item say the check will not guess a grade 2 code (`MathCheck.tsx`)
 - [x] **Starting-point check** for math, ELA, science, and social studies: example, then a different item, two right to step up, two misses at the bottom refuse an earlier code. After a starting point, each subject shows one new case of that idea and feedback.
+- [x] **Camp / crew v0:** persisted resources, five named missing crew, four camp stages; wreck salvage founds a crate pile (2026-10-05)
 - [ ] **§4.16 dive, product half:** the written sentence after the try was removed. A product the camp uses is not built.
 
 **Step 1 closeout (2026-08-22) — done / leftover / debt**
@@ -1141,7 +1149,7 @@ Not this slice (still open above / P1+): parchment map overlay, Higgsfield mp4, 
 Technical debt (defer to end of this plan unless a later step naturally clears it):
 1. Per-turn `generate_scene_image` is **disabled** (stills pack). Handler remains; re-enable for full-MVP dynamic scenes.
 2. Overlay quiz uses MC items only from bank slugs (drops free-response items). Mission Loop v1 covers wreck + four other pins; still not full-screen tools.
-3. Rations / XP HUD are client stubs — not persisted; not tied to chapter complete (P2).
+3. Rations / scrap / timber / canvas persist on `CampState` (2026-10-05). XP HUD is still a mission-complete stub.
 4. Ambient ocean bed is silent; mute control not wired for ambient (U15 placeholder). Rho TTS has its own Voice on/off.
 5. Intro Skip is per-learner (`firstRunStep` / `introSeenAt`), not `localStorage`.
 6. Resolved 2026-10-05: movement uses breadth-first routes over the shared walkability mask, with a chapter-gated ridge pass.
@@ -1340,6 +1348,25 @@ If a new ★ question appears, add the answer to **§4** or **§17** — do not 
 
 ## 18. Implementation log
 
+### 2026-10-05 — Turn packet and onboarding authority
+
+- Local play can open **AI packet** (`NEXT_PUBLIC_PRIMER_AI_DEBUG=1`) and read the blocks Rho received: this turn, authority, previously on, handoff, camp needs, memory, plus each tool’s arguments and result. The panel starts closed. Leave the flag off on a child deploy.
+- Saved chapter index and Camp needs now beat story memory. After Chapter 1, the wreck greeting no longer asks what to count, and a stuck first-run step advances to complete. A job stays open until its completion row exists. Rho may not invent a task that is not on that list.
+- Files: `lib/play/authoritativeState.ts`, `lib/ai/turnDebugPacket.ts`, `lib/ai/{contextBuilder,sessionOrchestrator}.ts`, `lib/play/{hiddenTurns,firstRun}.ts`, `components/play/{AiDebugPanel,useSessionStream,PlayShell}.tsx`, `app/learn/[sessionId]/page.tsx`.
+
+### 2026-10-05 — Wilhelm identity correction and Rho introduction
+
+- Corrected current V05 and continuity documents to **Sergeant Wilhelm**, a friendly but stern military man with a mustache. Historical drafts remain superseded.
+- Rho introduces herself at the professional handshake: “I'm Rho, your first mate. I'll help you learn about Maya and Fortuna, and guide you along the way.” Leave time for natural delivery; final timing requires a read-through.
+- Project memory and future conflict F04 updated. Documentation only; existing V03 media/app unchanged, no generation or credit charges.
+
+### 2026-10-05 — Condensed V05 and recurring humor preference
+
+- Confirmed Maya/Fortuna replace proposed Vela/Farreach. User replaces officer with friendly but stern male military man while retaining Sara/Director/Merchant Corp in supplied line. Reordered greeting and shortage explains company need; wall-map zoom matches aerial island. Later Director conflict captured in future backlog F04 without inventing its plot.
+- V05 shortens repeated exposition/leadership/travel and future montage, preserves conditional mission/reward/10–15–20 deal/professional Rho and safety. Lightning strikes engine, localized fire and power loss cause steep descent; escape clears all crew before empty aircraft impact. Paper estimate3:10 immediateYes/3:24 twoNo plus waits (~34% shorter than V04), not measured media.
+- Added user preference for occasional fun/comedic effects to project memory, style guide and review cycle; optional pen-click deadpan bargain, brief checklist breeze before takeoff, harmless beach-crab beat after safety. No jokes during lightning/fire/escape or incompetent/flirtatious acting.
+- New male officer references/voice/Element required; old female footage not reusable identity. This pass changes screenplay/documentation only: no generated assets, Kling charges, runtime edits or test reruns. Current V03 player retained.
+
 ### 2026-10-05 — V04 opening screenplay after playback critique
 
 - Reviewed user feedback and sampled V03 sources: generated physical-to-screen Sara transition inside A01, floating hands inside external A10, late smile in concerned A11. Recorded why single-shot prompting/contact sheets alone did not validate playback.
@@ -1416,6 +1443,19 @@ If a new ★ question appears, add the answer to **§4** or **§17** — do not 
 
 
 Agents append here. Newest first.
+
+### 2026-10-05 — Day 0 checklist, Camp needs, freeze generation
+
+- After camp v0: learning-purpose card (two pages) between cinematic and name; HUD chapter problem; five-box Day 0 checklist; Jobs → Camp needs showing only wreck salvage until math placement is saved; other-subject pins locked; `generate_learning_activity` not offered until placement exists; Rho told not to find Mara or rebuild the ship yet.
+- Math-check checklist box currently completes with wreck salvage. The 5-question diagnostic (write mastery) is still the next slice.
+- Files: `lib/play/day0.ts`, `lib/play/mathPlacement.ts`, `LearningPurposeCard.tsx`, firstRun `purpose` step.
+
+### 2026-10-05 — Camp / crew engine v0
+
+- Ivan chose Day 0 sequence A, then camp engine before a diagnostic rewrite. Persistent `CampState`: rations, scrap, timber, canvas; five bible crew slots (Mara, Pell, Idi, Vey, Tem) starting missing; stages clearing → crates → tent → fire. HUD + Pixi camp landmark + atlas use the saved stage.
+- Wreck overlay completion (and backfill if it was already done) applies an idempotent `wreck-salvage` grant: +2 rations, +1 scrap, crate-pile stage. Completing the check founds camp even if later diagnostics will score items; this slice does not change mastery math.
+- Accepted next, not built: full-screen **5-question** subject diagnostic (progress bar, MC buttons, persist snapshot) that **does write mastery** via existing `recordStandardObservation`. That supersedes the earlier 10-question snapshot idea and the “placement does not write mastery” wording when that slice ships. Which 5 codes per subject is still open.
+- Files: `lib/play/camp.ts`, `lib/services/camp.ts`, `prisma/migrations/20261005220000_camp_state`, HUD/landmarks/missions/world snapshot.
 
 ### 2026-10-05 — Show-then-do, and math placement before assigned work
 

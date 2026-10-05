@@ -1,0 +1,48 @@
+{
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure. EXACT supplied Sergeant Wilhelm, physical mature man with neat thick mustache and teal navy brass uniform behind same desk. One single locked eye-level medium shot, NO cuts, monitors, new camera angles, captain hands, thumbs-up, text or subtitles. His warm greeting remains professional and stern. Hands at rest on desk, modest natural facial acting. Only Wilhelm speaks with consistent mature calm low male English voice, clear unhurried diction: \"Welcome to planet Maya, Captain. I'm Sergeant Wilhelm of Merchant Corp.\" Pronounce Wilhelm VILL-helm, Maya MY-uh. NO extra words. NO music; only voice and faint room tone. Keep same pose through final half-second for next sentence."
+      },
+      {
+        "name": "duration",
+        "value": "8"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qUAoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo2YWdlbnRfdXBsb2FkLzE3OTEyMzQxMjYvVnJJalZ1T28wei9icmllZmluZy1hbmNob3IucG5n.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "User authorized complete screenplay regeneration, sequential review and at most two corrective retries. First greeting establishes new mustached Sergeant Wilhelm identity and voice; fixed shot avoids previous unnecessary screen cut."
+  },
+  "task": {
+    "generationId": "AbkHYzWR3GpiAABTII7WcvdN8YlwEXoAW7z0w5DFqH4nk41dAVZa4ZMRNpHB2KpzyoGhEjIQ",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 96,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "generation_id": "AbkHYzWR3GpiAABTII7WcvdN8YlwEXoAW7z0w5DFqH4nk41dAVZa4ZMRNpHB2KpzyoGhEjIQ",
+    "credits_consumed": 96
+  }
+}

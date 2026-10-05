@@ -34,6 +34,14 @@ Read `PROJECT_MEMORY.md` before project work and update it concisely after meani
 - **Unresolved:** whether the tutorial wreck walk remains a one-time movement lesson before the first subject choice; whether a parent can preset the day's subject; how many at-bats count as a sitting; how thin-subject nudges from Rho work without overriding the captain.
 - **Promotion trigger:** Ivan accepts the session shape. Then update MASTER §1.2 / §4 and replace the pin sampler as the session driver before building more one-off jobs.
 
+## F04 — Sergeant Wilhelm becomes a source of conflict
+
+- **Date / origin:**2026-10-05, Ivan. Replace female officer with friendly but stern military man; he will later be someone the captain has conflict with.
+- **Status:** future conflict role is user-requested; specific cause, timing, resolution and curriculum mapping remain proposals. Current screenplay V05 uses the corrected name **Sergeant Wilhelm**, a friendly but stern military man with a mustache, representing Merchant Corp. Planet Maya/island Fortuna are confirmed; military appearance does not establish an invented government/war or additional rank structure.
+- **Story purpose:** meaningful leadership decisions after trust and company employment are established. Introduce credible authority who can be friendly, occasionally dryly funny and demanding; do not announce him as a villain at first meeting.
+- **Possible later treatments, not canon:** deadline/resource targets versus crew needs; disagreement about reporting uncertain finds; negotiating fair terms or protecting a safe plan. Resolve with evidence, explanations and decisions rather than weapons/violence. No guaranteed plot chosen here.
+- **Prerequisites / promotion:** choose a reviewed later chapter conflict and learning/evidence task, check fit with shared saga, then promote to MASTER before implementation/generation. No opening spoilers or extra introductory monologue.
+
 ## F01 — Lithium and later material discoveries
 
 - **Date / origin:** 2026-10-05, Ivan.

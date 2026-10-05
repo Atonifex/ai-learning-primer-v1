@@ -1,0 +1,344 @@
+{
+  "version": 5,
+  "model": "kling-video-v3_0",
+  "resolution": "1080p",
+  "startingCredits": 6096,
+  "maxRetriesPerShot": 2,
+  "maxMp4Bytes": 80000000,
+  "crewCount": 7,
+  "scenes": [
+    {
+      "id": "g01",
+      "duration": 8,
+      "ref": "briefing-anchor",
+      "line": "Welcome to planet Maya, Captain. I'm Sergeant Wilhelm of Merchant Corp.",
+      "speaker": "Wilhelm",
+      "action": "Locked physical medium shot. Hands on desk. Warm professional greeting.",
+      "role": "briefing",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "g02",
+      "duration": 9,
+      "ref": "briefing-anchor",
+      "line": "I know you're coming to our planet for the first time, and your skills will come in handy.",
+      "speaker": "Wilhelm",
+      "action": "Continue same camera, attentive composed face. No reset or new gesture.",
+      "role": "briefing",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "g03",
+      "duration": 12,
+      "ref": "briefing-anchor",
+      "line": "Here at Merchant Corp, we gather resources like lumber, oil, and other rare resources, then sell them to people on other planets.",
+      "speaker": "Wilhelm",
+      "action": "Same physical speaker, modest explanatory gesture, remains seated.",
+      "role": "briefing",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "g04",
+      "duration": 8,
+      "ref": "briefing-anchor",
+      "line": "However, it's getting harder to find these resources. That's why we need you to help us.",
+      "speaker": "Wilhelm",
+      "action": "Focused serious eye contact. End with glance toward wall map.",
+      "role": "briefing",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "g05",
+      "duration": 5,
+      "ref": "wall-map",
+      "line": "We've just found Fortuna. No team has explored it.",
+      "speaker": "Wilhelm",
+      "action": "Wilhelm points to the wall map. Camera pushes toward crescent coast. Hand leaves frame before map fills picture.",
+      "role": "briefing",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "g06",
+      "duration": 12,
+      "ref": "fortuna-aerial",
+      "line": "It's far from our main base. It may have oil, gold, and useful wood. But storms and wild animals may make the trip dangerous.",
+      "speaker": "Wilhelm VO",
+      "action": "Clean aerial landscape. Slow approach to river beach plains forest and north ridge; distant storm north, small partly hidden animal movement. No hands, people, buildings or cockpit.",
+      "role": "briefing",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "g07",
+      "duration": 15,
+      "ref": "wall-map",
+      "line": "Explore Fortuna and report what you find. If the resources are there and the site is safe, we'll ask you to build a base and start collecting them.",
+      "speaker": "Wilhelm",
+      "action": "Physical Wilhelm beside map looks back toward captain, authoritative but fair. Same room geometry.",
+      "role": "briefing",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "g08",
+      "duration": 15,
+      "ref": "briefing-anchor",
+      "line": "You'll lead your own crew, build your own base, and get ten percent of the profit. That's the money left after costs. Will you take the mission?",
+      "speaker": "Wilhelm",
+      "action": "Same officer desk medium shot. Inviting firm offer. Finish closed mouth, hands on desk waiting anchor. NO acceptance gesture.",
+      "role": "briefing",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "n15",
+      "duration": 7,
+      "ref": "briefing-anchor",
+      "line": "You want more? All right. Fifteen percent. Do we have a deal?",
+      "speaker": "Wilhelm",
+      "action": "Small thoughtful concession, controlled slight disappointment. Ends at closed mouth hands resting anchor.",
+      "role": "offer15",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "n20",
+      "duration": 7,
+      "ref": "briefing-anchor",
+      "line": "Again? Twenty percent. That's my final offer.",
+      "speaker": "Wilhelm",
+      "action": "Dry exasperation, precise pen click then firm final offer. No clown acting. Ends at identical resting anchor.",
+      "role": "offer20",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "wait",
+      "duration": 3,
+      "ref": "briefing-anchor",
+      "line": "",
+      "speaker": null,
+      "action": "Locked silent breathing loop, same closed mouth and hands resting at both endpoints. No music or speech.",
+      "role": "loop",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "c01",
+      "duration": 6,
+      "ref": "briefing-anchor",
+      "line": "We have a deal. Meet Rho, your first mate.",
+      "speaker": "Wilhelm",
+      "action": "One short captain gloved RIGHT thumbs-up only AFTER deal accepted, then lowers. Wilhelm gestures to doorway, Rho approaches.",
+      "role": "continuation",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "c02",
+      "duration": 12,
+      "ref": "rho-handshake",
+      "line": "I'm Rho, your first mate. I'll help you learn about Maya and Fortuna, and guide you along the way.",
+      "speaker": "Rho",
+      "action": "Brief professional handshake, immediate release. Upright normal colleague distance, purposeful warmth, no coy tilt/romance.",
+      "role": "continuation",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "c03",
+      "duration": 4,
+      "ref": "rho-handshake",
+      "line": "",
+      "speaker": null,
+      "action": "Rho turns toward door to lead toward hangar. Follow purposefully, Rho left, no romantic gaze or hand-holding.",
+      "role": "continuation",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "c04",
+      "duration": 4,
+      "ref": "cockpit-ready",
+      "line": "Crew ready. The path is clear.",
+      "speaker": "Rho",
+      "action": "First-person captain hands on wheel, Rho harnessed left. Blue escape handle left. Runway forward, no lift yet.",
+      "role": "continuation",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "c05",
+      "duration": 8,
+      "ref": "aircraft-runway",
+      "line": "",
+      "speaker": null,
+      "action": "Exterior same fixed-wing twin-prop teal cream brass aircraft accelerates left to right on runway on wheels, rotates and lifts smoothly. No hover. Natural engines wind wheels; no music.",
+      "role": "continuation",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "c06",
+      "duration": 6,
+      "ref": "aircraft-flight",
+      "line": "",
+      "speaker": null,
+      "action": "Clean exterior plane smoothly flying toward Fortuna same southern river mouth beach plains north mountain ridge; distant dark storm gathers north. No hands/cockpit/people. Natural propeller sound.",
+      "role": "continuation",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "c07",
+      "duration": 7,
+      "ref": "cockpit-storm",
+      "line": "That storm is moving fast. Turn back!",
+      "speaker": "Rho",
+      "action": "Rain approaches. Rho concerned brows tense no smile. Captain turns wheel toward clear sea, visible horizon banks modestly. Natural wind propeller.",
+      "role": "continuation",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "c08",
+      "duration": 6,
+      "ref": "aircraft-storm",
+      "line": "",
+      "speaker": null,
+      "action": "Exterior retreat toward clear sea interrupted by one lightning strike near right engine. Local small engine flame, propeller falters, nose drops steeply; maintain enough altitude for escape. No explosion or strobe.",
+      "role": "continuation",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "c09",
+      "duration": 7,
+      "ref": "cockpit-storm",
+      "line": "The engine's on fire! We're losing power!",
+      "speaker": "Rho",
+      "action": "Cockpit only: engine fire visible outside window, gauges dim, nose falls. Rho harnessed visibly concerned no smile, hands captain wheel only. Natural alarm wind engine sputter.",
+      "role": "continuation",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "c10",
+      "duration": 7,
+      "ref": "cockpit-storm",
+      "line": "Crew, get ready! Captain, pull the blue handle!",
+      "speaker": "Rho",
+      "action": "Rho urgently points to blue handle on LEFT wall. Captain LEFT glove pulls it once. No magic, no extra hands. Aircraft power failing, independent fictional escape seats activate.",
+      "role": "continuation",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "c11",
+      "duration": 7,
+      "ref": "escape-chutes",
+      "line": "",
+      "speaker": null,
+      "action": "Exterior exactly seven occupied fictional escape seats move clear of wings then their seven chutes fully open high above sea/coast. Aircraft burns only at right engine and descends separately below chutes. All seven safely clear; no bodies at impact.",
+      "role": "continuation",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "c12",
+      "duration": 7,
+      "ref": "aircraft-wreck",
+      "line": "",
+      "speaker": null,
+      "action": "Exterior EMPTY same plane drops and skids into shallow water by south beach, wing damaged, no explosive fireball. Seven open crew chutes remain far above and separate in background. Wind scatters them toward forest clearings. Fade toward quiet surf/night.",
+      "role": "continuation",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "c13",
+      "duration": 7,
+      "ref": "rho-dawn",
+      "line": "Captain. Are you all right?",
+      "speaker": "Rho",
+      "action": "Dawn first-person view rises on beach, Rho at normal helping distance checks responsiveness seriously then slight relief after camera nod. No thumbs-up or romance. Same wreck behind.",
+      "role": "continuation",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "c14",
+      "duration": 14,
+      "ref": "rho-dawn",
+      "line": "The crew is scattered. We can't reach the base. You're still the captain. Find the crew. Build a camp. We'll rebuild the ship. I'll help you learn to lead.",
+      "speaker": "Rho",
+      "action": "Rho looks from tree line to dry clearing to wreck, clear purposeful professional guidance. No buildings, camps or empire already built.",
+      "role": "continuation",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "c15",
+      "duration": 9,
+      "ref": "rho-dawn",
+      "line": "One day, you could lead a space empire. First, let's get your crew home.",
+      "speaker": "Rho",
+      "action": "Rho offers a route slate at professional distance, calm resolved expression. Captain remains viewpoint only.",
+      "role": "continuation",
+      "retries": 0,
+      "status": "planned"
+    },
+    {
+      "id": "c16",
+      "duration": 7,
+      "ref": "rho-dawn",
+      "line": "Start with the wreck. What food and tools can we save?",
+      "speaker": "Rho",
+      "action": "Rho steps aside pointing toward safe supply crate beside recognizable repairable wreck. Small harmless beach crab scuttles away, optional brief gentle comic beat after safety.",
+      "role": "continuation",
+      "retries": 0,
+      "status": "planned"
+    }
+  ],
+  "edits": {
+    "briefing": [
+      "g01",
+      "g02",
+      "g03",
+      "g04",
+      "g05",
+      "g06",
+      "g07",
+      "g08"
+    ],
+    "offer15": [
+      "n15"
+    ],
+    "offer20": [
+      "n20"
+    ],
+    "continuation": [
+      "c01",
+      "c02",
+      "c03",
+      "c04",
+      "c05",
+      "c06",
+      "c07",
+      "c08",
+      "c09",
+      "c10",
+      "c11",
+      "c12",
+      "c13",
+      "c14",
+      "c15",
+      "c16"
+    ]
+  }
+}

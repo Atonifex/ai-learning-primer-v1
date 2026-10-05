@@ -6,7 +6,7 @@ import { isHiddenTurn } from "../../lib/play/hiddenTurns";
 import type { Message } from "../session/MessageList";
 import type { LearningClipOffer } from "../../lib/play/learningClip";
 import type { GeneratedActivity, SessionStoryUi } from "../../lib/types";
-import type { AiDebugEntry } from "./AiDebugPanel";
+import type { AiDebugTurn } from "./AiDebugPanel";
 
 export type MissionOpenEvent = {
   missionId: string;
@@ -22,7 +22,7 @@ export type CrewLogSavedEvent = {
   alreadyCompleted: boolean;
 };
 
-const DEBUG_RING = 24;
+const DEBUG_RING = 8;
 
 export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => void) {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -45,7 +45,7 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
   const [pendingCrewLogSaved, setPendingCrewLogSaved] = useState<CrewLogSavedEvent | null>(
     null
   );
-  const [aiDebugEntries, setAiDebugEntries] = useState<AiDebugEntry[]>([]);
+  const [aiDebugTurns, setAiDebugTurns] = useState<AiDebugTurn[]>([]);
   const [aiThinkingPhase, setAiThinkingPhase] = useState<string | null>(null);
   const [streamError, setStreamError] = useState<string | null>(null);
   const streamingIdRef = useRef(`streaming-${Date.now()}`);
@@ -87,12 +87,28 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
       .catch(() => setLoaded(true));
   }, [sessionId]);
 
-  const pushDebug = useCallback(
-    (entry: Omit<AiDebugEntry, "id">) => {
+  const pushDebugTurn = useCallback(
+    (blocks: AiDebugTurn["blocks"]) => {
       if (!clientDebug) return;
-      setAiDebugEntries((prev) =>
-        [...prev, { ...entry, id: `dbg-${Date.now()}-${prev.length}` }].slice(-DEBUG_RING)
+      setAiDebugTurns((prev) =>
+        [...prev, { id: `dbg-${Date.now()}-${prev.length}`, blocks, tools: [] }].slice(-DEBUG_RING)
       );
+    },
+    [clientDebug]
+  );
+
+  const pushDebugTool = useCallback(
+    (tool: AiDebugTurn["tools"][number]) => {
+      if (!clientDebug) return;
+      setAiDebugTurns((prev) => {
+        if (!prev.length) {
+          return [{ id: `dbg-${Date.now()}`, blocks: [], tools: [tool] }];
+        }
+        const next = [...prev];
+        const last = next[next.length - 1];
+        next[next.length - 1] = { ...last, tools: [...last.tools, tool] };
+        return next;
+      });
     },
     [clientDebug]
   );
@@ -174,7 +190,10 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
                 alreadyCompleted?: boolean;
                 name?: string;
                 ok?: boolean;
+                args?: string;
+                result?: string;
                 detail?: string;
+                blocks?: { label?: string; text?: string }[];
                 phase?: string;
                 nodeId?: string;
                 reason?: string;
@@ -250,11 +269,21 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
                   handoffSummary: data.handoffSummary ?? null,
                   alreadyCompleted: Boolean(data.alreadyCompleted),
                 });
+              } else if (data.type === "debug_context" && Array.isArray(data.blocks)) {
+                pushDebugTurn(
+                  data.blocks.filter(
+                    (block): block is { label: string; text: string } =>
+                      Boolean(block) &&
+                      typeof block.label === "string" &&
+                      typeof block.text === "string"
+                  )
+                );
               } else if (data.type === "debug_tool" && data.name) {
-                pushDebug({
+                pushDebugTool({
                   name: data.name,
                   ok: Boolean(data.ok),
-                  detail: data.detail,
+                  args: typeof data.args === "string" ? data.args : "",
+                  result: typeof data.result === "string" ? data.result : data.detail ?? "",
                 });
               } else if (data.type === "error") {
                 const msg = data.message || "An error occurred";
@@ -291,7 +320,7 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
         if (gotText) endCbRef.current?.();
       }
     },
-    [clientDebug, pushDebug, sessionId]
+    [clientDebug, pushDebugTurn, pushDebugTool, sessionId]
   );
 
   return {
@@ -315,7 +344,7 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
     clearPendingLearningClip: () => setPendingLearningClip(null),
     pendingCrewLogSaved,
     clearPendingCrewLogSaved: () => setPendingCrewLogSaved(null),
-    aiDebugEntries,
+    aiDebugTurns,
     aiThinkingPhase,
     streamError,
     sendMessage,

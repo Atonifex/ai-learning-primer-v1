@@ -5,6 +5,8 @@
 
 import type { PinId } from "./beachMap";
 import type { Grade3SubjectSlug } from "../constants/subjects";
+import { formatCampForPrompt, type CampPublic } from "./camp";
+import { hasSavedMathPlacement } from "./mathPlacement";
 
 export type MissionId =
   | "wreck-math"
@@ -113,7 +115,12 @@ export function missionBySlug(slug: string): MissionDef | null {
 
 export function resolveMissionStatus(
   mission: MissionDef,
-  gates: { wreckQuizDone: boolean; chapter1ReflectionDone?: boolean; completedSlugs: Set<string> }
+  gates: {
+    wreckQuizDone: boolean;
+    chapter1ReflectionDone?: boolean;
+    completedSlugs: Set<string>;
+    placementReady?: boolean;
+  }
 ): { status: MissionStatus; lockReason: string | null } {
   if (gates.completedSlugs.has(mission.activitySlug)) {
     return { status: "completed", lockReason: null };
@@ -124,6 +131,13 @@ export function resolveMissionStatus(
       lockReason: "Salvage the wreck first, Captain. The rest can wait.",
     };
   }
+  const placementReady = gates.placementReady ?? hasSavedMathPlacement();
+  if (!placementReady && mission.id !== "wreck-math") {
+    return {
+      status: "locked",
+      lockReason: "Other camp needs wait until we have a math starting point.",
+    };
+  }
   return { status: "available", lockReason: null };
 }
 
@@ -131,6 +145,7 @@ export function decorateMissions(gates: {
   wreckQuizDone: boolean;
   chapter1ReflectionDone?: boolean;
   completedSlugs: Set<string>;
+  placementReady?: boolean;
 }): MissionPublic[] {
   return TUTORIAL_MISSIONS.map((mission) => {
     const { status, lockReason } = resolveMissionStatus(mission, gates);
@@ -154,7 +169,7 @@ export function stubRationsFromMissions(missions: MissionPublic[]): number {
   );
 }
 
-export function formatMissionsForPrompt(missions: MissionPublic[]): string {
+export function formatMissionsForPrompt(missions: MissionPublic[], camp?: CampPublic): string {
   const lines = missions.map((m) => {
     const reward = `${m.rewards.xp} XP, ${m.rewards.rations} ration, pin: ${m.rewards.mapPin}`;
     return `- ${m.id} [${m.status}] ${m.title} (${m.subjectSlug}, ${m.theme}, ~${m.estimatedMinutes} min, ${reward})${m.lockReason ? ` — locked: ${m.lockReason}` : ""}`;
@@ -164,8 +179,11 @@ export function formatMissionsForPrompt(missions: MissionPublic[]): string {
     ? `Next open job: ${next.id} at the ${next.pinId} (${next.subjectSlug}). If they ask to see jobs/tasks/the board, call show_mission_board. If they agree to start a job, call open_mission yourself — never ask them to type a tool name or keyword.`
     : "No open jobs — praise completed work and invite a recap.";
   return [
-    `MISSION BOARD (guide the captain; never take the quiz yourself). Call show_mission_board to open the on-screen Jobs overlay — do not only narrate a wooden board:`,
+    `CAMP NEEDS (guide the captain; never take the quiz yourself). Call show_mission_board to open the on-screen Camp needs overlay — do not only narrate a wooden board:`,
     ...lines,
     nextLine,
-  ].join("\n");
+    camp ? formatCampForPrompt(camp) : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
 }

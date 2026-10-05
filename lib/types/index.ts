@@ -120,6 +120,9 @@ export interface StorySpineContext {
   arcFocusTags: string[];
   chapterTitle: string;
   chapterFocusTags: string[];
+  /** 0 is Chapter 1. Missing means the spine did not load a chapter row. */
+  chapterOrderIndex?: number;
+  chapterStatus?: string;
   actCurrent: number;
   actTotal: number;
   pathAheadWhisper: string | null;
@@ -203,9 +206,15 @@ export type StreamChunk =
       alreadyCompleted: boolean;
     }
   | {
+      type: "debug_context";
+      blocks: { label: string; text: string }[];
+    }
+  | {
       type: "debug_tool";
       name: string;
       ok: boolean;
+      args?: string;
+      result?: string;
       detail?: string;
     }
   | { type: "done"; messageId: string };

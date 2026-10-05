@@ -111,7 +111,7 @@ export async function POST(
             send(chunk);
           } else if (chunk.type === "crew_log_saved") {
             send(chunk);
-          } else if (chunk.type === "debug_tool") {
+          } else if (chunk.type === "debug_context" || chunk.type === "debug_tool") {
             send(chunk);
           } else if (chunk.type === "image_start") {
             send(chunk);

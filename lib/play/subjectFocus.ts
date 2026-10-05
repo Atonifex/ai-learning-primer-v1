@@ -3,7 +3,11 @@ import {
   SUBJECT_DISPLAY_NAMES,
   type PlayableCoreSubjectSlug,
 } from "../constants/subjects";
-import { isFirstRunComplete, parseFirstRunStep } from "./firstRun";
+import {
+  isFirstRunComplete,
+  parseFirstRunStep,
+} from "./firstRun";
+import { hasSavedMathPlacement } from "./mathPlacement";
 
 export type SubjectChoice = {
   slug: PlayableCoreSubjectSlug;
@@ -106,8 +110,10 @@ export function shouldOpenSubjectFocus(input: {
   boardQuery: boolean;
   missionQuery: boolean;
   clipQuery?: boolean;
+  placementReady?: boolean;
 }): boolean {
   if (!isFirstRunComplete(parseFirstRunStep(input.firstRunStep))) return false;
+  if (!(input.placementReady ?? hasSavedMathPlacement())) return false;
   if (input.dialogueQuery || input.boardQuery || input.missionQuery || input.clipQuery) {
     return false;
   }

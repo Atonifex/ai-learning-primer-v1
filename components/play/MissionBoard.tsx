@@ -16,9 +16,11 @@ function statusCopy(status: MissionPublic["status"]): string {
 export default function MissionBoard(props: {
   missions: MissionPublic[];
   chapterTitle: string | null;
+  boardTitle?: string;
   onStart: (missionId: string) => void;
   onClose: () => void;
   startingId: string | null;
+  loading?: boolean;
 }) {
   return (
     <div className="absolute inset-0 z-50 flex items-end justify-center bg-black/50 p-3 sm:items-center">
@@ -26,10 +28,10 @@ export default function MissionBoard(props: {
         <div className="flex items-center justify-between bg-[#5c4033] px-4 py-2">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-200/90">
-              Mission board
+              {props.boardTitle ?? "Camp needs"}
             </p>
             <h2 className="text-lg font-semibold text-amber-50">
-              {props.chapterTitle || "Beach jobs"}
+              {props.chapterTitle || "What camp needs now"}
             </h2>
           </div>
           <button
@@ -41,6 +43,17 @@ export default function MissionBoard(props: {
           </button>
         </div>
         <div className="max-h-[70vh] space-y-2 overflow-y-auto bg-[#f3e6c8] px-4 py-3">
+          {props.loading && props.missions.length === 0 && (
+            <p className="rounded-xl bg-[#fff8ea] p-3 text-sm text-stone-700">
+              Checking what camp needs…
+            </p>
+          )}
+          {!props.loading && props.missions.length === 0 && (
+            <p className="rounded-xl bg-[#fff8ea] p-3 text-sm text-stone-700">
+              Salvage at the wreck is done. Next camp need is a short math check for a starting
+              point — not a buffet of other subjects.
+            </p>
+          )}
           {props.missions.map((m) => (
             <article
               key={m.id}

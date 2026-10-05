@@ -23,7 +23,7 @@ export async function getWorldSnapshot(learnerProfileId: string) {
       completions: { where: { learnerProfileId, completedAt: { not: null } }, select: { id: true }, take: 1 } },
   });
   return buildWorldSnapshot({ worldId: world.id, missions: board.missions,
-    chapters: world.storyArcs[0]?.chapters ?? [], notes,
+    chapters: world.storyArcs[0]?.chapters ?? [], notes, camp: board.camp,
     products: [],
     tasks: activities.map((a) => {
       const content = a.content as { mapLocationId?: unknown } | null;

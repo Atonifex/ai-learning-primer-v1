@@ -1,6 +1,6 @@
 # Opening V04: Farreach
 
-2026-10-05. Final editorial draft after three critique/rewrite rounds. Covers the revised briefing, branching deal, departure, crash, and first island objective. **Script and production design only: no new images, video jobs, credit charges or runtime changes.** V03 remains the playable/library version until replacement footage is reviewed.
+2026-10-05. Historical editorial draft after three critique/rewrite rounds, now superseded by `docs/OPENING_SCREENPLAY_V05.md`: confirmed Maya/Fortuna, male military Sergeant Wilhelm with a mustache, Rho guide introduction, reordered introduction/resource shortage, wall-map aerial transition, lightning/fire/power-loss crash, shorter runtime and occasional humor. V04 retains the earlier full design/review history. **Script and production design only: no new images, video jobs, credit charges or runtime changes.** V03 remains the playable/library version until replacement footage is reviewed.
 
 Read `PROJECT_MEMORY.md`, `docs/CINEMATIC_STYLE_GUIDE.md` and this document before production. Update project memory concisely after meaningful discoveries. Keep originals and exact generation/edit records; never save credentials.
 

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "g01",
+    "accepted": true,
+    "retries": 0,
+    "visual": "2fps timeline across full clip: single physical officer, no monitors/cuts/raised captain hands; consistent mustache and set.",
+    "speech": "Whisper recovers exact intended words; not a listening/phonetic certification.",
+    "seam": "g02 starts from g01 final frame."
+  },
+  {
+    "id": "g02",
+    "accepted": true,
+    "retries": 0,
+    "visual": "2fps full timeline: stable Wilhelm and room, modest facial acting, no screen cut/early acceptance.",
+    "speech": "Exact intended words recovered.",
+    "seam": "Same composition and g01 endpoint input; g03 uses g02 endpoint."
+  },
+  {
+    "id": "g03",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Entire 2fps timeline stable physical Wilhelm/set; natural open-palm explanatory gesture, no captain thumb or screen cut.",
+    "speech": "Exact expected resource speech recovered by Whisper.",
+    "seam": "Starts from g02 tail, g04 uses g03 tail."
+  },
+  {
+    "id": "g04",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Physical Wilhelm and set preserved across full2fps timeline. Ends looking toward map, motivating next shot.",
+    "speech": "Exact expected shortage line recovered.",
+    "seam": "g03 tail input. Next cut follows his glance to wall map."
+  },
+  {
+    "id": "g05",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Physical Wilhelm points to matching wall map, camera pushes in, hand exits before clean aerial island resolves. Entire5s2fps timeline checked.",
+    "speech": "Exact intended Fortuna/no team speech recovered.",
+    "seam": "g04 gaze motivates standing map coverage. Aerial endpoint becomes next source frame."
+  }
+]

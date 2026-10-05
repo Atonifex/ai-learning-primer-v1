@@ -32,7 +32,7 @@ export const generateLearningActivityTool = {
   function: {
     name: "generate_learning_activity",
     description:
-      "Generate and save an AI mini-quiz tied to one standard in the active session subject. It appears as ready work at the chosen map location; the captain chooses when to open it. Tell them where it is, or use show_world_map when they ask to see it.",
+      "Generate and save an AI mini-quiz tied to one standard. Only after a math starting point is saved. Until then the tool is unavailable. Work appears at the chosen map location; the captain chooses when to open it.",
     parameters: {
       type: "object",
       properties: {
@@ -97,7 +97,7 @@ export const showMissionBoardTool = {
   function: {
     name: "show_mission_board",
     description:
-      "Open the on-screen Mission board (Jobs overlay) for the captain. Call when they ask to see the board, check jobs/tasks, or you invite them to pick the next job. Does not start a quiz — use open_mission after they choose.",
+      "Open the on-screen Camp needs overlay for the captain. Until a math starting point is saved this is not a four-subject jobs buffet. Call when they ask what camp needs, or you invite them to pick the next salvage task. Does not start a quiz — use open_mission after they choose.",
     parameters: {
       type: "object",
       properties: {},

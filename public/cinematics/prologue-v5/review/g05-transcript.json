@@ -1,0 +1,103 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 5.03000020980835,
+  "text": "We've just found Fortuna. No team has explored it.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0,
+      "end": 2.0999999046325684,
+      "text": " We've just found Fortuna.",
+      "tokens": [
+        50364,
+        492,
+        600,
+        445,
+        1352,
+        479,
+        1584,
+        64,
+        13,
+        50464
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.42907437682151794,
+      "compression_ratio": 0.8620689511299133,
+      "no_speech_prob": 0.016289910301566124
+    },
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 2.9200000762939453,
+      "end": 4.619999885559082,
+      "text": " No team has explored it.",
+      "tokens": [
+        50514,
+        883,
+        1469,
+        575,
+        24016,
+        309,
+        13,
+        50614
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.42907437682151794,
+      "compression_ratio": 0.8620689511299133,
+      "no_speech_prob": 0.016289910301566124
+    }
+  ],
+  "words": [
+    {
+      "word": "We've",
+      "start": 0,
+      "end": 0.5600000023841858
+    },
+    {
+      "word": "just",
+      "start": 0.5600000023841858,
+      "end": 0.8399999737739563
+    },
+    {
+      "word": "found",
+      "start": 0.8399999737739563,
+      "end": 1.0800000429153442
+    },
+    {
+      "word": "Fortuna",
+      "start": 1.0800000429153442,
+      "end": 2.0999999046325684
+    },
+    {
+      "word": "No",
+      "start": 2.9200000762939453,
+      "end": 3.140000104904175
+    },
+    {
+      "word": "team",
+      "start": 3.140000104904175,
+      "end": 3.5399999618530273
+    },
+    {
+      "word": "has",
+      "start": 3.5399999618530273,
+      "end": 3.880000114440918
+    },
+    {
+      "word": "explored",
+      "start": 3.880000114440918,
+      "end": 4.380000114440918
+    },
+    {
+      "word": "it",
+      "start": 4.380000114440918,
+      "end": 4.619999885559082
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 6
+  }
+}

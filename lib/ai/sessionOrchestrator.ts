@@ -47,9 +47,13 @@ import type {
 } from "../types";
 import { storySpineSubjectSlug } from "../constants/subjects";
 import { expandHiddenTurn, isHiddenTurn } from "../play/hiddenTurns";
+import { formatAuthoritativeState, salvageTalkIsClosed } from "../play/authoritativeState";
+import { formatMissionsForPrompt } from "../play/missions";
+import { buildTurnDebugPacket, clipDebugText } from "./turnDebugPacket";
 import { showWorldMapTool, saveMapNoteTool } from "./worldMapTools";
 import { getWorldSnapshot, saveMapNote } from "../services/worldMap";
 import { worldMapPrompt } from "../play/worldMap";
+import { canGenerateLearningActivity, MATH_PLACEMENT_REQUIRED } from "../play/mathPlacement";
 
 function extractCoherenceMap(
   spine: StorySpineContext | null | undefined,
@@ -146,7 +150,14 @@ export async function* streamSessionResponse(
 
   const priorMessages = toOpenAIMessages(sessionMessages);
   const captainName = profile.displayName?.trim() || "Captain";
-  const expandedUser = expandHiddenTurn(userMessage, captainName);
+  const salvageClosed = salvageTalkIsClosed({
+    chapterOrderIndex: opts.spine?.chapterOrderIndex ?? null,
+    wreckQuizDone: missionBoard.wreckQuizDone,
+  });
+  const expandedUser = expandHiddenTurn(userMessage, captainName, {
+    salvageClosed,
+    chapterTitle: opts.spine?.chapterTitle ?? null,
+  });
   const isHidden = isHiddenTurn(userMessage);
 
   const messages: ChatCompletionMessageParam[] = [
@@ -176,6 +187,19 @@ export async function* streamSessionResponse(
           "\n---"
       );
     }
+    const packet = buildTurnDebugPacket({
+      expandedUser,
+      previouslyOn: opts.previouslyOn ?? null,
+      chapterHandoff: opts.chapterHandoff ?? null,
+      authority: formatAuthoritativeState({
+        chapterTitle: opts.spine?.chapterTitle ?? null,
+        chapterOrderIndex: opts.spine?.chapterOrderIndex ?? null,
+        missions: missionBoard.missions,
+      }),
+      campNeeds: formatMissionsForPrompt(missionBoard.missions, missionBoard.camp),
+      memoryItems,
+    });
+    yield { type: "debug_context", blocks: packet.blocks };
   }
 
   let fullText = "";
@@ -189,7 +213,7 @@ export async function* streamSessionResponse(
       // Stills-pack loop (§11 Step 1): do not call generate_scene_image per turn.
       tools: [
         recordStandardObservationTool,
-        generateLearningActivityTool,
+        ...(canGenerateLearningActivity() ? [generateLearningActivityTool] : []),
         suggestNextMissionTool,
         showMissionBoardTool,
         openMissionTool,
@@ -401,6 +425,13 @@ export async function* streamSessionResponse(
             });
           }
         } else if (call.name === "generate_learning_activity") {
+          if (!canGenerateLearningActivity()) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({ success: false, error: MATH_PLACEMENT_REQUIRED }),
+            });
+            continue;
+          }
           const sessionId = opts?.sessionId;
           const standardCode =
             typeof args.standard_code === "string" ? args.standard_code.trim() : "";
@@ -497,7 +528,7 @@ export async function* streamSessionResponse(
                 success: true,
                 opened: true,
                 tellCaptain:
-                  "The Jobs board is on screen. Briefly name the open jobs; wait for them to pick before open_mission.",
+                  "Camp needs is on screen. Briefly name the salvage task; wait for them to pick before open_mission.",
                 missions: board.missions.map((m) => ({
                   id: m.id,
                   status: m.status,
@@ -543,7 +574,7 @@ export async function* streamSessionResponse(
                   error: mission.lockReason || "That job is still locked.",
                   nextAction: "show_mission_board",
                   tellCaptain:
-                    "Explain the lock briefly in-world. Do not invent a crew-log gate. Open the Jobs board if helpful.",
+                    "Explain the lock briefly in-world. Do not invent a crew-log gate. Open Camp needs if helpful.",
                 }),
               });
               continue;
@@ -589,7 +620,7 @@ export async function* streamSessionResponse(
                   success: true,
                   alreadyCompleted: true,
                   tellCaptain:
-                    "The crew log is already saved. If they want camp-math, call open_mission with camp-math.",
+                    "The crew log is already saved. Do not send them to find Bosun Mara or open extra jobs until a math starting point is saved.",
                 }),
               });
             } else {
@@ -655,8 +686,8 @@ export async function* streamSessionResponse(
                   note: saved.text,
                   handoffSummary: saved.handoffSummary,
                   tellCaptain: saved.alreadyCompleted
-                    ? "Crew log was already on file. Camp-math should be open — call open_mission if they want it."
-                    : "Crew log saved. Thank them briefly. Camp-math is unlocked — call open_mission with camp-math if they want to start it now.",
+                    ? "Crew log was already on file. Extra jobs wait until a math starting point is saved."
+                    : "Crew log saved. Thank them briefly. Extra jobs and crew recovery wait until a math starting point is saved.",
                 }),
               });
             } catch (err) {
@@ -782,6 +813,8 @@ export async function* streamSessionResponse(
             type: "debug_tool",
             name: call?.name ?? "unknown",
             ok: success,
+            args: clipDebugText(call?.args ?? ""),
+            result: clipDebugText(row.content),
             detail: error ?? (success ? "ok" : row.content.slice(0, 240)),
           };
         }

@@ -1,0 +1,41 @@
+{
+  "startingCredits": 6096,
+  "jobs": [
+    {
+      "id": "first",
+      "generationId": "AbkHYzWR3GpiAABTII7WcvdN8YlwEXoAW7z0w5DFqH4nk41dAVZa4ZMRNpHB2KpzyoGhEjIQ",
+      "credits": 96
+    },
+    {
+      "id": "g01",
+      "generationId": "AbkHYzWR3GpiAABTII7WcvdN8YlwEXoAW7z0w5DFqH4nk41dAVZa4ZMRNpHB2KpzyoGhEjIQ",
+      "credits": 96
+    },
+    {
+      "id": "g02",
+      "generationId": "AQSZcCJE7PiD4baDNNB6bEIdCVeSovfu6D3m4LWMI623SOfFxNcLcPs3S9NftogrBi2verDy",
+      "credits": 108
+    },
+    {
+      "id": "g03",
+      "generationId": "Aeb76JsxZQPKdjH6vtTQ1jlUyGhy8gKXJe8JW0giEwOc3gBmSVgHvlsqR_boklM-ZZC4N2m0",
+      "credits": 144
+    },
+    {
+      "id": "g04",
+      "generationId": "AchgkA8jlFzYJ8aL8MFis8S0CpFEs-QPjUhnoQNGTRZac0JCnPzVzGN8LhG0ShM_Rmz_IYaf",
+      "credits": 96
+    },
+    {
+      "id": "g05",
+      "generationId": "AdST-im6ATArTeXRjFLL5QepJfShkwFyH6CQoJ7Cl2UH53CJAw63f0piiTJXs6oO4is96Lxq",
+      "credits": 60
+    },
+    {
+      "id": "g06",
+      "generationId": "AVfLH1Bhvd2A8FEHtBZ1PVdWDVKw9boBt3GhMERH7W03PUErnbgkSpdWdNHWfJLkOLRlsOgt",
+      "credits": 144
+    }
+  ],
+  "total": 744
+}

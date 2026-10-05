@@ -35,12 +35,29 @@ export function isHiddenTurn(content: string): boolean {
   );
 }
 
-export function expandHiddenTurn(content: string, displayName: string): string {
+export type HiddenTurnContext = {
+  /** Chapter 1 is already closed, or the wreck quiz is saved. */
+  salvageClosed?: boolean;
+  chapterTitle?: string | null;
+};
+
+function continueChapter(captain: string, chapterTitle: string | null | undefined): string {
+  const chapter = chapterTitle?.trim() || "the active chapter";
+  return `[CONTINUE THE CHAPTER] ${captain} opened talk during ${chapter}. Do not restart the wreck and do not ask what to count. Do not invent a measurement, a search party, or a new activity. CAMP NEEDS is the only task list. A job is finished only when that list says completed. If they ask what is next, name the open row or call show_mission_board. Under 80 words.`;
+}
+
+export function expandHiddenTurn(
+  content: string,
+  displayName: string,
+  ctx?: HiddenTurnContext
+): string {
   const captain = displayName.trim() || "Captain";
   if (content === HIDDEN_TURN.start || content === HIDDEN_TURN.wreckApproach) {
+    if (ctx?.salvageClosed) return continueChapter(captain, ctx.chapterTitle);
     return `[TUTORIAL BEAT U4] ${captain} just walked up to the wreck pile. You are Rho, the humanoid AI First Mate — never the hero. Greet ${captain} by name. Invite them to speak (the mic) or type a little. Ask one short question about the salvage. Do not generate a quiz or a scene image. Under 80 words.`;
   }
   if (content === HIDDEN_TURN.rhoCall) {
+    if (ctx?.salvageClosed) return continueChapter(captain, ctx.chapterTitle);
     return `[RHO CALL] ${captain} radioed you. Answer as Rho, First Mate. Brief. If salvage is unfinished, point them back to the wreck. If salvage is done, name the next open mission pin (dune / treeline / creek / camp) or call suggest_next_mission. Never take the test or the hero role.`;
   }
   if (content === HIDDEN_TURN.rhoWander) {

@@ -1,6 +1,9 @@
 import { prisma } from "../db/prisma";
 import { filterTonightSliceCodes } from "../curriculum/tonightSlice";
 import { recordStandardObservation } from "../services/standardsProgress";
+import { applyCampGrantToLearner } from "../services/camp";
+import { TUTORIAL_QUIZ_SLUG } from "./tutorialQuizSlug";
+import { WRECK_SALVAGE_GRANT } from "./camp";
 import { stampActivityClock } from "../services/timeTracking";
 import type { GeneratedActivity } from "../types";
 import { hintsFromContent, parseMcItems } from "./quizItems";
@@ -221,6 +224,10 @@ export async function submitBankOverlayQuiz(params: {
       notes: `Overlay quiz ${activity.slug} completed`,
     });
     lastMastery = observation.mastery;
+  }
+
+  if (params.slug === TUTORIAL_QUIZ_SLUG) {
+    await applyCampGrantToLearner(params.learnerProfileId, WRECK_SALVAGE_GRANT);
   }
 
   return {

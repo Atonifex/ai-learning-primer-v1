@@ -1,0 +1,40 @@
+// Read PROJECT_MEMORY.md before production; update costs, review and continuity discoveries.
+const fs = require('node:fs');
+const path = require('node:path');
+const root=path.resolve(__dirname,'../..');
+const out=path.join(root,'public/cinematics/prologue-v5');
+const scenes=[];
+function add(id,duration,ref,line,speaker,action,role='briefing'){
+ scenes.push({id,duration,ref,line,speaker,action,role,retries:0,status:'planned'});
+}
+add('g01',8,'briefing-anchor',"Welcome to planet Maya, Captain. I'm Sergeant Wilhelm of Merchant Corp.",'Wilhelm','Locked physical medium shot. Hands on desk. Warm professional greeting.');
+add('g02',9,'briefing-anchor',"I know you're coming to our planet for the first time, and your skills will come in handy.",'Wilhelm','Continue same camera, attentive composed face. No reset or new gesture.');
+add('g03',12,'briefing-anchor',"Here at Merchant Corp, we gather resources like lumber, oil, and other rare resources, then sell them to people on other planets.",'Wilhelm','Same physical speaker, modest explanatory gesture, remains seated.');
+add('g04',8,'briefing-anchor',"However, it's getting harder to find these resources. That's why we need you to help us.",'Wilhelm','Focused serious eye contact. End with glance toward wall map.');
+add('g05',5,'wall-map',"We've just found Fortuna. No team has explored it.",'Wilhelm','Wilhelm points to the wall map. Camera pushes toward crescent coast. Hand leaves frame before map fills picture.');
+add('g06',12,'fortuna-aerial',"It's far from our main base. It may have oil, gold, and useful wood. But storms and wild animals may make the trip dangerous.",'Wilhelm VO','Clean aerial landscape. Slow approach to river beach plains forest and north ridge; distant storm north, small partly hidden animal movement. No hands, people, buildings or cockpit.');
+add('g07',15,'wall-map',"Explore Fortuna and report what you find. If the resources are there and the site is safe, we'll ask you to build a base and start collecting them.",'Wilhelm','Physical Wilhelm beside map looks back toward captain, authoritative but fair. Same room geometry.');
+add('g08',15,'briefing-anchor',"You'll lead your own crew, build your own base, and get ten percent of the profit. That's the money left after costs. Will you take the mission?",'Wilhelm','Same officer desk medium shot. Inviting firm offer. Finish closed mouth, hands on desk waiting anchor. NO acceptance gesture.');
+add('n15',7,'briefing-anchor',"You want more? All right. Fifteen percent. Do we have a deal?",'Wilhelm','Small thoughtful concession, controlled slight disappointment. Ends at closed mouth hands resting anchor.','offer15');
+add('n20',7,'briefing-anchor',"Again? Twenty percent. That's my final offer.",'Wilhelm','Dry exasperation, precise pen click then firm final offer. No clown acting. Ends at identical resting anchor.','offer20');
+add('wait',3,'briefing-anchor','',null,'Locked silent breathing loop, same closed mouth and hands resting at both endpoints. No music or speech.','loop');
+add('c01',6,'briefing-anchor',"We have a deal. Meet Rho, your first mate.",'Wilhelm','One short captain gloved RIGHT thumbs-up only AFTER deal accepted, then lowers. Wilhelm gestures to doorway, Rho approaches.','continuation');
+add('c02',12,'rho-handshake',"I'm Rho, your first mate. I'll help you learn about Maya and Fortuna, and guide you along the way.",'Rho','Brief professional handshake, immediate release. Upright normal colleague distance, purposeful warmth, no coy tilt/romance.','continuation');
+add('c03',4,'rho-handshake','',null,'Rho turns toward door to lead toward hangar. Follow purposefully, Rho left, no romantic gaze or hand-holding.','continuation');
+add('c04',4,'cockpit-ready',"Crew ready. The path is clear.",'Rho','First-person captain hands on wheel, Rho harnessed left. Blue escape handle left. Runway forward, no lift yet.','continuation');
+add('c05',8,'aircraft-runway','',null,'Exterior same fixed-wing twin-prop teal cream brass aircraft accelerates left to right on runway on wheels, rotates and lifts smoothly. No hover. Natural engines wind wheels; no music.','continuation');
+add('c06',6,'aircraft-flight','',null,'Clean exterior plane smoothly flying toward Fortuna same southern river mouth beach plains north mountain ridge; distant dark storm gathers north. No hands/cockpit/people. Natural propeller sound.','continuation');
+add('c07',7,'cockpit-storm',"That storm is moving fast. Turn back!",'Rho','Rain approaches. Rho concerned brows tense no smile. Captain turns wheel toward clear sea, visible horizon banks modestly. Natural wind propeller.','continuation');
+add('c08',6,'aircraft-storm','',null,'Exterior retreat toward clear sea interrupted by one lightning strike near right engine. Local small engine flame, propeller falters, nose drops steeply; maintain enough altitude for escape. No explosion or strobe.','continuation');
+add('c09',7,'cockpit-storm',"The engine's on fire! We're losing power!",'Rho','Cockpit only: engine fire visible outside window, gauges dim, nose falls. Rho harnessed visibly concerned no smile, hands captain wheel only. Natural alarm wind engine sputter.','continuation');
+add('c10',7,'cockpit-storm',"Crew, get ready! Captain, pull the blue handle!",'Rho','Rho urgently points to blue handle on LEFT wall. Captain LEFT glove pulls it once. No magic, no extra hands. Aircraft power failing, independent fictional escape seats activate.','continuation');
+add('c11',7,'escape-chutes','',null,'Exterior exactly seven occupied fictional escape seats move clear of wings then their seven chutes fully open high above sea/coast. Aircraft burns only at right engine and descends separately below chutes. All seven safely clear; no bodies at impact.','continuation');
+add('c12',7,'aircraft-wreck','',null,'Exterior EMPTY same plane drops and skids into shallow water by south beach, wing damaged, no explosive fireball. Seven open crew chutes remain far above and separate in background. Wind scatters them toward forest clearings. Fade toward quiet surf/night.','continuation');
+add('c13',7,'rho-dawn',"Captain. Are you all right?",'Rho','Dawn first-person view rises on beach, Rho at normal helping distance checks responsiveness seriously then slight relief after camera nod. No thumbs-up or romance. Same wreck behind.','continuation');
+add('c14',14,'rho-dawn',"The crew is scattered. We can't reach the base. You're still the captain. Find the crew. Build a camp. We'll rebuild the ship. I'll help you learn to lead.",'Rho','Rho looks from tree line to dry clearing to wreck, clear purposeful professional guidance. No buildings, camps or empire already built.','continuation');
+add('c15',9,'rho-dawn',"One day, you could lead a space empire. First, let's get your crew home.",'Rho','Rho offers a route slate at professional distance, calm resolved expression. Captain remains viewpoint only.','continuation');
+add('c16',7,'rho-dawn',"Start with the wreck. What food and tools can we save?",'Rho','Rho steps aside pointing toward safe supply crate beside recognizable repairable wreck. Small harmless beach crab scuttles away, optional brief gentle comic beat after safety.','continuation');
+fs.mkdirSync(out,{recursive:true});
+const manifest={version:5,model:'kling-video-v3_0',resolution:'1080p',startingCredits:6096,maxRetriesPerShot:2,maxMp4Bytes:80000000,crewCount:7,scenes,edits:{briefing:scenes.filter(s=>s.role==='briefing').map(s=>s.id),offer15:['n15'],offer20:['n20'],continuation:scenes.filter(s=>s.role==='continuation').map(s=>s.id)}};
+if(!fs.existsSync(path.join(out,'shots.json'))) fs.writeFileSync(path.join(out,'shots.json'),JSON.stringify(manifest,null,2));
+console.log(JSON.stringify({shots:scenes.length,mainSeconds:scenes.filter(s=>['briefing','continuation'].includes(s.role)).reduce((n,s)=>n+s.duration,0),maxPlannedCredits:scenes.reduce((n,s)=>n+s.duration*12,0)}));

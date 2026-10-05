@@ -96,6 +96,8 @@ export async function recordStandardObservation(params: {
   difficulty?: number;
   rubricMatches?: string[];
   notes?: string;
+  /** Look up the code in this catalog instead of the sitting's subject. */
+  catalogSubjectSlug?: string;
 }): Promise<{ standardCode: string; mastery: number }> {
   const {
     sessionId,
@@ -109,6 +111,7 @@ export async function recordStandardObservation(params: {
     difficulty,
     rubricMatches,
     notes,
+    catalogSubjectSlug,
   } = params;
 
   const session = await prisma.session.findUnique({
@@ -117,10 +120,20 @@ export async function recordStandardObservation(params: {
   });
   if (!session) throw new Error("Session not found");
 
+  let subjectId = session.subjectId;
+  if (catalogSubjectSlug) {
+    const subject = await prisma.subject.findUnique({
+      where: { slug: catalogSubjectSlug },
+      select: { id: true },
+    });
+    if (!subject) throw new Error(`Unknown subject: ${catalogSubjectSlug}`);
+    subjectId = subject.id;
+  }
+
   const standard = await prisma.standard.findFirst({
     where: {
       code: standardCode,
-      catalog: { subjectId: session.subjectId },
+      catalog: { subjectId },
     },
     select: { id: true, code: true },
   });

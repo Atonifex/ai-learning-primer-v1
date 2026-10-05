@@ -13,6 +13,7 @@ import {
 
 const FIRST_RUN_EVENTS = new Set<FirstRunEvent>([
   "video_done",
+  "purpose_done",
   "name_saved",
   "walked_to_wreck",
   "spoke_to_rho",
