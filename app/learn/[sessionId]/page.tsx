@@ -19,6 +19,7 @@ export default async function SessionPlayPage({ params, searchParams }: PageProp
 
   return (
     <PlayShell
+      key={sessionId}
       sessionId={sessionId}
       displayName={profile.displayName ?? "Captain"}
       subjectSlug={session.subjectSlug}

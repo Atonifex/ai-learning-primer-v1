@@ -57,7 +57,7 @@
 .chart-place:hover circle:first-of-type { fill: #fff4d855; }
 .chart-place:focus-visible circle { stroke: #b45b3e; }
 .atlas-detail { overflow-y: auto; padding: 20px 23px 30px; border-left: 1px solid #c2b997; }
-.landmark-sketch { height: 94px; position: relative; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; border-radius: 50%; background: radial-gradient(ellipse, #abc7a0 0%, #b6ccab55 45%, transparent 70%); }
+.landmark-sketch { height: 68px; position: relative; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; border-radius: 50%; background: radial-gradient(ellipse, #abc7a0 0%, #b6ccab55 45%, transparent 70%); }
 .landmark-sketch span { font: 80px/1 Georgia,serif; color: #35675a; text-shadow: 4px 6px #bea77a70; }
 .sketch-wreck span,.sketch-dune span { color: #a06f48; }
 .atlas-detail h3 { font: 29px/1.15 Georgia,serif; margin-bottom: 12px; }
@@ -94,7 +94,7 @@
   .atlas-header .map-button { padding: 7px 10px; font-size: 11px; }
   .atlas-objective { padding: 10px 15px; flex-wrap: wrap; gap: 8px; font-size: 12px; }
   .atlas-objective p { flex-basis: 85%; }
-  .atlas-body { display: grid; grid-template-columns: 38% 62%; overflow-y: auto; align-content: start; }
+  .atlas-body { display: grid; grid-template-columns: 1fr; overflow-y: auto; align-content: start; }
   .atlas-places { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 5px; padding: 8px; overflow: visible; border: 0; }
   .atlas-filters { width: 100%; margin-bottom: 2px; }
   .atlas-place { width: auto; flex: 1 1 28%; padding: 8px; min-height: 44px; margin: 0; gap: 5px; }
@@ -102,7 +102,8 @@
   .atlas-place strong { font-size: 12px; }
   .place-symbol { width: 18px; font-size: 20px; }
   .atlas-sync { display: none; }
-  .atlas-chart { min-height: 360px; padding: 5px; position: sticky; top: 0; max-height: 65dvh; }
+  .atlas-chart { height: 285px; padding: 12px; }
+  .chart-heading button { min-height: 40px; }
   .atlas-detail { overflow: visible; padding: 15px 12px; border-top: 1px solid #c2b997; }
   .atlas-detail h3 { font-size: 25px; }
   .landmark-sketch { height: 62px; }

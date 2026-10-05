@@ -10,6 +10,9 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   timeout: 60_000,
+  // These integration tests use a remote development DB and lazy Next route compilation.
+  // Assert eventual UI state without turning a cold route into a 5-second performance test.
+  expect: { timeout: 15_000 },
   use: {
     baseURL,
     trace: "on-first-retry",

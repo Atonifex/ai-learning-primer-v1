@@ -8,23 +8,29 @@ export function useWorldMap(sessionId: string, version: number) {
   const [error, setError] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
   const seq = useRef(0), mounted = useRef(true);
-  const refresh = useCallback(async () => {
+  const active = useRef<AbortController | null>(null), queued = useRef(false);
+  const refresh = useCallback(async (): Promise<void> => {
+    if (active.current) { queued.current = true; return; }
+    const controller = new AbortController(); active.current = controller;
+    const timeout = window.setTimeout(() => controller.abort(), 15000);
     const request = ++seq.current;
     setRefreshing(true);
     try {
-      const response = await fetch("/api/world", { cache: "no-store" });
+      const response = await fetch("/api/world", { cache: "no-store", signal: controller.signal });
       if (!response.ok) throw new Error("Your map could not sync. Your last map is still here.");
       const next = await response.json() as WorldSnapshot;
       if (request !== seq.current || !mounted.current) return;
       setWorld((old) => old?.revision === next.revision ? old : next);
       setError(null);
     } catch (e) {
-      if (request === seq.current && mounted.current) setError(e instanceof Error ? e.message : "Map sync failed.");
+      if (request === seq.current && mounted.current) setError(controller.signal.aborted ? "Your map is taking too long to sync. Try again." : e instanceof Error ? e.message : "Map sync failed.");
     } finally {
       if (request === seq.current && mounted.current) setRefreshing(false);
+      window.clearTimeout(timeout); active.current = null;
+      if (queued.current && mounted.current) { queued.current = false; void refresh(); }
     }
   }, []);
-  useEffect(() => { mounted.current = true; return () => { mounted.current = false; seq.current++; }; }, []);
+  useEffect(() => { mounted.current = true; return () => { mounted.current = false; seq.current++; queued.current = false; active.current?.abort(); }; }, []);
   useEffect(() => { void refresh(); }, [refresh, sessionId, version]);
   useEffect(() => {
     const visibleRefresh = () => { if (document.visibilityState === "visible") void refresh(); };

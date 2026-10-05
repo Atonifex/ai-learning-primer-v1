@@ -100,8 +100,12 @@ export async function createBeachWorld(host: HTMLDivElement, callbacks: BeachWor
       state = value;
       for (const child of landmarks.removeChildren()) child.destroy({ children: true });
       for (const node of value.nodes) landmarks.addChild(createLandmark(node, () => { if (!paused) callbacks.onSelect(node.id); }));
-      fog.clear().rect(-100, 0, worldWidth() + 200, value.northLimit * TILE).fill({ color: 0x204750, alpha: .91 });
-      for (let i = 0; i < 5; i++) fog.rect(-100, value.northLimit * TILE + i * 12, worldWidth() + 200, 12).fill({ color: 0x204750, alpha: .5 - i * .09 });
+      fog.clear().rect(-1800, -1200, 4400, value.northLimit * TILE + 1200).fill({ color: 0x204750, alpha: .96 });
+      for (let x = -1800; x < 2600; x += 130) {
+        const edge = value.northLimit * TILE - 8 + Math.sin(x * .009) * 15;
+        fog.ellipse(x, edge, 100, 47).fill({ color: 0x204750, alpha: .3 });
+        fog.ellipse(x, edge - 17, 100, 41).fill({ color: 0x204750, alpha: .5 });
+      }
       pass.clear();
       if (value.northUnlocked) pass.roundRect(8 * TILE, 27 * TILE, TILE * 2, TILE * 9, 15).fill(0xcac59a);
       if (!worldWalkable(Math.floor(captain.x / TILE), Math.floor(captain.y / TILE), value)) { captain.position.set(spawn.x, spawn.y); clearRoute(); }

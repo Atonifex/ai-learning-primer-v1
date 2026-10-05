@@ -6,6 +6,8 @@ Before any cinematic work, read `PROJECT_MEMORY.md`, this guide and the relevant
 
 **Production reference extension, 2026-10-05:** V03 adds matched physical briefing officer, Rho handshake/corridor, docked cockpit and ship exterior in `public/cinematics/prologue-v3/references/`. Use these for new camera views alongside existing approved 3D identities. `public/cinematics/prologue-v3/README.md` records generated footage, editable materials and remaining playback-review limitations. The same shuttle/scout ship appears throughout; no second vehicle.
 
+**Latest playback corrections, 2026-10-05:** V04 screenplay/design is `docs/OPENING_SCREENPLAY_V04.md` after three review cycles. Existing officer is **Sara, Director at Merchant Corporation**, always physical in briefing, never replaced by her face on a screen. No early thumbs-up; one permitted only after app deal acceptance. Rho is a professional expedition colleague: normal distance, brief purposeful eye contact, map/checklist/destination focus, quick handshake release. No coy/romantic walk. Concern during rain/danger lasts through the alert; reassurance returns after safety. Exterior/landscape prompts and references must exclude all viewer hands/body/cockpit, rather than inherit first-person foundation. Requested runway takeoff needs a proposed fixed-wing/wheeled aircraft reference sheet retaining color/character identity; older wingless airship exterior is incompatible. Names Vela/Farreach and exact aircraft design remain proposals. Do not generate V04 until camera/geography/vehicle/animatic checks are done; V03 remains media history/working app.
+
 ## Visual style
 
 - Clearly animated 3D: appealing sculpted forms, soft illustrative skin, expressive eyes, simplified tactile cloth/wood/metal, cinematic depth and light. Avoid photorealistic humans, uncanny faces, plastic dolls, pixel art or a drift into painted 2D characters.
@@ -19,7 +21,7 @@ Before any cinematic work, read `PROJECT_MEMORY.md`, this guide and the relevant
 
 **Briefing officer:** young-adult female, medium-brown skin, dark curly hair tied back, teal survey uniform, cream collar and unlettered brass circular badge. Positive but professional and serious about the assignment: focused eye contact, upright posture, restrained smile, modest gestures. Not an exuberant entertainer.
 
-**Captain/player:** identity remains open. Mission briefing and bridge interaction use the player's eye position. Only gloved hands and short navy sleeve cuffs appear in the foreground: no head, face, hair, back, torso or over-the-shoulder substitution. At mission acceptance, one hand makes a clear thumbs-up; the other can rest at the console. In the storm, both hands firmly grip the steering wheel. Future shots with a different viewpoint must be specified deliberately in the script rather than introduced by a generator.
+**Captain/player:** identity remains open. Declared first-person briefing/bridge shots may show gloved hands and short navy cuffs: no head, face, back or body. Briefing hands stay down until an accepted deal; at most one acceptance thumbs-up. In cockpit danger, hands operate the visible controls/escape handle. **External island, aircraft, parachute and wreck shots show no captain hands/body or cockpit framing.** Camera family is explicit per shot; never attach a universal first-person-hand instruction to scenery.
 
 | Story beat | Required expression/posture |
 |---|---|
@@ -66,9 +68,9 @@ For trade-port shots, replace the surveyed-island clause with the explicit popul
 
 ## Review before video spending
 
-Latest proposed scene package: `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md`; its branching room/handshake/corridor scenes require matched new reference views of existing identities, not redesigns. Same physical officer and set across offer clips; silent waiting anchor matches first/last frames; UI/choices remain app overlays. V03 proposes one scout ship throughout (confirmation pending), left-side Rho/escape-handle continuity. Spoken language targets Grade 3; use simple “company/get” and short sentences; Ivan explicitly accepts ten/fifteen/twenty percent in spoken offers instead of coin-share explanations. User's specific one-round request overrides the default two-cycle count for this revision.
+Latest screenplay/shot design: `docs/OPENING_SCREENPLAY_V04.md`, completed after three requested critique/rewrite cycles. V03 is generated/working media, not final accepted footage. Same physical Sara and set across offers, silent matching-endpoint waiting anchor, app-owned choices. One ship throughout is confirmed; requested runway mechanics require a reviewed matching aircraft sheet before new production. Rho left and blue escape handle left in cockpit. Simple dialogue retains the user-requested Sara/Director/Merchant Corporation terms and ten/fifteen/twenty percent; define resources concretely and use collect/get for extract.
 
-For script iteration, follow `docs/CREATIVE_IMPROVEMENT_CYCLE.md`. Current prologue rewrite: `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md` (proposal); V02 is prior editorial history. Let dramatic beats and accepted dialogue determine edit duration, not uniform generation slots. Listen for pronunciation and consistent performance; transcription alone is insufficient.
+For script iteration, follow `docs/CREATIVE_IMPROVEMENT_CYCLE.md`. V04 is current authoring; V03 is current media; V02 is editorial history. Let dramatic beats and accepted dialogue determine edit duration, not uniform generation slots. Listen for pronunciation and consistent performance; transcription alone is insufficient.
 
 Inspect identity, proportions, natural hands, readable emotion, camera viewpoint, terrain, prop side and any accidental text. Preserve one active version per shot while retaining prior candidates as history. Generate static corrections before spending video credits. A still reference helps continuity but does not guarantee motion or lip-sync quality.
 

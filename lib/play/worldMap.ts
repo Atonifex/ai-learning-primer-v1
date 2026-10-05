@@ -33,6 +33,11 @@ export type WorldSnapshot = {
 };
 export type MapChapter = { id: string; title: string; orderIndex: number; status: string; plannerJson: unknown };
 export type MapNote = { label: string; text: string };
+export function filterWorldNodes(nodes: WorldNode[], filter: string): WorldNode[] {
+  return nodes.filter((node) => filter === "all" || (filter === "work"
+    ? node.status === "available" || node.tasks.some((task) => !task.completed)
+    : node.status === "completed" || node.tasks.some((task) => task.completed)));
+}
 export const MAP_NOTE_PREFIX = "map_note:";
 export const mapNoteInput = z.object({ nodeId: z.string().min(1).max(160), note: z.string().trim().min(1).max(240) });
 

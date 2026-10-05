@@ -45,7 +45,7 @@ test("Rho-generated work updates the map without interrupting chat, survives rel
   await page.route("**/api/session/*/message", async (route) => {
     const content = route.request().postDataJSON().content as string;
     const events: object[] = [];
-    if (!content.startsWith("__")) {
+    if (content === "Create a supply activity at camp.") {
       world = { ...world, revision: "new-work", nodes: world.nodes.map((n) => n.id === "camp" ? { ...n, tasks: [task] } : n) };
       events.push({ type: "activity_generated", activity: { id: task.id, title: task.title, standardCode: "MA.3.NSO.1.2", instructions: "Choose a pack.", items: [] } }, { type: "world_updated", reason: "New work at Camp", nodeId: "camp" });
     }
@@ -72,6 +72,9 @@ test("Rho-generated work updates the map without interrupting chat, survives rel
   await page.getByRole("button", { name: /Pack six supplies/ }).click();
   await expect(page.getByTestId("quiz-overlay")).toBeVisible();
   await expect(page.getByText("Talking with Rho")).toHaveCount(0);
+  await page.getByRole("button", { name: "Back to map", exact: true }).click();
+  await expect(page.getByRole("button", { name: /Pack six supplies/ })).toBeEnabled();
+  await page.getByRole("button", { name: /Pack six supplies/ }).click();
   await page.getByRole("radio", { name: "6", exact: true }).check();
   await page.getByRole("button", { name: "Show Rho" }).click();
   await page.getByRole("button", { name: "Back to Rho", exact: true }).click();
@@ -79,10 +82,32 @@ test("Rho-generated work updates the map without interrupting chat, survives rel
   await expect(page.getByRole("button", { name: /Pack six supplies/ })).toBeDisabled();
 });
 
+test("a chapter update reveals a new place and Rho focuses it without a page reload", async ({ page }) => {
+  const session = await boot(page);
+  let world = fixture();
+  await page.route("**/api/world", (route) => route.fulfill({ json: world }));
+  await page.route("**/api/session/*/message", async (route) => {
+    world = buildWorldSnapshot({ worldId: "map-test", missions: decorateMissions({ wreckQuizDone: true, chapter1ReflectionDone: false, completedSlugs: new Set() }),
+      chapters: [{ id: "chapter-three", title: "Leaves and light", orderIndex: 2, status: "ACTIVE", plannerJson: { chapterQuestion: "Where do young plants thrive?", mapStamps: [{ key: "grove", nodeType: "grove", slot: "ridge-west", title: "Sunlit grove", description: "Compare leaves at the edge of the trees." }] } }], tasks: [], notes: [], products: [] });
+    const events = [{ type: "world_updated", reason: "A new chapter is on your map", nodeId: "chapter:chapter-three:grove" },
+      { type: "world_map_open", nodeId: "chapter:chapter-three:grove" }, { type: "text", content: "Here is our next place to explore." }, { type: "done", messageId: "chapter-map" }];
+    await route.fulfill({ contentType: "text/event-stream", body: events.map((e) => `data: ${JSON.stringify(e)}\n\n`).join("") });
+  });
+  await page.goto(session.learnUrl);
+  await page.getByPlaceholder(/Tell Rho/).fill("Show me the place for our new chapter.");
+  await page.getByPlaceholder(/Tell Rho/).press("Enter");
+  await expect(page.getByTestId("world-map").getByRole("heading", { name: "Sunlit grove" })).toBeVisible();
+  await expect(page.getByText("Where do young plants thrive?")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Walk here", exact: true }).last()).toBeEnabled();
+  await page.getByRole("button", { name: "Close map" }).click();
+  await expect(page.getByText("Talking with Rho")).toBeVisible();
+});
+
 test("atlas offers keyboard navigation, walking paths, and a clear return to Rho", async ({ page }) => {
   const session = await boot(page);
   await page.route("**/api/world", (route) => route.fulfill({ json: fixture() }));
   await page.goto(session.learnUrl);
+  await expect(page.locator("canvas")).toBeVisible({ timeout: 30_000 });
   await page.getByRole("button", { name: "Island map", exact: true }).click();
   await page.getByTestId("world-map").press("Escape");
   await expect(page.getByText("Talking with Rho")).toBeVisible();
@@ -92,7 +117,7 @@ test("atlas offers keyboard navigation, walking paths, and a clear return to Rho
   await page.getByRole("button", { name: "Walk here", exact: true }).last().click();
   await expect(page.getByTestId("world-map")).toHaveCount(0);
   await expect(page.getByText("Walking to Dune…")).toBeVisible();
-  await expect(page.getByText("Walking to Dune…")).toHaveCount(0, { timeout: 15_000 });
+  await expect(page.getByText("Walking to Dune…")).toHaveCount(0, { timeout: 30_000 });
   await expect(page.getByTestId("captain-position")).toHaveAttribute("transform", "translate(4.5 37.5)");
   await expect(page.getByTestId("quiz-overlay")).toHaveCount(0);
   await page.screenshot({ path: "test-results/living-island.png" });

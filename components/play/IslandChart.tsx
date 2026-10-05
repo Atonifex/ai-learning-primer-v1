@@ -13,10 +13,13 @@ export default function IslandChart({ world, selectedId, onSelect, position, com
 }) {
   const top = compact ? Math.max(0, (position?.y ?? 2064) / TILE - 9) : overview ? 0 : Math.max(0, world.northLimit - 2);
   const height = compact ? Math.min(18, ROWS - top + 1) : ROWS - top + 2;
+  const clipId = compact ? "chart-viewport-mini" : "chart-viewport";
   return <svg viewBox={`-2 ${top - 1} ${COLS + 4} ${height}`} className="island-chart" role={compact ? "img" : "group"} aria-label="Island chart with discovered locations">
     <defs>
+      <clipPath id={clipId}><rect x="-2" y={top - 1} width={COLS + 4} height={height} /></clipPath>
       <pattern id={compact ? "chart-grid-mini" : "chart-grid"} width="3" height="3" patternUnits="userSpaceOnUse"><path d="M3 0H0V3" fill="none" stroke="#477a78" strokeWidth=".035" opacity=".3" /></pattern>
     </defs>
+    <g clipPath={`url(#${clipId})`}>
     <rect x="-2" y="-1" width={COLS + 4} height={ROWS + 2} fill="#b7d3c6" />
     <rect x="-2" y="-1" width={COLS + 4} height={ROWS + 2} fill={`url(#${compact ? "chart-grid-mini" : "chart-grid"})`} />
     <path d={land} fill="#e7d5a5" />
@@ -37,5 +40,6 @@ export default function IslandChart({ world, selectedId, onSelect, position, com
       {node.tasks.some((t) => !t.completed) && <circle cx=".48" cy="-.43" r=".19" fill="#b45b3e" stroke="#fff4d8" strokeWidth=".07" />}
     </g>)}
     {position && <g data-testid={compact ? "captain-position" : "atlas-position"} transform={`translate(${position.x / TILE} ${position.y / TILE})`}><circle r=".34" fill="#e7835f" stroke="#fff" strokeWidth=".12" /><title>You are here</title></g>}
+    </g>
   </svg>;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { MapTask, WorldNode, WorldSnapshot } from "../../lib/play/worldMap";
+import { filterWorldNodes, type MapTask, type WorldNode, type WorldSnapshot } from "../../lib/play/worldMap";
 import IslandChart, { PLACE_SYMBOLS } from "./IslandChart";
 
 export default function WorldMapPanel(props: {
@@ -16,7 +16,7 @@ export default function WorldMapPanel(props: {
   const [overview, setOverview] = useState(false);
   useEffect(() => { const el = dialog.current; el?.showModal(); return () => el?.close(); }, []);
   const selected = props.world?.nodes.find((n) => n.id === props.selectedId) ?? props.world?.nodes[0];
-  const nodes = props.world?.nodes.filter((n) => filter === "all" || (filter === "work" ? n.tasks.some((t) => !t.completed) || n.status === "available" : n.status === "completed")) ?? [];
+  const nodes = filterWorldNodes(props.world?.nodes ?? [], filter);
   return <dialog ref={dialog} onCancel={(e) => { e.preventDefault(); props.onClose(); }} className="world-atlas" aria-labelledby="atlas-title" data-testid="world-map">
     <header className="atlas-header"><div><h2 id="atlas-title">Our island</h2><p>{props.world?.chapterTitle ?? "Unfolding your map…"}</p></div>
       <button type="button" onClick={props.onClose} autoFocus className="map-button">Close map <span aria-hidden>×</span></button></header>
@@ -24,7 +24,7 @@ export default function WorldMapPanel(props: {
     {props.error && <div role="alert" className="map-error">{props.error} <button onClick={props.onRefresh}>Try again</button></div>}
     <div className="atlas-body">
       <nav className="atlas-places" aria-label="Map locations"><div className="atlas-filters" aria-label="Filter locations">{[["all", "All"], ["work", "To do"], ["completed", "Done"]].map(([id, label]) => <button key={id} aria-pressed={filter === id} onClick={() => setFilter(id)}>{label}</button>)}</div>
-        {nodes.map((node) => <button key={node.id} className="atlas-place" aria-pressed={selected?.id === node.id} onClick={() => props.onSelect(node.id)}><span className="place-symbol" aria-hidden>{PLACE_SYMBOLS[node.kind]}</span><span><strong>{node.title}</strong><small>{node.status === "locked" ? "Not open yet" : node.tasks.some((t) => !t.completed) ? `${node.tasks.filter((t) => !t.completed).length} things to try` : node.status === "completed" ? "Explored · work saved" : "Ready to explore"}</small></span></button>)}
+        {nodes.map((node) => <button key={node.id} className="atlas-place" aria-pressed={selected?.id === node.id} onClick={() => props.onSelect(node.id)}><span className="place-symbol" aria-hidden>{PLACE_SYMBOLS[node.kind]}</span><span><strong>{node.title}</strong><small>{node.status === "locked" ? "Not open yet" : node.tasks.some((t) => !t.completed) ? `${node.tasks.filter((t) => !t.completed).length} ready to try` : node.status === "completed" ? "Explored · work saved" : "Ready to explore"}</small></span></button>)}
         {nodes.length === 0 && props.world && <p className="atlas-empty">No places in this view yet. Choose All to explore.</p>}
         <p className="atlas-sync" role="status">{props.refreshing ? "Updating your chart…" : "Your story and map travel together."}</p>
       </nav>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -82,6 +82,7 @@ export default function PlayShell(props: {
   );
   const [subjectSlug, setSubjectSlug] = useState(props.subjectSlug);
   const [startingId, setStartingId] = useState<string | null>(null);
+  const [navigatingToMission, startMissionNavigation] = useTransition();
   const [talkedToWreck, setTalkedToWreck] = useState(false);
   const [hint, setHint] = useState<string | null>(null);
   const [confirmLeave, setConfirmLeave] = useState(false);
@@ -93,11 +94,13 @@ export default function PlayShell(props: {
   const wreckOpeningRef = useRef(false);
   const openedMissionRef = useRef<string | null>(null);
   const [mapOpen, setMapOpen] = useState(false);
+  const [mapReady, setMapReady] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState<string | null>(null);
   const [position, setPosition] = useState(() => tileCenter(SPAWN_COL, SPAWN_ROW));
   const [travel, setTravel] = useState<{ id: string; sequence: number } | null>(null);
   const [activityBusy, setActivityBusy] = useState(false);
   const [mapActionError, setMapActionError] = useState<string | null>(null);
+  useEffect(() => { setMapReady(true); }, []);
   const openQuizRef = useRef<(() => Promise<{ alreadyDone: boolean } | undefined>) | null>(
     null
   );
@@ -129,8 +132,9 @@ export default function PlayShell(props: {
         setMapOpen(false);
         setFocusOpen(false);
         setDialogueOpen(false);
-        if (started.switched && started.sessionId !== props.sessionId) {
-          router.push(`/learn/${started.sessionId}?mission=${started.mission.id}`);
+        if (started.sessionId !== props.sessionId) {
+          setHint(`Opening ${started.mission.title}…`);
+          startMissionNavigation(() => router.push(`/learn/${started.sessionId}?mission=${started.mission.id}`));
           return;
         }
         void stream.sendMessage(
@@ -398,6 +402,8 @@ export default function PlayShell(props: {
     <div className="play-world relative h-dvh overflow-hidden bg-[#195563]">
       <OverworldCanvas
         paused={
+          navigatingToMission ||
+          Boolean(startingId) ||
           dialogueOpen ||
           learning.showQuiz ||
           learning.showReflection ||
@@ -423,11 +429,14 @@ export default function PlayShell(props: {
         hint={firstRun.coach ? null : hint}
         timerLabel={chrome.leave && showTimers ? formatHiddenMinutes(elapsedSeconds) : null}
       />
+      {(navigatingToMission || Boolean(startingId)) && <div role="status" className="absolute inset-0 z-50 grid place-items-center bg-[#153e4b]/70">
+        <p className="rounded-2xl bg-[#fff8e8] px-6 py-4 text-[#153e4b]">{hint ?? "Opening your job…"}</p>
+      </div>}
 
       <header
         className={`world-toolbar pointer-events-none absolute right-3 top-3 z-20 flex flex-wrap items-center justify-end gap-2 ${dialogueOpen || focusOpen || boardOpen || learning.showQuiz || learning.showReflection || Boolean(clip) ? "hidden" : ""}`}
       >
-        {chrome.jobs && <button type="button" className="pointer-events-auto map-button primary" onClick={() => setMapOpen(true)}>Island map</button>}
+        {chrome.jobs && <button type="button" disabled={!mapReady} className="pointer-events-auto map-button primary" onClick={() => setMapOpen(true)}>Island map</button>}
         {chrome.subjectBadge && (
           <span className="rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100/70">
             {subjectBadge(subjectSlug)}
@@ -526,8 +535,8 @@ export default function PlayShell(props: {
           thinkingLabel={stream.streaming ? "Rho is listening…" : ""}
           portrait={portrait}
           storyUi={stream.storyUi}
-          onOpenMap={() => setMapOpen(true)}
-          mapContext={selectedNode ? `${selectedNode.title} · ${selectedNode.tasks.filter((t) => !t.completed).length} things to try` : worldMap.world?.chapterTitle}
+          onOpenMap={mapReady ? () => setMapOpen(true) : undefined}
+          mapContext={selectedNode ? `${selectedNode.title} · ${selectedNode.tasks.filter((t) => !t.completed).length} ready to try` : worldMap.world?.chapterTitle}
           worldUpdate={stream.worldUpdate?.reason}
           onSend={onCaptainSend}
           onClose={() => setDialogueOpen(false)}
@@ -576,6 +585,7 @@ export default function PlayShell(props: {
           zpdStage={learning.zpdStage}
           onSubmit={(a) => void learning.submitQuiz(a)}
           onZpdAdvance={learning.advanceZpd}
+          onReturnToMap={() => { learning.setShowQuiz(false); setMapOpen(true); }}
           onDismiss={() => {
             const wreck = learning.quiz?.slug === TUTORIAL_QUIZ_SLUG;
             learning.setShowQuiz(false);

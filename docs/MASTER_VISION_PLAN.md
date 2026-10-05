@@ -448,6 +448,8 @@ Do **not** steal Undertale’s FIGHT/MERCY moral test or bullet-hell. The “dum
 
 ### 4.12 Higgsfield intro + stills pack
 
+**Latest authoring request, 2026-10-05:** V03 is improved but not final-approved. Three critique/rewrite rounds and full revised briefing/crash/beach screenplay: `docs/OPENING_SCREENPLAY_V04.md`. User names officer Sara, a Director at Merchant Corporation; oil/lumber/gold trade across space, first planet visit, newly found remote island with unknown resources/weather/animals; survey/report before base/collection. Names Vela/Farreach are proposals. Requested runway takeoff requires a consistent aircraft design; proposed fixed-wing twin-prop keeps teal/cream/brass identity. Professional Rho, no romantic walk or diegetic “learning game” line; learning disclosure stays outside fiction. One thumbs-up only after accepted bargain; external landscapes have no hands. Safe escape before unoccupied crash; dawn crew/camp/ship objectives and future empire ambition. ~4:47 shortest plus19s two-No and waits is an unrecorded paper estimate. Existing app/media remain V03; no new generation/charges/code from this authoring pass.
+
 **Current production, 2026-10-05:** V03 captain benefit/10–15–20% bargaining, physical Rho handshake, learning walk and same-ship launch/flight/weather approach are generated and integrated into onboarding. Five matched references, 19 video sources and measured111.02/119.02/127.02s review cuts are preserved in `public/cinematics/prologue-v3/README.md`; script/prompts in `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md` and `shots.json`. Choices appear over a silent matching-endpoint loop after audio; accepted share/progress saves. Recorded profit definition is money left after costs. Paid jobs1,504 credits; checked balance6,096. Earlier30s target is superseded. Actual crash/objective footage remains separate/unbuilt; current app uses beach still/text bridge. Historical direction below is superseded where noted; tutorials deferred.
 
 **Locked 2026-10-05 after candidate review:** Ivan chose A's 3D animation for all future videos. Visual authority: `docs/CINEMATIC_STYLE_GUIDE.md`; active references: `public/cinematics/references/3d-v1/REVIEW.md`. Briefing captain gives thumbs-up; officer positive and professionally serious. Bridge is first-person with only hands/navy cuffs at wheel, no captain's back. Arrival island uninhabited, no buildings/lights/roads/ruins, varied beaches/flat river plains/hills/mountains. Rho conveys readable stress/concern in danger rather than always smiling. Three corrected static images + accepted trade-port A are saved. No further Kling jobs; earlier eight-option round remains history.
@@ -1079,6 +1081,8 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 
 ## 15. Master checklist
 
+- [x] Write V04 expanded Sara briefing, resource/mystery/danger inserts, professional Rho handoff, coherent runway/escape/crash and post-crash leadership screenplay after three critique/rewrite rounds (2026-10-05); `docs/OPENING_SCREENPLAY_V04.md`. Camera/reuse/animatic validation plan saved. Names/aircraft design proposed; actual reference/animatic/media/app replacement not yet made.
+
 - [x] Generate V03 matched references and branching prologue; integrate video/10–15–20% choices, silent loop, saved deal/progress and playback controls into onboarding (2026-10-05). 19 jobs cost1,504 credits; balance6,096. Library: `public/cinematics/prologue-v3/README.md`. Measured cuts111.02/119.02/127.02s. Human performance review and actual crash/objective footage remain open; beach still/text bridges current ending.
 
 - [x] Author expanded branching prologue, captain percentage-share incentives, silent loop/interface contract, Rho handshake/learning walk, flight continuity and final Kling shot prompts after one critique round (2026-10-05); `docs/PROLOGUE_BRANCHING_SCRIPT_V03.md`. Generated/integrated as V03; human performance review remains open.
@@ -1113,6 +1117,7 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 - [ ] Review/implement transparent practice/checkpoint copy, defensible writing/speaking rubrics, and evidence-based story gates; keep existing mastery formula until separately authorized
 - [ ] Deferred: tutorial video production/playback (Ivan, 2026-10-05); keep existing text tutorial
 - [x] Pixi home: tiny beach, tap-to-move + WASD, fog, resource HUD, placeholder captain
+- [x] Living island: rounded vector shore, landmarks, route walking, minimap, responsive atlas, persistent notes/generated work, chapter reveals and Rho map tools (2026-10-05). See `docs/LIVING_WORLD_MAP.md`; Chapter Compiler remains future.
 - [x] U4: click wreck → dialogue (left/right) → overlay quiz
 - [x] Stills placeholders (`public/stills/tutorial/`) — no crash if files missing
 - [x] Speak-first mic in composer; STT when wired; short type fallback
@@ -1139,7 +1144,7 @@ Technical debt (defer to end of this plan unless a later step naturally clears i
 3. Rations / XP HUD are client stubs — not persisted; not tied to chapter complete (P2).
 4. Ambient ocean bed is silent; mute control not wired for ambient (U15 placeholder). Rho TTS has its own Voice on/off.
 5. Intro Skip is per-learner (`firstRunStep` / `introSeenAt`), not `localStorage`.
-6. Walk is straight-line + axis slide, not A* pathing.
+6. Resolved 2026-10-05: movement uses breadth-first routes over the shared walkability mask, with a chapter-gated ridge pass.
 7. Graphic-novel `ScenePanel` is unused as home (kept for possible still reuse).
 8. STT is `whisper-1`, not luna; requires mic permission + `OPENAI_API_KEY`.
 9. `PlayShell` is slightly over the 250-line component guideline.
@@ -1147,7 +1152,8 @@ Technical debt (defer to end of this plan unless a later step naturally clears i
 ### P1 — Tutorial crew + camp
 
 - [ ] Crew roster model (found flags)
-- [ ] Parchment map overlay that grows; walk fog
+- [x] Parchment atlas grows from saved chapter packs and generated activities; chapter-gated northern fog
+- [ ] Persist captain exploration fog and walking position across visits
 - [ ] Camp site choice branch
 - [ ] XP + camp pin (perk tree UI later)
 - [x] TTS for Rho (OpenAI)
@@ -1333,6 +1339,21 @@ If a new ★ question appears, add the answer to **§4** or **§17** — do not 
 ---
 
 ## 18. Implementation log
+
+### 2026-10-05 — V04 opening screenplay after playback critique
+
+- Reviewed user feedback and sampled V03 sources: generated physical-to-screen Sara transition inside A01, floating hands inside external A10, late smile in concerned A11. Recorded why single-shot prompting/contact sheets alone did not validate playback.
+- Completed three explicitly simulated screenwriter/director/producer critique/rewrite rounds, written intermediate revisions and final `docs/OPENING_SCREENPLAY_V04.md`. Sara Director identity, lumber/resource trade, first planet visit, remote unexplored island, conditional survey/report/base collection; named destination proposals Vela/Farreach. Maintains captain benefit/bargaining and introduces professional Rho.
+- Designed runway aircraft consistency, attempted retreat from changing weather, safe crew escape before empty ship crash, dawn crew/camp/rebuild/leadership objective, future space-empire ambition and first wreck task. Learning disclosure outside in-world departure; no unbuilt assessment/empire promises as current features.
+- Saved per-camera prompt/rejection criteria, aircraft/geography/keyframe/animatic plan, reuse limits, natural timing/voice/seam validation. ~4:47 + optional19s/waits is paper timing only. No media generation, credit charges, code edits or new tests this documentation pass; V03 app remains playable.
+
+### 2026-10-05 — Living island and Rho/map continuity
+
+- Ivan authorized a creative map expansion. Applied visible status, landmarks, optional routes and clear exits from NN/g, Xbox accessibility and game-design research; sources and design in `docs/LIVING_WORLD_MAP.md`.
+- Rebuilt Pixi terrain/landmarks and added a responsive atlas, minimap, terrain-aware paths, location actions and persistent captain notes. Full-screen interactions pause rendering; reduced-motion preferences suppress ambient motion.
+- Added learner-owned `/api/world` projection, validated chapter stamps/fallback markers, private generated-work retrieval and ownership checks. Tool events and completed work refresh both views; future chapters remain hidden. `show_world_map` and `save_map_note` execute through the session orchestrator; generated quizzes live at real map locations and open when the captain chooses.
+- Generated work can return to the map without submitting. Job handoffs follow the returned session ID, reset session-local state, and pause island rendering through the loading/navigation sequence with visible feedback.
+- Unit/type/browser verification and known limits are recorded in `docs/LIVING_WORLD_MAP.md`. No schema migration, external assets or new package dependencies. Compiler-driven chapter creation and persistent walking fog remain open.
 
 ### 2026-10-05 — V03 media and interactive onboarding
 

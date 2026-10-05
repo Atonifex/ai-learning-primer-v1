@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildWorldSnapshot, MAP_SLOTS, readMapStamps, worldMapPrompt, type MapChapter } from "./worldMap";
+import { buildWorldSnapshot, filterWorldNodes, MAP_SLOTS, readMapStamps, worldMapPrompt, type MapChapter } from "./worldMap";
 import { decorateMissions } from "./missions";
 import { findWorldPath, worldWalkable } from "./worldNavigation";
 import { TILE, tileCenter, SPAWN_COL, SPAWN_ROW } from "./beachMap";
@@ -9,6 +9,12 @@ function snapshot(extra: Partial<Parameters<typeof buildWorldSnapshot>[0]> = {})
   return buildWorldSnapshot({ worldId: "our-world", missions: decorateMissions({ wreckQuizDone: true, chapter1ReflectionDone: false, completedSlugs: new Set() }), chapters: [chapter], tasks: [], notes: [], products: [], ...extra });
 }
 describe("living world projection", () => {
+  it("finds completed generated work under Done even when the shore job is unfinished", () => {
+    const world = snapshot({ tasks: [{ id: "a1", sessionId: "s1", title: "Our practice", locationId: "camp", completed: true }] });
+    expect(world.nodes.find((node) => node.id === "camp")?.status).toBe("available");
+    expect(filterWorldNodes(world.nodes, "completed").some((node) => node.id === "camp")).toBe(true);
+    expect(filterWorldNodes(world.nodes, "work").some((node) => node.id === "camp")).toBe(true);
+  });
   it("changes revision and location work when content is generated, completed, or annotated", () => {
     const task = { id: "a1", title: "Try a ration plan", sessionId: "s1", completed: false, locationId: "camp" };
     const empty = snapshot(), generated = snapshot({ tasks: [task] });

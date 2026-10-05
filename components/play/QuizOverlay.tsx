@@ -20,6 +20,7 @@ export default function QuizOverlay(props: {
   onSubmit: (answers: Array<{ itemId: string; selectedIndex: number }>) => void;
   onZpdAdvance: () => void;
   onDismiss: () => void;
+  onReturnToMap?: () => void;
 }) {
   const { quiz, result, zpdStage } = props;
   const isWreck = quiz.slug === TUTORIAL_QUIZ_SLUG;
@@ -112,6 +113,7 @@ export default function QuizOverlay(props: {
           {props.error && <p className="mt-2 text-sm text-red-700">{props.error}</p>}
 
           <div className="mt-4 flex gap-2">
+            {quiz.source === "generated" && !result && props.onReturnToMap && <button type="button" onClick={props.onReturnToMap} disabled={props.submitting} className="rounded-lg border border-stone-400 px-4 py-2 text-sm font-medium text-stone-800 disabled:opacity-50">Back to map</button>}
             {!result ? (
               <button
                 type="button"
