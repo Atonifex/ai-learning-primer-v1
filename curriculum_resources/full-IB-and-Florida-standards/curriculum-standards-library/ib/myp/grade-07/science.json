@@ -1,0 +1,235 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "ib.myp.grade-07.science",
+  "doc_type": "ib_alignment",
+  "system": "ib",
+  "programme": "MYP",
+  "grade": 7,
+  "grade_label": "Grade 7",
+  "subject": "science",
+  "status": "drafted",
+  "content_labels": [
+    "B",
+    "C"
+  ],
+  "sections": {
+    "applicable_programme": {
+      "programme": "MYP",
+      "age_range": "11-16",
+      "grade_mapping_note": "The public MYP page describes the programme as for students aged 11-16 and as a five-year programme that schools may shorten. Mapping Grade 7 (often about ages 12-13) onto that span is our convention, not an IB grade or MYP-year boundary.",
+      "shared_programme_block_ref": null,
+      "grade_specific_note": {
+        "label": "C",
+        "text": "Florida Grade 7 science is the 2016 NGSSS grade list, not a new B.E.S.T. science course. MYP does not replace that adoption. Do not read integrated-science eAssessment as a Grade 7 requirement."
+      }
+    },
+    "subject_group_or_structure": {
+      "ib_subject_group_or_area": "Sciences",
+      "mapping_to_primer_subject": "Grade 7 Florida NGSSS science (SC.7) is mapped here to the MYP sciences subject group. The public page says courses usually include biology, chemistry, and physics, and that schools may offer other courses, including earth sciences and life sciences. It does not publish a Grade 7 syllabus.",
+      "mapping_label": "C"
+    },
+    "framework_elements": {
+      "concepts": [
+        "change (example key concept named on the sciences subject brief)",
+        "relationships (example key concept named on the sciences subject brief)",
+        "systems (example key concept named on the sciences subject brief)"
+      ],
+      "approaches_to_learning": [
+        "social skills",
+        "thinking skills",
+        "research skills",
+        "communication skills",
+        "self management skills"
+      ],
+      "learner_profile_attributes": [],
+      "global_contexts_or_transdisciplinary_themes": [
+        "identities and relationships",
+        "personal and cultural expression",
+        "orientations in space and time",
+        "scientific and technical innovation",
+        "fairness and development",
+        "globalization and sustainability"
+      ]
+    },
+    "official_requirements": [
+      {
+        "label": "B",
+        "text": "The International Baccalaureate® (IB) Middle Years Programme (MYP) is for students aged 11-16.",
+        "citation_ids": [
+          "c-ibo-myp-home"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "The MYP is a five-year programme, which can be implemented in a partnership between schools, or in several abbreviated (two, three or four year) formats.",
+        "citation_ids": [
+          "c-ibo-myp-home"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Developing and applying these social, thinking, research, communication and self management skills helps students learn how to learn.",
+        "citation_ids": [
+          "c-ibo-myp-curriculum"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Using global contexts, MYP students develop an understanding of their common humanity and shared guardianship of the planet through developmentally appropriate explorations of: identities and relationships; personal and cultural expression; orientations in space and time; scientific and technical innovation; fairness and development; globalization and sustainability.",
+        "citation_ids": [
+          "c-ibo-myp-curriculum"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "The MYP prescribes sixteen key interdisciplinary concepts along with related concepts for each discipline.",
+        "citation_ids": [
+          "c-ibo-myp-curriculum"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "MYP teachers assess the prescribed subject-group objectives using the assessment criteria for each subject group in each year of the programme.",
+        "citation_ids": [
+          "c-ibo-myp-assessment"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "The Middle Years Programme (MYP) sciences framework encourages students to investigate issues through research, observation and experimentation, working independently and collaboratively.",
+        "citation_ids": [
+          "c-ibo-myp-sci"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Scientific inquiry fosters critical and creative thinking about research and design, as well as the identification of assumptions and alternative explanations.",
+        "citation_ids": [
+          "c-ibo-myp-sci"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "MYP sciences courses usually include biology, chemistry and physics, but schools may develop and offer other sciences courses that meet the subject group’s aims and objectives.",
+        "citation_ids": [
+          "c-ibo-myp-sci"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "The sciences subject brief names four equally weighted assessment criteria: A Knowing and understanding; B Inquiring and designing; C Processing and evaluating; D Reflecting on the impacts of science. The 1-8 band descriptors are not stored here.",
+        "citation_ids": [
+          "c-ibo-myp-sci-brief"
+        ],
+        "page": null
+      }
+    ],
+    "typical_fit": {
+      "label": "C",
+      "text": "Grade 7 Florida science in this draft covers scientific investigation, light and other waves, heat and energy transfer, evolution, heredity, interdependence, the nature of scientific knowledge, and Earth structures including plate tectonics. Those benchmarks are NGSSS. A reasonable MYP fit is inquiry, design, and processing data (criteria B and C), plus knowing scientific ideas (criterion A), without treating the Florida big-idea list as an IB syllabus. Earth and life topics can sit in courses the sciences page allows schools to offer. That is not a claim that MYP requires the Florida Grade 7 list."
+    },
+    "suggested_alignment_to_florida_and_arizona": {
+      "label": "C",
+      "florida": [
+        {
+          "standard_id": "SC.7.N.1.1",
+          "alignment_note": "Defining a problem and carrying out an investigation fits criterion B Inquiring and designing. The “seventh grade curriculum” phrase is Florida’s."
+        },
+        {
+          "standard_id": "SC.7.N.1.2",
+          "alignment_note": "Differentiating replication by others from repetition as multiple trials fits processing and evaluating. MYP does not print that distinction as an objective."
+        },
+        {
+          "standard_id": "SC.7.N.3.1",
+          "alignment_note": "Explaining the difference between theories and laws fits knowing and understanding. The Florida wording is not an IB criterion descriptor."
+        },
+        {
+          "standard_id": "SC.7.P.11.3",
+          "alignment_note": "Energy cannot be created nor destroyed, only changed in form, is a Florida benchmark. The public MYP pages do not state that law."
+        },
+        {
+          "standard_id": "SC.7.L.16.1",
+          "alignment_note": "Heredity, DNA, genes, and chromosomes can sit under knowing scientific ideas. Those claims are Florida’s."
+        },
+        {
+          "standard_id": "SC.7.E.6.5",
+          "alignment_note": "Plate tectonics and changes to Earth’s surface can connect to the example key concept of systems. Naming volcanic eruptions, earthquakes, and mountain building is Florida’s."
+        }
+      ],
+      "arizona": [],
+      "notes": "Arizona standards deferred. These rows are suggested starting points (Label C), not an official IB-Florida crosswalk."
+    },
+    "access_limitations": [
+      "WebFetch of ibo.org returned a Cloudflare verification page on 2026-10-03. The sentences marked Label B were read from curl HTTP 200 copies of the public MYP pages and subject briefs linked from those pages.",
+      "The curriculum page says the MYP prescribes sixteen key interdisciplinary concepts but does not name them. Only example key concepts printed on the subject brief are listed. They are not the full set.",
+      "Assessment-criterion titles are taken from the public subject brief. The 1-8 achievement-level descriptors are not copied. No MYP year (1-5) was assigned to Grade 7.",
+      "Learner-profile attribute titles are not printed on the MYP pages retrieved. The grade 3 name list was not reused as Label B.",
+      "A guessed URL ending in /sciences/ returned HTTP 404. The working public URL is /curriculum/science/."
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-ibo-myp-home",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/",
+      "title": "Middle Years Programme (MYP)",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "WebFetch returned a Cloudflare check. Curl returned HTTP 200 on 2026-10-03."
+    },
+    {
+      "id": "c-ibo-myp-curriculum",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/",
+      "title": "MYP curriculum",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Page says last updated 19 February 2026. Curl HTTP 200. The page says sixteen key concepts are prescribed but does not list them. Global-context line uses “orientations in space and time.” Subject briefs use “Orientation in space and time.”"
+    },
+    {
+      "id": "c-ibo-myp-assessment",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/assessment-and-exams/",
+      "title": "MYP assessment",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Curl HTTP 200. The page says teachers use subject-group assessment criteria. It does not print criterion names or 1-8 descriptors."
+    },
+    {
+      "id": "c-ibo-myp-sci",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/science/",
+      "title": "MYP sciences",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Curl HTTP 200. WebFetch was a Cloudflare check."
+    },
+    {
+      "id": "c-ibo-myp-sci-brief",
+      "url": "https://www.ibo.org/globalassets/new-structure/brochures-and-infographics/pdfs/myp-brief-sciences-en.pdf",
+      "title": "MYP sciences subject brief",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Linked from the science page. Criterion titles only were used. 1-8 descriptors and sample examination questions were not copied."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 7 MYP draft. Label B sentences are the same public MYP pages and subject-brief criterion titles used for the grade 6 drafts (curl HTTP 200 on this date). Criterion titles only; 1-8 descriptors were not copied. No MYP year placement and no new IB learning outcomes were invented. Label C notes and Florida pointers are suggestions."
+  ],
+  "last_updated": "2026-10-03"
+}

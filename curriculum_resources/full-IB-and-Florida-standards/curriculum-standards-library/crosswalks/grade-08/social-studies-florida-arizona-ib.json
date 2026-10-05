@@ -1,0 +1,364 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-08.social-studies",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 8,
+  "grade_label": "Grade 8",
+  "subject": "social-studies",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "sections": {
+    "scope_note": "Arizona standards deferred. This crosswalk covers Florida Social Studies (2026), Grade 8 SS.8 codes only, and IB MYP individuals and societies. Rows are suggested (Label C). The shared Grades 6-8 band (SS.68) is not in this file; it lives in grade 7 only.",
+    "rows": [
+      {
+        "row_id": "xw-g08-ss-001",
+        "topic_domain": "American history - research and inquiry skills",
+        "florida_standards": [
+          "SS.8.A.1.1",
+          "SS.8.A.1.2",
+          "SS.8.A.1.3",
+          "SS.8.A.1.4",
+          "SS.8.A.1.5",
+          "SS.8.A.1.6",
+          "SS.8.A.1.7"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: criterion B Investigating",
+          "MYP ATL: research skills"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida asks for supporting details, validity checks, charts and political cartoons, current events, fact and opinion, author and purpose, competing interpretations, and artifacts. MYP investigating is broader and does not set that list.",
+        "suggested_instructional_bridge": "Treat the Florida benchmarks as the state requirement. Use one source from the unit in an individuals and societies inquiry, and do not rewrite the Florida sentence as an IB objective."
+      },
+      {
+        "row_id": "xw-g08-ss-002",
+        "topic_domain": "American history - British colonial settlement",
+        "florida_standards": [
+          "SS.8.A.2.1",
+          "SS.8.A.2.2",
+          "SS.8.A.2.3",
+          "SS.8.A.2.4",
+          "SS.8.A.2.5",
+          "SS.8.A.2.6",
+          "SS.8.A.2.7"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: criterion A Knowing and understanding",
+          "MYP example key concept: time, place and space"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida compares European colonizers, colonial regions, labor systems, colonial figures, Native American populations, the French and Indian War, and contributions of Africans, Native Americans, women, and children. MYP may include a history course. It does not require this sequence.",
+        "suggested_instructional_bridge": "Treat the Florida benchmarks as the state requirement. Use one source from the unit in an individuals and societies inquiry, and do not rewrite the Florida sentence as an IB objective."
+      },
+      {
+        "row_id": "xw-g08-ss-003",
+        "topic_domain": "American history - Revolution and founding",
+        "florida_standards": [
+          "SS.8.A.3.1",
+          "SS.8.A.3.2",
+          "SS.8.A.3.3",
+          "SS.8.A.3.4",
+          "SS.8.A.3.5",
+          "SS.8.A.3.6",
+          "SS.8.A.3.7",
+          "SS.8.A.3.8",
+          "SS.8.A.3.9",
+          "SS.8.A.3.10",
+          "SS.8.A.3.11",
+          "SS.8.A.3.12",
+          "SS.8.A.3.13",
+          "SS.8.A.3.14",
+          "SS.8.A.3.15",
+          "SS.8.A.3.16"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: criterion D Thinking critically",
+          "MYP global context: fairness and development"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida covers British policy after 1763, colonial reaction, Founding Fathers, the Declaration of Independence, the Articles of Confederation, the Constitutional Convention, ratification, and early presidencies. Those documents and compromises are Florida content, not IB objectives.",
+        "suggested_instructional_bridge": "Treat the Florida benchmarks as the state requirement. Use one source from the unit in an individuals and societies inquiry, and do not rewrite the Florida sentence as an IB objective."
+      },
+      {
+        "row_id": "xw-g08-ss-004",
+        "topic_domain": "American history - westward expansion",
+        "florida_standards": [
+          "SS.8.A.4.1",
+          "SS.8.A.4.2",
+          "SS.8.A.4.3",
+          "SS.8.A.4.4",
+          "SS.8.A.4.5",
+          "SS.8.A.4.6",
+          "SS.8.A.4.7",
+          "SS.8.A.4.8",
+          "SS.8.A.4.9",
+          "SS.8.A.4.10",
+          "SS.8.A.4.11",
+          "SS.8.A.4.12",
+          "SS.8.A.4.13",
+          "SS.8.A.4.14",
+          "SS.8.A.4.15",
+          "SS.8.A.4.16",
+          "SS.8.A.4.17",
+          "SS.8.A.4.18"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: criterion A Knowing and understanding",
+          "MYP example key concept: change"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies westward expansion, slavery in the territories, Native American and African populations, technology, reform, Supreme Court cases, and the women's suffrage movement, among other events. That list is the state benchmark set.",
+        "suggested_instructional_bridge": "Treat the Florida benchmarks as the state requirement. Use one source from the unit in an individuals and societies inquiry, and do not rewrite the Florida sentence as an IB objective."
+      },
+      {
+        "row_id": "xw-g08-ss-005",
+        "topic_domain": "American history - Civil War and Reconstruction",
+        "florida_standards": [
+          "SS.8.A.5.1",
+          "SS.8.A.5.2",
+          "SS.8.A.5.3",
+          "SS.8.A.5.4",
+          "SS.8.A.5.5",
+          "SS.8.A.5.6",
+          "SS.8.A.5.7",
+          "SS.8.A.5.8"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: criterion D Thinking critically",
+          "MYP example key concept: change"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida asks for causes including sectionalism and slavery, Union and Confederate comparisons, Florida's role, and a detailed Reconstruction list. MYP thinking critically does not name those events.",
+        "suggested_instructional_bridge": "Treat the Florida benchmarks as the state requirement. Use one source from the unit in an individuals and societies inquiry, and do not rewrite the Florida sentence as an IB objective."
+      },
+      {
+        "row_id": "xw-g08-ss-006",
+        "topic_domain": "Civics - origins of government in the revolutionary era",
+        "florida_standards": [
+          "SS.8.CG.1.1",
+          "SS.8.CG.1.2",
+          "SS.8.CG.1.3"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: civics as a possible discrete course",
+          "MYP individuals and societies: criterion A Knowing and understanding"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida compares Patriot and Loyalist views, the 1838 and 1868 Florida constitutions, and the rule of law. The public page names civics as a possible course, not these texts.",
+        "suggested_instructional_bridge": "Treat the Florida benchmarks as the state requirement. Use one source from the unit in an individuals and societies inquiry, and do not rewrite the Florida sentence as an IB objective."
+      },
+      {
+        "row_id": "xw-g08-ss-007",
+        "topic_domain": "Civics - citizenship, participation, and founding principles",
+        "florida_standards": [
+          "SS.8.CG.2.1",
+          "SS.8.CG.2.2",
+          "SS.8.CG.2.3",
+          "SS.8.CG.2.4",
+          "SS.8.CG.2.5",
+          "SS.8.CG.2.6",
+          "SS.8.CG.3.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: criterion D Thinking critically",
+          "MYP global context: identities and relationships"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida covers citizenship, legal obligations, civic virtue, changing participation, the Bill of Rights, amendments through Reconstruction, and primary sources from the colonial period to Reconstruction. Those provisions are Florida's.",
+        "suggested_instructional_bridge": "Treat the Florida benchmarks as the state requirement. Use one source from the unit in an individuals and societies inquiry, and do not rewrite the Florida sentence as an IB objective."
+      },
+      {
+        "row_id": "xw-g08-ss-008",
+        "topic_domain": "Economics of the United States through Reconstruction",
+        "florida_standards": [
+          "SS.8.E.1.1",
+          "SS.8.E.2.1",
+          "SS.8.E.2.2",
+          "SS.8.E.2.3",
+          "SS.8.E.3.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: economics as a possible discrete course",
+          "MYP example key concept: systems"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida examines scarcity, supply and demand, entrepreneurs, government policy, the economic role of Africans and other minority groups, and domestic and international interdependence, for the period through Reconstruction. MYP names economics. It does not set this period.",
+        "suggested_instructional_bridge": "Treat the Florida benchmarks as the state requirement. Use one source from the unit in an individuals and societies inquiry, and do not rewrite the Florida sentence as an IB objective."
+      },
+      {
+        "row_id": "xw-g08-ss-009",
+        "topic_domain": "Financial literacy - earning and consuming",
+        "florida_standards": [
+          "SS.8.FL.1.1",
+          "SS.8.FL.1.2",
+          "SS.8.FL.1.3",
+          "SS.8.FL.1.4",
+          "SS.8.FL.1.5",
+          "SS.8.FL.1.6",
+          "SS.8.FL.1.7",
+          "SS.8.FL.1.8",
+          "SS.8.FL.2.1",
+          "SS.8.FL.2.2",
+          "SS.8.FL.2.3",
+          "SS.8.FL.2.4",
+          "SS.8.FL.2.5"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: economics as a possible discrete course",
+          "MYP ATL: thinking skills"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies careers, human capital, opportunity cost of education, consumer information, payment methods, and budgets. The public MYP pages do not publish a personal-finance syllabus.",
+        "suggested_instructional_bridge": "Treat the Florida benchmarks as the state requirement. Use one source from the unit in an individuals and societies inquiry, and do not rewrite the Florida sentence as an IB objective."
+      },
+      {
+        "row_id": "xw-g08-ss-010",
+        "topic_domain": "Financial literacy - saving, credit, investing, and risk",
+        "florida_standards": [
+          "SS.8.FL.3.1",
+          "SS.8.FL.3.2",
+          "SS.8.FL.3.3",
+          "SS.8.FL.3.4",
+          "SS.8.FL.3.5",
+          "SS.8.FL.3.6",
+          "SS.8.FL.3.7",
+          "SS.8.FL.3.8",
+          "SS.8.FL.4.1",
+          "SS.8.FL.4.2",
+          "SS.8.FL.4.3",
+          "SS.8.FL.4.4",
+          "SS.8.FL.5.1",
+          "SS.8.FL.5.2",
+          "SS.8.FL.5.3",
+          "SS.8.FL.5.4",
+          "SS.8.FL.5.5",
+          "SS.8.FL.6.1",
+          "SS.8.FL.6.2",
+          "SS.8.FL.6.3",
+          "SS.8.FL.6.4",
+          "SS.8.FL.6.5",
+          "SS.8.FL.6.6",
+          "SS.8.FL.6.7"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: economics as a possible discrete course",
+          "MYP global context: fairness and development"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies interest, principal, compound interest, deposit insurance, credit cards, stocks and bonds, risk and return, insurance, and identity theft. SS.8.FL.6.5 keeps the printed space in \"higher- risk.\" None of that sequence is an IB learning outcome.",
+        "suggested_instructional_bridge": "Treat the Florida benchmarks as the state requirement. Use one source from the unit in an individuals and societies inquiry, and do not rewrite the Florida sentence as an IB objective."
+      },
+      {
+        "row_id": "xw-g08-ss-011",
+        "topic_domain": "Geography - maps, regions, and ecosystems",
+        "florida_standards": [
+          "SS.8.G.1.1",
+          "SS.8.G.1.2",
+          "SS.8.G.2.1",
+          "SS.8.G.2.2",
+          "SS.8.G.2.3",
+          "SS.8.G.3.1",
+          "SS.8.G.3.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: geography as a possible discrete course",
+          "MYP example key concept: time, place and space"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida asks students to use maps and geographic tools for American-history regions, physical and human elements, and U.S. ecosystems and resources. The domain title for SS.8.G.3 keeps a straight apostrophe in Earth's. MYP does not require that map list.",
+        "suggested_instructional_bridge": "Treat the Florida benchmarks as the state requirement. Use one source from the unit in an individuals and societies inquiry, and do not rewrite the Florida sentence as an IB objective."
+      },
+      {
+        "row_id": "xw-g08-ss-012",
+        "topic_domain": "Geography - population, migration, and human impact",
+        "florida_standards": [
+          "SS.8.G.4.1",
+          "SS.8.G.4.2",
+          "SS.8.G.4.3",
+          "SS.8.G.4.4",
+          "SS.8.G.4.5",
+          "SS.8.G.4.6",
+          "SS.8.G.5.1",
+          "SS.8.G.5.2",
+          "SS.8.G.6.1",
+          "SS.8.G.6.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP example key concept: global interactions",
+          "MYP individuals and societies: criterion C Communicating"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida covers demographics, migration, cultural diffusion, cities, boundaries, dependence on the environment, human modifications, and maps of change over time in U.S. history. Those cases are Florida's.",
+        "suggested_instructional_bridge": "Treat the Florida benchmarks as the state requirement. Use one source from the unit in an individuals and societies inquiry, and do not rewrite the Florida sentence as an IB objective."
+      },
+      {
+        "row_id": "xw-g08-ss-013",
+        "topic_domain": "History of communism - early communal living",
+        "florida_standards": [
+          "SS.8.HC.1.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: criterion B Investigating"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "The stored benchmark examines early communal living in American society and its effect on economic stability and societal prosperity. Clarifications in the adopted DOCX are not the benchmark text and are not copied here. The public MYP pages do not name communal living. This row does not create an IB outcome.",
+        "suggested_instructional_bridge": "Treat the Florida benchmarks as the state requirement. Use one source from the unit in an individuals and societies inquiry, and do not rewrite the Florida sentence as an IB objective."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-fl-ss",
+      "url": "https://flrules.org/gateway/readRefFile.asp?refId=19653&filename=SS%20Standards%202026%206A-1.09401%20Clean.docx",
+      "title": "Florida's State Academic Standards – Social Studies, 2026",
+      "publisher": "Florida Department of Education (Rule 6A-1.09401, F.A.C.)",
+      "published_or_version_date": "2026",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-myp-curriculum",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/",
+      "title": "MYP curriculum",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Page says last updated 19 February 2026. Curl HTTP 200. The page says sixteen key concepts are prescribed but does not list them. Global-context line uses “orientations in space and time.” Subject briefs use “Orientation in space and time.”"
+    },
+    {
+      "id": "c-ibo-myp-ias",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/individuals-and-societies/",
+      "title": "MYP individuals and societies",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Curl HTTP 200. WebFetch was a Cloudflare check."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 8 FL↔IB crosswalk for MYP, not PYP. Arizona left empty (deferred). Rows are suggested alignments (Label C). Florida IDs are from the grade 8 drafts. IB elements are public MYP framework text or criterion titles from the linked subject brief. No IB learning outcomes and no 1-8 criterion descriptors were invented. SS.68 codes are not in this grade."
+  ],
+  "last_updated": "2026-10-03"
+}

@@ -1,0 +1,522 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-08.mathematics",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 8,
+  "grade_label": "Grade 8",
+  "subject": "mathematics",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "C"
+  ],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "Mathematics",
+      "standards_system_name": "B.E.S.T. Standards (Benchmarks for Excellent Student Thinking)",
+      "organization": "by_grade",
+      "courses": null
+    },
+    "domains": [
+      {
+        "domain_id": "MA.8.NSO.1",
+        "domain_name": "Number Sense and Operations: Solve problems involving rational numbers, including numbers in scientific notation, and extend the understanding of rational numbers to irrational numbers.",
+        "standards": [
+          {
+            "id": "MA.8.NSO.1.1",
+            "text": "Extend previous understanding of rational numbers to define irrational numbers within the real number system. Locate an approximate value of a numerical expression involving irrational numbers on a number line.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 90,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.NSO.1.2",
+            "text": "Plot, order and compare rational and irrational numbers, represented in various forms.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 90,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.NSO.1.3",
+            "text": "Extend previous understanding of the Laws of Exponents to include integer exponents. Apply the Laws of Exponents to evaluate numerical expressions and generate equivalent numerical expressions, limited to integer exponents and rational number bases, with procedural fluency.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 91,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.NSO.1.4",
+            "text": "Express numbers in scientific notation to represent and approximate very large or very small quantities. Determine how many times larger or smaller one number is compared to a second number.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 91,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.NSO.1.5",
+            "text": "Add, subtract, multiply and divide numbers expressed in scientific notation with procedural fluency.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 91,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.NSO.1.6",
+            "text": "Solve real-world problems involving operations with numbers expressed in scientific notation.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 91,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.NSO.1.7",
+            "text": "Solve multi-step mathematical and real-world problems involving the order of operations with rational numbers including exponents and radicals.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 91,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.8.AR.1",
+        "domain_name": "Algebraic Reasoning: Generate equivalent algebraic expressions.",
+        "standards": [
+          {
+            "id": "MA.8.AR.1.1",
+            "text": "Apply the Laws of Exponents to generate equivalent algebraic expressions, limited to integer exponents and monomial bases.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 92,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.AR.1.2",
+            "text": "Apply properties of operations to multiply two linear expressions with rational coefficients.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 92,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.AR.1.3",
+            "text": "Rewrite the sum of two algebraic expressions having a common monomial factor as a common factor multiplied by the sum of two algebraic expressions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 92,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.8.AR.2",
+        "domain_name": "Algebraic Reasoning: Solve multi-step one-variable equations and inequalities.",
+        "standards": [
+          {
+            "id": "MA.8.AR.2.1",
+            "text": "Solve multi-step linear equations in one variable, with rational number coefficients. Include equations with variables on both sides.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 92,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.AR.2.2",
+            "text": "Solve two-step linear inequalities in one variable and represent solutions algebraically and graphically.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 92,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.AR.2.3",
+            "text": "Given an equation in the form of x²=p  and x³=q, where p is a whole number and q is an integer, determine the real solutions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 92,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.8.AR.3",
+        "domain_name": "Algebraic Reasoning: Extend understanding of proportional relationships to two-variable linear equations.",
+        "standards": [
+          {
+            "id": "MA.8.AR.3.1",
+            "text": "Determine if a linear relationship is also a proportional relationship.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 93,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.AR.3.2",
+            "text": "Given a table, graph or written description of a linear relationship, determine the slope.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 93,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.AR.3.3",
+            "text": "Given a table, graph or written description of a linear relationship, write an equation in slope-intercept form.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 93,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.AR.3.4",
+            "text": "Given a mathematical or real-world context, graph a two-variable linear equation from a written description, a table or an equation in slope-intercept form.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 93,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.AR.3.5",
+            "text": "Given a real-world context, determine and interpret the slope and y-intercept of a two-variable linear equation from a written description, a table, a graph or an equation in slope-intercept form.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 93,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.8.AR.4",
+        "domain_name": "Algebraic Reasoning: Develop an understanding of two-variable systems of equations.",
+        "standards": [
+          {
+            "id": "MA.8.AR.4.1",
+            "text": "Given a system of two linear equations and a specified set of possible solutions, determine which ordered pairs satisfy the system of linear equations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 94,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.AR.4.2",
+            "text": "Given a system of two linear equations represented graphically on the same coordinate plane, determine whether there is one solution, no solution or infinitely many solutions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 94,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.AR.4.3",
+            "text": "Given a mathematical or real-world context, solve systems of two linear equations by graphing.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 94,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.8.F.1",
+        "domain_name": "Functions: Define, evaluate and compare functions.",
+        "standards": [
+          {
+            "id": "MA.8.F.1.1",
+            "text": "Given a set of ordered pairs, a table, a graph or mapping diagram, determine whether the relationship is a function. Identify the domain and range of the relation.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 94,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.F.1.2",
+            "text": "Given a function defined by a graph or an equation, determine whether the function is a linear function. Given an input-output table, determine whether it could represent a linear function.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 94,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.F.1.3",
+            "text": "Analyze a real-world written description or graphical representation of a functional relationship between two quantities and identify where the function is increasing, decreasing or constant.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 95,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.8.GR.1",
+        "domain_name": "Geometric Reasoning: Develop an understanding of the Pythagorean Theorem and angle relationships involving triangles.",
+        "standards": [
+          {
+            "id": "MA.8.GR.1.1",
+            "text": "Apply the Pythagorean Theorem to solve mathematical and real-world problems involving unknown side lengths in right triangles.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 95,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.GR.1.2",
+            "text": "Apply the Pythagorean Theorem to solve mathematical and real-world problems involving the distance between two points in a coordinate plane.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 95,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.GR.1.3",
+            "text": "Use the Triangle Inequality Theorem to determine if a triangle can be formed from a given set of sides. Use the converse of the Pythagorean Theorem to determine if a right triangle can be formed from a given set of sides.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 95,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.GR.1.4",
+            "text": "Solve mathematical problems involving the relationships between supplementary, complementary, vertical or adjacent angles.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 96,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.GR.1.5",
+            "text": "Solve problems involving the relationships of interior and exterior angles of a triangle.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 96,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.GR.1.6",
+            "text": "Develop and use formulas for the sums of the interior angles of regular polygons by decomposing them into triangles.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 96,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.8.GR.2",
+        "domain_name": "Geometric Reasoning: Understand similarity and congruence using models and transformations.",
+        "standards": [
+          {
+            "id": "MA.8.GR.2.1",
+            "text": "Given a preimage and image generated by a single transformation, identify the transformation that describes the relationship.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 96,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.GR.2.2",
+            "text": "Given a preimage and image generated by a single dilation, identify the scale factor that describes the relationship.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 96,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.GR.2.3",
+            "text": "Describe and apply the effect of a single transformation on two-dimensional figures using coordinates and the coordinate plane.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 96,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.GR.2.4",
+            "text": "Solve mathematical and real-world problems involving proportional relationships between similar triangles.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 97,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.8.DP.1",
+        "domain_name": "Data Analysis and Probability: Represent and investigate numerical bivariate data.",
+        "standards": [
+          {
+            "id": "MA.8.DP.1.1",
+            "text": "Given a set of real-world bivariate numerical data, construct a scatter plot or a line graph as appropriate for the context.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 97,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.DP.1.2",
+            "text": "Given a scatter plot within a real-world context, describe patterns of association.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 97,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.DP.1.3",
+            "text": "Given a scatter plot with a linear association, informally fit a straight line.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 97,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.8.DP.2",
+        "domain_name": "Data Analysis and Probability: Represent and find probabilities of repeated experiments.",
+        "standards": [
+          {
+            "id": "MA.8.DP.2.1",
+            "text": "Determine the sample space for a repeated experiment.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 99,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.DP.2.2",
+            "text": "Find the theoretical probability of an event related to a repeated experiment.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 99,
+            "label": "A"
+          },
+          {
+            "id": "MA.8.DP.2.3",
+            "text": "Solve real-world problems involving probabilities related to single or repeated experiments, including making predictions based on theoretical probability.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 99,
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": null,
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Students extend rational numbers to irrational numbers, use integer exponents, and compute with numbers in scientific notation.",
+        "Students generate equivalent algebraic expressions and solve multi-step linear equations, two-step inequalities, and equations of the form x squared equals p and x cubed equals q.",
+        "Students connect proportional relationships to linear equations, slope-intercept form, and systems of two linear equations.",
+        "Students decide whether a relationship is a function and where a function is increasing, decreasing, or constant.",
+        "Students apply the Pythagorean Theorem and angle relationships, and use transformations to study congruence and similarity.",
+        "Students represent bivariate data, describe association, and find probabilities of repeated experiments."
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "Florida's B.E.S.T. Standards Mathematics, 2026",
+      "adopted_or_effective_date": "2026-08-03",
+      "notes": [
+        "Organization: by_grade (MA.8 codes) inside the book section Mathematics 6-8. Algebra 1 and Geometry are separate 9-12 courses and are not in this file.",
+        "Benchmark statements extracted from the clean 2026 standards DOCX incorporated by Rule 6A-1.09401 (Ref-19651). Examples and benchmark clarifications are omitted from standard text. Printed pages are 90-97 and 99 of the DOCX converted to PDF (page 98 is clarifications only).",
+        "Two benchmark statements contain equation objects. MA.8.AR.2.3 is stored as \"x²=p  and x³=q\" (Unicode superscripts; two spaces before \"and,\" from a space inside the equation run plus a space in the following text run). MA.8.AR.3.5 stores the italic y equation object as the letter y in \"y-intercept.\" Equations that appear only inside examples or clarifications were not copied into text."
+      ]
+    }
+  },
+  "citations": [
+    {
+      "id": "c-flrules-math-2026",
+      "url": "https://flrules.org/gateway/readRefFile.asp?refId=19651&filename=Florida%27s%20B.E.S.T.%20Standards%20for%20Mathematics_6A-1.09401%20Clean.docx",
+      "title": "Florida's B.E.S.T. Standards Mathematics, 2026",
+      "publisher": "Florida Department of Education (adopted document for Rule 6A-1.09401, F.A.C., Ref-19651)",
+      "published_or_version_date": "2026",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Drafted from Ref-19651, cited in Rule 6A-1.09401 effective 2026-08-03. Grade 8 benchmarks are grade-coded, not course-coded. A 2026-10-01 rule-development notice considers further mathematics revisions; those are not adopted. CPALMS was not used."
+  ],
+  "last_updated": "2026-10-03"
+}

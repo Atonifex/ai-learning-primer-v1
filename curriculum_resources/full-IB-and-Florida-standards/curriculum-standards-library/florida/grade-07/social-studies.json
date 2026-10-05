@@ -1,0 +1,995 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-07.social-studies",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 7,
+  "grade_label": "Grade 7",
+  "subject": "social-studies",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "C"
+  ],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "Social Studies",
+      "standards_system_name": "Florida's State Academic Standards – Social Studies",
+      "organization": "by_grade",
+      "courses": null
+    },
+    "domains": [
+      {
+        "domain_id": "SS.7.CG.1",
+        "domain_name": "Civics and Government - Demonstrate an understanding of the origins and purposes of government, law, and the American political system",
+        "standards": [
+          {
+            "id": "SS.7.CG.1.1",
+            "text": "Analyze the influences of ancient Greece, ancient Rome and the Judeo- Christian tradition on America’s constitutional republic.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 60,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.1.2",
+            "text": "Trace the principles underlying America’s founding ideas on law and government.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 61,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.1.3",
+            "text": "Trace the impact that the Magna Carta, Mayflower Compact, English Bill of Rights and Thomas Paine’s Common Sense had on colonists’ views of government.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 61,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.1.4",
+            "text": "Analyze how Enlightenment ideas, including Montesquieu’s view of separation of powers and John Locke’s theories related to natural law and Locke’s social contract, influenced the Founding.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 61,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.1.5",
+            "text": "Describe how British policies and responses to colonial concerns led to the writing of the Declaration of Independence.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 61,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.1.6",
+            "text": "Analyze the ideas and grievances set forth in the Declaration of Independence.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 62,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.1.7",
+            "text": "Explain how the weaknesses of the Articles of Confederation led to the writing of the U.S. Constitution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 62,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.1.8",
+            "text": "Explain the purpose of the Preamble to the U.S. Constitution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 62,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.1.9",
+            "text": "Describe how the U.S. Constitution limits the powers of government through separation of powers, checks and balances, individual rights, rule of law, and due process of law.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 63,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.1.10",
+            "text": "Compare the viewpoints of the Federalists and the Anti-Federalists regarding ratification of the U.S. Constitution and including a bill of rights.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 63,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.1.11",
+            "text": "Define the rule of law and recognize its influence on the development of legal, political, and governmental systems in the United States.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 63,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.7.CG.2",
+        "domain_name": "Civics and Government - Evaluate the roles, rights, and responsibilities of United States citizens, and determine methods of active participation in society, government, and the political system",
+        "standards": [
+          {
+            "id": "SS.7.CG.2.1",
+            "text": "Define the term “citizen,” and explain the constitutional means of becoming a U.S. citizen.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 63,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.2.2",
+            "text": "Differentiate between obligations and responsibilities of U.S. citizenship and evaluate their impact on society.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 64,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.2.3",
+            "text": "Identify and apply the rights contained in the Bill of Rights and other amendments to the U.S. Constitution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 64,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.2.4",
+            "text": "Explain how the U.S. Constitution and the Bill of Rights safeguard individual rights.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 64,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.2.5",
+            "text": "Describe the trial process and the role of juries in the administration of justice at the state and federal levels.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 64,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.2.6",
+            "text": "Examine the election and voting process at the local, state, and national levels.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 65,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.2.7",
+            "text": "Identify the constitutional qualifications required to hold local, state, and national offices.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 65,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.2.8",
+            "text": "Examine the impact of media, individuals, and interest groups on monitoring and influencing government.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 65,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.2.9",
+            "text": "Analyze media and political communications and identify examples of bias, symbolism, and propaganda.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 65,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.2.10",
+            "text": "Explain the process for citizens to address a state or local problem by researching public policy alternatives, identifying appropriate government agencies to address the issue, and determining a course of action.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 65,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.7.CG.3",
+        "domain_name": "Civics and Government - Demonstrate an understanding of the principles, functions, and organization of government",
+        "standards": [
+          {
+            "id": "SS.7.CG.3.1",
+            "text": "Analyze the advantages of the United States’ constitutional republic over other forms of government in safeguarding liberty, freedom, and a representative government.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 66,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.3.2",
+            "text": "Explain the advantages of a federal system of government over other systems in balancing local sovereignty with national unity and protecting against authoritarianism.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 66,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.3.3",
+            "text": "Describe the structure and function of the three branches of government established in the U.S. Constitution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 66,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.3.4",
+            "text": "Explain the relationship between state and national governments as written in Article IV of the U.S. Constitution and the 10th Amendment.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 67,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.3.5",
+            "text": "Explain the amendment process outlined in Article V of the U.S. Constitution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 67,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.3.6",
+            "text": "Analyze how the 13th, 14th, 15th, 19th, 24th, and 26th Amendments broadened participation in the political process.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 67,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.3.7",
+            "text": "Explain the structure, functions, and processes of the legislative branch of government.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 67,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.3.8",
+            "text": "Explain the structure, functions, and processes of the executive branch of government.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 67,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.3.9",
+            "text": "Explain the structure, functions, and processes of the judicial branch of government.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 68,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.3.10",
+            "text": "Identify sources and types of law.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 68,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.3.11",
+            "text": "Analyze the effects of landmark Supreme Court decisions on law, liberty, and the interpretation of the U.S. Constitution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 68,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.3.12",
+            "text": "Compare the U.S. and Florida constitutions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 68,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.3.13",
+            "text": "Explain government obligations to its citizens and the services provided at the local, state, and national levels.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 69,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.3.14",
+            "text": "Explain the purpose and function of the Electoral College in electing the President of the United States.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 69,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.3.15",
+            "text": "Analyze the advantages of capitalism and the free market in the United States over government-controlled economic systems (e.g., socialism and communism) in regard to economic freedom and raising the standard of living for citizens.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 69,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.7.CG.4",
+        "domain_name": "Civics and Government - Demonstrate an understanding of contemporary issues in world affairs, and evaluate the role and impact of United States foreign policy",
+        "standards": [
+          {
+            "id": "SS.7.CG.4.1",
+            "text": "Explain the relationship between U.S. foreign and domestic policy.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 69,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.4.2",
+            "text": "Describe the United States’ and citizen participation in international organizations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 70,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.4.3",
+            "text": "Describe examples of the United States’ actions and reactions in international conflicts.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 70,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.CG.4.4",
+            "text": "Explain the significance of September 11, 2001.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 70,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.7.E.1",
+        "domain_name": "Economics - Understand the fundamental concepts relevant to the development of a market economy",
+        "standards": [
+          {
+            "id": "SS.7.E.1.1",
+            "text": "Explain how the principles of a market and mixed economy helped to develop the United States into a democratic nation.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 71,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.E.1.2",
+            "text": "Discuss the importance of borrowing and lending in the United States, the government's role in controlling financial institutions and list the advantages and disadvantages of using credit.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 71,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.E.1.3",
+            "text": "Review the concepts of supply and demand, choice, scarcity, and opportunity cost as they relate to the development of the mixed market economy in the United States.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 71,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.E.1.4",
+            "text": "Discuss the function of financial institutions in the development of a market economy.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 71,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.E.1.5",
+            "text": "Assess how profits, incentives, and competition motivate individuals, households, and businesses in a free market economy.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 71,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.E.1.6",
+            "text": "Compare the national budget process to the personal budget process.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 71,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.7.E.2",
+        "domain_name": "Economics - Understand the fundamental concepts relevant to the institutions, structure, and functions of a national economy",
+        "standards": [
+          {
+            "id": "SS.7.E.2.1",
+            "text": "Explain how federal, state, and local taxes support the economy as a function of the United States government.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 71,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.E.2.2",
+            "text": "Describe the banking system in the United States and its impact on the money supply.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 71,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.E.2.3",
+            "text": "Identify and describe United States laws and regulations adopted to promote economic competition.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 71,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.E.2.4",
+            "text": "Identify entrepreneurs from various gender, social, and ethnic backgrounds who started a business seeking to make a profit.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 71,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.E.2.5",
+            "text": "Explain how economic institutions impact the national economy.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 71,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.7.E.3",
+        "domain_name": "Economics - Understand the fundamental concepts and interrelationships of the United States economy in the international marketplace",
+        "standards": [
+          {
+            "id": "SS.7.E.3.1",
+            "text": "Explain how international trade requires a system for exchanging currency between and among nations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 72,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.E.3.2",
+            "text": "Assess how the changing value of currency affects trade of goods and services between nations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 72,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.E.3.3",
+            "text": "Compare and contrast a single resource economy with a diversified economy.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 72,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.E.3.4",
+            "text": "Compare and contrast the standard of living in various countries today to that of the United States using gross domestic product (GDP) per capita as an indicator.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 72,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.7.G.1",
+        "domain_name": "Geography - Understand how to use maps and other geographic representations, tools, and technology to report information",
+        "standards": [
+          {
+            "id": "SS.7.G.1.1",
+            "text": "Locate the fifty states and their capital cities in addition to the nation’s capital on a map.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 72,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.G.1.2",
+            "text": "Locate on a world map the territories and protectorates of the United States of America.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 72,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.G.1.3",
+            "text": "Interpret maps to identify geopolitical divisions and boundaries of places in North America.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 72,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.7.G.2",
+        "domain_name": "Geography - Understand physical and cultural characteristics of places",
+        "standards": [
+          {
+            "id": "SS.7.G.2.1",
+            "text": "Locate major cultural landmarks that are emblematic of the United States.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 72,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.G.2.2",
+            "text": "Locate major physical landmarks that are emblematic of the United States.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 72,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.G.2.3",
+            "text": "Explain how major physical characteristics, natural resources, climate, and absolute and relative location have influenced settlement, economies, and inter-governmental relations in North America.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 72,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.G.2.4",
+            "text": "Describe current major cultural regions of North America.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 72,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.7.G.3",
+        "domain_name": "Geography - Understand the relationships between the Earth’s ecosystems and the populations that dwell within them",
+        "standards": [
+          {
+            "id": "SS.7.G.3.1",
+            "text": "Use maps to describe the location, abundance, and variety of natural resources in North America.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 73,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.7.G.4",
+        "domain_name": "Geography - Understand the characteristics, distribution, and migration of human populations",
+        "standards": [
+          {
+            "id": "SS.7.G.4.1",
+            "text": "Use geographic terms and tools to explain cultural diffusion throughout North America.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 73,
+            "label": "A"
+          },
+          {
+            "id": "SS.7.G.4.2",
+            "text": "Use maps and other geographic tools to examine the importance of demographics within political divisions of the United States.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 73,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.7.G.5",
+        "domain_name": "Geography - Understand how human actions can impact the environment",
+        "standards": [
+          {
+            "id": "SS.7.G.5.1",
+            "text": "Use a choropleth or other map to geographically represent current information about issues of conservation or ecology in the local community.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 73,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.7.G.6",
+        "domain_name": "Geography - Understand how to apply geography to interpret the past and present, and plan for the future",
+        "standards": [
+          {
+            "id": "SS.7.G.6.1",
+            "text": "Use Geographic Information Systems (GIS) or other technology to view maps of current information about the United States.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 73,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.7.HC.1",
+        "domain_name": "History of Communism - Assess the effects of communist governments",
+        "standards": [
+          {
+            "id": "SS.7.HC.1.1",
+            "text": "Assess the effects of communist governments on individual freedoms, political participation, and the economy.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 73,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.68.AA.1",
+        "domain_name": "African American History - Understand the causes, courses, and consequences of the slave trade in the colonies",
+        "standards": [
+          {
+            "id": "SS.68.AA.1.1",
+            "text": "Identify Afro-Eurasian trade routes and methods prior to the development of the Atlantic slave trade.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 47,
+            "label": "A"
+          },
+          {
+            "id": "SS.68.AA.1.2",
+            "text": "Describe the contact of European explorers with systematic slave trading in Africa.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 47,
+            "label": "A"
+          },
+          {
+            "id": "SS.68.AA.1.3",
+            "text": "Examine the evolution of the labor force in the use of indentured servitude contracts.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 47,
+            "label": "A"
+          },
+          {
+            "id": "SS.68.AA.1.4",
+            "text": "Describe the history and evolution of slave codes.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 48,
+            "label": "A"
+          },
+          {
+            "id": "SS.68.AA.1.5",
+            "text": "Analyze slave revolts that happened in early colonial America and how political leaders reacted (e.g., 1712 revolt in New York City, Stono Rebellion [1739]).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 48,
+            "label": "A"
+          },
+          {
+            "id": "SS.68.AA.1.6",
+            "text": "Examine the service and sacrifice of African patriots during the Revolutionary Era (e.g., Crispus Attucks, Peter Salem, James Armistead Lafayette, 1st Rhode Island Regiment).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 48,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.68.AA.2",
+        "domain_name": "African American History - Analyze events that involved or affected Africans from the founding of the nation through Reconstruction",
+        "standards": [
+          {
+            "id": "SS.68.AA.2.1",
+            "text": "Explain early congressional actions regarding the institution of slavery (i.e., Northwest Ordinance of 1787, Three-Fifths Compromise, Act Prohibiting Importation of Slaves of 1808).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 48,
+            "label": "A"
+          },
+          {
+            "id": "SS.68.AA.2.2",
+            "text": "Explain the effect of the cotton industry on the expansion of slavery due to Eli Whitney’s Cotton Gin.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 48,
+            "label": "A"
+          },
+          {
+            "id": "SS.68.AA.2.3",
+            "text": "Examine the various duties and trades performed by slaves (e.g., agricultural work, painting, carpentry, tailoring, domestic service, blacksmithing, transportation).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 48,
+            "label": "A"
+          },
+          {
+            "id": "SS.68.AA.2.4",
+            "text": "Examine the Underground Railroad and its importance to those seeking freedom.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 48,
+            "label": "A"
+          },
+          {
+            "id": "SS.68.AA.2.5",
+            "text": "Identify political figures who strove to abolish the institution of slavery (e.g., Thaddeus Stevens, Abraham Lincoln, Zachariah Chandler).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 48,
+            "label": "A"
+          },
+          {
+            "id": "SS.68.AA.2.6",
+            "text": "Evaluate various abolitionist movements that continuously pushed to end slavery.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 49,
+            "label": "A"
+          },
+          {
+            "id": "SS.68.AA.2.7",
+            "text": "Examine how the status of slaves, those who had escaped slavery and free blacks, affected their contributions to the Civil War effort.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 49,
+            "label": "A"
+          },
+          {
+            "id": "SS.68.AA.2.8",
+            "text": "Describe significant contributions made by key figures during Reconstruction (e.g., President Ulysses S. Grant, Secretary of War Edwin Stanton, Frederick Douglass, Lyman Trumbull).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 49,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.68.HE.1",
+        "domain_name": "Holocaust Education - Foundations of Holocaust Education",
+        "standards": [
+          {
+            "id": "SS.68.HE.1.1",
+            "text": "Examine the Holocaust as the planned and systematic state-sponsored persecution and murder of European Jews by Nazi Germany and its collaborators between 1933 and 1945.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 49,
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": null,
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Students trace influences on the U.S. constitutional republic, the Declaration of Independence and Constitution, and limits on government power.",
+        "Students explain citizenship, the Bill of Rights, elections, the three branches, and U.S. foreign policy, including September 11, 2001.",
+        "Students describe the U.S. mixed market economy, taxes, banking, trade, and geography of the United States and North America.",
+        "Students assess effects of communist governments on freedom, political participation, and the economy.",
+        "The shared Grades 6-8 benchmarks stored in this file cover the slave trade and Africans through Reconstruction, and the Holocaust as state-sponsored persecution and murder of European Jews."
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "Florida's State Academic Standards – Social Studies, 2026",
+      "adopted_or_effective_date": "2026-08-03",
+      "notes": [
+        "Organization: by_grade for SS.7 codes (Civics and Government, Economics, Geography, History of Communism). Not a 9-12 course.",
+        "HOME FOR THE SHARED BAND: SS.68.AA and SS.68.HE (15 benchmarks) apply across grades 6-8, not to grade 7 only. Grade 6 omitted them. This grade-7 file is the single stored copy. Grade 8 must not duplicate SS.68.*. They are appended after the SS.7 benchmarks.",
+        "Benchmark statements extracted from the clean 2026 social studies standards DOCX incorporated by Rule 6A-1.09401 (Ref-19653). Benchmark clarifications are omitted from standard text. Printed pages: SS.7 on 60-73; SS.68 band on 47-49 of the DOCX converted to PDF.",
+        "Running headers that repeat SS.7.G.1 and SS.7.G.4 titles inside one paragraph are stored once.",
+        "Kept as printed, not corrected: SS.7.CG.1.1 has a space after the hyphen in “Judeo- Christian.” SS.7.E.1.2 uses a straight apostrophe in “government's”; other possessives in this grade use a curly apostrophe."
+      ]
+    }
+  },
+  "citations": [
+    {
+      "id": "c-flrules-ss-2026",
+      "url": "https://flrules.org/gateway/readRefFile.asp?refId=19653&filename=SS%20Standards%202026%206A-1.09401%20Clean.docx",
+      "title": "Florida's State Academic Standards – Social Studies, 2026",
+      "publisher": "Florida Department of Education (adopted document for Rule 6A-1.09401, F.A.C., Ref-19653)",
+      "published_or_version_date": "2026",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Drafted from Ref-19653, cited in Rule 6A-1.09401 effective 2026-08-03. Grade 7 benchmarks are grade-coded. The Grades 6-8 African American History and Holocaust Education benchmarks (SS.68, 15 codes) are stored only in this grade-7 file so grades 6 and 8 do not duplicate them. CPALMS was not used."
+  ],
+  "last_updated": "2026-10-03"
+}

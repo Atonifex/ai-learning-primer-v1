@@ -1,0 +1,210 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-02.ela",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 2,
+  "grade_label": "Grade 2",
+  "subject": "ela",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "sections": {
+    "scope_note": "Arizona standards deferred. This crosswalk covers Florida B.E.S.T. ELA (2025) and IB PYP only. Rows are suggested (Label C).",
+    "rows": [
+      {
+        "row_id": "xw-g02-ela-001",
+        "topic_domain": "Foundational reading - phonics and fluency",
+        "florida_standards": [
+          "ELA.2.F.1.3",
+          "ELA.2.F.1.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP ATL: Self-management skills",
+          "PYP Language: written language (reused grade 3 strand note)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies vowel teams, syllable types, prefixes, suffixes, silent letters, and fluency with prosody. The public PYP pages do not list those skills.",
+        "suggested_instructional_bridge": "Keep the Florida phonics and fluency routines, then have students use those skills to read a short inquiry text aloud."
+      },
+      {
+        "row_id": "xw-g02-ela-002",
+        "topic_domain": "Literary text - plot, theme, and perspective",
+        "florida_standards": [
+          "ELA.2.R.1.1",
+          "ELA.2.R.1.2",
+          "ELA.2.R.1.3"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP transdisciplinary theme: How we express ourselves",
+          "PYP concept: Perspective (name reused from grade 3)"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida asks for plot structure, theme, and characters' perspectives. PYP uses perspective and expression as concepts, not these benchmark sentences.",
+        "suggested_instructional_bridge": "During a story inquiry, ask what happened, what the story suggests, and how two characters see the same event."
+      },
+      {
+        "row_id": "xw-g02-ela-003",
+        "topic_domain": "Poetry - rhyme schemes",
+        "florida_standards": [
+          "ELA.2.R.1.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP transdisciplinary theme: How we express ourselves"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida requires identifying rhyme schemes. Public PYP text treats expression broadly and does not name rhyme-scheme notation.",
+        "suggested_instructional_bridge": "Read a short poem in an expression inquiry and mark the end rhymes, then let students try a short rhymed response."
+      },
+      {
+        "row_id": "xw-g02-ela-004",
+        "topic_domain": "Informational text - features, central idea, purpose, opinion",
+        "florida_standards": [
+          "ELA.2.R.2.1",
+          "ELA.2.R.2.2",
+          "ELA.2.R.2.3",
+          "ELA.2.R.2.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP ATL: Research skills",
+          "PYP ATL: Thinking skills"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida lists features (titles, headings, captions, graphs, maps, glossaries, illustrations), central idea, purpose, and opinion with evidence. PYP frames this as research and thinking, not that list.",
+        "suggested_instructional_bridge": "Use the class inquiry text and have students point to a feature, state the central idea, and say what the author wants the reader to think."
+      },
+      {
+        "row_id": "xw-g02-ela-005",
+        "topic_domain": "Across genres - figurative language, retelling, comparison",
+        "florida_standards": [
+          "ELA.2.R.3.1",
+          "ELA.2.R.3.2",
+          "ELA.2.R.3.3"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP ATL: Communication skills",
+          "PYP concept: Connection (name reused from grade 3)"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida names similes, idioms, and alliteration, and it splits retelling into literary story elements and informational central idea. PYP does not publish that split.",
+        "suggested_instructional_bridge": "Retell an inquiry text in order, then compare one important detail with a second text on the same topic."
+      },
+      {
+        "row_id": "xw-g02-ela-006",
+        "topic_domain": "Writing - narratives, opinions, and expository texts",
+        "florida_standards": [
+          "ELA.2.C.1.1",
+          "ELA.2.C.1.2",
+          "ELA.2.C.1.3",
+          "ELA.2.C.1.4",
+          "ELA.2.C.1.5"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP transdisciplinary theme: How we express ourselves",
+          "PYP ATL: Communication skills"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida adds legible printing, a logical sequence, transitions, an ending or conclusion, and revision with adult and peer support. PYP stresses authentic communication rather than those product rules.",
+        "suggested_instructional_bridge": "Have students publish a short inquiry piece (story, opinion, or explanation) and revise it with a partner, checking the Florida structure."
+      },
+      {
+        "row_id": "xw-g02-ela-007",
+        "topic_domain": "Oral presentation",
+        "florida_standards": [
+          "ELA.2.C.2.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP ATL: Communication skills"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida requires complete sentences, appropriate volume, and clear pronunciation. Public ATL text names communication skills without those delivery criteria.",
+        "suggested_instructional_bridge": "Share one inquiry finding aloud in complete sentences, with a partner noting volume and clarity."
+      },
+      {
+        "row_id": "xw-g02-ela-008",
+        "topic_domain": "Conventions",
+        "florida_standards": [
+          "ELA.2.C.3.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP ATL: Communication skills"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "The Florida benchmark is grade-level grammar, punctuation, capitalization, and spelling. The public PYP page does not list grade 2 conventions.",
+        "suggested_instructional_bridge": "Edit the published inquiry writing for the conventions the class has been taught, rather than treating conventions as a separate PYP outcome."
+      },
+      {
+        "row_id": "xw-g02-ela-009",
+        "topic_domain": "Research and multimedia",
+        "florida_standards": [
+          "ELA.2.C.4.1",
+          "ELA.2.C.5.1",
+          "ELA.2.C.5.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP ATL: Research skills",
+          "PYP ATL: Communication skills"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida limits research to one topic and multiple sources, and it allows one multimedia element plus digital tools with adult support. PYP research skills are broader.",
+        "suggested_instructional_bridge": "Answer one inquiry question from two sources and add a drawing or audio clip when sharing it."
+      },
+      {
+        "row_id": "xw-g02-ela-010",
+        "topic_domain": "Vocabulary",
+        "florida_standards": [
+          "ELA.2.V.1.1",
+          "ELA.2.V.1.2",
+          "ELA.2.V.1.3"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP ATL: Thinking skills",
+          "PYP ATL: Communication skills"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies academic vocabulary, base words and affixes, and context clues. Public PYP text does not list those strategies.",
+        "suggested_instructional_bridge": "Collect a few inquiry words, notice a base word or affix, and use the word in speaking or writing."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-fl-ela",
+      "url": "https://flrules.org/gateway/readRefFile.asp?refId=18865&filename=B.E.S.T.%20ELA%20Standards%202025_Clean%206A-1.09401.pdf",
+      "title": "Florida's State Academic Standards (B.E.S.T.) – English Language Arts, 2025",
+      "publisher": "Florida Department of Education (Rule 6A-1.09401, F.A.C., Ref-18865)",
+      "published_or_version_date": "2025-11-17",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-pyp",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/how-the-pyp-works/",
+      "title": "How the PYP works",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Themes and the transdisciplinary statement were read from this page. Strand names in ib_framework_elements that go beyond that page are reused from the grade 3 library and are not official IB-Florida mappings."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 2 FL↔IB crosswalk. Arizona left empty (deferred). Rows are suggested alignments (Label C). Florida IDs are from the grade 2 drafts. IB elements are either public PYP framework text or the same strand labels used in the grade 3 crosswalks."
+  ],
+  "last_updated": "2026-10-03"
+}

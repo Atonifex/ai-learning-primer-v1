@@ -1,0 +1,510 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-08.science",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 8,
+  "grade_label": "Grade 8",
+  "subject": "science",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "C"
+  ],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "Science",
+      "standards_system_name": "Next Generation Sunshine State Standards (NGSSS)",
+      "organization": "by_grade",
+      "courses": null
+    },
+    "domains": [
+      {
+        "domain_id": "SC.8.N.1",
+        "domain_name": "Nature of Science - The Practice of Science",
+        "standards": [
+          {
+            "id": "SC.8.N.1.1",
+            "text": "Define a problem from the eighth grade curriculum using appropriate reference materials to support scientific understanding, plan and carry out scientific investigations of various types, such as systematic observations or experiments, identify variables, collect and organize data, interpret data in charts, tables, and graphics, analyze information, make predictions, and defend conclusions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 55,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.N.1.2",
+            "text": "Design and conduct a study using repeated trials and replication.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 55,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.N.1.3",
+            "text": "Use phrases such as \"results support\" or \"fail to support\" in science, understanding that science does not offer conclusive 'proof' of a knowledge claim.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 55,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.N.1.4",
+            "text": "Explain how hypotheses are valuable if they lead to further investigations, even if they turn out not to be supported by the data.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 55,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.N.1.5",
+            "text": "Analyze the methods used to develop a scientific explanation as seen in different fields of science.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 55,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.N.1.6",
+            "text": "Understand that scientific investigations involve the collection of relevant empirical evidence, the use of logical reasoning, and the application of imagination in devising hypotheses, predictions, explanations and models to make sense of the collected evidence.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 56,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.8.L.18",
+        "domain_name": "Life Science - Matter and Energy Transformations",
+        "standards": [
+          {
+            "id": "SC.8.L.18.1",
+            "text": "Describe and investigate the process of photosynthesis, such as the roles of light, carbon dioxide, water and chlorophyll; production of food; release of oxygen.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 56,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.L.18.2",
+            "text": "Describe and investigate how cellular respiration breaks down food to provide energy and releases carbon dioxide.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 56,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.L.18.3",
+            "text": "Construct a scientific model of the carbon cycle to show how matter and energy are continuously transferred within and between organisms and their physical environment.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 56,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.L.18.4",
+            "text": "Cite evidence that living systems follow the Laws of Conservation of Mass and Energy.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 56,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.8.N.2",
+        "domain_name": "Nature of Science - The Characteristics of Scientific Knowledge",
+        "standards": [
+          {
+            "id": "SC.8.N.2.1",
+            "text": "Distinguish between scientific and pseudoscientific ideas.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 57,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.N.2.2",
+            "text": "Discuss what characterizes science and its methods.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 57,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.8.N.3",
+        "domain_name": "Nature of Science - The Role of Theories, Laws, Hypotheses, and Models",
+        "standards": [
+          {
+            "id": "SC.8.N.3.1",
+            "text": "Select models useful in relating the results of their own investigations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 57,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.N.3.2",
+            "text": "Explain why theories may be modified but are rarely discarded.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 57,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.8.N.4",
+        "domain_name": "Nature of Science - Science and Society",
+        "standards": [
+          {
+            "id": "SC.8.N.4.1",
+            "text": "Explain that science is one of the processes that can be used to inform decision making at the community, state, national, and international levels.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 57,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.N.4.2",
+            "text": "Explain how political, social, and economic concerns can affect science, and vice versa.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 57,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.8.E.5",
+        "domain_name": "Earth and Space Science - Earth in Space and Time",
+        "standards": [
+          {
+            "id": "SC.8.E.5.1",
+            "text": "Recognize that there are enormous distances between objects in space and apply our knowledge of light and space travel to understand this distance.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.E.5.10",
+            "text": "Assess how technology is essential to science for such purposes as access to outer space and other remote locations, sample collection, measurement, data collection and storage, computation, and communication of information.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.E.5.11",
+            "text": "Identify and compare characteristics of the electromagnetic spectrum such as wavelength, frequency, use, and hazards and recognize its application to an understanding of planetary images and satellite photographs.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.E.5.12",
+            "text": "Summarize the effects of space exploration on the economy and culture of Florida.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.E.5.2",
+            "text": "Recognize that the universe contains many billions of galaxies and that each galaxy contains many billions of stars.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.E.5.3",
+            "text": "Distinguish the hierarchical relationships between planets and other astronomical bodies relative to solar system, galaxy, and universe, including distance, size, and composition.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.E.5.4",
+            "text": "Explore the Law of Universal Gravitation by explaining the role that gravity plays in the formation of planets, stars, and solar systems and in determining their motions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.E.5.5",
+            "text": "Describe and classify specific physical properties of stars: apparent magnitude (brightness), temperature (color), size, and luminosity (absolute brightness).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.E.5.6",
+            "text": "Create models of solar properties including: rotation, structure of the Sun, convection, sunspots, solar flares, and prominences.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.E.5.7",
+            "text": "Compare and contrast the properties of objects in the Solar System including the Sun, planets, and moons to those of Earth, such as gravitational force, distance from the Sun, speed, movement, temperature, and atmospheric conditions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.E.5.8",
+            "text": "Compare various historical models of the Solar System, including geocentric and heliocentric.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 59,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.E.5.9",
+            "text": "Explain the impact of objects in space on each other including: 1. the Sun on the Earth including seasons and gravitational attraction 2. the Moon on the Earth, including phases, tides, and eclipses, and the relative position of each body.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 59,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.8.P.8",
+        "domain_name": "Physical Science - Properties of Matter",
+        "standards": [
+          {
+            "id": "SC.8.P.8.1",
+            "text": "Explore the scientific theory of atoms (also known as atomic theory) by using models to explain the motion of particles in solids, liquids, and gases.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 59,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.P.8.2",
+            "text": "Differentiate between weight and mass recognizing that weight is the amount of gravitational pull on an object and is distinct from, though proportional to, mass.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 60,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.P.8.3",
+            "text": "Explore and describe the densities of various materials through measurement of their masses and volumes.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 60,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.P.8.4",
+            "text": "Classify and compare substances on the basis of characteristic physical properties that can be demonstrated or measured; for example, density, thermal or electrical conductivity, solubility, magnetic properties, melting and boiling points, and know that these properties are independent of the amount of the sample.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 60,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.P.8.5",
+            "text": "Recognize that there are a finite number of elements and that their atoms combine in a multitude of ways to produce compounds that make up all of the living and nonliving things that we encounter.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 60,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.P.8.6",
+            "text": "Recognize that elements are grouped in the periodic table according to similarities of their properties.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 60,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.P.8.7",
+            "text": "Explore the scientific theory of atoms (also known as atomic theory) by recognizing that atoms are the smallest unit of an element and are composed of sub-atomic particles (electrons surrounding a nucleus containing protons and neutrons).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 60,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.P.8.8",
+            "text": "Identify basic examples of and compare and classify the properties of compounds, including acids, bases, and salts.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 60,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.P.8.9",
+            "text": "Distinguish among mixtures (including solutions) and pure substances.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 60,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.8.P.9",
+        "domain_name": "Physical Science - Changes in Matter",
+        "standards": [
+          {
+            "id": "SC.8.P.9.1",
+            "text": "Explore the Law of Conservation of Mass by demonstrating and concluding that mass is conserved when substances undergo physical and chemical changes.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 61,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.P.9.2",
+            "text": "Differentiate between physical changes and chemical changes.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 61,
+            "label": "A"
+          },
+          {
+            "id": "SC.8.P.9.3",
+            "text": "Investigate and describe how temperature influences chemical changes.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 61,
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": null,
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Students plan eighth-grade investigations, use repeated trials and replication, and treat results as support rather than proof.",
+        "Students investigate photosynthesis, cellular respiration, and the carbon cycle, and cite conservation of mass and energy.",
+        "Students distinguish science from pseudoscience, select models, explain why theories change, and relate science to public decisions.",
+        "Students describe distances in space, galaxies, gravity, stars, and the solar system, including how the Sun and Moon affect Earth.",
+        "Students use atomic theory, distinguish mass from weight, classify substances, and compare physical and chemical changes."
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "Next Generation Sunshine State Standards – Science, 2016",
+      "adopted_or_effective_date": "2016",
+      "notes": [
+        "Organization: by_grade (the package prints GRADE: 8 and SC.8 codes). It is not organized by middle-school course number.",
+        "Benchmark statements extracted from the science standards package incorporated by Rule 6A-1.09401 as Ref-06754. Big-idea introductions, clarifications, and cognitive-complexity ratings are not stored as standard text. Page numbers are PDF pages 55-61 of that package.",
+        "SC.8.E.5 is stored in printed order, not numeric order: 5.1, then 5.10-5.12, then 5.2-5.9.",
+        "SC.8.E.5.9 includes the two numbered impacts printed as part of the benchmark (Sun on Earth; Moon on Earth), not as a clarification."
+      ]
+    }
+  },
+  "citations": [
+    {
+      "id": "c-flrules-science-2016",
+      "url": "https://www.flrules.org/gateway/readRefFile.asp?refId=6754&filename=Comp%20science%20comprehensive%20package%20%20final.pdf",
+      "title": "Next Generation Sunshine State Standards – Science, 2016",
+      "publisher": "Florida Department of Education (adopted document for Rule 6A-1.09401, F.A.C., Ref-06754)",
+      "published_or_version_date": "2016-04-04",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Drafted from Ref-06754, still the science document listed in Rule 6A-1.09401 as of the 2026-08-03 rule text. Grade 8 in that package is grade-based, not course-based. A 2026-10-01 rule-development notice considers science revisions; those are not adopted. CPALMS was not used."
+  ],
+  "last_updated": "2026-10-03"
+}

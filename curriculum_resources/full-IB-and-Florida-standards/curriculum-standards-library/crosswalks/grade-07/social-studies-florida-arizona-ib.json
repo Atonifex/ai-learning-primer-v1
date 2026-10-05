@@ -1,0 +1,293 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-07.social-studies",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 7,
+  "grade_label": "Grade 7",
+  "subject": "social-studies",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "sections": {
+    "scope_note": "Arizona standards deferred. This crosswalk covers Florida Social Studies (2026) SS.7 codes and the shared Grades 6-8 band (SS.68), plus IB MYP individuals and societies. Rows are suggested (Label C). SS.68.AA and SS.68.HE (15 benchmarks) are housed in the grade-7 Florida file as the single copy. Grade 6 omitted them. Grade 8 must not duplicate them in another crosswalk.",
+    "rows": [
+      {
+        "row_id": "xw-g07-ss-001",
+        "topic_domain": "Origins of government, law, and the American political system",
+        "florida_standards": [
+          "SS.7.CG.1.1",
+          "SS.7.CG.1.2",
+          "SS.7.CG.1.3",
+          "SS.7.CG.1.4",
+          "SS.7.CG.1.5",
+          "SS.7.CG.1.6",
+          "SS.7.CG.1.7",
+          "SS.7.CG.1.8",
+          "SS.7.CG.1.9",
+          "SS.7.CG.1.10",
+          "SS.7.CG.1.11"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: civics as a possible discrete course",
+          "MYP individuals and societies: criterion A Knowing and understanding"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida traces Greece, Rome, the Judeo-Christian tradition (printed with a space after the hyphen), English documents, Enlightenment ideas, the Declaration of Independence, the Articles of Confederation, the Preamble, constitutional limits, Federalists and Anti-Federalists, and the rule of law. MYP names civics as a possible course. It does not require that list.",
+        "suggested_instructional_bridge": "Choose one founding document and say one idea it contributed to the class’s picture of limited government."
+      },
+      {
+        "row_id": "xw-g07-ss-002",
+        "topic_domain": "Citizenship, rights, and participation",
+        "florida_standards": [
+          "SS.7.CG.2.1",
+          "SS.7.CG.2.2",
+          "SS.7.CG.2.3",
+          "SS.7.CG.2.4",
+          "SS.7.CG.2.5",
+          "SS.7.CG.2.6",
+          "SS.7.CG.2.7",
+          "SS.7.CG.2.8",
+          "SS.7.CG.2.9",
+          "SS.7.CG.2.10"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: criterion D Thinking critically",
+          "MYP global context: identities and relationships"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida defines citizenship, obligations and responsibilities, the Bill of Rights, trials and juries, elections, office qualifications, media and interest groups, and related participation benchmarks. Those civic rules are state content.",
+        "suggested_instructional_bridge": "Explain one constitutional way to become a U.S. citizen and one right from the Bill of Rights, as Florida content inside a civics inquiry."
+      },
+      {
+        "row_id": "xw-g07-ss-003",
+        "topic_domain": "Principles, functions, and organization of government",
+        "florida_standards": [
+          "SS.7.CG.3.1",
+          "SS.7.CG.3.2",
+          "SS.7.CG.3.3",
+          "SS.7.CG.3.4",
+          "SS.7.CG.3.5",
+          "SS.7.CG.3.6",
+          "SS.7.CG.3.7",
+          "SS.7.CG.3.8",
+          "SS.7.CG.3.9",
+          "SS.7.CG.3.10",
+          "SS.7.CG.3.11",
+          "SS.7.CG.3.12",
+          "SS.7.CG.3.13",
+          "SS.7.CG.3.14",
+          "SS.7.CG.3.15"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: criterion A Knowing and understanding",
+          "MYP example key concept: systems"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida covers the three branches, sources of law, landmark Supreme Court decisions, the U.S. and Florida constitutions, government services, the Electoral College, and a comparison of capitalism with socialism and communism. That structure is Florida’s, not an IB syllabus.",
+        "suggested_instructional_bridge": "Compare one function of two branches and say how one check limits the other."
+      },
+      {
+        "row_id": "xw-g07-ss-004",
+        "topic_domain": "Foreign policy and world affairs",
+        "florida_standards": [
+          "SS.7.CG.4.1",
+          "SS.7.CG.4.2",
+          "SS.7.CG.4.3",
+          "SS.7.CG.4.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP example key concept: global interactions",
+          "MYP global context: globalization and sustainability"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida asks about the link between foreign and domestic policy, international organizations, U.S. actions in conflicts, and the significance of September 11, 2001. The public MYP pages do not name that date or those organizations.",
+        "suggested_instructional_bridge": "Describe one link between a foreign-policy example and life inside the United States, without treating the Florida cases as IB outcomes."
+      },
+      {
+        "row_id": "xw-g07-ss-005",
+        "topic_domain": "Market and mixed economy",
+        "florida_standards": [
+          "SS.7.E.1.1",
+          "SS.7.E.1.2",
+          "SS.7.E.1.3",
+          "SS.7.E.1.4",
+          "SS.7.E.1.5",
+          "SS.7.E.1.6"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: economics as a possible discrete course",
+          "MYP individuals and societies: criterion A Knowing and understanding"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida includes the market and mixed economy, borrowing and credit, supply and demand, financial institutions, profit and competition, and personal versus national budgets. Those topics can sit in an economics course. They are not quoted MYP outcomes.",
+        "suggested_instructional_bridge": "Use supply and demand to explain one choice a household makes, and compare it with one line in a personal budget."
+      },
+      {
+        "row_id": "xw-g07-ss-006",
+        "topic_domain": "National economy and international trade",
+        "florida_standards": [
+          "SS.7.E.2.1",
+          "SS.7.E.2.2",
+          "SS.7.E.2.3",
+          "SS.7.E.2.4",
+          "SS.7.E.2.5",
+          "SS.7.E.3.1",
+          "SS.7.E.3.2",
+          "SS.7.E.3.3",
+          "SS.7.E.3.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: economics as a possible discrete course",
+          "MYP example key concept: global interactions"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida covers taxes, banking and the money supply, competition laws, entrepreneurs, economic institutions, currency exchange, changing currency values, single-resource versus diversified economies, and GDP per capita. MYP does not set those indicators.",
+        "suggested_instructional_bridge": "Explain why two countries need a way to exchange currency, using one good that moves between them."
+      },
+      {
+        "row_id": "xw-g07-ss-007",
+        "topic_domain": "Geography of the United States and North America",
+        "florida_standards": [
+          "SS.7.G.1.1",
+          "SS.7.G.1.2",
+          "SS.7.G.1.3",
+          "SS.7.G.2.1",
+          "SS.7.G.2.2",
+          "SS.7.G.2.3",
+          "SS.7.G.2.4",
+          "SS.7.G.3.1",
+          "SS.7.G.4.1",
+          "SS.7.G.4.2",
+          "SS.7.G.5.1",
+          "SS.7.G.6.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: geography as a possible discrete course",
+          "MYP example key concept: time, place and space"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida asks students to locate states, capitals, territories, landmarks, natural resources, cultural regions, and demographics, and to use choropleths and GIS. The page names geography as a possible discipline. The place list is Florida’s.",
+        "suggested_instructional_bridge": "On a map, locate the nation’s capital and one physical landmark, and say what one map layer adds."
+      },
+      {
+        "row_id": "xw-g07-ss-008",
+        "topic_domain": "History of communism",
+        "florida_standards": [
+          "SS.7.HC.1.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: criterion D Thinking critically"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Assessing effects of communist governments on individual freedoms, political participation, and the economy is a Florida benchmark. The public MYP pages retrieved do not name communism. This row does not create an IB learning outcome.",
+        "suggested_instructional_bridge": "If the class studies this Florida benchmark, compare one effect on political participation with one effect on the economy, and keep the comparison labeled as state content."
+      },
+      {
+        "row_id": "xw-g07-ss-009",
+        "topic_domain": "Shared band - African American history, slave trade in the colonies",
+        "florida_standards": [
+          "SS.68.AA.1.1",
+          "SS.68.AA.1.2",
+          "SS.68.AA.1.3",
+          "SS.68.AA.1.4",
+          "SS.68.AA.1.5",
+          "SS.68.AA.1.6"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: history as a possible discrete course",
+          "MYP individuals and societies: criterion B Investigating"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "These six codes are the Grades 6-8 band, stored only in the grade-7 Florida file. They cover trade routes before the Atlantic slave trade, European contact with slave trading, indentured servitude, slave codes, colonial revolts, and African patriots in the Revolutionary Era. MYP does not require this list. Grade 8 must not duplicate the codes.",
+        "suggested_instructional_bridge": "Use one map of trade routes and one primary or secondary source the class already has. Do not copy this band into a Grade 8 crosswalk."
+      },
+      {
+        "row_id": "xw-g07-ss-010",
+        "topic_domain": "Shared band - African American history through Reconstruction",
+        "florida_standards": [
+          "SS.68.AA.2.1",
+          "SS.68.AA.2.2",
+          "SS.68.AA.2.3",
+          "SS.68.AA.2.4",
+          "SS.68.AA.2.5",
+          "SS.68.AA.2.6",
+          "SS.68.AA.2.7",
+          "SS.68.AA.2.8"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: history as a possible discrete course",
+          "MYP individuals and societies: criterion D Thinking critically"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "These eight codes continue the shared band: early congressional acts, the cotton gin and the expansion of slavery, enslaved people’s work, the Underground Railroad, abolitionists, the Civil War, and Reconstruction figures. They are Florida content housed once in Grade 7.",
+        "suggested_instructional_bridge": "Place three of these events in order and say which one the class can support with a source. Leave the codes in this grade’s file only."
+      },
+      {
+        "row_id": "xw-g07-ss-011",
+        "topic_domain": "Shared band - Holocaust education",
+        "florida_standards": [
+          "SS.68.HE.1.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: criterion B Investigating",
+          "MYP individuals and societies: original source material"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "SS.68.HE.1.1 examines the Holocaust as planned, systematic, state-sponsored persecution and murder of European Jews by Nazi Germany and its collaborators between 1933 and 1945. That sentence is Florida’s. It is stored here because Grade 7 is the home for SS.68.*. It is not an IB outcome, and Grade 8 must not repeat it.",
+        "suggested_instructional_bridge": "If the class studies this Florida benchmark, ground the inquiry in a source and do not rewrite the benchmark as an MYP objective."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-fl-ss",
+      "url": "https://flrules.org/gateway/readRefFile.asp?refId=19653&filename=SS%20Standards%202026%206A-1.09401%20Clean.docx",
+      "title": "Florida's State Academic Standards – Social Studies, 2026",
+      "publisher": "Florida Department of Education (Rule 6A-1.09401, F.A.C.)",
+      "published_or_version_date": "2026",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-myp-curriculum",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/",
+      "title": "MYP curriculum",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Page says last updated 19 February 2026. Curl HTTP 200. The page says sixteen key concepts are prescribed but does not list them. Global-context line uses “orientations in space and time.” Subject briefs use “Orientation in space and time.”"
+    },
+    {
+      "id": "c-ibo-myp-ias",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/individuals-and-societies/",
+      "title": "MYP individuals and societies",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Curl HTTP 200. WebFetch was a Cloudflare check."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 7 FL↔IB crosswalk for MYP, not PYP. Arizona left empty (deferred). Rows are suggested alignments (Label C). Florida IDs are from the grade 7 drafts. IB elements are public MYP framework text or criterion titles from the linked subject brief. No IB learning outcomes and no 1-8 criterion descriptors were invented."
+  ],
+  "last_updated": "2026-10-03"
+}

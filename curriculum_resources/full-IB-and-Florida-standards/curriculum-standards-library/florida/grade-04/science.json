@@ -1,0 +1,961 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-04.science",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 4,
+  "grade_label": "Grade 4",
+  "subject": "science",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "C"
+  ],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "Science",
+      "standards_system_name": "Next Generation Sunshine State Standards (NGSSS)",
+      "organization": "by_grade",
+      "courses": null
+    },
+    "domains": [
+      {
+        "domain_id": "SC.4.N.1",
+        "domain_name": "Nature of Science - The Practice of Science",
+        "standards": [
+          {
+            "id": "SC.4.N.1.1",
+            "text": "Raise questions about the natural world, use appropriate reference materials that support understanding to obtain information (identifying the source), conduct both individual and team investigations through free exploration and systematic investigations, and generate appropriate explanations based on those explorations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1661"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.N.1.2",
+            "text": "Compare the observations made by different groups using multiple tools and seek reasons to explain the differences across groups.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1662"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.N.1.3",
+            "text": "Explain that science does not always follow a rigidly defined method (\"the scientific method\") but that science does involve the use of observations and empirical evidence.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1663"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.N.1.4",
+            "text": "Attempt reasonable answers to scientific questions and cite evidence in support.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1630"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.N.1.5",
+            "text": "Compare the methods and results of investigations done by other classmates.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1631"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.N.1.6",
+            "text": "Keep records that describe observations made, carefully distinguishing actual observations from ideas and inferences about the observations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1668"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.N.1.7",
+            "text": "Recognize and explain that scientists base their explanations on evidence.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1669"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.N.1.8",
+            "text": "Recognize that science involves creativity, not just in designing experiments, but also in creating explanations that fit evidence.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1670"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.4.N.2",
+        "domain_name": "Nature of Science - The Characteristics of Scientific Knowledge",
+        "standards": [
+          {
+            "id": "SC.4.N.2.1",
+            "text": "Explain that science focuses solely on the natural world.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1671"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.4.N.3",
+        "domain_name": "Nature of Science - The Role of Theories, Laws, Hypotheses, and Models",
+        "standards": [
+          {
+            "id": "SC.4.N.3.1",
+            "text": "Explain that models can be three dimensional, two dimensional, an explanation in your mind, or a computer model.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1672"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.4.P.8",
+        "domain_name": "Physical Science - Properties of Matter",
+        "standards": [
+          {
+            "id": "SC.4.P.8.1",
+            "text": "Measure and compare objects and materials based on their physical properties including: mass, shape, volume, color, hardness, texture, odor, magnetic attraction, and conductivity.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1687"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.P.8.2",
+            "text": "Identify properties and common uses of water in each of its states.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1682"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.P.8.3",
+            "text": "Explore the Law of Conservation of Mass by demonstrating that the mass of a whole object is always the same as the sum of the masses of its parts.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1688"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.P.8.4",
+            "text": "Investigate and describe that magnets can attract magnetic materials and attract and repel other magnets.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1689"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.4.P.9",
+        "domain_name": "Physical Science - Changes in Matter",
+        "standards": [
+          {
+            "id": "SC.4.P.9.1",
+            "text": "Identify some familiar changes in materials that result in other materials with different characteristics, such as decaying animal or plant matter, burning, rusting, and cooking.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1690"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.4.P.10",
+        "domain_name": "Physical Science - Forms of Energy",
+        "standards": [
+          {
+            "id": "SC.4.P.10.1",
+            "text": "Observe and describe some basic forms of energy, including light, heat, sound, electrical, and the energy of motion.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1691"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.P.10.2",
+            "text": "Investigate and describe that energy has the ability to cause motion or create change.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1683"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.P.10.3",
+            "text": "Investigate and explain that sound is produced by vibrating objects and that pitch depends on how fast or slow the object vibrates.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1692"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.P.10.4",
+            "text": "Describe how moving water and air are sources of energy and can be used to move things.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1684"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.4.P.11",
+        "domain_name": "Physical Science - Energy Transfer and Transformations",
+        "standards": [
+          {
+            "id": "SC.4.P.11.1",
+            "text": "Recognize that heat flows from a hot object to a cold object and that heat flow may cause materials to change temperature.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1693"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.P.11.2",
+            "text": "Identify common materials that conduct heat well or poorly.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1632"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.4.P.12",
+        "domain_name": "Physical Science - Motion of Objects",
+        "standards": [
+          {
+            "id": "SC.4.P.12.1",
+            "text": "Recognize that an object in motion always changes its position and may change its direction.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1694"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.P.12.2",
+            "text": "Investigate and describe that the speed of an object is determined by the distance it travels in a unit of time and that objects can move at different speeds.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1695"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.4.L.16",
+        "domain_name": "Life Science - Heredity and Reproduction",
+        "standards": [
+          {
+            "id": "SC.4.L.16.1",
+            "text": "Identify processes of sexual reproduction in flowering plants, including pollination, fertilization (seed production), seed dispersal, and germination.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1696"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.L.16.2",
+            "text": "Explain that although characteristics of plants and animals are inherited, some characteristics can be affected by the environment.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1697"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.L.16.3",
+            "text": "Recognize that animal groups are composed of males and females that reproduce sexually, resulting in offspring that are similar to, but not exactly like, their parents.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1664"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.L.16.4",
+            "text": "Compare and contrast the major stages in the life cycles of Florida plants and animals, such as those that undergo incomplete and complete metamorphosis, and flowering and nonflowering seed-bearing plants.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1698"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.4.L.17",
+        "domain_name": "Life Science - Interdependence",
+        "standards": [
+          {
+            "id": "SC.4.L.17.1",
+            "text": "Compare the seasonal changes in Florida plants and animals to those in other regions of the country.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1701"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.L.17.2",
+            "text": "Explain that animals, including humans, cannot make their own food and that when animals eat plants or other animals, the energy stored in the food source is passed to them.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1702"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.L.17.3",
+            "text": "Trace the flow of energy from the Sun as it is transferred along the food chain through the producers, primary and secondary consumers, and decomposers.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1703"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.L.17.4",
+            "text": "Describe changes in an ecosystem resulting from seasonal variations, climate change, and the introduction of invasive, non-native species.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1704"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.4.E.5",
+        "domain_name": "Earth and Space Science - Earth in Space and Time",
+        "standards": [
+          {
+            "id": "SC.4.E.5.1",
+            "text": "Observe that the patterns of stars in the sky stay the same although they appear to shift across the sky nightly, and different stars can be seen in different seasons.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1673"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.E.5.2",
+            "text": "Describe the changes in the observable shape of the moon over the course of about a month.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1674"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.E.5.3",
+            "text": "Recognize that Earth revolves around the Sun in a year and rotates on its axis in a 24-hour day.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1675"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.E.5.4",
+            "text": "Relate that the rotation of Earth (day and night) and apparent movements of the Sun, Moon, and stars are connected.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1676"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.E.5.5",
+            "text": "Investigate and report the effects of space research and exploration on the economy and culture of Florida.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1677"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.4.E.6",
+        "domain_name": "Earth and Space Science - Earth Structures",
+        "standards": [
+          {
+            "id": "SC.4.E.6.1",
+            "text": "Identify the three categories of rocks: igneous, (formed from molten rock); sedimentary (pieces of other rocks and fossilized organisms); and metamorphic (formed from heat/pressure).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1678"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.E.6.2",
+            "text": "Identify the physical properties of common earth-forming minerals, including hardness, color, luster, cleavage, and special properties.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1679"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.E.6.3",
+            "text": "Recognize that humans need resources found on Earth and that these are either renewable or nonrenewable.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1680"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.E.6.4",
+            "text": "Describe the basic differences between physical weathering (breaking down of rock by wind, water, ice, temperature change, and plants) and erosion (movement of rock by gravity, wind, water, and ice).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1681"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.E.6.5",
+            "text": "Investigate how technology and tools help to extend the ability of humans to observe very small things and very large things.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1685"
+            ],
+            "page": null,
+            "label": "A"
+          },
+          {
+            "id": "SC.4.E.6.6",
+            "text": "Identify resources available in Florida (water, phosphate, oil, limestone, silicon, wind, and solar energy).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-cpalms-1686"
+            ],
+            "page": null,
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": null,
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Students practice scientific inquiry with evidence-based reasoning and creative explanations.",
+        "Students explore properties of matter, conservation of mass, and magnetism.",
+        "Students investigate energy forms, sound, and heat transfer.",
+        "Students understand plant reproduction, life cycles, and food chains.",
+        "Students learn Earth's rotation, moon phases, rock types, and Florida resources."
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "Next Generation Sunshine State Standards (NGSSS)",
+      "adopted_or_effective_date": "2008",
+      "notes": [
+        "Converted from legacy primer-mvp branch content with CPALMS verification on 2026-10-03."
+      ]
+    }
+  },
+  "citations": [
+    {
+      "id": "c-cpalms-1661",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1661",
+      "title": "SC.4.N.1.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1662",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1662",
+      "title": "SC.4.N.1.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1663",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1663",
+      "title": "SC.4.N.1.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1630",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1630",
+      "title": "SC.4.N.1.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1631",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1631",
+      "title": "SC.4.N.1.5 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1668",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1668",
+      "title": "SC.4.N.1.6 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1669",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1669",
+      "title": "SC.4.N.1.7 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1670",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1670",
+      "title": "SC.4.N.1.8 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1671",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1671",
+      "title": "SC.4.N.2.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1672",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1672",
+      "title": "SC.4.N.3.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1687",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1687",
+      "title": "SC.4.P.8.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1682",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1682",
+      "title": "SC.4.P.8.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1688",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1688",
+      "title": "SC.4.P.8.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1689",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1689",
+      "title": "SC.4.P.8.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1690",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1690",
+      "title": "SC.4.P.9.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1691",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1691",
+      "title": "SC.4.P.10.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1683",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1683",
+      "title": "SC.4.P.10.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1692",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1692",
+      "title": "SC.4.P.10.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1684",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1684",
+      "title": "SC.4.P.10.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1693",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1693",
+      "title": "SC.4.P.11.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1632",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1632",
+      "title": "SC.4.P.11.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1694",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1694",
+      "title": "SC.4.P.12.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1695",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1695",
+      "title": "SC.4.P.12.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1696",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1696",
+      "title": "SC.4.L.16.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1697",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1697",
+      "title": "SC.4.L.16.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1664",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1664",
+      "title": "SC.4.L.16.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1698",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1698",
+      "title": "SC.4.L.16.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1701",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1701",
+      "title": "SC.4.L.17.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1702",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1702",
+      "title": "SC.4.L.17.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1703",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1703",
+      "title": "SC.4.L.17.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1704",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1704",
+      "title": "SC.4.L.17.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1673",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1673",
+      "title": "SC.4.E.5.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1674",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1674",
+      "title": "SC.4.E.5.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1675",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1675",
+      "title": "SC.4.E.5.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1676",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1676",
+      "title": "SC.4.E.5.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1677",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1677",
+      "title": "SC.4.E.5.5 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1678",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1678",
+      "title": "SC.4.E.6.1 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1679",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1679",
+      "title": "SC.4.E.6.2 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1680",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1680",
+      "title": "SC.4.E.6.3 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1681",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1681",
+      "title": "SC.4.E.6.4 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1685",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1685",
+      "title": "SC.4.E.6.5 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-cpalms-1686",
+      "url": "https://www.cpalms.org/PreviewStandard/PrintStandard/1686",
+      "title": "SC.4.E.6.6 - CPALMS Standard",
+      "publisher": "CPALMS / Florida Department of Education",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Converted from legacy primer-mvp:curriculum_resources/standards_science_grade4.ts. All standard IDs and text verified against CPALMS."
+  ],
+  "last_updated": "2026-10-03"
+}

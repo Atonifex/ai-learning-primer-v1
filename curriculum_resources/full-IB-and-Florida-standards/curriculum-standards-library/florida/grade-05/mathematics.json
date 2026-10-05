@@ -1,0 +1,503 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-05.mathematics",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 5,
+  "grade_label": "Grade 5",
+  "subject": "mathematics",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "C"
+  ],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "Mathematics",
+      "standards_system_name": "B.E.S.T. Standards (Benchmarks for Excellent Student Thinking)",
+      "organization": "by_grade",
+      "courses": null
+    },
+    "domains": [
+      {
+        "domain_id": "MA.5.NSO.1",
+        "domain_name": "Number Sense and Operations: Understand the place value of multi-digit numbers with decimals to the thousandths place",
+        "standards": [
+          {
+            "id": "MA.5.NSO.1.1",
+            "text": "Express how the value of a digit in a multi-digit number with decimals to the thousandths changes if the digit moves one or more places to the left or right.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 57,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.NSO.1.2",
+            "text": "Read and write multi-digit numbers with decimals to the thousandths using standard form, word form and expanded form.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 57,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.NSO.1.3",
+            "text": "Compose and decompose multi-digit numbers with decimals to the thousandths in multiple ways using the values of the digits in each place. Demonstrate the compositions or decompositions using objects, drawings and expressions or equations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 57,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.NSO.1.4",
+            "text": "Plot, order and compare multi-digit numbers with decimals up to the thousandths.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.NSO.1.5",
+            "text": "Round multi-digit numbers with decimals to the thousandths to the nearest hundredth, tenth or whole number.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 58,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.5.NSO.2",
+        "domain_name": "Number Sense and Operations: Add, subtract, multiply and divide multi-digit numbers",
+        "standards": [
+          {
+            "id": "MA.5.NSO.2.1",
+            "text": "Multiply multi-digit whole numbers including using a standard algorithm with procedural fluency.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.NSO.2.2",
+            "text": "Divide multi-digit whole numbers, up to five digits by two digits, including using a standard algorithm with procedural fluency. Represent remainders as fractions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.NSO.2.3",
+            "text": "Add and subtract multi-digit numbers with decimals to the thousandths, including using a standard algorithm with procedural fluency.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.NSO.2.4",
+            "text": "Explore the multiplication and division of multi-digit numbers with decimals to the hundredths using estimation, rounding and place value.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 59,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.NSO.2.5",
+            "text": "Multiply and divide a multi-digit number with decimals to the tenths by one-tenth and one-hundredth with procedural reliability.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 59,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.5.FR.1",
+        "domain_name": "Fractions: Interpret a fraction as an answer to a division problem",
+        "standards": [
+          {
+            "id": "MA.5.FR.1.1",
+            "text": "Given a mathematical or real-world problem, represent the division of two whole numbers as a fraction.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 59,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.5.FR.2",
+        "domain_name": "Fractions: Perform operations with fractions",
+        "standards": [
+          {
+            "id": "MA.5.FR.2.1",
+            "text": "Add and subtract fractions with unlike denominators, including mixed numbers and fractions greater than 1, with procedural reliability.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 60,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.FR.2.2",
+            "text": "Extend previous understanding of multiplication to multiply a fraction by a fraction, including mixed numbers and fractions greater than 1, with procedural reliability.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 60,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.FR.2.3",
+            "text": "When multiplying a given number by a fraction less than 1 or a fraction greater than 1, predict and explain the relative size of the product to the given number without calculating.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 60,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.FR.2.4",
+            "text": "Extend previous understanding of division to explore the division of a unit fraction by a whole number and a whole number by a unit fraction.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 60,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.5.AR.1",
+        "domain_name": "Algebraic Reasoning: Solve problems involving the four operations with whole numbers and fractions",
+        "standards": [
+          {
+            "id": "MA.5.AR.1.1",
+            "text": "Solve multi-step real-world problems involving any combination of the four operations with whole numbers, including problems in which remainders must be interpreted within the context.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 61,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.AR.1.2",
+            "text": "Solve real-world problems involving the addition, subtraction or multiplication of fractions, including mixed numbers and fractions greater than 1.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 61,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.AR.1.3",
+            "text": "Solve real-world problems involving division of a unit fraction by a whole number and a whole number by a unit fraction.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 61,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.5.AR.2",
+        "domain_name": "Algebraic Reasoning: Demonstrate an understanding of equality, the order of operations and equivalent numerical expressions",
+        "standards": [
+          {
+            "id": "MA.5.AR.2.1",
+            "text": "Translate written real-world and mathematical descriptions into numerical expressions and numerical expressions into written mathematical descriptions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 62,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.AR.2.2",
+            "text": "Evaluate multi-step numerical expressions using order of operations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 62,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.AR.2.3",
+            "text": "Determine and explain whether an equation involving any of the four operations is true or false.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 62,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.AR.2.4",
+            "text": "Given a mathematical or real-world context, write an equation involving any of the four operations to determine the unknown whole number with the unknown in any position.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 63,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.5.AR.3",
+        "domain_name": "Algebraic Reasoning: Analyze patterns and relationships between inputs and outputs",
+        "standards": [
+          {
+            "id": "MA.5.AR.3.1",
+            "text": "Given a numerical pattern, identify and write a rule that can describe the pattern as an expression.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 63,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.AR.3.2",
+            "text": "Given a rule for a numerical pattern, use a two-column table to record the inputs and outputs.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 63,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.5.M.1",
+        "domain_name": "Measurement: Convert measurement units to solve multi-step problems",
+        "standards": [
+          {
+            "id": "MA.5.M.1.1",
+            "text": "Solve multi-step real-world problems that involve converting measurement units to equivalent measurements within a single system of measurement.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 64,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.5.M.2",
+        "domain_name": "Measurement: Solve problems involving money",
+        "standards": [
+          {
+            "id": "MA.5.M.2.1",
+            "text": "Solve multi-step real-world problems involving money using decimal notation.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 64,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.5.GR.1",
+        "domain_name": "Geometric Reasoning: Classify two-dimensional figures and three-dimensional figures based on defining attributes",
+        "standards": [
+          {
+            "id": "MA.5.GR.1.1",
+            "text": "Classify triangles or quadrilaterals into different categories based on shared defining attributes. Explain why a triangle or quadrilateral would or would not belong to a category.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 64,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.GR.1.2",
+            "text": "Identify and classify three-dimensional figures into categories based on their defining attributes. Figures are limited to right pyramids, right prisms, right circular cylinders, right circular cones and spheres.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 64,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.5.GR.2",
+        "domain_name": "Geometric Reasoning: Find the perimeter and area of rectangles with fractional or decimal side lengths",
+        "standards": [
+          {
+            "id": "MA.5.GR.2.1",
+            "text": "Find the perimeter and area of a rectangle with fractional or decimal side lengths using visual models and formulas.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 65,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.5.GR.3",
+        "domain_name": "Geometric Reasoning: Solve problems involving the volume of right rectangular prisms",
+        "standards": [
+          {
+            "id": "MA.5.GR.3.1",
+            "text": "Explore volume as an attribute of three-dimensional figures by packing them with unit cubes without gaps. Find the volume of a right rectangular prism with whole-number side lengths by counting unit cubes.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 65,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.GR.3.2",
+            "text": "Find the volume of a right rectangular prism with whole-number side lengths using a visual model and a formula.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 65,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.GR.3.3",
+            "text": "Solve real-world problems involving the volume of right rectangular prisms, including problems with an unknown edge length, with whole-number edge lengths using a visual model or a formula. Write an equation with a variable for the unknown to represent the problem.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 65,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.5.GR.4",
+        "domain_name": "Geometric Reasoning: Plot points and represent problems on the coordinate plane",
+        "standards": [
+          {
+            "id": "MA.5.GR.4.1",
+            "text": "Identify the origin and axes in the coordinate system. Plot and label ordered pairs in the first quadrant of the coordinate plane.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 66,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.GR.4.2",
+            "text": "Represent mathematical and real-world problems by plotting points in the first quadrant of the coordinate plane and interpret coordinate values of points in the context of the situation.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 66,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "MA.5.DP.1",
+        "domain_name": "Data Analysis and Probability: Collect, represent and interpret data and find the mean, mode, median or range of a data set",
+        "standards": [
+          {
+            "id": "MA.5.DP.1.1",
+            "text": "Collect and represent numerical data, including fractional and decimal values, using tables, line graphs or line plots.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 66,
+            "label": "A"
+          },
+          {
+            "id": "MA.5.DP.1.2",
+            "text": "Interpret numerical data, with whole-number values, represented with tables or line plots by determining the mean, mode, median or range.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-math-2026"
+            ],
+            "page": 68,
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": null,
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Students read, write, compose, compare, and round multi-digit numbers with decimals to the thousandths and operate on multi-digit whole numbers and decimals.",
+        "Students represent division as a fraction and add, subtract, multiply, and explore division with fractions.",
+        "Students solve multi-step problems, translate and evaluate numerical expressions, and describe numerical patterns.",
+        "Students convert measurements, solve money problems, classify figures, and find perimeter, area, and volume.",
+        "Students plot points in the first quadrant and collect, represent, and interpret data, including mean, mode, median, or range."
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "Florida's B.E.S.T. Standards Mathematics, 2026",
+      "adopted_or_effective_date": "2026-08-03",
+      "notes": [
+        "Benchmark statements extracted from the clean 2026 standards DOCX incorporated by Rule 6A-1.09401 (Ref-19651). Examples and benchmark clarifications are omitted from standard text. Equation objects inside examples did not extract; those examples are not in text. Printed pages are 57-68 of the DOCX converted to PDF."
+      ]
+    }
+  },
+  "citations": [
+    {
+      "id": "c-flrules-math-2026",
+      "url": "https://flrules.org/gateway/readRefFile.asp?refId=19651&filename=Florida%27s%20B.E.S.T.%20Standards%20for%20Mathematics_6A-1.09401%20Clean.docx",
+      "title": "Florida's B.E.S.T. Standards Mathematics, 2026",
+      "publisher": "Florida Department of Education (adopted document for Rule 6A-1.09401, F.A.C., Ref-19651)",
+      "published_or_version_date": "2026",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Drafted from Ref-19651, cited in Rule 6A-1.09401 effective 2026-08-03. The 2020 Grade 5 course description PDF (cdn.fldoe.org Grade-5.pdf) reprints these benchmarks, but its two-column layout splits sentences around the codes, so it was not used as the wording source. Equation objects inside examples did not extract; examples are not part of the stored benchmark text. A 2026-10-01 rule-development notice considers further mathematics revisions; those are not adopted. CPALMS was not used."
+  ],
+  "last_updated": "2026-10-03"
+}

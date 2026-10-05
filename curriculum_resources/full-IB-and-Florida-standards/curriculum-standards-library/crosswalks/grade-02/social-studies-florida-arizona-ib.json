@@ -1,0 +1,172 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-02.social-studies",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 2,
+  "grade_label": "Grade 2",
+  "subject": "social-studies",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "sections": {
+    "scope_note": "Arizona standards deferred. This crosswalk covers Florida State Academic Standards for Social Studies (2026) and IB PYP only. Rows are suggested (Label C).",
+    "rows": [
+      {
+        "row_id": "xw-g02-social-studies-001",
+        "topic_domain": "Historical inquiry and time",
+        "florida_standards": [
+          "SS.2.A.1.1",
+          "SS.2.A.1.2",
+          "SS.2.A.3.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP ATL: Research skills",
+          "PYP Social studies: Continuity and change through time (strand name reused from grade 3)"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida asks students to examine sources, use the media center or technology, and identify time-sequence terms. PYP research skills are public; the strand name is reused.",
+        "suggested_instructional_bridge": "Answer one historical question from two sources and order the events with time words."
+      },
+      {
+        "row_id": "xw-g02-social-studies-002",
+        "topic_domain": "Native Americans, colonial life, and immigration",
+        "florida_standards": [
+          "SS.2.A.2.1",
+          "SS.2.A.2.2",
+          "SS.2.A.2.3",
+          "SS.2.A.2.4",
+          "SS.2.A.2.5",
+          "SS.2.A.2.6",
+          "SS.2.A.2.7",
+          "SS.2.A.2.8"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP transdisciplinary theme: Where we are in place and time",
+          "PYP concept: Perspective (name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies Native Americans as first inhabitants, colonial daily life, Ellis Island and the Statue of Liberty from 1892-1954, and immigration today. Those are state topics, not IB requirements.",
+        "suggested_instructional_bridge": "Inquire into one community's move or settlement and compare two perspectives on the same change."
+      },
+      {
+        "row_id": "xw-g02-social-studies-003",
+        "topic_domain": "African American contributions and oral traditions",
+        "florida_standards": [
+          "SS.2.AA.1.1",
+          "SS.2.AA.1.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP transdisciplinary theme: Who we are",
+          "PYP Social studies: Social organization and culture (strand name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida names specific people and folktales in the benchmark text. PYP does not prescribe that list.",
+        "suggested_instructional_bridge": "Study one civic contribution and one folktale from the Florida benchmark as sources, and ask whose story is being told."
+      },
+      {
+        "row_id": "xw-g02-social-studies-004",
+        "topic_domain": "Why governments form and the Constitution",
+        "florida_standards": [
+          "SS.2.CG.1.1",
+          "SS.2.CG.1.2",
+          "SS.2.CG.3.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP transdisciplinary theme: How we organize ourselves"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida asks why people form governments, how the U.S. government protects liberty and rights, and identifies the Constitution as supreme law. The theme is public; the U.S. legal claims are Florida's.",
+        "suggested_instructional_bridge": "Use a classroom rule and a community rule to ask why groups make rules, then connect that question to the Constitution benchmark."
+      },
+      {
+        "row_id": "xw-g02-social-studies-005",
+        "topic_domain": "Citizenship, patriotism, and symbols",
+        "florida_standards": [
+          "SS.2.CG.2.1",
+          "SS.2.CG.2.2",
+          "SS.2.CG.2.3",
+          "SS.2.CG.2.4",
+          "SS.2.CG.2.5"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP transdisciplinary theme: Who we are",
+          "PYP learner profile: Principled (name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies U.S. citizenship, local and state responsible citizenship, patriotism, and symbols of the United States and Florida. Clarifications name particular buildings and people; those clarifications are not the benchmark sentences.",
+        "suggested_instructional_bridge": "Compare a symbol of the United States and a symbol of Florida and say what responsibility it points to."
+      },
+      {
+        "row_id": "xw-g02-social-studies-006",
+        "topic_domain": "Beginning economics",
+        "florida_standards": [
+          "SS.2.E.1.1",
+          "SS.2.E.1.2",
+          "SS.2.E.1.3",
+          "SS.2.E.1.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Social studies: Human systems and economic activities (strand name reused from grade 3)"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida covers limited resources, supply based on consumer demand, U.S. trade, and personal saving and spending. The strand name is reused, not a public grade 2 list.",
+        "suggested_instructional_bridge": "Track one choice the class makes because there is not enough of something, and whether people save or spend to meet a want."
+      },
+      {
+        "row_id": "xw-g02-social-studies-007",
+        "topic_domain": "Maps and location",
+        "florida_standards": [
+          "SS.2.G.1.1",
+          "SS.2.G.1.2",
+          "SS.2.G.1.3",
+          "SS.2.G.1.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP transdisciplinary theme: Where we are in place and time",
+          "PYP Social studies: Human and natural environments (strand name reused from grade 3)"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida requires political, physical, and thematic maps, the student's hometown, Florida, capitals, continents, oceans, Equator, Prime Meridian, poles, and North American countries. Those locations are Florida's.",
+        "suggested_instructional_bridge": "Start from the student's hometown on a map and zoom out to Florida, North America, and the world features in the benchmarks."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-fl-ss",
+      "url": "https://flrules.org/gateway/readRefFile.asp?refId=19653&filename=SS%20Standards%202026%206A-1.09401%20Clean.docx",
+      "title": "Florida's State Academic Standards – Social Studies, 2026",
+      "publisher": "Florida Department of Education (Rule 6A-1.09401, F.A.C., Ref-19653)",
+      "published_or_version_date": "2026",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-pyp",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/how-the-pyp-works/",
+      "title": "How the PYP works",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Themes and the transdisciplinary statement were read from this page. Strand names in ib_framework_elements that go beyond that page are reused from the grade 3 library and are not official IB-Florida mappings."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 2 FL↔IB crosswalk. Arizona left empty (deferred). Rows are suggested alignments (Label C). Florida IDs are from the grade 2 drafts. IB elements are either public PYP framework text or the same strand labels used in the grade 3 crosswalks."
+  ],
+  "last_updated": "2026-10-03"
+}

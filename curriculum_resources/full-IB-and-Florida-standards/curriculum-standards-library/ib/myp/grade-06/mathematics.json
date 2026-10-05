@@ -1,0 +1,239 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "ib.myp.grade-06.mathematics",
+  "doc_type": "ib_alignment",
+  "system": "ib",
+  "programme": "MYP",
+  "grade": 6,
+  "grade_label": "Grade 6",
+  "subject": "mathematics",
+  "status": "drafted",
+  "content_labels": [
+    "B",
+    "C"
+  ],
+  "sections": {
+    "applicable_programme": {
+      "programme": "MYP",
+      "age_range": "11-16",
+      "grade_mapping_note": "The public MYP page describes the programme as for students aged 11-16 and as a five-year programme that schools may shorten. Mapping Grade 6 (often about ages 11-12) onto the start of that span is our convention, not an IB grade or MYP-year boundary.",
+      "shared_programme_block_ref": null,
+      "grade_specific_note": {
+        "label": "C",
+        "text": "Florida Grade 6 mathematics is grade-coded (MA.6), not a named high-school course. MYP mathematics can be standard or extended. That choice is a school decision and is not made here."
+      }
+    },
+    "subject_group_or_structure": {
+      "ib_subject_group_or_area": "Mathematics",
+      "mapping_to_primer_subject": "Grade 6 Florida mathematics (MA.6) is mapped here to the MYP mathematics subject group. The public page names the branches number, algebra, geometry and trigonometry, and statistics and probability, and two levels of challenge (standard and extended). It does not place Grade 6 in either level.",
+      "mapping_label": "C"
+    },
+    "framework_elements": {
+      "concepts": [
+        "form (example key concept named on the mathematics subject brief)",
+        "logic (example key concept named on the mathematics subject brief)",
+        "relationships (example key concept named on the mathematics subject brief)"
+      ],
+      "approaches_to_learning": [
+        "social skills",
+        "thinking skills",
+        "research skills",
+        "communication skills",
+        "self management skills"
+      ],
+      "learner_profile_attributes": [],
+      "global_contexts_or_transdisciplinary_themes": [
+        "identities and relationships",
+        "personal and cultural expression",
+        "orientations in space and time",
+        "scientific and technical innovation",
+        "fairness and development",
+        "globalization and sustainability"
+      ]
+    },
+    "official_requirements": [
+      {
+        "label": "B",
+        "text": "The International Baccalaureate® (IB) Middle Years Programme (MYP) is for students aged 11-16.",
+        "citation_ids": [
+          "c-ibo-myp-home"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "The MYP is a five-year programme, which can be implemented in a partnership between schools, or in several abbreviated (two, three or four year) formats.",
+        "citation_ids": [
+          "c-ibo-myp-home"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Developing and applying these social, thinking, research, communication and self management skills helps students learn how to learn.",
+        "citation_ids": [
+          "c-ibo-myp-curriculum"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Using global contexts, MYP students develop an understanding of their common humanity and shared guardianship of the planet through developmentally appropriate explorations of: identities and relationships; personal and cultural expression; orientations in space and time; scientific and technical innovation; fairness and development; globalization and sustainability.",
+        "citation_ids": [
+          "c-ibo-myp-curriculum"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "The MYP prescribes sixteen key interdisciplinary concepts along with related concepts for each discipline.",
+        "citation_ids": [
+          "c-ibo-myp-curriculum"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "MYP teachers assess the prescribed subject-group objectives using the assessment criteria for each subject group in each year of the programme.",
+        "citation_ids": [
+          "c-ibo-myp-assessment"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "In the International Baccalaureate® (IB) Middle Years Programme (MYP), mathematics promotes both inquiry and application, helping students to develop problem solving techniques that transcend the discipline and that are useful in the world beyond school.",
+        "citation_ids": [
+          "c-ibo-myp-math"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "The MYP mathematics framework encompasses number, algebra, geometry and trigonometry, statistics and probability.",
+        "citation_ids": [
+          "c-ibo-myp-math"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "In the MYP, the topics and skills in the framework for mathematics are organized so that students can work at two levels of challenge: standard mathematics and extended mathematics.",
+        "citation_ids": [
+          "c-ibo-myp-math"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "The mathematics subject brief names four equally weighted assessment criteria: A Knowing and understanding; B Investigating patterns; C Communicating; D Applying mathematics in real-life contexts. The 1-8 band descriptors are not stored here.",
+        "citation_ids": [
+          "c-ibo-myp-math-brief"
+        ],
+        "page": null
+      }
+    ],
+    "typical_fit": {
+      "label": "C",
+      "text": "Grade 6 Florida mathematics in this draft covers rational numbers and absolute value, operations with positive rational numbers and integers, equivalent forms, expressions and one-step equations, ratios and percentages, the coordinate plane, area, volume and surface area, and statistics. Those ceilings and algorithms are Florida’s. A reasonable MYP fit is the number, algebra, geometry, and statistics branches, plus criteria A and D, without claiming IB sets the same grade-6 limits or chooses standard versus extended mathematics for this grade."
+    },
+    "suggested_alignment_to_florida_and_arizona": {
+      "label": "C",
+      "florida": [
+        {
+          "standard_id": "MA.6.NSO.1.1",
+          "alignment_note": "Plotting, ordering, and comparing rational numbers fits the number branch and criterion A. Positive and negative forms in the Florida clarification are not an IB grade rule."
+        },
+        {
+          "standard_id": "MA.6.NSO.4.2",
+          "alignment_note": "Multiplying and dividing integers with procedural fluency is Florida language. MYP does not publish that fluency label."
+        },
+        {
+          "standard_id": "MA.6.AR.3.1",
+          "alignment_note": "Writing ratios, including a/b, a to b, and a:b, fits relationships as an example key concept. The notation list is Florida’s."
+        },
+        {
+          "standard_id": "MA.6.AR.2.2",
+          "alignment_note": "Writing and solving one-step addition and subtraction equations can sit under criterion A. The integer-only limit is Florida’s."
+        },
+        {
+          "standard_id": "MA.6.GR.1.1",
+          "alignment_note": "Plotting rational ordered pairs in four quadrants fits geometry. The MYP branch name also includes trigonometry, which this Florida grade list does not require."
+        },
+        {
+          "standard_id": "MA.6.GR.2.3",
+          "alignment_note": "Volume of right rectangular prisms with positive rational edges is a Florida benchmark. The public MYP pages do not name that solid."
+        },
+        {
+          "standard_id": "MA.6.DP.1.2",
+          "alignment_note": "Mean, median, mode, and range fit statistics and probability. Those four measures are Florida’s list, not a quoted MYP outcome."
+        }
+      ],
+      "arizona": [],
+      "notes": "Arizona standards deferred. These rows are suggested starting points (Label C), not an official IB-Florida crosswalk."
+    },
+    "access_limitations": [
+      "WebFetch of ibo.org returned a Cloudflare verification page on 2026-10-03. The sentences marked Label B were read from curl HTTP 200 copies of the public MYP pages and subject briefs linked from those pages.",
+      "The curriculum page says the MYP prescribes sixteen key interdisciplinary concepts but does not name them. Only example key concepts printed on the subject brief are listed. They are not the full set.",
+      "Assessment-criterion titles are taken from the public subject brief. The 1-8 achievement-level descriptors are not copied. No MYP year (1-5) was assigned to Grade 6.",
+      "Learner-profile attribute titles are not printed on the MYP pages retrieved. The grade 3 name list was not reused as Label B.",
+      "The mathematics page distinguishes standard and extended mathematics. This draft does not assign Grade 6 to either level."
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-ibo-myp-home",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/",
+      "title": "Middle Years Programme (MYP)",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "WebFetch returned a Cloudflare check. Curl returned HTTP 200 on 2026-10-03."
+    },
+    {
+      "id": "c-ibo-myp-curriculum",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/",
+      "title": "MYP curriculum",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Page says last updated 19 February 2026. Curl HTTP 200. The page says sixteen key concepts are prescribed but does not list them. Global-context line uses “orientations in space and time.” Subject briefs use “Orientation in space and time.”"
+    },
+    {
+      "id": "c-ibo-myp-assessment",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/assessment-and-exams/",
+      "title": "MYP assessment",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Curl HTTP 200. The page says teachers use subject-group assessment criteria. It does not print criterion names or 1-8 descriptors."
+    },
+    {
+      "id": "c-ibo-myp-math",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/mathematics/",
+      "title": "MYP mathematics",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Curl HTTP 200. WebFetch was a Cloudflare check."
+    },
+    {
+      "id": "c-ibo-myp-math-brief",
+      "url": "https://www.ibo.org/globalassets/new-structure/brochures-and-infographics/pdfs/myp-brief-mathematics-en.pdf",
+      "title": "MYP mathematics subject brief",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Linked from the mathematics page. PDF footer copyright 2021. Criterion titles only were used. Related-concept examples (equivalence, approximation, quantity, validity) were not stored as requirements."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 6 MYP draft. Label B sentences are from public MYP pages and the linked subject brief. Criterion titles only; 1-8 descriptors were not copied. No MYP year placement and no new IB learning outcomes were invented. Label C notes and Florida pointers are suggestions."
+  ],
+  "last_updated": "2026-10-03"
+}

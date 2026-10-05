@@ -1,0 +1,501 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-05.science",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 5,
+  "grade_label": "Grade 5",
+  "subject": "science",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "C"
+  ],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "Science",
+      "standards_system_name": "Next Generation Sunshine State Standards (NGSSS)",
+      "organization": "by_grade",
+      "courses": null
+    },
+    "domains": [
+      {
+        "domain_id": "SC.5.N.1",
+        "domain_name": "Nature of Science - The Practice of Science",
+        "standards": [
+          {
+            "id": "SC.5.N.1.1",
+            "text": "Define a problem, use appropriate reference materials to support scientific understanding, plan and carry out scientific investigations of various types such as: systematic observations, experiments requiring the identification of variables, collecting and organizing data, interpreting data in charts, tables, and graphics, analyze information, make predictions, and defend conclusions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 34,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.N.1.2",
+            "text": "Explain the difference between an experiment and other types of scientific investigation.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 34,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.N.1.3",
+            "text": "Recognize and explain the need for repeated experimental trials.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 34,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.N.1.4",
+            "text": "Identify a control group and explain its importance in an experiment.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 34,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.N.1.5",
+            "text": "Recognize and explain that authentic scientific investigation frequently does not parallel the steps of \"the scientific method.\"",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 34,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.N.1.6",
+            "text": "Recognize and explain the difference between personal opinion/interpretation and verified observation.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 34,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.5.P.10",
+        "domain_name": "Physical Science - Forms of Energy",
+        "standards": [
+          {
+            "id": "SC.5.P.10.1",
+            "text": "Investigate and describe some basic forms of energy, including light, heat, sound, electrical, chemical, and mechanical.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 35,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.P.10.2",
+            "text": "Investigate and explain that energy has the ability to cause motion or create change.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 35,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.P.10.3",
+            "text": "Investigate and explain that an electrically-charged object can attract an uncharged object and can either attract or repel another charged object without any contact between the objects.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 35,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.P.10.4",
+            "text": "Investigate and explain that electrical energy can be transformed into heat, light, and sound energy, as well as the energy of motion.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 35,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.5.P.11",
+        "domain_name": "Physical Science - Energy Transfer and Transformations",
+        "standards": [
+          {
+            "id": "SC.5.P.11.1",
+            "text": "Investigate and illustrate the fact that the flow of electricity requires a closed circuit (a complete loop).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 35,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.P.11.2",
+            "text": "Identify and classify materials that conduct electricity and materials that do not.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 36,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.5.P.13",
+        "domain_name": "Physical Science - Forces and Changes in Motion",
+        "standards": [
+          {
+            "id": "SC.5.P.13.1",
+            "text": "Identify familiar forces that cause objects to move, such as pushes or pulls, including gravity acting on falling objects.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 36,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.P.13.2",
+            "text": "Investigate and describe that the greater the force applied to it, the greater the change in motion of a given object.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 36,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.P.13.3",
+            "text": "Investigate and describe that the more mass an object has, the less effect a given force will have on the object's motion.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 36,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.P.13.4",
+            "text": "Investigate and explain that when a force is applied to an object but it does not move, it is because another opposing force is being applied by something in the environment so that the forces are balanced.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 36,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.5.L.14",
+        "domain_name": "Life Science - Organization and Development of Living Organisms",
+        "standards": [
+          {
+            "id": "SC.5.L.14.1",
+            "text": "Identify the organs in the human body and describe their functions, including the skin, brain, heart, lungs, stomach, liver, intestines, pancreas, muscles and skeleton, reproductive organs, kidneys, bladder, and sensory organs.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 37,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.L.14.2",
+            "text": "Compare and contrast the function of organs and other physical structures of plants and animals, including humans, for example: some animals have skeletons for support -- some with internal skeletons others with exoskeletons -- while some plants have stems for support.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 37,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.5.L.15",
+        "domain_name": "Life Science - Diversity and Evolution of Living Organisms",
+        "standards": [
+          {
+            "id": "SC.5.L.15.1",
+            "text": "Describe how, when the environment changes, differences between individuals allow some plants and animals to survive and reproduce while others die or move to new locations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 37,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.5.L.17",
+        "domain_name": "Life Science - Interdependence",
+        "standards": [
+          {
+            "id": "SC.5.L.17.1",
+            "text": "Compare and contrast adaptations displayed by animals and plants that enable them to survive in different environments such as life cycles variations, animal behaviors and physical characteristics.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 38,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.5.N.2",
+        "domain_name": "Nature of Science - The Characteristics of Scientific Knowledge",
+        "standards": [
+          {
+            "id": "SC.5.N.2.1",
+            "text": "Recognize and explain that science is grounded in empirical observations that are testable; explanation must always be linked with evidence.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 38,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.N.2.2",
+            "text": "Recognize and explain that when scientific investigations are carried out, the evidence produced by those investigations should be replicable by others.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 38,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.5.E.5",
+        "domain_name": "Earth and Space Science - Earth in Space and Time",
+        "standards": [
+          {
+            "id": "SC.5.E.5.1",
+            "text": "Recognize that a galaxy consists of gas, dust, and many stars, including any objects orbiting the stars. Identify our home galaxy as the Milky Way.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 38,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.E.5.2",
+            "text": "Recognize the major common characteristics of all planets and compare/contrast the properties of inner and outer planets.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.E.5.3",
+            "text": "Distinguish among the following objects of the Solar System -- Sun, planets, moons, asteroids, comets -- and identify Earth's position in it.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 39,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.5.E.7",
+        "domain_name": "Earth and Space Science - Earth Systems and Patterns",
+        "standards": [
+          {
+            "id": "SC.5.E.7.1",
+            "text": "Create a model to explain the parts of the water cycle. Water can be a gas, a liquid, or a solid and can go back and forth from one state to another.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.E.7.2",
+            "text": "Recognize that the ocean is an integral part of the water cycle and is connected to all of Earth's water reservoirs via evaporation and precipitation processes.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.E.7.3",
+            "text": "Recognize how air temperature, barometric pressure, humidity, wind speed and direction, and precipitation determine the weather in a particular place and time.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.E.7.4",
+            "text": "Distinguish among the various forms of precipitation (rain, snow, sleet, and hail), making connections to the weather in a particular place and time.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.E.7.5",
+            "text": "Recognize that some of the weather-related differences, such as temperature and humidity, are found among different environments, such as swamps, deserts, and mountains.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.E.7.6",
+            "text": "Describe characteristics (temperature and precipitation) of different climate zones as they relate to latitude, elevation, and proximity to bodies of water.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.E.7.7",
+            "text": "Design a family preparedness plan for natural disasters and identify the reasons for having such a plan.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 40,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.5.P.8",
+        "domain_name": "Physical Science - Properties of Matter",
+        "standards": [
+          {
+            "id": "SC.5.P.8.1",
+            "text": "Compare and contrast the basic properties of solids, liquids, and gases, such as mass, volume, color, texture, and temperature.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 40,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.P.8.2",
+            "text": "Investigate and identify materials that will dissolve in water and those that will not and identify the conditions that will speed up or slow down the dissolving process.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 40,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.P.8.3",
+            "text": "Demonstrate and explain that mixtures of solids can be separated based on observable properties of their parts such as particle size, shape, color, and magnetic attraction.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 40,
+            "label": "A"
+          },
+          {
+            "id": "SC.5.P.8.4",
+            "text": "Explore the scientific theory of atoms (also called atomic theory) by recognizing that all matter is composed of parts that are too small to be seen without magnification.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 41,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.5.P.9",
+        "domain_name": "Physical Science - Changes in Matter",
+        "standards": [
+          {
+            "id": "SC.5.P.9.1",
+            "text": "Investigate and describe that many physical and chemical changes are affected by temperature.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 41,
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": null,
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Students plan investigations, distinguish experiments from other investigations, and explain why evidence should be testable and replicable.",
+        "Students investigate forms and transformations of energy, closed circuits, conductors, and how forces change motion.",
+        "Students identify human organs, compare plant and animal structures, and describe how environmental change and adaptations affect survival.",
+        "Students describe galaxies, the Solar System, the water cycle, weather, climate, and a family natural-disaster plan.",
+        "Students compare properties of solids, liquids, and gases, investigate dissolving and separating mixtures, and describe temperature effects on physical and chemical changes."
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "Next Generation Sunshine State Standards – Science, 2016",
+      "adopted_or_effective_date": "2016",
+      "notes": [
+        "Benchmark statements extracted from the science standards package incorporated by Rule 6A-1.09401 as Ref-06754. Big-idea introductions, clarifications, and cognitive-complexity ratings are not stored as standard text. Page numbers are PDF pages of that package."
+      ]
+    }
+  },
+  "citations": [
+    {
+      "id": "c-flrules-science-2016",
+      "url": "https://www.flrules.org/gateway/readRefFile.asp?refId=6754&filename=Comp%20science%20comprehensive%20package%20%20final.pdf",
+      "title": "Next Generation Sunshine State Standards – Science, 2016",
+      "publisher": "Florida Department of Education (adopted document for Rule 6A-1.09401, F.A.C., Ref-06754)",
+      "published_or_version_date": "2016-04-04",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Drafted from Ref-06754, still the science document listed in Rule 6A-1.09401 as of the 2026-08-03 rule text. A 2026-10-01 rule-development notice considers science revisions; those are not adopted. CPALMS was not used."
+  ],
+  "last_updated": "2026-10-03"
+}

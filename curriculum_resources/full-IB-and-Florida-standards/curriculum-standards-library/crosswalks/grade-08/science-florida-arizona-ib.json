@@ -1,0 +1,182 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-08.science",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 8,
+  "grade_label": "Grade 8",
+  "subject": "science",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "sections": {
+    "scope_note": "Arizona standards deferred. This crosswalk covers Florida NGSSS Science (2016), Grade 8, and IB MYP sciences only. Rows are suggested (Label C). Six clusters cover the grade list. SC.8.E.5 stays in printed order inside its row.",
+    "rows": [
+      {
+        "row_id": "xw-g08-sci-001",
+        "topic_domain": "Practice of science",
+        "florida_standards": [
+          "SC.8.N.1.1",
+          "SC.8.N.1.2",
+          "SC.8.N.1.3",
+          "SC.8.N.1.4",
+          "SC.8.N.1.5",
+          "SC.8.N.1.6"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP sciences: criterion B Inquiring and designing",
+          "MYP sciences: criterion C Processing and evaluating"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida asks for an eighth-grade investigation, repeated trials and replication, \"results support\" rather than proof, the value of hypotheses, methods across fields, and empirical evidence with logical reasoning. Those phrases are Florida's. MYP criteria B and C are titles only here.",
+        "suggested_instructional_bridge": "Plan one investigation from the class topic, run repeated trials, and write a conclusion that says the results support or fail to support the idea."
+      },
+      {
+        "row_id": "xw-g08-sci-002",
+        "topic_domain": "Matter and energy in living systems",
+        "florida_standards": [
+          "SC.8.L.18.1",
+          "SC.8.L.18.2",
+          "SC.8.L.18.3",
+          "SC.8.L.18.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP sciences: criterion A Knowing and understanding",
+          "MYP example key concept: systems"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies photosynthesis, cellular respiration, a carbon-cycle model, and conservation of mass and energy in living systems. The public MYP pages do not state those processes.",
+        "suggested_instructional_bridge": "Build a simple carbon-cycle model and point to where photosynthesis and cellular respiration move matter."
+      },
+      {
+        "row_id": "xw-g08-sci-003",
+        "topic_domain": "Nature of scientific knowledge, theories, and society",
+        "florida_standards": [
+          "SC.8.N.2.1",
+          "SC.8.N.2.2",
+          "SC.8.N.3.1",
+          "SC.8.N.3.2",
+          "SC.8.N.4.1",
+          "SC.8.N.4.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP sciences: criterion A Knowing and understanding",
+          "MYP sciences: criterion D Reflecting on the impacts of science"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida asks students to separate science from pseudoscience, characterize scientific methods, select models, explain why theories change, and relate science to political, social, and economic decisions. MYP criterion D is a title. It does not list those Florida tests.",
+        "suggested_instructional_bridge": "Compare one scientific claim and one claim the class judges pseudoscientific, and name one way a social concern could affect the investigation."
+      },
+      {
+        "row_id": "xw-g08-sci-004",
+        "topic_domain": "Earth in space and time",
+        "florida_standards": [
+          "SC.8.E.5.1",
+          "SC.8.E.5.10",
+          "SC.8.E.5.11",
+          "SC.8.E.5.12",
+          "SC.8.E.5.2",
+          "SC.8.E.5.3",
+          "SC.8.E.5.4",
+          "SC.8.E.5.5",
+          "SC.8.E.5.6",
+          "SC.8.E.5.7",
+          "SC.8.E.5.8",
+          "SC.8.E.5.9"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP sciences: schools may offer other sciences courses",
+          "MYP example key concept: systems",
+          "MYP global context: scientific and technical innovation"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida covers distances in space, galaxies, gravity, stars, the Sun, solar-system objects, historical models, the Sun and Moon's effects on Earth, technology for remote observation, the electromagnetic spectrum, and space exploration's effects on Florida. The codes are stored in printed order, not numeric order. MYP does not publish this list. Schools may offer earth or space sciences; that permission is not a Grade 8 syllabus.",
+        "suggested_instructional_bridge": "Explain one effect of the Sun or Moon on Earth, and one way technology makes a space observation possible."
+      },
+      {
+        "row_id": "xw-g08-sci-005",
+        "topic_domain": "Properties of matter",
+        "florida_standards": [
+          "SC.8.P.8.1",
+          "SC.8.P.8.2",
+          "SC.8.P.8.3",
+          "SC.8.P.8.4",
+          "SC.8.P.8.5",
+          "SC.8.P.8.6",
+          "SC.8.P.8.7",
+          "SC.8.P.8.8",
+          "SC.8.P.8.9"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP sciences: criterion A Knowing and understanding",
+          "MYP example key concept: change"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies particle motion, mass versus weight, density, physical properties, elements and compounds, the periodic table, subatomic particles, acids, bases, salts, and mixtures. Those models are Florida's, not quoted MYP outcomes.",
+        "suggested_instructional_bridge": "Use a model to contrast a solid and a gas, and separate mass from weight for one object."
+      },
+      {
+        "row_id": "xw-g08-sci-006",
+        "topic_domain": "Changes in matter",
+        "florida_standards": [
+          "SC.8.P.9.1",
+          "SC.8.P.9.2",
+          "SC.8.P.9.3"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP sciences: criterion B Inquiring and designing",
+          "MYP example key concept: change"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida asks students to explore conservation of mass in physical and chemical changes, to differentiate those changes, and to describe temperature's influence. The public MYP pages do not state that law.",
+        "suggested_instructional_bridge": "Compare one physical change and one chemical change, and say what happens to mass."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-fl-sci",
+      "url": "https://www.flrules.org/gateway/readRefFile.asp?refId=6754&filename=Comp%20science%20comprehensive%20package%20%20final.pdf",
+      "title": "Next Generation Sunshine State Standards – Science, 2016",
+      "publisher": "Florida Department of Education (Rule 6A-1.09401, F.A.C.)",
+      "published_or_version_date": "2016-04-04",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-myp-curriculum",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/",
+      "title": "MYP curriculum",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Page says last updated 19 February 2026. Curl HTTP 200. The page says sixteen key concepts are prescribed but does not list them. Global-context line uses “orientations in space and time.” Subject briefs use “Orientation in space and time.”"
+    },
+    {
+      "id": "c-ibo-myp-sci",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/science/",
+      "title": "MYP sciences",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Curl HTTP 200. WebFetch was a Cloudflare check."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 8 FL↔IB crosswalk for MYP, not PYP. Arizona left empty (deferred). Rows are suggested alignments (Label C). Florida IDs are from the grade 8 drafts. IB elements are public MYP framework text or criterion titles from the linked subject brief. No IB learning outcomes and no 1-8 criterion descriptors were invented. SS.68 codes are not in this grade."
+  ],
+  "last_updated": "2026-10-03"
+}

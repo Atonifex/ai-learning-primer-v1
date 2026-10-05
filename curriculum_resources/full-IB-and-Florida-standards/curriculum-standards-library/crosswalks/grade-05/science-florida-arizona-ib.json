@@ -1,0 +1,172 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-05.science",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 5,
+  "grade_label": "Grade 5",
+  "subject": "science",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "sections": {
+    "scope_note": "Arizona standards deferred. This crosswalk covers Florida NGSSS Science (2016) and IB PYP only. Rows are suggested (Label C).",
+    "rows": [
+      {
+        "row_id": "xw-g05-science-001",
+        "topic_domain": "Practice of science",
+        "florida_standards": [
+          "SC.5.N.1.1",
+          "SC.5.N.1.2",
+          "SC.5.N.1.3",
+          "SC.5.N.1.4",
+          "SC.5.N.1.5",
+          "SC.5.N.1.6"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP ATL: Research skills",
+          "PYP ATL: Thinking skills",
+          "PYP transdisciplinary theme: How the world works"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida's six benchmarks specify variables, a control group, repeated trials, the difference between an experiment and other investigations, and opinion versus verified observation. Public PYP text describes inquiry without those six sentences.",
+        "suggested_instructional_bridge": "Plan a short experiment with one variable and a control, repeat it, and separate what was observed from what was inferred."
+      },
+      {
+        "row_id": "xw-g05-science-002",
+        "topic_domain": "Characteristics of scientific knowledge",
+        "florida_standards": [
+          "SC.5.N.2.1",
+          "SC.5.N.2.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP ATL: Thinking skills",
+          "PYP learner profile: Inquirers (name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida requires that explanations link to testable evidence and that evidence should be replicable. Those sentences are NGSSS, not published PYP phase outcomes.",
+        "suggested_instructional_bridge": "When a claim comes up in the inquiry, ask what evidence would let someone else check it."
+      },
+      {
+        "row_id": "xw-g05-science-003",
+        "topic_domain": "Energy, electricity, and forces",
+        "florida_standards": [
+          "SC.5.P.10.1",
+          "SC.5.P.10.2",
+          "SC.5.P.10.3",
+          "SC.5.P.10.4",
+          "SC.5.P.11.1",
+          "SC.5.P.11.2",
+          "SC.5.P.13.1",
+          "SC.5.P.13.2",
+          "SC.5.P.13.3",
+          "SC.5.P.13.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Science: Forces and energy (strand name reused from grade 3)",
+          "PYP transdisciplinary theme: How the world works"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida lists forms of energy, charged objects, energy transformations, closed circuits, conductors, and how force and mass affect motion, including balanced forces. The strand name is reused; the investigations are Florida's.",
+        "suggested_instructional_bridge": "Test a closed circuit and one push or pull, and name the form of energy that changes."
+      },
+      {
+        "row_id": "xw-g05-science-004",
+        "topic_domain": "Living things - organs, change, and adaptations",
+        "florida_standards": [
+          "SC.5.L.14.1",
+          "SC.5.L.14.2",
+          "SC.5.L.15.1",
+          "SC.5.L.17.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Science: Living things (strand name reused from grade 3)",
+          "PYP transdisciplinary theme: Sharing the planet",
+          "PYP concept: Change (name reused from grade 3)"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida names human organs, compares plant and animal support structures, and describes survival when the environment changes. Sharing the planet is a public theme; the organ list is Florida's.",
+        "suggested_instructional_bridge": "Compare one structure that supports a plant and one that supports an animal, then ask which differences would matter if the environment changed."
+      },
+      {
+        "row_id": "xw-g05-science-005",
+        "topic_domain": "Earth in space and Earth systems",
+        "florida_standards": [
+          "SC.5.E.5.1",
+          "SC.5.E.5.2",
+          "SC.5.E.5.3",
+          "SC.5.E.7.1",
+          "SC.5.E.7.2",
+          "SC.5.E.7.3",
+          "SC.5.E.7.4",
+          "SC.5.E.7.5",
+          "SC.5.E.7.6",
+          "SC.5.E.7.7"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Science: Earth and space (strand name reused from grade 3)",
+          "PYP concept: Change (name reused from grade 3)",
+          "PYP concept: Responsibility (name reused from grade 3)"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida covers galaxies and the Solar System, the water cycle and ocean, weather variables, forms of precipitation, climate zones, and a family natural-disaster plan. The public pages do not list those models.",
+        "suggested_instructional_bridge": "Model one part of the water cycle and connect a local weather observation to why a family might plan for a natural disaster."
+      },
+      {
+        "row_id": "xw-g05-science-006",
+        "topic_domain": "Properties and changes of matter",
+        "florida_standards": [
+          "SC.5.P.8.1",
+          "SC.5.P.8.2",
+          "SC.5.P.8.3",
+          "SC.5.P.8.4",
+          "SC.5.P.9.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Science: Materials and matter (strand name reused from grade 3)",
+          "PYP concept: Form (name reused from grade 3)",
+          "PYP concept: Change (name reused from grade 3)"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida compares solids, liquids, and gases, investigates dissolving, separates mixtures by observable properties, recognizes that matter is made of parts too small to see, and links physical and chemical changes to temperature. The strand name is reused, not a grade 5 IB outcome.",
+        "suggested_instructional_bridge": "Separate a mixture by an observable property, then change the temperature and record what changed."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-fl-science",
+      "url": "https://www.flrules.org/gateway/readRefFile.asp?refId=6754&filename=Comp%20science%20comprehensive%20package%20%20final.pdf",
+      "title": "Next Generation Sunshine State Standards – Science, 2016",
+      "publisher": "Florida Department of Education (Rule 6A-1.09401, F.A.C., Ref-06754)",
+      "published_or_version_date": "2016",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-pyp",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/how-the-pyp-works/",
+      "title": "How the PYP works",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Themes and the transdisciplinary statement were read from this page for the grade 2 collection on 2026-10-03 and reused here. Strand names in ib_framework_elements that go beyond that page are reused from the grade 3 library and are not official IB-Florida mappings."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 5 FL↔IB crosswalk. Arizona left empty (deferred). Rows are suggested alignments (Label C). Florida IDs are from the grade 5 drafts. IB elements are either public PYP framework text or the same strand labels used in the grade 2 and grade 3 crosswalks. No IB learning outcomes were invented."
+  ],
+  "last_updated": "2026-10-03"
+}

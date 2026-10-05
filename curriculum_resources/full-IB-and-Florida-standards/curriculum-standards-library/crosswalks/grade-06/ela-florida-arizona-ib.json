@@ -1,0 +1,194 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-06.ela",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 6,
+  "grade_label": "Grade 6",
+  "subject": "ela",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "sections": {
+    "scope_note": "Arizona standards deferred. This crosswalk covers Florida B.E.S.T. ELA (2025), Grade 6, and IB MYP language and literature only. Rows are suggested (Label C). No ELA.6.F or ELA.6.C.1.1 exists in the Florida grade-6 file.",
+    "rows": [
+      {
+        "row_id": "xw-g06-ela-001",
+        "topic_domain": "Literary text - plot, theme, narrators, and poetic form",
+        "florida_standards": [
+          "ELA.6.R.1.1",
+          "ELA.6.R.1.2",
+          "ELA.6.R.1.3",
+          "ELA.6.R.1.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP language and literature: criterion A Analysing",
+          "MYP example key concept: perspective",
+          "MYP global context: personal and cultural expression"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida asks how character interaction develops a plot, how theme develops, how narrators or point of view shift, and how poetic forms (the clarification names sonnet and villanelle) affect meaning and style. MYP analysing is broader and does not name those forms.",
+        "suggested_instructional_bridge": "In a language and literature inquiry, analyse one scene for how two characters change the plot and how the narrator’s point of view shapes that scene."
+      },
+      {
+        "row_id": "xw-g06-ela-002",
+        "topic_domain": "Informational text - sections, central idea, purpose, and argument",
+        "florida_standards": [
+          "ELA.6.R.2.1",
+          "ELA.6.R.2.2",
+          "ELA.6.R.2.3",
+          "ELA.6.R.2.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP ATL: research skills",
+          "MYP ATL: thinking skills",
+          "MYP language and literature: criterion A Analysing"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida asks how sections or features convey meaning, how a central idea develops, how authors’ purposes differ across accounts, and how an argument’s reasoning develops. MYP frames this as inquiry into texts, not that sequence.",
+        "suggested_instructional_bridge": "Use two accounts from the class inquiry. Name the central idea of one and the type of reasoning in the other."
+      },
+      {
+        "row_id": "xw-g06-ela-003",
+        "topic_domain": "Across genres - figurative language, paraphrase, time periods, and rhetorical appeals",
+        "florida_standards": [
+          "ELA.6.R.3.1",
+          "ELA.6.R.3.2",
+          "ELA.6.R.3.3",
+          "ELA.6.R.3.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP language and literature: six skill areas include reading and viewing",
+          "MYP example key concept: connections"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida asks how figurative language contributes to tone, requires paraphrase rather than summary, compares authors from named literary periods, and asks students to identify rhetorical appeals. The public MYP pages do not list those periods or logos, ethos, and pathos.",
+        "suggested_instructional_bridge": "Paraphrase a short non-literary text, then say which appeal (logos, ethos, or pathos) the class can point to in one sentence."
+      },
+      {
+        "row_id": "xw-g06-ela-004",
+        "topic_domain": "Writing - narratives, claims, and expository texts",
+        "florida_standards": [
+          "ELA.6.C.1.2",
+          "ELA.6.C.1.3",
+          "ELA.6.C.1.4",
+          "ELA.6.C.1.5"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP language and literature: criterion C Producing text",
+          "MYP global context: personal and cultural expression"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida specifies narrative techniques and figurative language, a claim with logical reasoning and varied transitions, multi-source expository structure, and revision with adult and peer feedback. There is no ELA.6.C.1.1 in this grade. MYP producing text does not set those product rules.",
+        "suggested_instructional_bridge": "Produce one narrative, claim, or explanation for an inquiry audience, then revise it using one piece of peer feedback."
+      },
+      {
+        "row_id": "xw-g06-ela-005",
+        "topic_domain": "Oral presentation",
+        "florida_standards": [
+          "ELA.6.C.2.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP language and literature: speaking and presenting",
+          "MYP ATL: communication skills"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida requires a logical sequence, nonverbal cues, volume, pronunciation, and pacing. Public ATL text names communication skills without those delivery details.",
+        "suggested_instructional_bridge": "Present one inquiry finding aloud in a planned order. A partner notes whether the pace matches the punctuation."
+      },
+      {
+        "row_id": "xw-g06-ela-006",
+        "topic_domain": "Conventions",
+        "florida_standards": [
+          "ELA.6.C.3.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP language and literature: criterion D Using language"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "The Florida benchmark is grade-level grammar, punctuation, capitalization, and spelling. The clarification lists verbals, adjective forms, and pronoun case. Those skills are not on the public MYP pages. Criterion D is only a title here; its 1-8 descriptors were not copied.",
+        "suggested_instructional_bridge": "Edit the inquiry writing for the conventions the class has been taught, without treating that list as an MYP criterion."
+      },
+      {
+        "row_id": "xw-g06-ela-007",
+        "topic_domain": "Research and digital tools",
+        "florida_standards": [
+          "ELA.6.C.4.1",
+          "ELA.6.C.5.1",
+          "ELA.6.C.5.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP ATL: research skills",
+          "MYP ATL: communication skills"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida requires multiple reliable and valid sources, refocusing the inquiry, diverse digital media, and digital tools to produce writing. MYP research skills are broader and do not set that reliability rule.",
+        "suggested_instructional_bridge": "Answer one inquiry question from at least two sources the class judges reliable, and add one digital element that adds information rather than restating it."
+      },
+      {
+        "row_id": "xw-g06-ela-008",
+        "topic_domain": "Vocabulary",
+        "florida_standards": [
+          "ELA.6.V.1.1",
+          "ELA.6.V.1.2",
+          "ELA.6.V.1.3"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP ATL: communication skills",
+          "MYP ATL: thinking skills"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies academic vocabulary, Greek and Latin roots and affixes, and connotative as well as denotative meaning. The public MYP pages do not list those strategies.",
+        "suggested_instructional_bridge": "Choose a few inquiry words, test one meaning with a root or affix, and use the word in speaking or writing."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-fl-ela",
+      "url": "https://flrules.org/gateway/readRefFile.asp?refId=18865&filename=B.E.S.T.%20ELA%20Standards%202025_Clean%206A-1.09401.pdf",
+      "title": "Florida's State Academic Standards (B.E.S.T.) – English Language Arts, 2025",
+      "publisher": "Florida Department of Education (Rule 6A-1.09401, F.A.C.)",
+      "published_or_version_date": "2025-11-17",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-myp-curriculum",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/",
+      "title": "MYP curriculum",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Page says last updated 19 February 2026. Curl HTTP 200. The page says sixteen key concepts are prescribed but does not list them. Global-context line uses “orientations in space and time.” Subject briefs use “Orientation in space and time.”"
+    },
+    {
+      "id": "c-ibo-myp-lang",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/language-and-literature/",
+      "title": "MYP language and literature",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Curl HTTP 200. WebFetch was a Cloudflare check."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 6 FL↔IB crosswalk for MYP, not PYP. Arizona left empty (deferred). Rows are suggested alignments (Label C). Florida IDs are from the grade 6 drafts. IB elements are public MYP framework text or criterion titles from the linked subject brief. No IB learning outcomes and no 1-8 criterion descriptors were invented."
+  ],
+  "last_updated": "2026-10-03"
+}

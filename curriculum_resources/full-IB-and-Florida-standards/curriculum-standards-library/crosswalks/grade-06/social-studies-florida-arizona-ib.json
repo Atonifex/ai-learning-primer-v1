@@ -1,0 +1,294 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-06.social-studies",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 6,
+  "grade_label": "Grade 6",
+  "subject": "social-studies",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "sections": {
+    "scope_note": "Arizona standards deferred. This crosswalk covers Florida Social Studies (2026) SS.6 codes and IB MYP individuals and societies only. Rows are suggested (Label C). SS.68.AA and SS.68.HE (15 band benchmarks) were omitted from the grade-6 Florida files because they are shared middle-school codes, not grade 6 only, so they are not in these rows.",
+    "rows": [
+      {
+        "row_id": "xw-g06-ss-001",
+        "topic_domain": "Historical inquiry",
+        "florida_standards": [
+          "SS.6.W.1.1",
+          "SS.6.W.1.2",
+          "SS.6.W.1.3",
+          "SS.6.W.1.4",
+          "SS.6.W.1.5",
+          "SS.6.W.1.6"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: criterion B Investigating",
+          "MYP individuals and societies: original source material"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida asks for timelines, time-period terms, primary and secondary sources, methods of historical inquiry, historiography, and how history transmits culture. MYP investigating is a criterion title. It does not list those terms.",
+        "suggested_instructional_bridge": "Place three events on a timeline and say whether one source about them is primary or secondary."
+      },
+      {
+        "row_id": "xw-g06-ss-002",
+        "topic_domain": "Early civilizations",
+        "florida_standards": [
+          "SS.6.W.2.1",
+          "SS.6.W.2.2",
+          "SS.6.W.2.3",
+          "SS.6.W.2.4",
+          "SS.6.W.2.5",
+          "SS.6.W.2.6",
+          "SS.6.W.2.7",
+          "SS.6.W.2.8",
+          "SS.6.W.2.9",
+          "SS.6.W.2.10"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: discrete course example history",
+          "MYP individuals and societies: criterion A Knowing and understanding"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies hunter-gatherers, agriculture, river civilizations, Egypt, Mesopotamia, Israelites, and Mesoamerican and South American civilizations. MYP allows a history course. It does not name this list.",
+        "suggested_instructional_bridge": "Compare one feature of two early river civilizations using a source, and keep the comparison inside the Florida benchmarks rather than adding an IB outcome."
+      },
+      {
+        "row_id": "xw-g06-ss-003",
+        "topic_domain": "Classical Mediterranean civilizations",
+        "florida_standards": [
+          "SS.6.W.3.1",
+          "SS.6.W.3.2",
+          "SS.6.W.3.3",
+          "SS.6.W.3.4",
+          "SS.6.W.3.5",
+          "SS.6.W.3.6",
+          "SS.6.W.3.7",
+          "SS.6.W.3.8",
+          "SS.6.W.3.9",
+          "SS.6.W.3.10",
+          "SS.6.W.3.11",
+          "SS.6.W.3.12",
+          "SS.6.W.3.13",
+          "SS.6.W.3.14",
+          "SS.6.W.3.15",
+          "SS.6.W.3.16",
+          "SS.6.W.3.17",
+          "SS.6.W.3.18"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: discrete course example history",
+          "MYP global context: orientations in space and time"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida covers Phoenicia, Greece, Rome, Kush, and Axum, including wars, government, and the spread of Latin and Christianity. That sequence is the state grade-6 world history list, not an MYP syllabus. The curriculum page spells the context “orientations in space and time.”",
+        "suggested_instructional_bridge": "Choose one classical civilization and one contribution the Florida benchmark names, and explain it with a source."
+      },
+      {
+        "row_id": "xw-g06-ss-004",
+        "topic_domain": "Classical Asian civilizations",
+        "florida_standards": [
+          "SS.6.W.4.1",
+          "SS.6.W.4.2",
+          "SS.6.W.4.3",
+          "SS.6.W.4.4",
+          "SS.6.W.4.5",
+          "SS.6.W.4.6",
+          "SS.6.W.4.7",
+          "SS.6.W.4.8",
+          "SS.6.W.4.9",
+          "SS.6.W.4.10",
+          "SS.6.W.4.11",
+          "SS.6.W.4.12"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: discrete course example history",
+          "MYP example key concept: global interactions"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida covers India and China, including Hinduism, Buddhism, the Mandate of Heaven, Confucius, the silk roads, the Mongol empire, and Chinese limits on foreign trade. Global interactions is an example key concept, not this content list.",
+        "suggested_instructional_bridge": "Trace one good or idea that moved along a route named in SS.6.W.4.10 and name the civilizations it connected."
+      },
+      {
+        "row_id": "xw-g06-ss-005",
+        "topic_domain": "Civics links to ancient Greece and Rome",
+        "florida_standards": [
+          "SS.6.CG.1.1",
+          "SS.6.CG.1.2",
+          "SS.6.CG.1.3",
+          "SS.6.CG.1.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: discrete course example civics",
+          "MYP individuals and societies: criterion D Thinking critically"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida asks how Greek and Roman ideas, rule of law, and civic virtue relate to the United States’ constitutional republic. The Florida standard title says “understating”; that is kept in the Florida file and is not an IB term. MYP names civics as a possible course only.",
+        "suggested_instructional_bridge": "Explain one ancient Greek or Roman political idea and one way the Florida benchmark connects it to the United States."
+      },
+      {
+        "row_id": "xw-g06-ss-006",
+        "topic_domain": "Economics of early civilizations",
+        "florida_standards": [
+          "SS.6.E.1.1",
+          "SS.6.E.1.2",
+          "SS.6.E.1.3",
+          "SS.6.E.2.1",
+          "SS.6.E.3.1",
+          "SS.6.E.3.2",
+          "SS.6.E.3.3",
+          "SS.6.E.3.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: discrete course example economics",
+          "MYP individuals and societies: criterion A Knowing and understanding"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies scarcity, opportunity cost, supply and demand, barter, traditional and command economies, and trade among named civilizations. Economics is a possible MYP discipline. These concepts are not quoted as MYP objectives.",
+        "suggested_instructional_bridge": "Pick one early civilization and describe one medium of exchange and one barrier to trade named in the Florida benchmarks."
+      },
+      {
+        "row_id": "xw-g06-ss-007",
+        "topic_domain": "Geographic tools",
+        "florida_standards": [
+          "SS.6.G.1.1",
+          "SS.6.G.1.2",
+          "SS.6.G.1.3",
+          "SS.6.G.1.4",
+          "SS.6.G.1.5",
+          "SS.6.G.1.6",
+          "SS.6.G.1.7"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: discrete course example geography",
+          "MYP example key concept: time, place and space"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida requires latitude and longitude, map projections, natural wonders, scale and direction, major bodies of water, and boundaries of ancient civilizations. Geography is a named possible course. The skill list is Florida’s.",
+        "suggested_instructional_bridge": "Use latitude and longitude to locate one ancient civilization and one body of water that affected it."
+      },
+      {
+        "row_id": "xw-g06-ss-008",
+        "topic_domain": "Places, regions, and cultural diffusion",
+        "florida_standards": [
+          "SS.6.G.2.1",
+          "SS.6.G.2.2",
+          "SS.6.G.2.3",
+          "SS.6.G.2.4",
+          "SS.6.G.2.5",
+          "SS.6.G.2.6",
+          "SS.6.G.2.7"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: example key concept time, place and space",
+          "MYP global context: orientations in space and time"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida asks how physical geography shaped ancient civilizations and how to read choropleth or dot-density maps of ancient population. Those map types are not on the public MYP pages.",
+        "suggested_instructional_bridge": "Explain one physical feature that shaped a river-valley civilization in the Florida list."
+      },
+      {
+        "row_id": "xw-g06-ss-009",
+        "topic_domain": "Environment, population, and resources",
+        "florida_standards": [
+          "SS.6.G.3.1",
+          "SS.6.G.3.2",
+          "SS.6.G.4.1",
+          "SS.6.G.4.2",
+          "SS.6.G.4.3",
+          "SS.6.G.4.4",
+          "SS.6.G.5.1",
+          "SS.6.G.5.2",
+          "SS.6.G.5.3"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: factors that have an impact on individuals, societies and environments",
+          "MYP global context: fairness and development"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida covers agriculture and industry, human impact on ancient ecosystems, migration, belief systems, scarcity, transport networks, and famine and natural disasters. The individuals and societies page mentions environmental factors. It does not list these benchmarks.",
+        "suggested_instructional_bridge": "Show one ancient migration or resource limit on a map and say how it affected a society in the grade-6 list."
+      },
+      {
+        "row_id": "xw-g06-ss-010",
+        "topic_domain": "Uses of geography",
+        "florida_standards": [
+          "SS.6.G.6.1",
+          "SS.6.G.6.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: criterion C Communicating",
+          "MYP individuals and societies: discrete course example geography"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida names the Six Essential Elements of Geography and asks students to compare ancient and current political maps. Those six elements are a Florida sentence, not an MYP objective.",
+        "suggested_instructional_bridge": "Compare one ancient political boundary with a current map and say what changed."
+      },
+      {
+        "row_id": "xw-g06-ss-011",
+        "topic_domain": "History of communism - ancient communal systems",
+        "florida_standards": [
+          "SS.6.HC.1.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP individuals and societies: criterion D Thinking critically"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "SS.6.HC.1.1 says: Explain ancient communal systems and the effect on their respective societies. The Florida standard title mentions failures; the benchmark does not. The public MYP pages retrieved do not name communism or communal systems. Criterion D is only a title. This row does not create an IB learning outcome.",
+        "suggested_instructional_bridge": "Teach the Florida benchmark as a state requirement. Do not rewrite it as an MYP objective."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-fl-ss",
+      "url": "https://flrules.org/gateway/readRefFile.asp?refId=19653&filename=SS%20Standards%202026%206A-1.09401%20Clean.docx",
+      "title": "Florida's State Academic Standards – Social Studies, 2026",
+      "publisher": "Florida Department of Education (Rule 6A-1.09401, F.A.C.)",
+      "published_or_version_date": "2026",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-myp-curriculum",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/",
+      "title": "MYP curriculum",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Page says last updated 19 February 2026. Curl HTTP 200. The page says sixteen key concepts are prescribed but does not list them. Global-context line uses “orientations in space and time.” Subject briefs use “Orientation in space and time.”"
+    },
+    {
+      "id": "c-ibo-myp-ias",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/individuals-and-societies/",
+      "title": "MYP individuals and societies",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Curl HTTP 200. WebFetch was a Cloudflare check."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 6 FL↔IB crosswalk for MYP, not PYP. Arizona left empty (deferred). Rows are suggested alignments (Label C). Florida IDs are from the grade 6 drafts. IB elements are public MYP framework text or criterion titles from the linked subject brief. No IB learning outcomes and no 1-8 criterion descriptors were invented."
+  ],
+  "last_updated": "2026-10-03"
+}

@@ -1,0 +1,419 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-02.science",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 2,
+  "grade_label": "Grade 2",
+  "subject": "science",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "C"
+  ],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "Science",
+      "standards_system_name": "Next Generation Sunshine State Standards (NGSSS)",
+      "organization": "by_grade",
+      "courses": null
+    },
+    "domains": [
+      {
+        "domain_id": "SC.2.N.1",
+        "domain_name": "Nature of Science - The Practice of Science",
+        "standards": [
+          {
+            "id": "SC.2.N.1.1",
+            "text": "Raise questions about the natural world, investigate them in teams through free exploration and systematic observations, and generate appropriate explanations based on those explorations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 12,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.N.1.2",
+            "text": "Compare the observations made by different groups using the same tools.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 12,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.N.1.3",
+            "text": "Ask \"how do you know?\" in appropriate situations and attempt reasonable answers when asked the same question by others.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 12,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.N.1.4",
+            "text": "Explain how particular scientific investigations should yield similar conclusions when repeated.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 12,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.N.1.5",
+            "text": "Distinguish between empirical observation (what you see, hear, feel, smell, or taste) and ideas or inferences (what you think).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 12,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.N.1.6",
+            "text": "Explain how scientists alone or in groups are always investigating new ways to solve problems.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 12,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.2.P.10",
+        "domain_name": "Physical Science - Forms of Energy",
+        "standards": [
+          {
+            "id": "SC.2.P.10.1",
+            "text": "Discuss that people use electricity or other forms of energy to cook their food, cool or warm their homes, and power their cars.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 13,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.2.P.13",
+        "domain_name": "Physical Science - Forces and Changes in Motion",
+        "standards": [
+          {
+            "id": "SC.2.P.13.1",
+            "text": "Investigate the effect of applying various pushes and pulls on different objects.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 14,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.P.13.2",
+            "text": "Demonstrate that magnets can be used to make some things move without touching them.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 14,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.P.13.3",
+            "text": "Recognize that objects are pulled toward the ground unless something holds them up.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 14,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.P.13.4",
+            "text": "Demonstrate that the greater the force (push or pull) applied to an object, the greater the change in motion of the object.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 14,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.2.L.14",
+        "domain_name": "Life Science - Organization and Development of Living Organisms",
+        "standards": [
+          {
+            "id": "SC.2.L.14.1",
+            "text": "Distinguish human body parts (brain, heart, lungs, stomach, muscles, and skeleton) and their basic functions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 14,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.2.L.16",
+        "domain_name": "Life Science - Heredity and Reproduction",
+        "standards": [
+          {
+            "id": "SC.2.L.16.1",
+            "text": "Observe and describe major stages in the life cycles of plants and animals, including beans and butterflies.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 14,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.2.L.17",
+        "domain_name": "Life Science - Interdependence",
+        "standards": [
+          {
+            "id": "SC.2.L.17.1",
+            "text": "Compare and contrast the basic needs that all living things, including humans, have for survival.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 15,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.L.17.2",
+            "text": "Recognize and explain that living things are found all over Earth, but each is only able to live in habitats that meet its basic needs.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 15,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.2.E.6",
+        "domain_name": "Earth and Space Science - Earth Structures",
+        "standards": [
+          {
+            "id": "SC.2.E.6.1",
+            "text": "Recognize that Earth is made up of rocks. Rocks come in many sizes and shapes.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 15,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.E.6.2",
+            "text": "Describe how small pieces of rock and dead plant and animal parts can be the basis of soil and explain the process by which soil is formed.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 15,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.E.6.3",
+            "text": "Classify soil types based on color, texture (size of particles), the ability to retain water, and the ability to support the growth of plants.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 15,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.2.E.7",
+        "domain_name": "Earth and Space Science - Earth Systems and Patterns",
+        "standards": [
+          {
+            "id": "SC.2.E.7.1",
+            "text": "Compare and describe changing patterns in nature that repeat themselves, such as weather conditions including temperature and precipitation, day to day and season to season.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 16,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.E.7.2",
+            "text": "Investigate by observing and measuring, that the Sun's energy directly and indirectly warms the water, land, and air.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 16,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.E.7.3",
+            "text": "Investigate, observe and describe how water left in an open container disappears (evaporates), but water in a closed container does not disappear (evaporate).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 16,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.E.7.4",
+            "text": "Investigate that air is all around us and that moving air is wind.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 16,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.E.7.5",
+            "text": "State the importance of preparing for severe weather, lightning, and other weather related events.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 16,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.2.P.8",
+        "domain_name": "Physical Science - Properties of Matter",
+        "standards": [
+          {
+            "id": "SC.2.P.8.1",
+            "text": "Observe and measure objects in terms of their properties, including size, shape, color, temperature, weight, texture, sinking or floating in water, and attraction and repulsion of magnets.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 17,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.P.8.2",
+            "text": "Identify objects and materials as solid, liquid, or gas.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 17,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.P.8.3",
+            "text": "Recognize that solids have a definite shape and that liquids and gases take the shape of their container.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 17,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.P.8.4",
+            "text": "Observe and describe water in its solid, liquid, and gaseous states.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 17,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.P.8.5",
+            "text": "Measure and compare temperatures taken every day at the same time.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 17,
+            "label": "A"
+          },
+          {
+            "id": "SC.2.P.8.6",
+            "text": "Measure and compare the volume of liquids using containers of various shapes and sizes.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 17,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SC.2.P.9",
+        "domain_name": "Physical Science - Changes in Matter",
+        "standards": [
+          {
+            "id": "SC.2.P.9.1",
+            "text": "Investigate that materials can be altered to change some of their properties, but not all materials respond the same way to any one alteration.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-science-2016"
+            ],
+            "page": 18,
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": null,
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Students raise questions, compare observations, and distinguish empirical observation from inference.",
+        "Students observe and measure properties of matter, identify solids, liquids, and gases, and investigate how materials can be altered.",
+        "Students investigate pushes, pulls, and magnets, and discuss everyday uses of energy.",
+        "Students describe rocks, soil, repeating weather patterns, and how the Sun's energy warms water, land, and air.",
+        "Students compare basic needs and habitats of living things and describe human body parts and plant and animal life cycles."
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "Next Generation Sunshine State Standards – Science, 2016",
+      "adopted_or_effective_date": "2016",
+      "notes": [
+        "Benchmark statements extracted from the science standards package incorporated by Rule 6A-1.09401 as Ref-06754. Big-idea introductions, clarifications, and cognitive-complexity ratings are not stored as standard text. Page numbers are PDF pages of that package."
+      ]
+    }
+  },
+  "citations": [
+    {
+      "id": "c-flrules-science-2016",
+      "url": "https://www.flrules.org/gateway/readRefFile.asp?refId=6754&filename=Comp%20science%20comprehensive%20package%20%20final.pdf",
+      "title": "Next Generation Sunshine State Standards – Science, 2016",
+      "publisher": "Florida Department of Education (adopted document for Rule 6A-1.09401, F.A.C., Ref-06754)",
+      "published_or_version_date": "2016-04-04",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Drafted from Ref-06754, still the science document listed in Rule 6A-1.09401 as of the 2026-08-03 rule text. A 2026-10-01 rule-development notice considers science revisions; those are not adopted. CPALMS returned HTTP 500."
+  ],
+  "last_updated": "2026-10-03"
+}

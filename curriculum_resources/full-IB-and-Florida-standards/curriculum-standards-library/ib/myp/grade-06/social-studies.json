@@ -1,0 +1,236 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "ib.myp.grade-06.social-studies",
+  "doc_type": "ib_alignment",
+  "system": "ib",
+  "programme": "MYP",
+  "grade": 6,
+  "grade_label": "Grade 6",
+  "subject": "social-studies",
+  "status": "drafted",
+  "content_labels": [
+    "B",
+    "C"
+  ],
+  "sections": {
+    "applicable_programme": {
+      "programme": "MYP",
+      "age_range": "11-16",
+      "grade_mapping_note": "The public MYP page describes the programme as for students aged 11-16 and as a five-year programme that schools may shorten. Mapping Grade 6 (often about ages 11-12) onto the start of that span is our convention, not an IB grade or MYP-year boundary.",
+      "shared_programme_block_ref": null,
+      "grade_specific_note": {
+        "label": "C",
+        "text": "Florida Grade 6 social studies is grade-based world history (SS.6), not an MYP integrated-humanities eAssessment syllabus. The SS.6.CG.1 standard title in the Florida file says “understating”; that typo is Florida’s and is not an IB term. SS.68 band codes are omitted from the Florida grade-6 file and from this alignment."
+      }
+    },
+    "subject_group_or_structure": {
+      "ib_subject_group_or_area": "Individuals and societies",
+      "mapping_to_primer_subject": "Grade 6 Florida social studies (SS.6, mainly world history plus civics, economics, geography, and one history-of-communism benchmark) is mapped here to MYP individuals and societies. The public page allows discrete courses such as history, geography, economics, and civics, or an integrated humanities course. It does not require this Florida grade list.",
+      "mapping_label": "C"
+    },
+    "framework_elements": {
+      "concepts": [
+        "change (example key concept named on the individuals and societies subject brief)",
+        "global interactions (example key concept named on the individuals and societies subject brief)",
+        "time, place and space (example key concept named on the individuals and societies subject brief)",
+        "systems (example key concept named on the individuals and societies subject brief)"
+      ],
+      "approaches_to_learning": [
+        "social skills",
+        "thinking skills",
+        "research skills",
+        "communication skills",
+        "self management skills"
+      ],
+      "learner_profile_attributes": [],
+      "global_contexts_or_transdisciplinary_themes": [
+        "identities and relationships",
+        "personal and cultural expression",
+        "orientations in space and time",
+        "scientific and technical innovation",
+        "fairness and development",
+        "globalization and sustainability"
+      ]
+    },
+    "official_requirements": [
+      {
+        "label": "B",
+        "text": "The International Baccalaureate® (IB) Middle Years Programme (MYP) is for students aged 11-16.",
+        "citation_ids": [
+          "c-ibo-myp-home"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "The MYP is a five-year programme, which can be implemented in a partnership between schools, or in several abbreviated (two, three or four year) formats.",
+        "citation_ids": [
+          "c-ibo-myp-home"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Developing and applying these social, thinking, research, communication and self management skills helps students learn how to learn.",
+        "citation_ids": [
+          "c-ibo-myp-curriculum"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Using global contexts, MYP students develop an understanding of their common humanity and shared guardianship of the planet through developmentally appropriate explorations of: identities and relationships; personal and cultural expression; orientations in space and time; scientific and technical innovation; fairness and development; globalization and sustainability.",
+        "citation_ids": [
+          "c-ibo-myp-curriculum"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "The MYP prescribes sixteen key interdisciplinary concepts along with related concepts for each discipline.",
+        "citation_ids": [
+          "c-ibo-myp-curriculum"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "MYP teachers assess the prescribed subject-group objectives using the assessment criteria for each subject group in each year of the programme.",
+        "citation_ids": [
+          "c-ibo-myp-assessment"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Individuals and societies incorporates disciplines traditionally studied in the humanities, as well as disciplines in the social sciences.",
+        "citation_ids": [
+          "c-ibo-myp-ias"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "In this subject group, students collect, describe and analyse data used in studies of societies, test hypotheses, and learn how to interpret complex information, including original source material.",
+        "citation_ids": [
+          "c-ibo-myp-ias"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Schools can organize the study of individuals and societies in the MYP as discrete courses, modular courses, or integrated courses. Discrete-course examples named on the page include history, geography, economics, and civics.",
+        "citation_ids": [
+          "c-ibo-myp-ias"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "The individuals and societies subject brief names four equally weighted assessment criteria: A Knowing and understanding; B Investigating; C Communicating; D Thinking critically. The 1-8 band descriptors are not stored here.",
+        "citation_ids": [
+          "c-ibo-myp-ias-brief"
+        ],
+        "page": null
+      }
+    ],
+    "typical_fit": {
+      "label": "C",
+      "text": "Grade 6 Florida social studies in this draft is a world-history sequence (early civilizations, classical Mediterranean civilizations, classical China and India) plus civics links to the United States, economics, geography, and one history-of-communism benchmark. MYP individuals and societies asks students to investigate historical and other factors and to use sources. It does not set this civilization list. The Grades 6-8 African American History and Holocaust Education benchmarks (SS.68) were left out of the Florida grade-6 file because they are a shared middle-school band, not SS.6 codes. They are not aligned here."
+    },
+    "suggested_alignment_to_florida_and_arizona": {
+      "label": "C",
+      "florida": [
+        {
+          "standard_id": "SS.6.W.1.3",
+          "alignment_note": "Interpreting primary and secondary sources fits criterion B Investigating and the page’s mention of original source material. Florida does not define those source types in the benchmark sentence."
+        },
+        {
+          "standard_id": "SS.6.W.2.4",
+          "alignment_note": "Comparing institutions of ancient river civilizations is Florida content. MYP lets a school teach history; it does not name the Nile, Tigris-Euphrates, Indus, or Yellow River civilizations."
+        },
+        {
+          "standard_id": "SS.6.W.3.2",
+          "alignment_note": "Democratic concepts in ancient Greece can be studied in a history course under criterion A. The Florida list (polis, voting rights, written constitutions, rule of law) is not an IB objective."
+        },
+        {
+          "standard_id": "SS.6.CG.1.1",
+          "alignment_note": "Linking ancient Greek democracy to the United States’ constitutional republic is a Florida civics benchmark. The public MYP page names civics as a possible discrete course, not this comparison."
+        },
+        {
+          "standard_id": "SS.6.G.1.1",
+          "alignment_note": "Latitude and longitude fit geography, which the page names as a possible discipline. The coordinate skill is Florida’s."
+        },
+        {
+          "standard_id": "SS.6.HC.1.1",
+          "alignment_note": "Explaining ancient communal systems is a Florida History of Communism benchmark. The public MYP pages retrieved do not name communism or communal systems. This row does not turn that sentence into an IB outcome."
+        }
+      ],
+      "arizona": [],
+      "notes": "Arizona standards deferred. These rows are suggested starting points (Label C), not an official IB-Florida crosswalk."
+    },
+    "access_limitations": [
+      "WebFetch of ibo.org returned a Cloudflare verification page on 2026-10-03. The sentences marked Label B were read from curl HTTP 200 copies of the public MYP pages and subject briefs linked from those pages.",
+      "The curriculum page says the MYP prescribes sixteen key interdisciplinary concepts but does not name them. Only example key concepts printed on the subject brief are listed. They are not the full set.",
+      "Assessment-criterion titles are taken from the public subject brief. The 1-8 achievement-level descriptors are not copied. No MYP year (1-5) was assigned to Grade 6.",
+      "Learner-profile attribute titles are not printed on the MYP pages retrieved. The grade 3 name list was not reused as Label B.",
+      "SS.68.AA and SS.68.HE benchmarks are not in the grade-6 Florida drafts, so they are not given Florida pointers here."
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-ibo-myp-home",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/",
+      "title": "Middle Years Programme (MYP)",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "WebFetch returned a Cloudflare check. Curl returned HTTP 200 on 2026-10-03."
+    },
+    {
+      "id": "c-ibo-myp-curriculum",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/",
+      "title": "MYP curriculum",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Page says last updated 19 February 2026. Curl HTTP 200. The page says sixteen key concepts are prescribed but does not list them. Global-context line uses “orientations in space and time.” Subject briefs use “Orientation in space and time.”"
+    },
+    {
+      "id": "c-ibo-myp-assessment",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/assessment-and-exams/",
+      "title": "MYP assessment",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Curl HTTP 200. The page says teachers use subject-group assessment criteria. It does not print criterion names or 1-8 descriptors."
+    },
+    {
+      "id": "c-ibo-myp-ias",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/individuals-and-societies/",
+      "title": "MYP individuals and societies",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Curl HTTP 200. WebFetch was a Cloudflare check."
+    },
+    {
+      "id": "c-ibo-myp-ias-brief",
+      "url": "https://www.ibo.org/globalassets/new-structure/brochures-and-infographics/pdfs/myp-brief_individuals-societies_2015.pdf",
+      "title": "MYP individuals and societies subject brief",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Linked from the individuals and societies page. The file name includes 2015; the PDF footer copyright line says 2021. Criterion titles only were used."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 6 MYP draft. Label B sentences are from public MYP pages and the linked subject brief. Criterion titles only; 1-8 descriptors were not copied. No MYP year placement and no new IB learning outcomes were invented. Label C notes and Florida pointers are suggestions."
+  ],
+  "last_updated": "2026-10-03"
+}

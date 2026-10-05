@@ -1,0 +1,380 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-05.ela",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 5,
+  "grade_label": "Grade 5",
+  "subject": "ela",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "C"
+  ],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "English Language Arts",
+      "standards_system_name": "B.E.S.T. Standards (Benchmarks for Excellent Student Thinking)",
+      "organization": "by_grade",
+      "courses": null
+    },
+    "domains": [
+      {
+        "domain_id": "ELA.5.F.1",
+        "domain_name": "Learning and Applying Foundational Reading Skills",
+        "standards": [
+          {
+            "id": "ELA.5.F.1.3",
+            "text": "Use knowledge of grade-appropriate phonics and word-analysis skills to decode words. a. Apply knowledge of all letter-sound correspondences, syllabication patterns, and morphology to read and write unfamiliar single-syllable and multisyllabic words in and out of context.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 69,
+            "label": "A"
+          },
+          {
+            "id": "ELA.5.F.1.4",
+            "text": "Read grade-level texts with accuracy, automaticity, and appropriate prosody or expression.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 69,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.5.R.1",
+        "domain_name": "Reading Prose and Poetry",
+        "standards": [
+          {
+            "id": "ELA.5.R.1.1",
+            "text": "Analyze how setting, events, conflict, and characterization contribute to the plot in a literary text.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 69,
+            "label": "A"
+          },
+          {
+            "id": "ELA.5.R.1.2",
+            "text": "Explain the development of stated or implied theme(s) throughout a literary text.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 69,
+            "label": "A"
+          },
+          {
+            "id": "ELA.5.R.1.3",
+            "text": "Describe how an author develops a character’s perspective in a literary text.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 70,
+            "label": "A"
+          },
+          {
+            "id": "ELA.5.R.1.4",
+            "text": "Explain how figurative language and other poetic elements work together in a poem.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 70,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.5.R.2",
+        "domain_name": "Reading Informational Text",
+        "standards": [
+          {
+            "id": "ELA.5.R.2.1",
+            "text": "Explain how text structures and/or features contribute to the overall meaning of texts.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 70,
+            "label": "A"
+          },
+          {
+            "id": "ELA.5.R.2.2",
+            "text": "Explain how relevant details support the central idea(s), implied or explicit.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 70,
+            "label": "A"
+          },
+          {
+            "id": "ELA.5.R.2.3",
+            "text": "Analyze an author’s purpose and/or perspective in an informational text.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 70,
+            "label": "A"
+          },
+          {
+            "id": "ELA.5.R.2.4",
+            "text": "Track the development of an argument, identifying the specific claim(s), evidence, and reasoning.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 70,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.5.R.3",
+        "domain_name": "Reading Across Genres",
+        "standards": [
+          {
+            "id": "ELA.5.R.3.1",
+            "text": "Analyze how figurative language contributes to meaning in text(s).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 70,
+            "label": "A"
+          },
+          {
+            "id": "ELA.5.R.3.2",
+            "text": "Summarize a text to enhance comprehension. a. Include plot and theme for a literary text. b. Include the central idea and relevant details for an informational text.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 71,
+            "label": "A"
+          },
+          {
+            "id": "ELA.5.R.3.3",
+            "text": "Compare and contrast primary and secondary sources related to the same topic.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 71,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.5.C.1",
+        "domain_name": "Communicating Through Writing",
+        "standards": [
+          {
+            "id": "ELA.5.C.1.1",
+            "text": "Demonstrate fluent and legible cursive writing skills.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 71,
+            "label": "A"
+          },
+          {
+            "id": "ELA.5.C.1.2",
+            "text": "Write personal or fictional narratives using a logical sequence of events and demonstrating an effective use of techniques such as dialogue, description, and transitional words and phrases.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 71,
+            "label": "A"
+          },
+          {
+            "id": "ELA.5.C.1.3",
+            "text": "Write to make a claim supporting a perspective with logical reasons, relevant evidence from sources, elaboration, and an organizational structure with varied transitions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 71,
+            "label": "A"
+          },
+          {
+            "id": "ELA.5.C.1.4",
+            "text": "Write expository texts about a topic using multiple sources and including an organizational structure, relevant elaboration, and varied transitions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 71,
+            "label": "A"
+          },
+          {
+            "id": "ELA.5.C.1.5",
+            "text": "Improve writing by planning, revising, and editing, with guidance and support from adults and feedback from peers.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 71,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.5.C.2",
+        "domain_name": "Communicating Orally",
+        "standards": [
+          {
+            "id": "ELA.5.C.2.1",
+            "text": "Present information orally, in a logical sequence, using nonverbal cues, appropriate volume, clear pronunciation, and appropriate pacing.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 72,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.5.C.3",
+        "domain_name": "Following Conventions",
+        "standards": [
+          {
+            "id": "ELA.5.C.3.1",
+            "text": "Follow the rules of standard English grammar, punctuation, capitalization, and spelling appropriate to grade level.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 72,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.5.C.4",
+        "domain_name": "Researching",
+        "standards": [
+          {
+            "id": "ELA.5.C.4.1",
+            "text": "Conduct research to answer a question, organizing information about the topic and using multiple reliable and valid sources.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 72,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.5.C.5",
+        "domain_name": "Creating and Collaborating",
+        "standards": [
+          {
+            "id": "ELA.5.C.5.1",
+            "text": "Arrange multimedia elements to create emphasis and/or clarity in oral or written tasks.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 73,
+            "label": "A"
+          },
+          {
+            "id": "ELA.5.C.5.2",
+            "text": "Use digital writing tools individually or collaboratively to plan, draft, and revise writing.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 73,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.5.V.1",
+        "domain_name": "Finding Meaning",
+        "standards": [
+          {
+            "id": "ELA.5.V.1.1",
+            "text": "Use grade-level academic vocabulary appropriately in speaking and writing.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 73,
+            "label": "A"
+          },
+          {
+            "id": "ELA.5.V.1.2",
+            "text": "Apply knowledge of Greek and Latin roots and affixes, recognizing the connection between affixes and parts of speech, to determine the meaning of unfamiliar words in grade-level content.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 73,
+            "label": "A"
+          },
+          {
+            "id": "ELA.5.V.1.3",
+            "text": "Use context clues, figurative language, word relationships, reference materials, and/or background knowledge to determine the meaning of multiple-meaning and unknown words and phrases, appropriate to grade level.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 74,
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": null,
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Students apply phonics, syllabication, and morphology to read and write unfamiliar words and read grade-level texts with accuracy, automaticity, and prosody.",
+        "Students analyze plot, theme, character perspective, and poetic elements, and explain informational text structure, central ideas, purpose, and arguments.",
+        "Students summarize literary and informational texts and compare primary and secondary sources.",
+        "Students write narratives, claims, and expository texts in fluent cursive, follow grade-level conventions, and research with multiple reliable sources.",
+        "Students present orally, use academic vocabulary, Greek and Latin roots, and context clues, and use digital tools and multimedia in communication."
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "Florida's State Academic Standards (B.E.S.T.) English Language Arts, 2025",
+      "adopted_or_effective_date": "2025-12-21",
+      "notes": [
+        "Benchmark statements extracted from the rule-adopted 2025 PDF (Ref-18865), printed pages 69-74. Clarifications, examples, and sample texts are not stored in standard text. Subparts that are part of the benchmark (ELA.5.F.1.3 a and ELA.5.R.3.2 a-b) are included.",
+        "ELA.5.F.1.1 and ELA.5.F.1.2 are not printed in the grade 5 benchmark list."
+      ]
+    }
+  },
+  "citations": [
+    {
+      "id": "c-flrules-ela-2025",
+      "url": "https://flrules.org/gateway/readRefFile.asp?refId=18865&filename=B.E.S.T.%20ELA%20Standards%202025_Clean%206A-1.09401.pdf",
+      "title": "Florida's State Academic Standards (Benchmarks for Excellent Student Thinking (B.E.S.T.)) – English Language Arts, 2025",
+      "publisher": "Florida Department of Education (adopted document for Rule 6A-1.09401, F.A.C., Ref-18865)",
+      "published_or_version_date": "2025-11-17",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Drafted from the adopted B.E.S.T. ELA 2025 PDF incorporated by Rule 6A-1.09401 (effective 2025-12-21; still cited in the 2026-08-03 rule text). The primer-mvp branch on GitHub returned HTTP 404 from this environment, so the legacy Grade 5 ELA file was not converted. CPALMS preview pages were not used."
+  ],
+  "last_updated": "2026-10-03"
+}

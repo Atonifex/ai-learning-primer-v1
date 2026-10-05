@@ -1,0 +1,860 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-05.social-studies",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 5,
+  "grade_label": "Grade 5",
+  "subject": "social-studies",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "C"
+  ],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "Social Studies",
+      "standards_system_name": "Florida's State Academic Standards – Social Studies",
+      "organization": "by_grade",
+      "courses": null
+    },
+    "domains": [
+      {
+        "domain_id": "SS.5.A.1",
+        "domain_name": "American History - Historical Inquiry and Analysis",
+        "standards": [
+          {
+            "id": "SS.5.A.1.1",
+            "text": "Use primary and secondary sources to understand history.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 37,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.1.2",
+            "text": "Utilize timelines to identify and discuss American History time periods.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 37,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.5.A.2",
+        "domain_name": "American History - Pre-Columbian North America",
+        "standards": [
+          {
+            "id": "SS.5.A.2.1",
+            "text": "Compare cultural aspects of ancient American civilizations (e.g., Aztecs, Mayas, Mound Builders, Anasazi, Inuit).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 37,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.2.2",
+            "text": "Identify Native American tribes from different geographic regions of North America (e.g., cliff dwellers and Pueblo people of the desert Southwest, coastal tribes of the Pacific Northwest, nomadic nations of the Great Plains, woodland tribes east of the Mississippi River).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 37,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.2.3",
+            "text": "Compare cultural aspects of Native American tribes from different geographic regions of North America including but not limited to clothing, shelter, food, major beliefs and practices, music, art, and interactions with the environment.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 37,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.5.A.3",
+        "domain_name": "American History - Exploration and Settlement of North America",
+        "standards": [
+          {
+            "id": "SS.5.A.3.1",
+            "text": "Describe technological developments that shaped European exploration.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 38,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.3.2",
+            "text": "Investigate (nationality, sponsoring country, motives, dates and routes of travel, accomplishments) the European explorers.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 38,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.3.3",
+            "text": "Describe interactions among Native Americans, Africans, English, French, Dutch, and Spanish for control of North America.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 38,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.5.A.4",
+        "domain_name": "American History - Colonization of North America",
+        "standards": [
+          {
+            "id": "SS.5.A.4.1",
+            "text": "Identify the economic, political, and socio-cultural motivation for colonial settlement.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 38,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.4.2",
+            "text": "Compare characteristics of New England, Middle, and Southern colonies.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 38,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.4.3",
+            "text": "Identify significant individuals responsible for the development of the New England, Middle, and Southern colonies.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 38,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.4.4",
+            "text": "Demonstrate an understanding of political, economic, and social aspects of daily colonial life in the thirteen colonies.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 38,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.4.5",
+            "text": "Explain the importance of Triangular Trade linking Africa, the West Indies, the British Colonies, and Europe.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 38,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.4.6",
+            "text": "Describe the introduction, impact, and role of slavery in the colonies.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 38,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.5.A.5",
+        "domain_name": "American History - American Revolution and Birth of a New Nation",
+        "standards": [
+          {
+            "id": "SS.5.A.5.1",
+            "text": "Identify and explain significant events leading up to the American Revolution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 38,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.5.2",
+            "text": "Identify significant individuals and groups who played a role in the American Revolution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 38,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.5.3",
+            "text": "Explain the significance of historical documents including key political concepts, origins of these concepts, and their role in American independence.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 38,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.5.4",
+            "text": "Examine and explain the changing roles and impact of significant women during the American Revolution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 38,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.5.5",
+            "text": "Examine and compare major battles and military campaigns of the American Revolution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 38,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.5.6",
+            "text": "Identify the contributions of foreign alliances and individuals to the outcome of the Revolution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.5.7",
+            "text": "Explain economic, military, and political factors which led to the end of the Revolutionary War.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.5.8",
+            "text": "Evaluate the personal and political hardships resulting from the American Revolution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.5.9",
+            "text": "Discuss the impact and significance of land policies developed under the Confederation Congress (Northwest Ordinance of 1787).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.5.10",
+            "text": "Examine the significance of the Constitution including its key political concepts, origins of those concepts, and their role in American democracy.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 39,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.5.A.6",
+        "domain_name": "American History - Growth and Westward Expansion",
+        "standards": [
+          {
+            "id": "SS.5.A.6.1",
+            "text": "Describe the causes and effects of the Louisiana Purchase.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.6.2",
+            "text": "Identify roles and contributions of significant people during the period of westward expansion.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.6.3",
+            "text": "Examine 19th century advancements (e.g., canals, roads, steamboats, flat boats, overland wagons, Pony Express, railroads) in transportation and communication.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.6.4",
+            "text": "Explain the importance of the explorations west of the Mississippi River.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.6.5",
+            "text": "Identify the causes and effects of the War of 1812.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.6.6",
+            "text": "Explain how westward expansion affected Native Americans.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.6.7",
+            "text": "Discuss the concept of Manifest Destiny.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.6.8",
+            "text": "Describe the causes and effects of the Missouri Compromise.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 39,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.A.6.9",
+            "text": "Describe the hardships of settlers along the overland trails to the west.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 39,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.5.AA.1",
+        "domain_name": "African American History - Resiliency, contributions, and influence of African Americans on the United States beginning in the colonial era through westward expansion",
+        "standards": [
+          {
+            "id": "SS.5.AA.1.1",
+            "text": "Examine the life of African Americans in the colonial era.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 40,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.AA.1.2",
+            "text": "Examine the Underground Railroad and how former slaves partnered with other free people and groups in assisting those escaping from slavery.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 40,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.AA.1.3",
+            "text": "Examine key figures and events in abolitionist movements.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 40,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.AA.1.4",
+            "text": "Identify freedoms and rights secured for and by former slaves.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 40,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.AA.1.5",
+            "text": "Examine the roles and contributions of significant African Americans during westward expansion (e.g., Benjamin “Pap” Singleton, James Beckwourth, Buffalo Soldiers, York [American explorer]).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 40,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.AA.1.6",
+            "text": "Examine the experiences and contributions of African Americans in early Florida.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 40,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.5.HE.1",
+        "domain_name": "Holocaust Education - Foundations of Holocaust Education",
+        "standards": [
+          {
+            "id": "SS.5.HE.1.1",
+            "text": "Define the Holocaust as the planned and systematic state-sponsored persecution and murder of European Jews by Nazi Germany and its collaborators between 1933 and 1945.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 40,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.5.CG.1",
+        "domain_name": "Civics and Government - Foundations of Government, Law, and the American Political System",
+        "standards": [
+          {
+            "id": "SS.5.CG.1.1",
+            "text": "Recognize that the Declaration of Independence affirms that every U.S. citizen has certain unalienable rights.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 41,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.CG.1.2",
+            "text": "Explain how and why the U.S. government was created by the U.S. Constitution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 41,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.CG.1.3",
+            "text": "Discuss arguments for adopting a representative form of government.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 41,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.CG.1.4",
+            "text": "Describe the history, meaning, and significance of the Bill of Rights",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 41,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.5.CG.2",
+        "domain_name": "Civics and Government - Civic and Political Participation",
+        "standards": [
+          {
+            "id": "SS.5.CG.2.1",
+            "text": "Discuss the political ideas of Patriots, Loyalists, and other colonists about the American Revolution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 42,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.CG.2.2",
+            "text": "Compare forms of political participation in the colonial period to today.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 42,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.CG.2.3",
+            "text": "Analyze how the U.S. Constitution expanded civic participation over time.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 42,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.CG.2.4",
+            "text": "Evaluate the importance of civic duties and responsibilities to the preservation of the United States’ constitutional republic.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 42,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.CG.2.5",
+            "text": "Identify individuals who represent the citizens of Florida at the national level.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 43,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.CG.2.6",
+            "text": "Explain symbols and documents that represent the United States.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 43,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.5.CG.3",
+        "domain_name": "Civics and Government - Structure and Functions of Government",
+        "standards": [
+          {
+            "id": "SS.5.CG.3.1",
+            "text": "Describe the organizational structure and powers of the national government as defined in Articles I, II, and III of the U.S. Constitution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 43,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.CG.3.2",
+            "text": "Analyze how the U.S. Constitution and Bill of Rights limit the power of the national government and protect citizens from an oppressive government.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 43,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.CG.3.3",
+            "text": "Explain the role of the court system in interpreting law and settling conflicts.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 43,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.CG.3.4",
+            "text": "Describe the process for amending the U.S. Constitution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 44,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.CG.3.5",
+            "text": "Explain how the U.S. Constitution influenced the Florida Constitution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 44,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.CG.3.6",
+            "text": "Explain the relationship between the state and national governments.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 44,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.5.E.1",
+        "domain_name": "Economics - Market Economy",
+        "standards": [
+          {
+            "id": "SS.5.E.1.1",
+            "text": "Identify how trade promoted economic growth in North America from pre- Columbian times to 1850.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 44,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.E.1.2",
+            "text": "Describe a market economy and give examples of how the colonial and early American economy exhibited these characteristics.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 44,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.E.1.3",
+            "text": "Trace the development of technology and the impact of major inventions on business productivity during the early development of the United States.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 44,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.5.E.2",
+        "domain_name": "Economics - The International Economy",
+        "standards": [
+          {
+            "id": "SS.5.E.2.1",
+            "text": "Recognize the positive and negative effects of voluntary trade among Native Americans, European explorers, and colonists.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 44,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.5.G.1",
+        "domain_name": "Geography - The World in Spatial Terms",
+        "standards": [
+          {
+            "id": "SS.5.G.1.1",
+            "text": "Interpret current and historical information using a variety of geographic tools.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 45,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.G.1.2",
+            "text": "Use latitude and longitude to locate places.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 45,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.G.1.3",
+            "text": "Identify major United States physical features on a map of North America.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 45,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.G.1.4",
+            "text": "Construct maps, charts, and graphs to display geographic information.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 45,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.G.1.5",
+            "text": "Identify and locate the original thirteen colonies on a map of North America.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 45,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.G.1.6",
+            "text": "Locate and identify states, capitals, and United States Territories on a map.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 45,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.5.G.2",
+        "domain_name": "Geography - Places and Regions",
+        "standards": [
+          {
+            "id": "SS.5.G.2.1",
+            "text": "Describe the push-pull factors (e.g., economy, natural hazards, tourism, climate, physical features) that influenced boundary changes within the United States.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 45,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.5.G.3",
+        "domain_name": "Geography - Environment and Society",
+        "standards": [
+          {
+            "id": "SS.5.G.3.1",
+            "text": "Describe the impact that past natural events have had on human and physical environments in the United States through 1850.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 45,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.5.G.4",
+        "domain_name": "Geography - Uses of Geography",
+        "standards": [
+          {
+            "id": "SS.5.G.4.1",
+            "text": "Use geographic knowledge and skills when discussing current events.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 45,
+            "label": "A"
+          },
+          {
+            "id": "SS.5.G.4.2",
+            "text": "Use geography concepts and skills such as recognizing patterns, mapping, and graphing to find solutions for local, state, or national problems.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 45,
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": null,
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Students use primary and secondary sources and timelines and study North America from pre-Columbian civilizations through colonization, the American Revolution, and westward expansion.",
+        "Students examine African American life from the colonial era through westward expansion, including slavery, abolition, and early Florida communities, and define the Holocaust.",
+        "Students explain the Declaration of Independence, the Constitution, the Bill of Rights, civic participation, and the structure of the national government.",
+        "Students describe colonial and early American markets and trade, and use maps, latitude and longitude, and geographic tools to study the United States through 1850."
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "Florida's State Academic Standards – Social Studies, 2026",
+      "adopted_or_effective_date": "2026-08-03",
+      "notes": [
+        "Benchmark statements extracted from the clean 2026 social studies standards DOCX incorporated by Rule 6A-1.09401 (Ref-19653). Benchmark clarifications are omitted from standard text. Printed pages are 37-45. SS.5.CG.1.4 has no terminal period in the adopted DOCX. SS.5.E.1.1 is stored as printed, including the space in \"pre- Columbian\". Grade 5 in this adoption has no financial-literacy benchmarks."
+      ]
+    }
+  },
+  "citations": [
+    {
+      "id": "c-flrules-ss-2026",
+      "url": "https://flrules.org/gateway/readRefFile.asp?refId=19653&filename=SS%20Standards%202026%206A-1.09401%20Clean.docx",
+      "title": "Florida's State Academic Standards – Social Studies, 2026",
+      "publisher": "Florida Department of Education (adopted document for Rule 6A-1.09401, F.A.C., Ref-19653)",
+      "published_or_version_date": "2026",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Drafted from Ref-19653, cited in Rule 6A-1.09401 effective 2026-08-03. This is the current social studies adoption, not the older NGSSS-only set. Clarifications (for example named communities under SS.5.AA.1.6) are not in text. CPALMS was not used."
+  ],
+  "last_updated": "2026-10-03"
+}

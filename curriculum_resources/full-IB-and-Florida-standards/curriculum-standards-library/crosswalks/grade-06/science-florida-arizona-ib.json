@@ -1,0 +1,176 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-06.science",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 6,
+  "grade_label": "Grade 6",
+  "subject": "science",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "sections": {
+    "scope_note": "Arizona standards deferred. This crosswalk covers Florida NGSSS Science (2016), Grade 6, and IB MYP sciences only. Rows are suggested (Label C). Science is grade-based in the adopted package, not a middle-school course code.",
+    "rows": [
+      {
+        "row_id": "xw-g06-sci-001",
+        "topic_domain": "Practice of science",
+        "florida_standards": [
+          "SC.6.N.1.1",
+          "SC.6.N.1.2",
+          "SC.6.N.1.3",
+          "SC.6.N.1.4",
+          "SC.6.N.1.5"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP sciences: criterion B Inquiring and designing",
+          "MYP sciences: criterion C Processing and evaluating"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida asks students to define a problem from the sixth-grade curriculum, explain replicability, distinguish experiments from other investigations, compare methods across groups, and recognize creativity in explanations. MYP criteria B and C are titles only here. The Florida sentences are not IB descriptors.",
+        "suggested_instructional_bridge": "Plan a short investigation, say why another group should be able to repeat it, and compare methods with that group."
+      },
+      {
+        "row_id": "xw-g06-sci-002",
+        "topic_domain": "Energy, motion, and forces",
+        "florida_standards": [
+          "SC.6.P.11.1",
+          "SC.6.P.12.1",
+          "SC.6.P.13.1",
+          "SC.6.P.13.2",
+          "SC.6.P.13.3"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP sciences: criterion A Knowing and understanding",
+          "MYP sciences: example key concept change"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies potential and kinetic energy, distance-time graphs for constant speed, contact and distance forces, the Law of Gravity, and unbalanced forces. The public MYP pages do not state those laws.",
+        "suggested_instructional_bridge": "Graph distance versus time for an object moving at constant speed, and name one force that could change that motion."
+      },
+      {
+        "row_id": "xw-g06-sci-003",
+        "topic_domain": "Cells, body systems, and classification",
+        "florida_standards": [
+          "SC.6.L.14.1",
+          "SC.6.L.14.2",
+          "SC.6.L.14.3",
+          "SC.6.L.14.4",
+          "SC.6.L.14.5",
+          "SC.6.L.14.6",
+          "SC.6.L.15.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP sciences: criterion A Knowing and understanding",
+          "MYP sciences page: life sciences as a course a school may offer"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida lists hierarchical organization, cell theory, homeostasis, organelles, human body systems, infectious agents, and Linnaean classification with Domains. MYP allows life-science courses but does not publish this list.",
+        "suggested_instructional_bridge": "Compare one plant cell and one animal cell organelle, then say which body system in the Florida list the class will connect to a real health question."
+      },
+      {
+        "row_id": "xw-g06-sci-004",
+        "topic_domain": "Nature of scientific knowledge, theories, laws, and models",
+        "florida_standards": [
+          "SC.6.N.2.1",
+          "SC.6.N.2.2",
+          "SC.6.N.2.3",
+          "SC.6.N.3.1",
+          "SC.6.N.3.2",
+          "SC.6.N.3.3",
+          "SC.6.N.3.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP sciences page: scientific inquiry includes identification of assumptions and alternative explanations",
+          "MYP sciences: criterion D Reflecting on the impacts of science"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida distinguishes science from other ways of knowing, says scientific knowledge can change, and defines theory, law, and models for sixth grade. Those definitions are Florida’s. Criterion D is a title about impacts of science, not a copy of these benchmarks.",
+        "suggested_instructional_bridge": "Give one example of a scientific law and one way a scientific explanation could change if new evidence appeared."
+      },
+      {
+        "row_id": "xw-g06-sci-005",
+        "topic_domain": "Earth structures",
+        "florida_standards": [
+          "SC.6.E.6.1",
+          "SC.6.E.6.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP sciences page: earth sciences as a course a school may offer",
+          "MYP sciences: example key concept change"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida asks how weathering, erosion, and deposition build and tear down Earth’s surface, and names landforms including Florida examples. MYP permits earth-science courses. It does not require this list.",
+        "suggested_instructional_bridge": "Describe one Florida landform and one process (weathering, erosion, or deposition) that changes it."
+      },
+      {
+        "row_id": "xw-g06-sci-006",
+        "topic_domain": "Earth systems, weather, and climate",
+        "florida_standards": [
+          "SC.6.E.7.1",
+          "SC.6.E.7.2",
+          "SC.6.E.7.3",
+          "SC.6.E.7.4",
+          "SC.6.E.7.5",
+          "SC.6.E.7.6",
+          "SC.6.E.7.7",
+          "SC.6.E.7.8",
+          "SC.6.E.7.9"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "MYP sciences: example key concept systems",
+          "MYP global context: globalization and sustainability"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies heat transfer, the water cycle, jet streams and ocean currents, Earth spheres, weather versus climate, Florida natural disasters, sun protection, and the atmosphere. Those topics are NGSSS. Systems is only an example key concept on the brief.",
+        "suggested_instructional_bridge": "Trace one path of water between atmosphere and hydrosphere and say how it can change local weather."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-fl-sci",
+      "url": "https://www.flrules.org/gateway/readRefFile.asp?refId=6754&filename=Comp%20science%20comprehensive%20package%20%20final.pdf",
+      "title": "Next Generation Sunshine State Standards – Science, 2016",
+      "publisher": "Florida Department of Education (Rule 6A-1.09401, F.A.C.)",
+      "published_or_version_date": "2016-04-04",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-myp-curriculum",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/",
+      "title": "MYP curriculum",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Page says last updated 19 February 2026. Curl HTTP 200. The page says sixteen key concepts are prescribed but does not list them. Global-context line uses “orientations in space and time.” Subject briefs use “Orientation in space and time.”"
+    },
+    {
+      "id": "c-ibo-myp-sci",
+      "url": "https://www.ibo.org/programmes/middle-years-programme/curriculum/science/",
+      "title": "MYP sciences",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": "2026-02-19",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Curl HTTP 200. WebFetch was a Cloudflare check."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 6 FL↔IB crosswalk for MYP, not PYP. Arizona left empty (deferred). Rows are suggested alignments (Label C). Florida IDs are from the grade 6 drafts. IB elements are public MYP framework text or criterion titles from the linked subject brief. No IB learning outcomes and no 1-8 criterion descriptors were invented."
+  ],
+  "last_updated": "2026-10-03"
+}

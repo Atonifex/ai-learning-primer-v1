@@ -1,0 +1,205 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "ib.pyp.grade-05.ela",
+  "doc_type": "ib_alignment",
+  "system": "ib",
+  "programme": "PYP",
+  "grade": 5,
+  "grade_label": "Grade 5",
+  "subject": "ela",
+  "status": "drafted",
+  "content_labels": [
+    "B",
+    "C"
+  ],
+  "sections": {
+    "applicable_programme": {
+      "programme": "PYP",
+      "age_range": "3-12",
+      "grade_mapping_note": "The public PYP page describes the programme as education for children aged 3-12. Mapping that span to Grade 5 (often about ages 10-11) is our convention, not an IB grade boundary.",
+      "shared_programme_block_ref": null,
+      "grade_specific_note": {
+        "label": "C",
+        "text": "At Grade 5, Florida ELA still includes phonics and word analysis, fluent cursive, and grade-level conventions. Those are more specified than the public PYP overview. Do not treat them as published IB phase outcomes."
+      }
+    },
+    "subject_group_or_structure": {
+      "ib_subject_group_or_area": "Language",
+      "mapping_to_primer_subject": "The grade 3 library maps PYP Language (oral, visual, and written language) to ELA. That mapping is reused here. The public pages retrieved on 2026-10-03 do not publish a grade-by-grade language continuum.",
+      "mapping_label": "C"
+    },
+    "framework_elements": {
+      "concepts": [
+        "Form - What is it like?",
+        "Function - How does it work?",
+        "Causation - Why is it like it is?",
+        "Change - How is it changing?",
+        "Connection - How is it connected to other things?",
+        "Perspective - What are the points of view?",
+        "Responsibility - What is our responsibility?"
+      ],
+      "approaches_to_learning": [
+        "Thinking skills",
+        "Communication skills",
+        "Research skills",
+        "Self-management skills",
+        "Social skills"
+      ],
+      "learner_profile_attributes": [
+        "Inquirers",
+        "Knowledgeable",
+        "Thinkers",
+        "Communicators",
+        "Principled",
+        "Open-minded",
+        "Caring",
+        "Risk-takers",
+        "Balanced",
+        "Reflective"
+      ],
+      "global_contexts_or_transdisciplinary_themes": [
+        "Who we are",
+        "Where we are in place and time",
+        "How we express ourselves",
+        "How the world works",
+        "How we organize ourselves",
+        "Sharing the planet"
+      ]
+    },
+    "official_requirements": [
+      {
+        "label": "B",
+        "text": "The programme of inquiry is organized and framed by six transdisciplinary themes: Who we are; Where we are in place and time; How we express ourselves; How the world works; How we organize ourselves; Sharing the planet.",
+        "citation_ids": [
+          "c-ibo-pyp-how"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "In broad terms, IB programmes support learners in developing thinking skills, communication skills, research skills, self-management skills and social skills.",
+        "citation_ids": [
+          "c-ibo-pyp-atl"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "PYP Language scope and sequence, as recorded in the grade 3 library, outlines continuums for oral language (listening and speaking), visual language (viewing and presenting), and written language (reading and writing).",
+        "citation_ids": [
+          "c-ibo-pyp-scope-g3"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Although subjects play an important role in learning, PYP learners explore real-world problems by going beyond subject boundaries.",
+        "citation_ids": [
+          "c-ibo-pyp-how"
+        ],
+        "page": null
+      }
+    ],
+    "typical_fit": {
+      "label": "C",
+      "text": "Grade 5 Florida ELA in this draft asks students to analyze how setting, events, conflict, and characterization contribute to plot, explain theme and poetic elements, track an argument, summarize literary and informational texts, compare primary and secondary sources, and write narratives, claims, and multi-source expository texts. PYP does not assign those benchmarks to a grade. A reasonable inquiry fit is language used to comprehend, analyze, and produce texts inside units of inquiry, not a claim that IB places Grade 5 in a named reading or writing phase."
+    },
+    "suggested_alignment_to_florida_and_arizona": {
+      "label": "C",
+      "florida": [
+        {
+          "standard_id": "ELA.5.R.1.1",
+          "alignment_note": "Analyzing how setting, events, conflict, and characterization contribute to plot can sit inside PYP written-language comprehension and the concept of form. The Florida analysis demand is not an IB phase outcome."
+        },
+        {
+          "standard_id": "ELA.5.R.1.3",
+          "alignment_note": "Describing how an author develops a character's perspective lines up with the concept of perspective. PYP does not require the Florida wording."
+        },
+        {
+          "standard_id": "ELA.5.R.2.4",
+          "alignment_note": "Tracking a claim, evidence, and reasoning can connect to thinking skills. The argument structure is Florida's."
+        },
+        {
+          "standard_id": "ELA.5.R.3.2",
+          "alignment_note": "Summarizing with plot and theme, or central idea and details, supports comprehension. PYP does not publish that literary/informational split."
+        },
+        {
+          "standard_id": "ELA.5.C.1.3",
+          "alignment_note": "Writing a claim with reasons, evidence, elaboration, and varied transitions is one way to produce written language under How we express ourselves."
+        },
+        {
+          "standard_id": "ELA.5.C.4.1",
+          "alignment_note": "Research that organizes information from multiple reliable and valid sources fits research skills. Florida's reliability rule is the state benchmark, not an IB outcome."
+        },
+        {
+          "standard_id": "ELA.5.V.1.2",
+          "alignment_note": "Greek and Latin roots and affixes, including a connection to parts of speech, are a Florida morphology benchmark. Public PYP text does not list those strategies."
+        }
+      ],
+      "arizona": [],
+      "notes": "Arizona standards deferred. These rows are suggested starting points (Label C), not an official IB-Florida crosswalk."
+    },
+    "access_limitations": [
+      "Public pages retrieved by curl on 2026-10-03: how-the-pyp-works, learning-and-teaching, the PYP home page, and the learner-profile PDF.",
+      "WebFetch of ibo.org returned a Cloudflare verification page.",
+      "Scope-and-sequence strand lists and phase outcomes are not on those public pages. Where a Label B sentence repeats the grade 3 library, it is marked as reused and was not taken from the IB Programme Resource Centre.",
+      "Key-concept question stems and the ten learner-profile names are reused from the grade 3 files for the same reason."
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-ibo-pyp-how",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/how-the-pyp-works/",
+      "title": "How the PYP works",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-pyp-atl",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/curriculum/learning-and-teaching/",
+      "title": "PYP learning and teaching",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-pyp-home",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/",
+      "title": "Primary Years Programme (PYP)",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-lp",
+      "url": "https://ibo.org/contentassets/fd82f70643ef4086b7d3f292cc214962/learner-profile-en.pdf",
+      "title": "IB learner profile",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "PDF downloaded 2026-10-03. The ten attribute titles are graphics and were not in the text layer. The name list is reused from the grade 3 library. The aim statement and the '10 attributes' sentence are in the text layer."
+    },
+    {
+      "id": "c-ibo-pyp-scope-g3",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/curriculum/",
+      "title": "PYP curriculum (scope statements reused from the grade 3 library)",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "WebFetch hit a Cloudflare check on 2026-10-03. Curl retrieved the public curriculum and learning-and-teaching pages, which do not publish scope-and-sequence strand lists or phase outcomes. Those Label B sentences are the same ones used in the grade 3 files, not re-extracted from the IB Programme Resource Centre."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 5 draft. Label B sentences are the same public PYP sentences and reused grade 3 scope notes used in the grade 2 files. No grade-5 phase placement or new IB learning outcomes were invented. Label C notes and Florida pointers are suggestions."
+  ],
+  "last_updated": "2026-10-03"
+}

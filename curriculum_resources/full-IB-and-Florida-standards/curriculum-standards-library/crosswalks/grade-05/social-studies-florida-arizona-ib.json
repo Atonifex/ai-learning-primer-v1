@@ -1,0 +1,303 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-05.social-studies",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 5,
+  "grade_label": "Grade 5",
+  "subject": "social-studies",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "sections": {
+    "scope_note": "Arizona standards deferred. This crosswalk covers Florida State Academic Standards for Social Studies (2026) and IB PYP only. Rows are suggested (Label C).",
+    "rows": [
+      {
+        "row_id": "xw-g05-social-studies-001",
+        "topic_domain": "Historical inquiry and timelines",
+        "florida_standards": [
+          "SS.5.A.1.1",
+          "SS.5.A.1.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP ATL: Research skills",
+          "PYP Social studies: Continuity and change through time (strand name reused from grade 3)"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida asks students to use primary and secondary sources and timelines of American history periods. PYP research skills are public; the strand name is reused.",
+        "suggested_instructional_bridge": "Answer one historical question from a primary and a secondary source and place the events on a timeline."
+      },
+      {
+        "row_id": "xw-g05-social-studies-002",
+        "topic_domain": "Pre-Columbian North America",
+        "florida_standards": [
+          "SS.5.A.2.1",
+          "SS.5.A.2.2",
+          "SS.5.A.2.3"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP transdisciplinary theme: Where we are in place and time",
+          "PYP Social studies: Social organization and culture (strand name reused from grade 3)",
+          "PYP concept: Perspective (name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida names ancient American civilizations and Native American tribes by region, including clothing, shelter, food, beliefs, music, art, and environment. Those examples are state topics, not IB requirements.",
+        "suggested_instructional_bridge": "Compare two Native American cultures from different regions and ask how the environment connects to shelter or food."
+      },
+      {
+        "row_id": "xw-g05-social-studies-003",
+        "topic_domain": "European exploration and contact",
+        "florida_standards": [
+          "SS.5.A.3.1",
+          "SS.5.A.3.2",
+          "SS.5.A.3.3"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Social studies: Continuity and change through time (strand name reused from grade 3)",
+          "PYP concept: Causation (name reused from grade 3)",
+          "PYP concept: Perspective (name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies technological developments, explorers' nationality, sponsors, motives, routes, and dates, and interactions among Native Americans, Africans, English, French, Dutch, and Spanish. PYP does not prescribe that investigation list.",
+        "suggested_instructional_bridge": "Inquire into one expedition's motive and route, then name two groups who were affected and how their perspectives differed."
+      },
+      {
+        "row_id": "xw-g05-social-studies-004",
+        "topic_domain": "Colonization, daily life, and slavery",
+        "florida_standards": [
+          "SS.5.A.4.1",
+          "SS.5.A.4.2",
+          "SS.5.A.4.3",
+          "SS.5.A.4.4",
+          "SS.5.A.4.5",
+          "SS.5.A.4.6"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP transdisciplinary theme: How we organize ourselves",
+          "PYP Social studies: Social organization and culture (strand name reused from grade 3)",
+          "PYP concept: Responsibility (name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida compares New England, Middle, and Southern colonies, Triangular Trade, and the introduction and role of slavery. Those are Florida benchmarks. A responsibility lens is a suggestion, not an IB requirement to teach this unit.",
+        "suggested_instructional_bridge": "Compare one feature of daily life in two colonial regions and trace who was connected by Triangular Trade."
+      },
+      {
+        "row_id": "xw-g05-social-studies-005",
+        "topic_domain": "American Revolution and the Constitution",
+        "florida_standards": [
+          "SS.5.A.5.1",
+          "SS.5.A.5.2",
+          "SS.5.A.5.3",
+          "SS.5.A.5.4",
+          "SS.5.A.5.5",
+          "SS.5.A.5.6",
+          "SS.5.A.5.7",
+          "SS.5.A.5.8",
+          "SS.5.A.5.9",
+          "SS.5.A.5.10"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP transdisciplinary theme: How we organize ourselves",
+          "PYP Social studies: Continuity and change through time (strand name reused from grade 3)",
+          "PYP concept: Perspective (name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida covers events, people, documents, women's roles, battles, foreign alliances, hardships, the Northwest Ordinance of 1787, and the Constitution. The theme is public; the U.S. narrative is Florida's.",
+        "suggested_instructional_bridge": "Choose one document and one battle, and ask how a different participant would describe the same turning point."
+      },
+      {
+        "row_id": "xw-g05-social-studies-006",
+        "topic_domain": "Growth and westward expansion",
+        "florida_standards": [
+          "SS.5.A.6.1",
+          "SS.5.A.6.2",
+          "SS.5.A.6.3",
+          "SS.5.A.6.4",
+          "SS.5.A.6.5",
+          "SS.5.A.6.6",
+          "SS.5.A.6.7",
+          "SS.5.A.6.8",
+          "SS.5.A.6.9"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Social studies: Continuity and change through time (strand name reused from grade 3)",
+          "PYP concept: Change (name reused from grade 3)",
+          "PYP Social studies: Human and natural environments (strand name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida includes the Louisiana Purchase, transportation, the War of 1812, effects on Native Americans, Manifest Destiny, the Missouri Compromise, and overland trails. Those causes and effects are state content.",
+        "suggested_instructional_bridge": "Map one route west and state one cause and one effect for the people who moved and for Native Americans already there."
+      },
+      {
+        "row_id": "xw-g05-social-studies-007",
+        "topic_domain": "African American history from the colonial era through westward expansion",
+        "florida_standards": [
+          "SS.5.AA.1.1",
+          "SS.5.AA.1.2",
+          "SS.5.AA.1.3",
+          "SS.5.AA.1.4",
+          "SS.5.AA.1.5",
+          "SS.5.AA.1.6"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP transdisciplinary theme: Who we are",
+          "PYP Social studies: Social organization and culture (strand name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida examines colonial life, the Underground Railroad, abolition, freedoms after slavery, westward expansion, and early Florida. Clarifications name communities such as Fort Mose and Eatonville; those clarifications are not the benchmark sentences and are not IB content.",
+        "suggested_instructional_bridge": "Use one benchmark event as a source and ask whose freedom or contribution is being described."
+      },
+      {
+        "row_id": "xw-g05-social-studies-008",
+        "topic_domain": "Holocaust definition",
+        "florida_standards": [
+          "SS.5.HE.1.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP concept: Perspective (name reused from grade 3)",
+          "PYP concept: Responsibility (name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida defines the Holocaust as the planned and systematic state-sponsored persecution and murder of European Jews by Nazi Germany and its collaborators between 1933 and 1945. PYP does not publish that definition. Perspective and responsibility are reused concept names, not an IB outcome that replaces the Florida sentence.",
+        "suggested_instructional_bridge": "Teach the Florida definition as written. If a concept question is used, ask whose perspective was targeted and what responsibility the definition points to, without rewriting the benchmark."
+      },
+      {
+        "row_id": "xw-g05-social-studies-009",
+        "topic_domain": "Foundations of American government",
+        "florida_standards": [
+          "SS.5.CG.1.1",
+          "SS.5.CG.1.2",
+          "SS.5.CG.1.3",
+          "SS.5.CG.1.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP transdisciplinary theme: How we organize ourselves"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida covers unalienable rights in the Declaration of Independence, why the Constitution created the U.S. government, arguments for representative government, and the history and significance of the Bill of Rights. The theme is public; the U.S. documents are Florida's.",
+        "suggested_instructional_bridge": "Ask why a group would choose representatives, then connect that question to one idea in the Declaration or the Bill of Rights."
+      },
+      {
+        "row_id": "xw-g05-social-studies-010",
+        "topic_domain": "Civic participation",
+        "florida_standards": [
+          "SS.5.CG.2.1",
+          "SS.5.CG.2.2",
+          "SS.5.CG.2.3",
+          "SS.5.CG.2.4",
+          "SS.5.CG.2.5",
+          "SS.5.CG.2.6"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP transdisciplinary theme: Who we are",
+          "PYP learner profile: Principled (name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies Patriots, Loyalists, and other colonists, changes in participation over time, civic duties in a constitutional republic, Florida's national representatives, and U.S. symbols and documents. Clarifications name amendments and symbols; those are not the benchmark sentences.",
+        "suggested_instructional_bridge": "Compare one colonial form of participation with one form used today, and name a duty the Florida benchmark expects citizens to meet."
+      },
+      {
+        "row_id": "xw-g05-social-studies-011",
+        "topic_domain": "Structure and limits of government",
+        "florida_standards": [
+          "SS.5.CG.3.1",
+          "SS.5.CG.3.2",
+          "SS.5.CG.3.3",
+          "SS.5.CG.3.4",
+          "SS.5.CG.3.5",
+          "SS.5.CG.3.6"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP transdisciplinary theme: How we organize ourselves",
+          "PYP concept: Function (name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida describes Articles I, II, and III, limits in the Constitution and Bill of Rights, courts, the amendment process, the Florida Constitution, and federalism. Public theme text does not list that structure.",
+        "suggested_instructional_bridge": "Sketch the three branches from the benchmark and ask how one limit stops one branch from doing everything."
+      },
+      {
+        "row_id": "xw-g05-social-studies-012",
+        "topic_domain": "Markets and trade to 1850",
+        "florida_standards": [
+          "SS.5.E.1.1",
+          "SS.5.E.1.2",
+          "SS.5.E.1.3",
+          "SS.5.E.2.1"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Social studies: Human systems and economic activities (strand name reused from grade 3)"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida covers trade and growth from pre-Columbian times to 1850, a market economy in the colonial and early American economy, inventions and productivity, and positive and negative effects of voluntary trade. The strand name is reused. The adopted sentence keeps the space in 'pre- Columbian'.",
+        "suggested_instructional_bridge": "Trace one trade connection and one invention and say who gained and who was harmed."
+      },
+      {
+        "row_id": "xw-g05-social-studies-013",
+        "topic_domain": "Geography of the United States",
+        "florida_standards": [
+          "SS.5.G.1.1",
+          "SS.5.G.1.2",
+          "SS.5.G.1.3",
+          "SS.5.G.1.4",
+          "SS.5.G.1.5",
+          "SS.5.G.1.6",
+          "SS.5.G.2.1",
+          "SS.5.G.3.1",
+          "SS.5.G.4.1",
+          "SS.5.G.4.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP transdisciplinary theme: Where we are in place and time",
+          "PYP Social studies: Human and natural environments (strand name reused from grade 3)",
+          "PYP Social studies: Resources and the environment (strand name reused from grade 3)"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida requires geographic tools, latitude and longitude, United States physical features, the original thirteen colonies, states, capitals, and territories, push-pull factors, natural events through 1850, and using geography on current events. Those locations and dates are Florida's.",
+        "suggested_instructional_bridge": "Locate the thirteen colonies, then use latitude and longitude or a physical feature to explain one reason people moved."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-fl-ss",
+      "url": "https://flrules.org/gateway/readRefFile.asp?refId=19653&filename=SS%20Standards%202026%206A-1.09401%20Clean.docx",
+      "title": "Florida's State Academic Standards – Social Studies, 2026",
+      "publisher": "Florida Department of Education (Rule 6A-1.09401, F.A.C., Ref-19653)",
+      "published_or_version_date": "2026",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-pyp",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/how-the-pyp-works/",
+      "title": "How the PYP works",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Themes and the transdisciplinary statement were read from this page for the grade 2 collection on 2026-10-03 and reused here. Strand names in ib_framework_elements that go beyond that page are reused from the grade 3 library and are not official IB-Florida mappings."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 5 FL↔IB crosswalk. Arizona left empty (deferred). Rows are suggested alignments (Label C). Florida IDs are from the grade 5 drafts. IB elements are either public PYP framework text or the same strand labels used in the grade 2 and grade 3 crosswalks. No IB learning outcomes were invented."
+  ],
+  "last_updated": "2026-10-03"
+}

@@ -1,0 +1,1467 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-08.social-studies",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 8,
+  "grade_label": "Grade 8",
+  "subject": "social-studies",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "C"
+  ],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "Social Studies",
+      "standards_system_name": "Florida's State Academic Standards – Social Studies",
+      "organization": "by_grade",
+      "courses": null
+    },
+    "domains": [
+      {
+        "domain_id": "SS.8.A.1",
+        "domain_name": "American History - Use research and inquiry skills to analyze American History using primary and secondary sources.",
+        "standards": [
+          {
+            "id": "SS.8.A.1.1",
+            "text": "Provide supporting details for an answer from text, interview for oral history, check validity of information from research or text, and identify strong vs. weak arguments.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 75,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.1.2",
+            "text": "Analyze charts, graphs, maps, photographs, and timelines; analyze political cartoons; determine cause and effect.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 75,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.1.3",
+            "text": "Analyze current events relevant to American History topics through a variety of electronic and print media resources.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 76,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.1.4",
+            "text": "Differentiate fact from opinion by utilizing appropriate historical research, including fiction and nonfiction support materials.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 76,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.1.5",
+            "text": "Identify, within both primary and secondary sources, the author, audience, format, and purpose of significant historical documents.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 76,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.1.6",
+            "text": "Compare interpretations of key events and issues throughout American History.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 76,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.1.7",
+            "text": "View historic events through the eyes of those who were there as shown in their art, writings, music, and artifacts.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 76,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.A.2",
+        "domain_name": "American History - Examine the causes, course, and consequences of British settlement in the American colonies.",
+        "standards": [
+          {
+            "id": "SS.8.A.2.1",
+            "text": "Compare the relationships among the British, French, Spanish, and Dutch in their struggle for colonization of North America.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 76,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.2.2",
+            "text": "Compare the characteristics of the New England, Middle, and Southern colonies.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 76,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.2.3",
+            "text": "Differentiate economic systems of New England, Middle, and Southern colonies including indentured servants and slaves as labor sources.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 76,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.2.4",
+            "text": "Identify the impact of key colonial figures on the economic, political, and social development of the colonies.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 76,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.2.5",
+            "text": "Discuss the impact of colonial settlement on Native American populations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 76,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.2.6",
+            "text": "Examine the causes, course, and consequences of the French and Indian War.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 76,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.2.7",
+            "text": "Describe the contributions of key groups (e.g., Africans, Native Americans, women, and children) to the society and culture of colonial America.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 76,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.A.3",
+        "domain_name": "American History - Demonstrate an understanding of the causes, course and consequences of the American Revolution and the founding principles of our nation.",
+        "standards": [
+          {
+            "id": "SS.8.A.3.1",
+            "text": "Explain the consequences of the French and Indian War in British policies for the American colonies from 1763-1774.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 77,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.3.2",
+            "text": "Explain American colonial reaction to British policy from 1763-1774.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 77,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.3.3",
+            "text": "Recognize the contributions of the Founding Fathers (e.g., John Adams, Sam Adams, Benjamin Franklin, John Hancock, Alexander Hamilton, Thomas Jefferson, James Madison, George Mason, George Washington) during American Revolutionary efforts.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 77,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.3.4",
+            "text": "Examine the contributions of influential groups to both the American and British war efforts during the American Revolutionary War and their effects on the outcome of the war.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 77,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.3.5",
+            "text": "Describe the influence of individuals on social and political developments during the Revolutionary era.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 77,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.3.6",
+            "text": "Examine the causes, course, and consequences of the American Revolution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 77,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.3.7",
+            "text": "Examine the structure, content, and consequences of the Declaration of Independence.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 77,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.3.8",
+            "text": "Examine individuals and groups that affected political and social motivations during the American Revolution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 77,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.3.9",
+            "text": "Evaluate the structure, strengths, and weaknesses of the Articles of Confederation and its aspects that led to the Constitutional Convention.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 77,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.3.10",
+            "text": "Examine the course and consequences of the Constitutional Convention (e.g., New Jersey Plan, Virginia Plan, Great Compromise, Three-Fifths Compromise, compromises regarding taxation and slave trade, Electoral College, state vs. federal power, empowering a president).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 77,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.3.11",
+            "text": "Analyze support and opposition (Federalists, Federalist Papers, Anti-Federalists, Anti-Federalist Papers, and the Bill of Rights) to ratification of the U.S. Constitution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 77,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.3.12",
+            "text": "Examine the influences of George Washington's presidency in the formation of the new nation.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 77,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.3.13",
+            "text": "Explain major domestic and international economic, military, political, and socio-cultural events of John Adams’ presidency.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 78,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.3.14",
+            "text": "Explain major domestic and international economic, military, political, and socio-cultural events of Thomas Jefferson’s presidency.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 78,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.3.15",
+            "text": "Examine this time period (1763-1815) from the perspective of historically under-represented groups (e.g., children, indentured servants, Native Americans, slaves, women, working class).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 78,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.3.16",
+            "text": "Examine key events in Florida history as each impacts this era of American history.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 78,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.A.4",
+        "domain_name": "American History - Demonstrate an understanding of the domestic and international causes, course, and consequences of westward expansion.",
+        "standards": [
+          {
+            "id": "SS.8.A.4.1",
+            "text": "Examine the causes, course, and consequences of United States westward expansion and its growing diplomatic assertiveness (i.e., War of 1812, Convention of 1818, Adams-Onis Treaty, Missouri Compromise, Monroe Doctrine, Trail of Tears, Texas annexation, Manifest Destiny, Oregon Territory, Mexican American War/Mexican Cession, California Gold Rush, Compromise of 1850, Kansas Nebraska Act, Gadsden Purchase).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 78,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.2",
+            "text": "Describe the debate surrounding the spread of slavery into western territories and Florida.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 78,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.3",
+            "text": "Examine the experiences and perspectives of significant individuals and groups during this era of American History.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 78,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.4",
+            "text": "Discuss the impact of westward expansion on cultural practices and migration patterns of Native Americans, African slave populations, and other minority groups.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 78,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.5",
+            "text": "Explain the causes, course, and consequences of the 19th century transportation revolution on the growth of the nation's economy.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 78,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.6",
+            "text": "Identify technological improvements (including inventions and inventors) that contributed to industrial growth.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 78,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.7",
+            "text": "Explain the causes, course, and consequences (e.g., industrial growth, subsequent effect on children and women) of New England's textile industry.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 78,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.8",
+            "text": "Describe the influence of individuals on social and political developments of this era in American History.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 79,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.9",
+            "text": "Analyze the causes, course, and consequences of the Second Great Awakening on social reform movements.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 79,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.10",
+            "text": "Analyze the impact of technological advancements on the agricultural economy and slave labor.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 79,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.11",
+            "text": "Examine the aspects of slave culture including plantation life, resistance efforts, and the role of the slaves’ spiritual system.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 79,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.12",
+            "text": "Examine the effects of the 1804 Haitian Revolution on the United States acquisition of the Louisiana Territory.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 79,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.13",
+            "text": "Explain the consequences of landmark Supreme Court decisions (McCulloch v. Maryland [1819], Gibbons v. Ogden [1824], Cherokee Nation v. Georgia [1831], and Worcester v. Georgia [1832]) significant to this era of American history.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 79,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.14",
+            "text": "Examine the causes, course, and consequences of the women’s suffrage movement (e.g., 1848 Seneca Falls Convention, Declaration of Sentiments).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 79,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.15",
+            "text": "Examine the causes, course, and consequences of literature movements (e.g., Transcendentalism) significant to this era of American history.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 79,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.16",
+            "text": "Identify key ideas and influences of Jacksonian democracy.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 79,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.17",
+            "text": "Examine key events and peoples in Florida history as each impacts this era of American history.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 79,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.4.18",
+            "text": "Examine the experiences and perspectives of different ethnic, national, and religious groups in Florida, explaining their contributions to Florida’s and America’s society and culture during the Territorial Period.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 79,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.A.5",
+        "domain_name": "American History - Examine the causes, course, and consequences of the Civil War and Reconstruction including its effects on American peoples.",
+        "standards": [
+          {
+            "id": "SS.8.A.5.1",
+            "text": "Explain the causes, course, and consequences of the Civil War (e.g., sectionalism, slavery, states’ rights, balance of power in the Senate).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 79,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.5.2",
+            "text": "Analyze the role of slavery in the development of sectional conflict.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 79,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.5.3",
+            "text": "Explain major domestic and international economic, military, political, and socio-cultural events of Abraham Lincoln’s presidency.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 79,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.5.4",
+            "text": "Identify the division (i.e., Confederate and Union States, border states, western territories) of the United States at the outbreak of the Civil War.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 80,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.5.5",
+            "text": "Compare Union and Confederate strengths and weaknesses.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 80,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.5.6",
+            "text": "Compare significant Civil War battles and events and their effects on civilian populations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 80,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.5.7",
+            "text": "Examine key events and peoples in Florida history as each impacts this era of American history.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 80,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.A.5.8",
+            "text": "Explain and evaluate the policies, practices, and consequences of Reconstruction (i.e., presidential and congressional reconstruction, Johnson’s impeachment, Civil Rights Act of 1866, the 13th, 14th, and 15th Amendments, opposition of southern whites to Reconstruction, accomplishments and failures of Radical Reconstruction, presidential election of 1876, end of Reconstruction, rise of Jim Crow laws, rise of Ku Klux Klan).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 80,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.CG.1",
+        "domain_name": "Civics and Government - Demonstrate an understanding of the origins and purposes of government, law, and the American political system.",
+        "standards": [
+          {
+            "id": "SS.8.CG.1.1",
+            "text": "Compare the views of Patriots, Loyalists, and other colonists on limits of government authority, unalienable rights, and resistance to tyranny.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 80,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.CG.1.2",
+            "text": "Compare and contrast the 1838 Florida Constitution and 1868 Florida Constitution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 80,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.CG.1.3",
+            "text": "Explain the importance of the rule of law in the United States’ constitutional republic.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 81,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.CG.2",
+        "domain_name": "Civics and Government - Evaluate the roles, rights, and responsibilities of U.S. citizens and determine methods of active participation in society, government, and the political system.",
+        "standards": [
+          {
+            "id": "SS.8.CG.2.1",
+            "text": "Identify the constitutional provisions for establishing citizenship.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 81,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.CG.2.2",
+            "text": "Compare the legal obligations of citizens at the local, state, and national levels.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 81,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.CG.2.3",
+            "text": "Analyze the role of civic virtue in the lives of citizens and leaders from the Colonial period through Reconstruction.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 81,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.CG.2.4",
+            "text": "Explain how forms of civic and political participation changed from the Colonial period through Reconstruction.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 81,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.CG.2.5",
+            "text": "Analyze how the Bill of Rights guarantees civil rights and liberties to citizens.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 81,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.CG.2.6",
+            "text": "Evaluate how amendments to the U.S. Constitution expanded opportunities for civic participation through Reconstruction.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 82,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.CG.3",
+        "domain_name": "Civics and Government - Demonstrate an understanding of the principles, functions, and organization of government.",
+        "standards": [
+          {
+            "id": "SS.8.CG.3.1",
+            "text": "Trace the foundational ideals and principles related to the U.S. government expressed in primary sources from the colonial period to Reconstruction.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 82,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.E.1",
+        "domain_name": "Economics - Understand the fundamental concepts relevant to the development of a market economy.",
+        "standards": [
+          {
+            "id": "SS.8.E.1.1",
+            "text": "Examine motivating economic factors that influenced the development of the United States economy over time including scarcity, supply and demand, opportunity costs, incentives, profits, and entrepreneurial aspects.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 82,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.E.2",
+        "domain_name": "Economics - Understand the fundamental concepts relevant to the institutions, structure, and functions of a national economy.",
+        "standards": [
+          {
+            "id": "SS.8.E.2.1",
+            "text": "Analyze contributions of entrepreneurs, inventors, and other key individuals from various gender, social, and ethnic backgrounds in the development of the United States economy.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 82,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.E.2.2",
+            "text": "Explain the economic impact of government policies.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 82,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.E.2.3",
+            "text": "Assess the role of Africans and other minority groups in the economic development of the United States.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 82,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.E.3",
+        "domain_name": "Economics - Understand the fundamental concepts and interrelationships of the United States economy in the international marketplace.",
+        "standards": [
+          {
+            "id": "SS.8.E.3.1",
+            "text": "Evaluate domestic and international interdependence.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 83,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.FL.1",
+        "domain_name": "Financial Literacy - Examine the various methods of preparation, possible benefits and tax responsibilities related to earning income.",
+        "standards": [
+          {
+            "id": "SS.8.FL.1.1",
+            "text": "Explain that careers are based on working at jobs in the same occupation or profession for many years. Describe the different types of education and training required by various careers.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 83,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.1.2",
+            "text": "Identify the many decisions people must make over a lifetime about their education, jobs and careers that affect their incomes and job opportunities.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 83,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.1.3",
+            "text": "Explain that getting more education and learning new job skills can increase a person’s human capital and productivity.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 83,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.1.4",
+            "text": "Examine the fact that people with less education and fewer job skills tend to earn lower incomes than people with more education and greater job skills.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 83,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.1.5",
+            "text": "Examine the fact that investment in education and training generally has a positive rate of return in terms of the income that people earn over a lifetime, with some education or training having a higher rate of return than others.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 83,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.1.6",
+            "text": "Identify the opportunity costs that education, training, and development of job skills have in the terms of time, effort, and money.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 83,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.1.7",
+            "text": "Identify that interest, dividends, and capital appreciation (gains) are forms of income earned from financial investments.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 83,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.1.8",
+            "text": "Discuss the fact that some people receive income support from government because they have low incomes or qualify in other ways for government assistance.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 83,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.FL.2",
+        "domain_name": "Financial Literacy - Explore and evaluate the role, influences affecting and legal responsibility of being a consumer of goods and services.",
+        "standards": [
+          {
+            "id": "SS.8.FL.2.1",
+            "text": "Explain why when deciding what to buy, consumers may choose to gather information from a variety of sources. Describe how the quality and usefulness of information provided by sources can vary greatly from source to source. Explain that, while many sources provide valuable information, other sources provide information that is deliberately misleading.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 84,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.2.2",
+            "text": "Analyze a source’s incentives in providing information about a good or service, and how a consumer can better assess the quality and usefulness of the information.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 84,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.2.3",
+            "text": "Describe the variety of payment methods people can use in order to buy goods and services.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 84,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.2.4",
+            "text": "Examine choosing a payment method, by weighing the costs and benefits of the different payment options.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 84,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.2.5",
+            "text": "Discuss the fact that people may revise their budget based on unplanned expenses and changes in income.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 84,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.FL.3",
+        "domain_name": "Financial Literacy - Identify and compare the different means and risks of saving and investing money, including the impact of inflation and interest rates.",
+        "standards": [
+          {
+            "id": "SS.8.FL.3.1",
+            "text": "Explain that banks and other financial institutions loan funds received from depositors to borrowers and that part of the interest received from these loans is used to pay interest to depositors for the use of their money.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 84,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.3.2",
+            "text": "Explain that, for the saver, an interest rate is the price a financial institution pays for using a saver’s money and is normally expressed as an annual percentage of the amount saved.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 84,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.3.3",
+            "text": "Discuss that interest rates paid on savings and charged on loans, like all prices, are determined in a market.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 84,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.3.4",
+            "text": "Explain that, when interest rates increase, people earn more from their savings and their savings grow more quickly.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 84,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.3.5",
+            "text": "Identify principal as the initial amount of money upon which interest is paid.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 84,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.3.6",
+            "text": "Identify the value of a person’s savings in the future as determined by the amount saved and the interest rate. Explain why the earlier people begin to save, the more savings they will be able to accumulate, all other things equal, as a result of the power of compound interest.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 84,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.3.7",
+            "text": "Discuss the different reasons that people save money, including large purchases (such as higher education, autos, and homes), retirement, and unexpected events. Discuss how people’s tastes and preferences influence their choice of how much to save and for what to save.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 85,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.3.8",
+            "text": "Explain that, to assure savers that their deposits are safe from bank failures, federal agencies guarantee depositors’ savings in most commercial banks, savings banks, and savings associations up to a set limit.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 85,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.FL.4",
+        "domain_name": "Financial Literacy - Identify and analyze the benefits, risks, associated fees, and laws that consumers should consider when choosing to buy on credit.",
+        "standards": [
+          {
+            "id": "SS.8.FL.4.1",
+            "text": "Explain that people who apply for loans are told what the interest rate on the loan will be. An interest rate is the price of using someone else’s money expressed as an annual percentage of the loan principal.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 85,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.4.2",
+            "text": "Identify a credit card purchase as a loan from the financial institution that issued the card. Explain that credit card interest rates tend to be higher than rates for other loans. In addition, financial institutions may charge significant fees related to a credit card and its use.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 85,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.4.3",
+            "text": "Examine the fact that borrowers who use credit cards for purchases and who do not pay the full balance when it is due pay much higher costs for their purchases because interest is charged monthly. Explain how a credit card user can avoid interest charges by paying the entire balance within the grace period specified by the financial institution.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 85,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.4.4",
+            "text": "Explain that lenders charge different interest rates based on the risk of nonpayment by borrowers. Describe why the higher the risk of nonpayment, the higher the interest rate charged by financial institutions, and the lower the risk of nonpayment, the lower the interest rate charged.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 85,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.FL.5",
+        "domain_name": "Financial Literacy - Identify and analyze the means, types and risks of financial investing including personal and societal influences and the government’s role in regulating investments.",
+        "standards": [
+          {
+            "id": "SS.8.FL.5.1",
+            "text": "Describe the differences among the different types of financial assets, including a wide variety of financial instruments such as bank deposits, stocks, bonds, and mutual funds. Explain that real estate and commodities are also often viewed as financial assets.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 85,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.5.2",
+            "text": "Calculate the amount of interest income received from depositing a certain amount of money in a bank account paying 1 percent per year and from owning a bond paying 5 percent per year in order to analyze that interest is received from money deposited in bank accounts as well as by owning a corporate or government bond or making a loan.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 86,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.5.3",
+            "text": "Discuss that when people buy corporate stock, they are purchasing ownership shares in a business that if the business is profitable, they will expect to receive income in the form of dividends and/or from the increase in the stock’s value, that the increase in the value of an asset (like a stock) is called a capital gain, and if the business is not profitable, investors could lose the money they have invested.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 86,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.5.4",
+            "text": "Explain that the price of a financial asset is determined by the interaction of buyers and sellers in a financial market.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 86,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.5.5",
+            "text": "Explain that the rate of return earned from investments will vary according to the amount of risk and, in general, a trade-off exists between the security of an investment and its expected rate of return.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 86,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.FL.6",
+        "domain_name": "Financial Literacy - Identify and analyze methods of protecting financial investments and personal information.",
+        "standards": [
+          {
+            "id": "SS.8.FL.6.1",
+            "text": "Analyze the fact that personal financial risk exists when unexpected events can damage health, income, property, wealth, or future opportunities.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 86,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.6.2",
+            "text": "Identify insurance as a product that allows people to pay a fee (called a premium) now to transfer the costs of a potential loss to a third party.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 86,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.6.3",
+            "text": "Describe how a person may self-insure by accepting a risk and saving money on a regular basis to cover a potential loss.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 86,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.6.4",
+            "text": "Discuss why insurance policies that guarantee higher levels of payment in the event of a loss (coverage) have higher prices.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 86,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.6.5",
+            "text": "Discuss that insurance companies charge higher premiums to cover higher- risk individuals and events because the risk of monetary loss is greater for these individuals and events.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 86,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.6.6",
+            "text": "Explain that individuals can choose to accept some risk, to take steps to avoid or reduce risk, or to transfer risk to others through the purchase of insurance and that each option has different costs and benefits.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 86,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.FL.6.7",
+            "text": "Evaluate social networking sites and other online activity from the perspective of making individuals vulnerable to harm caused by identity theft or misuse of their personal information.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 86,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.G.1",
+        "domain_name": "Geography - Understand how to use maps and other geographic representations, tools, and technology to report information.",
+        "standards": [
+          {
+            "id": "SS.8.G.1.1",
+            "text": "Use maps to explain physical and cultural attributes of major regions throughout American history.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 87,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.G.1.2",
+            "text": "Use appropriate geographic tools and terms to identify and describe significant places, and regions in American history.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 87,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.G.2",
+        "domain_name": "Geography - Understand physical and cultural characteristics of places.",
+        "standards": [
+          {
+            "id": "SS.8.G.2.1",
+            "text": "Identify the physical elements and the human elements that define and differentiate regions as relevant to American history.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 87,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.G.2.2",
+            "text": "Use geographic terms and tools to analyze case studies of regional issues in different parts of the United States that have had critical economic, physical, or political ramifications.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 87,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.G.2.3",
+            "text": "Use geographic terms and tools to analyze case studies of how selected regions of the United States have changed over time.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 87,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.G.3",
+        "domain_name": "Geography - Understand the relationships between the Earth's ecosystems and the populations that dwell within them.",
+        "standards": [
+          {
+            "id": "SS.8.G.3.1",
+            "text": "Locate and describe in geographic terms the major ecosystems of the United States.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 87,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.G.3.2",
+            "text": "Use geographic terms and tools to explain differing perspectives on the use of renewable and non-renewable resources in the United States and Florida over time.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 87,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.G.4",
+        "domain_name": "Geography - Understand the characteristics, distribution, and migration of human populations.",
+        "standards": [
+          {
+            "id": "SS.8.G.4.1",
+            "text": "Interpret population growth and other demographic data for any given place in the United States throughout its history.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 87,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.G.4.2",
+            "text": "Use geographic terms and tools to analyze the effects throughout American history of migration to and within the United States, both on the place of origin and destination.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 87,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.G.4.3",
+            "text": "Use geographic terms and tools to explain cultural diffusion throughout the United States as it expanded its territory.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 88,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.G.4.4",
+            "text": "Interpret databases, case studies and maps to describe the role that regions play in influencing trade, migration patterns, and cultural or political interaction in the United States throughout time.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 88,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.G.4.5",
+            "text": "Use geographic terms and tools to analyze case studies of the development, growth, and changing nature of cities and urban centers in the United States over time.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 88,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.G.4.6",
+            "text": "Use political maps to describe changes in boundaries and governance throughout American history.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 88,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.G.5",
+        "domain_name": "Geography - Understand how human actions can impact the environment.",
+        "standards": [
+          {
+            "id": "SS.8.G.5.1",
+            "text": "Describe human dependence on the physical environment and natural resources to satisfy basic needs in local environments in the United States.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 88,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.G.5.2",
+            "text": "Describe the impact of human modifications on the physical environment and ecosystems of the United States throughout history.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 88,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.G.6",
+        "domain_name": "Geography - Understand how to apply geography to interpret the past and present and plan for the future.",
+        "standards": [
+          {
+            "id": "SS.8.G.6.1",
+            "text": "Use appropriate maps and other graphic representations to analyze geographic problems and changes over time throughout American history.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 88,
+            "label": "A"
+          },
+          {
+            "id": "SS.8.G.6.2",
+            "text": "Illustrate places and events in U.S. history through the use of narratives and graphic representations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 88,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.8.HC.1",
+        "domain_name": "History of Communism - Examine early attempts at communal living in American society.",
+        "standards": [
+          {
+            "id": "SS.8.HC.1.1",
+            "text": "Examine early attempts at communal living in American society and their effect on economic stability and societal prosperity.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 89,
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": null,
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Students analyze American history from British colonial settlement through the Civil War and Reconstruction, using primary and secondary sources.",
+        "Students compare Patriot and Loyalist views, Florida's 1838 and 1868 constitutions, citizenship, the Bill of Rights, and the rule of law.",
+        "Students examine the developing United States economy and apply geography to places, migration, and regions in American history.",
+        "Students examine income, spending, saving, credit, investing, and ways to protect financial information.",
+        "Students examine early attempts at communal living in American society. The shared Grades 6-8 benchmarks (SS.68) are not in this file."
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "Florida's State Academic Standards – Social Studies, 2026",
+      "adopted_or_effective_date": "2026-08-03",
+      "notes": [
+        "Organization: by_grade for SS.8 codes (American History, Civics and Government, Economics, Financial Literacy, Geography, History of Communism). Not a 9-12 course.",
+        "SS.68.AA and SS.68.HE are not in this file. Those 15 shared Grades 6-8 benchmarks are stored once in the grade-7 social studies file.",
+        "Benchmark statements extracted from the clean 2026 social studies standards DOCX incorporated by Rule 6A-1.09401 (Ref-19653). Benchmark clarifications are omitted from standard text. Printed pages are 75-89 of the DOCX converted to PDF.",
+        "A running header repeats the SS.8.FL.4 standard title four times in one stretch. The domain name stores that title once.",
+        "Kept as printed, not corrected: SS.8.FL.6.5 has a space after the hyphen in \"higher- risk.\" SS.8.A.3.12 (Washington's), SS.8.A.4.5 (nation's), SS.8.A.4.7 (England's), and the SS.8.G.3 domain title (Earth's) use a straight apostrophe (U+0027). Other possessives in this grade use a curly apostrophe (U+2019)."
+      ]
+    }
+  },
+  "citations": [
+    {
+      "id": "c-flrules-ss-2026",
+      "url": "https://flrules.org/gateway/readRefFile.asp?refId=19653&filename=SS%20Standards%202026%206A-1.09401%20Clean.docx",
+      "title": "Florida's State Academic Standards – Social Studies, 2026",
+      "publisher": "Florida Department of Education (adopted document for Rule 6A-1.09401, F.A.C., Ref-19653)",
+      "published_or_version_date": "2026",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Drafted from Ref-19653, cited in Rule 6A-1.09401 effective 2026-08-03. Grade 8 benchmarks are SS.8 only. The Grades 6-8 African American History and Holocaust Education benchmarks (SS.68) stay in the grade-7 file and are not copied here. CPALMS was not used."
+  ],
+  "last_updated": "2026-10-03"
+}

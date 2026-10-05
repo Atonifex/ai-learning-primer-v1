@@ -1,0 +1,193 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "ib.pyp.grade-05.social-studies",
+  "doc_type": "ib_alignment",
+  "system": "ib",
+  "programme": "PYP",
+  "grade": 5,
+  "grade_label": "Grade 5",
+  "subject": "social-studies",
+  "status": "drafted",
+  "content_labels": [
+    "B",
+    "C"
+  ],
+  "sections": {
+    "applicable_programme": {
+      "programme": "PYP",
+      "age_range": "3-12",
+      "grade_mapping_note": "The public PYP page describes the programme as education for children aged 3-12. Mapping that span to Grade 5 (often about ages 10-11) is our convention, not an IB grade boundary.",
+      "shared_programme_block_ref": null,
+      "grade_specific_note": {
+        "label": "C",
+        "text": "Grade 5 Florida history runs from pre-Columbian North America through westward expansion, with African American history, a Holocaust definition, and the U.S. Constitution. That national narrative is narrower than a world programme of inquiry and should stay labeled as Florida content."
+      }
+    },
+    "subject_group_or_structure": {
+      "ib_subject_group_or_area": "Social studies (within the transdisciplinary framework)",
+      "mapping_to_primer_subject": "The grade 3 library says PYP explores social studies through transdisciplinary themes, especially Who we are, Where we are in place and time, How we organize ourselves, and Sharing the planet. The five strand names below are reused from that file. Public pages name the themes, not the strands.",
+      "mapping_label": "C"
+    },
+    "framework_elements": {
+      "concepts": [
+        "Form - What is it like?",
+        "Function - How does it work?",
+        "Causation - Why is it like it is?",
+        "Change - How is it changing?",
+        "Connection - How is it connected to other things?",
+        "Perspective - What are the points of view?",
+        "Responsibility - What is our responsibility?"
+      ],
+      "approaches_to_learning": [
+        "Thinking skills",
+        "Communication skills",
+        "Research skills",
+        "Self-management skills",
+        "Social skills"
+      ],
+      "learner_profile_attributes": [
+        "Inquirers",
+        "Knowledgeable",
+        "Thinkers",
+        "Communicators",
+        "Principled",
+        "Open-minded",
+        "Caring",
+        "Risk-takers",
+        "Balanced",
+        "Reflective"
+      ],
+      "global_contexts_or_transdisciplinary_themes": [
+        "Who we are",
+        "Where we are in place and time",
+        "How we express ourselves",
+        "How the world works",
+        "How we organize ourselves",
+        "Sharing the planet"
+      ]
+    },
+    "official_requirements": [
+      {
+        "label": "B",
+        "text": "The programme of inquiry is organized and framed by six transdisciplinary themes: Who we are; Where we are in place and time; How we express ourselves; How the world works; How we organize ourselves; Sharing the planet.",
+        "citation_ids": [
+          "c-ibo-pyp-how"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "PYP Social studies scope and sequence, as recorded in the grade 3 library, covers five strands: Human systems and economic activities, Social organization and culture, Continuity and change through time, Human and natural environments, and Resources and the environment.",
+        "citation_ids": [
+          "c-ibo-pyp-scope-g3"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Social studies in PYP, as recorded in the grade 3 library, emphasizes perspective-taking and responsible citizenship. That sentence was not re-checked against a public scope document.",
+        "citation_ids": [
+          "c-ibo-pyp-scope-g3"
+        ],
+        "page": null
+      }
+    ],
+    "typical_fit": {
+      "label": "C",
+      "text": "Grade 5 Florida social studies in this draft covers primary and secondary sources, Native American civilizations, colonization, the American Revolution, the Constitution, westward expansion, African American history from the colonial era through westward expansion, a definition of the Holocaust, national government, markets and trade to 1850, and maps of North America. PYP themes can hold that inquiry. Florida's named events, documents, and places are state content, not IB requirements."
+    },
+    "suggested_alignment_to_florida_and_arizona": {
+      "label": "C",
+      "florida": [
+        {
+          "standard_id": "SS.5.A.1.1",
+          "alignment_note": "Using primary and secondary sources fits research skills and continuity and change through time."
+        },
+        {
+          "standard_id": "SS.5.A.5.10",
+          "alignment_note": "Examining the significance of the Constitution can be inquired into under How we organize ourselves. The U.S. political concepts are Florida's."
+        },
+        {
+          "standard_id": "SS.5.AA.1.1",
+          "alignment_note": "Examining the life of African Americans in the colonial era fits Who we are and social organization and culture. Florida's historical scope is the state benchmark."
+        },
+        {
+          "standard_id": "SS.5.HE.1.1",
+          "alignment_note": "Defining the Holocaust as state-sponsored persecution and murder of European Jews by Nazi Germany and its collaborators between 1933 and 1945 is a Florida benchmark. PYP does not publish that definition. A theme connection, if used, is perspective and responsibility, not an IB outcome."
+        },
+        {
+          "standard_id": "SS.5.CG.2.4",
+          "alignment_note": "Civic duties and responsibilities in a constitutional republic fit the reused citizenship emphasis. Florida's examples of duties and responsibilities are in clarifications and are not stored as the benchmark text."
+        },
+        {
+          "standard_id": "SS.5.G.1.2",
+          "alignment_note": "Using latitude and longitude to locate places fits human and natural environments and Where we are in place and time."
+        }
+      ],
+      "arizona": [],
+      "notes": "Arizona standards deferred. These rows are suggested starting points (Label C), not an official IB-Florida crosswalk."
+    },
+    "access_limitations": [
+      "Public pages retrieved by curl on 2026-10-03: how-the-pyp-works, learning-and-teaching, the PYP home page, and the learner-profile PDF.",
+      "WebFetch of ibo.org returned a Cloudflare verification page.",
+      "Scope-and-sequence strand lists and phase outcomes are not on those public pages. Where a Label B sentence repeats the grade 3 library, it is marked as reused and was not taken from the IB Programme Resource Centre.",
+      "Key-concept question stems and the ten learner-profile names are reused from the grade 3 files for the same reason."
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-ibo-pyp-how",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/how-the-pyp-works/",
+      "title": "How the PYP works",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-pyp-atl",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/curriculum/learning-and-teaching/",
+      "title": "PYP learning and teaching",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-pyp-home",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/",
+      "title": "Primary Years Programme (PYP)",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-lp",
+      "url": "https://ibo.org/contentassets/fd82f70643ef4086b7d3f292cc214962/learner-profile-en.pdf",
+      "title": "IB learner profile",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "PDF downloaded 2026-10-03. The ten attribute titles are graphics and were not in the text layer. The name list is reused from the grade 3 library. The aim statement and the '10 attributes' sentence are in the text layer."
+    },
+    {
+      "id": "c-ibo-pyp-scope-g3",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/curriculum/",
+      "title": "PYP curriculum (scope statements reused from the grade 3 library)",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "WebFetch hit a Cloudflare check on 2026-10-03. Curl retrieved the public curriculum and learning-and-teaching pages, which do not publish scope-and-sequence strand lists or phase outcomes. Those Label B sentences are the same ones used in the grade 3 files, not re-extracted from the IB Programme Resource Centre."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 5 draft. Label B sentences are the same public PYP sentences and reused grade 3 scope notes used in the grade 2 files. No grade-5 phase placement or new IB learning outcomes were invented. Label C notes and Florida pointers are suggestions."
+  ],
+  "last_updated": "2026-10-03"
+}

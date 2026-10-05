@@ -1,0 +1,205 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "ib.pyp.grade-05.mathematics",
+  "doc_type": "ib_alignment",
+  "system": "ib",
+  "programme": "PYP",
+  "grade": 5,
+  "grade_label": "Grade 5",
+  "subject": "mathematics",
+  "status": "drafted",
+  "content_labels": [
+    "B",
+    "C"
+  ],
+  "sections": {
+    "applicable_programme": {
+      "programme": "PYP",
+      "age_range": "3-12",
+      "grade_mapping_note": "The public PYP page describes the programme as education for children aged 3-12. Mapping that span to Grade 5 (often about ages 10-11) is our convention, not an IB grade boundary.",
+      "shared_programme_block_ref": null,
+      "grade_specific_note": {
+        "label": "C",
+        "text": "Grade 5 Florida work includes multi-digit multiplication and division with a standard algorithm, operations with fractions and decimals, volume of right rectangular prisms, and the first quadrant of the coordinate plane. Those limits and algorithms are Florida's, not a published PYP grade band."
+      }
+    },
+    "subject_group_or_structure": {
+      "ib_subject_group_or_area": "Mathematics",
+      "mapping_to_primer_subject": "The grade 3 library treats PYP Mathematics as number, pattern and function, data handling, measurement, and shape and space, taught through inquiry. That strand list is reused. Public pages retrieved today confirm subject-specific learning inside units of inquiry, not these five strand names.",
+      "mapping_label": "C"
+    },
+    "framework_elements": {
+      "concepts": [
+        "Form - What is it like?",
+        "Function - How does it work?",
+        "Causation - Why is it like it is?",
+        "Change - How is it changing?",
+        "Connection - How is it connected to other things?",
+        "Perspective - What are the points of view?",
+        "Responsibility - What is our responsibility?"
+      ],
+      "approaches_to_learning": [
+        "Thinking skills",
+        "Communication skills",
+        "Research skills",
+        "Self-management skills",
+        "Social skills"
+      ],
+      "learner_profile_attributes": [
+        "Inquirers",
+        "Knowledgeable",
+        "Thinkers",
+        "Communicators",
+        "Principled",
+        "Open-minded",
+        "Caring",
+        "Risk-takers",
+        "Balanced",
+        "Reflective"
+      ],
+      "global_contexts_or_transdisciplinary_themes": [
+        "Who we are",
+        "Where we are in place and time",
+        "How we express ourselves",
+        "How the world works",
+        "How we organize ourselves",
+        "Sharing the planet"
+      ]
+    },
+    "official_requirements": [
+      {
+        "label": "B",
+        "text": "The PYP is a student-centered approach to education for children aged 3-12.",
+        "citation_ids": [
+          "c-ibo-pyp-home"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "PYP teachers use powerful, broad and abstract concepts as a lens to organize learning within units of inquiry and subject-specific learning.",
+        "citation_ids": [
+          "c-ibo-pyp-atl"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "PYP Mathematics scope and sequence, as recorded in the grade 3 library, covers five strands: Number, Pattern and function, Data handling, Measurement, and Shape and space.",
+        "citation_ids": [
+          "c-ibo-pyp-scope-g3"
+        ],
+        "page": null
+      },
+      {
+        "label": "B",
+        "text": "Mathematical learning, as recorded in the grade 3 library, is described through constructing meaning, transferring meaning, and applying with understanding. No grade-2 phase was verified.",
+        "citation_ids": [
+          "c-ibo-pyp-scope-g3"
+        ],
+        "page": null
+      }
+    ],
+    "typical_fit": {
+      "label": "C",
+      "text": "Grade 5 Florida mathematics in this draft emphasizes decimals to the thousandths, multi-digit operations, fraction operations, order of operations, measurement conversions, classification of figures, perimeter and area with fractional sides, volume, plotting in the first quadrant, and mean, mode, median, or range. Those are Florida benchmarks. A PYP fit is using number, measurement, shape, and data inside a unit of inquiry, without claiming IB sets the same algorithms or ceilings."
+    },
+    "suggested_alignment_to_florida_and_arizona": {
+      "label": "C",
+      "florida": [
+        {
+          "standard_id": "MA.5.NSO.1.2",
+          "alignment_note": "Reading and writing multi-digit numbers with decimals to the thousandths fits the reused Number strand. The thousandths ceiling is Florida's, not an IB grade rule."
+        },
+        {
+          "standard_id": "MA.5.NSO.2.1",
+          "alignment_note": "Multiplying multi-digit whole numbers, including with a standard algorithm and procedural fluency, can be applying understanding. Those fluency labels are Florida language."
+        },
+        {
+          "standard_id": "MA.5.FR.2.1",
+          "alignment_note": "Adding and subtracting fractions with unlike denominators, including mixed numbers, is an operation under Number. Procedural reliability is Florida's term."
+        },
+        {
+          "standard_id": "MA.5.AR.2.2",
+          "alignment_note": "Evaluating multi-step expressions with order of operations fits the public emphasis on subject-specific learning. Florida excludes exponents and nested grouping symbols in the clarification, which is not copied here as an IB rule."
+        },
+        {
+          "standard_id": "MA.5.GR.3.2",
+          "alignment_note": "Finding volume of a right rectangular prism with a visual model and a formula fits the reused Measurement strand. The formula expectation is Florida's."
+        },
+        {
+          "standard_id": "MA.5.GR.4.1",
+          "alignment_note": "Identifying the origin and axes and plotting ordered pairs in the first quadrant can sit with Shape and space. Public pages do not name the coordinate plane."
+        },
+        {
+          "standard_id": "MA.5.DP.1.2",
+          "alignment_note": "Interpreting data by mean, mode, median, or range fits the reused Data handling strand. Florida limits this benchmark to whole-number values."
+        }
+      ],
+      "arizona": [],
+      "notes": "Arizona standards deferred. These rows are suggested starting points (Label C), not an official IB-Florida crosswalk."
+    },
+    "access_limitations": [
+      "Public pages retrieved by curl on 2026-10-03: how-the-pyp-works, learning-and-teaching, the PYP home page, and the learner-profile PDF.",
+      "WebFetch of ibo.org returned a Cloudflare verification page.",
+      "Scope-and-sequence strand lists and phase outcomes are not on those public pages. Where a Label B sentence repeats the grade 3 library, it is marked as reused and was not taken from the IB Programme Resource Centre.",
+      "Key-concept question stems and the ten learner-profile names are reused from the grade 3 files for the same reason."
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-ibo-pyp-how",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/how-the-pyp-works/",
+      "title": "How the PYP works",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-pyp-atl",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/curriculum/learning-and-teaching/",
+      "title": "PYP learning and teaching",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-pyp-home",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/",
+      "title": "Primary Years Programme (PYP)",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-lp",
+      "url": "https://ibo.org/contentassets/fd82f70643ef4086b7d3f292cc214962/learner-profile-en.pdf",
+      "title": "IB learner profile",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "PDF downloaded 2026-10-03. The ten attribute titles are graphics and were not in the text layer. The name list is reused from the grade 3 library. The aim statement and the '10 attributes' sentence are in the text layer."
+    },
+    {
+      "id": "c-ibo-pyp-scope-g3",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/curriculum/",
+      "title": "PYP curriculum (scope statements reused from the grade 3 library)",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "WebFetch hit a Cloudflare check on 2026-10-03. Curl retrieved the public curriculum and learning-and-teaching pages, which do not publish scope-and-sequence strand lists or phase outcomes. Those Label B sentences are the same ones used in the grade 3 files, not re-extracted from the IB Programme Resource Centre."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 5 draft. Label B sentences are the same public PYP sentences and reused grade 3 scope notes used in the grade 2 files. No grade-5 phase placement or new IB learning outcomes were invented. Label C notes and Florida pointers are suggestions."
+  ],
+  "last_updated": "2026-10-03"
+}

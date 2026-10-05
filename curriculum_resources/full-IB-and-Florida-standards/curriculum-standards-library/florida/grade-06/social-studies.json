@@ -1,0 +1,991 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-06.social-studies",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 6,
+  "grade_label": "Grade 6",
+  "subject": "social-studies",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "C"
+  ],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "Social Studies",
+      "standards_system_name": "Florida's State Academic Standards – Social Studies",
+      "organization": "by_grade",
+      "courses": null
+    },
+    "domains": [
+      {
+        "domain_id": "SS.6.W.1",
+        "domain_name": "World History - Utilize historical inquiry skills and analytical processes",
+        "standards": [
+          {
+            "id": "SS.6.W.1.1",
+            "text": "Use timelines to identify chronological order of historical events.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 50,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.1.2",
+            "text": "Identify terms (e.g., decade, century, epoch, era, millennium, BC or BCE, AD or CE) and designations of time periods.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 50,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.1.3",
+            "text": "Interpret primary and secondary sources.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 50,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.1.4",
+            "text": "Describe the methods of historical inquiry and how history relates to the other social sciences.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 50,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.1.5",
+            "text": "Describe the roles of historians and recognize varying historical interpretations (historiography).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 50,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.1.6",
+            "text": "Describe how history transmits culture and heritage and provides models of human character.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 50,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.6.W.2",
+        "domain_name": "World History - Describe the emergence of early civilizations (e.g., Nile, Tigris-Euphrates, Indus, and Yellow Rivers, Mesoamerican, and South American)",
+        "standards": [
+          {
+            "id": "SS.6.W.2.1",
+            "text": "Compare the lifestyles of hunter-gatherers with those of settlers of early agricultural communities.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 50,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.2.2",
+            "text": "Describe how the developments of agriculture and metallurgy related to settlement, population growth, and the emergence of civilization.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 50,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.2.3",
+            "text": "Identify the characteristics of civilization.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 51,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.2.4",
+            "text": "Compare the economic, political, social, and religious institutions of ancient river civilizations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 51,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.2.5",
+            "text": "Summarize important achievements of Egyptian civilization.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 51,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.2.6",
+            "text": "Determine the contributions of key figures from ancient Egypt.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 51,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.2.7",
+            "text": "Summarize the important achievements of Mesopotamian civilization.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 51,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.2.8",
+            "text": "Determine the impact of key figures from ancient Mesopotamian civilizations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 51,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.2.9",
+            "text": "Identify key figures and basic beliefs of the Israelites and determine how these beliefs compare with those of others in the geographic area.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 51,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.2.10",
+            "text": "Compare the emergence of advanced civilizations in Mesoamerica and South America with the four early river valley civilizations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 51,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.6.W.3",
+        "domain_name": "World History - Recognize significant events, figures, and contributions of classical civilizations (i.e., Phoenicia, Greece, Rome, Axum)",
+        "standards": [
+          {
+            "id": "SS.6.W.3.1",
+            "text": "Analyze the cultural impact the ancient Phoenicians had on the Mediterranean world with regard to colonization (Carthage), exploration, maritime commerce (purple dye, tin), and written communication (alphabet).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 51,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.2",
+            "text": "Explain the democratic concepts (i.e., polis, civic participation and voting rights, legislative bodies, written constitutions, rule of law) developed in ancient Greece.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 51,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.3",
+            "text": "Compare life in Athens and Sparta (e.g., government and the status of citizens, women and children, foreigners, helots).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 51,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.4",
+            "text": "Explain the causes and effects of the Persian and Peloponnesian Wars.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 51,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.5",
+            "text": "Summarize the important achievements and contributions of ancient Greek civilization.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 51,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.6",
+            "text": "Determine the impact of key figures from ancient Greece.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 52,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.7",
+            "text": "Summarize the key achievements, contributions, and figures associated with the Hellenistic Period.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 52,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.8",
+            "text": "Determine the impact of significant figures associated with ancient Rome.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 52,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.9",
+            "text": "Explain the impact of the Punic Wars on the development of the Roman Empire.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 52,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.10",
+            "text": "Describe the government of the Roman Republic and its contribution to the development of democratic principles (i.e., separation of powers, rule of law, representative government, civic duty).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 52,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.11",
+            "text": "Explain the transition from Roman Republic to empire and Imperial Rome and compare Roman life and culture under each one.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 52,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.12",
+            "text": "Explain the causes for the growth and longevity of the Roman Empire.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 52,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.13",
+            "text": "Identify key figures and the basic beliefs of early Christianity and how these beliefs impacted the Roman Empire.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 52,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.14",
+            "text": "Describe the key achievements and contributions of Roman civilization.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 52,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.15",
+            "text": "Explain the reasons for the gradual decline of the Western Roman Empire after the Pax Romana.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 52,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.16",
+            "text": "Compare life in the Roman Republic for patricians, plebeians, women, children, and slaves.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 52,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.17",
+            "text": "Explain the spread and influence of the Latin language on Western Civilization.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 52,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.3.18",
+            "text": "Describe the rise and fall of the ancient east African kingdoms of Kush and Axum and Christianity's development in Ethiopia.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 52,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.6.W.4",
+        "domain_name": "World History - Recognize significant events, figures, and contributions of classical Asian civilizations (i.e., China, India)",
+        "standards": [
+          {
+            "id": "SS.6.W.4.1",
+            "text": "Discuss the significance of Aryan and other tribal migrations on Indian civilization.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 52,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.4.2",
+            "text": "Explain the major beliefs and practices associated with Hinduism and the social structure of the caste system in ancient India.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 53,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.4.3",
+            "text": "Recognize the political and cultural achievements of the Mauryan and Gupta empires.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 53,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.4.4",
+            "text": "Explain the teachings of Buddha, the importance of Asoka, and how Buddhism spread in India, Ceylon, and other parts of Asia.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 53,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.4.5",
+            "text": "Summarize the important achievements and contributions of ancient Indian civilization.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 53,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.4.6",
+            "text": "Describe the concept of the Mandate of Heaven and its connection to the Zhou and later dynasties.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 53,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.4.7",
+            "text": "Explain the basic teachings of Laozi, Confucius, and Han Fei Zi.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 53,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.4.8",
+            "text": "Describe the contributions of classical and post classical China.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 53,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.4.9",
+            "text": "Identify key figures from classical and post classical China.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 53,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.4.10",
+            "text": "Explain the significance of the silk roads and maritime routes across the Indian Ocean to the movement of goods and ideas among Asia, East Africa, and the Mediterranean Basin.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 53,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.4.11",
+            "text": "Explain the rise and expansion of the Mongol empire and its effects on peoples of Asia and Europe including the achievements of Genghis and Kublai Khan.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 53,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.W.4.12",
+            "text": "Identify the causes and effects of Chinese isolation and the decision to limit foreign trade in the 15th century.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 53,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.6.CG.1",
+        "domain_name": "Civics and Government - Demonstrate an understating of the origins and purposes of government, law, and the American political system",
+        "standards": [
+          {
+            "id": "SS.6.CG.1.1",
+            "text": "Analyze how democratic concepts developed in ancient Greece served as a foundation for the United States’ constitutional republic.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 53,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.CG.1.2",
+            "text": "Analyze the influence of ancient Rome on the United States’ constitutional republic.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 55,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.CG.1.3",
+            "text": "Examine rule of law in the ancient world and its influence on the United States’ constitutional republic.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 55,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.CG.1.4",
+            "text": "Examine examples of civic leadership and virtue in ancient Greece and ancient Rome.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 55,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.6.E.1",
+        "domain_name": "Economics - Understand the fundamental concepts relevant to the development of a market economy",
+        "standards": [
+          {
+            "id": "SS.6.E.1.1",
+            "text": "Identify the factors (e.g., new resources, increased productivity, education, technology, slave economy, territorial expansion) that increase economic growth.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 55,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.E.1.2",
+            "text": "Describe and identify traditional and command economies as they appear in different civilizations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 55,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.E.1.3",
+            "text": "Describe the following economic concepts as they relate to early civilization: scarcity, opportunity cost, supply and demand, barter, trade, productive resources (e.g., land, labor, capital, entrepreneurship).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 55,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.6.E.2",
+        "domain_name": "Economics - Understand the fundamental concepts relevant to the institutions, structure, and functions of a national economy",
+        "standards": [
+          {
+            "id": "SS.6.E.2.1",
+            "text": "Evaluate how civilizations through clans, leaders, and family groups make economic decisions for that civilization providing a framework for future city-state or nation development.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 56,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.6.E.3",
+        "domain_name": "Economics - Understand the fundamental concepts and interrelationships of the United States in the international marketplace",
+        "standards": [
+          {
+            "id": "SS.6.E.3.1",
+            "text": "Identify examples of mediums of exchange (currencies) used for trade (barter) for each civilization, and explain why international trade requires a system for a medium of exchange between trading both inside and among various regions.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 56,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.E.3.2",
+            "text": "Categorize products that were traded among civilizations, and give examples of barriers to trade of those products.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 56,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.E.3.3",
+            "text": "Describe traditional economies (e.g., Egypt, Greece, Rome, Kush) and elements of those economies that led to the rise of a merchant class and trading partners.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 56,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.E.3.4",
+            "text": "Describe the relationship among civilizations that engage in trade, including the benefits and drawbacks of voluntary trade.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 56,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.6.G.1",
+        "domain_name": "Geography - Understand how to use maps and other geographic representations, tools, and technology to report information",
+        "standards": [
+          {
+            "id": "SS.6.G.1.1",
+            "text": "Use latitude and longitude coordinates to understand the relationship between people and places on the Earth.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 56,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.1.2",
+            "text": "Analyze the purposes of map projections (e.g., political, physical, special purpose) and explain the applications of various types of maps.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 56,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.1.3",
+            "text": "Identify natural wonders of the ancient world.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 56,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.1.4",
+            "text": "Utilize tools geographers use to study the world.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 56,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.1.5",
+            "text": "Use scale, cardinal and intermediate directions, and estimation of distances between places on current and ancient maps of the world.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 56,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.1.6",
+            "text": "Use a map to identify major bodies of water of the world and explain ways they have impacted the development of civilizations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 57,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.1.7",
+            "text": "Use maps to identify characteristics and boundaries of ancient civilizations that have shaped the world today.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 57,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.6.G.2",
+        "domain_name": "Geography - Understand physical and cultural characteristics of places",
+        "standards": [
+          {
+            "id": "SS.6.G.2.1",
+            "text": "Explain how major physical characteristics, natural resources, climate, and absolute and relative locations have influenced settlement, interactions, and the economies of ancient civilizations of the world.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 57,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.2.2",
+            "text": "Differentiate between continents, regions, countries, and cities in order to understand the complexities of regions created by civilizations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 57,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.2.3",
+            "text": "Analyze the relationship of physical geography to the development of ancient river valley civilizations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 57,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.2.4",
+            "text": "Explain how the geographical location of ancient civilizations contributed to the culture and politics of those societies.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 57,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.2.5",
+            "text": "Interpret how geographic boundaries invite or limit interaction with other regions and cultures.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 57,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.2.6",
+            "text": "Explain the concept of cultural diffusion and identify the influences of different ancient cultures on one another.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 57,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.2.7",
+            "text": "Interpret choropleths or dot-density maps to explain the distribution of population in the ancient world.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 57,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.6.G.3",
+        "domain_name": "Geography - Understand the relationships between the Earth’s ecosystems and the populations that dwell within them",
+        "standards": [
+          {
+            "id": "SS.6.G.3.1",
+            "text": "Explain how the physical landscape affected the development of agriculture and industry in the ancient world.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 57,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.3.2",
+            "text": "Analyze the impact of human populations on the ancient world's ecosystems.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 57,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.6.G.4",
+        "domain_name": "Geography - Understand the characteristics, distribution, and migration of human populations",
+        "standards": [
+          {
+            "id": "SS.6.G.4.1",
+            "text": "Explain how family and ethnic relationships influenced ancient cultures.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.4.2",
+            "text": "Use maps to trace significant migrations and analyze their results.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.4.3",
+            "text": "Locate sites in Africa and Asia where archaeologists have found evidence of early human societies and trace their migration patterns to other parts of the world.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.4.4",
+            "text": "Map and analyze the impact of the spread of various belief systems in the ancient world.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 58,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.6.G.5",
+        "domain_name": "Geography - Understand how human actions can impact the environment",
+        "standards": [
+          {
+            "id": "SS.6.G.5.1",
+            "text": "Identify the methods used to compensate for the scarcity of resources in the ancient world.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.5.2",
+            "text": "Use geographic terms and tools to explain why ancient civilizations developed networks of highways, waterways, and other transportation linkages.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.5.3",
+            "text": "Use geographic tools and terms to analyze how famine, drought, and natural disasters plagued many ancient civilizations.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 58,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.6.G.6",
+        "domain_name": "Geography - Understand how to apply geography to interpret the past and present and plan for the future",
+        "standards": [
+          {
+            "id": "SS.6.G.6.1",
+            "text": "Describe the Six Essential Elements of Geography (The World in Spatial Terms, Places and Regions, Physical Systems, Human Systems, Environment, The Uses of Geography) as the organizing framework for understanding the world and its people.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 58,
+            "label": "A"
+          },
+          {
+            "id": "SS.6.G.6.2",
+            "text": "Compare maps of the world in ancient times with current political maps.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 58,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "SS.6.HC.1",
+        "domain_name": "History of Communism - Explain the failures of ancient communal systems",
+        "standards": [
+          {
+            "id": "SS.6.HC.1.1",
+            "text": "Explain ancient communal systems and the effect on their respective societies.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ss-2026"
+            ],
+            "page": 59,
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": null,
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Students use timelines and sources and study early civilizations, classical Mediterranean civilizations, and classical China and India.",
+        "Students connect ancient Greek and Roman government to the United States’ constitutional republic and examine civic leadership in those societies.",
+        "Students describe growth, scarcity, traditional and command economies, and trade among early civilizations.",
+        "Students use maps and geographic tools to study ancient places, migration, and the environment, and explain ancient communal systems."
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "Florida's State Academic Standards – Social Studies, 2026",
+      "adopted_or_effective_date": "2026-08-03",
+      "notes": [
+        "Organization: by_grade for SS.6 codes (World History and related strands). Not a 9-12 course.",
+        "Grades 6-8 band benchmarks (SS.68.AA African American History and SS.68.HE Holocaust Education) apply across grades 6-8 and are not stored in this grade-6 file. Count of those band benchmarks in the adopted DOCX: 15.",
+        "Benchmark statements extracted from the clean 2026 social studies standards DOCX incorporated by Rule 6A-1.09401 (Ref-19653). Benchmark clarifications are omitted from standard text. Printed pages are 50-59 of the DOCX converted to PDF.",
+        "Kept as printed, not corrected: the SS.6.CG.1 standard title says “understating” (not “understanding”). The SS.6.HC.1 standard title says “failures of ancient communal systems”; the benchmark SS.6.HC.1.1 does not use the word “failures.”"
+      ]
+    }
+  },
+  "citations": [
+    {
+      "id": "c-flrules-ss-2026",
+      "url": "https://flrules.org/gateway/readRefFile.asp?refId=19653&filename=SS%20Standards%202026%206A-1.09401%20Clean.docx",
+      "title": "Florida's State Academic Standards – Social Studies, 2026",
+      "publisher": "Florida Department of Education (adopted document for Rule 6A-1.09401, F.A.C., Ref-19653)",
+      "published_or_version_date": "2026",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Drafted from Ref-19653, cited in Rule 6A-1.09401 effective 2026-08-03. This is the current social studies adoption. Grade 6 benchmarks are grade-coded. The Grades 6-8 African American History and Holocaust Education benchmarks (SS.68) are a grade band, not grade 6 only, and are not in this file. CPALMS was not used."
+  ],
+  "last_updated": "2026-10-03"
+}

@@ -1,0 +1,208 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "xw.grade-02.mathematics",
+  "doc_type": "crosswalk",
+  "system": "crosswalk",
+  "programme": null,
+  "grade": 2,
+  "grade_label": "Grade 2",
+  "subject": "mathematics",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "sections": {
+    "scope_note": "Arizona standards deferred. This crosswalk covers Florida B.E.S.T. Mathematics (2026) and IB PYP only. Rows are suggested (Label C).",
+    "rows": [
+      {
+        "row_id": "xw-g02-mathematics-001",
+        "topic_domain": "Place value to 1,000",
+        "florida_standards": [
+          "MA.2.NSO.1.1",
+          "MA.2.NSO.1.2",
+          "MA.2.NSO.1.3",
+          "MA.2.NSO.1.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Mathematics: Number (strand name reused from grade 3)",
+          "PYP concept: Form (name reused from grade 3)"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida sets read/write/compose/compare to 1,000 and rounding from 0 to 100 to the nearest 10. IB does not publish those limits on the public pages.",
+        "suggested_instructional_bridge": "Build and compare three-digit quantities that come up in a unit (counts, measurements) and say when a rounded ten is close enough."
+      },
+      {
+        "row_id": "xw-g02-mathematics-002",
+        "topic_domain": "Addition and subtraction",
+        "florida_standards": [
+          "MA.2.NSO.2.1",
+          "MA.2.NSO.2.2",
+          "MA.2.NSO.2.3",
+          "MA.2.NSO.2.4"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Mathematics: Number (strand name reused from grade 3)"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida distinguishes automatic facts to 20, reliable work within 100, and exploration to 1,000. Those fluency labels are Florida's.",
+        "suggested_instructional_bridge": "Solve addition and subtraction that arise in the inquiry, using a method the student can explain."
+      },
+      {
+        "row_id": "xw-g02-mathematics-003",
+        "topic_domain": "Equal parts of shapes",
+        "florida_standards": [
+          "MA.2.FR.1.1",
+          "MA.2.FR.1.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Mathematics: Number (strand name reused from grade 3)",
+          "PYP concept: Form (name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida asks students to name halves, thirds, and fourths and to see that equal parts can have different shapes. It does not ask for fraction notation. PYP strand text reused here does not set that boundary.",
+        "suggested_instructional_bridge": "Partition a shape from the inquiry (a garden bed, a flag, a food share) into equal parts and name the parts in words."
+      },
+      {
+        "row_id": "xw-g02-mathematics-004",
+        "topic_domain": "Real-world addition and subtraction and equality",
+        "florida_standards": [
+          "MA.2.AR.1.1",
+          "MA.2.AR.2.1",
+          "MA.2.AR.2.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP learning in context (public: subject-specific learning within units of inquiry)"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida limits problems to sums within 100 and to equations with three or four terms. The public PYP page does not.",
+        "suggested_instructional_bridge": "Write a true or false number sentence about an inquiry situation and explain the equal sign."
+      },
+      {
+        "row_id": "xw-g02-mathematics-005",
+        "topic_domain": "Even and odd numbers and equal groups",
+        "florida_standards": [
+          "MA.2.AR.3.1",
+          "MA.2.AR.3.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Mathematics: Pattern and function (strand name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida uses equal groups and repeated addition, with totals limited to 25 in the clarification for arrays. That is an early multiplication foundation, not a published IB grade 2 outcome.",
+        "suggested_instructional_bridge": "Arrange objects from the inquiry in equal groups and describe the total as repeated addition."
+      },
+      {
+        "row_id": "xw-g02-mathematics-006",
+        "topic_domain": "Length",
+        "florida_standards": [
+          "MA.2.M.1.1",
+          "MA.2.M.1.2",
+          "MA.2.M.1.3"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Mathematics: Measurement (strand name reused from grade 3)"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida names inch, foot, yard, centimeter, and meter, and keeps units the same in problems. The public PYP page does not name those units.",
+        "suggested_instructional_bridge": "Measure two objects in the same unit and find how much longer one is."
+      },
+      {
+        "row_id": "xw-g02-mathematics-007",
+        "topic_domain": "Time and money",
+        "florida_standards": [
+          "MA.2.M.2.1",
+          "MA.2.M.2.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Mathematics: Measurement (strand name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida specifies time to five minutes with a.m. and p.m., and money within $100 or 100 cents without decimals. Those constraints are Florida's.",
+        "suggested_instructional_bridge": "Use clocks and coins that appear in the unit, staying inside the Florida limits."
+      },
+      {
+        "row_id": "xw-g02-mathematics-008",
+        "topic_domain": "Two-dimensional figures and symmetry",
+        "florida_standards": [
+          "MA.2.GR.1.1",
+          "MA.2.GR.1.2",
+          "MA.2.GR.1.3"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Mathematics: Shape and space (strand name reused from grade 3)",
+          "PYP concept: Form (name reused from grade 3)"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida lists triangles through octagons and asks for lines of symmetry. PYP shape work is not limited to that list on the public pages.",
+        "suggested_instructional_bridge": "Sort figures from the environment by sides and vertices and test a fold for symmetry."
+      },
+      {
+        "row_id": "xw-g02-mathematics-009",
+        "topic_domain": "Perimeter",
+        "florida_standards": [
+          "MA.2.GR.2.1",
+          "MA.2.GR.2.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Mathematics: Measurement (strand name reused from grade 3)"
+        ],
+        "alignment_level": "Partial alignment",
+        "key_differences": "Florida explores perimeter by counting unit segments and then whole-number side lengths, without requiring a formula. That teaching sequence is not an IB rule.",
+        "suggested_instructional_bridge": "Walk or mark the boundary of a rectangle in the inquiry and count the units around it."
+      },
+      {
+        "row_id": "xw-g02-mathematics-010",
+        "topic_domain": "Data displays",
+        "florida_standards": [
+          "MA.2.DP.1.1",
+          "MA.2.DP.1.2"
+        ],
+        "arizona_standards": [],
+        "ib_framework_elements": [
+          "PYP Mathematics: Data handling (strand name reused from grade 3)",
+          "PYP ATL: Research skills"
+        ],
+        "alignment_level": "Strong alignment",
+        "key_differences": "Florida names tally marks, tables, pictographs, and bar graphs, and limits graph scales and sums in the clarifications. Public PYP text names research skills, not those displays.",
+        "suggested_instructional_bridge": "Collect one set of inquiry data and ask an addition or subtraction question about the display."
+      }
+    ]
+  },
+  "citations": [
+    {
+      "id": "c-fl-math",
+      "url": "https://flrules.org/gateway/readRefFile.asp?refId=19651&filename=Florida%27s%20B.E.S.T.%20Standards%20for%20Mathematics_6A-1.09401%20Clean.docx",
+      "title": "Florida's B.E.S.T. Standards Mathematics, 2026",
+      "publisher": "Florida Department of Education (Rule 6A-1.09401, F.A.C., Ref-19651)",
+      "published_or_version_date": "2026",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    },
+    {
+      "id": "c-ibo-pyp",
+      "url": "https://www.ibo.org/programmes/primary-years-programme/how-the-pyp-works/",
+      "title": "How the PYP works",
+      "publisher": "International Baccalaureate Organization",
+      "published_or_version_date": null,
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": "Themes and the transdisciplinary statement were read from this page. Strand names in ib_framework_elements that go beyond that page are reused from the grade 3 library and are not official IB-Florida mappings."
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Grade 2 FL↔IB crosswalk. Arizona left empty (deferred). Rows are suggested alignments (Label C). Florida IDs are from the grade 2 drafts. IB elements are either public PYP framework text or the same strand labels used in the grade 3 crosswalks."
+  ],
+  "last_updated": "2026-10-03"
+}

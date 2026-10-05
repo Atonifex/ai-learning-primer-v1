@@ -1,0 +1,355 @@
+{
+  "schema_version": "0.1.0",
+  "doc_id": "fl.grade-07.ela",
+  "doc_type": "state_standards",
+  "system": "florida",
+  "programme": null,
+  "grade": 7,
+  "grade_label": "Grade 7",
+  "subject": "ela",
+  "status": "drafted",
+  "content_labels": [
+    "A",
+    "C"
+  ],
+  "sections": {
+    "grade_and_subject": {
+      "official_subject_name": "English Language Arts",
+      "standards_system_name": "B.E.S.T. Standards (Benchmarks for Excellent Student Thinking)",
+      "organization": "by_grade",
+      "courses": null
+    },
+    "domains": [
+      {
+        "domain_id": "ELA.7.R.1",
+        "domain_name": "Reading Prose and Poetry",
+        "standards": [
+          {
+            "id": "ELA.7.R.1.1",
+            "text": "Analyze the impact of setting on character development and plot in a literary text.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 86,
+            "label": "A"
+          },
+          {
+            "id": "ELA.7.R.1.2",
+            "text": "Compare two or more themes and their development throughout a literary text.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 86,
+            "label": "A"
+          },
+          {
+            "id": "ELA.7.R.1.3",
+            "text": "Explain the influence of narrator(s), including unreliable narrator(s), and/or shifts in point of view in a literary text.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 86,
+            "label": "A"
+          },
+          {
+            "id": "ELA.7.R.1.4",
+            "text": "Analyze the impact of various poetic forms on meaning and style.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 86,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.7.R.2",
+        "domain_name": "Reading Informational Text",
+        "standards": [
+          {
+            "id": "ELA.7.R.2.1",
+            "text": "Explain how individual text sections and/or features convey a purpose in texts.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 86,
+            "label": "A"
+          },
+          {
+            "id": "ELA.7.R.2.2",
+            "text": "Compare two or more central ideas and their development throughout a text.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 86,
+            "label": "A"
+          },
+          {
+            "id": "ELA.7.R.2.3",
+            "text": "Explain how an author establishes and achieves purpose(s) through diction and syntax.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 87,
+            "label": "A"
+          },
+          {
+            "id": "ELA.7.R.2.4",
+            "text": "Track the development of an argument, analyzing the types of reasoning used and their effectiveness.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 87,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.7.R.3",
+        "domain_name": "Reading Across Genres",
+        "standards": [
+          {
+            "id": "ELA.7.R.3.1",
+            "text": "Analyze how figurative language contributes to tone and meaning and explain examples of allusions in text(s).",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 87,
+            "label": "A"
+          },
+          {
+            "id": "ELA.7.R.3.2",
+            "text": "Paraphrase content from grade-level texts.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 87,
+            "label": "A"
+          },
+          {
+            "id": "ELA.7.R.3.3",
+            "text": "Compare and contrast how authors with differing perspectives address the same or related topics or themes.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 87,
+            "label": "A"
+          },
+          {
+            "id": "ELA.7.R.3.4",
+            "text": "Explain the meaning and/or significance of rhetorical devices in a text.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 88,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.7.C.1",
+        "domain_name": "Communicating Through Writing",
+        "standards": [
+          {
+            "id": "ELA.7.C.1.2",
+            "text": "Write personal or fictional narratives using narrative techniques, a recognizable point of view, precise words and phrases, and figurative language.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 88,
+            "label": "A"
+          },
+          {
+            "id": "ELA.7.C.1.3",
+            "text": "Write and support a claim using logical reasoning, relevant evidence from sources, elaboration, a logical organizational structure with varied transitions, and acknowledging at least one counterclaim.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 88,
+            "label": "A"
+          },
+          {
+            "id": "ELA.7.C.1.4",
+            "text": "Write expository texts to explain and analyze information from multiple sources, using relevant supporting details and a logical organizational pattern.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 88,
+            "label": "A"
+          },
+          {
+            "id": "ELA.7.C.1.5",
+            "text": "Improve writing by planning, revising, and editing, considering feedback from adults and peers.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 88,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.7.C.2",
+        "domain_name": "Communicating Orally",
+        "standards": [
+          {
+            "id": "ELA.7.C.2.1",
+            "text": "Present information orally, in a logical sequence, emphasizing key points that support the central idea.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 88,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.7.C.3",
+        "domain_name": "Following Conventions",
+        "standards": [
+          {
+            "id": "ELA.7.C.3.1",
+            "text": "Follow the rules of standard English grammar, punctuation, capitalization, and spelling appropriate to grade level.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 89,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.7.C.4",
+        "domain_name": "Researching",
+        "standards": [
+          {
+            "id": "ELA.7.C.4.1",
+            "text": "Conduct research to answer a question, drawing on multiple reliable and valid sources and generating additional questions for further research.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 89,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.7.C.5",
+        "domain_name": "Creating and Collaborating",
+        "standards": [
+          {
+            "id": "ELA.7.C.5.1",
+            "text": "Integrate diverse digital media to build cohesion in oral or written tasks.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 89,
+            "label": "A"
+          },
+          {
+            "id": "ELA.7.C.5.2",
+            "text": "Use digital tools to produce and share writing.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 89,
+            "label": "A"
+          }
+        ]
+      },
+      {
+        "domain_id": "ELA.7.V.1",
+        "domain_name": "Finding Meaning",
+        "standards": [
+          {
+            "id": "ELA.7.V.1.1",
+            "text": "Integrate academic vocabulary appropriate to grade level in speaking and writing.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 90,
+            "label": "A"
+          },
+          {
+            "id": "ELA.7.V.1.2",
+            "text": "Apply knowledge of Greek and Latin roots and affixes to determine meanings of words and phrases in grade-level content.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 90,
+            "label": "A"
+          },
+          {
+            "id": "ELA.7.V.1.3",
+            "text": "Apply knowledge of context clues, figurative language, word relationships, reference materials, and/or background knowledge to determine the connotative and denotative meaning of words and phrases, appropriate to grade level.",
+            "text_mode": "exact",
+            "citation_ids": [
+              "c-flrules-ela-2025"
+            ],
+            "page": 90,
+            "label": "A"
+          }
+        ]
+      }
+    ],
+    "assessment_notes": null,
+    "key_learning_outcomes": {
+      "label": "C",
+      "items": [
+        "Students analyze how setting shapes character and plot, compare themes, explain unreliable narrators and shifts in point of view, and analyze poetic forms.",
+        "Students explain how informational sections and features convey purpose, compare central ideas, explain how diction and syntax achieve purpose, and track arguments and reasoning.",
+        "Students analyze figurative language and allusions, paraphrase grade-level texts, compare authors with differing perspectives, and explain rhetorical devices.",
+        "Students write narratives, claims that acknowledge a counterclaim, and expository texts, follow grade-level conventions, research with multiple sources, and present orally.",
+        "Students use academic vocabulary, Greek and Latin roots and affixes, and context to determine connotative and denotative meanings, and use digital tools and media."
+      ]
+    },
+    "version_and_update_notes": {
+      "standards_version": "Florida's State Academic Standards (B.E.S.T.) English Language Arts, 2025",
+      "adopted_or_effective_date": "2025-12-21",
+      "notes": [
+        "Organization: by_grade (ELA.7 codes). The book introduces a 6th-8th grade band, but these benchmarks are grade 7, not a named course.",
+        "Benchmark statements extracted from the rule-adopted 2025 PDF (Ref-18865), printed pages 86-90. Clarifications, sample texts, and convention skill lists are not stored in standard text.",
+        "No foundational-reading benchmarks (ELA.7.F) are printed for grade 7. ELA.7.C.1.1 is not in the grade 7 list; writing benchmarks start at ELA.7.C.1.2."
+      ]
+    }
+  },
+  "citations": [
+    {
+      "id": "c-flrules-ela-2025",
+      "url": "https://flrules.org/gateway/readRefFile.asp?refId=18865&filename=B.E.S.T.%20ELA%20Standards%202025_Clean%206A-1.09401.pdf",
+      "title": "Florida's State Academic Standards (Benchmarks for Excellent Student Thinking (B.E.S.T.)) – English Language Arts, 2025",
+      "publisher": "Florida Department of Education (adopted document for Rule 6A-1.09401, F.A.C., Ref-18865)",
+      "published_or_version_date": "2025-11-17",
+      "page": null,
+      "access_date": "2026-10-03",
+      "access_limitation": null
+    }
+  ],
+  "version_notes": [
+    "2026-10-03: Drafted from the adopted B.E.S.T. ELA 2025 PDF incorporated by Rule 6A-1.09401 (effective 2025-12-21; still cited in the 2026-08-03 rule text). Grade 7 is grade-based inside the 6th-8th grade band, not a separate course. CPALMS was not used."
+  ],
+  "last_updated": "2026-10-03"
+}
