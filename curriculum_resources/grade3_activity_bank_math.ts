@@ -150,6 +150,27 @@ export const mathActivities: ActivityTemplate[] = [
     ],
   }),
   a({
+    slug: "g3-ma-camp-resource-plan",
+    title: "Camp resource plan",
+    kind: "INTERACTIVE_SORT",
+    prismaKind: "INTERACTIVE_GAME",
+    subjectSlug: "math_g3",
+    targetStandardCodes: ["MA.3.NSO.2.1", "MA.3.NSO.2.4", "MA.3.AR.1.2"],
+    chapterId: "u1-ch3",
+    unitId: "u1-crash",
+    prompt:
+      "Count the salvage pile, keep meals for the people at camp, and mark which upgrade the free materials can pay for. Then build one upgrade.",
+    scaffoldHints: [
+      "Keep 4 × 6 rations for meals before you spend rations.",
+      "An upgrade fits only when every material it needs is no more than the free pile.",
+      "Multiply packs first, then subtract from what we have.",
+    ],
+    answerRubric:
+      "Correct products and differences for the authored pile; affordable upgrades are the cook fire, rain cover, and ration stores. One of those is built.",
+    storySkinNotes: skin + " Location: camp. Played in the camp resource module, not the search-grid quiz.",
+    estimatedMinutes: 18,
+  }),
+  a({
     slug: "g3-ma-tent-fact-fluency",
     title: "Tent-row facts through 12",
     kind: "MINI_QUIZ",

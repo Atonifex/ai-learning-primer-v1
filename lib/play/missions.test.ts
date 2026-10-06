@@ -20,6 +20,7 @@ describe("mission catalog", () => {
     expect(missionByPin("treeline")?.title).toBe("What plants need to grow");
     expect(missionByPin("treeline")?.estimatedMinutes).toBeGreaterThanOrEqual(15);
     expect(missionByPin("camp")?.title).toBe("Camp resource plan");
+    expect(missionByPin("camp")?.activitySlug).toBe("g3-ma-camp-resource-plan");
     expect(missionByPin("camp")?.lockedUntil).toBe("wreck-quiz");
   });
 

@@ -2,6 +2,7 @@ import { z } from "zod";
 import { TUTORIAL_PINS, type PinId } from "./beachMap";
 import type { MissionPublic } from "./missions";
 import { emptyCamp, toCampPublic, type CampPublic } from "./camp";
+import { campUpgradeDescription } from "./campPlan";
 
 export const MAP_SLOTS = {
   "ridge-west": { col: 6, row: 28 },
@@ -27,6 +28,8 @@ export type WorldNode = {
   lockReason: string | null; missionId?: string; chapterTitle?: string;
   note?: string; tasks: MapTask[];
   campStage?: CampPublic["stage"];
+  /** Built camp upgrade from the resource plan. */
+  campUpgrade?: "none" | "cook-fire" | "rain-cover" | "ration-stores";
   /** Treeline garden beds from saved deterministic garden state. */
   gardenVisual?: "none" | "struggling" | "healthy";
 };
@@ -75,12 +78,14 @@ export function buildWorldSnapshot(input: {
   tasks: MapTask[]; notes: MapNote[]; products: string[];
   camp?: CampPublic;
   gardenVisual?: "none" | "struggling" | "healthy";
+  campUpgrade?: "none" | "cook-fire" | "rain-cover" | "ration-stores";
 }): WorldSnapshot {
   const chapters = input.chapters.filter((c) => ["ACTIVE", "COMPLETED"].includes(c.status))
     .sort((a, b) => a.orderIndex - b.orderIndex);
   const active = chapters.find((c) => c.status === "ACTIVE") ?? chapters.at(-1);
   const planner = active?.plannerJson as Record<string, unknown> | null;
   const gardenVisual = input.gardenVisual ?? "none";
+  const campUpgrade = input.campUpgrade ?? "none";
   const nodes: WorldNode[] = TUTORIAL_PINS.map((pin) => {
     const mission = input.missions.find((m) => m.pinId === pin.id);
     const treelineDesc =
@@ -89,10 +94,13 @@ export function buildWorldSnapshot(input: {
           ? "Garden beds started — plants have Sun, air, and fresh water."
           : "Garden beds need adjusting — plants need Sun, air, and fresh water."
         : DESCRIPTIONS[pin.id];
-    return { id: pin.id, kind: pin.id, title: pin.label, description: treelineDesc,
+    const campDesc =
+      pin.id === "camp" ? campUpgradeDescription(campUpgrade) ?? DESCRIPTIONS.camp : treelineDesc;
+    return { id: pin.id, kind: pin.id, title: pin.label, description: campDesc,
       col: pin.col, row: pin.row, status: mission?.status ?? (pin.id === "wreck" ? "available" : "locked"),
       lockReason: mission?.lockReason ?? null, missionId: mission?.id, tasks: [],
       campStage: pin.id === "camp" ? (input.camp?.stage ?? "clearing") : undefined,
+      campUpgrade: pin.id === "camp" ? campUpgrade : undefined,
       gardenVisual: pin.id === "treeline" ? gardenVisual : undefined };
   });
   const usedSlots = new Set<string>();

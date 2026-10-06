@@ -1,0 +1,55 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 7.03000020980835,
+  "text": "Captain! Are you alright?",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 1.4199999570846558,
+      "end": 5.400000095367432,
+      "text": " Captain! Are you alright?",
+      "tokens": [
+        50364,
+        10873,
+        0,
+        2014,
+        291,
+        5845,
+        30,
+        50714
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.6979748010635376,
+      "compression_ratio": 0.7575757503509521,
+      "no_speech_prob": 0.2171071469783783
+    }
+  ],
+  "words": [
+    {
+      "word": "Captain",
+      "start": 1.4199999570846558,
+      "end": 2.440000057220459
+    },
+    {
+      "word": "Are",
+      "start": 3.6600000858306885,
+      "end": 4.679999828338623
+    },
+    {
+      "word": "you",
+      "start": 4.679999828338623,
+      "end": 4.920000076293945
+    },
+    {
+      "word": "alright",
+      "start": 4.920000076293945,
+      "end": 5.400000095367432
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 8
+  }
+}

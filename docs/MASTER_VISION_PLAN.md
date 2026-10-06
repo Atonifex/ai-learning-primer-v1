@@ -181,7 +181,7 @@ Across sittings, the learner should return to the same island and camp with a cl
 | Grade advancement | **Checkpoint-driven**, not parent-gated. Finishing G3 math checkpoints flows into G4 math in the same camp |
 | World renderer | **PixiJS** Stardew-like **top-down 2D overworld** is HOME. Not Three.js. Not graphic-novel-as-home. |
 | Visual / feel | **Stardew-like** readable top-down with readable tiles, camp you grow, NPCs you find, tools/, **slightly more modern/animated** than pure SNES pixels — inspired by, **not copied from**, Stardew or Pokémon. Dialogue is a cutscene overlay. Learning work is a **mode / mini-game / full-screen tool**. |
-| Dialogue UI | Chat/transcript **left**; character portrait **right**. Mic placed like ChatGPT/Claude (composer + mic). Speak-first for Grade 3; typing is a later skill (see §4.8). |
+| Dialogue UI | **2026-10-06 accepted replacement:** bottom conversation dock ~45% landscape height, latest exchange + History, reusable bottom-right character portrait with nameplate above the chat body. Small cards stay inline; larger tools use a shared right workspace above the dock. Narrow screens adapt and can show full-screen learning sheets. Mic remains in the composer; speak-first (§4.8). Earlier full-screen left/right cutscene sizing is superseded. |
 | Rho presence | **Call anytime** via portrait/radio control + **map follower** when Rho is with you |
 | Interaction LLM | **`gpt-5.6-luna`** (or future cheap equivalent) for live turns, hints, ZPD scaffolding |
 | Planning LLM | **Medium** reasoning model authors/updates **Units and Chapters** from the **shared static saga** + this student’s placement/evidence |
@@ -201,7 +201,7 @@ Across sittings, the learner should return to the same island and camp with a cl
 | Child accounts | Schema: parent attaches **multiple** learners. Playable loop is per child. True multiplayer later (investment). |
 | Connectivity | **Online-only** (LLM for curiosity, creation, writing, speaking, critical thinking) |
 | Collaborator | **Quay** (not Quinn). **Ivan owns all IP** for now. |
-| Parent surface | Built **after** the student game is playable. **Same content three ways:** filterable dashboard, weekly email, printable **weekly PDF** (hours + standards, like a bank statement). Full MVP, not the first playable loop. |
+| Parent surface | Parent dashboard for student usage and standards evidence. **2026-10-06: no weekly email (Ivan).** Printable weekly PDF remains a future extension of the same evidence; first dashboard at `/household/progress`. |
 | Time | **No cap tonight.** Track total time, per session (regardless of how many lessons), and per lesson / chapter / unit so a cap can be added later. |
 | Logins | **Two logins, one household** — parent account connected to one or more child accounts (see §4.5) |
 | Intro cinematic | Higgsfield (or equivalent) **pre-rendered** crash landing. **Placeholder poster now.** Ivan generates later. Spec + prompt in §4.12. |
@@ -317,14 +317,14 @@ Yes, this is the right COPPA and UX shape.
 
 | Role | Login | Sees |
 |------|-------|------|
-| Parent | Email + password (Clerk/existing auth) | Dashboard, weekly email, multiple children, billing, privacy |
+| Parent | Email + password (Clerk/existing auth) | Dashboard, multiple children, billing, privacy; no weekly email per Ivan 2026-10-06 |
 | Child | Username (or child email) + PIN / simple password | Game only. Cannot see sibling data or parent billing |
 
 Link: `Household` (or parent `User`) `1—*` `LearnerProfile` `1—1` child `User`. Child session JWT is scoped to one learner id.
 
 **Why not one login:** A third grader sharing the parent’s Gmail, or a parent playing as the child, breaks COPPA intent and sibling privacy. A single “switch profile” after parent login is OK *as well*, but the child still needs a way to open the game on a Chromebook without the parent’s password.
 
-**P7 stipend artifact (full MVP, not first loop):** The **same** hours + standards content is (1) a filterable parent dashboard, (2) a weekly email, (3) a printable weekly PDF, like a bank statement. Do not invent a fourth reporting system.
+**P7 stipend artifact:** A filterable parent dashboard and later printable weekly PDF use the same usage + standards evidence. **2026-10-06: Ivan removes weekly email from scope.** Recorded elapsed time is not certified active learning time or ESA eligibility.
 
 **Rho:** Humanoid AI First Mate. Helps in a Vygotsky ZPD way. **Does not take tests.** Parent copy may say the child is learning to work with AI.
 
@@ -823,6 +823,8 @@ The bar: a child should not feel they opened a chatbot. They opened a **place** 
 
 ## 8. Measurement and parent reporting
 
+**2026-10-06 parent slice:** Ivan authorizes parent identity/handoff clarity and then a dashboard for student usage and standards progress, excluding weekly email. Parent setup now captures the captain name once, distinguishes login/PIN, preserves legacy/fused names, explains the first session and account handoff, and provides Settings → Switch account for return. Parent-only `/household/progress` validates household membership before querying data; student/usage-period/subject controls, daily recorded clocks, cumulative standards and recent evidence reuse existing measurement. Dates are Eastern; open session idle duration is excluded and overlapping session/activity clocks are never summed. Neither elapsed time nor an estimate certifies learning outcomes. Teaching and bottom dialogue remain separate agents' work.
+
 Without this, Primer is a pretty game. With this, it is an **ESA-eligible learning product**.
 
 **Build order:** student game first; parent dashboard after a child can finish a chapter. Schema for household + two logins should exist before Florida testers.
@@ -836,7 +838,7 @@ Without this, Primer is a pretty game. With this, it is an **ESA-eligible learni
 - Dashboard: time spent **by day and week** (and later per lesson/chapter/unit); mastery of standards **across subjects**; succeeding vs struggling standards
 - **School-equivalent tests** at **end of chapters and units**
 - Child **chapter reflections**
-- **Weekly email** + **weekly printable PDF** (same content as the dashboard — hours + standards, bank-statement style). Full MVP.
+- **2026-10-06 — Ivan:** build parent dashboard now; no weekly email. Printable PDF remains future work using the same data.
 - Parent settings: IEP goal text + checkboxes + TTS/STT already on
 - Rho is a humanoid AI First Mate; does not take tests
 
@@ -844,9 +846,9 @@ Without this, Primer is a pretty game. With this, it is an **ESA-eligible learni
 
 **Scoring redesign:** do **not** block the 10-standard slice. Keep `standardsMasteryMath`. Redesign after that slice produces data. Hard deadline: tests must be defensible before ESA sales.
 
-**Quay asked for hourly parent push.** Locked: weekly email + dashboard. Never hourly.
+**Quay asked for hourly parent push.** Superseded by Ivan on 2026-10-06: parent dashboard, no weekly email or hourly push.
 
-Existing code: `app/progress/*`, `lib/services/progress.ts`, `StandardsEvidence`, `SkillProgress`.
+Existing code: parent-only `app/household/progress/*` + `lib/services/parentDashboard.ts`; student `app/progress/*`; shared `lib/services/progress.ts`, `StandardsEvidence`, `SkillProgress`. Dashboard clocks are recorded elapsed estimates, not attention measures; cumulative standards are separate from usage date filters.
 
 ---
 
@@ -878,7 +880,7 @@ Existing code: `app/progress/*`, `lib/services/progress.ts`, `StandardsEvidence`
 | World ledger | **PARTIAL** | Ch1 crew log writes `WorldLedgerEntry` rows + `Chapter.handoffSummary`; next Rho turn must reuse them. No decisions, no Ch2 ration-plan artifact |
 | Camp / crew engine | **PARTIAL** | Persisted `CampState`: 4 resources, 5 named crew slots, 4 visual stages. Wreck salvage grants a crate pile. Tent/fire/found crew wait on later grants |
 | Full-screen activity tools | **NOT BUILT** | Overlay MC quizzes only; FR items dropped in overlay path |
-| Parent dashboard / email / PDF | **NOT BUILT** | `/progress` only; `/settings` for reading level |
+| Parent reporting | **FIRST DASHBOARD BUILT** | Parent-only `/household/progress`; student `/progress` remains. Email excluded; printable PDF remains future work. |
 | Per-turn scene images | **OFF** | Stills pack; re-enable in full MVP |
 | Skill tutorial videos | **NOT BUILT** | Intro cinematic only |
 | XP / rations persistence | **PARTIAL** | Rations/scrap/timber/canvas persist on `CampState`. XP HUD is still a mission-complete stub |
@@ -922,7 +924,7 @@ Overlay MC-only; straight-line walk; ambient ocean silent; XP/rations not persis
 9. **Chapter Compiler** (medium model) — validate against bank + standards; stamp nodes north of ridge.
 10. **Rho world tools** — `advance_chapter`, `stamp_node` (compiler output only).
 11. **G4 activity bank + saga planners** — mirror G3 pattern.
-12. **Parent dashboard + weekly email + PDF** — same data, three surfaces.
+12. **Parent dashboard + future printable PDF** — same evidence; no weekly email (Ivan, 2026-10-06).
 
 **Explicitly later:** perk trees, dynamic per-turn images, Higgsfield mp4 (poster OK), multiplayer, Access Points gameplay, skill tutorial video system.
 
@@ -1093,12 +1095,16 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 
 ## 15. Master checklist
 
-### Bottom conversation interface — 2026-10-06 (planned)
+### Bottom conversation interface — 2026-10-06
 
 - [x] Document Ivan's bottom ~45% dialogue, bottom-right reusable speaker/nameplate and inline/right content request, plus accepted conversation-only/latest-exchange+History/adaptive-small-screen choices. Plan, source findings, risks, mitigation and evaluation: `docs/BOTTOM_DIALOGUE_PLAN_2026-10-06.md`.
-- [ ] Review prototype geometry, implement shared dock/speaker/content host and verify required suites plus actual browser flows. Planning complete; runtime interface unchanged.
+- [x] Implement bottom dock, latest exchange/History, reusable speaker/nameplate, single active content workspace, embedded activity bodies, adaptive sheets and camera resizing without remounting Pixi. History retains mounted task answers and chat drafts. Local-only `/dev/dialogue` exercises alternate speakers, missing art, long text and choices.
+- [ ] Complete final unit/TypeScript/full e2e verification and record interactive browser evidence/limitations. Unit 228/57 and final TypeScript pass; responsive/History/portrait and real-map interactions have passing runs. Full browser suite and final broad rerun blocked by bootstrap/database and hydration timeouts; device voice/keyboard/zoom review remains. See the bottom dialogue plan evidence; do not infer all acceptance checks passed from the implementation checkbox.
 
 ### Inquiry-led stock experience — 2026-10-06
+
+- [x] Approved parent identity/handoff slice: collect captain name once, clarify credentials/grade/first session, preserve old/fused names, show explicit handoff and add Settings account switching.
+- [x] Parent-only usage/standards dashboard at `/household/progress`: owned student selection, usage periods/daily records, subject filtering, cumulative evidence, empty/error handling. No weekly email per Ivan. Measurement and validation limits: `docs/PARENT_DASHBOARD_2026-10-06.md`.
 
 - [x] Draft a parent/student/initial-actions onboarding improvement plan preserving working features and separating existing authorized changes from proposed slices. `docs/ONBOARDING_IMPROVEMENT_PLAN_2026-10-06.md`; **await Ivan's review before implementation**. Coordinate the accepted Treeline lesson and separate bottom-dialogue plan. Parent display-name gap and complete first-lesson teaching remain unfinished; drafting does not close those build tasks.
 
@@ -1205,7 +1211,8 @@ Technical debt (defer to end of this plan unless a later step naturally clears i
 - [x] TTS for Rho (OpenAI)
 - [x] Parent account linked to child account(s) (COPPA-ready)
 - [ ] **HIGH PRIORITY — child data security:** verifiable parent consent and a privacy policy that names Google before any child-facing YouTube clip. Nocookie embed and `PRIMER_LEARNING_CLIPS` are not consent. See `docs/Future_Development_ideas.md` P0 and §4.1.
-- [ ] Parent dashboard + weekly email + weekly PDF (full MVP, after student loop)
+- [x] First parent-only dashboard: household student switcher, usage periods/daily records, enrolled-subject standards and recent evidence, ownership checks and empty/error states. `/household/progress`. No weekly email per Ivan.
+- [ ] Printable parent PDF and expanded reporting (validated checkpoint tests, lesson/chapter breakdowns); reuse dashboard evidence.
 
 ### P2 — Immersion + measurement
 
@@ -1386,17 +1393,29 @@ If a new ★ question appears, add the answer to **§4** or **§17** — do not 
 
 ## 18. Implementation log
 
+### 2026-10-06 — Camp resource plan (lesson 1)
+
+- Ivan: one camp math module for budget, rations, materials, and an upgrade ladder. Manual +/−/×/÷. Budget first, then spend on one affordable upgrade. Dune/Creek stay off the map. No scratch paper, no trade board.
+- Locked `MA.3.NSO.2.1`, `MA.3.NSO.2.4`, `MA.3.AR.1.2` from `standards_math_grade3.ts`. `MA.3.NSO.2.2` and `MA.3.NSO.2.3` have future cost-line hooks and are not in lesson 1 scoring.
+- Shipped: `campPlan.ts` / `campTeach.ts`, `CampTeachPanel` → `CampBudgetPanel`, `open_camp_plan`, `/api/camp-plan`, camp `campPlan` JSON, Pixi rain-cover / ration-shelf marks, cook fire raises stage to fire. Mission slug is `g3-ma-camp-resource-plan`.
+
 ### 2026-10-06 — Treeline teach-before-garden + shore trim
 
 - Ivan required authored teach/practice before the garden apply step; removed Dune/Creek from the tutorial map; kept Camp for a resource-planning math module (F12). Renamed backlog to `docs/Future_Development_ideas.md` (F10 scratch paper, F11 trade, F12 camp resources).
 - Shipped: `GardenTeachPanel` + `gardenTeach.ts`, `teachCompleted` on garden JSON, teach→beds handoff in PlayShell. Mission catalog is wreck / treeline / camp only.
-- Not done: Camp A/B/C resource authoring with locked MA.3 codes; catalog-wide `learnerGoal` (Grok batch); scratch-paper UI.
+- Not done: Camp lesson 2 (`MA.3.NSO.2.2` equal groups, then `MA.3.NSO.2.3` × tens); catalog-wide `learnerGoal` (Grok batch); scratch-paper UI; trade board.
 
 ### 2026-10-06 — Treeline garden deep lesson foundation
 
 - Ivan: fix WHAT vs HOW on early shore jobs; ~15+ min depth; one required tutorial dive; world reward that upgrades camp. Plan: `docs/TREELINE_GARDEN_LESSON_2026-10-06.md` (`SC.3.L.17.2`, goal “What plants need to grow”).
 - Shipped: deterministic `lib/play/gardenPlot.ts`, camp `garden` JSON + migration, `open_garden_plot` tool/SSE, `/api/garden` + `GardenPlotPanel`, Pixi treeline beds via `gardenVisual`, Treeline map ask no longer “what can we do here?”. Backlog F09 for catalog-wide `learnerGoal`.
 - Not done: full teach/practice beats before the mini-game; Jobs “optional later” labels for dune/creek/camp; browser e2e blocked by flaky/hung `/api/garden` against the remote DB pool (unit + tsc pass).
+
+### 2026-10-06 — Bottom dialogue implementation
+
+- Ivan approved the saved plan. Shipped ~45% desktop dock, reusable `SpeakerPresence`/speaker descriptor, latest exchange + History, pinned composer, compact exploration radio and adaptive sheets.
+- Shared `ContentWorkspace`/`ActivitySurface` hosts existing tools above/right of dock; History keeps activity state mounted. Contained definitions, required-task exit rules, focus return and paused Pixi camera resizing preserve conversation/world continuity. Layout source descriptions synchronized; interactive local-only `/dev/dialogue` fixture and nine browser regressions added; preview `docs/dialogue-dock-preview.png`.
+- Unit suite 228/57 and final TypeScript pass. Seven earlier layout/History flows and a real-shell map/draft/captain transition pass; final replacement/missing-art speaker flow passes. Final nine-flow rerun stopped on hydration before assertions. Full E2E run blocked by repeated bootstrap timeouts and logged PostgreSQL authentication timeouts; manual CUA navigation also timed out. Real microphone/keyboard/zoom and all tool submissions remain unverified; no deployment or paid generation.
 
 ### 2026-10-06 — Bottom dialogue plan (documentation only)
 
@@ -1405,6 +1424,8 @@ If a new ★ question appears, add the answer to **§4** or **§17** — do not 
 - Inspected dialogue/shell/message/input/portrait/camera/popup/focus and existing overlay regression source. No application code, runtime suites, browser exercise, media generation or deployment in this planning turn; unrelated changes preserved.
 
 ### 2026-10-06 — Parent/student onboarding plan for review
+- Later approval: implemented identity/handoff and parent dashboard; Treeline teaching and bottom dialogue explicitly left to their separate agents. Saved implementation/measurement/verification notes in `docs/PARENT_DASHBOARD_2026-10-06.md`; active §8 reporting scope now excludes weekly email. Four parent end-to-end flows and 217/54 unit suite passed; later full browser verification disrupted by shared-server outages and concurrent dialogue changes. Account-switch component and final verification recorded separately; no deployment or paid media.
+- Final verification: 229 unit tests/58 files, TypeScript and targeted lint pass; four parent full browser flows plus isolated account-switch component recovery/navigation pass. Actual logout cookie expiry passes. Final full student-to-parent return integration and broad whole-app suite remain unverified after server outages/compilation stalls; temporary verification processes, config and copied environment files cleaned up. No completed CUA manual playtest.
 - Ivan requests a reviewable plan before implementation. Saved `docs/ONBOARDING_IMPROVEMENT_PLAN_2026-10-06.md`: preserved features, parent handoff, student pacing, first meaningful learning, return path, two paper revision rounds and staged acceptance checks.
 - Design-critique skill and current code/31-image Prodigy review inform proposals; no family outcomes claim. Found parent form does not send displayName, leaving new profiles potentially unnamed after removing student renaming; plan explicitly addresses it.
 - No new onboarding plan feature, story, media or deployment implemented. Recommended identity/handoff clarity first; draft reconciled with concurrent accepted Treeline science and bottom-dialogue directions, retaining their separate implementation scope.

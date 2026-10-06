@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { practiceForPlacement } from "../../lib/play/mathPractice";
 import MathPractice from "./MathPractice";
 import { useDialogFocus } from "./useDialogFocus";
-import { STARTER_CHECK_GUIDANCE } from "../../lib/play/progressCopy";
 
 type PublicItem = {
   id: string;
@@ -101,7 +100,6 @@ export default function MathFiveCheck(props: { sessionId: string; onClose: () =>
         <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8a5a12]">
           Math check
         </p>
-        <p className="mt-2 text-sm leading-relaxed">{STARTER_CHECK_GUIDANCE}</p>
         <div className="mt-3 h-2 overflow-hidden rounded-full bg-[#ead9b0]" aria-hidden>
           <div className="h-full bg-[#c47b2b]" style={{ width: `${done ? 100 : width}%` }} />
         </div>

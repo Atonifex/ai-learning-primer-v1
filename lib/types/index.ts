@@ -193,6 +193,11 @@ export type StreamChunk =
       learnerGoal: string;
       standardCode: string;
     }
+  | {
+      type: "camp_plan_open";
+      learnerGoal: string;
+      standardCodes: string[];
+    }
   | { type: "world_map_open"; nodeId?: string }
   | { type: "world_updated"; reason: string; nodeId?: string }
   | {

@@ -158,5 +158,37 @@
     "visual": "Full2fps review: same empty aircraft descends, skids in shallow water, right-engine fire extinguishes, small splash and damaged wing, intact grounded fuselage; crew chutes far safely above. Actual browser decodes 7.041667s through ended.",
     "speech": "No dialogue; native impact and surf; human listening remains unverified.",
     "seam": "12fps c11→c12 aerial-to-low-side-view match: same craft, engine damage, chutes and island. Coast-facing reverse angle explains storm-bank background. Night/dawn ellipsis uses outgoing/incoming0.4s fades."
+  },
+  {
+    "id": "c13",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Full2fps timeline and browser7.041667s passed. Upright professional Rho, hands at own sides, no touching/romance/viewer hands or prebuilt camp; flat fallen chute fabric. Concern at opening/question, brief warm expression mid-clip and mild relief at end; no ongoing danger.",
+    "speech": "Whisper confirms exact words once: Captain! Are you alright? Timing1.42–5.40s; normalize alright/all right. Words/timing only, human listening unverified.",
+    "seam": "12fps c12→c13 reviewed matching wreck and shore; explicit0.4s outgoing/incoming fades mark time ellipsis into dawn."
+  },
+  {
+    "id": "c14",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Full2fps timeline: upright professional Rho scans forest/wreck then resolves toward captain; no romance, viewer body or prebuilt camp. Full isolated browser playback15.041995s through ended passed serially under local load.",
+    "speech": "Whisper text and independent gpt-4o-transcribe confirm all sentences once; latter resolves build/built. Corrected word spelling retains original timing; originals preserved. Speech finishes13.98s.",
+    "seam": "12fps c13→c14: motivated cut from responsiveness close view to wider site assessment; shared geography/wreck identity. c14→c15 near-identical neutral framing/resting pose."
+  },
+  {
+    "id": "c16",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Full2fps timeline: professional Rho turns/points at safe wreck and crate, no viewer hands, romance, structures or harm. Optional crab omitted without a retake. Full isolated browser7.041667s ended passed.",
+    "speech": "Independent gpt-4o-transcribe confirms exact line once. Original Whisper hallucinated unrelated phrase; preserved unreliable result and recovered word timing with line context only after independent confirmation,2.78–6.62s. Human listening unverified.",
+    "seam": "12fps c15→c16: same medium Rho framing, slight blink/resting-pose cut, ship/crate/geography stable. Last actual frame retained for app completion handoff."
+  },
+  {
+    "id": "c15",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Full2fps timeline: professional upright Rho, slight resolved warmth, no romance/viewer hands/body or extra structures. Optional route-slate gesture was not rendered; no unnecessary retake. Serial isolated browser9.041667s through ended passed; earlier parallel checks timed out under local load.",
+    "speech": "Whisper confirms exact sentence once,2.60–8.60s. Human voice listening unverified.",
+    "seam": "12fps c14→c15 near-identical resting pose/framing; c15→c16 mild blink/resting-pose cut. Same wreck/crate/geography and identity throughout."
   }
 ]

@@ -4,6 +4,7 @@
  * Dune/Creek removed from the tutorial map (2026-10-06).
  */
 
+import { CAMP_PLAN_ACTIVITY_SLUG } from "./campPlan";
 import type { PinId } from "./beachMap";
 import type { Grade3SubjectSlug } from "../constants/subjects";
 import { formatCampForPrompt, type CampPublic } from "./camp";
@@ -58,7 +59,7 @@ export const TUTORIAL_MISSIONS: MissionDef[] = [
   {
     id: "camp-math",
     pinId: "camp",
-    activitySlug: "g3-ma-search-grid-tens",
+    activitySlug: CAMP_PLAN_ACTIVITY_SLUG,
     subjectSlug: "math_g3",
     title: "Camp resource plan",
     theme: "Budget, rations, and build materials",

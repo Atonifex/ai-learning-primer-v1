@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { EMPTY_INTRO_DEAL, INTRO_MEDIA_ROOT, introChoices, introMedia, introOffer, parseIntroDeal, type IntroDeal, type IntroEvent } from "../../lib/play/introDeal";
-import SafeStill from "./SafeStill";
 
 export default function IntroCinematic(props: { onSkip: () => void }) {
   const [deal, setDeal] = useState<IntroDeal>(EMPTY_INTRO_DEAL);
@@ -60,9 +59,10 @@ export default function IntroCinematic(props: { onSkip: () => void }) {
       <div className="relative min-h-0 flex-1">
         {deal.phase === "complete" ? (
           <>
-            <SafeStill still="crashAftermathBeach" alt="Dawn on the beach after the crew escapes the storm." />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="h-full w-full object-contain" src={`${INTRO_MEDIA_ROOT}/references/c16-tail.png`} alt="Rho points toward food and tools beside the wreck." />
             <div className="absolute inset-x-0 bottom-12 bg-[#071820]/90 p-6 text-center">
-              <p className="text-xl">The storm hits. You and your crew escape. At dawn, you reach the beach.</p>
+              <p className="text-xl">Start at the wreck. Find food and tools.</p>
               <button type="button" onClick={props.onSkip} className="mt-5 rounded-full bg-amber-200 px-7 py-3 font-semibold text-slate-950">Go to the beach</button>
             </div>
           </>
@@ -73,11 +73,11 @@ export default function IntroCinematic(props: { onSkip: () => void }) {
             {videoFailed ? (
               <div className="relative h-full">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="h-full w-full object-contain" src={`${INTRO_MEDIA_ROOT}/references/${deal.phase === "continuation" ? "rho-handshake" : "briefing-anchor"}.png`} alt="Your crew is ready for the island trip." />
+                <img className="h-full w-full object-contain" src={media.poster} alt="Your crew is ready for the island trip." />
                 {!media.loop && <button type="button" onClick={() => void advance("ended")} disabled={busy} className="absolute left-1/2 top-1/2 -translate-x-1/2 rounded-full bg-amber-200 px-6 py-3 text-slate-950">Continue</button>}
               </div>
             ) : (
-              <video key={media.id} ref={video} className="h-full w-full object-contain" src={media.src} autoPlay muted={muted || media.loop} playsInline loop={media.loop} preload="auto" poster={`${INTRO_MEDIA_ROOT}/references/briefing-anchor.png`} onError={() => setVideoFailed(true)} onEnded={() => { if (!media.loop) void advance("ended"); }} onPlay={() => setPaused(false)} onLoadedData={() => { if (video.current && !paused) void video.current.play().catch(() => setPaused(true)); }} aria-label={media.loop ? "Officer waits for your choice" : "Your island mission"}>
+              <video key={media.id} ref={video} className="h-full w-full object-contain" src={media.src} autoPlay muted={muted || media.loop} playsInline loop={media.loop} preload="auto" poster={media.poster} onError={() => setVideoFailed(true)} onEnded={() => { if (!media.loop) void advance("ended"); }} onPlay={() => setPaused(false)} onLoadedData={() => { if (video.current && !paused) void video.current.play().catch(() => setPaused(true)); }} aria-label={media.loop ? "Officer waits for your choice" : "Your island mission"}>
                 {!media.loop && <track kind="captions" src={media.captions} srcLang="en" label="English" default={captions} />}
               </video>
             )}

@@ -1,0 +1,64 @@
+{
+  "shot": {
+    "id": "c14",
+    "duration": 15,
+    "ref": "rho-dawn-clear",
+    "line": "The crew is scattered. We can't reach the base. You're still the captain. Find the crew. Build a camp. We'll rebuild the ship. I'll help you learn to lead.",
+    "speaker": "Rho",
+    "action": "Rho looks from tree line to dry clearing to wreck, clear purposeful professional guidance. No buildings, camps or empire already built. Speak unhurried clear exact line once, meaningful brief sentence pauses, finish by14s. Rho remains at professional distance, no captain body/hands, romance or prebuilt camp; distant fabric stays flat. Same upright professional Rho and dawn beach/wreck geography as the supplied first frame. No captain hands/body, romance, touching the viewer, thumbs-up, new buildings, tents or camp. Flat fallen parachute fabric remains flat. Begin from supplied neutral pose; after speech finish the purposeful gesture and settle to an upright calm resolved resting pose for a clean editorial cut. No extra spoken words.",
+    "role": "continuation",
+    "retries": 0,
+    "status": "submitted",
+    "generationId": "AU8zuZtwQuNLmVJOR3DZnMAri8thIHlVvKnNFxO0wFNBTCC-gyHBXKiu-r3iri253Wn1nvNj"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character proportions costume set geography and same teal cream brass fixed-wing twin-prop aircraft. One continuous shot, no automatic cuts. No text lettering subtitles UI weapons blood injuries or horror. NO MUSIC; continuous edit score added separately. Use <<<323213596308599>>> for same Rho identity and supplied voice. Blond hair amber eyes thin teal visor metal cheek neck brown jacket teal shoulders cream shirt. Professional, no romance. Rho looks from tree line to dry clearing to wreck, clear purposeful professional guidance. No buildings, camps or empire already built. Speak unhurried clear exact line once, meaningful brief sentence pauses, finish by14s. Rho remains at professional distance, no captain body/hands, romance or prebuilt camp; distant fabric stays flat. Same upright professional Rho and dawn beach/wreck geography as the supplied first frame. No captain hands/body, romance, touching the viewer, thumbs-up, new buildings, tents or camp. Flat fallen parachute fabric remains flat. Begin from supplied neutral pose; after speech finish the purposeful gesture and settle to an upright calm resolved resting pose for a clean editorial cut. No extra spoken words. Only Rho speaks. Speak exact simple English line ONCE, clear unhurried natural voice with lip sync: \"The crew is scattered. We can't reach the base. You're still the captain. Find the crew. Build a camp. We'll rebuild the ship. I'll help you learn to lead.\". No added words/voices. "
+      },
+      {
+        "name": "duration",
+        "value": "15"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      },
+      {
+        "name": "elements",
+        "value": "[{\"id\":\"323213596308599\",\"bindName\":\"Rho\"}]"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1YWdlbnRfdXBsb2FkLzE3OTEyODU5MzUvSTJWbmJ2NFFzNi9yaG8tZGF3bi1jbGVhci5wbmc.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized whole V05 regeneration. Prior shot and seam reviewed before continuing. Preserve identity voice craft and causal continuity; variable pacing native sound with separate score."
+  },
+  "task": {
+    "generationId": "AU8zuZtwQuNLmVJOR3DZnMAri8thIHlVvKnNFxO0wFNBTCC-gyHBXKiu-r3iri253Wn1nvNj",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 180,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "credits_consumed": 180,
+    "generation_id": "AU8zuZtwQuNLmVJOR3DZnMAri8thIHlVvKnNFxO0wFNBTCC-gyHBXKiu-r3iri253Wn1nvNj"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "startingCredits": 6096,
-  "charged": 2556,
+  "charged": 3180,
   "jobs": [
     {
       "generationId": "Af6HUDYm8sAE_sltDX-cNbbTsf-zKscdGd38ASJ576dDKQn4UgmFCKBqgnbcvCIdttFnpxWh",
@@ -145,6 +145,60 @@
       "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
       "generation_id": "AZhbYI-n89cJybJ3FSJFwwj-UH3ez2SgVI_GHnfn97hynhuuMj-O8QMxG_DFMLwreS6YghP-",
       "credits_consumed": 84
+    },
+    {
+      "generationId": "ATRDHOOX5KQXG-h478fAqgmhTt8EejvASoNAe6UdANLfGZWkAfk0hkgCSduf5dUalK5F3v_U",
+      "status": "QUEUING",
+      "model": "kling-video-v3_0",
+      "creditsConsumed": 84,
+      "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+      "credits_consumed": 84,
+      "generation_id": "ATRDHOOX5KQXG-h478fAqgmhTt8EejvASoNAe6UdANLfGZWkAfk0hkgCSduf5dUalK5F3v_U"
+    },
+    {
+      "generationId": "AZcFd3wBm54lm4A6cTAHTVMRLe0CDFfkGfmDYbJS6tj7oqwPaQ9-S3fwyVBfjB8zyD8n12Xk",
+      "status": "QUEUING",
+      "model": "kling-video-v3_0",
+      "creditsConsumed": 84,
+      "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+      "credits_consumed": 84,
+      "generation_id": "AZcFd3wBm54lm4A6cTAHTVMRLe0CDFfkGfmDYbJS6tj7oqwPaQ9-S3fwyVBfjB8zyD8n12Xk"
+    },
+    {
+      "generationId": "Af_RSGGlAPjgwNrk-AwaIXAQ5BzF3qFrnM8B5tRx8-qd9O59yVwiPRFnm__Z8Khqmq_oDVtW",
+      "status": "QUEUING",
+      "model": "kling-video-v3_0",
+      "creditsConsumed": 84,
+      "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+      "credits_consumed": 84,
+      "generation_id": "Af_RSGGlAPjgwNrk-AwaIXAQ5BzF3qFrnM8B5tRx8-qd9O59yVwiPRFnm__Z8Khqmq_oDVtW"
+    },
+    {
+      "generationId": "AU8zuZtwQuNLmVJOR3DZnMAri8thIHlVvKnNFxO0wFNBTCC-gyHBXKiu-r3iri253Wn1nvNj",
+      "status": "QUEUING",
+      "model": "kling-video-v3_0",
+      "creditsConsumed": 180,
+      "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+      "credits_consumed": 180,
+      "generation_id": "AU8zuZtwQuNLmVJOR3DZnMAri8thIHlVvKnNFxO0wFNBTCC-gyHBXKiu-r3iri253Wn1nvNj"
+    },
+    {
+      "generationId": "AQut-oz5fF5PbJtQlC519hddfnYDA3zvcFkAw4kfAnWnh9q7FQO3PmVaY3_j9D8mkDk5v2hB",
+      "status": "QUEUING",
+      "model": "kling-video-v3_0",
+      "creditsConsumed": 108,
+      "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+      "credits_consumed": 108,
+      "generation_id": "AQut-oz5fF5PbJtQlC519hddfnYDA3zvcFkAw4kfAnWnh9q7FQO3PmVaY3_j9D8mkDk5v2hB"
+    },
+    {
+      "generationId": "AZwiSzWbYumQARtnYutz2IqOIU5fyJM11BbCXfU_WnLPVs1lyXCzbJL6XN45CfYlfQccBpsI",
+      "status": "QUEUING",
+      "model": "kling-video-v3_0",
+      "creditsConsumed": 84,
+      "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+      "credits_consumed": 84,
+      "generation_id": "AZwiSzWbYumQARtnYutz2IqOIU5fyJM11BbCXfU_WnLPVs1lyXCzbJL6XN45CfYlfQccBpsI"
     },
     {
       "generationId": "AbkHYzWR3GpiAABTII7WcvdN8YlwEXoAW7z0w5DFqH4nk41dAVZa4ZMRNpHB2KpzyoGhEjIQ",

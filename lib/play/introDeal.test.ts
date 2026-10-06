@@ -23,6 +23,11 @@ describe("captain's opening deal", () => {
     expect(introMedia("counter15")).toMatchObject({ id: "offer15", loop: false });
     expect(introMedia("continuation").loop).toBe(false);
   });
+  it("uses the reviewed Maya film and the correct acceptance poster without changing saved progress", () => {
+    expect(introMedia("briefing")).toMatchObject({ src: "/cinematics/prologue-v5/briefing.mp4", poster: "/cinematics/prologue-v5/references/briefing-anchor.png" });
+    expect(introMedia("continuation")).toMatchObject({ src: "/cinematics/prologue-v5/continuation.mp4", poster: "/cinematics/prologue-v5/references/accepted-thumb.png" });
+    expect(parseIntroDeal({ version: 3, phase: "continuation", acceptedShare: 15 })).toEqual({ version: 3, phase: "continuation", acceptedShare: 15 });
+  });
   it("rejects corrupt persisted or impossible accepted states", () => {
     expect(parseIntroDeal({ version: 3, phase: "continuation", acceptedShare: null })).toEqual(EMPTY_INTRO_DEAL);
     expect(parseIntroDeal({ version: 3, phase: "offer10", acceptedShare: 20 })).toEqual(EMPTY_INTRO_DEAL);

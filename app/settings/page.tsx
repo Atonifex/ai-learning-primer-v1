@@ -2,6 +2,7 @@ import Link from "next/link";
 import { requireChildPage } from "../../lib/auth/pageGuards";
 import ReadingLevelForm from "../../components/settings/ReadingLevelForm";
 import CaptainNameForm from "../../components/settings/CaptainNameForm";
+import AccountSwitchButton from "../../components/settings/AccountSwitchButton";
 
 export default async function SettingsPage() {
   const { profile } = await requireChildPage();
@@ -28,12 +29,16 @@ export default async function SettingsPage() {
         captainName={profile.displayName}
       />
 
+      <AccountSwitchButton />
+
+      <p className="mt-6 text-sm text-stone-600">Parents can view recorded usage and standards progress from their household dashboard after signing in with their parent account.</p>
+
       <section className="mt-8 rounded-xl border border-dashed border-stone-200 bg-stone-50/80 p-5">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-stone-500">
           Coming later
         </h2>
         <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-stone-600">
-          <li>Weekly parent report (dashboard, email, PDF)</li>
+          <li>Printable parent report from dashboard evidence</li>
           <li>Automatic advance to Grade 4 standards after G3 checkpoints</li>
           <li>Placement quiz to set reading level without guessing</li>
         </ul>

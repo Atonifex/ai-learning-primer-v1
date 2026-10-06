@@ -1,11 +1,36 @@
 {
-  "complete": false,
+  "complete": true,
   "captionVersion": 2,
   "summary": [
     {
       "name": "briefing",
       "duration": 84.021333,
       "bytes": 43758887
+    },
+    {
+      "name": "offer15",
+      "duration": 7.021333,
+      "bytes": 1089016
+    },
+    {
+      "name": "offer20",
+      "duration": 7.021333,
+      "bytes": 1083252
+    },
+    {
+      "name": "continuation",
+      "duration": 120.521333,
+      "bytes": 51643165
+    },
+    {
+      "name": "preview10",
+      "duration": 204.521333,
+      "bytes": 75944904
+    },
+    {
+      "name": "preview20",
+      "duration": 218.521333,
+      "bytes": 78114361
     }
   ],
   "mp4s": [
@@ -18,48 +43,176 @@
       "bytes": 43758887
     },
     {
+      "file": "continuation-clean.mp4",
+      "bytes": 51584304
+    },
+    {
+      "file": "continuation.mp4",
+      "bytes": 51643165
+    },
+    {
+      "file": "offer15-clean.mp4",
+      "bytes": 1088334
+    },
+    {
+      "file": "offer15.mp4",
+      "bytes": 1089016
+    },
+    {
+      "file": "offer20-clean.mp4",
+      "bytes": 1082595
+    },
+    {
+      "file": "offer20.mp4",
+      "bytes": 1083252
+    },
+    {
+      "file": "preview10-clean.mp4",
+      "bytes": 75880867
+    },
+    {
+      "file": "preview10.mp4",
+      "bytes": 75944904
+    },
+    {
+      "file": "preview20-clean.mp4",
+      "bytes": 78048946
+    },
+    {
+      "file": "preview20.mp4",
+      "bytes": 78114361
+    },
+    {
       "file": "waiting-loop.mp4",
-      "bytes": 317621
+      "bytes": 309242
+    },
+    {
+      "file": "sources\\c01-edit.mp4",
+      "bytes": 2635317
     },
     {
       "file": "sources\\c01.mp4",
       "bytes": 3367588
     },
     {
+      "file": "sources\\c02-edit.mp4",
+      "bytes": 3543839
+    },
+    {
       "file": "sources\\c02.mp4",
       "bytes": 18580438
+    },
+    {
+      "file": "sources\\c03-edit.mp4",
+      "bytes": 1930865
     },
     {
       "file": "sources\\c03.mp4",
       "bytes": 8581176
     },
     {
+      "file": "sources\\c04-edit.mp4",
+      "bytes": 1283467
+    },
+    {
       "file": "sources\\c04.mp4",
       "bytes": 6986539
+    },
+    {
+      "file": "sources\\c05-edit.mp4",
+      "bytes": 6031398
     },
     {
       "file": "sources\\c05.mp4",
       "bytes": 22149399
     },
     {
+      "file": "sources\\c06-edit.mp4",
+      "bytes": 3858977
+    },
+    {
       "file": "sources\\c06.mp4",
       "bytes": 23038064
+    },
+    {
+      "file": "sources\\c07-edit.mp4",
+      "bytes": 3766883
     },
     {
       "file": "sources\\c07.mp4",
       "bytes": 18016937
     },
     {
+      "file": "sources\\c08-edit.mp4",
+      "bytes": 2352897
+    },
+    {
       "file": "sources\\c08.mp4",
       "bytes": 13511955
+    },
+    {
+      "file": "sources\\c09-edit.mp4",
+      "bytes": 2661288
     },
     {
       "file": "sources\\c09.mp4",
       "bytes": 17515318
     },
     {
+      "file": "sources\\c10-edit.mp4",
+      "bytes": 3150841
+    },
+    {
       "file": "sources\\c10.mp4",
-      "bytes": 19647119
+      "bytes": 15247530
+    },
+    {
+      "file": "sources\\c11-edit.mp4",
+      "bytes": 3519941
+    },
+    {
+      "file": "sources\\c11.mp4",
+      "bytes": 19421054
+    },
+    {
+      "file": "sources\\c12-edit.mp4",
+      "bytes": 4996905
+    },
+    {
+      "file": "sources\\c12.mp4",
+      "bytes": 20884930
+    },
+    {
+      "file": "sources\\c13-edit.mp4",
+      "bytes": 2939902
+    },
+    {
+      "file": "sources\\c13.mp4",
+      "bytes": 19323013
+    },
+    {
+      "file": "sources\\c14-edit.mp4",
+      "bytes": 4174205
+    },
+    {
+      "file": "sources\\c14.mp4",
+      "bytes": 21967475
+    },
+    {
+      "file": "sources\\c15-edit.mp4",
+      "bytes": 2446721
+    },
+    {
+      "file": "sources\\c15.mp4",
+      "bytes": 13828810
+    },
+    {
+      "file": "sources\\c16-edit.mp4",
+      "bytes": 2311270
+    },
+    {
+      "file": "sources\\c16.mp4",
+      "bytes": 11556972
     },
     {
       "file": "sources\\g01-edit.mp4",
@@ -126,12 +279,24 @@
       "bytes": 11077785
     },
     {
+      "file": "sources\\n15-edit.mp4",
+      "bytes": 1088281
+    },
+    {
       "file": "sources\\n15.mp4",
       "bytes": 5418888
     },
     {
+      "file": "sources\\n20-edit.mp4",
+      "bytes": 1082542
+    },
+    {
       "file": "sources\\n20.mp4",
       "bytes": 5916582
+    },
+    {
+      "file": "sources\\wait-edit.mp4",
+      "bytes": 276209
     },
     {
       "file": "sources\\wait.mp4",
@@ -156,6 +321,10 @@
     {
       "file": "attempts\\c08-0\\c08.mp4",
       "bytes": 22604020
+    },
+    {
+      "file": "attempts\\c10-0\\c10.mp4",
+      "bytes": 19647119
     },
     {
       "file": "attempts\\g08-0\\g08.mp4",

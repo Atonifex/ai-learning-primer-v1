@@ -35,8 +35,8 @@ describe("beachMap", () => {
     expect(SPAWN_COL).toBe(wreck!.col);
   });
 
-  it("has about five tutorial pins with wreck unlocked", () => {
-    expect(TUTORIAL_PINS).toHaveLength(5);
+  it("keeps the current wreck, Treeline and camp tutorial pins with wreck unlocked", () => {
+    expect(TUTORIAL_PINS.map((pin) => pin.id)).toEqual(["wreck", "treeline", "camp"]);
     expect(TUTORIAL_PINS.filter((p) => !p.lockedUntilQuiz).map((p) => p.id)).toEqual([
       "wreck",
     ]);

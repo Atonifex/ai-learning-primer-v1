@@ -2,16 +2,19 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import { EmbeddedActivity } from "./ActivitySurface";
-import { useDialogFocus } from "./useDialogFocus";
+import { restoreWorkspaceFocus, useDialogFocus } from "./useDialogFocus";
 
 export default function ContentWorkspace(props: {
   title: string; narrow: boolean; maximized: boolean;
   hidden?: boolean;
+  restoreFocus?: () => void;
   onMaximize: () => void; onClose?: () => void; children: ReactNode;
 }) {
-  const ref = useDialogFocus(props.onClose, props.narrow && !props.hidden);
+  const ref = useDialogFocus(props.onClose, props.narrow && !props.hidden, props.restoreFocus);
   const opener = useRef<HTMLElement | null>(null);
-  const onClose = useRef(props.onClose); onClose.current = props.onClose;
+  const onClose = useRef(props.onClose);
+  const restore = useRef(props.restoreFocus);
+  useEffect(() => { onClose.current = props.onClose; restore.current = props.restoreFocus; }, [props.onClose, props.restoreFocus]);
   useEffect(() => {
     if (props.hidden) return;
     opener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
@@ -22,7 +25,7 @@ export default function ContentWorkspace(props: {
       event.preventDefault(); onClose.current();
     };
     const el = ref.current; el?.addEventListener("keydown", key);
-    return () => { el?.removeEventListener("keydown", key); if (!props.narrow && opener.current?.isConnected) opener.current.focus(); };
+    return () => { el?.removeEventListener("keydown", key); if (!props.narrow) { if (restore.current) restore.current(); else restoreWorkspaceFocus(opener.current); } };
   }, [props.narrow, props.hidden, ref]);
   return <section ref={ref} hidden={props.hidden} inert={props.hidden || undefined} tabIndex={-1} className="content-workspace" data-testid="content-workspace"
     role={props.narrow ? "dialog" : "region"} aria-modal={props.narrow || undefined} aria-label={props.title}>

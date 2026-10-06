@@ -77,11 +77,11 @@ Read `PROJECT_MEMORY.md` before project work and update it concisely after meani
 
 ## F12 — Camp resource module (budget + rations + materials + upgrades)
 
+- **Status:** lesson 1 shipped. Teach → budget (no spend) → buy one affordable upgrade. Codes locked: `MA.3.NSO.2.1`, `MA.3.NSO.2.4`, `MA.3.AR.1.2`. `MA.3.NSO.2.2` and `MA.3.NSO.2.3` are structured for a later lesson and are not scored. Mission slug is `g3-ma-camp-resource-plan`.
 - **Date / origin:** 2026-10-06, Ivan. Comprehensive Camp math: budgeting, rationing, materials lists, and an upgrade ladder; manual ops only; grade-scaled via catalog codes. Retire search-grid “paces × parties” as the Camp driver (not intuitive).
-- **Status:** accepted direction; not implemented. Mission title/theme updated to “Camp resource plan”; still points at old bank slug until replaced.
 - **Proposed Grade 3 code candidates (verify in `standards_math_grade3.ts` before lock):** `MA.3.NSO.2.1` (+/−), `MA.3.NSO.2.2` / `MA.3.NSO.2.4` (×÷ facts), `MA.3.AR.1.2` (one-/two-step real-world), optionally `MA.3.NSO.2.3` (× tens) only if a real materials pack size needs it — not a grid walk.
 - **World reward:** choosing an upgrade spends authored costs; camp stage/resources update from the learner’s correct plan.
-- **Promotion:** author cost tables + teach/practice/apply for lesson 1, lock codes, replace `g3-ma-search-grid-tens` as Camp mission slug.
+- **Promotion:** lesson 1 cost table, teach/practice/budget/buy, and slug replacement are in. Next: score `MA.3.NSO.2.2`, then `MA.3.NSO.2.3`, on this same ladder.
 
 ## F07 — Visible learning goals, flexible routes and consequential mastery
 

@@ -38,8 +38,16 @@ export function createLandmark(node: WorldNode, onSelect: () => void) {
     g.moveTo(-9, 3).lineTo(0, -52).stroke({ color: 0x684e39, width: 5 });
     g.poly([0, -51, 28, -37, 0, -24]).fill(0xf3e6bd);
     g.roundRect(-44, 10, 18, 17, 3).fill(0xb69259).stroke({ color: 0x745839, width: 2 });
-  } else if (node.kind === "camp" || node.kind === "shelter") {
+  } else   if (node.kind === "camp" || node.kind === "shelter") {
     drawCamp(g, node.kind === "camp" ? (node.campStage ?? "clearing") : "tent");
+    if (node.campUpgrade === "rain-cover") {
+      g.poly([-42, 2, -4, -22, 40, 2]).fill({ color: 0xd5e4ea, alpha: 0.9 });
+      g.moveTo(-42, 2).lineTo(-4, -22).lineTo(40, 2).stroke({ color: 0x8aa4ae, width: 2 });
+    }
+    if (node.campUpgrade === "ration-stores") {
+      g.roundRect(-48, 4, 14, 18, 2).fill(0x8d6a3a).stroke({ color: 0x5c4324, width: 2 });
+      g.rect(-46, 10, 10, 2).fill(0xc4a06a);
+    }
   } else if (node.kind === "treeline" || node.kind === "grove") {
     [-18, 6, 25].forEach((x, i) => {
       g.rect(x - 3, -12, 6, 27).fill(0x79613c);

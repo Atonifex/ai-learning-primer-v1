@@ -1,0 +1,97 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 7.03000020980835,
+  "text": "Start with the wreck. What food and tools can we save?",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 2.7799999713897705,
+      "end": 6.619999885559082,
+      "text": " Start with the wreck. What food and tools can we save?",
+      "tokens": [
+        50414,
+        6481,
+        365,
+        264,
+        21478,
+        13,
+        708,
+        1755,
+        293,
+        3873,
+        393,
+        321,
+        3155,
+        30,
+        50714
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.5082756876945496,
+      "compression_ratio": 0.8709677457809448,
+      "no_speech_prob": 0.23289954662322998
+    }
+  ],
+  "words": [
+    {
+      "word": "Start",
+      "start": 2.7799999713897705,
+      "end": 3.3399999141693115
+    },
+    {
+      "word": "with",
+      "start": 3.3399999141693115,
+      "end": 3.5799999237060547
+    },
+    {
+      "word": "the",
+      "start": 3.5799999237060547,
+      "end": 3.9000000953674316
+    },
+    {
+      "word": "wreck",
+      "start": 3.9000000953674316,
+      "end": 3.9600000381469727
+    },
+    {
+      "word": "What",
+      "start": 4.960000038146973,
+      "end": 5.079999923706055
+    },
+    {
+      "word": "food",
+      "start": 5.079999923706055,
+      "end": 5.460000038146973
+    },
+    {
+      "word": "and",
+      "start": 5.460000038146973,
+      "end": 5.980000019073486
+    },
+    {
+      "word": "tools",
+      "start": 5.980000019073486,
+      "end": 5.980000019073486
+    },
+    {
+      "word": "can",
+      "start": 5.980000019073486,
+      "end": 6.179999828338623
+    },
+    {
+      "word": "we",
+      "start": 6.179999828338623,
+      "end": 6.420000076293945
+    },
+    {
+      "word": "save",
+      "start": 6.420000076293945,
+      "end": 6.619999885559082
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 8
+  }
+}

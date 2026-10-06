@@ -5,7 +5,9 @@
     "duration": 8,
     "line": "Welcome to planet Maya, Captain. I'm Sergeant Wilhelm of Merchant Corp.",
     "speaker": "Wilhelm",
-    "audioGain": 1
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
   },
   "g02": {
     "start": 0,
@@ -13,7 +15,9 @@
     "duration": 9,
     "line": "I know you're coming to our planet for the first time, and your skills will come in handy.",
     "speaker": "Wilhelm",
-    "audioGain": 1
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
   },
   "g03": {
     "start": 0,
@@ -21,7 +25,9 @@
     "duration": 12,
     "line": "Here at Merchant Corp, we gather resources like lumber, oil, and other rare resources, then sell them to people on other planets.",
     "speaker": "Wilhelm",
-    "audioGain": 1
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
   },
   "g04": {
     "start": 0,
@@ -29,7 +35,9 @@
     "duration": 8,
     "line": "However, it's getting harder to find these resources. That's why we need you to help us.",
     "speaker": "Wilhelm",
-    "audioGain": 1
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
   },
   "g05": {
     "start": 0,
@@ -37,7 +45,9 @@
     "duration": 5,
     "line": "We've just found Fortuna. No team has explored it.",
     "speaker": "Wilhelm",
-    "audioGain": 1
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
   },
   "g06": {
     "start": 0,
@@ -45,7 +55,9 @@
     "duration": 12,
     "line": "It's far from our main base. It may have oil, gold, and useful wood. But storms and wild animals may make the trip dangerous.",
     "speaker": "Wilhelm VO",
-    "audioGain": 1
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
   },
   "g07": {
     "start": 0,
@@ -53,7 +65,9 @@
     "duration": 15,
     "line": "Explore Fortuna and report what you find. If the resources are there and the site is safe, we'll ask you to build a base and start collecting them.",
     "speaker": "Wilhelm",
-    "audioGain": 1
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
   },
   "g08": {
     "start": 0,
@@ -61,6 +75,198 @@
     "duration": 15,
     "line": "You'll lead your own crew, build your own base, and get ten percent of the profit after costs. That's the money left after costs. Will you take the mission?",
     "speaker": "Wilhelm",
-    "audioGain": 1
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "n15": {
+    "start": 0,
+    "end": 7,
+    "duration": 7,
+    "line": "You want more? All right. Fifteen percent. Do we have a deal?",
+    "speaker": "Wilhelm",
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "n20": {
+    "start": 0,
+    "end": 7,
+    "duration": 7,
+    "line": "Again? Twenty percent. That's my final offer.",
+    "speaker": "Wilhelm",
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "wait": {
+    "start": 0,
+    "end": 3,
+    "duration": 3,
+    "line": "",
+    "speaker": null,
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "c01": {
+    "start": 0,
+    "end": 7.5,
+    "duration": 7.5,
+    "line": "We have a deal. Meet Rho, your first mate.",
+    "speaker": "Wilhelm",
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "c02": {
+    "start": 0,
+    "end": 12,
+    "duration": 12,
+    "line": "I'm Rho, your first mate. I'll help you learn about Maya and Fortuna, and guide you along the way.",
+    "speaker": "Rho",
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "c03": {
+    "start": 0,
+    "end": 4,
+    "duration": 4,
+    "line": "",
+    "speaker": null,
+    "audioGain": 0.35,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "c04": {
+    "start": 0,
+    "end": 4,
+    "duration": 4,
+    "line": "Crew ready. The path is clear.",
+    "speaker": "Rho",
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "c05": {
+    "start": 0,
+    "end": 8,
+    "duration": 8,
+    "line": "",
+    "speaker": null,
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "c06": {
+    "start": 0,
+    "end": 6,
+    "duration": 6,
+    "line": "",
+    "speaker": null,
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "c07": {
+    "start": 0,
+    "end": 7,
+    "duration": 7,
+    "line": "That storm is moving fast. Turn back!",
+    "speaker": "Rho",
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "c08": {
+    "start": 0,
+    "end": 6,
+    "duration": 6,
+    "line": "",
+    "speaker": null,
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "c09": {
+    "start": 0,
+    "end": 7,
+    "duration": 7,
+    "line": "The engine's on fire! We're losing power!",
+    "speaker": "Rho",
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "c10": {
+    "start": 0,
+    "end": 7,
+    "duration": 7,
+    "line": "Crew, get ready! Captain, pull the blue handle!",
+    "speaker": "Rho",
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "c11": {
+    "start": 0,
+    "end": 7,
+    "duration": 7,
+    "line": "",
+    "speaker": null,
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "c12": {
+    "start": 0,
+    "end": 7,
+    "duration": 7,
+    "line": "",
+    "speaker": null,
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0.4
+  },
+  "c13": {
+    "start": 0,
+    "end": 7,
+    "duration": 7,
+    "line": "Captain. Are you all right?",
+    "speaker": "Rho",
+    "audioGain": 1,
+    "fadeIn": 0.4,
+    "fadeOut": 0
+  },
+  "c14": {
+    "start": 0,
+    "end": 15,
+    "duration": 15,
+    "line": "The crew is scattered. We can't reach the base. You're still the captain. Find the crew. Build a camp. We'll rebuild the ship. I'll help you learn to lead.",
+    "speaker": "Rho",
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "c15": {
+    "start": 0,
+    "end": 9,
+    "duration": 9,
+    "line": "One day, you could lead a space empire. First, let's get your crew home.",
+    "speaker": "Rho",
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
+  },
+  "c16": {
+    "start": 0,
+    "end": 7,
+    "duration": 7,
+    "line": "Start with the wreck. What food and tools can we save?",
+    "speaker": "Rho",
+    "audioGain": 1,
+    "fadeIn": 0,
+    "fadeOut": 0
   }
 }

@@ -627,6 +627,8 @@ model CampState {
   crew             Json
   /// Deterministic Treeline garden beds (lib/play/gardenPlot.ts). Null until first open.
   garden           Json?
+  /// Camp resource plan: budget then one upgrade (lib/play/campPlan.ts). Null until first open.
+  campPlan         Json?
   createdAt        DateTime       @default(now())
   updatedAt        DateTime       @updatedAt
 }

@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 const db = vi.hoisted(() => ({
   storyWorld: { findUniqueOrThrow: vi.fn() }, session: { findMany: vi.fn(), findFirst: vi.fn() },
   worldLedgerEntry: { findMany: vi.fn(), upsert: vi.fn() }, learningActivity: { findMany: vi.fn(), findUnique: vi.fn() },
+  campState: { findUnique: vi.fn() },
 }));
 vi.mock("../db/prisma", () => ({ prisma: db }));
 vi.mock("./missions", () => ({ getMissionBoard: vi.fn(async () => ({ missions: [] })) }));
@@ -10,6 +11,7 @@ import { getWorldSnapshot, getWorldActivity, saveMapNote } from "./worldMap";
 
 beforeEach(() => {
   vi.clearAllMocks();
+  db.campState.findUnique.mockResolvedValue(null);
   db.storyWorld.findUniqueOrThrow.mockResolvedValue({ id: "world", storyArcs: [{ chapters: [] }] });
   db.session.findMany.mockResolvedValue([{ id: "own-session" }]);
   db.worldLedgerEntry.findMany.mockResolvedValue([]); db.learningActivity.findMany.mockResolvedValue([]);

@@ -56,6 +56,9 @@ export async function createBeachWorld(host: HTMLDivElement, callbacks: BeachWor
     const y = Math.max(0, Math.min(worldHeight() - viewH + 65, captain.y - viewH * .56));
     const factor = snap || reduceMotion ? 1 : .12;
     world.x += (-x * scale - world.x) * factor; world.y += (-y * scale - world.y) * factor;
+    const screenX = world.x + captain.x * scale, screenY = world.y + captain.y * scale;
+    host.dataset.captainVisible = String(screenX >= 0 && screenX <= width && screenY >= 0 && screenY <= height);
+    host.dataset.captainPosition = `${captain.x}:${captain.y}`;
   }
   function move(x: number, y: number) {
     if (worldWalkable(Math.floor(x / TILE), Math.floor(y / TILE), access())) captain.position.set(x, y);
@@ -93,8 +96,16 @@ export async function createBeachWorld(host: HTMLDivElement, callbacks: BeachWor
     if (pos !== lastPosition) { lastPosition = pos; callbacks.onPosition({ x: captain.x, y: captain.y }); }
   });
   updateCamera(true);
+  // Host size changes when dialogue/workspace opens, even while the ticker is stopped.
+  const resizeObserver = new ResizeObserver(() => {
+    if (destroyed || !host.clientWidth || !host.clientHeight) return;
+    app.renderer.resize(host.clientWidth, host.clientHeight);
+    app.stage.hitArea = app.screen;
+    updateCamera(true); app.render();
+  });
+  resizeObserver.observe(host);
   return {
-    destroy() { if (destroyed) return; destroyed = true; window.removeEventListener("keydown", onKeyDown); window.removeEventListener("keyup", onKeyUp); window.removeEventListener("blur", onBlur); app.destroy({ removeView: true }, { children: true }); },
+    destroy() { if (destroyed) return; destroyed = true; resizeObserver.disconnect(); window.removeEventListener("keydown", onKeyDown); window.removeEventListener("keyup", onKeyUp); window.removeEventListener("blur", onBlur); app.destroy({ removeView: true }, { children: true }); },
     setPaused(value) { paused = value; if (value) { keys.clear(); app.ticker.stop(); updateCamera(true); app.render(); } else app.ticker.start(); },
     setWorld(value) {
       state = value;

@@ -16,6 +16,10 @@
 .dialogue-audio { position: relative; }
 .dialogue-audio summary { display: flex; align-items: center; cursor: pointer; }
 .dialogue-audio > div { position: absolute; right: 0; bottom: 100%; display: flex; padding: 5px; background: #fff8ea; border: 1px solid #b8bf9f; border-radius: 10px; box-shadow: 0 4px 12px #082b3233; z-index: 3; }
+.play-world[data-narrow=false] .dialogue-audio summary { display: none; }
+.play-world[data-narrow=false] .dialogue-audio > div { position: static; background: none; padding: 0; border: 0; box-shadow: none; }
+.play-world .leave-confirmation { top: calc(100% - var(--dialogue-height)); }
+.play-world[data-panel=true] .world-resources [data-testid=day0-checklist] { display: none; }
 .dialogue-reading { display: flex; flex: 1; flex-direction: column; min-height: 40px; position: relative; }
 .dialogue-reading .messages-scroll { padding: 10px 18px; }
 .dialogue-reading .messages-scroll > div:first-child { max-width: 80ch; }
@@ -53,6 +57,7 @@
 .activity-surface { position: relative; width: 100%; min-height: 0; flex: 1; }
 .activity-surface > div { width: 100%; max-width: none; max-height: none; border: 0; border-radius: 0; box-shadow: none; }
 .activity-surface > div > [class*=max-h-] { max-height: none; overflow-y: visible; }
+.activity-surface button { min-height: 44px; }
 .workspace-body .world-atlas { position: relative; display: flex; flex-direction: column; margin: 0; width: 100%; height: 100%; min-height: 350px; border: 0; border-radius: 0; box-shadow: none; }
 .workspace-body .atlas-header { padding: 10px 14px; }
 .workspace-body .atlas-header h2 { font-size: 24px; }
@@ -65,6 +70,9 @@
 .play-world .dialogue-dock :is(button,summary,textarea):focus-visible, .content-workspace :is(button,textarea,input,select):focus-visible { outline: 3px solid #bd7936; outline-offset: -3px; }
 .play-world[data-conversation=true] > .world-toolbar, .play-world[data-conversation=true] .world-minimap, .play-world[data-conversation=true] .world-controls, .play-world[data-conversation=true] .world-location { display: none; }
 .play-world[data-narrow=true] .dialogue-dock { grid-template-columns: minmax(0,1fr) 84px; }
+.play-world[data-narrow=true][data-conversation=true] .world-resources [data-testid=day0-checklist],
+.play-world[data-narrow=true][data-conversation=true] .world-resources [data-testid=resource-hud] > p:not([data-testid=chapter-problem]),
+.play-world[data-narrow=true][data-conversation=true] .world-resources [data-testid=resource-hud] > div { display: none; }
 .play-world[data-narrow=true] .dialogue-header { align-items: flex-start; flex-direction: column; gap: 0; padding: 5px 8px; }
 .play-world[data-narrow=true] .dialogue-header > p { font-size: 13px; }
 .play-world[data-narrow=true] .dialogue-controls { flex-wrap: wrap; gap: 0; }

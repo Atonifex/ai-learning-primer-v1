@@ -42,17 +42,17 @@ export default function ConceptPopup({
       }
     }
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") { e.preventDefault(); e.stopPropagation(); onClose(); }
     }
     // Defer mousedown listener so the opening click doesn't immediately close the popup
     const timer = setTimeout(() => {
       document.addEventListener("mousedown", handleMouseDown);
     }, 0);
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown, true);
     return () => {
       clearTimeout(timer);
       document.removeEventListener("mousedown", handleMouseDown);
-      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown, true);
     };
   }, [onClose]);
 

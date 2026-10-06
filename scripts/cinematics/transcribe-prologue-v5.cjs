@@ -4,7 +4,7 @@ const root=path.resolve(__dirname,'../..'); require('dotenv').config({path:path.
 const dir=path.join(root,'public/cinematics/prologue-v5');
 (async()=>{
  if(!process.env.OPENAI_API_KEY)throw Error('Transcription credential unavailable; no secret displayed');
- const id=process.argv[2],second=process.argv[3]==='second'; const file=path.join(dir,'audio',id+'.wav'); const target=path.join(dir,'review',id+(second?'-second':'')+'-transcript.json');
- let r;if(fs.existsSync(target))r=JSON.parse(fs.readFileSync(target));else{r=await new OpenAI().audio.transcriptions.create({file:fs.createReadStream(file),model:second?'gpt-4o-transcribe':'whisper-1',language:'en',response_format:second?'json':'verbose_json',...(second?{}:{timestamp_granularities:['word','segment']})});fs.writeFileSync(target,JSON.stringify(r,null,2));}
+ const id=process.argv[2],second=process.argv[3]==='second',timing=process.argv[3]==='timing'; const file=path.join(dir,'audio',id+'.wav'); const target=path.join(dir,'review',id+(second?'-second':timing?'-timing':'')+'-transcript.json');
+ let r;if(fs.existsSync(target))r=JSON.parse(fs.readFileSync(target));else{r=await new OpenAI().audio.transcriptions.create({file:fs.createReadStream(file),model:second?'gpt-4o-transcribe':'whisper-1',language:'en',response_format:second?'json':'verbose_json',...(second?{}:{timestamp_granularities:['word','segment']}),...(timing?{prompt:JSON.parse(fs.readFileSync(path.join(dir,'shots.json'))).scenes.find(s=>s.id===id).line}:{})});fs.writeFileSync(target,JSON.stringify(r,null,2));}
  console.log(JSON.stringify({id,text:r.text,words:r.words}));
 })().catch(e=>{console.error(e.message);process.exitCode=1;});

@@ -7,6 +7,7 @@ async function openIntro(page: Page) {
   await page.goto(body.learnUrl, { waitUntil: "domcontentloaded" });
   await expect(page.getByTestId("play-shell")).toHaveAttribute("data-ready", "true", { timeout: 30000 });
   await expect(page.locator('[data-intro-phase="briefing"] video')).toBeVisible();
+  await expect(page.locator("video")).toHaveAttribute("src", "/cinematics/prologue-v5/briefing.mp4");
 }
 async function finishClip(page: Page) {
   const clip = page.locator("video");
@@ -39,6 +40,7 @@ for (const share of [10, 15, 20]) test(`intro saves ${share}% and resumes withou
   }
   await page.getByRole("button", { name: "Yes", exact: true }).click();
   await expect(page.locator('[data-intro-phase="continuation"]')).toBeVisible();
+  await expect(page.locator("video")).toHaveAttribute("poster", "/cinematics/prologue-v5/references/accepted-thumb.png");
   const saved = await page.request.get("/api/profile/intro");
   expect((await saved.json()).deal.acceptedShare).toBe(share);
   await page.reload({ waitUntil: "domcontentloaded" });
@@ -47,6 +49,10 @@ for (const share of [10, 15, 20]) test(`intro saves ${share}% and resumes withou
   await finishClip(page);
   await expect(page.getByRole("button", { name: "Go to the beach" })).toBeVisible();
   expect((await (await page.request.get("/api/profile/intro")).json()).deal.acceptedShare).toBe(share);
+  await expect(page.getByText("Start at the wreck. Find food and tools.", { exact: true })).toBeVisible();
+  await expect(page.locator('[data-intro-phase="complete"] img')).toHaveAttribute("src", "/cinematics/prologue-v5/references/c16-tail.png");
+  await page.getByRole("button", { name: "Go to the beach" }).click();
+  await expect(page.getByTestId("learning-purpose-card")).toBeVisible();
 });
 test("sound, captions, pause and Skip are available without accepting a deal", async ({ page }) => {
   await openIntro(page);

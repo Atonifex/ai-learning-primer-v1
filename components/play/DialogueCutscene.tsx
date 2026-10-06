@@ -57,8 +57,8 @@ export default function DialogueCutscene(props: {
           <p>Talking with {speaker.name}</p>
           <div className="dialogue-controls">
             {props.onHistory && <button type="button" aria-pressed={props.historyOpen} onClick={props.onHistory}>History</button>}
-            {props.onOpenMap && <button type="button" onClick={props.onOpenMap}>Island map</button>}
-            {hasVoice && <details className="dialogue-audio"><summary>Audio</summary><div>
+            {props.onOpenMap && <button type="button" disabled={props.workBusy} onClick={props.onOpenMap}>Island map</button>}
+            {hasVoice && <details className="dialogue-audio" open={!props.narrow}><summary>Audio</summary><div>
               <button type="button" role="switch" aria-checked={tts.autoRead} aria-label={`Automatic reading by ${speaker.name}`} onClick={() => tts.setAutoRead(!tts.autoRead)}>{tts.autoRead ? "Auto read" : "Auto read off"}</button>
               <button type="button" aria-pressed={!tts.muted} aria-label={`Turn ${speaker.name}'s voice ${tts.muted ? "on" : "off"}`} onClick={() => tts.setMuted(!tts.muted)}>{tts.muted ? "Voice off" : "Voice on"}</button>
             </div></details>}
@@ -66,13 +66,13 @@ export default function DialogueCutscene(props: {
           </div>
         </header>
         <div className="dialogue-reading">
-          {props.worldUpdate && props.onOpenMap && <button type="button" onClick={props.onOpenMap} className="dock-world-update">{props.worldUpdate} · View on map</button>}
+          {props.worldUpdate && props.onOpenMap && <button type="button" disabled={props.workBusy} onClick={props.onOpenMap} className="dock-world-update">{props.worldUpdate} · View on map</button>}
           <MessageList messages={latestExchange(props.messages)} containedDefinitions speakerName={speaker.name}
             hearingId={tts.playingId} hearLoading={tts.loading} onHear={hear} />
         </div>
         <div className="dialogue-decisions">
           {props.storyUi?.branchPoint && <BranchPickPanel sessionId={props.sessionId} branchPoint={props.storyUi.branchPoint} onResolved={(id) => props.onBranchResolved?.(id)} />}
-          {showChoices && props.captainChoices && <CaptainChoicePanel choices={props.captainChoices} disabled={props.streaming} onPick={(option) => props.onSend(formatCaptainChoiceReply(option))} />}
+          {showChoices && props.captainChoices && <CaptainChoicePanel choices={props.captainChoices} disabled={props.streaming || props.workBusy} onPick={(option) => props.onSend(formatCaptainChoiceReply(option))} />}
         </div>
         {props.streaming && <p className="dialogue-thinking" role="status">{props.thinkingLabel}</p>}
         <InputBar onSend={props.onSend} onMicStart={stop} disabled={props.streaming || props.workBusy || Boolean(props.storyUi?.branchPoint)} speakFirst

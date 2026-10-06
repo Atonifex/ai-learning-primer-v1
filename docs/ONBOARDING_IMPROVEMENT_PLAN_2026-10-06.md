@@ -2,6 +2,8 @@
 
 **Status: draft for Ivan to review. Do not implement this plan until he approves a slice.** Changes explicitly requested earlier (shared invitation, subject-purpose explanations, removing repeated naming, captain-name settings and teaching contracts) are separate existing work; this plan does not authorize additional UI, story, curriculum, paid media or deployment changes.
 
+**Subsequent decision, 2026-10-06:** Ivan approved Slice A parent identity/handoff, then requested a parent dashboard with student usage and standards progress. Weekly email is unnecessary and excluded. Slice B teaching and Slice D bottom dialogue belong to separate Codex agents and are outside this task. The draft below records the original review proposal; implemented scope and validation are in PROJECT_MEMORY and MASTER §15/§18.
+
 Read PROJECT_MEMORY.md before continuing and update it concisely after meaningful discoveries. MASTER remains the product source of truth; promote only the approved slice before building.
 
 ## Goal and evidence

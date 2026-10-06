@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Button from "../ui/Button";
@@ -32,12 +32,14 @@ export default function HouseholdHome() {
   const [loading, setLoading] = useState(true);
   const [waking, setWaking] = useState<string | null>(null);
   const [ready, setReady] = useState<Captain | null>(null);
+  const readyHeading = useRef<HTMLHeadingElement>(null);
   const [displayName, setDisplayName] = useState("");
 
   const [username, setUsername] = useState("");
   const [pin, setPin] = useState("");
   const [gradeBand, setGradeBand] = useState<LearnerGradeBand>(DEFAULT_GRADE_BAND);
   const [saving, setSaving] = useState(false);
+  useEffect(() => { if (ready) readyHeading.current?.focus(); }, [ready]);
 
   async function refresh() {
     const res = await fetch("/api/household/captains");
@@ -69,6 +71,7 @@ export default function HouseholdHome() {
 
   async function handleAdd(e: React.FormEvent) {
     e.preventDefault();
+    if (saving) return;
     setError("");
     setSaving(true);
     try {
@@ -116,8 +119,9 @@ export default function HouseholdHome() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Could not wake captain");
-      router.push("/learn");
-      router.refresh();
+      // This is an account boundary: start a fresh document so cached parent/student
+      // route content cannot be reused for a different captain.
+      window.location.assign("/learn");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Could not wake captain");
       setWaking(null);
@@ -159,12 +163,12 @@ export default function HouseholdHome() {
 
       {!loading && (
         <section aria-label="First session and handoff" className="mt-6 rounded-2xl border border-teal-200 bg-teal-50 p-5">
-          <h2 className="text-lg font-semibold text-teal-950">{ready ? `${captainDisplayName(ready.displayName, ready.username)} is ready` : "What happens in the first session?"}</h2>
+          <h2 ref={readyHeading} tabIndex={-1} className="text-lg font-semibold text-teal-950">{ready ? `${captainDisplayName(ready.displayName, ready.username)} is ready` : "What happens in the first session?"}</h2>
           <p className="mt-2 text-sm leading-relaxed text-stone-700">Your student meets Rho, discovers how useful skills help the crew, and tries a starting check so Rho can choose helpful practice. They can pause or skip the intro. They don’t need to know everything yet.</p>
           {ready && <>
             <p className="mt-3 text-sm text-stone-700">Opening switches this device to your student’s account. Hand it over once their session opens. Their saved work stays with their captain.</p>
-            <p className="mt-3 text-sm text-stone-700">Next time: choose Captain on the sign-in screen and use <strong>{ready.username}</strong> with the PIN you set. To return as a parent, sign out of the student account and sign in with your parent email and password.</p>
-            <Button className="mt-4 w-full" type="button" disabled={waking !== null} onClick={() => void wake(ready.userId)}>{waking ? "Opening…" : `Open ${captainDisplayName(ready.displayName, ready.username)}’s learning`}</Button>
+            <p className="mt-3 text-sm text-stone-700">Next time: choose Captain on the sign-in screen and use <strong>{ready.username}</strong> with the PIN you set. To return as a parent, open Settings, choose Switch account, then sign in with your parent email and password.</p>
+            <Button className="mt-4 min-h-11 w-full" type="button" disabled={waking !== null} onClick={() => void wake(ready.userId)}>{waking ? "Opening…" : `Open ${captainDisplayName(ready.displayName, ready.username)}’s learning`}</Button>
           </>}
         </section>
       )}
@@ -175,7 +179,7 @@ export default function HouseholdHome() {
             key={c.userId}
             className="flex items-center justify-between rounded-2xl border border-stone-200 bg-white px-4 py-3"
           >
-            <div>
+            <div className="min-w-0 break-words">
               <p className="font-medium text-stone-900">
                 {captainDisplayName(c.displayName, c.username)}
               </p>
@@ -186,6 +190,7 @@ export default function HouseholdHome() {
             <Button
               type="button"
               size="sm"
+              className="min-h-11 shrink-0"
               disabled={waking !== null}
               onClick={() => { setReady(c); setError(""); }}
             >
@@ -258,7 +263,7 @@ export default function HouseholdHome() {
         )}
         {!fused && <p className="text-xs text-stone-600">Their school grade gives Rho a starting context. The starting check helps find the right support; it is not a school-grade verdict.</p>}
         <p className="rounded-lg bg-amber-50 p-3 text-sm text-stone-700">{CURRICULUM_COVERAGE}</p>
-        <Button type="submit" disabled={saving} className="w-full">
+        <Button type="submit" disabled={saving} className="min-h-11 w-full">
           {saving ? "Saving…" : fused ? "Save captain login" : "Add captain"}
         </Button>
       </form>}

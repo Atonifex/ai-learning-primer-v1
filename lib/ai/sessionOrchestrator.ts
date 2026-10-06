@@ -11,6 +11,7 @@ import {
 import { offerLearningClipTool } from "./learningClipTool";
 import { presentCaptainChoicesTool } from "./captainChoicesTool";
 import { openGardenPlotTool } from "./gardenTool";
+import { openCampPlanTool } from "./campPlanTool";
 import { findLearningClip } from "../play/learningClipSearch";
 import { decodeCaptainChoices } from "../play/captainChoices";
 import {
@@ -23,6 +24,7 @@ import {
   suggestNextMissionTool,
 } from "./standardsTool";
 import { gardenPayloadForOpen } from "../services/garden";
+import { campPlanPayload } from "../services/campPlan";
 import { getReferenceBuffersForScene } from "./referenceImages";
 import { recordStandardObservation } from "../services/standardsProgress";
 import { createGeneratedMiniQuiz } from "../services/learningActivities";
@@ -228,6 +230,7 @@ export async function* streamSessionResponse(
         openCrewLogTool,
         saveCrewLogTool,
         openGardenPlotTool,
+        openCampPlanTool,
         offerLearningClipTool,
         presentCaptainChoicesTool,
         showWorldMapTool,
@@ -579,6 +582,36 @@ export async function* streamSessionResponse(
                 evaluationSummary: payload.evaluation.summary,
                 tellCaptain:
                   "The garden beds are on screen. Stay with the fixed goal: What plants need to grow (Sun, air, fresh water). Do not invent plot outcomes — the mini-game scores them. Help only with HOW hints after they try.",
+              }),
+            });
+          } catch (err) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: false,
+                error: err instanceof Error ? err.message : String(err),
+              }),
+            });
+          }
+        } else if (call.name === "open_camp_plan") {
+          try {
+            const payload = await campPlanPayload(profile.id);
+            yield {
+              type: "camp_plan_open",
+              learnerGoal: payload.learnerGoal,
+              standardCodes: [...payload.standardCodes],
+            };
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: true,
+                opened: true,
+                learnerGoal: payload.learnerGoal,
+                standardCodes: payload.standardCodes,
+                budgetPassed: payload.state.budgetPassed,
+                purchasedUpgradeId: payload.state.purchasedUpgradeId,
+                tellCaptain:
+                  "The camp resource plan is on screen. Stay with the fixed goal: Plan what camp can afford. Budget first, then they may build one upgrade the plan can pay for. Do not invent costs or say an upgrade fits — the plan scores that.",
               }),
             });
           } catch (err) {

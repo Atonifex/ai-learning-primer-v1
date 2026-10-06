@@ -1,0 +1,64 @@
+{
+  "shot": {
+    "id": "c15",
+    "duration": 9,
+    "ref": "rho-dawn-clear",
+    "line": "One day, you could lead a space empire. First, let's get your crew home.",
+    "speaker": "Rho",
+    "action": "Rho offers a route slate at professional distance, calm resolved expression. Captain remains viewpoint only. Same upright professional Rho and dawn beach/wreck geography as the supplied first frame. No captain hands/body, romance, touching the viewer, thumbs-up, new buildings, tents or camp. Flat fallen parachute fabric remains flat. Begin from supplied neutral pose; after speech finish the purposeful gesture and settle to an upright calm resolved resting pose for a clean editorial cut. No extra spoken words.",
+    "role": "continuation",
+    "retries": 0,
+    "status": "submitted",
+    "generationId": "AQut-oz5fF5PbJtQlC519hddfnYDA3zvcFkAw4kfAnWnh9q7FQO3PmVaY3_j9D8mkDk5v2hB"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character proportions costume set geography and same teal cream brass fixed-wing twin-prop aircraft. One continuous shot, no automatic cuts. No text lettering subtitles UI weapons blood injuries or horror. NO MUSIC; continuous edit score added separately. Use <<<323213596308599>>> for same Rho identity and supplied voice. Blond hair amber eyes thin teal visor metal cheek neck brown jacket teal shoulders cream shirt. Professional, no romance. Rho offers a route slate at professional distance, calm resolved expression. Captain remains viewpoint only. Same upright professional Rho and dawn beach/wreck geography as the supplied first frame. No captain hands/body, romance, touching the viewer, thumbs-up, new buildings, tents or camp. Flat fallen parachute fabric remains flat. Begin from supplied neutral pose; after speech finish the purposeful gesture and settle to an upright calm resolved resting pose for a clean editorial cut. No extra spoken words. Only Rho speaks. Speak exact simple English line ONCE, clear unhurried natural voice with lip sync: \"One day, you could lead a space empire. First, let's get your crew home.\". No added words/voices. "
+      },
+      {
+        "name": "duration",
+        "value": "9"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      },
+      {
+        "name": "elements",
+        "value": "[{\"id\":\"323213596308599\",\"bindName\":\"Rho\"}]"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1YWdlbnRfdXBsb2FkLzE3OTEyODU5MzUvSTJWbmJ2NFFzNi9yaG8tZGF3bi1jbGVhci5wbmc.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized whole V05 regeneration. Prior shot and seam reviewed before continuing. Preserve identity voice craft and causal continuity; variable pacing native sound with separate score."
+  },
+  "task": {
+    "generationId": "AQut-oz5fF5PbJtQlC519hddfnYDA3zvcFkAw4kfAnWnh9q7FQO3PmVaY3_j9D8mkDk5v2hB",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 108,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "credits_consumed": 108,
+    "generation_id": "AQut-oz5fF5PbJtQlC519hddfnYDA3zvcFkAw4kfAnWnh9q7FQO3PmVaY3_j9D8mkDk5v2hB"
+  }
+}

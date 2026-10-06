@@ -1,6 +1,6 @@
 {
-  "charged": 2556,
-  "uniqueJobs": 26,
+  "charged": 3180,
+  "uniqueJobs": 32,
   "media": [
     {
       "file": "attempts/c01-0/c01.mp4",
@@ -227,6 +227,268 @@
       }
     },
     {
+      "file": "continuation-clean.mp4",
+      "bytes": 51584304,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "120.521333",
+        "size": "51584304"
+      }
+    },
+    {
+      "file": "continuation.mp4",
+      "bytes": 51643165,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "mov_text",
+          "codec_type": "subtitle"
+        }
+      ],
+      "format": {
+        "duration": "120.521333",
+        "size": "51643165"
+      }
+    },
+    {
+      "file": "offer15-clean.mp4",
+      "bytes": 1088334,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "7.021333",
+        "size": "1088334"
+      }
+    },
+    {
+      "file": "offer15.mp4",
+      "bytes": 1089016,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "mov_text",
+          "codec_type": "subtitle"
+        }
+      ],
+      "format": {
+        "duration": "7.021333",
+        "size": "1089016"
+      }
+    },
+    {
+      "file": "offer20-clean.mp4",
+      "bytes": 1082595,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "7.021333",
+        "size": "1082595"
+      }
+    },
+    {
+      "file": "offer20.mp4",
+      "bytes": 1083252,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "mov_text",
+          "codec_type": "subtitle"
+        }
+      ],
+      "format": {
+        "duration": "7.021333",
+        "size": "1083252"
+      }
+    },
+    {
+      "file": "preview10-clean.mp4",
+      "bytes": 75880867,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "204.521333",
+        "size": "75880867"
+      }
+    },
+    {
+      "file": "preview10.mp4",
+      "bytes": 75944904,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "mov_text",
+          "codec_type": "subtitle"
+        }
+      ],
+      "format": {
+        "duration": "204.521333",
+        "size": "75944904"
+      }
+    },
+    {
+      "file": "preview20-clean.mp4",
+      "bytes": 78048946,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "218.521333",
+        "size": "78048946"
+      }
+    },
+    {
+      "file": "preview20.mp4",
+      "bytes": 78114361,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "mov_text",
+          "codec_type": "subtitle"
+        }
+      ],
+      "format": {
+        "duration": "218.521333",
+        "size": "78114361"
+      }
+    },
+    {
+      "file": "sources/c01-edit.mp4",
+      "bytes": 2635317,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "7.500000",
+        "size": "2635317"
+      }
+    },
+    {
       "file": "sources/c01.mp4",
       "bytes": 3367588,
       "programs": [],
@@ -246,6 +508,28 @@
       "format": {
         "duration": "7.500000",
         "size": "3367588"
+      }
+    },
+    {
+      "file": "sources/c02-edit.mp4",
+      "bytes": 3543839,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "12.000000",
+        "size": "3543839"
       }
     },
     {
@@ -271,6 +555,28 @@
       }
     },
     {
+      "file": "sources/c03-edit.mp4",
+      "bytes": 1930865,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "4.000000",
+        "size": "1930865"
+      }
+    },
+    {
       "file": "sources/c03.mp4",
       "bytes": 8581176,
       "programs": [],
@@ -290,6 +596,28 @@
       "format": {
         "duration": "4.041667",
         "size": "8581176"
+      }
+    },
+    {
+      "file": "sources/c04-edit.mp4",
+      "bytes": 1283467,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "4.000000",
+        "size": "1283467"
       }
     },
     {
@@ -315,6 +643,28 @@
       }
     },
     {
+      "file": "sources/c05-edit.mp4",
+      "bytes": 6031398,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "8.000000",
+        "size": "6031398"
+      }
+    },
+    {
       "file": "sources/c05.mp4",
       "bytes": 22149399,
       "programs": [],
@@ -334,6 +684,28 @@
       "format": {
         "duration": "8.041667",
         "size": "22149399"
+      }
+    },
+    {
+      "file": "sources/c06-edit.mp4",
+      "bytes": 3858977,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "6.000000",
+        "size": "3858977"
       }
     },
     {
@@ -359,6 +731,28 @@
       }
     },
     {
+      "file": "sources/c07-edit.mp4",
+      "bytes": 3766883,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "7.000000",
+        "size": "3766883"
+      }
+    },
+    {
       "file": "sources/c07.mp4",
       "bytes": 18016937,
       "programs": [],
@@ -378,6 +772,28 @@
       "format": {
         "duration": "7.041667",
         "size": "18016937"
+      }
+    },
+    {
+      "file": "sources/c08-edit.mp4",
+      "bytes": 2352897,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "6.000000",
+        "size": "2352897"
       }
     },
     {
@@ -403,6 +819,28 @@
       }
     },
     {
+      "file": "sources/c09-edit.mp4",
+      "bytes": 2661288,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "7.000000",
+        "size": "2661288"
+      }
+    },
+    {
       "file": "sources/c09.mp4",
       "bytes": 17515318,
       "programs": [],
@@ -422,6 +860,314 @@
       "format": {
         "duration": "7.041667",
         "size": "17515318"
+      }
+    },
+    {
+      "file": "sources/c10-edit.mp4",
+      "bytes": 3150841,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "7.000000",
+        "size": "3150841"
+      }
+    },
+    {
+      "file": "sources/c10.mp4",
+      "bytes": 15247530,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1916,
+          "height": 1080
+        }
+      ],
+      "format": {
+        "duration": "7.041667",
+        "size": "15247530"
+      }
+    },
+    {
+      "file": "sources/c11-edit.mp4",
+      "bytes": 3519941,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "7.000000",
+        "size": "3519941"
+      }
+    },
+    {
+      "file": "sources/c11.mp4",
+      "bytes": 19421054,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1916,
+          "height": 1080
+        }
+      ],
+      "format": {
+        "duration": "7.041667",
+        "size": "19421054"
+      }
+    },
+    {
+      "file": "sources/c12-edit.mp4",
+      "bytes": 4996905,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "7.000000",
+        "size": "4996905"
+      }
+    },
+    {
+      "file": "sources/c12.mp4",
+      "bytes": 20884930,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1916,
+          "height": 1080
+        }
+      ],
+      "format": {
+        "duration": "7.041667",
+        "size": "20884930"
+      }
+    },
+    {
+      "file": "sources/c13-edit.mp4",
+      "bytes": 2939902,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "7.000000",
+        "size": "2939902"
+      }
+    },
+    {
+      "file": "sources/c13.mp4",
+      "bytes": 19323013,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1916,
+          "height": 1080
+        }
+      ],
+      "format": {
+        "duration": "7.041667",
+        "size": "19323013"
+      }
+    },
+    {
+      "file": "sources/c14-edit.mp4",
+      "bytes": 4174205,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "15.000000",
+        "size": "4174205"
+      }
+    },
+    {
+      "file": "sources/c14.mp4",
+      "bytes": 21967475,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1916,
+          "height": 1080
+        }
+      ],
+      "format": {
+        "duration": "15.041995",
+        "size": "21967475"
+      }
+    },
+    {
+      "file": "sources/c15-edit.mp4",
+      "bytes": 2446721,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "9.000000",
+        "size": "2446721"
+      }
+    },
+    {
+      "file": "sources/c15.mp4",
+      "bytes": 13828810,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1916,
+          "height": 1080
+        }
+      ],
+      "format": {
+        "duration": "9.041667",
+        "size": "13828810"
+      }
+    },
+    {
+      "file": "sources/c16-edit.mp4",
+      "bytes": 2311270,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "7.000000",
+        "size": "2311270"
+      }
+    },
+    {
+      "file": "sources/c16.mp4",
+      "bytes": 11556972,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1916,
+          "height": 1080
+        }
+      ],
+      "format": {
+        "duration": "7.041667",
+        "size": "11556972"
       }
     },
     {
@@ -777,6 +1523,28 @@
       }
     },
     {
+      "file": "sources/n15-edit.mp4",
+      "bytes": 1088281,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "7.000000",
+        "size": "1088281"
+      }
+    },
+    {
       "file": "sources/n15.mp4",
       "bytes": 5418888,
       "programs": [],
@@ -796,6 +1564,28 @@
       "format": {
         "duration": "7.041667",
         "size": "5418888"
+      }
+    },
+    {
+      "file": "sources/n20-edit.mp4",
+      "bytes": 1082542,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "7.000000",
+        "size": "1082542"
       }
     },
     {
@@ -821,6 +1611,28 @@
       }
     },
     {
+      "file": "sources/wait-edit.mp4",
+      "bytes": 276209,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "3.000000",
+        "size": "276209"
+      }
+    },
+    {
       "file": "sources/wait.mp4",
       "bytes": 302289,
       "programs": [],
@@ -840,7 +1652,7 @@
     },
     {
       "file": "waiting-loop.mp4",
-      "bytes": 317621,
+      "bytes": 309242,
       "programs": [],
       "stream_groups": [],
       "streams": [
@@ -853,7 +1665,7 @@
       ],
       "format": {
         "duration": "6.000000",
-        "size": "317621"
+        "size": "309242"
       }
     }
   ],

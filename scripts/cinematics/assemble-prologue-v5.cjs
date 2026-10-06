@@ -4,6 +4,7 @@ const root=path.resolve(__dirname,'../..'),dir=path.join(root,'public/cinematics
 const bins=JSON.parse(fs.readFileSync(path.join(root,'public/cinematics/prologue-v3/tool-paths.json')));
 const manifest=JSON.parse(fs.readFileSync(path.join(dir,'shots.json')));
 const briefingOnly=process.argv.includes('--briefing-only');
+const prepareReviewed=process.argv.includes('--prepare-reviewed');
 const priorEdits=fs.existsSync(path.join(dir,'edit-decisions.json'))?JSON.parse(fs.readFileSync(path.join(dir,'edit-decisions.json'))):{};
 const priorExports=fs.existsSync(path.join(dir,'exports.json'))?JSON.parse(fs.readFileSync(path.join(dir,'exports.json'))):{};
 const unchanged=new Set();
@@ -21,14 +22,16 @@ function captionBounds(chunks,words){
  });
 }
 function encode(input,output,duration,audioFilter){
+ // Preserve reviewed H.264 when it fits; avoid a needless encode and generation loss.
+ if(!audioFilter&&fs.statSync(input).size<79000000){fs.copyFileSync(input,output);return probe(output);}
  const bitrate=Math.min(4500000,Math.floor(70000000*8/duration)-160000);
  const base=['-hide_banner','-loglevel','error','-y','-i',input];
  if(audioFilter)base.push('-af',audioFilter);
- run(bins.ffmpeg,[...base,'-c:v','libx264','-preset','medium','-b:v',String(bitrate),'-maxrate',String(Math.ceil(bitrate*1.3)),'-bufsize',String(bitrate*2),'-c:a','aac','-b:a','128k','-pix_fmt','yuv420p','-movflags','+faststart',output]);
+ run(bins.ffmpeg,[...base,'-c:v','libx264','-preset','fast','-b:v',String(bitrate),'-maxrate',String(Math.ceil(bitrate*1.3)),'-bufsize',String(bitrate*2),'-c:a','aac','-b:a','128k','-pix_fmt','yuv420p','-movflags','+faststart',output]);
  const info=probe(output);if(Number(info.format.size)>=80000000)throw Error('MP4 over 80MB: '+output);return info;
 }
-const edits={};
-for(const shot of manifest.scenes.filter(s=>!briefingOnly||manifest.edits.briefing.includes(s.id))){
+const edits=prepareReviewed?{...priorEdits}:{};
+for(const shot of manifest.scenes.filter(s=>prepareReviewed?s.status==='reviewed':!briefingOnly||manifest.edits.briefing.includes(s.id))){
  if(shot.status!=='reviewed')throw Error('Unreviewed source '+shot.id);
  if(shot.speechVerification?.startsWith('pending'))throw Error('Speech verification pending '+shot.id);
  const source=path.join(dir,'sources',shot.id+'.mp4');if(!fs.existsSync(source))throw Error('Missing reviewed source '+shot.id);
@@ -52,6 +55,8 @@ for(const shot of manifest.scenes.filter(s=>!briefingOnly||manifest.edits.briefi
  run(bins.ffmpeg,args);
 }
 fs.writeFileSync(path.join(dir,'edit-decisions.json'),JSON.stringify(edits,null,2));
+// Cache reviewed edits while queued jobs finish; never mark an export complete.
+if(prepareReviewed){console.log(JSON.stringify({prepared:Object.keys(edits),exportsUnchanged:true}));process.exit(0);}
 const sets=briefingOnly?{briefing:manifest.edits.briefing}:{...manifest.edits,preview10:[...manifest.edits.briefing,...manifest.edits.continuation],preview20:[...manifest.edits.briefing,'n15','n20',...manifest.edits.continuation]};
 const summary=[];
 const soundCaptions={c03:'[Footsteps]',c05:'[Plane engines rev; wheels roll]',c06:'[Propellers and wind]',c08:'[Thunder; engine falters]',c11:'[Wind; parachutes flutter]',c12:'[Splash; surf]'};
@@ -76,11 +81,12 @@ for(const [name,ids]of Object.entries(sets)){
  const musicEnabled=['briefing','continuation','preview10','preview20'].includes(name);
  if(musicEnabled){
   let fadeOut=duration;let recovery=duration;
-  if(name==='continuation'){fadeOut=ids.slice(0,ids.indexOf('c05')).reduce((n,id)=>n+edits[id].duration,0);recovery=ids.slice(0,ids.indexOf('c13')).reduce((n,id)=>n+edits[id].duration,0);}
-  else if(name.startsWith('preview')){fadeOut=ids.slice(0,ids.indexOf('c05')).reduce((n,id)=>n+edits[id].duration,0);recovery=ids.slice(0,ids.indexOf('c13')).reduce((n,id)=>n+edits[id].duration,0);}
+  // Keep the first dawn responsiveness check quiet; the theme returns once safe.
+  if(name==='continuation'){fadeOut=ids.slice(0,ids.indexOf('c05')).reduce((n,id)=>n+edits[id].duration,0);recovery=ids.slice(0,ids.indexOf('c14')).reduce((n,id)=>n+edits[id].duration,0);}
+  else if(name.startsWith('preview')){fadeOut=ids.slice(0,ids.indexOf('c05')).reduce((n,id)=>n+edits[id].duration,0);recovery=ids.slice(0,ids.indexOf('c14')).reduce((n,id)=>n+edits[id].duration,0);}
   const filter=`[1:a]atrim=duration=${duration},asetpts=PTS-STARTPTS,volume='if(lt(t,${Math.max(0,fadeOut-2)}),0.8,if(lt(t,${fadeOut}),0.4*(${fadeOut}-t),if(lt(t,${recovery}),0,0.65*min(1,(t-${recovery})/2))))':eval=frame[m];[0:a][m]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.89[a]`;
   const bitrate=Math.min(4500000,Math.floor(70000000*8/duration)-160000);
-  run(bins.ffmpeg,['-hide_banner','-loglevel','error','-y','-i',raw,'-stream_loop','-1','-i',path.join(dir,'audio/adventure-theme-original.wav'),'-filter_complex',filter,'-map','0:v:0','-map','[a]','-t',String(duration),'-c:v','libx264','-preset','medium','-b:v',String(bitrate),'-maxrate',String(Math.ceil(bitrate*1.3)),'-bufsize',String(bitrate*2),'-pix_fmt','yuv420p','-c:a','aac','-b:a','128k','-movflags','+faststart',output]);
+  run(bins.ffmpeg,['-hide_banner','-loglevel','error','-y','-i',raw,'-stream_loop','-1','-i',path.join(dir,'audio/adventure-theme-original.wav'),'-filter_complex',filter,'-map','0:v:0','-map','[a]','-t',String(duration),...(fs.statSync(raw).size<79000000?['-c:v','copy']:['-c:v','libx264','-preset','fast','-b:v',String(bitrate),'-maxrate',String(Math.ceil(bitrate*1.3)),'-bufsize',String(bitrate*2),'-pix_fmt','yuv420p']),'-c:a','aac','-b:a','128k','-movflags','+faststart',output]);
  }else encode(raw,output,duration);
  const cleanSafe=path.join(dir,name+'-clean-small.mp4');encode(raw,cleanSafe,duration);fs.renameSync(cleanSafe,raw);
  const soft=path.join(dir,name+'-soft.tmp.mp4');

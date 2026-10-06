@@ -20,7 +20,7 @@ Primary users: Grades 3–8 (Florida homeschool / ESA first; Grade 3–4 as the 
 - Never invent Florida standard codes — use `curriculum_resources/standards_*.ts` or research CPALMS.
 - Do not implement from `docs/archive-OLD-DO-NOT-USE/` or other superseded specs.
 - Home is **PixiJS** Stardew-like top-down — not Three.js, not graphic-novel-as-home.
-- Dialogue = cutscene (chat left, portrait right). Learning work = overlay quiz (MVP) or full-screen tool later.
+- Dialogue = bottom cutscene dock (~45% in landscape), latest exchange + History, reusable speaker portrait/nameplate at bottom-right. Learning content opens in a shared right workspace above the dock; narrow screens use full-screen sheets. Speak-first input stays in the dock.
 - Live child-facing turns use **`gpt-5.6-luna`** (`lib/ai/models.ts`). Do not silently swap to a larger chat model on the walk/talk loop.
 - Do not redesign mastery math (`standardsMasteryMath`) unless asked.
 - Do not build the parent dashboard until the student loop is playable.
@@ -76,7 +76,7 @@ This Next.js has breaking changes vs older training data. Before writing App Rou
 ## Locked product shape (do not reverse)
 
 - **Home UX:** PixiJS Stardew-like top-down 2D overworld.
-- **Dialogue:** cutscene overlay — chat left, portrait right; speak-first mic in composer.
+- **Dialogue:** bottom dock with latest exchange, History and speak-first composer; reusable speaker at bottom-right. Content expands above it from the right, with adaptive full-screen sheets on narrow viewports.
 - **Learning work:** overlay quiz for MVP; deeper tools go full-screen later.
 - **Companion:** Rho = First Mate.
 - **Curriculum:** Florida only for MVP.

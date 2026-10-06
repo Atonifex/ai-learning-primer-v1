@@ -43,10 +43,13 @@ export default function MessageList({
 }: MessageListProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const followBottom = useRef(true);
+  const firstMessage = useRef<string | undefined>(undefined);
   const [popup, setPopup] = useState<PopupState | null>(null);
   const defineAbortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
+    if (!history && firstMessage.current !== messages[0]?.id) followBottom.current = true;
+    firstMessage.current = messages[0]?.id;
     const el = scrollRef.current;
     if (el && followBottom.current) el.scrollTop = el.scrollHeight;
   }, [messages, history]);

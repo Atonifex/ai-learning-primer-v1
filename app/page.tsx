@@ -18,6 +18,10 @@ export default async function Home() {
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-teal-100/90" data-testid="primer-invitation">
           {PRIMER_INVITATION}
         </p>
+        <section aria-label="Your student's first session" className="mt-7 rounded-2xl border border-teal-200/20 p-5">
+          <h2 className="font-semibold text-amber-100">A clear place to start</h2>
+          <p className="mt-2 text-sm leading-relaxed text-teal-100/90">Set up your student once. They meet Rho, discover skills that help the crew, and try a starting check to find useful practice. You can follow their recorded usage and standards evidence from your parent dashboard.</p>
+        </section>
         <div className="mt-9 flex flex-wrap gap-4">
           <Link href="/register" className="rounded-full bg-amber-200 px-6 py-3 font-semibold text-slate-950 hover:bg-amber-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-200">
             Create a parent account

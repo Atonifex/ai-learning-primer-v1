@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { filterWorldNodes, type MapTask, type WorldNode, type WorldSnapshot } from "../../lib/play/worldMap";
 import IslandChart, { PLACE_SYMBOLS } from "./IslandChart";
 

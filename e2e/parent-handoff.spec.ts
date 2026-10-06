@@ -63,3 +63,24 @@ test("old names and fused names remain clear on a small screen", async ({ page }
   await expect(page.getByRole("button", { name: "Open old_captain’s learning" })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
 });
+
+test("a student can switch back to the parent with logout failure recovery", async ({ page }) => {
+  expect((await page.request.post("/api/auth/child-login", { data: { username: "testcaptain", pin: "1234" } })).ok()).toBeTruthy();
+  await page.goto("/settings");
+  let fail = true;
+  await page.route("**/api/auth/logout", (route) => {
+    if (fail) { fail = false; return route.fulfill({ status: 503, json: { error: "Temporary failure" } }); }
+    return route.continue();
+  });
+  await page.getByRole("button", { name: "Switch account", exact: true }).click();
+  await expect(page.getByRole("alert").filter({ hasText: "Could not switch accounts" })).toBeVisible();
+  await page.getByRole("button", { name: "Switch account", exact: true }).click();
+  await expect(page).toHaveURL(/\/login$/);
+  expect((await page.request.get("/api/profile")).status()).toBe(401);
+  await page.getByLabel("Parent email", { exact: true }).fill("test_parent@primer.local");
+  await page.getByLabel("Password", { exact: true }).fill("test-parent-login");
+  await page.getByRole("button", { name: "Sign in", exact: true }).click();
+  await expect(page).toHaveURL(/\/household$/);
+  await page.getByRole("link", { name: "Student usage and progress" }).click();
+  await expect(page.getByRole("heading", { name: "Student usage and progress", exact: true })).toBeVisible();
+});

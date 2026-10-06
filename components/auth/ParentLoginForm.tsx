@@ -36,8 +36,10 @@ export default function ParentLoginForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-stone-700">Email</label>
+        <label htmlFor="parent-login-email" className="mb-1.5 block text-sm font-medium text-stone-700">Parent email</label>
         <Input
+          id="parent-login-email"
+          autoComplete="email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -47,8 +49,10 @@ export default function ParentLoginForm() {
         />
       </div>
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-stone-700">Password</label>
+        <label htmlFor="parent-login-password" className="mb-1.5 block text-sm font-medium text-stone-700">Password</label>
         <Input
+          id="parent-login-password"
+          autoComplete="current-password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -57,7 +61,7 @@ export default function ParentLoginForm() {
         />
       </div>
       {error && (
-        <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">{error}</p>
+        <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">{error}</p>
       )}
       <Button type="submit" disabled={loading} className="w-full" size="lg">
         {loading ? "Signing in…" : "Sign in"}

@@ -303,41 +303,49 @@
       "action": "Dawn first-person camera gently rises on south beach after a time ellipsis. Rho stays UPRIGHT with both hands at her own sides at normal colleague distance, same worried concern in reference. She checks responsiveness by speaking exact line; a small camera nod confirms Captain is all right. Only then her eyes soften to slight relief at last2seconds, not a big grin. No touching/reaching toward viewer, kneeling, coy head tilt, romance, thumbs-up, captain body or hands. Same repairable empty wreck and supply crate behind; distant chutes are FLAT fallen fabric, never tents or upright camp structures. No buildings/camp already built. Quiet surf and gentle birds only.",
       "role": "continuation",
       "retries": 0,
-      "status": "planned",
-      "fadeIn": 0.4
+      "status": "reviewed",
+      "fadeIn": 0.4,
+      "generationId": "Af_RSGGlAPjgwNrk-AwaIXAQ5BzF3qFrnM8B5tRx8-qd9O59yVwiPRFnm__Z8Khqmq_oDVtW",
+      "speechVerification": "confirmed synthetic words; timing reviewed; human listening unverified"
     },
     {
       "id": "c14",
       "duration": 15,
-      "ref": "rho-dawn",
+      "ref": "rho-dawn-clear",
       "line": "The crew is scattered. We can't reach the base. You're still the captain. Find the crew. Build a camp. We'll rebuild the ship. I'll help you learn to lead.",
       "speaker": "Rho",
-      "action": "Rho looks from tree line to dry clearing to wreck, clear purposeful professional guidance. No buildings, camps or empire already built. Speak unhurried clear exact line once, meaningful brief sentence pauses, finish by14s. Rho remains at professional distance, no captain body/hands, romance or prebuilt camp; distant fabric stays flat.",
+      "action": "Rho looks from tree line to dry clearing to wreck, clear purposeful professional guidance. No buildings, camps or empire already built. Speak unhurried clear exact line once, meaningful brief sentence pauses, finish by14s. Rho remains at professional distance, no captain body/hands, romance or prebuilt camp; distant fabric stays flat. Same upright professional Rho and dawn beach/wreck geography as the supplied first frame. No captain hands/body, romance, touching the viewer, thumbs-up, new buildings, tents or camp. Flat fallen parachute fabric remains flat. Begin from supplied neutral pose; after speech finish the purposeful gesture and settle to an upright calm resolved resting pose for a clean editorial cut. No extra spoken words.",
       "role": "continuation",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "generationId": "AU8zuZtwQuNLmVJOR3DZnMAri8thIHlVvKnNFxO0wFNBTCC-gyHBXKiu-r3iri253Wn1nvNj",
+      "speechVerification": "confirmed synthetic words; timing reviewed; human listening unverified"
     },
     {
       "id": "c15",
       "duration": 9,
-      "ref": "rho-dawn",
+      "ref": "rho-dawn-clear",
       "line": "One day, you could lead a space empire. First, let's get your crew home.",
       "speaker": "Rho",
-      "action": "Rho offers a route slate at professional distance, calm resolved expression. Captain remains viewpoint only.",
+      "action": "Rho offers a route slate at professional distance, calm resolved expression. Captain remains viewpoint only. Same upright professional Rho and dawn beach/wreck geography as the supplied first frame. No captain hands/body, romance, touching the viewer, thumbs-up, new buildings, tents or camp. Flat fallen parachute fabric remains flat. Begin from supplied neutral pose; after speech finish the purposeful gesture and settle to an upright calm resolved resting pose for a clean editorial cut. No extra spoken words.",
       "role": "continuation",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "generationId": "AQut-oz5fF5PbJtQlC519hddfnYDA3zvcFkAw4kfAnWnh9q7FQO3PmVaY3_j9D8mkDk5v2hB",
+      "speechVerification": "confirmed synthetic words; timing reviewed; human listening unverified"
     },
     {
       "id": "c16",
       "duration": 7,
-      "ref": "rho-dawn",
+      "ref": "rho-dawn-clear",
       "line": "Start with the wreck. What food and tools can we save?",
       "speaker": "Rho",
-      "action": "Rho steps aside pointing toward safe supply crate beside recognizable repairable wreck. Small harmless beach crab scuttles away, optional brief gentle comic beat after safety.",
+      "action": "Rho steps aside pointing toward safe supply crate beside recognizable repairable wreck. Small harmless beach crab scuttles away, optional brief gentle comic beat after safety. Same upright professional Rho and dawn beach/wreck geography as the supplied first frame. No captain hands/body, romance, touching the viewer, thumbs-up, new buildings, tents or camp. Flat fallen parachute fabric remains flat. Begin from supplied neutral pose; after speech finish the purposeful gesture and settle to an upright calm resolved resting pose for a clean editorial cut. No extra spoken words.",
       "role": "continuation",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "generationId": "AZwiSzWbYumQARtnYutz2IqOIU5fyJM11BbCXfU_WnLPVs1lyXCzbJL6XN45CfYlfQccBpsI",
+      "speechVerification": "confirmed synthetic words; timing reviewed; human listening unverified"
     }
   ],
   "edits": {

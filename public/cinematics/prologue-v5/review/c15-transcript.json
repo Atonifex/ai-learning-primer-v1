@@ -1,0 +1,133 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 9.029999732971191,
+  "text": "One day, you could lead a space empire. First, let's get your crew home.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 2.5999999046325684,
+      "end": 5.940000057220459,
+      "text": " One day, you could lead a space empire.",
+      "tokens": [
+        50364,
+        1485,
+        786,
+        11,
+        291,
+        727,
+        1477,
+        257,
+        1901,
+        17506,
+        13,
+        50664
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.5088790059089661,
+      "compression_ratio": 0.9729729890823364,
+      "no_speech_prob": 0.09676330536603928
+    },
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 6.940000057220459,
+      "end": 8.600000381469727,
+      "text": " First, let's get your crew home.",
+      "tokens": [
+        50664,
+        2386,
+        11,
+        718,
+        311,
+        483,
+        428,
+        7260,
+        1280,
+        13,
+        50814
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.5088790059089661,
+      "compression_ratio": 0.9729729890823364,
+      "no_speech_prob": 0.09676330536603928
+    }
+  ],
+  "words": [
+    {
+      "word": "One",
+      "start": 2.5999999046325684,
+      "end": 3.180000066757202
+    },
+    {
+      "word": "day",
+      "start": 3.180000066757202,
+      "end": 3.5199999809265137
+    },
+    {
+      "word": "you",
+      "start": 3.9600000381469727,
+      "end": 4.460000038146973
+    },
+    {
+      "word": "could",
+      "start": 4.460000038146973,
+      "end": 4.679999828338623
+    },
+    {
+      "word": "lead",
+      "start": 4.679999828338623,
+      "end": 4.920000076293945
+    },
+    {
+      "word": "a",
+      "start": 4.920000076293945,
+      "end": 5.199999809265137
+    },
+    {
+      "word": "space",
+      "start": 5.199999809265137,
+      "end": 5.5
+    },
+    {
+      "word": "empire",
+      "start": 5.5,
+      "end": 5.940000057220459
+    },
+    {
+      "word": "First",
+      "start": 6.940000057220459,
+      "end": 7.119999885559082
+    },
+    {
+      "word": "let's",
+      "start": 7.320000171661377,
+      "end": 7.760000228881836
+    },
+    {
+      "word": "get",
+      "start": 7.760000228881836,
+      "end": 7.880000114440918
+    },
+    {
+      "word": "your",
+      "start": 7.880000114440918,
+      "end": 8.100000381469727
+    },
+    {
+      "word": "crew",
+      "start": 8.100000381469727,
+      "end": 8.279999732971191
+    },
+    {
+      "word": "home",
+      "start": 8.279999732971191,
+      "end": 8.600000381469727
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 10
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 15.039999961853027,
+  "text": "the crew is scattered we can't reach the base you're still the captain find the crew build a camp we'll rebuild the ship I'll help you learn to lead",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0,
+      "end": 8.760000228881836,
+      "text": " the crew is scattered we can't reach the base you're still the captain find the",
+      "tokens": [
+        50364,
+        264,
+        7260,
+        307,
+        21986,
+        321,
+        393,
+        380,
+        2524,
+        264,
+        3096,
+        291,
+        434,
+        920,
+        264,
+        14871,
+        915,
+        264,
+        50792
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.3018774688243866,
+      "compression_ratio": 1.3831775188446045,
+      "no_speech_prob": 0.0834517627954483
+    },
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 8.779999732971191,
+      "end": 13.979999542236328,
+      "text": " crew built a camp we'll rebuild the ship I'll help you learn to lead",
+      "tokens": [
+        50792,
+        7260,
+        3094,
+        257,
+        2255,
+        321,
+        603,
+        16877,
+        264,
+        5374,
+        286,
+        603,
+        854,
+        291,
+        1466,
+        281,
+        1477,
+        51154
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.3018774688243866,
+      "compression_ratio": 1.3831775188446045,
+      "no_speech_prob": 0.0834517627954483
+    }
+  ],
+  "words": [
+    {
+      "word": "the",
+      "start": 0,
+      "end": 1.0399999618530273
+    },
+    {
+      "word": "crew",
+      "start": 1.0399999618530273,
+      "end": 1.3200000524520874
+    },
+    {
+      "word": "is",
+      "start": 1.3200000524520874,
+      "end": 1.7000000476837158
+    },
+    {
+      "word": "scattered",
+      "start": 1.7000000476837158,
+      "end": 1.8799999952316284
+    },
+    {
+      "word": "we",
+      "start": 1.8799999952316284,
+      "end": 3.0999999046325684
+    },
+    {
+      "word": "can't",
+      "start": 3.0999999046325684,
+      "end": 3.440000057220459
+    },
+    {
+      "word": "reach",
+      "start": 3.440000057220459,
+      "end": 3.5399999618530273
+    },
+    {
+      "word": "the",
+      "start": 3.5399999618530273,
+      "end": 3.740000009536743
+    },
+    {
+      "word": "base",
+      "start": 3.740000009536743,
+      "end": 4.139999866485596
+    },
+    {
+      "word": "you're",
+      "start": 4.139999866485596,
+      "end": 5.059999942779541
+    },
+    {
+      "word": "still",
+      "start": 5.059999942779541,
+      "end": 5.159999847412109
+    },
+    {
+      "word": "the",
+      "start": 5.159999847412109,
+      "end": 6.659999847412109
+    },
+    {
+      "word": "captain",
+      "start": 6.659999847412109,
+      "end": 6.659999847412109
+    },
+    {
+      "word": "find",
+      "start": 6.659999847412109,
+      "end": 8.479999542236328
+    },
+    {
+      "word": "the",
+      "start": 8.479999542236328,
+      "end": 8.760000228881836
+    },
+    {
+      "word": "crew",
+      "start": 8.779999732971191,
+      "end": 9.34000015258789
+    },
+    {
+      "word": "build",
+      "start": 9.34000015258789,
+      "end": 9.899999618530273
+    },
+    {
+      "word": "a",
+      "start": 9.899999618530273,
+      "end": 10.180000305175781
+    },
+    {
+      "word": "camp",
+      "start": 10.180000305175781,
+      "end": 10.359999656677246
+    },
+    {
+      "word": "we'll",
+      "start": 10.359999656677246,
+      "end": 11.100000381469727
+    },
+    {
+      "word": "rebuild",
+      "start": 11.100000381469727,
+      "end": 11.279999732971191
+    },
+    {
+      "word": "the",
+      "start": 11.279999732971191,
+      "end": 11.819999694824219
+    },
+    {
+      "word": "ship",
+      "start": 11.819999694824219,
+      "end": 11.819999694824219
+    },
+    {
+      "word": "I'll",
+      "start": 11.819999694824219,
+      "end": 13.039999961853027
+    },
+    {
+      "word": "help",
+      "start": 13.039999961853027,
+      "end": 13.15999984741211
+    },
+    {
+      "word": "you",
+      "start": 13.15999984741211,
+      "end": 13.359999656677246
+    },
+    {
+      "word": "learn",
+      "start": 13.359999656677246,
+      "end": 13.5
+    },
+    {
+      "word": "to",
+      "start": 13.5,
+      "end": 13.920000076293945
+    },
+    {
+      "word": "lead",
+      "start": 13.920000076293945,
+      "end": 13.979999542236328
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 16
+  },
+  "verification": "Independent gpt-4o-transcribe confirms build a camp; normalize the one Whisper spelling while preserving original word timing and transcription."
+}

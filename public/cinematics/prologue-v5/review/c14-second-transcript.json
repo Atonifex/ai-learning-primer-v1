@@ -1,0 +1,13 @@
+{
+  "text": "The crew is scattered. We can't reach the base. You're still the captain. Find the crew, build a camp, we'll rebuild the ship. I'll help you learn to lead.",
+  "usage": {
+    "type": "tokens",
+    "total_tokens": 188,
+    "input_tokens": 150,
+    "input_token_details": {
+      "text_tokens": 0,
+      "audio_tokens": 150
+    },
+    "output_tokens": 38
+  }
+}

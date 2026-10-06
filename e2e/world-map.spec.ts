@@ -75,7 +75,7 @@ test("Rho-generated work updates the map without interrupting chat, survives rel
   await page.getByRole("navigation", { name: "Map locations" }).getByRole("button", { name: /^⌂Camp|^Camp/ }).click();
   await page.getByRole("button", { name: /Pack six supplies/ }).click();
   await expect(page.getByTestId("quiz-overlay")).toBeVisible();
-  await expect(page.getByText("Talking with Rho")).toHaveCount(0);
+  await expect(page.getByTestId("dialogue-dock")).toBeVisible();
   await page.getByRole("button", { name: "Back to map", exact: true }).click();
   await expect(page.getByRole("button", { name: /Pack six supplies/ })).toBeEnabled();
   await page.getByRole("button", { name: /Pack six supplies/ }).click();

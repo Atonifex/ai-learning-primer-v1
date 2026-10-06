@@ -1,0 +1,54 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 7.03000020980835,
+  "text": "Thank you for watching!",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 5.860000133514404,
+      "end": 5.980000019073486,
+      "text": " Thank you for watching!",
+      "tokens": [
+        50364,
+        1044,
+        291,
+        337,
+        1976,
+        0,
+        50714
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.8111572861671448,
+      "compression_ratio": 0.7419354915618896,
+      "no_speech_prob": 0.1981554925441742
+    }
+  ],
+  "words": [
+    {
+      "word": "Thank",
+      "start": 5.860000133514404,
+      "end": 5.900000095367432
+    },
+    {
+      "word": "you",
+      "start": 5.900000095367432,
+      "end": 5.940000057220459
+    },
+    {
+      "word": "for",
+      "start": 5.940000057220459,
+      "end": 5.960000038146973
+    },
+    {
+      "word": "watching",
+      "start": 5.960000038146973,
+      "end": 5.980000019073486
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 8
+  }
+}

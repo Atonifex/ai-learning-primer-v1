@@ -11,6 +11,7 @@ import { hasCompletedActivitySlug, listCompletedActivitySlugs } from "../play/ov
 import { TUTORIAL_QUIZ_SLUG } from "../play/tutorialQuizSlug";
 import { hasCompletedChapterReflection } from "../play/chapterReflection";
 import { hasSavedMathPlacement } from "../play/mathPlacement";
+import { CAMP_PLAN_ACTIVITY_SLUG, parseCampPlan } from "../play/campPlan";
 import { remapCoreSubjectToGrade } from "../constants/subjects";
 import { completeSession, startSession } from "./session";
 import { ensureLearnerStoryChain } from "./storyCurriculum";
@@ -43,6 +44,12 @@ export async function getMissionBoard(learnerProfileId: string): Promise<Mission
       select: { mathPlacementCode: true, mathPlacementStatus: true },
     }),
   ]);
+  const planRow = await prisma.campState.findUnique({
+    where: { learnerProfileId },
+    select: { campPlan: true },
+  });
+  const completed = new Set(completedSlugs);
+  if (parseCampPlan(planRow?.campPlan).purchasedUpgradeId) completed.add(CAMP_PLAN_ACTIVITY_SLUG);
 
   const chapter = await prisma.chapter.findUnique({
     where: { id: chain.chapterId },
@@ -52,7 +59,7 @@ export async function getMissionBoard(learnerProfileId: string): Promise<Mission
   const missions = decorateMissions({
     wreckQuizDone,
     chapter1ReflectionDone,
-    completedSlugs: new Set(completedSlugs),
+    completedSlugs: completed,
     placementReady: hasSavedMathPlacement(placement?.mathPlacementCode, placement?.mathPlacementStatus),
   });
   return {

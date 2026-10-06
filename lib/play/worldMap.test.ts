@@ -67,6 +67,11 @@ describe("living world projection", () => {
     expect(camp.nodes.find((n) => n.id === "camp")?.status).toBe("available");
     expect(camp.camp.founded).toBe(true);
   });
+  it("describes a camp upgrade bought from the resource plan", () => {
+    const world = snapshot({ campUpgrade: "cook-fire" });
+    expect(world.nodes.find((n) => n.id === "camp")?.campUpgrade).toBe("cook-fire");
+    expect(world.nodes.find((n) => n.id === "camp")?.description).toMatch(/Cook fire is lit/);
+  });
   it("keeps orphaned work at camp and separates captain products from physical camp growth", () => {
     const result = snapshot({ tasks: [{ id: "a", sessionId: "s", title: "Old work", locationId: "gone", completed: false }], products: ["Leaves catch light."] });
     expect(result.nodes.find((n) => n.id === "camp")?.tasks).toHaveLength(1);

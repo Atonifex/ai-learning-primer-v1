@@ -26,7 +26,7 @@ export function latestExchange<T extends Turn>(messages: T[]): T[] {
   return lastUser < 0 ? visible.slice(-1) : visible.slice(lastUser);
 }
 
-export type WorkspacePanel = "history" | "map" | "board" | "focus" | "math" | "quiz" | "reflection" | "garden" | "gardenTeach" | "clip";
+export type WorkspacePanel = "history" | "map" | "board" | "focus" | "math" | "quiz" | "reflection" | "garden" | "gardenTeach" | "campBudget" | "campTeach" | "clip";
 export const WORKSPACE_PANELS: Record<WorkspacePanel, { title: string; wide: boolean }> = {
   history: { title: "Conversation history", wide: false },
   map: { title: "Island map", wide: true },
@@ -37,6 +37,8 @@ export const WORKSPACE_PANELS: Record<WorkspacePanel, { title: string; wide: boo
   reflection: { title: "Crew log", wide: false },
   garden: { title: "Treeline garden", wide: true },
   gardenTeach: { title: "What plants need", wide: true },
+  campBudget: { title: "Camp resource plan", wide: true },
+  campTeach: { title: "Plan what camp can afford", wide: true },
   clip: { title: "Learning clip", wide: true },
 };
 

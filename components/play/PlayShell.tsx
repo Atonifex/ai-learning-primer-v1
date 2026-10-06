@@ -14,11 +14,14 @@ import IntroCinematic from "./IntroCinematic";
 import ResourceHud from "./ResourceHud";
 import RhoRadio from "./RhoRadio";
 import DialogueCutscene from "./DialogueCutscene";
+import LeaveConfirmation from "./LeaveConfirmation";
 import QuizOverlay from "./QuizOverlay";
 import ReflectionOverlay from "./ReflectionOverlay";
 import MissionBoard from "./MissionBoard";
 import GardenPlotPanel from "./GardenPlotPanel";
 import GardenTeachPanel from "./GardenTeachPanel";
+import CampBudgetPanel from "./CampBudgetPanel";
+import CampTeachPanel from "./CampTeachPanel";
 import LearningClipPanel from "./LearningClipPanel";
 import SubjectFocusPanel from "./SubjectFocusPanel";
 import MathFiveCheck from "./MathFiveCheck";
@@ -42,6 +45,7 @@ import { isClientAiDebug } from "../../lib/play/clientAiDebug";
 import { WORKSPACE_PANELS } from "../../lib/play/dialogueLayout";
 import ContentWorkspace from "./ContentWorkspace";
 import { useWorkspace } from "./useWorkspace";
+import { restoreWorkspaceFocus } from "./useDialogFocus";
 import { usePlayViewport } from "./usePlayViewport";
 import "./dialogueDock.css";
 import { useWorldMap } from "./useWorldMap";
@@ -87,7 +91,7 @@ export default function PlayShell(props: {
   const firstRun = useFirstRunTutorial(props.firstRunStep ?? "video", captain);
   const missions = useMissions();
   const [dialogueOpen, setDialogueOpen] = useState(() => Boolean(props.autoOpenDialogue));
-  const { panel, setPanel, setOpen } = useWorkspace(props.autoOpenBoard ? "board" : props.autoOpenFocus ? "focus" : props.autoOpenClip ? "clip" : null);
+  const { panel, setPanel, setOpen, opener } = useWorkspace(props.autoOpenBoard ? "board" : props.autoOpenFocus ? "focus" : props.autoOpenClip ? "clip" : null);
   const [historyOpen, setHistoryOpen] = useState(false);
   const [maximized, setMaximized] = useState(false);
   const viewport = usePlayViewport();
@@ -97,6 +101,10 @@ export default function PlayShell(props: {
   const setGardenOpen = useCallback((value: SetStateAction<boolean>) => setOpen("garden", value), [setOpen]);
   const gardenTeachOpen = panel === "gardenTeach";
   const setGardenTeachOpen = useCallback((value: SetStateAction<boolean>) => setOpen("gardenTeach", value), [setOpen]);
+  const campBudgetOpen = panel === "campBudget";
+  const setCampBudgetOpen = useCallback((value: SetStateAction<boolean>) => setOpen("campBudget", value), [setOpen]);
+  const campTeachOpen = panel === "campTeach";
+  const setCampTeachOpen = useCallback((value: SetStateAction<boolean>) => setOpen("campTeach", value), [setOpen]);
   const focusOpen = panel === "focus";
   const setFocusOpen = useCallback((value: SetStateAction<boolean>) => setOpen("focus", value), [setOpen]);
   const mathCheckOpen = panel === "math";
@@ -168,6 +176,27 @@ export default function PlayShell(props: {
     }
   }, []);
 
+  const openCampLesson = useCallback(async () => {
+    setMapOpen(false);
+    setBoardOpen(false);
+    setFocusOpen(false);
+    setDialogueOpen(false);
+    setGardenOpen(false);
+    setGardenTeachOpen(false);
+    setCampBudgetOpen(false);
+    setCampTeachOpen(false);
+    try {
+      const res = await fetch("/api/camp-plan");
+      const data = (await res.json()) as { state?: { teachCompleted?: boolean }; error?: string };
+      if (!res.ok) throw new Error(data.error ?? "Could not open the camp plan.");
+      if (data.state?.teachCompleted) setCampBudgetOpen(true);
+      else setCampTeachOpen(true);
+    } catch (e) {
+      setHint(e instanceof Error ? e.message : "Could not open the camp plan.");
+      setCampTeachOpen(true);
+    }
+  }, []);
+
   const beginMission = useCallback(
     async (missionId: string) => {
       setStartingId(missionId);
@@ -192,6 +221,11 @@ export default function PlayShell(props: {
           void missions.refresh();
           return;
         }
+        if (missionId === "camp-math") {
+          void openCampLesson();
+          void missions.refresh();
+          return;
+        }
         const opened = await learning.openOverlayQuiz(started.mission.activitySlug);
         if (opened.alreadyDone) {
           setHint(`Reviewing ${started.mission.title}. Your result is saved.`);
@@ -203,7 +237,7 @@ export default function PlayShell(props: {
         setStartingId(null);
       }
     },
-    [learning, missions, openTreelineLesson, props.sessionId, router, stream]
+    [learning, missions, openCampLesson, openTreelineLesson, props.sessionId, router, stream]
   );
 
   useEffect(() => {
@@ -249,6 +283,10 @@ export default function PlayShell(props: {
       void openTreelineLesson();
       return;
     }
+    if (pending.missionId === "camp-math") {
+      void openCampLesson();
+      return;
+    }
     if (pending.switched) {
       void beginMission(pending.missionId);
       return;
@@ -257,7 +295,7 @@ export default function PlayShell(props: {
     void learning.openOverlayQuiz(pending.activitySlug).catch((e: unknown) => {
       setHint(e instanceof Error ? e.message : "Could not open that job.");
     });
-  }, [beginMission, learning, openTreelineLesson, stream]);
+  }, [beginMission, learning, openCampLesson, openTreelineLesson, stream]);
 
   useEffect(() => {
     if (!stream.pendingMissionBoardOpen) return;
@@ -274,6 +312,12 @@ export default function PlayShell(props: {
     stream.clearPendingGardenPlotOpen();
     void openTreelineLesson();
   }, [stream.pendingGardenPlotOpen, openTreelineLesson, stream]);
+
+  useEffect(() => {
+    if (!stream.pendingCampPlanOpen) return;
+    stream.clearPendingCampPlanOpen();
+    void openCampLesson();
+  }, [stream.pendingCampPlanOpen, openCampLesson, stream]);
 
   useEffect(() => {
     if (!stream.pendingCrewLogOpen) return;
@@ -323,10 +367,10 @@ export default function PlayShell(props: {
     const key = (e: KeyboardEvent) => {
       if (!firstRun.complete || e.ctrlKey || e.metaKey || e.altKey || e.repeat) return;
       if (e.target instanceof HTMLElement && (e.target.closest("input,textarea,select,dialog") || e.target.isContentEditable)) return;
-      if (e.key.toLowerCase() === "m" && !learning.showQuiz && !learning.showReflection && !clip && !focusOpen && !boardOpen) { e.preventDefault(); setMapOpen((open) => !open); }
+      if (e.key.toLowerCase() === "m" && !learning.showQuiz && !learning.showReflection && !clip && !focusOpen && !boardOpen && !gardenOpen && !gardenTeachOpen && !campBudgetOpen && !campTeachOpen) { e.preventDefault(); setMapOpen((open) => !open); }
     };
     window.addEventListener("keydown", key); return () => window.removeEventListener("keydown", key);
-  }, [firstRun.complete, learning.showQuiz, learning.showReflection, clip, focusOpen, boardOpen]);
+  }, [firstRun.complete, learning.showQuiz, learning.showReflection, clip, focusOpen, boardOpen, gardenOpen, gardenTeachOpen, campBudgetOpen, campTeachOpen]);
 
   function walkToPlace(node: WorldNode) {
     setMapOpen(false); setDialogueOpen(false); setBoardOpen(false); setFocusOpen(false);
@@ -340,6 +384,12 @@ export default function PlayShell(props: {
     if (node.id === "treeline") {
       void stream.sendMessage(
         "At the Treeline we need to start a garden so camp can grow food. Our goal is What plants need to grow — Sun, air, and fresh water. Open the garden beds when I am ready."
+      );
+      return;
+    }
+    if (node.id === "camp") {
+      void stream.sendMessage(
+        "At camp we need a resource plan. Our goal is Plan what camp can afford — rations, scrap, timber, and canvas. Open the camp budget when I am ready."
       );
       return;
     }
@@ -436,7 +486,7 @@ export default function PlayShell(props: {
 
   if (firstRun.step === "video") {
     return (
-      <div className="h-screen" style={layoutStyle} data-conversation={dockVisible} data-panel={Boolean(effectivePanel)} data-narrow={viewport.narrow} data-maximized={maximized && Boolean(effectivePanel)} data-testid="play-shell" data-ready={mapReady} inert={!mapReady} aria-busy={!mapReady}>
+      <div className="h-screen" data-testid="play-shell" data-ready={mapReady} inert={!mapReady} aria-busy={!mapReady}>
         <IntroCinematic onSkip={skipIntro} />
       </div>
     );
@@ -464,7 +514,8 @@ export default function PlayShell(props: {
   );
 
   const dockVisible = dialogueOpen || Boolean(panel) || historyOpen;
-  const workBusy = (panel === "quiz" && !learning.quiz?.alreadyCompleted && !learning.quizResult) || panel === "reflection";
+  const workBusy = panel === "quiz" || panel === "reflection";
+  // Bank jobs keep their existing review/ZPD completion controls as the exit.
   const canClosePanel = !workBusy;
   function closePanel() {
     if (panel === "quiz") learning.setShowQuiz(false);
@@ -476,8 +527,8 @@ export default function PlayShell(props: {
   const layoutStyle = { "--workspace-width": workspaceWidth, ...(viewport.height ? { height: viewport.height } : {}) } as CSSProperties;
 
   return (
-    <div className="play-world relative h-dvh overflow-hidden bg-[#195563]" data-testid="play-shell" data-ready={mapReady} inert={!mapReady} aria-busy={!mapReady}>
-      <div className="overworld-viewport" inert={viewport.narrow && Boolean(panel || historyOpen)} aria-hidden={maximized || undefined}>
+    <div className="play-world relative h-dvh overflow-hidden bg-[#195563]" style={layoutStyle} data-conversation={dockVisible} data-panel={Boolean(effectivePanel)} data-narrow={viewport.narrow} data-maximized={maximized && Boolean(effectivePanel)} data-testid="play-shell" data-ready={mapReady} inert={!mapReady} aria-busy={!mapReady}>
+      <div className="overworld-viewport" inert={confirmLeave || (viewport.narrow && Boolean(panel || historyOpen))} aria-hidden={maximized || undefined}>
       <OverworldCanvas
         paused={
           navigatingToMission ||
@@ -490,7 +541,7 @@ export default function PlayShell(props: {
           mathCheckOpen ||
           mapOpen ||
           confirmLeave ||
-          Boolean(clip) || gardenOpen || gardenTeachOpen
+          Boolean(clip) || gardenOpen || gardenTeachOpen || campBudgetOpen || campTeachOpen
         }
         world={worldMap.world}
         travel={travel}
@@ -502,6 +553,7 @@ export default function PlayShell(props: {
         onPosition={setPosition}
       />
       </div>
+      <div className="world-resources" inert={confirmLeave || (viewport.narrow && Boolean(panel || historyOpen))}>
       <ResourceHud
         captainName={captain}
         camp={missions.camp}
@@ -512,11 +564,13 @@ export default function PlayShell(props: {
         hint={firstRun.coach ? null : hint}
         timerLabel={chrome.leave && showTimers ? formatHiddenMinutes(elapsedSeconds) : null}
       />
+      </div>
       {(navigatingToMission || Boolean(startingId)) && <div role="status" className="absolute inset-0 z-50 grid place-items-center bg-[#153e4b]/70">
         <p className="rounded-2xl bg-[#fff8e8] px-6 py-4 text-[#153e4b]">{hint ?? "Opening your job…"}</p>
       </div>}
 
       <header
+        inert={confirmLeave || undefined}
         className={`world-toolbar pointer-events-none absolute right-3 top-3 z-20 flex flex-wrap items-center justify-end gap-2 ${dialogueOpen || focusOpen || mathCheckOpen || boardOpen || learning.showQuiz || learning.showReflection || Boolean(clip) ? "hidden" : ""}`}
       >
         {chrome.jobs && <button type="button" disabled={!mapReady} className="pointer-events-auto map-button primary" onClick={() => setMapOpen(true)}>Island map</button>}
@@ -589,7 +643,7 @@ export default function PlayShell(props: {
         )}
       </header>
 
-      {firstRun.complete && !dialogueOpen && !focusOpen && !boardOpen && !learning.showQuiz && !learning.showReflection && !clip && <WorldHud
+      {firstRun.complete && !confirmLeave && !dialogueOpen && !focusOpen && !boardOpen && !learning.showQuiz && !learning.showReflection && !clip && <WorldHud
         world={worldMap.world} selected={selectedNode} position={position} error={worldMap.error}
         travelTitle={travel ? selectedNode?.title : undefined}
         onMap={() => setMapOpen(true)} onAsk={askAboutPlace} onWalk={walkToPlace} onDismiss={() => setSelectedPlace(null)} />}
@@ -599,7 +653,7 @@ export default function PlayShell(props: {
         <div className="pointer-events-none absolute bottom-4 left-3 z-20">
           <RhoRadio
             onCall={callRho}
-            disabled={learning.showQuiz || learning.showReflection || Boolean(clip)}
+            disabled={confirmLeave || learning.showQuiz || learning.showReflection || Boolean(clip)}
           />
         </div>
       )}
@@ -609,7 +663,7 @@ export default function PlayShell(props: {
       )}
 
         <DialogueCutscene
-          open={dockVisible} inert={viewport.narrow && Boolean(panel || historyOpen)}
+          open={dockVisible} inert={confirmLeave || (viewport.narrow && Boolean(panel || historyOpen))}
           workBusy={workBusy} historyOpen={historyOpen} narrow={viewport.narrow} maximized={maximized}
           onHistory={() => setHistoryOpen((open) => !open)} onCloseHistory={() => setHistoryOpen(false)}
           onMaximize={() => setMaximized((value) => !value)}
@@ -630,6 +684,7 @@ export default function PlayShell(props: {
         />
 
       {panel && <ContentWorkspace title={WORKSPACE_PANELS[panel].title} narrow={viewport.narrow} maximized={maximized}
+        restoreFocus={() => restoreWorkspaceFocus(opener.current)}
         hidden={historyOpen} onMaximize={() => setMaximized((value) => !value)} onClose={canClosePanel ? closePanel : undefined}>
       {mapOpen && <WorldMapPanel world={worldMap.world} selectedId={selectedPlace} position={position}
         onSelect={setSelectedPlace} onClose={() => setMapOpen(false)} onWalk={walkToPlace} onAsk={askAboutPlace}
@@ -730,6 +785,39 @@ export default function PlayShell(props: {
         />
       )}
 
+      {campTeachOpen && (
+        <CampTeachPanel
+          onClose={() => setCampTeachOpen(false)}
+          onReadyToBudget={() => {
+            void (async () => {
+              try {
+                await fetch("/api/camp-plan", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ action: "teach_done" }),
+                });
+              } catch {
+                /* still open the budget */
+              }
+              setCampTeachOpen(false);
+              setCampBudgetOpen(true);
+            })();
+          }}
+        />
+      )}
+
+      {campBudgetOpen && (
+        <CampBudgetPanel
+          sessionId={props.sessionId}
+          onClose={() => setCampBudgetOpen(false)}
+          onSaved={() => {
+            void worldMap.refresh();
+            void missions.refresh();
+            setHint("Camp spent the plan. The upgrade is on the map.");
+          }}
+        />
+      )}
+
       {panel === "quiz" && learning.showQuiz && learning.quiz && (
         <QuizOverlay
           quiz={learning.quiz}
@@ -796,33 +884,8 @@ export default function PlayShell(props: {
         />
       )}
 
-      {confirmLeave && (
-        <div className="leave-confirmation absolute inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-          <div className="w-full max-w-sm rounded-2xl bg-white p-6">
-            <h3 className="text-lg font-semibold">End this session?</h3>
-            <p className="mt-2 text-sm text-stone-500">
-              Primer will save your progress. Time on the beach is already recorded.
-            </p>
-            <div className="mt-6 flex gap-3">
-              <button
-                type="button"
-                onClick={() => setConfirmLeave(false)}
-                className="flex-1 rounded-xl border border-stone-200 py-2.5 text-sm"
-              >
-                Keep playing
-              </button>
-              <button
-                type="button"
-                onClick={() => void handleLeave()}
-                disabled={leaving}
-                className="flex-1 rounded-xl bg-stone-900 py-2.5 text-sm text-white"
-              >
-                {leaving ? "Saving…" : "End session"}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {confirmLeave && <LeaveConfirmation leaving={leaving} onClose={() => setConfirmLeave(false)} onLeave={() => void handleLeave()} />}
+
     </div>
   );
 }

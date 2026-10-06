@@ -34,8 +34,8 @@ export function advanceIntroDeal(state: IntroDeal, event: IntroEvent): IntroDeal
   }
   return next;
 }
-export const INTRO_MEDIA_ROOT = "/cinematics/prologue-v3";
+export const INTRO_MEDIA_ROOT = "/cinematics/prologue-v5";
 export function introMedia(phase: IntroPhase) {
   const id = phase === "briefing" ? "briefing" : phase === "counter15" ? "offer15" : phase === "counter20" ? "offer20" : phase === "continuation" ? "continuation" : "waiting-loop";
-  return { id, src: `${INTRO_MEDIA_ROOT}/${id}.mp4`, captions: `${INTRO_MEDIA_ROOT}/${id}.en.vtt`, loop: phase.startsWith("offer") };
+  return { id, src: `${INTRO_MEDIA_ROOT}/${id}.mp4`, captions: `${INTRO_MEDIA_ROOT}/${id}.en.vtt`, poster: `${INTRO_MEDIA_ROOT}/references/${phase === "continuation" ? "accepted-thumb" : "briefing-anchor"}.png`, loop: phase.startsWith("offer") };
 }

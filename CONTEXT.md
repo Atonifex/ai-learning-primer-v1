@@ -15,7 +15,7 @@ Operating router for the Primer codebase. **CLAUDE.md** (always loaded) has iden
 |-----------|---------|------------------|
 | **Large / ambiguous feature** | `docs/MASTER_VISION_PLAN.md` §0 + §11 | §4 locks; append §18 when done |
 | **Play shell / U4 flow / Pixi beach** | `components/play/PlayShell.tsx` | `beachWorld.ts`, `lib/play/beachMap.ts`, MASTER §4.7 / §4.10 / §7 |
-| **Dialogue cutscene / mic / speak-first** | `components/play/DialogueCutscene.tsx` | `components/session/InputBar.tsx`, `MicButton.tsx`, MASTER §4.8 |
+| **Bottom dialogue / speaker / content workspace / mic** | `components/play/DialogueCutscene.tsx`, `SpeakerPresence.tsx`, `ContentWorkspace.tsx`, `useWorkspace.ts`, `dialogueDock.css` | `lib/play/dialogueLayout.ts`, `components/session/InputBar.tsx`, `MicButton.tsx`, `docs/BOTTOM_DIALOGUE_PLAN_2026-10-06.md`, MASTER §4.8 |
 | **Overlay tutorial quiz** | `lib/play/tutorialQuiz.ts` | `lib/play/overlayQuiz.ts`, `app/api/session/[id]/overlay-quiz/route.ts`, bank slugs in `lib/play/missions.ts` |
 | **Mission board / other pins** | `lib/play/missions.ts` | `components/play/MissionBoard.tsx`, Rho tool `show_mission_board` in `lib/ai/standardsTool.ts`, `app/saga/page.tsx`, `lib/services/missions.ts`, MASTER §4.6 / A6 |
 | **New Rho/captain-facing feature** | Prefer an orchestrator tool (SSE → UI). Ask Ivan if unsure whether it should be callable. | `lib/ai/sessionOrchestrator.ts`, `CLAUDE.md` tool-first rule |
@@ -35,6 +35,7 @@ Operating router for the Primer codebase. **CLAUDE.md** (always loaded) has iden
 | **Saga / wreck+food chapters** | `curriculum_resources/grade3_castaway_curriculum.ts` | `lib/services/castawayChapters.ts`, `storyCurriculum.ts` |
 | **Mastery / evidence / progress UI** | `lib/services/standardsProgress.ts` | `standardsMasteryMath.ts` — **do not redesign**; `app/progress/` |
 | **Auth / register / login** | `app/(auth)/` | `lib/auth/`, `app/api/auth/`, `/household` |
+| **Parent usage / standards dashboard** | `app/household/progress/` | `lib/services/parentDashboard.ts`, `docs/PARENT_DASHBOARD_2026-10-06.md`; parent-only household ownership before learner queries. No weekly email. |
 | **Onboarding / first-run tutorial** | `lib/play/firstRun.ts` | `components/onboarding/CaptainAwakening.tsx`, `PlayShell`, `app/household/` |
 | **Reading level / learner settings** | `app/settings/page.tsx` | `components/settings/ReadingLevelForm.tsx`, `PATCH /api/profile` |
 | **Tests** | `npm test` and `npm run test:e2e` | Vitest: `docs/vitest-testing-guide.md`, `lib/**/*.test.ts`. Playwright: `e2e/`, needs `npm run dev` or reuses port 3000 |

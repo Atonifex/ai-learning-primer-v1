@@ -29,7 +29,7 @@ Before any cinematic work, read `PROJECT_MEMORY.md`, this guide and the relevant
 
 **Rho:** friendly young-adult female humanoid AI first mate. Short side-swept golden blond hair, amber eyes, thin translucent teal visor that keeps eyes readable, subtle cheek-edge panels and simple metallic neck collar, brown flight jacket with teal shoulder panels and cream shirt. Keep the approved animated face/proportions; avoid exposed frightening machinery. Rho helps the captain act rather than taking over their decision.
 
-**Briefing officer for new production:** Sergeant Wilhelm, a male military man with a distinct neat mustache, representing Merchant Corp. Friendly but stern: focused eye contact, upright posture, controlled warm greeting, restrained gestures, firm negotiating terms and occasional dry comic reaction. Proposed practical teal/navy uniform with brass details, no weapon; exact face/age/insignia need a new reference sheet. Former female officer face/costume/voice are superseded, not reusable identity references. Later conflict role belongs in Future_Development_ideas F04, not an opening villain reveal.
+**Briefing officer for new production:** Sergeant Wilhelm, a male military man with a distinct neat mustache, representing Merchant Corp. Friendly but stern: focused eye contact, upright posture, controlled warm greeting, restrained gestures, firm negotiating terms and occasional dry comic reaction. Locked V05 practical teal/navy uniform with brass details and neat mustache; use the approved V05 Wilhelm references/Element, with no weapon. Former female officer face/costume/voice are superseded, not reusable identity references. Later conflict role belongs in Future_Development_ideas F04, not an opening villain reveal.
 
 **Captain/player:** identity remains open. Declared first-person briefing/bridge shots may show gloved hands and short navy cuffs: no head, face, back or body. Briefing hands stay down until an accepted deal; at most one acceptance thumbs-up. In cockpit danger, hands operate the visible controls/escape handle. **External island, aircraft, parachute and wreck shots show no captain hands/body or cockpit framing.** Camera family is explicit per shot; never attach a universal first-person-hand instruction to scenery.
 
@@ -52,14 +52,14 @@ Use clearly readable, somewhat exaggerated emotion like an animated children's T
 
 ## Ship, props and camera
 
-- Teal-and-brass scout airship, rounded cockpit glazing, arched brass window ribs, warm analog-style gauges and wood/brass wheel. Keep civilian survey craft, not a warship. Final exterior turnaround/layout remains to be authored; do not claim every mechanical detail is already locked.
+- Same V05 teal/cream/brass fixed-wing, wheeled twin-prop survey aircraft throughout, with rounded cockpit glazing, brass window ribs, warm gauges and wood/brass wheel. Use the V05 runway/flight/cockpit references; the older wingless craft is history. Keep civilian survey equipment rather than weapons.
 - In the active 3D cockpit, the **blue escape handle is on the left wall** from the captain's viewpoint. Keep that side and its position across shots. Rho braces at the rail while pointing to it in the storm.
 - First-person bridge has wheel/hands at the bottom and Rho clearly visible beyond it. No accidental rear view of the captain. Limit motion to an intentional camera move; avoid violent shake or rapid flashes.
 - Oil is safely sealed; gold/silver samples are ore-bearing rocks, not pure metal bars. These are survey targets/illustrative cargo, not proven island discoveries. Lithium/fusion discoveries stay out of the opening.
 
-## Active scene references
+## Historical approved 3D reference family
 
-Folder: `public/cinematics/references/3d-v1/`. `REVIEW.md` shows the current four scenes. `prompts.json` retains exact revision prompts and source provenance.
+Folder: `public/cinematics/references/3d-v1/`. These retain the original approved style family; current production uses V05 references above. `REVIEW.md` shows those original four scenes. `prompts.json` retains exact revision prompts and source provenance.
 
 | File | Role | Status |
 |---|---|---|

@@ -38,6 +38,7 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
   const [pendingMissionOpen, setPendingMissionOpen] = useState<MissionOpenEvent | null>(null);
   const [pendingMissionBoardOpen, setPendingMissionBoardOpen] = useState(false);
   const [pendingGardenPlotOpen, setPendingGardenPlotOpen] = useState(false);
+  const [pendingCampPlanOpen, setPendingCampPlanOpen] = useState(false);
   const [pendingMapOpen, setPendingMapOpen] = useState<{ nodeId?: string } | null>(null);
   const [worldVersion, setWorldVersion] = useState(0);
   const [worldUpdate, setWorldUpdate] = useState<{ reason: string; nodeId?: string } | null>(null);
@@ -248,6 +249,8 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
                 setPendingMissionBoardOpen(true);
               } else if (data.type === "garden_plot_open") {
                 setPendingGardenPlotOpen(true);
+              } else if (data.type === "camp_plan_open") {
+                setPendingCampPlanOpen(true);
               } else if (data.type === "captain_choices") {
                 const decoded = decodeCaptainChoices(data);
                 if (decoded) setPendingCaptainChoices(decoded);
@@ -345,12 +348,14 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
     clearPendingMissionOpen: () => setPendingMissionOpen(null),
     pendingMissionBoardOpen,
     pendingGardenPlotOpen,
+    pendingCampPlanOpen,
     pendingMapOpen,
     clearPendingMapOpen: () => setPendingMapOpen(null),
     worldVersion,
     worldUpdate,
     clearPendingMissionBoardOpen: () => setPendingMissionBoardOpen(false),
     clearPendingGardenPlotOpen: () => setPendingGardenPlotOpen(false),
+    clearPendingCampPlanOpen: () => setPendingCampPlanOpen(false),
     pendingCrewLogOpen,
     clearPendingCrewLogOpen: () => setPendingCrewLogOpen(false),
     pendingLearningClip,

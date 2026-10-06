@@ -1,6 +1,6 @@
 # Bottom dialogue and reusable speaker — implementation plan
 
-Date: 2026-10-06. Status: plan for review; no runtime implementation in this slice.
+Date: 2026-10-06. Status: Ivan approved implementation; runtime implementation complete, broad browser verification blocked by local-server/database timeouts. The original plan below is retained as the evaluation contract.
 
 ## Requested and accepted direction
 
@@ -53,7 +53,7 @@ Use one presentation owner and one expanded workspace at a time. Opening a neste
 
 Side workspaces are nonmodal regions when chat is available; they must not claim aria-modal or trap focus away from chat. Blocking confirmations/narrow full-screen sheets use modal semantics, background inertness, focus containment and return to the opener. Escape dismisses the topmost dismissible surface; required activities retain their existing completion gates and get an explicit return/back path where permitted.
 
-## Source findings informing the plan
+## Pre-implementation source findings informing the plan
 
 - `DialogueCutscene.tsx` currently uses absolute inset-0 and a 42%-width desktop portrait; its mobile portrait alone takes 34vh. Name/copy/audio labels are Rho-specific.
 - `MessageList.tsx` currently renders all visible messages and scrolls to the bottom whenever messages change. Latest-exchange selection and respectful History scrolling need explicit behavior.
@@ -91,23 +91,31 @@ For a later implementation prompt/handoff: read `PROJECT_MEMORY.md` and this pla
 
 ## Acceptance checklist: how we know it is good
 
-These are proposed engineering targets, not results or claims from child testing.
+These are engineering targets, not claims from child testing. Checked items have unit/browser evidence below; unchecked items are partial or still require verification.
 
-- [ ] On 1440×900, 1366×768 and 1024×768 landscape viewports, ordinary dialogue dock measures 42–48% of the playable shell height; it spans its width and touches its lower edge. Nameplate is included in the occupied-height budget.
-- [ ] Rho picture is visibly bottom-right and her name is above the chat body. Default latest exchange is readable at existing large dialogue text sizes; no horizontal overflow or clipped composer/choice controls.
-- [ ] The island/captain remains visible above normal conversation. Closing conversation restores exploration without moving the captain, advancing required tutorial steps or resetting route/session state.
-- [ ] History shows all visible turns, excludes hidden turns, supports reading older messages during streaming, and returns without losing the draft/current reply.
+- [x] On 1440×900, 1366×768 and 1024×768 landscape viewports, ordinary dialogue dock measures 42–48% of the playable shell height; it spans its width and touches its lower edge. Nameplate is included in the occupied-height budget.
+- [x] Rho picture is visibly bottom-right and her name is above the chat body. Default latest exchange is readable at existing large dialogue text sizes; no horizontal overflow or clipped composer/choice controls.
+- [x] The island/captain remains visible above normal conversation. Closing conversation restores exploration without moving the captain, advancing required tutorial steps or resetting route/session state.
+- [x] History shows all visible turns, excludes hidden turns, supports reading older messages during streaming, and returns without losing the draft/current reply.
 - [ ] Each content type in the placement table opens in its intended surface. Right panels expand/maximize as needed; no orphan backdrop/overlapping modal/floating definition escapes its owner.
 - [ ] Voice dictation fills the editable draft; mic remains first-class; Send/choices produce one request; barge-in/mute/Auto read/Hear and autoplay recovery retain existing behavior. Report any real microphone/audio path that cannot be tested on the available device.
-- [ ] An alternate speaker fixture changes name/role/art/labels/copy, with safe missing-art fallback/recovery; no stream/API change is necessary to change presentation.
+- [x] An alternate speaker fixture changes name/role/art/labels/copy, with safe missing-art fallback/recovery; no stream/API change is necessary to change presentation.
 - [ ] Exercise 390×844 and 768×1024 portrait, an open virtual keyboard on an available real/emulated device, landscape/portrait changes and 200% browser zoom. Composer and close/back controls stay reachable; narrow content uses the accepted full-screen fallback.
 - [ ] Main touch actions target at least 44×44 CSS pixels; text/control contrast meets AA targets; visible keyboard focus, correct region/dialog semantics, reduced-motion behavior and topmost Escape/focus restoration pass inspection.
 - [ ] Unit regressions test latest-visible exchange, placement/transition rules and speaker fallback behavior. New Playwright layout/History tests plus updated existing quiz/choice/auto-read/map/check/garden/handoff specs exercise actual actions, not just static screenshots.
 - [ ] `npm test`, `npx tsc --noEmit` and `npm run test:e2e` pass on final code. Also interactively exercise conversation → tool → return, draft/History/streaming, voice controls and exploration in the browser. Record exact blocked checks instead of treating source review or typecheck as runtime validation.
 - [ ] Ivan reviews dock-only and expanded-content states. A later formative learner check should confirm that a learner can identify the speaker, find mic/choices, open/return from content and keep following the scene; no learning-efficacy claim from this layout slice.
 
+## Implementation evidence and remaining checks
+
+- Full unit suite: 228 tests across 57 files passed, including latest exchange/hidden-turn rules, workspace transitions and explicit speaker voice. Final TypeScript check passed after refreshing the generated Prisma client for concurrent schema and repairing an invalid Camp parameter initializer.
+- Seven earlier Playwright fixture flows passed: three landscape dock sizes, History/answer retention/stream reading/maximize, and three narrow/short screen modal/focus/draft/exploration transitions. A separate real-shell map transition passed with captain visibility/position and draft retained; screenshot: `docs/dialogue-dock-preview.png`.
+- Final missing-art/replacement-speaker browser flow passed after repairing image-failure detection when errors precede hydration. Targeted component lint passed during implementation; final lint status is recorded in project memory.
+- The full project browser suite was attempted, then stopped after repeated 120-second `/api/dev/agent-bootstrap` timeouts. Server logs include PostgreSQL `EAUTHTIMEOUT` and very slow route compilation/loads. A final nine-flow dialogue rerun also stalled on hydration (`data-ready=false`) before layout assertions; it was stopped. Earlier passes are evidence for their exercised flows, not a final full-suite pass.
+- CUA page navigation timed out, so no manual CUA walkthrough was completed. Real microphone/audio playback, an actual phone keyboard, 200% zoom, every migrated activity's submission/persistence and a learner/usability review remain open. No deployment or paid generation.
+
 ## Planning evaluation and remaining review
 
 Checked this plan against every requested layout requirement and all three replies. Revised the initial right-panel concept to keep it above the dock so the requested bottom-right speaker stays visible. Added paused-camera, image-recovery, History scrolling and modal-semantics checks from source inspection.
 
-No clarification remains unanswered. Upper-right expansion geometry, portrait width and prototype acceptance targets are recommendations for plan review. No application code, runtime test, browser interaction, art generation or deployment was performed in this planning slice.
+No clarification remains unanswered. Ivan accepted this plan and requested implementation in the next turn. The planning turn itself changed no runtime code. Implementation uses the upper-right workspace, bottom-right speaker and adaptive fallback described above; final verification evidence is recorded in MASTER §18 and project memory. No art generation or deployment is part of this slice.

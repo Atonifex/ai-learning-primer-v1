@@ -1,0 +1,14 @@
+{
+  "first": {
+    "time": 0,
+    "width": 1916,
+    "height": 1080
+  },
+  "last": {
+    "time": 15.041995,
+    "duration": 15.041995,
+    "ended": true,
+    "width": 1916,
+    "src": "http://127.0.0.1:4177/cinematics/prologue-v5/sources/c14.mp4"
+  }
+}
