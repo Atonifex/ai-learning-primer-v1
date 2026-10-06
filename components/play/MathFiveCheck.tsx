@@ -1,5 +1,7 @@
 "use client";
 
+import ActivitySurface from "./ActivitySurface";
+
 import { useEffect, useState } from "react";
 import { practiceForPlacement } from "../../lib/play/mathPractice";
 import MathPractice from "./MathPractice";
@@ -89,7 +91,7 @@ export default function MathFiveCheck(props: { sessionId: string; onClose: () =>
       : null;
 
   return (
-    <div
+    <ActivitySurface
       className="absolute inset-0 z-[70] grid place-items-center bg-[#153e4b]/80 p-4"
       data-testid="math-five-check"
       ref={dialogRef} tabIndex={-1}
@@ -162,6 +164,6 @@ export default function MathFiveCheck(props: { sessionId: string; onClose: () =>
         )}
         {!done && <p className="mt-1 text-xs text-[#5c4632]" role="status">{busy ? "Saving your answer…" : payload?.saved ? "Saved. You can close this check and return to the next question." : "Each answered question will be saved. You can take a break."}</p>}
       </div>
-    </div>
+    </ActivitySurface>
   );
 }

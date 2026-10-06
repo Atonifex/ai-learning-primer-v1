@@ -227,7 +227,7 @@ If Primer is used by third graders, you are almost certainly a COPPA "operator."
 
 **Product implication we are locking:** **two logins, one household** (§4.5). The parent User owns billing, consent, and the dashboard. Each child has a separate login (username + PIN or simple password) tied to a `LearnerProfile`. Voice and chat belong to the child profile, visible to the parent. Do not ship classmate testing or paid Florida D2C without this shape.
 
-**High priority (2026-10-05) — third-party media.** Any new embed, analytics vendor, ad network, or outside player is a COPPA decision before a child can use it. Learning clips use a privacy-enhanced YouTube iframe and stay **off** unless `PRIMER_LEARNING_CLIPS=1`. That flag is not parent consent. The embed can still let Google see the viewer. Do not send the child’s name or voice to YouTube. Do not enable clips on a child-facing deploy until a parent gives verifiable consent and the privacy policy names Google. Deferred detail lives at the top of `docs/FUTURE_STORY_IDEAS.md` (P0) and outranks story backlog items.
+**High priority (2026-10-05) — third-party media.** Any new embed, analytics vendor, ad network, or outside player is a COPPA decision before a child can use it. Learning clips use a privacy-enhanced YouTube iframe and stay **off** unless `PRIMER_LEARNING_CLIPS=1`. That flag is not parent consent. The embed can still let Google see the viewer. Do not send the child’s name or voice to YouTube. Do not enable clips on a child-facing deploy until a parent gives verifiable consent and the privacy policy names Google. Deferred detail lives at the top of `docs/Future_Development_ideas.md` (P0) and outranks story backlog items.
 
 This is **not legal advice**; before taking stipend money, have a lawyer glance at COPPA + Florida student-privacy rules. It is enough of a product constraint to design now.
 
@@ -468,7 +468,7 @@ Do **not** steal Undertale’s FIGHT/MERCY moral test or bullet-hell. The “dum
 
 **Mission premise (Ivan):** The expedition works for the **Merchant Corporation** to investigate island natural resources that can be collected, shipped, and sold on different planets to make the company money. Interplanetary commerce is explained upfront and now synchronized in the live shared prompt, superseding the older blanket space/planet prohibition. Later discoveries remain unrevealed. Proposed relationship: the Cartographers' Guild briefs the survey crew on behalf of the corporation; exact organizational structure is not yet locked. Live Rho should reuse the saved accepted mission share, not invent a default.
 
-**Resources/trade clarification (Ivan, 2026-10-05):** Initial targets are oil and metal ores including gold/silver; rare/unknown materials are later discoveries. Prologue contains a proposed 5s trade explanation connecting trade to homes, food delivery, and fictional interplanetary transport. Lithium/batteries and later deuterium/tritium/fusion ideas belong in `docs/FUTURE_STORY_IDEAS.md`; no initial reveal/current implementation. Grade ~6 for fusion is tentative, not verified standards mapping. Future-idea capture is now in AGENTS/CLAUDE/CONTEXT.
+**Resources/trade clarification (Ivan, 2026-10-05):** Initial targets are oil and metal ores including gold/silver; rare/unknown materials are later discoveries. Prologue contains a proposed 5s trade explanation connecting trade to homes, food delivery, and fictional interplanetary transport. Lithium/batteries and later deuterium/tritium/fusion ideas belong in `docs/Future_Development_ideas.md`; no initial reveal/current implementation. Grade ~6 for fusion is tentative, not verified standards mapping. Future-idea capture is now in AGENTS/CLAUDE/CONTEXT.
 
 **Credit planning (public rules verified 2026-10-05):** `docs/KLING_CREDIT_BUDGET.md` records paid Personal MCP credits only, current public monthly plans, and a proposed **3,000–5,000 credit** production allowance for the 90s opening with a few takes/reference setup. Pro monthly is the staged starting recommendation; Premier monthly gives more retry room. No account balance, charge approval, generation or subscription purchase yet.
 
@@ -1204,7 +1204,7 @@ Technical debt (defer to end of this plan unless a later step naturally clears i
 - [ ] XP + camp pin (perk tree UI later)
 - [x] TTS for Rho (OpenAI)
 - [x] Parent account linked to child account(s) (COPPA-ready)
-- [ ] **HIGH PRIORITY — child data security:** verifiable parent consent and a privacy policy that names Google before any child-facing YouTube clip. Nocookie embed and `PRIMER_LEARNING_CLIPS` are not consent. See `docs/FUTURE_STORY_IDEAS.md` P0 and §4.1.
+- [ ] **HIGH PRIORITY — child data security:** verifiable parent consent and a privacy policy that names Google before any child-facing YouTube clip. Nocookie embed and `PRIMER_LEARNING_CLIPS` are not consent. See `docs/Future_Development_ideas.md` P0 and §4.1.
 - [ ] Parent dashboard + weekly email + weekly PDF (full MVP, after student loop)
 
 ### P2 — Immersion + measurement
@@ -1386,6 +1386,12 @@ If a new ★ question appears, add the answer to **§4** or **§17** — do not 
 
 ## 18. Implementation log
 
+### 2026-10-06 — Treeline teach-before-garden + shore trim
+
+- Ivan required authored teach/practice before the garden apply step; removed Dune/Creek from the tutorial map; kept Camp for a resource-planning math module (F12). Renamed backlog to `docs/Future_Development_ideas.md` (F10 scratch paper, F11 trade, F12 camp resources).
+- Shipped: `GardenTeachPanel` + `gardenTeach.ts`, `teachCompleted` on garden JSON, teach→beds handoff in PlayShell. Mission catalog is wreck / treeline / camp only.
+- Not done: Camp A/B/C resource authoring with locked MA.3 codes; catalog-wide `learnerGoal` (Grok batch); scratch-paper UI.
+
 ### 2026-10-06 — Treeline garden deep lesson foundation
 
 - Ivan: fix WHAT vs HOW on early shore jobs; ~15+ min depth; one required tutorial dive; world reward that upgrades camp. Plan: `docs/TREELINE_GARDEN_LESSON_2026-10-06.md` (`SC.3.L.17.2`, goal “What plants need to grow”).
@@ -1537,7 +1543,7 @@ No app behavior, data, live prompts, UI, model, mastery formula, paid assets or 
 
 - Rho can call `offer_learning_clip`. The server searches the YouTube Data API inside an allowlist (safe search, embeddable, duration, blocklist, then a text ranker). A none result does not open a player. The captain gets one nocookie clip, one or two questions, then a note back to the mission. Watching does not record mastery.
 - Clips stay off unless `PRIMER_LEARNING_CLIPS=1` and `YOUTUBE_API_KEY` are set. Playtest `?clip=1` opens a fixture panel and does not search.
-- **High priority, not done:** parent consent before a child-facing launch. Recorded in §4.1 and `docs/FUTURE_STORY_IDEAS.md` P0. A nocookie player can still let Google see the viewer. Do not send the child’s name or voice to YouTube.
+- **High priority, not done:** parent consent before a child-facing launch. Recorded in §4.1 and `docs/Future_Development_ideas.md` P0. A nocookie player can still let Google see the viewer. Do not send the child’s name or voice to YouTube.
 
 ### 2026-10-05 — Prologue editorial improvement cycle
 

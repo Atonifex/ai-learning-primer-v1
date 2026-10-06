@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, useTransition } from "react";
+import { useCallback, useEffect, useRef, useState, useTransition, type CSSProperties, type SetStateAction } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -18,6 +18,7 @@ import QuizOverlay from "./QuizOverlay";
 import ReflectionOverlay from "./ReflectionOverlay";
 import MissionBoard from "./MissionBoard";
 import GardenPlotPanel from "./GardenPlotPanel";
+import GardenTeachPanel from "./GardenTeachPanel";
 import LearningClipPanel from "./LearningClipPanel";
 import SubjectFocusPanel from "./SubjectFocusPanel";
 import MathFiveCheck from "./MathFiveCheck";
@@ -38,7 +39,11 @@ import { useLearningLoop } from "./useLearningLoop";
 import { useMissions } from "./useMissions";
 import { unlockRhoAudio } from "../../lib/play/rhoAudio";
 import { isClientAiDebug } from "../../lib/play/clientAiDebug";
-import { shouldHideDialogueForOverlay } from "../../lib/play/overlayWorkMode";
+import { WORKSPACE_PANELS } from "../../lib/play/dialogueLayout";
+import ContentWorkspace from "./ContentWorkspace";
+import { useWorkspace } from "./useWorkspace";
+import { usePlayViewport } from "./usePlayViewport";
+import "./dialogueDock.css";
 import { useWorldMap } from "./useWorldMap";
 import WorldMapPanel from "./WorldMapPanel";
 import WorldHud from "./WorldHud";
@@ -82,13 +87,25 @@ export default function PlayShell(props: {
   const firstRun = useFirstRunTutorial(props.firstRunStep ?? "video", captain);
   const missions = useMissions();
   const [dialogueOpen, setDialogueOpen] = useState(() => Boolean(props.autoOpenDialogue));
-  const [boardOpen, setBoardOpen] = useState(() => Boolean(props.autoOpenBoard));
-  const [gardenOpen, setGardenOpen] = useState(false);
-  const [focusOpen, setFocusOpen] = useState(() => Boolean(props.autoOpenFocus));
-  const [mathCheckOpen, setMathCheckOpen] = useState(false);
-  const [clip, setClip] = useState<LearningClipOffer | null>(() =>
-    props.autoOpenClip ? LEARNING_CLIP_FIXTURE : null
-  );
+  const { panel, setPanel, setOpen } = useWorkspace(props.autoOpenBoard ? "board" : props.autoOpenFocus ? "focus" : props.autoOpenClip ? "clip" : null);
+  const [historyOpen, setHistoryOpen] = useState(false);
+  const [maximized, setMaximized] = useState(false);
+  const viewport = usePlayViewport();
+  const boardOpen = panel === "board";
+  const setBoardOpen = useCallback((value: SetStateAction<boolean>) => setOpen("board", value), [setOpen]);
+  const gardenOpen = panel === "garden";
+  const setGardenOpen = useCallback((value: SetStateAction<boolean>) => setOpen("garden", value), [setOpen]);
+  const gardenTeachOpen = panel === "gardenTeach";
+  const setGardenTeachOpen = useCallback((value: SetStateAction<boolean>) => setOpen("gardenTeach", value), [setOpen]);
+  const focusOpen = panel === "focus";
+  const setFocusOpen = useCallback((value: SetStateAction<boolean>) => setOpen("focus", value), [setOpen]);
+  const mathCheckOpen = panel === "math";
+  const setMathCheckOpen = useCallback((value: SetStateAction<boolean>) => setOpen("math", value), [setOpen]);
+  const mapOpen = panel === "map";
+  const setMapOpen = useCallback((value: SetStateAction<boolean>) => setOpen("map", value), [setOpen]);
+  const [clipOffer, setClipOffer] = useState<LearningClipOffer | null>(() => props.autoOpenClip ? LEARNING_CLIP_FIXTURE : null);
+  const clip = panel === "clip" ? clipOffer : null;
+  const setClip = useCallback((value: LearningClipOffer | null) => { setClipOffer(value); setOpen("clip", Boolean(value)); }, [setOpen]);
   const [subjectSlug, setSubjectSlug] = useState(props.subjectSlug);
   const [startingId, setStartingId] = useState<string | null>(null);
   const [navigatingToMission, startMissionNavigation] = useTransition();
@@ -102,7 +119,6 @@ export default function PlayShell(props: {
   const pendingQuizRef = useRef(false);
   const wreckOpeningRef = useRef(false);
   const openedMissionRef = useRef<string | null>(null);
-  const [mapOpen, setMapOpen] = useState(false);
   const [mapReady, setMapReady] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState<string | null>(null);
   const [position, setPosition] = useState(() => tileCenter(SPAWN_COL, SPAWN_ROW));
@@ -132,6 +148,26 @@ export default function PlayShell(props: {
   const learning = useLearningLoop(props.sessionId, captain, stream.sendMessage);
   openQuizRef.current = learning.openTutorialQuiz;
 
+
+  const openTreelineLesson = useCallback(async () => {
+    setMapOpen(false);
+    setBoardOpen(false);
+    setFocusOpen(false);
+    setDialogueOpen(false);
+    setGardenOpen(false);
+    setGardenTeachOpen(false);
+    try {
+      const res = await fetch("/api/garden");
+      const data = (await res.json()) as { state?: { teachCompleted?: boolean }; error?: string };
+      if (!res.ok) throw new Error(data.error ?? "Could not open the Treeline lesson.");
+      if (data.state?.teachCompleted) setGardenOpen(true);
+      else setGardenTeachOpen(true);
+    } catch (e) {
+      setHint(e instanceof Error ? e.message : "Could not open the Treeline lesson.");
+      setGardenTeachOpen(true);
+    }
+  }, []);
+
   const beginMission = useCallback(
     async (missionId: string) => {
       setStartingId(missionId);
@@ -152,7 +188,7 @@ export default function PlayShell(props: {
           );
         }
         if (missionId === "treeline-sci") {
-          setGardenOpen(true);
+          void openTreelineLesson();
           void missions.refresh();
           return;
         }
@@ -167,7 +203,7 @@ export default function PlayShell(props: {
         setStartingId(null);
       }
     },
-    [learning, missions, props.sessionId, router, stream]
+    [learning, missions, openTreelineLesson, props.sessionId, router, stream]
   );
 
   useEffect(() => {
@@ -200,17 +236,9 @@ export default function PlayShell(props: {
     void beginMission(missionId);
   }, [beginMission, props.initialMission, firstRun.complete]);
 
-  useEffect(() => {
-    if (
-      shouldHideDialogueForOverlay({
-        showQuiz: learning.showQuiz,
-        showReflection: learning.showReflection,
-      })
-    ) {
-      setDialogueOpen(false);
-      setMapOpen(false);
-    }
-  }, [learning.showQuiz, learning.showReflection]);
+  useEffect(() => { setOpen("quiz", learning.showQuiz); }, [learning.showQuiz, setOpen]);
+  useEffect(() => { setOpen("reflection", learning.showReflection); }, [learning.showReflection, setOpen]);
+  useEffect(() => { if (panel) setDialogueOpen(true); setHistoryOpen(false); setMaximized(false); }, [panel]);
 
   useEffect(() => {
     if (stream.streaming) return;
@@ -218,10 +246,7 @@ export default function PlayShell(props: {
     if (!pending) return;
     stream.clearPendingMissionOpen();
     if (pending.missionId === "treeline-sci") {
-      setDialogueOpen(false);
-      setMapOpen(false);
-      setBoardOpen(false);
-      setGardenOpen(true);
+      void openTreelineLesson();
       return;
     }
     if (pending.switched) {
@@ -232,7 +257,7 @@ export default function PlayShell(props: {
     void learning.openOverlayQuiz(pending.activitySlug).catch((e: unknown) => {
       setHint(e instanceof Error ? e.message : "Could not open that job.");
     });
-  }, [beginMission, learning, stream]);
+  }, [beginMission, learning, openTreelineLesson, stream]);
 
   useEffect(() => {
     if (!stream.pendingMissionBoardOpen) return;
@@ -247,12 +272,8 @@ export default function PlayShell(props: {
   useEffect(() => {
     if (!stream.pendingGardenPlotOpen) return;
     stream.clearPendingGardenPlotOpen();
-    setMapOpen(false);
-    setBoardOpen(false);
-    setFocusOpen(false);
-    setDialogueOpen(false);
-    setGardenOpen(true);
-  }, [stream.pendingGardenPlotOpen, stream]);
+    void openTreelineLesson();
+  }, [stream.pendingGardenPlotOpen, openTreelineLesson, stream]);
 
   useEffect(() => {
     if (!stream.pendingCrewLogOpen) return;
@@ -415,7 +436,7 @@ export default function PlayShell(props: {
 
   if (firstRun.step === "video") {
     return (
-      <div className="h-screen" data-testid="play-shell" data-ready={mapReady} inert={!mapReady} aria-busy={!mapReady}>
+      <div className="h-screen" style={layoutStyle} data-conversation={dockVisible} data-panel={Boolean(effectivePanel)} data-narrow={viewport.narrow} data-maximized={maximized && Boolean(effectivePanel)} data-testid="play-shell" data-ready={mapReady} inert={!mapReady} aria-busy={!mapReady}>
         <IntroCinematic onSkip={skipIntro} />
       </div>
     );
@@ -442,13 +463,26 @@ export default function PlayShell(props: {
     missions.mathPlacementStatus
   );
 
+  const dockVisible = dialogueOpen || Boolean(panel) || historyOpen;
+  const workBusy = (panel === "quiz" && !learning.quiz?.alreadyCompleted && !learning.quizResult) || panel === "reflection";
+  const canClosePanel = !workBusy;
+  function closePanel() {
+    if (panel === "quiz") learning.setShowQuiz(false);
+    if (panel === "clip") setClipOffer(null);
+    setPanel(null); setDialogueOpen(true); void missions.refresh(); void worldMap.refresh();
+  }
+  const effectivePanel = historyOpen ? "history" : panel;
+  const workspaceWidth = maximized ? "100%" : effectivePanel && WORKSPACE_PANELS[effectivePanel].wide ? "max(660px, 65%)" : "max(460px, 40%)";
+  const layoutStyle = { "--workspace-width": workspaceWidth, ...(viewport.height ? { height: viewport.height } : {}) } as CSSProperties;
+
   return (
     <div className="play-world relative h-dvh overflow-hidden bg-[#195563]" data-testid="play-shell" data-ready={mapReady} inert={!mapReady} aria-busy={!mapReady}>
+      <div className="overworld-viewport" inert={viewport.narrow && Boolean(panel || historyOpen)} aria-hidden={maximized || undefined}>
       <OverworldCanvas
         paused={
           navigatingToMission ||
           Boolean(startingId) ||
-          dialogueOpen ||
+          dockVisible ||
           learning.showQuiz ||
           learning.showReflection ||
           boardOpen ||
@@ -456,7 +490,7 @@ export default function PlayShell(props: {
           mathCheckOpen ||
           mapOpen ||
           confirmLeave ||
-          Boolean(clip)
+          Boolean(clip) || gardenOpen || gardenTeachOpen
         }
         world={worldMap.world}
         travel={travel}
@@ -467,6 +501,7 @@ export default function PlayShell(props: {
         }}
         onPosition={setPosition}
       />
+      </div>
       <ResourceHud
         captainName={captain}
         camp={missions.camp}
@@ -559,14 +594,8 @@ export default function PlayShell(props: {
         travelTitle={travel ? selectedNode?.title : undefined}
         onMap={() => setMapOpen(true)} onAsk={askAboutPlace} onWalk={walkToPlace} onDismiss={() => setSelectedPlace(null)} />}
 
-      {mapOpen && <WorldMapPanel world={worldMap.world} selectedId={selectedPlace} position={position}
-        onSelect={setSelectedPlace} onClose={() => setMapOpen(false)} onWalk={walkToPlace} onAsk={askAboutPlace}
-        onMission={(id) => void beginMission(id)} onActivity={(task) => void openMapActivity(task)}
-        onFocus={() => { setMapOpen(false); setDialogueOpen(false); setFocusOpen(true); }}
-        onSaveNote={worldMap.saveNote} error={worldMap.error ?? mapActionError} refreshing={worldMap.refreshing}
-        onRefresh={() => { setMapActionError(null); void worldMap.refresh(); }} busy={activityBusy || Boolean(startingId)} conversationBusy={stream.streaming} />}
 
-      {chrome.radio && (
+      {chrome.radio && !dockVisible && (
         <div className="pointer-events-none absolute bottom-4 left-3 z-20">
           <RhoRadio
             onCall={callRho}
@@ -575,12 +604,15 @@ export default function PlayShell(props: {
         </div>
       )}
 
-      {firstRun.coach && !dialogueOpen && !learning.showQuiz && (
+      {firstRun.coach && !dockVisible && !learning.showQuiz && (
         <FirstRunCoach text={firstRun.coach} />
       )}
 
-      {dialogueOpen && (
         <DialogueCutscene
+          open={dockVisible} inert={viewport.narrow && Boolean(panel || historyOpen)}
+          workBusy={workBusy} historyOpen={historyOpen} narrow={viewport.narrow} maximized={maximized}
+          onHistory={() => setHistoryOpen((open) => !open)} onCloseHistory={() => setHistoryOpen(false)}
+          onMaximize={() => setMaximized((value) => !value)}
           sessionId={props.sessionId}
           captainName={captain}
           messages={stream.messages}
@@ -593,11 +625,18 @@ export default function PlayShell(props: {
           mapContext={selectedNode ? `${selectedNode.title} · ${selectedNode.tasks.filter((t) => !t.completed).length} ready to try` : worldMap.world?.chapterTitle}
           worldUpdate={stream.worldUpdate?.reason}
           onSend={onCaptainSend}
-          onClose={() => setDialogueOpen(false)}
+          onClose={() => { if (!workBusy) { setPanel(null); setHistoryOpen(false); setDialogueOpen(false); } }}
           onBranchResolved={(id) => router.push(`/learn/${id}`)}
         />
-      )}
 
+      {panel && <ContentWorkspace title={WORKSPACE_PANELS[panel].title} narrow={viewport.narrow} maximized={maximized}
+        hidden={historyOpen} onMaximize={() => setMaximized((value) => !value)} onClose={canClosePanel ? closePanel : undefined}>
+      {mapOpen && <WorldMapPanel world={worldMap.world} selectedId={selectedPlace} position={position}
+        onSelect={setSelectedPlace} onClose={() => setMapOpen(false)} onWalk={walkToPlace} onAsk={askAboutPlace}
+        onMission={(id) => void beginMission(id)} onActivity={(task) => void openMapActivity(task)}
+        onFocus={() => { setMapOpen(false); setDialogueOpen(false); setFocusOpen(true); }}
+        onSaveNote={worldMap.saveNote} error={worldMap.error ?? mapActionError} refreshing={worldMap.refreshing}
+        onRefresh={() => { setMapActionError(null); void worldMap.refresh(); }} busy={activityBusy || Boolean(startingId)} conversationBusy={stream.streaming} />}
       {mathCheckOpen && (
         <MathFiveCheck
           sessionId={props.sessionId}
@@ -655,6 +694,27 @@ export default function PlayShell(props: {
         />
       )}
 
+      {gardenTeachOpen && (
+        <GardenTeachPanel
+          onClose={() => setGardenTeachOpen(false)}
+          onReadyToPlant={() => {
+            void (async () => {
+              try {
+                await fetch("/api/garden", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ action: "teach_done" }),
+                });
+              } catch {
+                /* still open beds */
+              }
+              setGardenTeachOpen(false);
+              setGardenOpen(true);
+            })();
+          }}
+        />
+      )}
+
       {gardenOpen && (
         <GardenPlotPanel
           onClose={() => setGardenOpen(false)}
@@ -670,7 +730,7 @@ export default function PlayShell(props: {
         />
       )}
 
-      {learning.showQuiz && learning.quiz && (
+      {panel === "quiz" && learning.showQuiz && learning.quiz && (
         <QuizOverlay
           quiz={learning.quiz}
           submitting={learning.quizSubmitting}
@@ -695,7 +755,7 @@ export default function PlayShell(props: {
         />
       )}
 
-      {learning.showReflection && learning.reflection && (
+      {panel === "reflection" && learning.showReflection && learning.reflection && (
         <ReflectionOverlay
           reflection={learning.reflection}
           submitting={learning.reflectionSubmitting}
@@ -707,6 +767,8 @@ export default function PlayShell(props: {
           onContinue={learning.continueAfterHandoff}
         />
       )}
+
+      </ContentWorkspace>}
 
       {stream.observationToasts.map((t) => (
         <div
@@ -735,7 +797,7 @@ export default function PlayShell(props: {
       )}
 
       {confirmLeave && (
-        <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+        <div className="leave-confirmation absolute inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
           <div className="w-full max-w-sm rounded-2xl bg-white p-6">
             <h3 className="text-lg font-semibold">End this session?</h3>
             <p className="mt-2 text-sm text-stone-500">

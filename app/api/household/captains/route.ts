@@ -11,6 +11,7 @@ import {
   listHouseholdCaptains,
 } from "../../../../lib/services/household";
 import { prisma } from "../../../../lib/db/prisma";
+import { validCaptainName } from "../../../../lib/profile/captainName";
 
 export async function GET() {
   const user = await getCurrentUser();
@@ -48,7 +49,10 @@ export async function POST(req: NextRequest) {
   const username = body?.username;
   const pin = body?.pin;
   const gradeBand = body?.gradeBand;
-  const displayName = typeof body?.displayName === "string" ? body.displayName : null;
+  const displayName = body?.displayName == null ? null : validCaptainName(body.displayName);
+  if (body?.displayName != null && !displayName) {
+    return NextResponse.json({ error: "Captain name must be 1–40 characters with no control characters" }, { status: 400 });
+  }
 
   try {
     if (claimFused) {
@@ -56,6 +60,7 @@ export async function POST(req: NextRequest) {
         parentUserId: parent.userId,
         username,
         pin,
+        displayName,
       });
       return NextResponse.json({ ok: true, claimed });
     }

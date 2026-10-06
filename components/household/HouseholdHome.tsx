@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
+import { CAPTAIN_NAME_MAX_LENGTH, captainDisplayName } from "../../lib/profile/captainName";
 import { CURRICULUM_COVERAGE } from "../../lib/play/progressCopy";
 import {
   DEFAULT_GRADE_BAND,
@@ -30,6 +31,8 @@ export default function HouseholdHome() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [waking, setWaking] = useState<string | null>(null);
+  const [ready, setReady] = useState<Captain | null>(null);
+  const [displayName, setDisplayName] = useState("");
 
   const [username, setUsername] = useState("");
   const [pin, setPin] = useState("");
@@ -52,10 +55,12 @@ export default function HouseholdHome() {
     if (!res.ok) throw new Error(data.error || "Could not load household");
     setCaptains(data.captains ?? []);
     setFused(data.fusedProfile ?? null);
+    return data;
   }
 
   useEffect(() => {
     void refresh()
+      .then((data) => setDisplayName(data.fusedProfile?.displayName || ""))
       .catch((e: unknown) =>
         setError(e instanceof Error ? e.message : "Could not load household")
       )
@@ -72,6 +77,7 @@ export default function HouseholdHome() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           username,
+          displayName,
           pin,
           gradeBand,
           claimFused: Boolean(fused),
@@ -79,9 +85,19 @@ export default function HouseholdHome() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Could not add captain");
+      // Creation succeeded. A later list reload failure must not invite duplicate creation.
+      setReady({
+        userId: data.captain?.userId ?? data.claimed.childUserId,
+        learnerId: data.captain?.learnerId ?? data.claimed.learnerId,
+        username: data.captain?.username ?? data.claimed.username,
+        displayName: fused?.displayName || displayName.trim(),
+        gradeBand,
+        firstRunStep: fused ? "complete" : "video",
+      });
+      setDisplayName("");
       setUsername("");
       setPin("");
-      await refresh();
+      await refresh().catch(() => setError("Captain saved. Reload the household list to see all captains."));
     } catch (err) {
       setError(err instanceof Error ? err.message : "Could not add captain");
     } finally {
@@ -123,8 +139,8 @@ export default function HouseholdHome() {
           </p>
           <h1 className="mt-1 text-2xl font-semibold text-stone-900">Captains</h1>
           <p className="mt-2 text-sm text-stone-600">
-            Add a captain, then hand the device over. They wake on the beach after
-            a short crash film.
+            Set up your student once, then open their learning experience.
+            Returning captains continue with their saved work.
           </p>
         </div>
         <button type="button" onClick={() => void signOut()} className="text-sm text-stone-500">
@@ -132,9 +148,25 @@ export default function HouseholdHome() {
         </button>
       </div>
 
+      <Link href="/household/progress" className="mt-4 inline-block min-h-11 rounded-lg px-2 py-3 text-sm font-medium text-teal-900 underline">Student usage and progress</Link>
       {loading && <p className="mt-8 text-sm text-stone-500">Loading…</p>}
       {error && (
-        <p className="mt-6 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>
+        <div className="mt-6 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">
+          <p role="alert">{error}</p>
+          <button type="button" className="min-h-11 underline" onClick={() => void refresh().then(() => setError("")).catch(() => setError("Could not load household. Try again."))}>Reload household list</button>
+        </div>
+      )}
+
+      {!loading && (
+        <section aria-label="First session and handoff" className="mt-6 rounded-2xl border border-teal-200 bg-teal-50 p-5">
+          <h2 className="text-lg font-semibold text-teal-950">{ready ? `${captainDisplayName(ready.displayName, ready.username)} is ready` : "What happens in the first session?"}</h2>
+          <p className="mt-2 text-sm leading-relaxed text-stone-700">Your student meets Rho, discovers how useful skills help the crew, and tries a starting check so Rho can choose helpful practice. They can pause or skip the intro. They don’t need to know everything yet.</p>
+          {ready && <>
+            <p className="mt-3 text-sm text-stone-700">Opening switches this device to your student’s account. Hand it over once their session opens. Their saved work stays with their captain.</p>
+            <p className="mt-3 text-sm text-stone-700">Next time: choose Captain on the sign-in screen and use <strong>{ready.username}</strong> with the PIN you set. To return as a parent, sign out of the student account and sign in with your parent email and password.</p>
+            <Button className="mt-4 w-full" type="button" disabled={waking !== null} onClick={() => void wake(ready.userId)}>{waking ? "Opening…" : `Open ${captainDisplayName(ready.displayName, ready.username)}’s learning`}</Button>
+          </>}
+        </section>
       )}
 
       <ul className="mt-8 space-y-3">
@@ -145,7 +177,7 @@ export default function HouseholdHome() {
           >
             <div>
               <p className="font-medium text-stone-900">
-                {c.displayName || c.username || "Captain"}
+                {captainDisplayName(c.displayName, c.username)}
               </p>
               <p className="text-xs text-stone-500">
                 Login {c.username} · Grade {c.gradeBand}
@@ -154,16 +186,16 @@ export default function HouseholdHome() {
             <Button
               type="button"
               size="sm"
-              disabled={waking === c.userId}
-              onClick={() => void wake(c.userId)}
+              disabled={waking !== null}
+              onClick={() => { setReady(c); setError(""); }}
             >
-              {waking === c.userId ? "Waking…" : "Wake the captain"}
+              {c.firstRunStep === "video" ? "Prepare handoff" : "Continue"}
             </Button>
           </li>
         ))}
       </ul>
 
-      <form
+      {!loading && <form
         onSubmit={(e) => void handleAdd(e)}
         className="mt-10 space-y-3 rounded-2xl border border-stone-200 bg-stone-50 p-5"
       >
@@ -177,13 +209,30 @@ export default function HouseholdHome() {
             so they can sign in without your email.
           </p>
         )}
+        <label htmlFor="captain-display-name" className="block text-sm font-medium text-stone-700">Captain name</label>
+        <Input id="captain-display-name" aria-describedby="captain-name-help" value={displayName} maxLength={CAPTAIN_NAME_MAX_LENGTH} onChange={(e) => setDisplayName(e.target.value)} required readOnly={Boolean(fused?.displayName)} />
+        <p id="captain-name-help" className="text-xs text-stone-600">What Rho calls your student. A first name or nickname is enough. They can change it later in Settings.{fused?.displayName ? " Their existing captain name is kept." : ""}</p>
+        <label htmlFor="captain-login" className="block text-sm font-medium text-stone-700">Captain login</label>
         <Input
-          placeholder="captain login (maya)"
+          id="captain-login"
+          aria-describedby="captain-login-help"
+          placeholder="e.g. maya"
+          minLength={3}
+          maxLength={20}
+          pattern="[a-zA-Z0-9_]{3,20}"
+          autoCapitalize="none"
+          autoCorrect="off"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
+        <p id="captain-login-help" className="text-xs text-stone-600">For signing in: 3–20 letters, numbers or underscores. It can match their captain name. No student email needed.</p>
+        <label htmlFor="captain-pin" className="block text-sm font-medium text-stone-700">4-digit PIN</label>
         <Input
+          id="captain-pin"
+          type="password"
+          autoComplete="new-password"
+          pattern="[0-9]{4}"
           placeholder="4-digit PIN"
           inputMode="numeric"
           maxLength={4}
@@ -207,14 +256,14 @@ export default function HouseholdHome() {
             </select>
           </label>
         )}
+        {!fused && <p className="text-xs text-stone-600">Their school grade gives Rho a starting context. The starting check helps find the right support; it is not a school-grade verdict.</p>}
         <p className="rounded-lg bg-amber-50 p-3 text-sm text-stone-700">{CURRICULUM_COVERAGE}</p>
         <Button type="submit" disabled={saving} className="w-full">
           {saving ? "Saving…" : fused ? "Save captain login" : "Add captain"}
         </Button>
-      </form>
+      </form>}
 
       <p className="mt-8 text-center text-xs text-stone-400">
-        The full parent report comes later.{" "}
         <Link href="/privacy" className="underline">
           Privacy
         </Link>

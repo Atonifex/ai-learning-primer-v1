@@ -41,15 +41,17 @@ export default function RegisterPage() {
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-semibold tracking-tight text-stone-900">Primer</h1>
           <p className="mt-2 text-sm text-stone-500">
-            Parent or guardian step. Then you hand the device to the captain.
+            Create your parent account, set up a student, then open their learning experience. Your student will use a separate login and PIN.
           </p>
         </div>
         <div className="rounded-2xl border border-stone-100 bg-white p-8 shadow-sm">
           <h2 className="mb-6 text-lg font-semibold text-stone-900">Create a household</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="mb-1.5 block text-sm font-medium text-stone-700">Email</label>
+              <label htmlFor="parent-email" className="mb-1.5 block text-sm font-medium text-stone-700">Parent email</label>
               <Input
+                id="parent-email"
+                autoComplete="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -59,10 +61,12 @@ export default function RegisterPage() {
               />
             </div>
             <div>
-              <label className="mb-1.5 block text-sm font-medium text-stone-700">
+              <label htmlFor="parent-password" className="mb-1.5 block text-sm font-medium text-stone-700">
                 Password <span className="font-normal text-stone-400">(min 8 characters)</span>
               </label>
               <Input
+                id="parent-password"
+                autoComplete="new-password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -88,7 +92,7 @@ export default function RegisterPage() {
               </span>
             </label>
             {error && (
-              <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">{error}</p>
+              <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">{error}</p>
             )}
             <Button type="submit" disabled={loading} className="w-full" size="lg">
               {loading ? "Creating household…" : "Continue"}

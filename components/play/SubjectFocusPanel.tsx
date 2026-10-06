@@ -1,5 +1,7 @@
 "use client";
 
+import ActivitySurface from "./ActivitySurface";
+
 import { useEffect, useState } from "react";
 import { CURRICULUM_COVERAGE } from "../../lib/play/progressCopy";
 import { ladderForSubject } from "../../lib/play/subjectChecks";
@@ -114,7 +116,7 @@ export default function SubjectFocusPanel(props: {
   }
 
   return (
-    <div ref={dialogRef} tabIndex={-1} role="dialog" aria-modal="true" aria-labelledby="subject-focus-title" className="absolute inset-0 z-50 flex items-end justify-center bg-[#0a3340]/50 p-4 sm:items-center">
+    <ActivitySurface ref={dialogRef} tabIndex={-1} role="dialog" aria-modal="true" aria-labelledby="subject-focus-title" className="absolute inset-0 z-50 flex items-end justify-center bg-[#0a3340]/50 p-4 sm:items-center">
       <section
         className="flex max-h-[85vh] w-full max-w-lg flex-col overflow-hidden rounded-2xl border border-amber-900/30 bg-[#fff8ea] shadow-xl"
       >
@@ -233,6 +235,6 @@ export default function SubjectFocusPanel(props: {
           )}
         </div>
       </section>
-    </div>
+    </ActivitySurface>
   );
 }

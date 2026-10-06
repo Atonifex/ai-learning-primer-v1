@@ -1,5 +1,7 @@
 "use client";
 
+import ActivitySurface from "./ActivitySurface";
+
 import { useEffect, useState } from "react";
 import MicButton from "./MicButton";
 import {
@@ -73,7 +75,7 @@ export default function LearningClipPanel(props: {
   }, [stage]);
 
   return (
-    <div
+    <ActivitySurface
       className="absolute inset-0 z-[70] flex items-center justify-center bg-[#0a3340]/85 p-3"
       role="dialog"
       aria-labelledby="learning-clip-title"
@@ -195,6 +197,6 @@ export default function LearningClipPanel(props: {
           )}
         </div>
       </div>
-    </div>
+    </ActivitySurface>
   );
 }

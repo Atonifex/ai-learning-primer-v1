@@ -71,7 +71,7 @@ describe("mission board tools", () => {
     });
     const board = formatMissionsForPrompt(missions);
     expect(board).toContain("camp-math [locked]");
-    expect(board).toContain("dune-ela [locked]");
+    expect(board).toContain("treeline-sci [locked]");
     expect(board).not.toContain("locked on the crew log");
     expect(board).not.toContain("save_crew_log");
   });

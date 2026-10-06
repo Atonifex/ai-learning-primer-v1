@@ -1,0 +1,14 @@
+{
+  "first": {
+    "time": 0.334425,
+    "width": 1916,
+    "height": 1080
+  },
+  "last": {
+    "time": 7.041667,
+    "duration": 7.041667,
+    "ended": true,
+    "width": 1916,
+    "src": "http://localhost:3000/cinematics/prologue-v5/sources/c12.mp4"
+  }
+}

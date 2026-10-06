@@ -78,13 +78,13 @@ export const openMissionTool = {
   function: {
     name: "open_mission",
     description:
-      "Open a mission-board job for the captain (may switch the session subject). Use a mission id from the MISSION BOARD: wreck-math, dune-ela, treeline-sci, creek-ss, camp-math. Call when they agree to start that job.",
+      "Open a mission-board job for the captain (may switch the session subject). Use a mission id from the MISSION BOARD: wreck-math, treeline-sci, camp-math. Call when they agree to start that job.",
     parameters: {
       type: "object",
       properties: {
         mission_id: {
           type: "string",
-          description: "Mission id from the board, e.g. dune-ela.",
+          description: "Mission id from the board, e.g. treeline-sci.",
         },
       },
       required: ["mission_id"],

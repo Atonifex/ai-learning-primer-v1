@@ -52,13 +52,13 @@ describe("Day 0 checklist and camp needs", () => {
       wreckQuizDone: true,
       completedSlugs: new Set(["g3-ma-wreck-number-forms"]),
     });
-    expect(missions.find((m) => m.id === "dune-ela")?.status).toBe("locked");
+    expect(missions.find((m) => m.id === "treeline-sci")?.status).toBe("locked");
     expect(missions.find((m) => m.id === "camp-math")?.status).toBe("locked");
-    expect(missions.find((m) => m.id === "dune-ela")?.lockReason).toMatch(/starting point/i);
-    expect(campNeedsMissions(missions, false)).toHaveLength(5);
+    expect(missions.find((m) => m.id === "treeline-sci")?.lockReason).toMatch(/starting point/i);
+    expect(campNeedsMissions(missions, false)).toHaveLength(3);
     expect(campNeedsMissions(missions, false).filter((m) => m.status === "available")).toHaveLength(0);
     expect(campNeedsTitle(false)).toBe("Camp needs");
-    expect(campNeedsMissions(missions, true).some((m) => m.id === "dune-ela")).toBe(true);
+    expect(campNeedsMissions(missions, true).some((m) => m.id === "treeline-sci")).toBe(true);
     expect(canGenerateLearningActivity()).toBe(false);
     expect(hasSavedMathPlacement("MA.3.NSO.1.1")).toBe(true);
     expect(hasSavedMathPlacement(null, "below_catalog")).toBe(true);

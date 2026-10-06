@@ -30,6 +30,8 @@ export type GardenState = {
   layoutId: "tutorial-shore-v1";
   plantings: GardenPlanting[];
   lesson1Passed: boolean;
+  /** Teach/practice beats finished before the apply mini-game. */
+  teachCompleted: boolean;
 };
 
 export type PlotEvaluation = {
@@ -107,6 +109,7 @@ export function emptyGardenState(): GardenState {
     layoutId: "tutorial-shore-v1",
     plantings: [],
     lesson1Passed: false,
+    teachCompleted: false,
   };
 }
 
@@ -269,6 +272,10 @@ export function clearPlot(
   };
 }
 
+export function markTeachCompleted(state: GardenState): GardenState {
+  return { ...state, teachCompleted: true };
+}
+
 export function markLesson1Passed(state: GardenState): GardenState {
   const evaluation = evaluateGarden(state);
   if (!evaluation.lesson1Pass) return state;
@@ -297,6 +304,7 @@ export function parseGardenState(raw: unknown): GardenState {
     layoutId: "tutorial-shore-v1",
     plantings,
     lesson1Passed: o.lesson1Passed === true,
+    teachCompleted: o.teachCompleted === true || o.lesson1Passed === true,
   };
   if (base.lesson1Passed && !evaluateGarden(base).lesson1Pass) {
     return { ...base, lesson1Passed: false };

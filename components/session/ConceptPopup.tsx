@@ -9,6 +9,7 @@ interface ConceptPopupProps {
   content: string;
   streaming: boolean;
   onClose: () => void;
+  contained?: boolean;
 }
 
 const POPUP_WIDTH = 288;
@@ -20,6 +21,7 @@ export default function ConceptPopup({
   content,
   streaming,
   onClose,
+  contained = false,
 }: ConceptPopupProps) {
   const popupRef = useRef<HTMLDivElement>(null);
 
@@ -57,8 +59,10 @@ export default function ConceptPopup({
   return (
     <div
       ref={popupRef}
-      className="fixed z-50 bg-white rounded-xl shadow-xl border border-stone-200 p-3"
-      style={{ width: POPUP_WIDTH, bottom, left }}
+      className={contained ? "contained-definition" : "fixed z-50 bg-white rounded-xl shadow-xl border border-stone-200 p-3"}
+      style={contained ? undefined : { width: POPUP_WIDTH, bottom, left }}
+      role="region" aria-label={`Meaning of ${word}`}
+      onKeyDown={(event) => { if (event.key === "Escape") { event.stopPropagation(); onClose(); } }}
     >
       <div className="flex items-center justify-between mb-1.5">
         <span className="text-[11px] font-semibold text-stone-400 uppercase tracking-wider truncate pr-2">
@@ -96,10 +100,10 @@ export default function ConceptPopup({
         )}
       </div>
 
-      <div
+      {!contained && <div
         className="absolute -bottom-[7px] w-3 h-3 bg-white border-r border-b border-stone-200 rotate-45"
         style={{ left: arrowLeft }}
-      />
+      />}
     </div>
   );
 }

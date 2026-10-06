@@ -47,10 +47,8 @@ export const mapNoteInput = z.object({ nodeId: z.string().min(1).max(160), note:
 
 const DESCRIPTIONS: Record<PinId, string> = {
   wreck: "The storm left our supplies scattered. Count what the crew can carry.",
-  dune: "A torn bulletin rests in the sand. Words can help us piece together what happened.",
   treeline: "Wild shoots grow here. Learn what plants need, then start garden beds for camp.",
-  creek: "Fresh water runs toward the sea. Decide how our crew can work together.",
-  camp: "Our place to plan, try ideas, and keep the work the crew will use.",
+  camp: "Plan rations, scrap, timber, and canvas to build what camp needs next.",
 };
 
 /** Invalid packs are ignored as a whole; model-authored coordinates never reach Pixi. */

@@ -10,11 +10,11 @@ export default function SafeStill(props: {
   className?: string;
   imgClassName?: string;
 }) {
-  const [failed, setFailed] = useState(false);
+  const [failedStill, setFailedStill] = useState<StillKey | null>(null);
   const label = stillLabel(props.still);
   const alt = props.alt ?? label;
 
-  if (failed) {
+  if (failedStill === props.still) {
     return (
       <div
         role="img"
@@ -38,7 +38,7 @@ export default function SafeStill(props: {
       src={stillSrc(props.still)}
       alt={alt}
       className={cn("h-full w-full object-cover", props.imgClassName, props.className)}
-      onError={() => setFailed(true)}
+      onError={() => setFailedStill(props.still)}
     />
   );
 }

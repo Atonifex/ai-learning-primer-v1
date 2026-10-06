@@ -1,0 +1,66 @@
+{
+  "shot": {
+    "id": "c12",
+    "duration": 7,
+    "ref": "aircraft-wreck",
+    "line": "",
+    "speaker": null,
+    "action": "Exterior EMPTY same teal cream brass twin-prop aircraft, no visible people or silhouettes in cabin/cockpit. Exactly SEVEN occupied open crew chutes stay FAR ABOVE in background, safely apart from aircraft and splash. Plane descends into south-beach SHALLOW WATER, lands heavily and skids to a repairable stop, brief natural splash and one wing damaged but fuselage remains in one piece. Local right-engine fire goes out in water; small smoke, no explosive fireball or gore. Hold grounded repairable wreck for last2seconds. No added people or ground parachutes. Natural impact/splash settles to quiet surf. Day-to-dawn transition added in editing.",
+    "role": "continuation",
+    "retries": 0,
+    "status": "submitted",
+    "fadeOut": 0.4,
+    "generationId": "AZcFd3wBm54lm4A6cTAHTVMRLe0CDFfkGfmDYbJS6tj7oqwPaQ9-S3fwyVBfjB8zyD8n12Xk"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character proportions costume set geography and same teal cream brass fixed-wing twin-prop aircraft. One continuous shot, no automatic cuts. No text lettering subtitles UI weapons blood injuries or horror. NO MUSIC; continuous edit score added separately. Exterior EMPTY same teal cream brass twin-prop aircraft, no visible people or silhouettes in cabin/cockpit. Exactly SEVEN occupied open crew chutes stay FAR ABOVE in background, safely apart from aircraft and splash. Plane descends into south-beach SHALLOW WATER, lands heavily and skids to a repairable stop, brief natural splash and one wing damaged but fuselage remains in one piece. Local right-engine fire goes out in water; small smoke, no explosive fireball or gore. Hold grounded repairable wreck for last2seconds. No added people or ground parachutes. Natural impact/splash settles to quiet surf. Day-to-dawn transition added in editing. No speech or voices. Natural story sound only. "
+      },
+      {
+        "name": "duration",
+        "value": "7"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1YWdlbnRfdXBsb2FkLzE3OTEyMzczMzIvaHFkUmhtR21PeS9haXJjcmFmdC13cmVjay5wbmc.origin?x-kcdn-pid=112372"
+      },
+      {
+        "name": "tail_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qWAoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo-YWdlbnRfdXBsb2FkLzE3OTEyODU0NDYvQjk4anR5eWVDMi9haXJjcmFmdC13cmVjay1ncm91bmRlZC5wbmc.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized whole V05 regeneration. Prior shot and seam reviewed before continuing. Preserve identity voice craft and causal continuity; variable pacing native sound with separate score."
+  },
+  "task": {
+    "generationId": "AZcFd3wBm54lm4A6cTAHTVMRLe0CDFfkGfmDYbJS6tj7oqwPaQ9-S3fwyVBfjB8zyD8n12Xk",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 84,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "credits_consumed": 84,
+    "generation_id": "AZcFd3wBm54lm4A6cTAHTVMRLe0CDFfkGfmDYbJS6tj7oqwPaQ9-S3fwyVBfjB8zyD8n12Xk"
+  }
+}

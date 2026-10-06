@@ -23,6 +23,7 @@ import {
 } from "../play/firstRun";
 import { enrollLearnerInCoreSubjects } from "./learnerSubjects";
 import { ensureLearnerStoryChain } from "./storyCurriculum";
+import { captainDisplayName } from "../profile/captainName";
 
 export class ProfileAlreadyExistsError extends Error {
   constructor() {
@@ -41,7 +42,7 @@ type ProfileWithSubjects = Prisma.LearnerProfileGetPayload<{
   };
 }>;
 
-function toLearnerProfileData(profile: ProfileWithSubjects): LearnerProfileData {
+function toLearnerProfileData(profile: ProfileWithSubjects, username?: string | null): LearnerProfileData {
   const enrolledSubjects: EnrolledSubject[] = profile.learnerSubjects.map(
     (ls) => ({
       slug: ls.subject.slug,
@@ -52,7 +53,7 @@ function toLearnerProfileData(profile: ProfileWithSubjects): LearnerProfileData 
   );
   return {
     id: profile.id,
-    displayName: profile.displayName,
+    displayName: captainDisplayName(profile.displayName, username),
     gradeBand: profile.gradeBand,
     readingLevel: profile.readingLevel,
     firstRunStep: profile.firstRunStep,
@@ -73,6 +74,7 @@ export async function getProfile(
   const profile = await prisma.learnerProfile.findUnique({
     where: { userId },
     include: {
+      user: { select: { username: true } },
       learnerSubjects: {
         include: {
           subject: {
@@ -84,7 +86,7 @@ export async function getProfile(
     },
   });
   if (!profile) return null;
-  return toLearnerProfileData(profile);
+  return toLearnerProfileData(profile, profile.user.username);
 }
 
 export async function hasProfile(userId: string): Promise<boolean> {

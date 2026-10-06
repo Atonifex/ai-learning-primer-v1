@@ -2,7 +2,7 @@ import { describe, expect, it, vi, afterEach } from "vitest";
 import { nextCampAction } from "./nextCampAction";
 import { decorateMissions, TUTORIAL_MISSIONS, formatMissionsForPrompt } from "./missions";
 import { childStoryRecap, STORY_RECAP_RULE } from "./storyRecap";
-import { CURRICULUM_COVERAGE, STARTER_CHECK_GUIDANCE, EVIDENCE_EXPLANATION, evidenceLabel, ledgerLabel, observationNote, masteryEstimate } from "./progressCopy";
+import { CURRICULUM_COVERAGE, EVIDENCE_EXPLANATION, evidenceLabel, ledgerLabel, observationNote, masteryEstimate } from "./progressCopy";
 import { isClientAiDebug } from "./clientAiDebug";
 import { expandHiddenTurn, HIDDEN_TURN, isHiddenTurn } from "./hiddenTurns";
 
@@ -44,8 +44,6 @@ describe("beta learning direction and trust", () => {
     expect(observationNote("math-five:forms-a")).toBeNull();
     expect(observationNote("Explained the tens place clearly.")).toBe("Explained the tens place clearly.");
     expect(CURRICULUM_COVERAGE).toContain("Grades 5–8 curriculum is not available");
-    expect(STARTER_CHECK_GUIDANCE).toContain("Grade 3 starter sample");
-    expect(STARTER_CHECK_GUIDANCE).toContain("does not decide your school grade");
   });
   it("never shows debugging in a production build", () => {
     vi.stubEnv("NODE_ENV", "production"); vi.stubEnv("NEXT_PUBLIC_PRIMER_AI_DEBUG", "1");

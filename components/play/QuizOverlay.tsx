@@ -1,5 +1,7 @@
 "use client";
 
+import ActivitySurface from "./ActivitySurface";
+
 import { useMemo, useState } from "react";
 import type { OverlayQuizPublic } from "../../lib/play/overlayQuiz";
 import { TUTORIAL_QUIZ_SLUG } from "../../lib/play/tutorialQuizSlug";
@@ -39,7 +41,7 @@ export default function QuizOverlay(props: {
   const wreckZpd = isWreck && missed;
 
   return (
-    <div
+    <ActivitySurface
       className="absolute inset-0 z-50 flex items-end justify-center bg-black/45 p-3 sm:items-center"
       data-testid="quiz-overlay"
       ref={dialogRef} tabIndex={-1}
@@ -160,6 +162,6 @@ export default function QuizOverlay(props: {
           </div>
         </div>
       </div>
-    </div>
+    </ActivitySurface>
   );
 }

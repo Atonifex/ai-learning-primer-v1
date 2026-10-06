@@ -134,5 +134,29 @@
     "visual": "Full2fps timeline keeps worried Rho, dim gauges, outside engine fire/smoke and two captain hands on wheel. No cheerful reaction or reset damage. Full browser playback7.04s ended without error.",
     "speech": "Whisper confirms exact line once: The engine's on fire! We're losing power! Word times0–4.24s; no actual human listening certification.",
     "seam": "c08-c09 twelvefps seam shows intentional damaged-exterior→damaged-cockpit cut, fire remains on right. Visual continuity accepted; speech verification remains pending."
+  },
+  {
+    "id": "c10",
+    "accepted": true,
+    "retries": 1,
+    "visual": "Corrected full timeline and8fps action detail show captain LEFT glove leaves wheel, grips LEFT-wall blue handle and lowers it to exposed released latch. RIGHT glove stays on wheel, no extra hands. Fixed wide camera, worried Rho and outside damaged engine retained. Full7.04s browser playback passes.",
+    "speech": "Whisper confirms exact instruction once: Crew get ready; Captain pull the blue handle. Words end3.98s; action continues after speech. No human listening certification.",
+    "seam": "c09-c10 twelvefps seam retains exact cockpit/Rho/hands anchor. Failed first take roof reach preserved in attempts/c10-0; one corrected take accepted."
+  },
+  {
+    "id": "c11",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Full2fps timeline retains all seven occupied open chutes separated from descending EMPTY plane. No disappearing/extra chutes, collisions, impact or injuries. Same aircraft/local engine fire, untouched island varied terrain. Full browser playback checked.",
+    "speech": "No speech; wind/fabric native mix retained without music. Human listening not certified.",
+    "seam": "c10-c11 twelvefps seam: clear causal left-handle activation→wide all-seven-safe escape result. Intentional exterior reverse view keeps storm bank visible behind aircraft; no hands or cockpit on landscape."
+  },
+  {
+    "id": "c12",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Full2fps review: same empty aircraft descends, skids in shallow water, right-engine fire extinguishes, small splash and damaged wing, intact grounded fuselage; crew chutes far safely above. Actual browser decodes 7.041667s through ended.",
+    "speech": "No dialogue; native impact and surf; human listening remains unverified.",
+    "seam": "12fps c11→c12 aerial-to-low-side-view match: same craft, engine damage, chutes and island. Coast-facing reverse angle explains storm-bank background. Night/dawn ellipsis uses outgoing/incoming0.4s fades."
   }
 ]

@@ -1,0 +1,12 @@
+"use client";
+
+import { useCallback, useState, type SetStateAction } from "react";
+import { changeWorkspace, type WorkspacePanel } from "../../lib/play/dialogueLayout";
+
+export function useWorkspace(initial: WorkspacePanel | null = null) {
+  const [panel, setPanel] = useState<WorkspacePanel | null>(initial);
+  const setOpen = useCallback((target: WorkspacePanel, value: SetStateAction<boolean>) => {
+    setPanel((current) => changeWorkspace(current, target, typeof value === "function" ? value(current === target) : value));
+  }, []);
+  return { panel, setPanel, setOpen };
+}

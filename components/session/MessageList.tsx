@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import MessageCard from "./MessageCard";
 import UserBubble from "./UserBubble";
 import ConceptPopup from "./ConceptPopup";
-import { isHiddenTurn } from "../../lib/play/hiddenTurns";
+import { visibleDialogue } from "../../lib/play/dialogueLayout";
 
 export interface Message {
   id: string;
@@ -27,6 +27,9 @@ interface MessageListProps {
   hearingId?: string | null;
   hearLoading?: boolean;
   onHear?: (id: string, content: string) => void;
+  speakerName?: string;
+  history?: boolean;
+  containedDefinitions?: boolean;
 }
 
 export default function MessageList({
@@ -34,14 +37,20 @@ export default function MessageList({
   hearingId,
   hearLoading,
   onHear,
+  speakerName = "Rho",
+  history = false,
+  containedDefinitions = false,
 }: MessageListProps) {
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const followBottom = useRef(true);
   const [popup, setPopup] = useState<PopupState | null>(null);
   const defineAbortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+    const el = scrollRef.current;
+    if (el && followBottom.current) el.scrollTop = el.scrollHeight;
+  }, [messages, history]);
+  useEffect(() => () => defineAbortRef.current?.abort(), []);
 
   const handleWordClick = useCallback(
     async (word: string, sentence: string, rect: DOMRect) => {
@@ -101,18 +110,18 @@ export default function MessageList({
     setPopup(null);
   }, []);
 
-  const visible = messages.filter(
-    (m) => m.content && !isHiddenTurn(m.content)
-  );
+  const visible = visibleDialogue(messages);
 
   return (
-    <div className="flex-1 overflow-y-auto px-4 py-6 messages-scroll">
+    <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto px-4 py-3 messages-scroll" data-testid={history ? "dialogue-history" : "dialogue-messages"}
+      onScroll={() => { const el = scrollRef.current; if (el) followBottom.current = el.scrollHeight - el.scrollTop - el.clientHeight < 48; }}>
       <div className="max-w-2xl mx-auto space-y-1">
         {visible.map((msg, i) =>
           msg.role === "ASSISTANT" ? (
             <MessageCard
               key={msg.id}
               content={msg.content}
+              speakerName={speakerName}
               isFirst={i === 0}
               onWordClick={handleWordClick}
               hearing={hearingId === msg.id}
@@ -130,11 +139,10 @@ export default function MessageList({
         {visible.length === 0 && (
           <div className="flex items-center justify-center h-32">
             <p className="text-base text-stone-400 md:text-lg">
-              Rho is waiting — you can talk or type a little.
+              {speakerName} is waiting — you can talk or type a little.
             </p>
           </div>
         )}
-        <div ref={bottomRef} />
       </div>
 
       {popup && (
@@ -144,6 +152,7 @@ export default function MessageList({
           content={popup.content}
           streaming={popup.streaming}
           onClose={closePopup}
+          contained={containedDefinitions}
         />
       )}
     </div>

@@ -1,6 +1,7 @@
 /**
  * Mission Loop v1 — static catalog on seeded bank slugs (§4.6 / A6).
- * Not per-student LLM authoring. Pins + HUD board share this list.
+ * Tutorial shore: wreck, Treeline garden lesson, Camp resource planning.
+ * Dune/Creek removed from the tutorial map (2026-10-06).
  */
 
 import type { PinId } from "./beachMap";
@@ -8,12 +9,7 @@ import type { Grade3SubjectSlug } from "../constants/subjects";
 import { formatCampForPrompt, type CampPublic } from "./camp";
 import { hasSavedMathPlacement } from "./mathPlacement";
 
-export type MissionId =
-  | "wreck-math"
-  | "dune-ela"
-  | "treeline-sci"
-  | "creek-ss"
-  | "camp-math";
+export type MissionId = "wreck-math" | "treeline-sci" | "camp-math";
 
 export type MissionLock = "none" | "wreck-quiz";
 
@@ -32,7 +28,7 @@ export type MissionDef = {
   theme: string;
   estimatedMinutes: number;
   rewards: MissionRewardStub;
-  /** Tutorial wreck is the U4 gate; others wait on salvage or Ch1 log. */
+  /** Tutorial wreck is the U4 gate; others wait on salvage. */
   lockedUntil: MissionLock;
 };
 
@@ -49,17 +45,6 @@ export const TUTORIAL_MISSIONS: MissionDef[] = [
     lockedUntil: "none",
   },
   {
-    id: "dune-ela",
-    pinId: "dune",
-    activitySlug: "g3-ela-context-clues-bulletin",
-    subjectSlug: "ela_g3",
-    title: "Storm words in context",
-    theme: "Torn bulletin on the dune",
-    estimatedMinutes: 8,
-    rewards: { xp: 10, rations: 1, mapPin: "Dune marked" },
-    lockedUntil: "wreck-quiz",
-  },
-  {
     id: "treeline-sci",
     pinId: "treeline",
     activitySlug: "g3-sci-plants-make-food",
@@ -71,24 +56,13 @@ export const TUTORIAL_MISSIONS: MissionDef[] = [
     lockedUntil: "wreck-quiz",
   },
   {
-    id: "creek-ss",
-    pinId: "creek",
-    activitySlug: "g3-ss-social-science-terms",
-    subjectSlug: "social_studies_g3",
-    title: "Name the social-science jobs",
-    theme: "First-night jobs at the creek",
-    estimatedMinutes: 8,
-    rewards: { xp: 10, rations: 1, mapPin: "Creek marked" },
-    lockedUntil: "wreck-quiz",
-  },
-  {
     id: "camp-math",
     pinId: "camp",
     activitySlug: "g3-ma-search-grid-tens",
     subjectSlug: "math_g3",
-    title: "Paces of tens and hundreds",
-    theme: "Search-grid from camp",
-    estimatedMinutes: 8,
+    title: "Camp resource plan",
+    theme: "Budget, rations, and build materials",
+    estimatedMinutes: 18,
     rewards: { xp: 14, rations: 2, mapPin: "Camp founded" },
     lockedUntil: "wreck-quiz",
   },
@@ -176,11 +150,12 @@ export function formatMissionsForPrompt(missions: MissionPublic[], camp?: CampPu
   const next = missions.find((m) => m.status === "available");
   const nextLine = next
     ? `Next open job: ${next.id} at the ${next.pinId} (${next.subjectSlug}). If they ask to see jobs/tasks/the board, call show_mission_board. If they agree to start a job, call open_mission yourself — never ask them to type a tool name or keyword.`
-    : "No open jobs. Call show_mission_board: its next-step button opens the short math starting check if needed, or subject choice when all shore jobs are done. Never substitute repeated recall questions in chat for a usable next step.";
+    : "No open jobs. Call show_mission_board: its next-step button opens the short math starting check if needed, or subject choice when shore jobs are done. Never substitute repeated recall questions in chat for a usable next step.";
   return [
     `CAMP NEEDS (guide the captain; never take the quiz yourself). Call show_mission_board to open the on-screen Camp needs overlay — do not only narrate a wooden board:`,
     ...lines,
     "Resource changes come only from saved camp state. Do not promise rations, XP, map unlocks or crew discoveries for these jobs.",
+    "Tutorial shore pins are wreck, treeline, and camp only (no dune or creek jobs).",
     nextLine,
     camp ? formatCampForPrompt(camp) : "",
   ]

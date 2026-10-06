@@ -22,8 +22,8 @@ Operating router for the Primer codebase. **CLAUDE.md** (always loaded) has iden
 | **Generate tutorial stills / art pack** | `public/stills/tutorial/README.md` | `lib/play/stills.ts`, MASTER §4.12; style: Stardew-like, not a clone; exact filenames |
 | **Intro cinematic / Skip** | `components/play/IntroCinematic.tsx` | `public/cinematics/README.md` |
 | **Cinematic style / video references / character continuity** | `docs/CINEMATIC_STYLE_GUIDE.md` | `PROJECT_MEMORY.md`; current condensed Maya/Fortuna/Sergeant Wilhelm screenplay in `docs/OPENING_SCREENPLAY_V05.md`; prior three-cycle design in V04; working V03 media in `public/cinematics/prologue-v3/README.md`; production history in `docs/KLING_VIDEO_PRODUCTION_BRIEF.md` |
-| **Future story / discovery idea outside current scope** | `docs/FUTURE_STORY_IDEAS.md` | `PROJECT_MEMORY.md`; capture proposal without implementing; promote reviewed work into MASTER later. Read **P0 child data security** first — it outranks story ideas |
-| **Child data / third-party media** | `docs/FUTURE_STORY_IDEAS.md` P0 and MASTER §4.1 | Any new embed, analytics vendor, or outside player needs parent consent before a child launch. YouTube clips stay off without `PRIMER_LEARNING_CLIPS=1` |
+| **Future story / discovery idea outside current scope** | `docs/Future_Development_ideas.md` | `PROJECT_MEMORY.md`; capture proposal without implementing; promote reviewed work into MASTER later. Read **P0 child data security** first — it outranks story ideas |
+| **Child data / third-party media** | `docs/Future_Development_ideas.md` P0 and MASTER §4.1 | Any new embed, analytics vendor, or outside player needs parent consent before a child launch. YouTube clips stay off without `PRIMER_LEARNING_CLIPS=1` |
 | **Learning clip sources / rubric** | `docs/LEARNING_CLIP_EVALUATION.md` | Known channels are a plus. Development search is not limited to that list |
 | **Change live model / router** | `lib/ai/models.ts` | `lib/ai/sessionOrchestrator.ts` — live turns stay `gpt-5.6-luna` |
 | **Prompt / Rho voice / subject lens** | `lib/ai/promptTemplates/` | `lib/ai/contextBuilder.ts`, shared bible `_shared_castaway_world.ts` |

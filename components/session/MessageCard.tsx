@@ -9,6 +9,7 @@ interface MessageCardProps {
   onHear?: () => void;
   hearing?: boolean;
   hearLoading?: boolean;
+  speakerName?: string;
 }
 
 export default function MessageCard({
@@ -18,6 +19,7 @@ export default function MessageCard({
   onHear,
   hearing,
   hearLoading,
+  speakerName = "Rho",
 }: MessageCardProps) {
   return (
     <div className={`flex gap-3 ${isFirst ? "mt-0" : "mt-2"}`}>
@@ -33,11 +35,11 @@ export default function MessageCard({
             <button
               type="button"
               onClick={onHear}
-              aria-label={hearing ? "Stop Rho" : "Hear Rho"}
+              aria-label={hearing ? `Stop ${speakerName}` : `Hear ${speakerName}`}
               aria-pressed={hearing}
               className="mt-2 text-sm font-medium text-amber-800/80 hover:text-amber-950 focus:outline-none focus:ring-2 focus:ring-amber-500 rounded"
             >
-              {hearLoading ? "Getting Rho's voice…" : hearing ? "Stop voice" : "Hear Rho"}
+              {hearLoading ? `Getting ${speakerName}'s voice…` : hearing ? "Stop voice" : `Hear ${speakerName}`}
             </button>
           )}
         </div>

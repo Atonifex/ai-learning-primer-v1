@@ -4,6 +4,7 @@ import {
   clearPlot,
   evaluateGarden,
   getTutorialGardenLayout,
+  markTeachCompleted,
   placeSeedling,
 } from "../../../lib/play/gardenPlot";
 import {
@@ -57,6 +58,7 @@ export async function POST(req: Request) {
       layoutId: "tutorial-shore-v1",
       plantings: [],
       lesson1Passed: false,
+      teachCompleted: state.teachCompleted,
     };
     for (const row of body.plantings) {
       if (typeof row?.plotId !== "string") continue;
@@ -64,6 +66,8 @@ export async function POST(req: Request) {
       if (!result.ok) return NextResponse.json({ error: result.error }, { status: 400 });
       state = result.state;
     }
+  } else if (action === "teach_done") {
+    state = markTeachCompleted(state);
   } else if (action === "submit") {
     // keep current state
   } else {

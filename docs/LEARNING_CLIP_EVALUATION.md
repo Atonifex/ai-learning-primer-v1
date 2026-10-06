@@ -1,6 +1,6 @@
 # Learning clip evaluation
 
-2026-10-05. This is our rubric for which YouTube clip Rho may offer. It is not a closed list of six channels. Child-data rules in `docs/FUTURE_STORY_IDEAS.md` P0 still apply: clips stay off for a real child until a parent consents.
+2026-10-05. This is our rubric for which YouTube clip Rho may offer. It is not a closed list of six channels. Child-data rules in `docs/Future_Development_ideas.md` P0 still apply: clips stay off for a real child until a parent consents.
 
 ## What search is allowed to see
 

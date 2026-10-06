@@ -40,15 +40,6 @@ export function createLandmark(node: WorldNode, onSelect: () => void) {
     g.roundRect(-44, 10, 18, 17, 3).fill(0xb69259).stroke({ color: 0x745839, width: 2 });
   } else if (node.kind === "camp" || node.kind === "shelter") {
     drawCamp(g, node.kind === "camp" ? (node.campStage ?? "clearing") : "tent");
-  } else if (node.kind === "creek") {
-    g.roundRect(-31, -9, 57, 24, 5).fill(0xbb9963);
-    for (let i = 0; i < 6; i++) g.moveTo(-26 + i * 9, -8).lineTo(-26 + i * 9, 14).stroke({ color: 0x7d7251, width: 2 });
-    g.moveTo(-29, -10).lineTo(26, -10).stroke({ color: 0xe4ce9c, width: 4 });
-  } else if (node.kind === "dune") {
-    g.ellipse(-3, 8, 39, 17).fill(0xd8bd85);
-    g.moveTo(-32, 7).quadraticCurveTo(0, -28, 35, 8).stroke({ color: 0xffe7ae, width: 4 });
-    g.moveTo(3, 7).lineTo(3, -35).stroke({ color: 0x8e7850, width: 4 });
-    g.poly([4, -35, 31, -30, 23, -16, 4, -19]).fill(0xd98861);
   } else if (node.kind === "treeline" || node.kind === "grove") {
     [-18, 6, 25].forEach((x, i) => {
       g.rect(x - 3, -12, 6, 27).fill(0x79613c);

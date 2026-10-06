@@ -7,6 +7,7 @@ import {
 } from "../constants/grades";
 import { normalizeUsername, parsePin } from "../auth/credentials";
 import { createProfile } from "./profile";
+import { validCaptainName, captainDisplayName } from "../profile/captainName";
 
 export const COPPA_CONSENT_VERSION = "2026-08-23";
 
@@ -129,6 +130,11 @@ export async function addCaptain(input: {
   if (!username) throw new Error("Invalid captain login");
   if (!pin) throw new Error("PIN must be 4 digits");
 
+  const displayName = input.displayName == null
+    ? username
+    : validCaptainName(input.displayName);
+  if (!displayName) throw new Error("Captain name must be 1–40 characters with no control characters");
+
   const household = await ensureParentHousehold(input.parentUserId);
   const taken = await prisma.user.findUnique({ where: { username } });
   if (taken) throw new UsernameTakenError();
@@ -149,7 +155,7 @@ export async function addCaptain(input: {
   });
 
   const profile = await createProfile(child.id, {
-    displayName: input.displayName,
+    displayName,
     gradeBand,
     firstRunStep: "video",
   });
@@ -162,6 +168,7 @@ export async function claimFusedCaptain(input: {
   parentUserId: string;
   username: string;
   pin: string;
+  displayName?: string | null;
 }) {
   const username = normalizeUsername(input.username);
   const pin = parsePin(input.pin);
@@ -172,6 +179,10 @@ export async function claimFusedCaptain(input: {
     where: { userId: input.parentUserId },
   });
   if (!fused) throw new Error("No captain profile on this parent account");
+
+  const suppliedName = input.displayName == null ? null : validCaptainName(input.displayName);
+  if (input.displayName != null && !suppliedName) throw new Error("Captain name must be 1–40 characters with no control characters");
+  const displayName = captainDisplayName(fused.displayName, suppliedName || username);
 
   const taken = await prisma.user.findUnique({ where: { username } });
   if (taken) throw new UsernameTakenError();
@@ -190,7 +201,7 @@ export async function claimFusedCaptain(input: {
 
   await prisma.learnerProfile.update({
     where: { id: fused.id },
-    data: { userId: child.id, householdId: household.id },
+    data: { userId: child.id, householdId: household.id, displayName },
   });
 
   return { childUserId: child.id, learnerId: fused.id, username };

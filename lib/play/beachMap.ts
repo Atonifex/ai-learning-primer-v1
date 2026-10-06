@@ -31,7 +31,7 @@ const RIDGE_START = NORTH_ROWS;
 
 export type TileKind = "water" | "foam" | "sand" | "rock";
 
-export type PinId = "wreck" | "dune" | "treeline" | "creek" | "camp";
+export type PinId = "wreck" | "treeline" | "camp";
 
 export type TutorialPin = {
   id: PinId;
@@ -45,9 +45,7 @@ export type TutorialPin = {
 /** Pin cols/rows are unchanged from the original tutorial rectangle, only shifted by SOUTH_START. */
 export const TUTORIAL_PINS: TutorialPin[] = [
   { id: "wreck", label: "Wreck", col: 8, row: SOUTH_START + 6, lockedUntilQuiz: false },
-  { id: "dune", label: "Dune", col: 4, row: SOUTH_START + 3, lockedUntilQuiz: true },
   { id: "treeline", label: "Treeline", col: 13, row: SOUTH_START + 3, lockedUntilQuiz: true },
-  { id: "creek", label: "Creek", col: 3, row: SOUTH_START + 7, lockedUntilQuiz: true },
   { id: "camp", label: "Camp", col: 14, row: SOUTH_START + 8, lockedUntilQuiz: true },
 ];
 

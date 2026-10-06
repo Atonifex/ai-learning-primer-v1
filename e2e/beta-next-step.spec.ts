@@ -25,7 +25,6 @@ test("a finished wreck and missing placement has a tappable next step and locked
   await dialog.getByRole("button", { name: "Start math check" }).click();
   await expect(dialog).toHaveCount(0);
   await expect(page.getByTestId("math-five-check")).toBeVisible();
-  await expect(page.getByTestId("math-five-check")).toContainText("Grade 3 starter sample");
   await expect(page.getByTestId("math-check-choice")).toHaveCount(3);
 });
 

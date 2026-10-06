@@ -1,5 +1,7 @@
 "use client";
 
+import ActivitySurface from "./ActivitySurface";
+
 import { useState } from "react";
 import type { ChapterReflectionPublic } from "../../lib/play/chapterReflection";
 import MicButton from "./MicButton";
@@ -15,7 +17,7 @@ export default function ReflectionOverlay(props: {
   const [text, setText] = useState(props.reflection.priorText ?? "");
 
   return (
-    <div className="absolute inset-0 z-40 flex items-end justify-center bg-black/45 p-3 sm:items-center">
+    <ActivitySurface className="absolute inset-0 z-40 flex items-end justify-center bg-black/45 p-3 sm:items-center">
       <div className="w-full max-w-lg overflow-hidden rounded-2xl border-4 border-teal-900/70 bg-[#1a2e32] shadow-2xl">
         <div className="bg-[#0f3a42] px-4 py-2">
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-teal-200/90">
@@ -75,6 +77,6 @@ export default function ReflectionOverlay(props: {
           )}
         </div>
       </div>
-    </div>
+    </ActivitySurface>
   );
 }

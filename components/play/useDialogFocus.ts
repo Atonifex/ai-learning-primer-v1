@@ -1,13 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
+import { EmbeddedActivity } from "./ActivitySurface";
 
 /** Keep keyboard users in the current learning task, then return to its opener. */
-export function useDialogFocus(onClose?: () => void) {
+export function useDialogFocus(onClose?: () => void, enabled = true) {
+  const embedded = useContext(EmbeddedActivity);
   const ref = useRef<HTMLDivElement>(null);
   const close = useRef(onClose);
   useEffect(() => { close.current = onClose; }, [onClose]);
   useEffect(() => {
+    if (embedded || !enabled) return;
     const dialog = ref.current;
     if (!dialog) return;
     const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
@@ -24,6 +27,6 @@ export function useDialogFocus(onClose?: () => void) {
     };
     dialog.addEventListener("keydown", key);
     return () => { dialog.removeEventListener("keydown", key); if (opener?.isConnected) opener.focus(); };
-  }, []);
+  }, [embedded, enabled]);
   return ref;
 }

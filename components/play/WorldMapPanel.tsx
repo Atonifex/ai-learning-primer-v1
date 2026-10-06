@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { filterWorldNodes, type MapTask, type WorldNode, type WorldSnapshot } from "../../lib/play/worldMap";
 import IslandChart, { PLACE_SYMBOLS } from "./IslandChart";
 
@@ -11,13 +11,11 @@ export default function WorldMapPanel(props: {
   onFocus: () => void; onSaveNote: (id: string, note: string) => Promise<void>;
   error: string | null; refreshing: boolean; onRefresh: () => void; busy: boolean; conversationBusy: boolean;
 }) {
-  const dialog = useRef<HTMLDialogElement>(null);
   const [filter, setFilter] = useState("all");
   const [overview, setOverview] = useState(false);
-  useEffect(() => { const el = dialog.current; el?.showModal(); return () => el?.close(); }, []);
   const selected = props.world?.nodes.find((n) => n.id === props.selectedId) ?? props.world?.nodes[0];
   const nodes = filterWorldNodes(props.world?.nodes ?? [], filter);
-  return <dialog ref={dialog} onCancel={(e) => { e.preventDefault(); props.onClose(); }} className="world-atlas" aria-labelledby="atlas-title" data-testid="world-map">
+  return <section className="world-atlas" aria-labelledby="atlas-title" data-testid="world-map">
     <header className="atlas-header"><div><h2 id="atlas-title">Our island</h2><p>{props.world?.chapterTitle ?? "Unfolding your map…"}</p>
       {props.world && <p data-testid="atlas-camp">{props.world.camp.stageLabel} · rations {props.world.camp.rations} · crew {props.world.camp.crewFound} of {props.world.camp.crewTotal}</p>}</div>
       <button type="button" onClick={props.onClose} autoFocus className="map-button">Close map <span aria-hidden>×</span></button></header>
@@ -33,7 +31,7 @@ export default function WorldMapPanel(props: {
       {selected && <LocationDetail key={selected.id} {...props} node={selected} />}
     </div>
     <footer className="atlas-footer"><span>● You are here</span><span>✓ Work saved</span><span>· Not open yet</span><span>New shores appear as your story grows.</span></footer>
-  </dialog>;
+  </section>;
 }
 
 function LocationDetail(props: Parameters<typeof WorldMapPanel>[0] & { node: WorldNode }) {

@@ -1,5 +1,7 @@
 "use client";
 
+import ActivitySurface from "./ActivitySurface";
+
 import type { MissionPublic } from "../../lib/play/missions";
 import { nextCampAction } from "../../lib/play/nextCampAction";
 import { useDialogFocus } from "./useDialogFocus";
@@ -32,7 +34,7 @@ export default function MissionBoard(props: {
   const next = nextCampAction(props.missions, Boolean(props.placementReady));
   const dialogRef = useDialogFocus(props.onClose);
   return (
-    <div ref={dialogRef} tabIndex={-1} role="dialog" aria-modal="true" aria-label="Camp needs" className="absolute inset-0 z-50 flex items-end justify-center bg-black/50 p-3 sm:items-center">
+    <ActivitySurface ref={dialogRef} tabIndex={-1} role="dialog" aria-modal="true" aria-label="Camp needs" className="absolute inset-0 z-50 flex items-end justify-center bg-black/50 p-3 sm:items-center">
       <div className="w-full max-w-lg overflow-hidden rounded-2xl border-4 border-amber-800/80 bg-[#3d2914] shadow-2xl">
         <div className="flex items-center justify-between bg-[#5c4033] px-4 py-2">
           <div>
@@ -108,6 +110,6 @@ export default function MissionBoard(props: {
           ))}
         </div>
       </div>
-    </div>
+    </ActivitySurface>
   );
 }

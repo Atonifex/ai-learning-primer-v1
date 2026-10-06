@@ -1,0 +1,60 @@
+{
+  "shot": {
+    "id": "c11",
+    "duration": 7,
+    "ref": "escape-chutes",
+    "line": "",
+    "speaker": null,
+    "action": "Exterior exactly SEVEN occupied fictional parachute escape seats, matching seven already-open orange/cream chutes in reference. Keep all SEVEN in the wide frame throughout, safely separated from each other and from EMPTY aircraft below/right. Seven crew descend gently and the wind spreads them toward separate forest clearings; nobody falls out, no new chute or person appears, no chute disappears or closes. Aircraft has localized right-engine fire/smoke and gradually descends below chutes but REMAINS AIRBORNE for entire shot; no crash impact yet. Wide slow camera, no interior, no hands or speaking people, no explosions or injuries. Natural wind and fabric flutter only.",
+    "role": "continuation",
+    "retries": 0,
+    "status": "submitted",
+    "generationId": "ATRDHOOX5KQXG-h478fAqgmhTt8EejvASoNAe6UdANLfGZWkAfk0hkgCSduf5dUalK5F3v_U"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character proportions costume set geography and same teal cream brass fixed-wing twin-prop aircraft. One continuous shot, no automatic cuts. No text lettering subtitles UI weapons blood injuries or horror. NO MUSIC; continuous edit score added separately. Exterior exactly SEVEN occupied fictional parachute escape seats, matching seven already-open orange/cream chutes in reference. Keep all SEVEN in the wide frame throughout, safely separated from each other and from EMPTY aircraft below/right. Seven crew descend gently and the wind spreads them toward separate forest clearings; nobody falls out, no new chute or person appears, no chute disappears or closes. Aircraft has localized right-engine fire/smoke and gradually descends below chutes but REMAINS AIRBORNE for entire shot; no crash impact yet. Wide slow camera, no interior, no hands or speaking people, no explosions or injuries. Natural wind and fabric flutter only. No speech or voices. Natural story sound only. "
+      },
+      {
+        "name": "duration",
+        "value": "7"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qTgoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo0YWdlbnRfdXBsb2FkLzE3OTEyMzczMTQvemQwb05adjdPWS9lc2NhcGUtY2h1dGVzLnBuZw.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized whole V05 regeneration. Prior shot and seam reviewed before continuing. Preserve identity voice craft and causal continuity; variable pacing native sound with separate score."
+  },
+  "task": {
+    "generationId": "ATRDHOOX5KQXG-h478fAqgmhTt8EejvASoNAe6UdANLfGZWkAfk0hkgCSduf5dUalK5F3v_U",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 84,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "credits_consumed": 84,
+    "generation_id": "ATRDHOOX5KQXG-h478fAqgmhTt8EejvASoNAe6UdANLfGZWkAfk0hkgCSduf5dUalK5F3v_U"
+  }
+}

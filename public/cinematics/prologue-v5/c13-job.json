@@ -1,0 +1,65 @@
+{
+  "shot": {
+    "id": "c13",
+    "duration": 7,
+    "ref": "rho-dawn-clear",
+    "line": "Captain. Are you all right?",
+    "speaker": "Rho",
+    "action": "Dawn first-person camera gently rises on south beach after a time ellipsis. Rho stays UPRIGHT with both hands at her own sides at normal colleague distance, same worried concern in reference. She checks responsiveness by speaking exact line; a small camera nod confirms Captain is all right. Only then her eyes soften to slight relief at last2seconds, not a big grin. No touching/reaching toward viewer, kneeling, coy head tilt, romance, thumbs-up, captain body or hands. Same repairable empty wreck and supply crate behind; distant chutes are FLAT fallen fabric, never tents or upright camp structures. No buildings/camp already built. Quiet surf and gentle birds only.",
+    "role": "continuation",
+    "retries": 0,
+    "status": "submitted",
+    "fadeIn": 0.4,
+    "generationId": "Af_RSGGlAPjgwNrk-AwaIXAQ5BzF3qFrnM8B5tRx8-qd9O59yVwiPRFnm__Z8Khqmq_oDVtW"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character proportions costume set geography and same teal cream brass fixed-wing twin-prop aircraft. One continuous shot, no automatic cuts. No text lettering subtitles UI weapons blood injuries or horror. NO MUSIC; continuous edit score added separately. Use <<<323213596308599>>> for same Rho identity and supplied voice. Blond hair amber eyes thin teal visor metal cheek neck brown jacket teal shoulders cream shirt. Professional, no romance. Dawn first-person camera gently rises on south beach after a time ellipsis. Rho stays UPRIGHT with both hands at her own sides at normal colleague distance, same worried concern in reference. She checks responsiveness by speaking exact line; a small camera nod confirms Captain is all right. Only then her eyes soften to slight relief at last2seconds, not a big grin. No touching/reaching toward viewer, kneeling, coy head tilt, romance, thumbs-up, captain body or hands. Same repairable empty wreck and supply crate behind; distant chutes are FLAT fallen fabric, never tents or upright camp structures. No buildings/camp already built. Quiet surf and gentle birds only. Only Rho speaks. Speak exact simple English line ONCE, clear unhurried natural voice with lip sync: \"Captain. Are you all right?\". No added words/voices. "
+      },
+      {
+        "name": "duration",
+        "value": "7"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      },
+      {
+        "name": "elements",
+        "value": "[{\"id\":\"323213596308599\",\"bindName\":\"Rho\"}]"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1YWdlbnRfdXBsb2FkLzE3OTEyODU5MzUvSTJWbmJ2NFFzNi9yaG8tZGF3bi1jbGVhci5wbmc.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized whole V05 regeneration. Prior shot and seam reviewed before continuing. Preserve identity voice craft and causal continuity; variable pacing native sound with separate score."
+  },
+  "task": {
+    "generationId": "Af_RSGGlAPjgwNrk-AwaIXAQ5BzF3qFrnM8B5tRx8-qd9O59yVwiPRFnm__Z8Khqmq_oDVtW",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 84,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "credits_consumed": 84,
+    "generation_id": "Af_RSGGlAPjgwNrk-AwaIXAQ5BzF3qFrnM8B5tRx8-qd9O59yVwiPRFnm__Z8Khqmq_oDVtW"
+  }
+}

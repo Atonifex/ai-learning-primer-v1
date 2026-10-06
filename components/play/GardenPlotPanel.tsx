@@ -1,5 +1,7 @@
 "use client";
 
+import ActivitySurface from "./ActivitySurface";
+
 import { useEffect, useState } from "react";
 import {
   GARDEN_LEARNER_GOAL,
@@ -110,7 +112,7 @@ export default function GardenPlotPanel(props: {
   const plots = payload?.plots ?? [];
 
   return (
-    <div
+    <ActivitySurface
       className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4"
       role="dialog"
       aria-modal="true"
@@ -197,6 +199,6 @@ export default function GardenPlotPanel(props: {
           </div>
         </footer>
       </div>
-    </div>
+    </ActivitySurface>
   );
 }
