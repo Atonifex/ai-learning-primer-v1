@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-06",
+  "media": {
+    "reviewedPieces": 27,
+    "chargedCredits": 3180,
+    "paidJobs": 32,
+    "correctiveRetakes": 6,
+    "maxRetakesPerSegment": 1,
+    "mp4Count": 75,
+    "maxMp4Bytes": 78114361,
+    "allBelowPreferred80MB": true,
+    "mainSeconds": 204.521333,
+    "bothCounteroffersSeconds": 218.521333,
+    "fullBrowserPlayback": "passed through actual end;1920x1080;56 external caption cues showing",
+    "decodedFrameChecks": "passed at3,85,99,140,177,211 seconds"
+  },
+  "app": {
+    "mediaRoot": "/cinematics/prologue-v5",
+    "persistedDealVersion": 3,
+    "unitTests": {
+      "passed": 232,
+      "files": 59
+    },
+    "typecheck": "passed outside filesystem sandbox",
+    "cinematicBrowserTests": {
+      "passed": 5,
+      "seconds": 49.1,
+      "flows": [
+        "10/15/20 percent accepted share and reload",
+        "silent waiting loop/no early choices/final Yes only",
+        "matched completion frame and learning-purpose card",
+        "sound/captions/pause/Skip",
+        "failed acceptance retry"
+      ]
+    },
+    "broaderBrowserSuite": "52 cases started; stopped after unrelated failures in beta-next-step (next action/recovery) and camp-plan (cook fire). Not a full-suite pass."
+  },
+  "limitations": [
+    "No human voice/pronunciation/music listening in this environment. Synthetic speech words/timing independently cross-checked when ambiguous.",
+    "Other chats continue changing beach/camp/dialogue; their broader regressions are outside this cinematic slice.",
+    "Tutorial videos deferred."
+  ],
+  "publishedAssetsCommit": "6ab2073"
+}

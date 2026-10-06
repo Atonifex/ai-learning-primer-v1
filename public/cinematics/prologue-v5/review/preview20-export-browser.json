@@ -1,0 +1,15 @@
+{
+  "duration": 218.521333,
+  "time": 218.521333,
+  "ended": true,
+  "width": 1920,
+  "height": 1080,
+  "src": "http://127.0.0.1:4177/cinematics/prologue-v5/preview20.mp4",
+  "tracks": [
+    {
+      "kind": "captions",
+      "mode": "showing",
+      "cues": 56
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 Read `PROJECT_MEMORY.md`, `docs/OPENING_SCREENPLAY_V05.md` and `docs/CINEMATIC_STYLE_GUIDE.md` before further work; update memory after meaningful discoveries.
 
-**Media complete,2026-10-06; full stitched playback/app integration/Git delivery pending.** All27 pieces are reviewed. User authorized the full regeneration, at most two corrective retakes per segment, careful credits, subtle adventure music/natural flight sounds, and Git upload. He later approved the final three beach jobs together from the same approved reference to save queue time, with transitions checked afterward. Tutorials remain deferred.
+**Complete and integrated,2026-10-06.** Media/app files are published in `6ab2073`; this release addendum records final verification. All27 pieces are reviewed. User authorized the full regeneration, at most two corrective retakes per segment, careful credits, subtle adventure music/natural flight sounds, and Git upload. He later approved the final three beach jobs together from the same approved reference to save queue time, with transitions checked afterward. Tutorials remain deferred.
 
 | Cut | Duration | MP4 bytes |
 |---|---:|---:|
@@ -26,3 +26,7 @@ Full-duration frame samples, higher-rate action/seam samples, synthetic-speech t
 Local repairs preserve originals in `attempts/`: free closed-mouth waiting animation (`wait-derived.json`); c01 offscreen Wilhelm handoff over Rho with the single accepted thumbs-up (`c01-repair.json`); c03 stray voice replaced with quiet original footsteps/cloth (`c03-repair.json`). No extra Kling charge for these repairs. Final dawn cuts use a motivated wider site-assessment cut then matched neutral framing; optional route-slate/crab props were omitted without paid retakes.
 
 For local playback, `serve-prologue-v5.cjs` is a temporary loopback-only review server on4177; `CINEMATIC_REVIEW_ORIGIN` selects it in playback scripts when the shared Next server is busy. Stop it after review. Application flow checks still run against the actual Next app. Never store API keys, OAuth tokens or upload tickets.
+
+## Verification
+
+232 unit tests/59 files, TypeScript and all5 cinematic app browser tests passed. Complete218.52s browser playback ended successfully with56 caption cues; decoded pixels at six key times passed. Tests cover all accepted shares, saved progress/reload, silent loop, controls/Skip, save retry, matching ending and learning-purpose handoff. `review/release-verification.json` carries scope. Full52-case app run was stopped after unrelated beta-next-step/camp-plan failures; the broader app is not certified green. Human voice/music listening remains a review limit.

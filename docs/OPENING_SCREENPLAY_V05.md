@@ -1,6 +1,6 @@
 # Opening V05: Maya / Fortuna
 
-2026-10-05. Current condensed screenplay, superseding V04. Full V05 production is authorized and underway in `public/cinematics/prologue-v5`; `shots.json` and individual job records carry actual generation timings/prompts, and `review/decisions.json` carries review evidence. V03 remains the app version until the replacement is complete and verified.
+2026-10-05. Current condensed screenplay, superseding V04. Full V05 production is complete and integrated (2026-10-06) in `public/cinematics/prologue-v5`; `shots.json` and individual job records carry actual generation timings/prompts, and `review/decisions.json` carries review evidence. V05 is the app version; original V03 remains history. Measured release:204.52s immediateYes,218.52s bothNo, plus untimed app choices. The paper timestamps below are authoring estimates; `edit-decisions.json`/`exports.json` are actual timings.
 
 Read `PROJECT_MEMORY.md`, `docs/CINEMATIC_STYLE_GUIDE.md` and this screenplay before production. Update concise project memory after meaningful discoveries; preserve sources and never save credentials.
 
@@ -8,7 +8,7 @@ Read `PROJECT_MEMORY.md`, `docs/CINEMATIC_STYLE_GUIDE.md` and this screenplay be
 
 - Planet **Maya**, island **Fortuna**, user-named; Vela/Farreach superseded.
 - Replace the female briefing officer with a **male military man**, friendly but stern, named **Sergeant Wilhelm**, with a **mustache**, representing Merchant Corp. This corrects the earlier Sara/Director identity. Military appearance does not establish a separate government, war or military ownership of the company.
-- Same approved 3D adventure style. Proposed character design: mature adult man, upright posture, short neat hair, a distinct neat mustache, practical teal/navy military-style uniform with brass details, no weapon. Warm controlled greeting; concise formal delivery; sternness in posture, pauses and firm terms, not aggression toward the child. Exact face/age/insignia require a new reference sheet.
+- Same approved 3D adventure style. Proposed character design: mature adult man, upright posture, short neat hair, a distinct neat mustache, practical teal/navy military-style uniform with brass details, no weapon. Warm controlled greeting; concise formal delivery; sternness in posture, pauses and firm terms, not aggression toward the child. Use the approved V05 Wilhelm reference sheet/Element for his exact identity.
 - He will become a source of conflict later. This is an accepted future story direction, not an immediate villain reveal. No ominous smile/sting or extra threat line in the introduction. Deferred entry: `docs/Future_Development_ideas.md` F04.
 - Reordered introduction and company/resource-shortage explanation follow user's wording. Wall-map push-in matches into an aerial island view. Aircraft is struck by lightning: localized engine fire, loss of power/thrust and steep descent cause the emergency.
 - Preserve professional Rho, coherent runway departure, untouched varied island, captain agency, 10/15/20% deal, safe crew escape, first island objective and separate honest learning disclosure. Tutorial videos remain deferred.
