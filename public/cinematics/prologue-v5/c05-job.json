@@ -1,0 +1,59 @@
+{
+  "shot": {
+    "id": "c05",
+    "duration": 8,
+    "ref": "aircraft-runway",
+    "line": "",
+    "speaker": null,
+    "action": "Exterior same fixed-wing twin-prop teal cream brass aircraft, nose pointing viewer LEFT, accelerates RIGHT TO LEFT on runway on wheels, rotates and lifts smoothly. Preserve heading throughout. No hover. Natural engines wind wheels; no music.",
+    "role": "continuation",
+    "retries": 0,
+    "status": "planned"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character, proportions, costume, set, geography and craft. One continuous shot, no automatic camera cuts. No text, lettering, subtitles, UI, weapons, blood, injuries or horror. NO MUSIC; continuous edit score is added separately. Exterior same fixed-wing twin-prop teal cream brass aircraft, nose pointing viewer LEFT, accelerates RIGHT TO LEFT on runway on wheels, rotates and lifts smoothly. Preserve heading throughout. No hover. Natural engines wind wheels; no music. No speech or voices. Natural story sound only, except waiting loop totally silent. "
+      },
+      {
+        "name": "duration",
+        "value": "8"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qUAoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo2YWdlbnRfdXBsb2FkLzE3OTEyMzYzMjIvUHRKeTRhYTh6QS9haXJjcmFmdC1ydW53YXkucG5n.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized V05 regeneration. Sequentially reviewed prior segment; preserve approved identities and camera geometry, variable scene pacing, native sounds without isolated music clips."
+  },
+  "task": {
+    "generationId": "AQiLneVO8wakmPshy8bR8hJ_azjkUi6mAkcamZMh168ILqSbVCvzGxZltsrZEX8VICkCk8-P",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 96,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "credits_consumed": 96,
+    "generation_id": "AQiLneVO8wakmPshy8bR8hJ_azjkUi6mAkcamZMh168ILqSbVCvzGxZltsrZEX8VICkCk8-P"
+  }
+}

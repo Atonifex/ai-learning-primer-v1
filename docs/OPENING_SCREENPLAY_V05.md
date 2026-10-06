@@ -1,6 +1,6 @@
 # Opening V05: Maya / Fortuna
 
-2026-10-05. Current condensed screenplay, superseding V04 for future production. Authoring only: no new images, video jobs, credit charges or runtime changes. V03 remains the working app/library version.
+2026-10-05. Current condensed screenplay, superseding V04. Full V05 production is authorized and underway in `public/cinematics/prologue-v5`; `shots.json` and individual job records carry actual generation timings/prompts, and `review/decisions.json` carries review evidence. V03 remains the app version until the replacement is complete and verified.
 
 Read `PROJECT_MEMORY.md`, `docs/CINEMATIC_STYLE_GUIDE.md` and this screenplay before production. Update concise project memory after meaningful discoveries; preserve sources and never save credentials.
 

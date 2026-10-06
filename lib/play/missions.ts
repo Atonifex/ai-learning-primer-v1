@@ -171,16 +171,16 @@ export function stubRationsFromMissions(missions: MissionPublic[]): number {
 
 export function formatMissionsForPrompt(missions: MissionPublic[], camp?: CampPublic): string {
   const lines = missions.map((m) => {
-    const reward = `${m.rewards.xp} XP, ${m.rewards.rations} ration, pin: ${m.rewards.mapPin}`;
-    return `- ${m.id} [${m.status}] ${m.title} (${m.subjectSlug}, ${m.theme}, ~${m.estimatedMinutes} min, ${reward})${m.lockReason ? ` — locked: ${m.lockReason}` : ""}`;
+    return `- ${m.id} [${m.status}] ${m.title} (${m.subjectSlug}, ${m.theme}, ~${m.estimatedMinutes} min)${m.lockReason ? ` — locked: ${m.lockReason}` : ""}`;
   });
   const next = missions.find((m) => m.status === "available");
   const nextLine = next
     ? `Next open job: ${next.id} at the ${next.pinId} (${next.subjectSlug}). If they ask to see jobs/tasks/the board, call show_mission_board. If they agree to start a job, call open_mission yourself — never ask them to type a tool name or keyword.`
-    : "No open jobs — praise completed work and invite a recap.";
+    : "No open jobs. Call show_mission_board: its next-step button opens the short math starting check if needed, or subject choice when all shore jobs are done. Never substitute repeated recall questions in chat for a usable next step.";
   return [
     `CAMP NEEDS (guide the captain; never take the quiz yourself). Call show_mission_board to open the on-screen Camp needs overlay — do not only narrate a wooden board:`,
     ...lines,
+    "Resource changes come only from saved camp state. Do not promise rations, XP, map unlocks or crew discoveries for these jobs.",
     nextLine,
     camp ? formatCampForPrompt(camp) : "",
   ]

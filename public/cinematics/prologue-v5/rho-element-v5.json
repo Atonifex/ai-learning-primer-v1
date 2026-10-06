@@ -1,0 +1,25 @@
+{
+  "id": "323213596308599",
+  "name": "Primer Rho 3D V5 clean cast",
+  "description": "ONLY Rho as character identity. Same established young adult humanoid AI first mate with short sideswept blond hair amber eyes thin teal visor subtle metal cheek/neck brown jacket teal shoulders cream shirt. Professional expedition colleague, no romantic acting. Cover and cockpit show only Rho. Ignore scenery, aircraft and incidental hands as identity. Existing approved synthetic Rho voice retained. Do not instantiate any other officer/assistant from older references.",
+  "type": "image",
+  "resource": {
+    "cover": "https://s15-kling.klingai.com/kimg/EMXN1y8qSQoGdXBsb2FkEg55bGFiLXN0dW50LXNncBovYWdlbnRfdXBsb2FkLzE3OTEyMzY1MDIvV1pqbXJtQmk1VC9yaG8tZGF3bi5wbmc.origin?x-kcdn-pid=112372",
+    "secondary": [
+      {
+        "name": "cockpit",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qTgoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo0YWdlbnRfdXBsb2FkLzE3OTEyMzYyNzUvTGNscWgxSEE1RC9jb2NrcGl0LXJlYWR5LnBuZw.origin?x-kcdn-pid=112372"
+      },
+      {
+        "name": "professional_handshake",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qTgoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo0YWdlbnRfdXBsb2FkLzE3OTEyMzYyMjEvWkVmeFk3Q2hwdi9yaG8taGFuZHNoYWtlLnBuZw.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "voice": "https://v15-kling.klingai.com/bs2/upload-ylab-stunt-sgp/agent_upload/1791205511/JPbSDVCkfv/rho-voice-reference.mp3?x-kcdn-pid=112372"
+  },
+  "tags": [
+    "Characters"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "source": "sources/g08.mp4",
+  "in": 14.5,
+  "out": 15,
+  "speed": 0.16666666666666666,
+  "credits": 0,
+  "reason": "Reviewed closed-mouth reward endpoint. Exporter pairs forward/reverse for identical loop endpoints."
+}

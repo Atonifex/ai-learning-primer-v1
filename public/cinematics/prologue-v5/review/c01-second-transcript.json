@@ -1,0 +1,13 @@
+{
+  "text": "We have a deal. Meet Ro, your first mate.",
+  "usage": {
+    "type": "tokens",
+    "total_tokens": 89,
+    "input_tokens": 75,
+    "input_token_details": {
+      "text_tokens": 0,
+      "audio_tokens": 75
+    },
+    "output_tokens": 14
+  }
+}

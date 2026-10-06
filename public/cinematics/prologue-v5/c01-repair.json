@@ -1,0 +1,26 @@
+{
+  "visualSource": "attempts/c01-1/c01.mp4",
+  "firstShot": [
+    0,
+    4.5
+  ],
+  "rhoCloseView": {
+    "in": 4.5,
+    "out": 6,
+    "speed": 0.5,
+    "crop": [
+      1216,
+      684,
+      700,
+      0
+    ]
+  },
+  "offscreenWilhelm": {
+    "source": "attempts/c01-0/c01.mp4",
+    "in": 1.94,
+    "out": 4.34,
+    "startsAt": 4.5
+  },
+  "duration": 7.5,
+  "additionalKlingCredits": 0
+}

@@ -12,7 +12,7 @@ export async function getRelevantMemory(
   limit = 20
 ): Promise<MemoryItemData[]> {
   const items = await prisma.memoryItem.findMany({
-    where: { learnerProfileId: profileId },
+    where: { learnerProfileId: profileId, NOT: [{ id: { startsWith: `${profileId}:subject-check:` } }, { id: `${profileId}:math-check:v1` }] },
     orderBy: [{ confidence: "desc" }, { updatedAt: "desc" }],
     take: limit,
   });

@@ -7,7 +7,8 @@ test("Talking with Rho can turn off automatic reading", async ({ page }) => {
   expect(boot.ok(), await boot.text()).toBeTruthy();
   const body = (await boot.json()) as { learnUrl: string };
 
-  await page.goto(body.learnUrl);
+  await page.goto(body.learnUrl, { waitUntil: "domcontentloaded" });
+  await expect(page.getByTestId("play-shell")).toHaveAttribute("data-ready", "true", { timeout: 30000 });
   await expect(page.getByText("Talking with Rho")).toBeVisible();
   await expect(page.getByRole("button", { name: "Camp needs" })).toBeHidden();
 
@@ -27,7 +28,8 @@ test("Talking with Rho can turn off automatic reading", async ({ page }) => {
     .poll(() => page.evaluate(() => window.localStorage.getItem("primer.rhoTtsAutoRead")))
     .toBe("0");
 
-  await page.reload();
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await expect(page.getByTestId("play-shell")).toHaveAttribute("data-ready", "true", { timeout: 30000 });
   await expect(page.getByText("Talking with Rho")).toBeVisible();
   await expect(page.getByRole("switch", { name: "Automatic reading by Rho" })).toHaveAttribute(
     "aria-checked",

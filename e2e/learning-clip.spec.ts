@@ -26,7 +26,8 @@ test("one learning clip stays on that video and brings the note back", async ({ 
   const body = (await boot.json()) as { learnUrl: string };
   expect(body.learnUrl).toContain("clip=1");
 
-  await page.goto(body.learnUrl);
+  await page.goto(body.learnUrl, { waitUntil: "domcontentloaded" });
+  await expect(page.getByTestId("play-shell")).toHaveAttribute("data-ready", "true", { timeout: 30000 });
   await expect(page.getByRole("heading", { name: "One clip for the mission" })).toBeVisible();
   await expect(page.getByText("Fraction basics")).toBeVisible();
   await expect(page.getByText("What do you want to work on?")).toHaveCount(0);

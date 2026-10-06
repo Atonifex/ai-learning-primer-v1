@@ -1,9 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import {
-  childProfileResponse,
-  forbidIfForeignSession,
-  isNextResponse,
-} from "../../../../../lib/auth/apiChild";
+import { childSessionResponse } from "../../../../../lib/auth/apiChild";
 import {
   decideSubjectSwitch,
   flattenFocusStandards,
@@ -12,28 +8,14 @@ import {
   subjectChoicesForGrade,
 } from "../../../../../lib/play/subjectFocus";
 import { getSubjectStandardsProgress } from "../../../../../lib/services/progress";
-import { getSession, setSessionSubject } from "../../../../../lib/services/session";
-
-async function loadOwnedSession(id: string) {
-  const profile = await childProfileResponse();
-  if (isNextResponse(profile)) return { error: profile };
-  const session = await getSession(id);
-  if (!session) {
-    return {
-      error: NextResponse.json({ error: "Session not found" }, { status: 404 }),
-    };
-  }
-  const foreign = forbidIfForeignSession(session, profile.id);
-  if (foreign) return { error: foreign };
-  return { profile, session };
-}
+import { setSessionSubject } from "../../../../../lib/services/session";
 
 export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const owned = await loadOwnedSession(id);
+  const owned = await childSessionResponse(id);
   if ("error" in owned && owned.error) return owned.error;
   if (!("profile" in owned)) {
     return NextResponse.json({ error: "Session not found" }, { status: 404 });
@@ -48,7 +30,7 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const owned = await loadOwnedSession(id);
+  const owned = await childSessionResponse(id);
   if ("error" in owned && owned.error) return owned.error;
   if (!("profile" in owned)) {
     return NextResponse.json({ error: "Session not found" }, { status: 404 });

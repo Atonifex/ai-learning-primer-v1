@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { requireChildPage } from "../../../lib/auth/pageGuards";
 import { getSkillProgressOverview } from "../../../lib/services/progress";
+import { EVIDENCE_EXPLANATION, masteryEstimate } from "../../../lib/play/progressCopy";
 
 export default async function SkillsProgressPage() {
   const { profile } = await requireChildPage();
@@ -14,7 +15,7 @@ export default async function SkillsProgressPage() {
       </Link>
       <h1 className="mt-3 text-2xl font-semibold text-stone-900">Skills</h1>
       <p className="mt-2 text-sm text-stone-600">
-        Aggregated mastery from linked standards evidence. Rows sort by mastery.
+        {EVIDENCE_EXPLANATION}
       </p>
 
       <div className="mt-8 divide-y divide-stone-100 rounded-xl border border-stone-200 bg-white">
@@ -28,12 +29,12 @@ export default async function SkillsProgressPage() {
             <div className="min-w-0">
               <p className="text-sm font-medium text-stone-900">{skill.name}</p>
               <p className="text-xs text-stone-500">
-                Confidence {skill.confidence}% · {skill.evidenceCount} linked evidence rows
+                {skill.evidenceCount} recorded observations
                 {skill.subjectScope ? ` · ${skill.subjectScope}` : ""}
               </p>
             </div>
             <span className="shrink-0 rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-800">
-              {skill.mastery} mastery
+              {masteryEstimate(skill.mastery, skill.evidenceCount)}
             </span>
           </div>
         ))}

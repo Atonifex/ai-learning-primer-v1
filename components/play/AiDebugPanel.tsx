@@ -25,7 +25,7 @@ export default function AiDebugPanel(props: {
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="absolute left-3 top-14 z-[80] max-w-[min(440px,92vw)]">
+    <div className="pointer-events-none absolute left-3 top-14 z-[80] max-w-[min(440px,92vw)]">
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}

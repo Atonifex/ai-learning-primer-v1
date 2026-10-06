@@ -24,8 +24,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "npm run dev",
-    url: baseURL,
+    command: `"${process.execPath}" node_modules/next/dist/bin/next dev`,
+    // Readiness must not depend on the signed-in homepage's database queries.
+    url: `${baseURL}/dev/agent`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
   },

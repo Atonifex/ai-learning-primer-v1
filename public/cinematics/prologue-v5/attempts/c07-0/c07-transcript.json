@@ -1,0 +1,73 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 7.03000020980835,
+  "text": "That storm is moving fast! Turn back!",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 1.9600000381469727,
+      "end": 5.71999979019165,
+      "text": " That storm is moving fast! Turn back!",
+      "tokens": [
+        50364,
+        663,
+        7679,
+        307,
+        2684,
+        2370,
+        0,
+        7956,
+        646,
+        0,
+        50714
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.5919201374053955,
+      "compression_ratio": 0.8222222328186035,
+      "no_speech_prob": 0.3346919119358063
+    }
+  ],
+  "words": [
+    {
+      "word": "That",
+      "start": 1.9600000381469727,
+      "end": 2.6600000858306885
+    },
+    {
+      "word": "storm",
+      "start": 2.6600000858306885,
+      "end": 3.0199999809265137
+    },
+    {
+      "word": "is",
+      "start": 3.0199999809265137,
+      "end": 3.2799999713897705
+    },
+    {
+      "word": "moving",
+      "start": 3.2799999713897705,
+      "end": 3.4800000190734863
+    },
+    {
+      "word": "fast",
+      "start": 3.4800000190734863,
+      "end": 4.019999980926514
+    },
+    {
+      "word": "Turn",
+      "start": 5.380000114440918,
+      "end": 5.380000114440918
+    },
+    {
+      "word": "back",
+      "start": 5.380000114440918,
+      "end": 5.71999979019165
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 8
+  }
+}

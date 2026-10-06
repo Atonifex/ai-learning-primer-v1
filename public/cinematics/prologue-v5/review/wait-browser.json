@@ -1,0 +1,12 @@
+{
+  "first": {
+    "time": 0.989147,
+    "width": 1920,
+    "height": 1080
+  },
+  "last": {
+    "time": 3,
+    "duration": 3,
+    "ended": true
+  }
+}

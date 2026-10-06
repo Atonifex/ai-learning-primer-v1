@@ -23,6 +23,7 @@ import { getReferenceBuffersForScene } from "./referenceImages";
 import { recordStandardObservation } from "../services/standardsProgress";
 import { createGeneratedMiniQuiz } from "../services/learningActivities";
 import { getMissionBoard } from "../services/missions";
+import { subjectCheckGuidance } from "../services/subjectCheckSession";
 import {
   formatStandardsBlock,
   getStandardCodesForSubject,
@@ -131,6 +132,7 @@ export async function* streamSessionResponse(
   const coherenceMap = extractCoherenceMap(opts.spine, opts.subjectSlug);
   const missionBoard = await getMissionBoard(profile.id);
   const world = await getWorldSnapshot(profile.id);
+  const savedSubjectGuidance = await subjectCheckGuidance(profile.id, opts.subjectSlug);
 
   const systemPrompt = buildSystemPrompt(
     profile,
@@ -161,7 +163,7 @@ export async function* streamSessionResponse(
   const isHidden = isHiddenTurn(userMessage);
 
   const messages: ChatCompletionMessageParam[] = [
-    { role: "system", content: systemPrompt + "\n\n" + worldMapPrompt(world) },
+    { role: "system", content: systemPrompt + "\n\n" + worldMapPrompt(world) + "\n\n" + savedSubjectGuidance },
     ...priorMessages,
     { role: "user" as const, content: expandedUser },
   ];
@@ -213,7 +215,9 @@ export async function* streamSessionResponse(
       // Stills-pack loop (§11 Step 1): do not call generate_scene_image per turn.
       tools: [
         recordStandardObservationTool,
-        ...(canGenerateLearningActivity() ? [generateLearningActivityTool] : []),
+        ...(canGenerateLearningActivity(missionBoard.mathPlacementCode, missionBoard.mathPlacementStatus)
+          ? [generateLearningActivityTool]
+          : []),
         suggestNextMissionTool,
         showMissionBoardTool,
         openMissionTool,
@@ -425,7 +429,7 @@ export async function* streamSessionResponse(
             });
           }
         } else if (call.name === "generate_learning_activity") {
-          if (!canGenerateLearningActivity()) {
+          if (!canGenerateLearningActivity(missionBoard.mathPlacementCode, missionBoard.mathPlacementStatus)) {
             toolResults.push({
               tool_call_id: call.id,
               content: JSON.stringify({ success: false, error: MATH_PLACEMENT_REQUIRED }),
@@ -483,11 +487,14 @@ export async function* streamSessionResponse(
         } else if (call.name === "suggest_next_mission") {
           try {
             const board = await getMissionBoard(profile.id);
+            yield { type: "mission_board_open" };
             const next = board.missions.find((m) => m.status === "available") ?? null;
             toolResults.push({
               tool_call_id: call.id,
               content: JSON.stringify({
                 success: true,
+                opened: true,
+                tellCaptain: "The board is on screen. Point to Your next step. If no job is open, its button opens the math check or subject choice. Do not quiz in chat or claim you opened a job.",
                 nextJob: next
                   ? {
                       id: next.id,
@@ -528,7 +535,7 @@ export async function* streamSessionResponse(
                 success: true,
                 opened: true,
                 tellCaptain:
-                  "Camp needs is on screen. Briefly name the salvage task; wait for them to pick before open_mission.",
+                  "Camp needs is on screen. Point to Your next step: a short math check if placement is missing, the next open job, or subject choice if shore jobs are done. Do not ask for recall in chat. Wait for the captain to choose.",
                 missions: board.missions.map((m) => ({
                   id: m.id,
                   status: m.status,

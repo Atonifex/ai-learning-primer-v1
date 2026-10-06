@@ -1,0 +1,13 @@
+{
+  "text": "Crew ready. The path is clear.",
+  "usage": {
+    "type": "tokens",
+    "total_tokens": 50,
+    "input_tokens": 40,
+    "input_token_details": {
+      "text_tokens": 0,
+      "audio_tokens": 40
+    },
+    "output_tokens": 10
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "shot": {
+    "id": "c07",
+    "duration": 7,
+    "ref": "cockpit-storm",
+    "line": "That storm is moving fast. Turn back!",
+    "speaker": "Rho",
+    "action": "Rain approaches. Rho concerned brows tense no smile. Captain turns wheel toward clear sea, visible horizon banks modestly. Natural wind propeller.",
+    "role": "continuation",
+    "retries": 0,
+    "status": "planned"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character, proportions, costume, set, geography and craft. One continuous shot, no automatic camera cuts. No text, lettering, subtitles, UI, weapons, blood, injuries or horror. NO MUSIC; continuous edit score is added separately. Use <<<323213596308599>>> for Rho identity and supplied voice, pronounced row. Blond hair amber eyes thin teal visor metal cheek neck brown jacket teal shoulders cream shirt. Professional, no romance. Rain approaches. Rho concerned brows tense no smile. Captain turns wheel toward clear sea, visible horizon banks modestly. Natural wind propeller. Only Rho speaks. Speak exact simple English line once, clear unhurried natural voice with lip-sync where visible: \"That storm is moving fast. Turn back!\". No added words/voices.  Maintain visibly tense concerned Rho acting for the ENTIRE shot, especially the final frame. NO smiling or happy reaction during danger."
+      },
+      {
+        "name": "duration",
+        "value": "7"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      },
+      {
+        "name": "elements",
+        "value": "[{\"id\":\"323213596308599\",\"bindName\":\"Rho\"}]"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qTgoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo0YWdlbnRfdXBsb2FkLzE3OTEyMzYzNjUvZklzOVpYYTUxbi9jb2NrcGl0LXN0b3JtLnBuZw.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized V05 regeneration. Sequentially reviewed prior segment; preserve approved identities and camera geometry, variable scene pacing, native sounds without isolated music clips."
+  },
+  "task": {
+    "generationId": "AUr8TXOuM_36YiA1FjliGcP1mNe1x6wHfOs5q9MyKuinXaPYYgZERD_V7GuQbqOhKHDoKUq_",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 84,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "credits_consumed": 84,
+    "generation_id": "AUr8TXOuM_36YiA1FjliGcP1mNe1x6wHfOs5q9MyKuinXaPYYgZERD_V7GuQbqOhKHDoKUq_"
+  }
+}

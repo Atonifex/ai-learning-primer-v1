@@ -1,7 +1,6 @@
 /**
  * Day 0 setup after the cinematic. Finite boxes the captain can finish
- * in one sitting. Math-check completion currently follows wreck salvage
- * until the 5-question diagnostic persists a starting point.
+ * in one sitting. The math box is done when the five-question check is saved.
  */
 
 import type { FirstRunStep } from "./firstRun";
@@ -48,6 +47,8 @@ export function day0Checklist(input: {
   firstRunStep: string;
   wreckQuizDone: boolean;
   campFounded: boolean;
+  mathPlacementCode?: string | null;
+  mathPlacementStatus?: string | null;
 }): Day0Box[] {
   const step = parseFirstRunStep(input.firstRunStep);
   const rank = STEP_ORDER[step];
@@ -58,7 +59,7 @@ export function day0Checklist(input: {
     {
       id: "mathCheck",
       label: "Math check",
-      done: input.wreckQuizDone || hasSavedMathPlacement(),
+      done: hasSavedMathPlacement(input.mathPlacementCode, input.mathPlacementStatus),
     },
     { id: "camp", label: "Found camp", done: input.campFounded },
   ];
@@ -68,13 +69,15 @@ export function day0AllDone(boxes: Day0Box[]): boolean {
   return boxes.every((box) => box.done);
 }
 
-/** Until math placement is saved, Camp needs is wreck salvage — not four subjects. */
+/** Show the path ahead without allowing locked activities to start. */
 export function campNeedsMissions(
   missions: MissionPublic[],
   placementReady = hasSavedMathPlacement()
 ): MissionPublic[] {
-  if (placementReady) return missions;
-  return missions.filter((mission) => mission.id === "wreck-math");
+  return [...missions].sort((a, b) => {
+    const order = { available: 0, locked: 1, completed: 2 };
+    return order[a.status] - order[b.status];
+  });
 }
 
 export function campNeedsTitle(placementReady = hasSavedMathPlacement()): string {

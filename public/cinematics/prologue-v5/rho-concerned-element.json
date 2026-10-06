@@ -1,0 +1,25 @@
+{
+  "id": "323217795314817",
+  "name": "Primer Rho V5 concerned",
+  "description": "SAME Rho humanoid AI first mate face/clothes/voice, worried-serious expression reference only for storm danger. Short blond sideswept hair amber eyes teal visor metal cheek neck brown teal jacket cream shirt. Furrowed brows, tense worried eyes, mouth corners downturned, no smile or playful delight during emergency. Identity same as clean RhoV5. Ignore cabin/hands/background as identity. Professional crew safety response.",
+  "type": "image",
+  "resource": {
+    "cover": "https://s15-kling.klingai.com/kimg/EMXN1y8qTgoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo0YWdlbnRfdXBsb2FkLzE3OTEyMzYzNjUvZklzOVpYYTUxbi9jb2NrcGl0LXN0b3JtLnBuZw.origin?x-kcdn-pid=112372",
+    "secondary": [
+      {
+        "name": "serious_close",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qSQoGdXBsb2FkEg55bGFiLXN0dW50LXNncBovYWdlbnRfdXBsb2FkLzE3OTEyNDYzMDEvdDZZa1c4c1Q3OS9jMDctdGFpbC5wbmc.origin?x-kcdn-pid=112372"
+      },
+      {
+        "name": "concerned_beach",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qSQoGdXBsb2FkEg55bGFiLXN0dW50LXNncBovYWdlbnRfdXBsb2FkLzE3OTEyMzY1MDIvV1pqbXJtQmk1VC9yaG8tZGF3bi5wbmc.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "voice": "https://v15-kling.klingai.com/bs2/upload-ylab-stunt-sgp/agent_upload/1791205511/JPbSDVCkfv/rho-voice-reference.mp3?x-kcdn-pid=112372"
+  },
+  "tags": [
+    "Characters"
+  ]
+}

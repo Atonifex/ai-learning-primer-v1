@@ -1,0 +1,63 @@
+{
+  "shot": {
+    "id": "c04",
+    "duration": 4,
+    "ref": "cockpit-ready",
+    "line": "Crew ready. The path is clear.",
+    "speaker": "Rho",
+    "action": "First-person captain hands on wheel, Rho harnessed left. Blue escape handle left. Runway forward, no lift yet.",
+    "role": "continuation",
+    "retries": 0,
+    "status": "planned"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character, proportions, costume, set, geography and craft. One continuous shot, no automatic camera cuts. No text, lettering, subtitles, UI, weapons, blood, injuries or horror. NO MUSIC; continuous edit score is added separately. Use <<<323213596308599>>> for Rho identity and supplied voice, pronounced row. Blond hair amber eyes thin teal visor metal cheek neck brown jacket teal shoulders cream shirt. Professional, no romance. First-person captain hands on wheel, Rho harnessed left. Blue escape handle left. Runway forward, no lift yet. Only Rho speaks. Speak exact simple English line once, clear unhurried natural voice with lip-sync where visible: \"Crew ready. The path is clear.\". No added words/voices. "
+      },
+      {
+        "name": "duration",
+        "value": "4"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      },
+      {
+        "name": "elements",
+        "value": "[{\"id\":\"323213596308599\",\"bindName\":\"Rho\"}]"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qTgoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo0YWdlbnRfdXBsb2FkLzE3OTEyMzYyNzUvTGNscWgxSEE1RC9jb2NrcGl0LXJlYWR5LnBuZw.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized V05 regeneration. Sequentially reviewed prior segment; preserve approved identities and camera geometry, variable scene pacing, native sounds without isolated music clips."
+  },
+  "task": {
+    "generationId": "AR-UQAXMxVhZi_boMnRt8narHuIcnOLk3Q6MGBMC2rX3cIQATTPgSK07QcvtrdIUSwqLqxxB",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 48,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "generation_id": "AR-UQAXMxVhZi_boMnRt8narHuIcnOLk3Q6MGBMC2rX3cIQATTPgSK07QcvtrdIUSwqLqxxB",
+    "credits_consumed": 48
+  }
+}

@@ -9,6 +9,7 @@ import {
   getSubjectProgressOverview,
 } from "../../lib/services/progress";
 import { formatHiddenMinutes } from "../../lib/services/timeMath";
+import { CURRICULUM_COVERAGE, evidenceLabel, ledgerLabel, observationNote, masteryEstimate } from "../../lib/play/progressCopy";
 
 export default async function ProgressPage() {
   const { profile } = await requireChildPage();
@@ -33,6 +34,7 @@ export default async function ProgressPage() {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-4">
+          <Link href="/learn" className="rounded-lg bg-teal-900 px-4 py-2 text-sm font-medium text-white">Back to the island</Link>
           <Link
             href="/settings"
             className="text-sm font-medium text-stone-600 hover:text-stone-900 hover:underline"
@@ -48,19 +50,20 @@ export default async function ProgressPage() {
         </div>
       </div>
 
+      <p className="mt-5 rounded-xl bg-amber-50 p-4 text-sm leading-relaxed text-stone-700">{CURRICULUM_COVERAGE}</p>
       <section className="mt-8 grid gap-3 md:grid-cols-2">
         <div className="rounded-xl border border-stone-200 bg-white p-4">
           <h2 className="text-sm font-semibold uppercase tracking-wide text-stone-500">
             Time on the island
           </h2>
           <p className="mt-2 text-sm text-stone-800">
-            Lifetime: {formatHiddenMinutes(time.lifetimeSeconds)} · last sitting:{" "}
+            Recorded sittings: {formatHiddenMinutes(time.lifetimeSeconds)} · most recent sitting:{" "}
             {time.lastSessionSeconds == null
               ? "none yet"
               : formatHiddenMinutes(time.lastSessionSeconds)}
           </p>
           <p className="mt-1 text-xs text-stone-500">
-            No daily cap. Activity work: {formatHiddenMinutes(time.activitySeconds)}.
+            Activity attempts: {formatHiddenMinutes(time.activitySeconds)}, measured separately. These elapsed-time estimates can include breaks or overlap; they are not measures of attention and should not be added together.
           </p>
         </div>
         <div className="rounded-xl border border-stone-200 bg-white p-4">
@@ -81,11 +84,11 @@ export default async function ProgressPage() {
         <h2 className="text-sm font-semibold uppercase tracking-wide text-stone-500">
           Carried into the next chapter
         </h2>
-        {ledger.handoffSummary ? (
-          <p className="mt-2 text-sm text-stone-800">{ledger.handoffSummary}</p>
+        {ledger.handoffTitle ? (
+          <p className="mt-2 text-sm text-stone-800">From {ledger.handoffTitle}: these notes help Rho connect the next chapter to your captain&apos;s choices.</p>
         ) : (
           <p className="mt-2 text-sm text-stone-500">
-            Nothing is carried forward until the chapter crew log is saved.
+            Story notes and map decisions will appear here as the adventure grows.
           </p>
         )}
         {ledger.entries.length > 0 && (
@@ -93,7 +96,7 @@ export default async function ProgressPage() {
             {ledger.entries.map((entry) => (
               <li key={entry.id} className="text-sm text-stone-800">
                 <span className="font-medium text-stone-500">
-                  {entry.mustReuse ? "Must reuse" : entry.kind} · {entry.label}
+                  {ledgerLabel(entry.label, entry.kind)}
                   {entry.chapter?.title ? ` · ${entry.chapter.title}` : ""}
                 </span>
                 <span className="mt-0.5 block">{entry.text}</span>
@@ -107,6 +110,7 @@ export default async function ProgressPage() {
         <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-stone-500">
           Recent observations
         </h2>
+        <p className="mb-3 text-sm text-stone-600">Starting checks include examples and count as work with support. A correct answer is useful evidence, not proof of independent mastery. Ask your captain: “Show me how you worked that out.”</p>
         <div className="rounded-xl border border-stone-200 bg-white">
           {observations.length === 0 ? (
             <p className="p-4 text-sm text-stone-600">
@@ -121,11 +125,11 @@ export default async function ProgressPage() {
                 <p className="text-sm font-medium text-stone-900">{obs.standardCode}</p>
                 <p className="mt-0.5 text-xs text-stone-600">{obs.description}</p>
                 <p className="mt-1 text-xs text-stone-500">
-                  {obs.evidenceTier} · {obs.sourceType}
+                  {evidenceLabel(obs.evidenceTier, obs.sourceType)} · {obs.createdAt.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "America/New_York" })}
                   {obs.correctness != null
                     ? ` · ${Math.round(obs.correctness * 100)}%`
                     : ""}
-                  {obs.notes ? ` · ${obs.notes}` : ""}
+                  {observationNote(obs.notes) ? ` · ${observationNote(obs.notes)}` : ""}
                 </p>
               </div>
             ))
@@ -147,7 +151,7 @@ export default async function ProgressPage() {
               <div className="flex items-center justify-between">
                 <h3 className="text-base font-medium text-stone-900">{subject.name}</h3>
                 <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-700">
-                  {subject.mastery} mastery
+                  {masteryEstimate(subject.mastery, subject.progressedCount)}
                 </span>
               </div>
               <p className="mt-2 text-sm text-stone-600">
@@ -177,7 +181,7 @@ export default async function ProgressPage() {
                 <p className="text-sm font-medium text-stone-900">{skill.name}</p>
                 <p className="text-xs text-stone-500">{skill.evidenceCount} evidence events</p>
               </div>
-              <span className="text-sm font-semibold text-stone-700">{skill.mastery}</span>
+              <span className="text-sm font-semibold text-stone-700">{masteryEstimate(skill.mastery, skill.evidenceCount)}</span>
             </div>
           ))}
         </div>

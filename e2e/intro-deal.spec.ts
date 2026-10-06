@@ -4,7 +4,8 @@ async function openIntro(page: Page) {
   const boot = await page.request.post("/api/dev/agent-bootstrap", { data: { open: "intro" } });
   expect(boot.ok(), await boot.text()).toBeTruthy();
   const body = await boot.json();
-  await page.goto(body.learnUrl);
+  await page.goto(body.learnUrl, { waitUntil: "domcontentloaded" });
+  await expect(page.getByTestId("play-shell")).toHaveAttribute("data-ready", "true", { timeout: 30000 });
   await expect(page.locator('[data-intro-phase="briefing"] video')).toBeVisible();
 }
 async function finishClip(page: Page) {
@@ -14,6 +15,7 @@ async function finishClip(page: Page) {
   await clip.evaluate((node) => node.dispatchEvent(new Event("ended")));
 }
 for (const share of [10, 15, 20]) test(`intro saves ${share}% and resumes without another deal`, async ({ page }) => {
+  test.setTimeout(120_000);
   await openIntro(page);
   await expect(page.getByRole("button", { name: "Yes", exact: true })).toHaveCount(0);
   await expect(page.locator('track[kind="captions"]')).toHaveAttribute("src", /briefing\.en\.vtt$/);
@@ -39,7 +41,8 @@ for (const share of [10, 15, 20]) test(`intro saves ${share}% and resumes withou
   await expect(page.locator('[data-intro-phase="continuation"]')).toBeVisible();
   const saved = await page.request.get("/api/profile/intro");
   expect((await saved.json()).deal.acceptedShare).toBe(share);
-  await page.reload();
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await expect(page.getByTestId("play-shell")).toHaveAttribute("data-ready", "true", { timeout: 30000 });
   await expect(page.locator('[data-intro-phase="continuation"]')).toBeVisible();
   await finishClip(page);
   await expect(page.getByRole("button", { name: "Go to the beach" })).toBeVisible();

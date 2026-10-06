@@ -10,6 +10,7 @@ import {
 import { hasCompletedActivitySlug, listCompletedActivitySlugs } from "../play/overlayQuiz";
 import { TUTORIAL_QUIZ_SLUG } from "../play/tutorialQuizSlug";
 import { hasCompletedChapterReflection } from "../play/chapterReflection";
+import { hasSavedMathPlacement } from "../play/mathPlacement";
 import { remapCoreSubjectToGrade } from "../constants/subjects";
 import { completeSession, startSession } from "./session";
 import { ensureLearnerStoryChain } from "./storyCurriculum";
@@ -22,6 +23,8 @@ export type MissionBoardPayload = {
   chapter1ReflectionDone: boolean;
   activeChapterTitle: string | null;
   activeChapterStatus: string | null;
+  mathPlacementCode: string | null;
+  mathPlacementStatus: string | null;
   xp: number;
   rations: number;
   camp: CampPublic;
@@ -29,12 +32,16 @@ export type MissionBoardPayload = {
 
 export async function getMissionBoard(learnerProfileId: string): Promise<MissionBoardPayload> {
   const slugs = TUTORIAL_MISSIONS.map((m) => m.activitySlug);
-  const [completedSlugs, wreckQuizDone, chapter1ReflectionDone, chain, camp] = await Promise.all([
+  const [completedSlugs, wreckQuizDone, chapter1ReflectionDone, chain, camp, placement] = await Promise.all([
     listCompletedActivitySlugs(learnerProfileId, slugs),
     hasCompletedActivitySlug(learnerProfileId, TUTORIAL_QUIZ_SLUG),
     hasCompletedChapterReflection(learnerProfileId),
     ensureLearnerStoryChain(learnerProfileId),
     ensureCampForLearner(learnerProfileId),
+    prisma.learnerProfile.findUnique({
+      where: { id: learnerProfileId },
+      select: { mathPlacementCode: true, mathPlacementStatus: true },
+    }),
   ]);
 
   const chapter = await prisma.chapter.findUnique({
@@ -46,6 +53,7 @@ export async function getMissionBoard(learnerProfileId: string): Promise<Mission
     wreckQuizDone,
     chapter1ReflectionDone,
     completedSlugs: new Set(completedSlugs),
+    placementReady: hasSavedMathPlacement(placement?.mathPlacementCode, placement?.mathPlacementStatus),
   });
   return {
     missions,
@@ -53,6 +61,8 @@ export async function getMissionBoard(learnerProfileId: string): Promise<Mission
     chapter1ReflectionDone,
     activeChapterTitle: chapter?.title ?? null,
     activeChapterStatus: chapter?.status ?? null,
+    mathPlacementCode: placement?.mathPlacementCode ?? null,
+    mathPlacementStatus: placement?.mathPlacementStatus ?? null,
     xp: stubXpFromMissions(missions),
     rations: camp.rations,
     camp,

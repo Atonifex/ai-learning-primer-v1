@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
+import { CURRICULUM_COVERAGE } from "../../lib/play/progressCopy";
 import {
   DEFAULT_GRADE_BAND,
   LEARNER_GRADE_BANDS,
@@ -206,6 +207,7 @@ export default function HouseholdHome() {
             </select>
           </label>
         )}
+        <p className="rounded-lg bg-amber-50 p-3 text-sm text-stone-700">{CURRICULUM_COVERAGE}</p>
         <Button type="submit" disabled={saving} className="w-full">
           {saving ? "Saving…" : fused ? "Save captain login" : "Add captain"}
         </Button>

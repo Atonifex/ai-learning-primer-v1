@@ -1,0 +1,68 @@
+{
+  "shot": {
+    "id": "g08",
+    "duration": 15,
+    "ref": "briefing-anchor",
+    "line": "You'll lead your own crew, build your own base, and get ten percent of the profit. That's the money left after costs. Will you take the mission?",
+    "speaker": "Wilhelm",
+    "action": "Continue from standing at desk: Wilhelm naturally sits in his chair during the first two seconds while camera gently settles into same desk medium composition. Then firm inviting personal-reward offer. Finish exactly at supplied closed-mouth hands-resting desk waiting anchor. NO captain acceptance gesture or thumbs-up.",
+    "role": "briefing",
+    "retries": 0,
+    "status": "planned"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character, proportions, costume, set, geography and craft. One continuous shot, no automatic camera cuts. No text, lettering, subtitles, UI, weapons, blood, injuries or horror. NO MUSIC; continuous edit score is added separately. Use <<<323205940306534>>> for Wilhelm identity AND same low mature male voice. Mustache stays. Wilhelm VILL-helm, Maya MY-uh. Continue from standing at desk: Wilhelm naturally sits in his chair during the first two seconds while camera gently settles into same desk medium composition. Then firm inviting personal-reward offer. Finish exactly at supplied closed-mouth hands-resting desk waiting anchor. NO captain acceptance gesture or thumbs-up. Only Wilhelm speaks. Speak exact simple English line once, clear unhurried natural voice with lip-sync where visible: \"You'll lead your own crew, build your own base, and get ten percent of the profit. That's the money left after costs. Will you take the mission?\". No added words/voices. "
+      },
+      {
+        "name": "duration",
+        "value": "15"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      },
+      {
+        "name": "elements",
+        "value": "[{\"id\":\"323205940306534\",\"bindName\":\"Wilhelm\"}]"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qSQoGdXBsb2FkEg55bGFiLXN0dW50LXNncBovYWdlbnRfdXBsb2FkLzE3OTEyMzg0NjgvUDdGWTlqc2h0Sy9nMDctdGFpbC5wbmc.origin?x-kcdn-pid=112372"
+      },
+      {
+        "name": "tail_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qUAoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo2YWdlbnRfdXBsb2FkLzE3OTEyMzQxMjYvVnJJalZ1T28wei9icmllZmluZy1hbmNob3IucG5n.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized V05 regeneration. Sequentially reviewed prior segment; preserve approved identities and camera geometry, variable scene pacing, native sounds without isolated music clips."
+  },
+  "task": {
+    "generationId": "Adp6N-RbkqBY4KvzoZPeF60zh-MEQihPhzvZSWK-HNq2Ewv0gBnnpaeMIT4GhJNanNjxdKDA",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 180,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "generation_id": "Adp6N-RbkqBY4KvzoZPeF60zh-MEQihPhzvZSWK-HNq2Ewv0gBnnpaeMIT4GhJNanNjxdKDA",
+    "credits_consumed": 180
+  }
+}

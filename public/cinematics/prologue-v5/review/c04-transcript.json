@@ -1,0 +1,67 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 4.039999961853027,
+  "text": "Crew ready. The path is clear.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 1.2000000476837158,
+      "end": 3.740000009536743,
+      "text": " Crew ready. The path is clear.",
+      "tokens": [
+        50414,
+        29857,
+        1919,
+        13,
+        440,
+        3100,
+        307,
+        1850,
+        13,
+        50564
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.38978341221809387,
+      "compression_ratio": 0.7894737124443054,
+      "no_speech_prob": 0.17829500138759613
+    }
+  ],
+  "words": [
+    {
+      "word": "Crew",
+      "start": 1.2000000476837158,
+      "end": 1.7599999904632568
+    },
+    {
+      "word": "ready",
+      "start": 1.7599999904632568,
+      "end": 2.119999885559082
+    },
+    {
+      "word": "The",
+      "start": 2.9000000953674316,
+      "end": 3.0399999618530273
+    },
+    {
+      "word": "path",
+      "start": 3.0399999618530273,
+      "end": 3.2200000286102295
+    },
+    {
+      "word": "is",
+      "start": 3.2200000286102295,
+      "end": 3.5
+    },
+    {
+      "word": "clear",
+      "start": 3.5,
+      "end": 3.740000009536743
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 5
+  }
+}

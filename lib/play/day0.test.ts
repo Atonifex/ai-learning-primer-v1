@@ -24,8 +24,26 @@ describe("Day 0 checklist and camp needs", () => {
     const talked = day0Checklist({ firstRunStep: "work", wreckQuizDone: false, campFounded: false });
     expect(talked.filter((box) => box.done).map((box) => box.id)).toEqual(["name", "walk", "talk"]);
 
-    const done = day0Checklist({ firstRunStep: "complete", wreckQuizDone: true, campFounded: true });
+    const wreckOnly = day0Checklist({ firstRunStep: "complete", wreckQuizDone: true, campFounded: true });
+    expect(wreckOnly.find((box) => box.id === "mathCheck")?.done).toBe(false);
+    expect(day0AllDone(wreckOnly)).toBe(false);
+
+    const done = day0Checklist({
+      firstRunStep: "complete",
+      wreckQuizDone: true,
+      campFounded: true,
+      mathPlacementCode: "MA.3.NSO.1.1",
+      mathPlacementStatus: "ready",
+    });
     expect(day0AllDone(done)).toBe(true);
+
+    const below = day0Checklist({
+      firstRunStep: "complete",
+      wreckQuizDone: false,
+      campFounded: true,
+      mathPlacementStatus: "below_catalog",
+    });
+    expect(below.find((box) => box.id === "mathCheck")?.done).toBe(true);
   });
 
   it("keeps Camp needs to wreck salvage until a math starting point is saved", () => {
@@ -36,11 +54,14 @@ describe("Day 0 checklist and camp needs", () => {
     expect(missions.find((m) => m.id === "dune-ela")?.status).toBe("locked");
     expect(missions.find((m) => m.id === "camp-math")?.status).toBe("locked");
     expect(missions.find((m) => m.id === "dune-ela")?.lockReason).toMatch(/starting point/i);
-    expect(campNeedsMissions(missions, false).map((m) => m.id)).toEqual(["wreck-math"]);
+    expect(campNeedsMissions(missions, false)).toHaveLength(5);
+    expect(campNeedsMissions(missions, false).filter((m) => m.status === "available")).toHaveLength(0);
     expect(campNeedsTitle(false)).toBe("Camp needs");
     expect(campNeedsMissions(missions, true).some((m) => m.id === "dune-ela")).toBe(true);
     expect(canGenerateLearningActivity()).toBe(false);
     expect(hasSavedMathPlacement("MA.3.NSO.1.1")).toBe(true);
+    expect(hasSavedMathPlacement(null, "below_catalog")).toBe(true);
+    expect(canGenerateLearningActivity(null, "below_catalog")).toBe(false);
     expect(CHAPTER_PROBLEM).toMatch(/Food will not last/);
     expect(LEARNING_PURPOSE_PAGES[0]?.body).toMatch(/not a scored test/i);
     expect(LEARNING_PURPOSE_PAGES[1]?.body).not.toMatch(/MA\.\d/);

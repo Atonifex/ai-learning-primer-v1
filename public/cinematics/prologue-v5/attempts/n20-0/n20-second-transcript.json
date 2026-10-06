@@ -1,0 +1,13 @@
+{
+  "text": "Again? Wilhelm, twenty percent. That's my final offer.",
+  "usage": {
+    "type": "tokens",
+    "total_tokens": 84,
+    "input_tokens": 70,
+    "input_token_details": {
+      "text_tokens": 0,
+      "audio_tokens": 70
+    },
+    "output_tokens": 14
+  }
+}

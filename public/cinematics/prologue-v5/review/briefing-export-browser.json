@@ -1,0 +1,15 @@
+{
+  "duration": 84.041667,
+  "time": 84.041667,
+  "ended": true,
+  "width": 1920,
+  "height": 1080,
+  "src": "http://localhost:3000/cinematics/prologue-v5/briefing.mp4",
+  "tracks": [
+    {
+      "kind": "captions",
+      "mode": "showing",
+      "cues": 16
+    }
+  ]
+}

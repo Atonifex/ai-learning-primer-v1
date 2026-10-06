@@ -1,0 +1,80 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 7.5,
+  "text": "We have a deal. Meet Rho, your first mate.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0,
+      "end": 2.799999952316284,
+      "text": " We have a deal.",
+      "tokens": [
+        50389,
+        492,
+        362,
+        257,
+        2028,
+        13,
+        50714
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.2461559921503067,
+      "compression_ratio": 0.6521739363670349,
+      "no_speech_prob": 0.039849020540714264
+    }
+  ],
+  "words": [
+    {
+      "word": "We",
+      "start": 0,
+      "end": 1.0199999809265137
+    },
+    {
+      "word": "have",
+      "start": 1.0199999809265137,
+      "end": 1.2400000095367432
+    },
+    {
+      "word": "a",
+      "start": 1.2400000095367432,
+      "end": 2.7799999713897705
+    },
+    {
+      "word": "deal",
+      "start": 2.7799999713897705,
+      "end": 2.799999952316284
+    },
+    {
+      "word": "meet",
+      "start": 4.5000000572204595,
+      "end": 5.260000047683716
+    },
+    {
+      "word": "Ro",
+      "start": 5.260000047683716,
+      "end": 5.659999904632569
+    },
+    {
+      "word": "your",
+      "start": 5.659999904632569,
+      "end": 6.260000047683716
+    },
+    {
+      "word": "first",
+      "start": 6.260000047683716,
+      "end": 6.6199999427795415
+    },
+    {
+      "word": "mate",
+      "start": 6.6199999427795415,
+      "end": 6.900000152587891
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 8
+  },
+  "timingEvidence": "Edited sentence from c01-0 1.94–4.34 at4.5s, confirmed by independent gpt-4o-transcribe; Whisper omitted restored sentence and also flags repetition not present in independent prior transcription. No phonetic listening certification."
+}

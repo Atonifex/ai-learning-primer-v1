@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireChildPage } from "../../../lib/auth/pageGuards";
 import { getSubjectStandardsProgress } from "../../../lib/services/progress";
+import { EVIDENCE_EXPLANATION, masteryEstimate } from "../../../lib/play/progressCopy";
 
 interface PageProps {
   params: Promise<{ subjectSlug: string }>;
@@ -65,41 +66,41 @@ export default async function SubjectProgressPage({ params }: PageProps) {
       </Link>
       <h1 className="mt-3 text-2xl font-semibold text-stone-900">{data.subject.name}</h1>
       <p className="mt-1 text-sm text-stone-600">
-        Standards map with evidence-driven mastery scores.
+        {EVIDENCE_EXPLANATION}
       </p>
 
       <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <InsightCard
           title="Growing edges"
-          subtitle="Lowest mastery among standards you’ve touched"
-          empty="Practice in-session to accumulate evidence."
+          subtitle="Skills that may benefit from more practice"
+          empty="Try a learning activity to find a useful starting point."
           items={growingEdges.map((s) => ({
             label: s.code,
-            detail: `${s.mastery} mastery · ${s.evidenceCount} evidence`,
+            detail: `${masteryEstimate(s.mastery, s.evidenceCount)} · ${s.evidenceCount} observations`,
           }))}
         />
         <InsightCard
           title="Recently practiced"
           subtitle="Standards touched most recently"
-          empty="Evidence timestamps will populate after sessions."
+          empty="Recent work will appear after a learning activity."
           items={recentTouches.map((s) => ({
             label: s.code,
-            detail: `${s.mastery}% · ${s.lastObservedAt ? fmtShort(s.lastObservedAt) : "—"}`,
+            detail: `${masteryEstimate(s.mastery, s.evidenceCount)} · ${s.lastObservedAt ? fmtShort(s.lastObservedAt) : "—"}`,
           }))}
         />
         <InsightCard
           title="Recommended soon"
           subtitle="Review windows within ~3 days"
-          empty="Scheduling improves as nextReviewAt fills in."
+          empty="No review is suggested yet."
           items={dueSoon.map((s) => ({
             label: s.code,
-            detail: `${s.mastery}% · due ${s.nextReviewAt ? fmtShort(s.nextReviewAt) : "—"}`,
+            detail: `${masteryEstimate(s.mastery, s.evidenceCount)} · try again ${s.nextReviewAt ? fmtShort(s.nextReviewAt) : "soon"}`,
           }))}
         />
         <InsightCard
           title="Not observed yet"
           subtitle="Sampling of untouched standards"
-          empty="Strong signal that the map is seeded and waiting."
+          empty="Every skill here has at least one observation."
           items={notYetSeen.map((s) => ({
             label: s.code,
             detail: "No evidence yet",
@@ -129,13 +130,13 @@ export default async function SubjectProgressPage({ params }: PageProps) {
                           <p className="truncate text-sm font-medium text-stone-900">
                             {standard.code}
                           </p>
-                          <p className="mt-0.5 truncate text-xs text-stone-600">
+                          <p className="mt-0.5 text-xs leading-relaxed text-stone-600">
                             {standard.description}
                           </p>
                         </div>
                         <div className="ml-3 text-right">
-                          <p className="text-sm font-semibold text-stone-800">{standard.mastery}</p>
-                          <p className="text-xs text-stone-500">{standard.evidenceCount} evidence</p>
+                          <p className="text-sm font-semibold text-stone-800">{masteryEstimate(standard.mastery, standard.evidenceCount)}</p>
+                          <p className="text-xs text-stone-500">{standard.evidenceCount} observations</p>
                         </div>
                       </div>
                     ))}

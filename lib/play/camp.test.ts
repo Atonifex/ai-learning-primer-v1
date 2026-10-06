@@ -6,6 +6,8 @@ import {
   foundCrewCount,
   parseStoredCamp,
   toCampPublic,
+  MATH_CHECK_CAMP_LINE,
+  MATH_CHECK_GRANT,
   WRECK_SALVAGE_GRANT,
 } from "./camp";
 
@@ -36,6 +38,18 @@ describe("camp engine", () => {
 
     const second = applyCampGrant(first, WRECK_SALVAGE_GRANT);
     expect(second).toEqual(first);
+  });
+
+  it("math check pitches a tent, sets one ration aside, and does not find a crew member", () => {
+    const afterWreck = applyCampGrant(emptyCamp(), WRECK_SALVAGE_GRANT);
+    const first = applyCampGrant(afterWreck, MATH_CHECK_GRANT);
+    expect(first.stage).toBe("tent");
+    expect(first.rations).toBe(3);
+    expect(first.canvas).toBe(1);
+    expect(foundCrewCount(first.crew)).toBe(0);
+    expect(applyCampGrant(first, MATH_CHECK_GRANT)).toEqual(first);
+    expect(MATH_CHECK_CAMP_LINE).toMatch(/tent/i);
+    expect(MATH_CHECK_CAMP_LINE).toMatch(/still missing/i);
   });
 
   it("keeps the higher camp stage and can ping then recover a crew slot", () => {

@@ -1,6 +1,8 @@
 "use client";
 
 import type { MissionPublic } from "../../lib/play/missions";
+import { nextCampAction } from "../../lib/play/nextCampAction";
+import { useDialogFocus } from "./useDialogFocus";
 import { SUBJECT_DISPLAY_NAMES, type PlayableCoreSubjectSlug } from "../../lib/constants/subjects";
 
 function subjectLabel(slug: string): string {
@@ -21,9 +23,16 @@ export default function MissionBoard(props: {
   onClose: () => void;
   startingId: string | null;
   loading?: boolean;
+  placementReady?: boolean;
+  onMathCheck?: () => void;
+  onFocus?: () => void;
+  error?: string | null;
+  onRetry?: () => void;
 }) {
+  const next = nextCampAction(props.missions, Boolean(props.placementReady));
+  const dialogRef = useDialogFocus(props.onClose);
   return (
-    <div className="absolute inset-0 z-50 flex items-end justify-center bg-black/50 p-3 sm:items-center">
+    <div ref={dialogRef} tabIndex={-1} role="dialog" aria-modal="true" aria-label="Camp needs" className="absolute inset-0 z-50 flex items-end justify-center bg-black/50 p-3 sm:items-center">
       <div className="w-full max-w-lg overflow-hidden rounded-2xl border-4 border-amber-800/80 bg-[#3d2914] shadow-2xl">
         <div className="flex items-center justify-between bg-[#5c4033] px-4 py-2">
           <div>
@@ -37,21 +46,25 @@ export default function MissionBoard(props: {
           <button
             type="button"
             onClick={props.onClose}
-            className="rounded-lg px-2 py-1 text-xs text-amber-100/80 hover:bg-amber-900/40"
+            className="min-h-11 rounded-lg px-3 py-2 text-sm text-amber-100 hover:bg-amber-900/40"
           >
             Close
           </button>
         </div>
         <div className="max-h-[70vh] space-y-2 overflow-y-auto bg-[#f3e6c8] px-4 py-3">
-          {props.loading && props.missions.length === 0 && (
+          {props.error && <div role="alert" className="rounded-xl bg-white p-3 text-sm text-red-800">
+            <p>{props.error}</p><button type="button" onClick={props.onRetry} className="mt-2 min-h-11 underline">Try again</button>
+          </div>}
+          {!props.loading && !props.error && <section className="rounded-xl border-2 border-teal-800 bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-teal-800">Your next step</p>
+            <h3 className="mt-1 text-lg font-semibold text-stone-900">{next.title}</h3>
+            <p className="mt-1 text-sm leading-relaxed text-stone-700">{next.detail}</p>
+            <button type="button" disabled={Boolean(props.startingId)} className="mt-3 min-h-11 rounded-xl bg-teal-900 px-4 py-2 text-sm font-semibold text-white disabled:opacity-50"
+              onClick={() => next.kind === "check" ? props.onMathCheck?.() : next.kind === "focus" ? props.onFocus?.() : props.onStart(next.missionId)}>{props.startingId ? "Opening…" : next.label}</button>
+          </section>}
+          {props.loading && !props.error && props.missions.length === 0 && (
             <p className="rounded-xl bg-[#fff8ea] p-3 text-sm text-stone-700">
               Checking what camp needs…
-            </p>
-          )}
-          {!props.loading && props.missions.length === 0 && (
-            <p className="rounded-xl bg-[#fff8ea] p-3 text-sm text-stone-700">
-              Salvage at the wreck is done. Next camp need is a short math check for a starting
-              point — not a buffet of other subjects.
             </p>
           )}
           {props.missions.map((m) => (
@@ -72,8 +85,7 @@ export default function MissionBoard(props: {
                 </span>
               </div>
               <p className="mt-2 text-xs text-stone-700">
-                ~{m.estimatedMinutes} min · {m.rewards.xp} XP · {m.rewards.rations} ration ·{" "}
-                {m.rewards.mapPin}
+                About {m.estimatedMinutes} minutes · {m.rewards.mapPin}
               </p>
               {m.lockReason && (
                 <p className="mt-1 text-xs text-stone-500">{m.lockReason}</p>
@@ -82,8 +94,8 @@ export default function MissionBoard(props: {
                 <button
                   type="button"
                   onClick={() => props.onStart(m.id)}
-                  disabled={props.startingId === m.id}
-                  className="mt-2 rounded-lg bg-stone-900 px-3 py-1.5 text-xs font-medium text-white disabled:opacity-50"
+                  disabled={Boolean(props.startingId)}
+                  className="mt-2 min-h-11 rounded-lg bg-stone-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
                 >
                   {props.startingId === m.id
                     ? "Opening…"

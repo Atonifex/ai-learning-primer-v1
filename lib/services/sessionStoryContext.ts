@@ -1,4 +1,5 @@
 import { prisma } from "../db/prisma";
+import { childStoryRecap } from "../play/storyRecap";
 import type { BranchPointUi, SessionStoryUi, StorySpineContext } from "../types";
 import { getPendingBranchForChapter, seedDemoBranchIfRequested } from "./storyBranches";
 
@@ -84,7 +85,7 @@ export async function getPreviouslyOnRecap(sessionId: string): Promise<string | 
     select: { arcSummary: true },
   });
 
-  return prior?.arcSummary ?? null;
+  return childStoryRecap(prior?.arcSummary);
 }
 
 /** UI payload: world copy, recap line, optional branch cards (Phase 4). */

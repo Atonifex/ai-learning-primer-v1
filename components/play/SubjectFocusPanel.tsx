@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CURRICULUM_COVERAGE } from "../../lib/play/progressCopy";
 import { ladderForSubject } from "../../lib/play/subjectChecks";
-import MathCheck from "./MathCheck";
-import SubjectCheck from "./SubjectCheck";
+import SubjectFiveCheck from "./SubjectFiveCheck";
+import { useDialogFocus } from "./useDialogFocus";
 
 type Choice = { slug: string; label: string };
 type StandardRow = {
@@ -23,7 +24,10 @@ export default function SubjectFocusPanel(props: {
   sessionId: string;
   onClose: () => void;
   onSubjectChanged: (slug: string) => void;
+  onOpenMathCheck?: () => void;
+  onTalk?: () => void;
 }) {
+  const dialogRef = useDialogFocus(props.onClose);
   const [choices, setChoices] = useState<Choice[]>([]);
   const [sittingSubject, setSittingSubject] = useState<string | null>(null);
   const [chosen, setChosen] = useState<Chosen | null>(null);
@@ -31,11 +35,15 @@ export default function SubjectFocusPanel(props: {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [checkOpen, setCheckOpen] = useState(false);
+  const [loadAttempt, setLoadAttempt] = useState(0);
+  const [retrySelection, setRetrySelection] = useState<{ slug: string; confirmed: boolean } | null>(null);
 
   useEffect(() => {
     let cancelled = false;
     void (async () => {
-      const res = await fetch(`/api/session/${props.sessionId}/subject-focus`);
+      setError(null);
+      try {
+      const res = await fetch(`/api/session/${props.sessionId}/subject-focus`, { signal: AbortSignal.timeout(20000) });
       const data = await res.json().catch(() => ({}));
       if (cancelled) return;
       if (!res.ok) {
@@ -43,15 +51,22 @@ export default function SubjectFocusPanel(props: {
         return;
       }
       setChoices(Array.isArray(data.choices) ? data.choices : []);
+      } catch {
+        if (!cancelled) setError("Subjects could not load. Check your connection and try again.");
+      }
     })();
     return () => {
       cancelled = true;
     };
-  }, [props.sessionId]);
+  }, [props.sessionId, loadAttempt]);
 
   async function choose(slug: string, confirmed: boolean) {
+    if (busy) return;
     setBusy(true);
     setError(null);
+    setCheckOpen(false);
+    setRetrySelection({ slug, confirmed });
+    try {
     const res = await fetch(`/api/session/${props.sessionId}/subject-focus`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -60,6 +75,7 @@ export default function SubjectFocusPanel(props: {
         sittingSubject,
         confirmed,
       }),
+      signal: AbortSignal.timeout(20000),
     });
     const data = await res.json().catch(() => ({}));
     setBusy(false);
@@ -68,6 +84,7 @@ export default function SubjectFocusPanel(props: {
       return;
     }
     if (data.needsConfirm) {
+      setRetrySelection(null);
       setPending({
         to: typeof data.to === "string" ? data.to : slug,
         prompt: typeof data.prompt === "string" ? data.prompt : "Change today's subject?",
@@ -75,6 +92,7 @@ export default function SubjectFocusPanel(props: {
       return;
     }
     setPending(null);
+    setRetrySelection(null);
     setCheckOpen(false);
     setSittingSubject(data.subjectSlug);
     setChosen({
@@ -83,6 +101,9 @@ export default function SubjectFocusPanel(props: {
       standards: Array.isArray(data.standards) ? data.standards : [],
     });
     props.onSubjectChanged(data.subjectSlug);
+    } catch {
+      setError("That subject did not open. Please try again.");
+    } finally { setBusy(false); }
   }
 
   const strands = new Map<string, StandardRow[]>();
@@ -93,10 +114,9 @@ export default function SubjectFocusPanel(props: {
   }
 
   return (
-    <div className="absolute inset-0 z-50 flex items-end justify-center bg-[#0a3340]/50 p-4 sm:items-center">
+    <div ref={dialogRef} tabIndex={-1} role="dialog" aria-modal="true" aria-labelledby="subject-focus-title" className="absolute inset-0 z-50 flex items-end justify-center bg-[#0a3340]/50 p-4 sm:items-center">
       <section
         className="flex max-h-[85vh] w-full max-w-lg flex-col overflow-hidden rounded-2xl border border-amber-900/30 bg-[#fff8ea] shadow-xl"
-        aria-labelledby="subject-focus-title"
       >
         <div className="flex items-start justify-between gap-3 border-b border-amber-900/15 px-4 py-3">
           <div>
@@ -116,6 +136,8 @@ export default function SubjectFocusPanel(props: {
           </button>
         </div>
         <div className="space-y-3 overflow-y-auto px-4 py-3">
+          <p className="text-sm leading-relaxed text-stone-700">One subject, one small step for camp. Pick a subject, then try a starting check.</p>
+          <details className="text-xs text-stone-600"><summary className="cursor-pointer py-2">About this beta&apos;s learning levels</summary><p>{CURRICULUM_COVERAGE}</p></details>
           {choices.length === 0 && !error && (
             <p className="text-sm text-stone-600">Loading subjects…</p>
           )}
@@ -161,26 +183,30 @@ export default function SubjectFocusPanel(props: {
               </div>
             </div>
           )}
-          {error && <p className="text-sm text-red-800">{error}</p>}
+          {error && <div role="alert" className="text-sm text-red-800"><p>{error}</p><button type="button" disabled={busy} className="min-h-11 underline" onClick={() => retrySelection ? void choose(retrySelection.slug, retrySelection.confirmed) : setLoadAttempt((attempt) => attempt + 1)}>Try again</button></div>}
           {chosen && ladderForSubject(chosen.subjectSlug) && (
             <button
               type="button"
-              onClick={() => setCheckOpen(true)}
+              disabled={busy || Boolean(error) || Boolean(pending)}
+              onClick={() => {
+                if (chosen.subjectSlug.startsWith("math_") && props.onOpenMathCheck) {
+                  props.onOpenMathCheck();
+                  return;
+                }
+                setCheckOpen(true);
+              }}
               className="rounded-lg bg-stone-900 px-3 py-1.5 text-xs font-medium text-white"
             >
               Find where I should start
             </button>
           )}
-          {checkOpen && chosen?.subjectSlug.startsWith("math_") && (
-            <MathCheck />
-          )}
           {checkOpen && chosen && !chosen.subjectSlug.startsWith("math_") && ladderForSubject(chosen.subjectSlug) && (
-            <SubjectCheck ladder={ladderForSubject(chosen.subjectSlug)!} />
+            <SubjectFiveCheck key={chosen.subjectSlug} sessionId={props.sessionId} onTalk={props.onTalk ?? props.onClose} />
           )}
           {chosen && !checkOpen && (
             <div>
               <p className="text-sm font-medium text-stone-800">{chosen.summaryLine}</p>
-              <div className="mt-2 space-y-3">
+              <details className="mt-2 space-y-3"><summary className="cursor-pointer py-3 text-sm font-medium text-teal-900">See skills and standards</summary>
                 {[...strands.entries()].map(([strandName, rows]) => (
                   <div key={strandName}>
                     <h3 className="text-xs font-semibold uppercase tracking-wide text-stone-500">
@@ -202,7 +228,7 @@ export default function SubjectFocusPanel(props: {
                     </ul>
                   </div>
                 ))}
-              </div>
+              </details>
             </div>
           )}
         </div>

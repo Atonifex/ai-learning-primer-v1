@@ -2,6 +2,7 @@ import OpenAI from "openai";
 import { aiDebug, isAiDebug } from "./aiDebug";
 import type { MemoryItemData, MessageData, StoryStateData } from "../types";
 import { SUBJECT_DISPLAY_NAMES } from "../constants/subjects";
+import { STORY_RECAP_RULE } from "../play/storyRecap";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -77,6 +78,7 @@ Memory type rules:
 - RECURRING_MISTAKE, GOAL, PREFERENCE: only when clearly evidenced.
 
 Other rules:
+- ${STORY_RECAP_RULE}
 - Only extract items clearly evidenced in the transcript. No speculation.
 - Confidence reflects how certain you are based on the transcript.
 - Do not duplicate items already in EXISTING MEMORY.

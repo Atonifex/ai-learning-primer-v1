@@ -1,0 +1,98 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 7.03000020980835,
+  "text": "Again, Wilhelm, 20 percent. That's my final offer.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 1.0800000429153442,
+      "end": 4.360000133514404,
+      "text": " Again, Wilhelm, 20 percent.",
+      "tokens": [
+        50364,
+        3764,
+        11,
+        9483,
+        48319,
+        11,
+        945,
+        3043,
+        13,
+        50614
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.46363985538482666,
+      "compression_ratio": 0.8620689511299133,
+      "no_speech_prob": 0.030142484232783318
+    },
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 5.179999828338623,
+      "end": 6.300000190734863,
+      "text": " That's my final offer.",
+      "tokens": [
+        50614,
+        663,
+        311,
+        452,
+        2572,
+        2626,
+        13,
+        50714
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.46363985538482666,
+      "compression_ratio": 0.8620689511299133,
+      "no_speech_prob": 0.030142484232783318
+    }
+  ],
+  "words": [
+    {
+      "word": "Again",
+      "start": 1.0800000429153442,
+      "end": 1.7200000286102295
+    },
+    {
+      "word": "Wilhelm",
+      "start": 2.819999933242798,
+      "end": 3.0799999237060547
+    },
+    {
+      "word": "20",
+      "start": 3.5799999237060547,
+      "end": 3.9000000953674316
+    },
+    {
+      "word": "percent",
+      "start": 3.9000000953674316,
+      "end": 4.360000133514404
+    },
+    {
+      "word": "That's",
+      "start": 5.179999828338623,
+      "end": 5.460000038146973
+    },
+    {
+      "word": "my",
+      "start": 5.460000038146973,
+      "end": 5.699999809265137
+    },
+    {
+      "word": "final",
+      "start": 5.699999809265137,
+      "end": 5.980000019073486
+    },
+    {
+      "word": "offer",
+      "start": 5.980000019073486,
+      "end": 6.300000190734863
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 8
+  }
+}

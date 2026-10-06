@@ -38,5 +38,85 @@
     "visual": "Physical Wilhelm points to matching wall map, camera pushes in, hand exits before clean aerial island resolves. Entire5s2fps timeline checked.",
     "speech": "Exact intended Fortuna/no team speech recovered.",
     "seam": "g04 gaze motivates standing map coverage. Aerial endpoint becomes next source frame."
+  },
+  {
+    "id": "g06",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Entire12s2fps timeline: clean untouched island, stable beach/river/ridge/plains, slow aerial move; no people, gloves/cockpit or buildings. Distant storm visible; specific animals not resolved in this high wide shot.",
+    "speech": "Exact offscreen narration recovered.",
+    "seam": "12fps g05-g06 boundary preserves aerial geography and framing."
+  },
+  {
+    "id": "g07",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Full15s2fps timeline: physical Wilhelm lowers pointing arm and moves back toward desk, same face/mustache/uniform/room; no extra cuts or captain gestures.",
+    "speech": "Exact mission/conditional resource speech recovered.",
+    "seam": "Motivated return to same wall map; g08 should continue from his standing endpoint and sit naturally."
+  },
+  {
+    "id": "g08",
+    "accepted": true,
+    "retries": 1,
+    "visual": "Full15s2fps seated officer timeline stable, no captain gesture, resting endpoint. Natural motivated angle cut from standing mission coverage back to seated reward desk coverage.",
+    "speech": "Retake removes repeated base phrase. Transcription includes added after costs after profit; caption reflects actual wording. Cannot certify phonetics by listening.",
+    "seam": "12fps g07-g08: same officer, office and map; cut represents return to desk."
+  },
+  {
+    "id": "n15",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Whole7s2fps stable seated Wilhelm, controlled concession expression and closed-mouth endpoint. No captain acceptance.",
+    "speech": "Exact expected 15 percent response recovered; alright orthography only.",
+    "seam": "12fps g08-n15 boundary same desk/pose/camera."
+  },
+  {
+    "id": "wait",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Full3s2fps derived quiet closed-mouth Wilhelm tail stable. No speech or captain gesture.",
+    "speech": "No audio stream; local derivation costs zero credits.",
+    "seam": "Final exporter uses forward/reverse pair for identical endpoints; final loop boundary still requires export review."
+  },
+  {
+    "id": "c01",
+    "accepted": true,
+    "retries": 1,
+    "visual": "Full7.5s2fps repaired shot: captain right-thumb only, Wilhelm hands remain desk, ONE Rho approaches. Motivated close view excludes Wilhelm while introduction plays offscreen. Original attempts preserved.",
+    "speech": "Independent gpt-4o-transcribe confirms full expected line; Whisper omits restored sentence. Captions use explicit repair timing and prior word bounds. Original repetition flag is not confirmed by second transcription.",
+    "seam": "12fps n20-c01 matching desk; intentional accepted captain-thumb appearance. Rho close view motivates wider handshake next."
+  },
+  {
+    "id": "c02",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Full12s2fps: brief normal handshake/release, upright Rho with hands resting while speaking, same Wilhelm seated behind, no assistant, no romantic lingering.",
+    "speech": "Independent gpt-4o-transcribe confirms COMPLETE introduction including Maya/Fortuna guide role. Whisper omits middle phrase; canonical captions retain confirmed full text, sentence timing uses first/last word evidence.",
+    "seam": "12fps c01-c02 intentional close-to-wide reveal for handshake, matching face/costume/room and hand pose."
+  },
+  {
+    "id": "c03",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Entire4s2fps: Rho turns away purposefully and heads for doorway; no lingering look back. Wilhelm remains at desk. Same clothes/face/set.",
+    "speech": "Silent scene native track flagged stray text. Replaced with original quiet local footsteps; no voices in replacement, native source preserved; zero paid retake.",
+    "seam": "12fps c02-c03 matching resting Rho pose before turn. Next cut to ready cockpit represents boarding."
+  },
+  {
+    "id": "c05",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Whole8s2fps: consistent twin-prop wheeled plane accelerates right-to-left, wheels stay down until rotation, camera smoothly tracks toward rear as plane lifts off and flies away. No hover, no people/gloves.",
+    "speech": "No scripted speech; native runway/propeller sound preserved. Audio listening not certified.",
+    "seam": "12fps cockpit-ready to exterior runway establishes same twin-prop craft and base. Takeoff ends airborne, next rear exterior continues flight."
+  },
+  {
+    "id": "c07",
+    "accepted": true,
+    "retries": 1,
+    "visual": "Full7s2fps retake: tense worried Rho looks toward storm then back to captain, furrowed brows and downturned/tense mouth maintained through end; prior cheerful smiles removed. Same cockpit/hands/left handle.",
+    "speech": "Both transcripts recover exact storm/turn-back warning.",
+    "seam": "12fps c06-c07 clean island approach cuts to storm-filled cockpit, consistent geography and serious Rho. Next exterior shows attempted retreat then lightning."
   }
 ]

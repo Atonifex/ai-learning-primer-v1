@@ -1,0 +1,59 @@
+{
+  "shot": {
+    "id": "c06",
+    "duration": 6,
+    "ref": "aircraft-flight",
+    "line": "",
+    "speaker": null,
+    "action": "Clean exterior plane smoothly flying toward Fortuna same southern river mouth beach plains north mountain ridge; distant dark storm gathers north. No hands/cockpit/people. Natural propeller sound.",
+    "role": "continuation",
+    "retries": 0,
+    "status": "planned"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character, proportions, costume, set, geography and craft. One continuous shot, no automatic camera cuts. No text, lettering, subtitles, UI, weapons, blood, injuries or horror. NO MUSIC; continuous edit score is added separately. Clean exterior plane smoothly flying toward Fortuna same southern river mouth beach plains north mountain ridge; distant dark storm gathers north. No hands/cockpit/people. Natural propeller sound. No speech or voices. Natural story sound only, except waiting loop totally silent. "
+      },
+      {
+        "name": "duration",
+        "value": "6"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qUAoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo2YWdlbnRfdXBsb2FkLzE3OTEyMzYzNTEvR0tEdXU4U3l0eS9haXJjcmFmdC1mbGlnaHQucG5n.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized V05 regeneration. Sequentially reviewed prior segment; preserve approved identities and camera geometry, variable scene pacing, native sounds without isolated music clips."
+  },
+  "task": {
+    "generationId": "AVRs7cT6g27I5hnHhO9oKYxeNb7igxFPCkOlxl7ncE5y16WAW7jHyZ3GMFPPOYTPX76jD9dW",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 72,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "credits_consumed": 72,
+    "generation_id": "AVRs7cT6g27I5hnHhO9oKYxeNb7igxFPCkOlxl7ncE5y16WAW7jHyZ3GMFPPOYTPX76jD9dW"
+  }
+}

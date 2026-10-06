@@ -81,13 +81,13 @@ export function useLearningLoop(
       if (!res.ok || !data.quiz) throw new Error(data.error || "Quiz missing");
       if (data.quiz.alreadyCompleted) {
         if (slug === TUTORIAL_QUIZ_SLUG) setQuizDone(true);
-        return { alreadyDone: true, slug };
       }
       setQuiz(data.quiz);
       setQuizResult(null);
+      setQuizError(null);
       setZpdStage(null);
       setShowQuiz(true);
-      return { alreadyDone: false, slug };
+      return { alreadyDone: data.quiz.alreadyCompleted, slug };
     } catch (e) {
       throw e instanceof Error ? e : new Error("Could not open the crate lid.");
     }
@@ -108,7 +108,7 @@ export function useLearningLoop(
 
   const submitQuiz = useCallback(
     async (answers: Array<{ itemId: string; selectedIndex: number }>) => {
-      if (!quiz) return;
+      if (!quiz || quiz.alreadyCompleted) return;
       setQuizSubmitting(true);
       setQuizError(null);
       try {

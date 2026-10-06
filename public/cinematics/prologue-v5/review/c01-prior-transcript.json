@@ -1,0 +1,101 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 6.03000020980835,
+  "text": "We have a deal meet Ro your first mate your first mate",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0,
+      "end": 5.960000038146973,
+      "text": " We have a deal meet Ro your first mate your first mate",
+      "tokens": [
+        50364,
+        492,
+        362,
+        257,
+        2028,
+        1677,
+        3101,
+        428,
+        700,
+        11709,
+        428,
+        700,
+        11709,
+        50656
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.41662919521331787,
+      "compression_ratio": 1.125,
+      "no_speech_prob": 0.0521048977971077
+    }
+  ],
+  "words": [
+    {
+      "word": "We",
+      "start": 0,
+      "end": 0.6200000047683716
+    },
+    {
+      "word": "have",
+      "start": 0.6200000047683716,
+      "end": 1.1200000047683716
+    },
+    {
+      "word": "a",
+      "start": 1.1200000047683716,
+      "end": 1.5399999618530273
+    },
+    {
+      "word": "deal",
+      "start": 1.5399999618530273,
+      "end": 1.940000057220459
+    },
+    {
+      "word": "meet",
+      "start": 1.940000057220459,
+      "end": 2.700000047683716
+    },
+    {
+      "word": "Ro",
+      "start": 2.700000047683716,
+      "end": 3.0999999046325684
+    },
+    {
+      "word": "your",
+      "start": 3.0999999046325684,
+      "end": 3.700000047683716
+    },
+    {
+      "word": "first",
+      "start": 3.700000047683716,
+      "end": 4.059999942779541
+    },
+    {
+      "word": "mate",
+      "start": 4.059999942779541,
+      "end": 4.340000152587891
+    },
+    {
+      "word": "your",
+      "start": 4.340000152587891,
+      "end": 5.360000133514404
+    },
+    {
+      "word": "first",
+      "start": 5.360000133514404,
+      "end": 5.679999828338623
+    },
+    {
+      "word": "mate",
+      "start": 5.679999828338623,
+      "end": 5.960000038146973
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 7
+  }
+}

@@ -16,7 +16,8 @@
       "action": "Locked physical medium shot. Hands on desk. Warm professional greeting.",
       "role": "briefing",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "generationId": "AbkHYzWR3GpiAABTII7WcvdN8YlwEXoAW7z0w5DFqH4nk41dAVZa4ZMRNpHB2KpzyoGhEjIQ"
     },
     {
       "id": "g02",
@@ -27,7 +28,8 @@
       "action": "Continue same camera, attentive composed face. No reset or new gesture.",
       "role": "briefing",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "generationId": "AQSZcCJE7PiD4baDNNB6bEIdCVeSovfu6D3m4LWMI623SOfFxNcLcPs3S9NftogrBi2verDy"
     },
     {
       "id": "g03",
@@ -38,7 +40,8 @@
       "action": "Same physical speaker, modest explanatory gesture, remains seated.",
       "role": "briefing",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "generationId": "Aeb76JsxZQPKdjH6vtTQ1jlUyGhy8gKXJe8JW0giEwOc3gBmSVgHvlsqR_boklM-ZZC4N2m0"
     },
     {
       "id": "g04",
@@ -49,7 +52,8 @@
       "action": "Focused serious eye contact. End with glance toward wall map.",
       "role": "briefing",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "generationId": "AchgkA8jlFzYJ8aL8MFis8S0CpFEs-QPjUhnoQNGTRZac0JCnPzVzGN8LhG0ShM_Rmz_IYaf"
     },
     {
       "id": "g05",
@@ -60,7 +64,8 @@
       "action": "Wilhelm points to the wall map. Camera pushes toward crescent coast. Hand leaves frame before map fills picture.",
       "role": "briefing",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "generationId": "AdST-im6ATArTeXRjFLL5QepJfShkwFyH6CQoJ7Cl2UH53CJAw63f0piiTJXs6oO4is96Lxq"
     },
     {
       "id": "g06",
@@ -71,7 +76,8 @@
       "action": "Clean aerial landscape. Slow approach to river beach plains forest and north ridge; distant storm north, small partly hidden animal movement. No hands, people, buildings or cockpit.",
       "role": "briefing",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "generationId": "AVfLH1Bhvd2A8FEHtBZ1PVdWDVKw9boBt3GhMERH7W03PUErnbgkSpdWdNHWfJLkOLRlsOgt"
     },
     {
       "id": "g07",
@@ -82,18 +88,20 @@
       "action": "Physical Wilhelm beside map looks back toward captain, authoritative but fair. Same room geometry.",
       "role": "briefing",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "generationId": "Af9VJ19KJX82CEJQBahtdxnh3Hlc6SBsx75VtbvSXOUGaue7OoaEzovsl5-USd2BXhTJgVeK"
     },
     {
       "id": "g08",
       "duration": 15,
       "ref": "briefing-anchor",
-      "line": "You'll lead your own crew, build your own base, and get ten percent of the profit. That's the money left after costs. Will you take the mission?",
+      "line": "You'll lead your own crew, build your own base, and get ten percent of the profit after costs. That's the money left after costs. Will you take the mission?",
       "speaker": "Wilhelm",
-      "action": "Same officer desk medium shot. Inviting firm offer. Finish closed mouth, hands on desk waiting anchor. NO acceptance gesture.",
+      "action": "Locked desk medium shot. Wilhelm is already seated and remains seated throughout. Speak the offer ONCE with no repetition. Inviting firm offer with restrained expressions. No stand/sit movement or large gestures. Finish closed mouth hands resting at same waiting anchor. NO captain gesture.",
       "role": "briefing",
-      "retries": 0,
-      "status": "planned"
+      "retries": 1,
+      "status": "reviewed",
+      "generationId": "AdVum4sK2Rur3t2-Jl9Gl2dBnsQ07SwmBc7UP05GbOKNcdySgiZZTOGwYOX0IewavMqv0FeK"
     },
     {
       "id": "n15",
@@ -104,7 +112,8 @@
       "action": "Small thoughtful concession, controlled slight disappointment. Ends at closed mouth hands resting anchor.",
       "role": "offer15",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "generationId": "AXRGzx1cBrQKdeHb4e3aKAgb13FU4TG0ir5qpZp4tCJ_dZM_c0Py7QkoWsWJAHO70aCSr7G9"
     },
     {
       "id": "n20",
@@ -112,10 +121,11 @@
       "ref": "briefing-anchor",
       "line": "Again? Twenty percent. That's my final offer.",
       "speaker": "Wilhelm",
-      "action": "Dry exasperation, precise pen click then firm final offer. No clown acting. Ends at identical resting anchor.",
+      "action": "Locked seated desk shot. A brief dry exasperated sigh WITHOUT speech, then exact final offer. Only these words are spoken: Again? Twenty percent. That's my final offer. Never say his name or other words. Do not read prompt directions. Remain seated hands resting, ends identical closed-mouth waiting anchor.",
       "role": "offer20",
-      "retries": 0,
-      "status": "planned"
+      "retries": 1,
+      "status": "reviewed",
+      "generationId": "AXhZyovutP_lWZcjBpWHE6D2gui5jCN4eqA061PxINN3TAoGBc5ulHZQAExhJyY3LdCEirhW"
     },
     {
       "id": "wait",
@@ -126,18 +136,27 @@
       "action": "Locked silent breathing loop, same closed mouth and hands resting at both endpoints. No music or speech.",
       "role": "loop",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "derivation": {
+        "source": "g08",
+        "in": 14.5,
+        "out": 15,
+        "speed": 0.16666666666666666,
+        "credits": 0
+      }
     },
     {
       "id": "c01",
-      "duration": 6,
+      "duration": 7.5,
       "ref": "briefing-anchor",
       "line": "We have a deal. Meet Rho, your first mate.",
       "speaker": "Wilhelm",
-      "action": "One short captain gloved RIGHT thumbs-up only AFTER deal accepted, then lowers. Wilhelm gestures to doorway, Rho approaches.",
+      "action": "Local edit preserves correct captain thumb and only Wilhelm/Rho; offscreen introduction over Rho close view from preserved first take; no new generation.",
       "role": "continuation",
-      "retries": 0,
-      "status": "planned"
+      "retries": 1,
+      "status": "reviewed",
+      "repair": "c01-repair.json",
+      "generationId": "AevSSgzhFD9l2Tkk9ppKM4KsISzw2rhh6JkrnT34UVb0gQxpXVHZ0RBn_Nljw90Q_B86z-0P"
     },
     {
       "id": "c02",
@@ -145,10 +164,11 @@
       "ref": "rho-handshake",
       "line": "I'm Rho, your first mate. I'll help you learn about Maya and Fortuna, and guide you along the way.",
       "speaker": "Rho",
-      "action": "Brief professional handshake, immediate release. Upright normal colleague distance, purposeful warmth, no coy tilt/romance.",
+      "action": "ONLY Rho and same Wilhelm behind desk, no assistant or bystanders. Rho immediately straightens head upright, professional and warm. Brief normal handshake during first two seconds, immediate release, captain glove lowers. Rho speaks her exact introduction ONCE, unhurried, completes by10.5 seconds then quiet attentive pause. Maintain upright normal colleague distance, no coy tilt/romance, no stroking or hand holding. Wilhelm stays silent, hands resting.",
       "role": "continuation",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "generationId": "AZxCcdMd1xMONWYJ5YHw7_qGPS78_97maQxWKxNJT74khRoG9MRXhnXCr-AogrSKTnPSkCr8"
     },
     {
       "id": "c03",
@@ -156,10 +176,13 @@
       "ref": "rho-handshake",
       "line": "",
       "speaker": null,
-      "action": "Rho turns toward door to lead toward hangar. Follow purposefully, Rho left, no romantic gaze or hand-holding.",
+      "action": "Rho <<<323213596308599>>> releases hands from desk, turns toward screen RIGHT doorway to lead toward hangar; camera follows her purposeful steps, she remains on viewer LEFT while walking. Same Wilhelm stays seated behind at desk; he does not escort them. ONLY Rho and Wilhelm, no bystanders. No speech, no hands shown, no hand-holding, no looking back romantically or coy head tilt. Straight purposeful professional posture. Natural footsteps.",
       "role": "continuation",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "repair": "c03-repair.json",
+      "audioGain": 0.35,
+      "generationId": "AUFS-o1OY8X2HKS08D4W6AL1wrImtso3Ye211gyY3WlTy7R0iMZzi_Bq20778A37HyDZCP4h"
     },
     {
       "id": "c04",
@@ -170,7 +193,8 @@
       "action": "First-person captain hands on wheel, Rho harnessed left. Blue escape handle left. Runway forward, no lift yet.",
       "role": "continuation",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "generationId": "AR-UQAXMxVhZi_boMnRt8narHuIcnOLk3Q6MGBMC2rX3cIQATTPgSK07QcvtrdIUSwqLqxxB"
     },
     {
       "id": "c05",
@@ -178,10 +202,11 @@
       "ref": "aircraft-runway",
       "line": "",
       "speaker": null,
-      "action": "Exterior same fixed-wing twin-prop teal cream brass aircraft accelerates left to right on runway on wheels, rotates and lifts smoothly. No hover. Natural engines wind wheels; no music.",
+      "action": "Exterior same fixed-wing twin-prop teal cream brass aircraft, nose pointing viewer LEFT, accelerates RIGHT TO LEFT on runway on wheels, rotates and lifts smoothly. Preserve heading throughout. No hover. Natural engines wind wheels; no music.",
       "role": "continuation",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "generationId": "AQiLneVO8wakmPshy8bR8hJ_azjkUi6mAkcamZMh168ILqSbVCvzGxZltsrZEX8VICkCk8-P"
     },
     {
       "id": "c06",
@@ -192,7 +217,8 @@
       "action": "Clean exterior plane smoothly flying toward Fortuna same southern river mouth beach plains north mountain ridge; distant dark storm gathers north. No hands/cockpit/people. Natural propeller sound.",
       "role": "continuation",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "generationId": "AVRs7cT6g27I5hnHhO9oKYxeNb7igxFPCkOlxl7ncE5y16WAW7jHyZ3GMFPPOYTPX76jD9dW"
     },
     {
       "id": "c07",
@@ -200,10 +226,11 @@
       "ref": "cockpit-storm",
       "line": "That storm is moving fast. Turn back!",
       "speaker": "Rho",
-      "action": "Rain approaches. Rho concerned brows tense no smile. Captain turns wheel toward clear sea, visible horizon banks modestly. Natural wind propeller.",
+      "action": "Same cockpit. Dangerous rain and rapid approaching storm. Rho's expression is WORRIED and URGENT throughout: brows strongly knit downward, eyes tense, jaw tense, mouth corners downturned EVEN while talking. No happy smile, grinning, cheerful delivery, flirting or playful relief at ANY frame. Treat this as a crew safety warning, not cheerful tour guide. Rho watches dangerous clouds then turns worried toward captain, delivers exact line ONCE. Captain turns wheel to retreat toward clear sea, visible horizon banks modestly. Maintain concerned expression into final frame. Natural wind/propeller only.",
       "role": "continuation",
-      "retries": 0,
-      "status": "planned"
+      "retries": 1,
+      "status": "reviewed",
+      "generationId": "AYMIVotRYELkwc_OGNuPbe9Us7YUFM5rfgPYD2IVonljEIU1J_oRzmh6nZjIFwQweRDWjohx"
     },
     {
       "id": "c08",
@@ -219,7 +246,7 @@
     {
       "id": "c09",
       "duration": 7,
-      "ref": "cockpit-storm",
+      "ref": "cockpit-fire",
       "line": "The engine's on fire! We're losing power!",
       "speaker": "Rho",
       "action": "Cockpit only: engine fire visible outside window, gauges dim, nose falls. Rho harnessed visibly concerned no smile, hands captain wheel only. Natural alarm wind engine sputter.",
@@ -244,7 +271,7 @@
       "ref": "escape-chutes",
       "line": "",
       "speaker": null,
-      "action": "Exterior exactly seven occupied fictional escape seats move clear of wings then their seven chutes fully open high above sea/coast. Aircraft burns only at right engine and descends separately below chutes. All seven safely clear; no bodies at impact.",
+      "action": "Exterior exactly seven occupied fictional escape seats with seven fully open orange cream parachutes already safely clear of aircraft, descend high above sea/coast. Wind slowly spreads the seven crew apart. Aircraft burns only at right engine and descends separately below chutes. No extra chutes. All seven safely clear; no bodies at impact.",
       "role": "continuation",
       "retries": 0,
       "status": "planned"

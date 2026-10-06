@@ -7,12 +7,14 @@ const {chromium}=require('@playwright/test');const path=require('node:path');con
   const page=await browser.newPage({viewport:{width:1280,height:900}});
   await page.goto('http://localhost:3000/cinematics/prologue-v5/review-player.html');
   await page.locator('#shots').selectOption(id);await page.locator('#load').click();
+  await page.waitForFunction(id=>{const v=document.querySelector('video');return v.readyState>=2&&v.videoWidth>0&&v.currentSrc.endsWith('/sources/'+id+'.mp4');},id,{timeout:60000});
   const video=page.locator('video');await video.evaluate(async v=>{v.muted=true;await v.play();});
   await page.waitForTimeout(1000);
   const first=await video.evaluate(v=>({time:v.currentTime,width:v.videoWidth,height:v.videoHeight,error:v.error?.message}));
-  await page.waitForFunction(()=>document.querySelector('video').ended,null,{timeout:25000});
-  const last=await video.evaluate(v=>({time:v.currentTime,duration:v.duration,ended:v.ended,error:v.error?.message}));
-  if(first.time<=0||first.width===0||last.error||!last.ended)throw Error('Playback did not complete');
+  try{await page.waitForFunction(()=>document.querySelector('video').ended,null,{timeout:60000});}
+  catch(error){const state=await video.evaluate(v=>({time:v.currentTime,duration:v.duration,paused:v.paused,readyState:v.readyState,networkState:v.networkState,error:v.error?.message,src:v.currentSrc}));console.error(JSON.stringify({id,state}));throw error;}
+  const last=await video.evaluate(v=>({time:v.currentTime,duration:v.duration,ended:v.ended,width:v.videoWidth,src:v.currentSrc,error:v.error?.message}));
+  if(last.time<=0||last.width===0||last.error||!last.ended||!last.src.endsWith('/sources/'+id+'.mp4'))throw Error('Playback did not complete: '+JSON.stringify({first,last}));
   const dir=path.resolve(__dirname,'../../public/cinematics/prologue-v5/review');
   await page.screenshot({path:path.join(dir,id+'-browser.jpg'),type:'jpeg',quality:80});
   fs.writeFileSync(path.join(dir,id+'-browser.json'),JSON.stringify({first,last},null,2));console.log(JSON.stringify({id,first,last}));

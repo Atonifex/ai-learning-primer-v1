@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * Earlier in-panel ladder. Not mounted.
+ * The live check is MathFiveCheck, opened from First shore.
+ */
+
 import { useState } from "react";
 import {
   applyMathDiagnosticAnswer,

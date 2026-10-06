@@ -1085,6 +1085,16 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 
 ## 15. Master checklist
 
+### Overnight beta usability and evidence — 2026-10-05/06
+
+- [x] Replace completed-only Camp needs dead end with a real next-action card and locked previews; next-mission tool opens the board without bypassing placement.
+- [x] Reject technical Previously On summaries, translate parent ledger labels, explain supported evidence and /100 practice estimates, and expose honest prototype curriculum coverage.
+- [x] Use fresh five-question subject checks, distinct retry examples and varied answer positions; persist answered questions across reload for math/ELA/science/social studies and write supported evidence with stable retry keys.
+- [x] Add bounded scrolling, larger choice targets, recovery controls, dialog keyboard focus and explicit shell hydration readiness. Production debug always off.
+- [x] Complete five simulated perspective records, live Rho next-step/check handoffs, completed-job review and full regression gate: 170 unit tests, TypeScript, 28 Playwright tests and targeted lint pass. Scope and failed-run evidence: `docs/OVERNIGHT_BETA_REVIEW_2026-10-05.md`. No real-child or isolated Grade 7 account study claimed.
+- [ ] Author and validate grade-specific checks/entry tasks beyond the Grade 3 starter sample; Grade 4 catalogs alone are not a Grade 4 experience, and Grade 5–8 curriculum remains unavailable.
+- [ ] Add independent transfer/retention evidence and learner-created work visibly reused by the story; preserve existing mastery formula and removed mandatory sentence gate.
+
 - [x] Correct V05 officer to Sergeant Wilhelm with a mustache; add Rho first-mate/planet/island guide introduction (2026-10-05). Script and continuity docs only; not yet generated.
 - [x] Condense opening to V05 with Maya/Fortuna, male military Sergeant Wilhelm with a mustache, resource shortage/wall-map aerial transition, lightning/fire/power-loss crash and occasional comic-beat plan (2026-10-05); `docs/OPENING_SCREENPLAY_V05.md`. ~3:10 paper target plus branches/waits; no new production. Future Wilhelm conflict in F04; humor preference persisted.
 
@@ -1347,6 +1357,29 @@ If a new ★ question appears, add the answer to **§4** or **§17** — do not 
 ---
 
 ## 18. Implementation log
+
+### 2026-10-05/06 — Overnight beta review and learning continuity (local verification complete)
+
+**Request:** Ivan authorized autonomous parent, Grade 7, Grade 3, instructional designer and teacher simulations, synthesis of `BETA_FEEDBACK_2026-10-05.md`, and implementation/retest loops. Report and prioritized queue: `docs/OVERNIGHT_BETA_REVIEW_2026-10-05.md`; PROJECT_MEMORY carries continuation instructions. No real-child efficacy claim, deployment or paid media work.
+
+**Verified findings and changes:** persisted math placement already existed, so Grok's always-false hypothesis was superseded; filtering out locked rows still caused a completed-only board. Show a next-action CTA without weakening locks; `suggest_next_mission` now emits the board event. Parent/teacher views remove internal labels and qualify estimates; contaminated recaps are omitted rather than fabricated. Five-question checks vary answer positions and use fresh cases, save/resume answers and reconcile guided evidence with stable IDs; saved subject needs enter Rho context. Added error recovery, short-screen scrolling, keyboard focus handling and hydration gating. No standard codes invented, no change to mastery equations, Pixi remains home and live turns remain `gpt-5.6-luna`.
+
+**Final refinements and gate:** completed shore jobs now reopen as read-only reviews; no second submission/evidence/resource award. A failed subject selection retries the same selection rather than only reloading choices. Focus/check APIs use a minimal session-header ownership check; role/foreign-learner rejection remains tested. Removed stub reward promises from mission prompts and fixed a development-debug wrapper intercepting mobile clicks. Final code passed 170 unit tests across 43 files, TypeScript, all 28 browser tests in 7.4m and targeted lint. Actual browser verified progress/detail copy, social-studies completion → saved-focus Rho response, live what-next → board → math check, supported math practice, and cross-subject completed review/return.
+
+**Limits:** checks/shore jobs remain Grade 3 samples, directly disclosed in each check. Grade 4 standards are seeded; full Grade 5–8 curriculum and validated grade-specific checks are not delivered. The five lenses are agent simulations on a shared synthetic fixture, not real participants or an isolated Grade 7 account. No production performance, screen-reader, independent retention or educational-efficacy certification. Local cold-route/DB/CUA stalls and all failed regression loops are recorded in the review. No deploy or paid media; unrelated concurrent V05 work preserved. Follow-on learning work remains unchecked above.
+
+### 2026-10-05 — V05 whole-sequence production underway
+
+- User authorized complete regenerated Maya/Fortuna opening, sequential scene/transition review, up to two corrective retakes per segment and Git upload. Library: `public/cinematics/prologue-v5`. Eight briefing clips reviewed; negotiation and flight/crash/objective still in production. Do not mark complete or switch runtime until the whole sequence passes export/playback checks.
+- New mustached Wilhelm Element and retained Rho Element; seven crew per shared bible. Reviewed reference staging for runway heading, lightning/right-engine fire, seven safe chutes, empty impact and professional dawn recovery.
+- One reward retake corrected repeated speech during stand-to-sit action; rejected original retained. Exact job charges are in deduplicated `credit-ledger.json`. Separate original procedural score, editable captions/export scripts prepared; music fades before takeoff. Every saved MP4 presently under80MB. Audio transcription verifies words/timing only; no listening certification.
+
+
+### 2026-10-05 — Five-question math check
+
+- First shore **Math check** opens a full-screen check: example, then a different multiple-choice item, progress `n of 5`. The five codes are tonight-slice `MA.3.NSO.1.1`, `MA.3.NSO.2.2`, `MA.3.NSO.1.2`, `MA.3.NSO.1.3`, and `MA.3.NSO.2.1`. A first miss on number forms asks one more item of that same code. Two misses stop at below the catalog. No Grade 2 code is stored.
+- A finished result is saved on the captain (`mathPlacementCode`, `mathPlacementStatus`). That unlocks the other Jobs and pitches a tent with one ration set aside. The crew stays missing. A code also turns `generate_learning_activity` back on. Evidence uses the existing guided assessment path against the Grade 3 math catalog.
+- Files: `lib/play/mathFiveCheck.ts`, `lib/services/mathCheckSession.ts`, `app/api/session/[id]/math-check/route.ts`, `components/play/MathFiveCheck.tsx`.
 
 ### 2026-10-05 — Turn packet and onboarding authority
 

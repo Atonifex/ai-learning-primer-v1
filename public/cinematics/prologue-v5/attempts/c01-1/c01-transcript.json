@@ -1,0 +1,54 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 6.03000020980835,
+  "text": "We have a deal.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0,
+      "end": 2.799999952316284,
+      "text": " We have a deal.",
+      "tokens": [
+        50389,
+        492,
+        362,
+        257,
+        2028,
+        13,
+        50714
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.1971437931060791,
+      "compression_ratio": 0.6521739363670349,
+      "no_speech_prob": 0.015140117146074772
+    }
+  ],
+  "words": [
+    {
+      "word": "We",
+      "start": 0,
+      "end": 1
+    },
+    {
+      "word": "have",
+      "start": 1,
+      "end": 1.2400000095367432
+    },
+    {
+      "word": "a",
+      "start": 1.2400000095367432,
+      "end": 2.7799999713897705
+    },
+    {
+      "word": "deal",
+      "start": 2.7799999713897705,
+      "end": 2.799999952316284
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 7
+  }
+}

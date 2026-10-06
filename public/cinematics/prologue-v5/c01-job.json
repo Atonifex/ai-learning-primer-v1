@@ -1,0 +1,68 @@
+{
+  "shot": {
+    "id": "c01",
+    "duration": 6,
+    "ref": "briefing-anchor",
+    "line": "We have a deal. Meet Rho, your first mate.",
+    "speaker": "Wilhelm",
+    "action": "Exactly TWO visible people: Wilhelm behind desk and ONE Rho entering from doorway at screen right. No assistant or bystanders. Rho uses <<<323176998308923>>>: blond hair amber eyes thin teal visor metal cheek neck, brown jacket teal shoulders cream shirt. Wilhelm stays seated BOTH hands resting folded on desk ENTIRE shot, NEVER gives thumbs up. Captain's ONE navy gloved RIGHT hand already gives foreground thumbs up at0s, lowers smoothly by1s. At0-1.3s Wilhelm says We have a deal. At1.3-3.5s says Meet Rho, your first mate ONCE. At3.5-6s NO SPEECH, Rho walks up and extends hand to captain for professional handshake. No repeated words. Maintain identities, no swapping faces, no romantic acting.",
+    "role": "continuation",
+    "retries": 1,
+    "status": "planned"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character, proportions, costume, set, geography and craft. One continuous shot, no automatic camera cuts. No text, lettering, subtitles, UI, weapons, blood, injuries or horror. NO MUSIC; continuous edit score is added separately. Use <<<323205940306534>>> for Wilhelm identity AND same low mature male voice. Mustache stays. Maya MY-uh when mentioned. Exactly TWO visible people: Wilhelm behind desk and ONE Rho entering from doorway at screen right. No assistant or bystanders. Rho uses <<<323176998308923>>>: blond hair amber eyes thin teal visor metal cheek neck, brown jacket teal shoulders cream shirt. Wilhelm stays seated BOTH hands resting folded on desk ENTIRE shot, NEVER gives thumbs up. Captain's ONE navy gloved RIGHT hand already gives foreground thumbs up at0s, lowers smoothly by1s. At0-1.3s Wilhelm says We have a deal. At1.3-3.5s says Meet Rho, your first mate ONCE. At3.5-6s NO SPEECH, Rho walks up and extends hand to captain for professional handshake. No repeated words. Maintain identities, no swapping faces, no romantic acting. Only Wilhelm speaks. Speak exact simple English line once, clear unhurried natural voice with lip-sync where visible: \"We have a deal. Meet Rho, your first mate.\". No added words/voices. "
+      },
+      {
+        "name": "duration",
+        "value": "6"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      },
+      {
+        "name": "elements",
+        "value": "[{\"id\":\"323205940306534\",\"bindName\":\"Wilhelm\"},{\"id\":\"323176998308923\",\"bindName\":\"Rho\"}]"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1YWdlbnRfdXBsb2FkLzE3OTEyNDIwMTcvSTFPTndnOVJhaC9hY2NlcHRlZC10aHVtYi5wbmc.origin?x-kcdn-pid=112372"
+      },
+      {
+        "name": "tail_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qTgoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo0YWdlbnRfdXBsb2FkLzE3OTEyMzYyMjEvWkVmeFk3Q2hwdi9yaG8taGFuZHNoYWtlLnBuZw.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized V05 regeneration. Sequentially reviewed prior segment; preserve approved identities and camera geometry, variable scene pacing, native sounds without isolated music clips."
+  },
+  "task": {
+    "generationId": "AevSSgzhFD9l2Tkk9ppKM4KsISzw2rhh6JkrnT34UVb0gQxpXVHZ0RBn_Nljw90Q_B86z-0P",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 72,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "credits_consumed": 72,
+    "generation_id": "AevSSgzhFD9l2Tkk9ppKM4KsISzw2rhh6JkrnT34UVb0gQxpXVHZ0RBn_Nljw90Q_B86z-0P"
+  }
+}

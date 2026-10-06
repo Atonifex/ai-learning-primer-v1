@@ -1,0 +1,68 @@
+{
+  "shot": {
+    "id": "n20",
+    "duration": 7,
+    "ref": "briefing-anchor",
+    "line": "Again? Twenty percent. That's my final offer.",
+    "speaker": "Wilhelm",
+    "action": "Dry exasperation, precise pen click then firm final offer. No clown acting. Ends at identical resting anchor.",
+    "role": "offer20",
+    "retries": 0,
+    "status": "planned"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character, proportions, costume, set, geography and craft. One continuous shot, no automatic camera cuts. No text, lettering, subtitles, UI, weapons, blood, injuries or horror. NO MUSIC; continuous edit score is added separately. Use <<<323205940306534>>> for Wilhelm identity AND same low mature male voice. Mustache stays. Wilhelm VILL-helm, Maya MY-uh. Dry exasperation, precise pen click then firm final offer. No clown acting. Ends at identical resting anchor. Only Wilhelm speaks. Speak exact simple English line once, clear unhurried natural voice with lip-sync where visible: \"Again? Twenty percent. That's my final offer.\". No added words/voices. "
+      },
+      {
+        "name": "duration",
+        "value": "7"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      },
+      {
+        "name": "elements",
+        "value": "[{\"id\":\"323205940306534\",\"bindName\":\"Wilhelm\"}]"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qUAoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo2YWdlbnRfdXBsb2FkLzE3OTEyMzQxMjYvVnJJalZ1T28wei9icmllZmluZy1hbmNob3IucG5n.origin?x-kcdn-pid=112372"
+      },
+      {
+        "name": "tail_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qUAoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo2YWdlbnRfdXBsb2FkLzE3OTEyMzQxMjYvVnJJalZ1T28wei9icmllZmluZy1hbmNob3IucG5n.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized V05 regeneration. Sequentially reviewed prior segment; preserve approved identities and camera geometry, variable scene pacing, native sounds without isolated music clips."
+  },
+  "task": {
+    "generationId": "AfQ2o6nb9EWYRMpojc7m5I7iT0_qWs5WW_AavtqFYmzH2IbbNaH6YMyNz4j-CfJQJ7W5itHD",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 84,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "credits_consumed": 84,
+    "generation_id": "AfQ2o6nb9EWYRMpojc7m5I7iT0_qWs5WW_AavtqFYmzH2IbbNaH6YMyNz4j-CfJQJ7W5itHD"
+  }
+}

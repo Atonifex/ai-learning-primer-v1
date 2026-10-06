@@ -59,6 +59,17 @@ export type CampPublic = {
   crewTotal: number;
 };
 
+/** Finishing the five-question math check pitches a tent and sets one ration aside. */
+export const MATH_CHECK_GRANT: CampGrant = {
+  id: "math-placement",
+  rations: 1,
+  canvas: 1,
+  minStage: "tent",
+};
+
+export const MATH_CHECK_CAMP_LINE =
+  "A tent is up, and one ration is set aside. The rest of the crew is still missing.";
+
 /** Temporary Day 0 hook: finishing wreck salvage founds a crate pile. */
 export const WRECK_SALVAGE_GRANT: CampGrant = {
   id: "wreck-salvage",

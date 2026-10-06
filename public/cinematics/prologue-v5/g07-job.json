@@ -1,0 +1,63 @@
+{
+  "shot": {
+    "id": "g07",
+    "duration": 15,
+    "ref": "wall-map",
+    "line": "Explore Fortuna and report what you find. If the resources are there and the site is safe, we'll ask you to build a base and start collecting them.",
+    "speaker": "Wilhelm",
+    "action": "Physical Wilhelm beside map looks back toward captain, authoritative but fair. Same room geometry.",
+    "role": "briefing",
+    "retries": 0,
+    "status": "planned"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character, proportions, costume, set, geography and craft. One continuous shot, no automatic camera cuts. No text, lettering, subtitles, UI, weapons, blood, injuries or horror. NO MUSIC; continuous edit score is added separately. Use <<<323205940306534>>> for Wilhelm identity AND same low mature male voice. Mustache stays. Wilhelm VILL-helm, Maya MY-uh. Physical Wilhelm beside map looks back toward captain, authoritative but fair. Same room geometry. Only Wilhelm speaks. Speak exact simple English line once, clear unhurried natural voice with lip-sync where visible: \"Explore Fortuna and report what you find. If the resources are there and the site is safe, we'll ask you to build a base and start collecting them.\". No added words/voices. "
+      },
+      {
+        "name": "duration",
+        "value": "15"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      },
+      {
+        "name": "elements",
+        "value": "[{\"id\":\"323205940306534\",\"bindName\":\"Wilhelm\"}]"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qSQoGdXBsb2FkEg55bGFiLXN0dW50LXNncBovYWdlbnRfdXBsb2FkLzE3OTEyMzUyNjkvY1AwbWpacGliQS93YWxsLW1hcC5wbmc.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized V05 regeneration. Sequentially reviewed prior segment; preserve approved identities and camera geometry, variable scene pacing, native sounds without isolated music clips."
+  },
+  "task": {
+    "generationId": "Af9VJ19KJX82CEJQBahtdxnh3Hlc6SBsx75VtbvSXOUGaue7OoaEzovsl5-USd2BXhTJgVeK",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 180,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "credits_consumed": 180,
+    "generation_id": "Af9VJ19KJX82CEJQBahtdxnh3Hlc6SBsx75VtbvSXOUGaue7OoaEzovsl5-USd2BXhTJgVeK"
+  }
+}

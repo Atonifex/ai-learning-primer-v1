@@ -1,0 +1,84 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 7.03000020980835,
+  "text": "Again, 20%. That's my final offer.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 3.380000114440918,
+      "end": 5.179999828338623,
+      "text": " Again, 20%.",
+      "tokens": [
+        50364,
+        3764,
+        11,
+        945,
+        6856,
+        50648
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.44589847326278687,
+      "compression_ratio": 0.8095238208770752,
+      "no_speech_prob": 0.04195387288928032
+    },
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 5.179999828338623,
+      "end": 6.639999866485596,
+      "text": " That's my final offer.",
+      "tokens": [
+        50648,
+        663,
+        311,
+        452,
+        2572,
+        2626,
+        13,
+        50702
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.44589847326278687,
+      "compression_ratio": 0.8095238208770752,
+      "no_speech_prob": 0.04195387288928032
+    }
+  ],
+  "words": [
+    {
+      "word": "Again",
+      "start": 3.380000114440918,
+      "end": 4.28000020980835
+    },
+    {
+      "word": "20",
+      "start": 4.28000020980835,
+      "end": 5.179999828338623
+    },
+    {
+      "word": "That's",
+      "start": 5.179999828338623,
+      "end": 5.78000020980835
+    },
+    {
+      "word": "my",
+      "start": 5.78000020980835,
+      "end": 6.059999942779541
+    },
+    {
+      "word": "final",
+      "start": 6.059999942779541,
+      "end": 6.360000133514404
+    },
+    {
+      "word": "offer",
+      "start": 6.360000133514404,
+      "end": 6.639999866485596
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 8
+  }
+}

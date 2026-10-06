@@ -65,7 +65,7 @@ export const suggestNextMissionTool = {
   function: {
     name: "suggest_next_mission",
     description:
-      "Look up which island jobs are locked, available, or done. Call when the captain asks what to do next or how to advance.",
+      "Open the next-step board and look up which island jobs are locked, available, or done. Always call when the captain asks what to do next or is stuck; the board includes a starting-check button when needed.",
     parameters: {
       type: "object",
       properties: {},

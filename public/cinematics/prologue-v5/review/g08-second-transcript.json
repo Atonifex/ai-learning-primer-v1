@@ -1,0 +1,13 @@
+{
+  "text": "You'll lead your own crew, build your own base, and get ten percent of the profit after costs. That's the money left after costs. Will you take the mission?",
+  "usage": {
+    "type": "tokens",
+    "total_tokens": 186,
+    "input_tokens": 150,
+    "input_token_details": {
+      "text_tokens": 0,
+      "audio_tokens": 150
+    },
+    "output_tokens": 36
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "shot": {
+    "id": "c08",
+    "duration": 6,
+    "ref": "aircraft-storm",
+    "line": "",
+    "speaker": null,
+    "action": "Seconds 0–1.5 same intact aircraft flies forward in heavy rain. At 1.5 seconds a SINGLE bright lightning BOLT visibly connects storm cloud to RIGHT ENGINE beside camera, with one thunderclap. The right engine immediately catches a sustained small orange fire with continuous black smoke. Right propeller stops. From 2–6 seconds aircraft loses thrust, banks and pitches NOSE DOWN steeply as in tail image. Fire and smoke MUST persist through last frame. Never recover to level flight, never extinguish fire. Track same aircraft, ample high altitude above island for safe escape in next scene. No explosion or strobe, no people.",
+    "role": "continuation",
+    "retries": 1,
+    "status": "planned"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character, proportions, costume, set, geography and craft. One continuous shot, no automatic camera cuts. No text, lettering, subtitles, UI, weapons, blood, injuries or horror. NO MUSIC; continuous edit score is added separately. Seconds 0–1.5 same intact aircraft flies forward in heavy rain. At 1.5 seconds a SINGLE bright lightning BOLT visibly connects storm cloud to RIGHT ENGINE beside camera, with one thunderclap. The right engine immediately catches a sustained small orange fire with continuous black smoke. Right propeller stops. From 2–6 seconds aircraft loses thrust, banks and pitches NOSE DOWN steeply as in tail image. Fire and smoke MUST persist through last frame. Never recover to level flight, never extinguish fire. Track same aircraft, ample high altitude above island for safe escape in next scene. No explosion or strobe, no people. No speech or voices. Natural story sound only, except waiting loop totally silent. "
+      },
+      {
+        "name": "duration",
+        "value": "6"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qTwoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo1YWdlbnRfdXBsb2FkLzE3OTEyMzYzNzcvVVZsSzRJdnRrQS9haXJjcmFmdC1zdG9ybS5wbmc.origin?x-kcdn-pid=112372"
+      },
+      {
+        "name": "tail_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qTgoGdXBsb2FkEg55bGFiLXN0dW50LXNncBo0YWdlbnRfdXBsb2FkLzE3OTEyNDc1MjYvOUgzSUV5V3Z2Yy9haXJjcmFmdC1maXJlLnBuZw.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized V05 regeneration. Sequentially reviewed prior segment; preserve approved identities and camera geometry, variable scene pacing, native sounds without isolated music clips."
+  },
+  "task": {
+    "generationId": "AdPVx9CmJ7gAfrdXfoNRU2tgaS-_WH66WZCkwAxihP_tpSTHe4vUU21gbL-NxyqS7qEjjP9A",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 72,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "credits_consumed": 72,
+    "generation_id": "AdPVx9CmJ7gAfrdXfoNRU2tgaS-_WH66WZCkwAxihP_tpSTHe4vUU21gbL-NxyqS7qEjjP9A"
+  }
+}

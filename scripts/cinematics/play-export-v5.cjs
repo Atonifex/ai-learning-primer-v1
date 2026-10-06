@@ -1,0 +1,9 @@
+// Read PROJECT_MEMORY.md. Decode a full exported cut and render its external captions.
+const {chromium}=require('@playwright/test'),fs=require('node:fs'),path=require('node:path');
+(async()=>{const id=process.argv[2];if(!/^(briefing|offer15|offer20|continuation|preview10|preview20|waiting-loop)$/.test(id))throw Error('Unknown export');const browser=await chromium.launch({headless:true});
+try{const page=await browser.newPage({viewport:{width:1280,height:900}});await page.goto('http://localhost:3000/cinematics/prologue-v5/review-player.html');await page.locator('#shots option').first().waitFor({state:'attached'});
+await page.locator('video').evaluate((v,id)=>{v.src=id+'.mp4';v.innerHTML=id==='waiting-loop'?'':`<track kind="captions" src="${id}.en.vtt" srclang="en" label="English" default>`;v.muted=true;v.load();},id);
+await page.waitForFunction(()=>{const v=document.querySelector('video');return v.readyState>=2&&v.videoWidth>0;},null,{timeout:60000});await page.locator('video').evaluate(async v=>{await v.play();});
+const dir=path.resolve(__dirname,'../../public/cinematics/prologue-v5/review');await page.waitForTimeout(3500);await page.screenshot({path:path.join(dir,id+'-export-browser.jpg'),type:'jpeg',quality:85});
+await page.waitForFunction(()=>document.querySelector('video').ended,null,{timeout:300000});const result=await page.locator('video').evaluate(v=>({duration:v.duration,time:v.currentTime,ended:v.ended,width:v.videoWidth,height:v.videoHeight,src:v.currentSrc,error:v.error?.message,tracks:[...v.textTracks].map(t=>({kind:t.kind,mode:t.mode,cues:t.cues?.length}))}));if(!result.ended||result.error||result.width===0||!result.src.endsWith('/'+id+'.mp4'))throw Error(JSON.stringify(result));fs.writeFileSync(path.join(dir,id+'-export-browser.json'),JSON.stringify(result,null,2));console.log(JSON.stringify({id,...result}));
+}finally{await browser.close();}})().catch(e=>{console.error(e.message);process.exitCode=1;});

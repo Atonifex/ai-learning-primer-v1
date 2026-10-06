@@ -98,6 +98,8 @@ export async function recordStandardObservation(params: {
   notes?: string;
   /** Look up the code in this catalog instead of the sitting's subject. */
   catalogSubjectSlug?: string;
+  /** Stable, server-authored key for a retryable assessment answer. */
+  idempotencyKey?: string;
 }): Promise<{ standardCode: string; mastery: number }> {
   const {
     sessionId,
@@ -119,6 +121,14 @@ export async function recordStandardObservation(params: {
     select: { learnerProfileId: true, subjectId: true },
   });
   if (!session) throw new Error("Session not found");
+  if (params.idempotencyKey) {
+    const prior = await prisma.standardsEvidence.findUnique({ where: { id: params.idempotencyKey }, include: { standard: { select: { code: true } } } });
+    if (prior) {
+      if (prior.learnerProfileId !== session.learnerProfileId || prior.standard.code !== standardCode) throw new Error("Evidence key does not match this learner and skill.");
+      const current = await prisma.standardsProgress.findUnique({ where: { learnerProfileId_standardId: { learnerProfileId: session.learnerProfileId, standardId: prior.standardId } } });
+      return { standardCode, mastery: current?.mastery ?? 0 };
+    }
+  }
 
   let subjectId = session.subjectId;
   if (catalogSubjectSlug) {
@@ -175,9 +185,11 @@ export async function recordStandardObservation(params: {
   const nextConfidence = nextConfidenceAfterObservation(progress.confidence, baseCorrectness);
   const success = baseCorrectness >= 0.7;
 
+  try {
   await prisma.$transaction(async (tx) => {
     await tx.standardsEvidence.create({
       data: {
+        ...(params.idempotencyKey ? { id: params.idempotencyKey } : {}),
         learnerProfileId: session.learnerProfileId,
         standardId: standard.id,
         sourceType,
@@ -210,6 +222,17 @@ export async function recordStandardObservation(params: {
       },
     });
   });
+  } catch (error) {
+    if (params.idempotencyKey && typeof error === "object" && error && "code" in error && error.code === "P2002") {
+      // A concurrent retry wrote this exact answer. The failed transaction made no progress change.
+      const prior = await prisma.standardsEvidence.findUnique({ where: { id: params.idempotencyKey } });
+      if (prior?.learnerProfileId === session.learnerProfileId && prior.standardId === standard.id) {
+        const current = await prisma.standardsProgress.findUnique({ where: { learnerProfileId_standardId: { learnerProfileId: session.learnerProfileId, standardId: standard.id } } });
+        return { standardCode, mastery: current?.mastery ?? 0 };
+      }
+    }
+    throw error;
+  }
 
   await recomputeSkillMasteryForStandard(standard.id, session.learnerProfileId);
   return { standardCode: standard.code, mastery: nextMastery };

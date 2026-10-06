@@ -2,7 +2,7 @@
 // Read PROJECT_MEMORY.md; keep score separate so the user can replace it later.
 const fs=require('node:fs');const path=require('node:path');
 const dir=path.resolve(__dirname,'../../public/cinematics/prologue-v5/audio');fs.mkdirSync(dir,{recursive:true});
-const rate=44100,seconds=40,total=rate*seconds,pcm=Buffer.alloc(total*2);
+const rate=44100,seconds=240,total=rate*seconds,pcm=Buffer.alloc(total*2);
 const hz=n=>440*Math.pow(2,(n-69)/12);
 const chords=[[52,59,64,67],[48,55,60,64],[55,62,67,71],[50,57,62,66]];
 const melody=[64,67,71,69,67,64,62,59,60,64,67,66,64,62,60,59,67,71,74,72,71,67,66,64,62,66,69,67,66,64,62,59];

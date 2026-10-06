@@ -1,0 +1,63 @@
+{
+  "shot": {
+    "id": "c03",
+    "duration": 4,
+    "ref": "rho-handshake",
+    "line": "",
+    "speaker": null,
+    "action": "Rho <<<323213596308599>>> releases hands from desk, turns toward screen RIGHT doorway to lead toward hangar; camera follows her purposeful steps, she remains on viewer LEFT while walking. Same Wilhelm stays seated behind at desk; he does not escort them. ONLY Rho and Wilhelm, no bystanders. No speech, no hands shown, no hand-holding, no looking back romantically or coy head tilt. Straight purposeful professional posture. Natural footsteps.",
+    "role": "continuation",
+    "retries": 0,
+    "status": "planned"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character, proportions, costume, set, geography and craft. One continuous shot, no automatic camera cuts. No text, lettering, subtitles, UI, weapons, blood, injuries or horror. NO MUSIC; continuous edit score is added separately. Rho <<<323213596308599>>> releases hands from desk, turns toward screen RIGHT doorway to lead toward hangar; camera follows her purposeful steps, she remains on viewer LEFT while walking. Same Wilhelm stays seated behind at desk; he does not escort them. ONLY Rho and Wilhelm, no bystanders. No speech, no hands shown, no hand-holding, no looking back romantically or coy head tilt. Straight purposeful professional posture. Natural footsteps. No speech or voices. Natural story sound only, except waiting loop totally silent. "
+      },
+      {
+        "name": "duration",
+        "value": "4"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      },
+      {
+        "name": "elements",
+        "value": "[{\"id\":\"323213596308599\",\"bindName\":\"Rho\"},{\"id\":\"323205940306534\",\"bindName\":\"Wilhelm\"}]"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qSQoGdXBsb2FkEg55bGFiLXN0dW50LXNncBovYWdlbnRfdXBsb2FkLzE3OTEyNDM2OTQvTUpMUjRGNUpnYy9jMDItdGFpbC5wbmc.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized V05 regeneration. Sequentially reviewed prior segment; preserve approved identities and camera geometry, variable scene pacing, native sounds without isolated music clips."
+  },
+  "task": {
+    "generationId": "AUFS-o1OY8X2HKS08D4W6AL1wrImtso3Ye211gyY3WlTy7R0iMZzi_Bq20778A37HyDZCP4h",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 48,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "generation_id": "AUFS-o1OY8X2HKS08D4W6AL1wrImtso3Ye211gyY3WlTy7R0iMZzi_Bq20778A37HyDZCP4h",
+    "credits_consumed": 48
+  }
+}

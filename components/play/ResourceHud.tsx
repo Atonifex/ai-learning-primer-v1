@@ -11,6 +11,7 @@ export default function ResourceHud(props: {
   hint: string | null;
   chapterProblem: string;
   checklist: Day0Box[] | null;
+  onOpenMathCheck?: () => void;
   /** Hidden from the child by default (§4.14). */
   timerLabel?: string | null;
 }) {
@@ -62,7 +63,9 @@ export default function ResourceHud(props: {
           XP <span className="tabular-nums">{props.xp}</span>
         </p>
       </div>
-      {props.checklist && <Day0Checklist boxes={props.checklist} />}
+      {props.checklist && (
+        <Day0Checklist boxes={props.checklist} onOpenMathCheck={props.onOpenMathCheck} />
+      )}
       {props.hint && (
         <p className="mt-2 rounded-xl bg-[#0c2a32]/80 px-3 py-2 text-xs leading-snug text-teal-50">
           {props.hint}

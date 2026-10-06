@@ -50,6 +50,9 @@ model LearnerProfile {
   readingLevel       String              @default("3")
   /// First-run director: video → name → move → talk → work → complete.
   firstRunStep       String              @default("video")
+  /// Five-question math check. ready | below_catalog | above_ladder.
+  mathPlacementCode   String?
+  mathPlacementStatus String?
   introSeenAt        DateTime?
   primarySubjectSlug String              @default("math_g3")
   activeLanguage     Language?

@@ -1,0 +1,13 @@
+{
+  "text": "That storm is moving fast. Turn back!",
+  "usage": {
+    "type": "tokens",
+    "total_tokens": 81,
+    "input_tokens": 70,
+    "input_token_details": {
+      "text_tokens": 0,
+      "audio_tokens": 70
+    },
+    "output_tokens": 11
+  }
+}

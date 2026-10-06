@@ -27,7 +27,9 @@ test("camp HUD and island map show saved resources, crew slots, and stage", asyn
   expect(board.camp.crewFound).toBe(0);
   expect(board.camp.crew.map((slot) => slot.id)).toEqual(["mara", "pell", "idi", "vey", "tem"]);
   if (board.wreckQuizDone) {
-    expect(board.camp.stage).toBe("crates");
+    // This shared captain may already have earned a tent in an earlier walkthrough.
+    // Resetting the starting-check fixture must not revoke a durable camp reward.
+    expect(["crates", "tent", "fire"]).toContain(board.camp.stage);
     expect(board.camp.rations).toBeGreaterThanOrEqual(2);
     expect(board.camp.scrap).toBeGreaterThanOrEqual(1);
   } else {
@@ -35,7 +37,8 @@ test("camp HUD and island map show saved resources, crew slots, and stage", asyn
     expect(board.camp.rations).toBe(0);
   }
 
-  await page.goto(body.learnUrl);
+  await page.goto(body.learnUrl, { waitUntil: "domcontentloaded" });
+  await expect(page.getByTestId("play-shell")).toHaveAttribute("data-ready", "true", { timeout: 30000 });
   const hud = page.getByTestId("resource-hud");
   await expect(hud).toBeVisible({ timeout: 20_000 });
   await expect(hud.getByTestId("camp-stage")).toContainText(board.camp.stageLabel);

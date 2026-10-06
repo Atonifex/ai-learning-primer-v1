@@ -1,0 +1,8 @@
+file 'sources/g01-edit.mp4'
+file 'sources/g02-edit.mp4'
+file 'sources/g03-edit.mp4'
+file 'sources/g04-edit.mp4'
+file 'sources/g05-edit.mp4'
+file 'sources/g06-edit.mp4'
+file 'sources/g07-edit.mp4'
+file 'sources/g08-edit.mp4'

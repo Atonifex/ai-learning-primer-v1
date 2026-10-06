@@ -14,6 +14,8 @@ import {
 } from "../../../../lib/play/testCaptain";
 import { getActiveSession, startSession } from "../../../../lib/services/session";
 import { getProfile } from "../../../../lib/services/profile";
+import { subjectCheckMemoryPrefix } from "../../../../lib/services/subjectCheckSession";
+import { mathCheckMemoryId } from "../../../../lib/services/mathCheckSession";
 
 /**
  * Local-only: log in as the seeded test captain, force first-run complete,
@@ -59,11 +61,23 @@ export async function POST(req: NextRequest) {
 
   await prisma.learnerProfile.update({
     where: { id: user.learnerProfile.id },
-    data: { firstRunStep: open === "intro" ? "video" : "complete" },
+    data: {
+      firstRunStep: open === "intro" ? "video" : "complete",
+      mathPlacementCode: null,
+      mathPlacementStatus: null,
+    },
   });
+  await prisma.standardsEvidence.deleteMany({
+    where: { learnerProfileId: user.learnerProfile.id, notes: { startsWith: "math-five:" } },
+  });
+  await prisma.memoryItem.deleteMany({ where: { id: mathCheckMemoryId(user.learnerProfile.id) } });
 
   if (open === "intro") {
     await prisma.memoryItem.deleteMany({ where: { id: `${user.learnerProfile.id}:intro:v3` } });
+  }
+  if (body.resetSubjectChecks === true) {
+    // Explicit fixture reset only; ordinary bootstraps preserve saved subject checks.
+    await prisma.memoryItem.deleteMany({ where: { learnerProfileId: user.learnerProfile.id, id: { startsWith: subjectCheckMemoryPrefix(user.learnerProfile.id) } } });
   }
 
   const profile = await getProfile(user.id);

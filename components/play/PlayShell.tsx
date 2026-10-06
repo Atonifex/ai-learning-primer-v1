@@ -19,6 +19,7 @@ import ReflectionOverlay from "./ReflectionOverlay";
 import MissionBoard from "./MissionBoard";
 import LearningClipPanel from "./LearningClipPanel";
 import SubjectFocusPanel from "./SubjectFocusPanel";
+import MathFiveCheck from "./MathFiveCheck";
 import AiDebugPanel from "./AiDebugPanel";
 import CaptainAwakening from "../onboarding/CaptainAwakening";
 import FirstRunCoach from "./FirstRunCoach";
@@ -30,6 +31,7 @@ import {
   day0AllDone,
   day0Checklist,
 } from "../../lib/play/day0";
+import { hasSavedMathPlacement } from "../../lib/play/mathPlacement";
 import { useFirstRunTutorial } from "./useFirstRunTutorial";
 import { useSessionStream } from "./useSessionStream";
 import { useLearningLoop } from "./useLearningLoop";
@@ -85,6 +87,7 @@ export default function PlayShell(props: {
   const [dialogueOpen, setDialogueOpen] = useState(() => Boolean(props.autoOpenDialogue));
   const [boardOpen, setBoardOpen] = useState(() => Boolean(props.autoOpenBoard));
   const [focusOpen, setFocusOpen] = useState(() => Boolean(props.autoOpenFocus));
+  const [mathCheckOpen, setMathCheckOpen] = useState(false);
   const [clip, setClip] = useState<LearningClipOffer | null>(() =>
     props.autoOpenClip ? LEARNING_CLIP_FIXTURE : null
   );
@@ -132,7 +135,7 @@ export default function PlayShell(props: {
   openQuizRef.current = learning.openTutorialQuiz;
 
   const beginMission = useCallback(
-    async (missionId: string, opts?: { talk?: boolean }) => {
+    async (missionId: string) => {
       setStartingId(missionId);
       try {
         const started = await missions.startMission(missionId);
@@ -145,16 +148,14 @@ export default function PlayShell(props: {
           startMissionNavigation(() => router.push(`/learn/${started.sessionId}?mission=${started.mission.id}`));
           return;
         }
-        void stream.sendMessage(
-          `${HIDDEN_TURN.missionStartPrefix} ${started.mission.title} (${started.mission.subjectSlug}) at the ${started.mission.pinId}.`
-        );
-        const opened = await learning.openOverlayQuiz(started.mission.activitySlug);
-        if (opts?.talk === true && opened.alreadyDone) {
-          unlockRhoAudio();
-          setDialogueOpen(true);
+        if (started.mission.status !== "completed") {
+          void stream.sendMessage(
+            `${HIDDEN_TURN.missionStartPrefix} ${started.mission.title} (${started.mission.subjectSlug}) at the ${started.mission.pinId}.`
+          );
         }
+        const opened = await learning.openOverlayQuiz(started.mission.activitySlug);
         if (opened.alreadyDone) {
-          setHint(`${started.mission.title} is already logged.`);
+          setHint(`Reviewing ${started.mission.title}. Your result is saved.`);
         }
         void missions.refresh();
       } catch (e) {
@@ -227,6 +228,8 @@ export default function PlayShell(props: {
     if (!stream.pendingMissionBoardOpen) return;
     stream.clearPendingMissionBoardOpen();
     setMapOpen(false);
+    setDialogueOpen(false);
+    setFocusOpen(false);
     void missions.refresh();
     setBoardOpen(true);
   }, [stream.pendingMissionBoardOpen, stream, missions.refresh]);
@@ -385,7 +388,7 @@ export default function PlayShell(props: {
 
   if (firstRun.step === "video") {
     return (
-      <div className="h-screen">
+      <div className="h-screen" data-testid="play-shell" data-ready={mapReady} inert={!mapReady} aria-busy={!mapReady}>
         <IntroCinematic onSkip={skipIntro} />
       </div>
     );
@@ -393,7 +396,7 @@ export default function PlayShell(props: {
 
   if (firstRun.step === "purpose") {
     return (
-      <div className="h-screen">
+      <div className="h-screen" data-testid="play-shell" data-ready={mapReady} inert={!mapReady} aria-busy={!mapReady}>
         <LearningPurposeCard onContinue={() => void firstRun.advance("purpose_done")} />
       </div>
     );
@@ -401,7 +404,7 @@ export default function PlayShell(props: {
 
   if (firstRun.step === "name") {
     return (
-      <div className="h-screen">
+      <div className="h-screen" data-testid="play-shell" data-ready={mapReady} inert={!mapReady} aria-busy={!mapReady}>
         <CaptainAwakening
           onSaved={(name) => {
             setCaptainName(name);
@@ -417,10 +420,16 @@ export default function PlayShell(props: {
     firstRunStep: firstRun.step,
     wreckQuizDone: missions.wreckQuizDone,
     campFounded: missions.camp.founded,
+    mathPlacementCode: missions.mathPlacementCode,
+    mathPlacementStatus: missions.mathPlacementStatus,
   });
+  const placementReady = hasSavedMathPlacement(
+    missions.mathPlacementCode,
+    missions.mathPlacementStatus
+  );
 
   return (
-    <div className="play-world relative h-dvh overflow-hidden bg-[#195563]">
+    <div className="play-world relative h-dvh overflow-hidden bg-[#195563]" data-testid="play-shell" data-ready={mapReady} inert={!mapReady} aria-busy={!mapReady}>
       <OverworldCanvas
         paused={
           navigatingToMission ||
@@ -430,6 +439,7 @@ export default function PlayShell(props: {
           learning.showReflection ||
           boardOpen ||
           focusOpen ||
+          mathCheckOpen ||
           mapOpen ||
           confirmLeave ||
           Boolean(clip)
@@ -449,6 +459,7 @@ export default function PlayShell(props: {
         xp={missions.xp}
         chapterProblem={CHAPTER_PROBLEM}
         checklist={day0AllDone(day0) ? null : day0}
+        onOpenMathCheck={() => setMathCheckOpen(true)}
         hint={firstRun.coach ? null : hint}
         timerLabel={chrome.leave && showTimers ? formatHiddenMinutes(elapsedSeconds) : null}
       />
@@ -457,7 +468,7 @@ export default function PlayShell(props: {
       </div>}
 
       <header
-        className={`world-toolbar pointer-events-none absolute right-3 top-3 z-20 flex flex-wrap items-center justify-end gap-2 ${dialogueOpen || focusOpen || boardOpen || learning.showQuiz || learning.showReflection || Boolean(clip) ? "hidden" : ""}`}
+        className={`world-toolbar pointer-events-none absolute right-3 top-3 z-20 flex flex-wrap items-center justify-end gap-2 ${dialogueOpen || focusOpen || mathCheckOpen || boardOpen || learning.showQuiz || learning.showReflection || Boolean(clip) ? "hidden" : ""}`}
       >
         {chrome.jobs && <button type="button" disabled={!mapReady} className="pointer-events-auto map-button primary" onClick={() => setMapOpen(true)}>Island map</button>}
         {chrome.subjectBadge && (
@@ -481,7 +492,7 @@ export default function PlayShell(props: {
             onClick={() => setBoardOpen(true)}
             className="pointer-events-auto rounded-full bg-amber-700/90 px-3 py-1.5 text-xs text-amber-50 hover:bg-amber-600"
           >
-            {campNeedsTitle()}
+            {campNeedsTitle(placementReady)}
           </button>
         )}
         {chrome.saga && (
@@ -567,11 +578,29 @@ export default function PlayShell(props: {
         />
       )}
 
+      {mathCheckOpen && (
+        <MathFiveCheck
+          sessionId={props.sessionId}
+          onClose={() => {
+            setMathCheckOpen(false);
+            void missions.refresh();
+          }}
+        />
+      )}
+
       {focusOpen && (
         <SubjectFocusPanel
           sessionId={props.sessionId}
           onClose={() => { setFocusOpen(false); void worldMap.refresh(); }}
           onSubjectChanged={setSubjectSlug}
+          onTalk={() => {
+            setFocusOpen(false); unlockRhoAudio(); setDialogueOpen(true);
+            if (!stream.streaming) void stream.sendMessage(HIDDEN_TURN.subjectCheckReview);
+          }}
+          onOpenMathCheck={() => {
+            setFocusOpen(false);
+            setMathCheckOpen(true);
+          }}
         />
       )}
 
@@ -591,11 +620,16 @@ export default function PlayShell(props: {
 
       {boardOpen && (
         <MissionBoard
-          missions={campNeedsMissions(missions.missions)}
-          boardTitle={campNeedsTitle()}
+          missions={campNeedsMissions(missions.missions, placementReady)}
+          boardTitle={campNeedsTitle(placementReady)}
           chapterTitle={missions.activeChapterTitle}
           startingId={startingId}
           loading={!missions.loaded}
+          error={missions.error}
+          onRetry={() => void missions.refresh()}
+          placementReady={placementReady}
+          onMathCheck={() => { setBoardOpen(false); setDialogueOpen(false); setFocusOpen(false); setMathCheckOpen(true); }}
+          onFocus={() => { setBoardOpen(false); setDialogueOpen(false); setFocusOpen(true); }}
           onClose={() => setBoardOpen(false)}
           onStart={(id) => void beginMission(id)}
         />

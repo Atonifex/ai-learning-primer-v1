@@ -2,6 +2,7 @@ import { prisma } from "../db/prisma";
 import {
   applyCampGrant,
   emptyCamp,
+  MATH_CHECK_GRANT,
   parseStoredCamp,
   toCampPublic,
   WRECK_SALVAGE_GRANT,
@@ -9,6 +10,7 @@ import {
   type CampPublic,
   type CampState,
 } from "../play/camp";
+import { hasSavedMathPlacement } from "../play/mathPlacement";
 import { TUTORIAL_QUIZ_SLUG } from "../play/tutorialQuizSlug";
 
 function rowToState(row: {
@@ -89,13 +91,20 @@ export async function applyCampGrantToLearner(
  * get the crate pile without retaking the overlay.
  */
 export async function ensureCampForLearner(learnerProfileId: string): Promise<CampPublic> {
-  const [row, wreckDone] = await Promise.all([
+  const [row, wreckDone, placement] = await Promise.all([
     prisma.campState.findUnique({ where: { learnerProfileId } }),
     hasWreckSalvage(learnerProfileId),
+    prisma.learnerProfile.findUnique({
+      where: { id: learnerProfileId },
+      select: { mathPlacementCode: true, mathPlacementStatus: true },
+    }),
   ]);
   let state = row ? rowToState(row) : emptyCamp();
   if (wreckDone) {
     state = applyCampGrant(state, WRECK_SALVAGE_GRANT);
+  }
+  if (hasSavedMathPlacement(placement?.mathPlacementCode, placement?.mathPlacementStatus)) {
+    state = applyCampGrant(state, MATH_CHECK_GRANT);
   }
   if (!row || state.appliedGrantIds.join(",") !== (row.appliedGrantIds ?? []).join(",")) {
     await writeCamp(learnerProfileId, state);

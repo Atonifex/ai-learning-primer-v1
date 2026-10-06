@@ -1,0 +1,13 @@
+{
+  "text": "I'm Ro, your First Mate. I'll help you learn about Maya and Fortuna and guide you along the way.",
+  "usage": {
+    "type": "tokens",
+    "total_tokens": 144,
+    "input_tokens": 120,
+    "input_token_details": {
+      "text_tokens": 0,
+      "audio_tokens": 120
+    },
+    "output_tokens": 24
+  }
+}

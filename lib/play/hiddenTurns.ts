@@ -7,6 +7,7 @@ export const HIDDEN_TURN = {
   start: "__start__",
   wreckApproach: "__wreck_approach__",
   rhoCall: "__rho_call__",
+  subjectCheckReview: "__subject_check_review__",
   rhoWander: "__rho_wander__",
   quizResultPrefix: "__quiz_result__",
   zpdHintPrefix: "__zpd_hint__",
@@ -20,6 +21,7 @@ const HIDDEN_EXACT = new Set<string>([
   HIDDEN_TURN.start,
   HIDDEN_TURN.wreckApproach,
   HIDDEN_TURN.rhoCall,
+  HIDDEN_TURN.subjectCheckReview,
   HIDDEN_TURN.rhoWander,
 ]);
 
@@ -52,6 +54,9 @@ export function expandHiddenTurn(
   ctx?: HiddenTurnContext
 ): string {
   const captain = displayName.trim() || "Captain";
+  if (content === HIDDEN_TURN.subjectCheckReview) {
+    return `[SUBJECT CHECK REVIEW] ${captain} chose Talk it through with Rho. Use the SAVED SUBJECT STARTER block for this session's subject. Do not restart the wreck, repeat the check, or send the captain back to the board. If the saved check needs support, give one small worked example for the saved practice focus and invite a short spoken or typed explanation. If the sample is complete, invite them to explain one idea in their own words. If no saved check is available, say so and offer Focus to restore it; do not invent a result. This is supported discussion, not independent mastery. Under 60 words.`;
+  }
   if (content === HIDDEN_TURN.start || content === HIDDEN_TURN.wreckApproach) {
     if (ctx?.salvageClosed) return continueChapter(captain, ctx.chapterTitle);
     return `[TUTORIAL BEAT U4] ${captain} just walked up to the wreck pile. You are Rho, the humanoid AI First Mate — never the hero. Greet ${captain} by name. Invite them to speak (the mic) or type a little. Ask one short question about the salvage. Do not generate a quiz or a scene image. Under 80 words.`;
