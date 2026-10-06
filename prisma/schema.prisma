@@ -625,6 +625,8 @@ model CampState {
   appliedGrantIds  String[]       @default([])
   /// Five named slots from lib/play/camp.ts. Status only; names live in code.
   crew             Json
+  /// Deterministic Treeline garden beds (lib/play/gardenPlot.ts). Null until first open.
+  garden           Json?
   createdAt        DateTime       @default(now())
   updatedAt        DateTime       @updatedAt
 }

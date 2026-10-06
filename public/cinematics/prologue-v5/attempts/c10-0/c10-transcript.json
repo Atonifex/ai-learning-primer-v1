@@ -1,0 +1,96 @@
+{
+  "task": "transcribe",
+  "language": "english",
+  "duration": 7.03000020980835,
+  "text": "Crew, get ready! Captain, pull the blue handle!",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0,
+      "end": 1.8600000143051147,
+      "text": " Crew, get ready!",
+      "tokens": [
+        50364,
+        29857,
+        11,
+        483,
+        1919,
+        0,
+        50464
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.46019288897514343,
+      "compression_ratio": 0.8545454740524292,
+      "no_speech_prob": 0.1525811105966568
+    },
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 2.7200000286102295,
+      "end": 4.420000076293945,
+      "text": " Captain, pull the blue handle!",
+      "tokens": [
+        50464,
+        10873,
+        11,
+        2235,
+        264,
+        3344,
+        4813,
+        0,
+        50614
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.46019288897514343,
+      "compression_ratio": 0.8545454740524292,
+      "no_speech_prob": 0.1525811105966568
+    }
+  ],
+  "words": [
+    {
+      "word": "Crew",
+      "start": 0,
+      "end": 1
+    },
+    {
+      "word": "get",
+      "start": 1.3600000143051147,
+      "end": 1.4800000190734863
+    },
+    {
+      "word": "ready",
+      "start": 1.4800000190734863,
+      "end": 1.8600000143051147
+    },
+    {
+      "word": "Captain",
+      "start": 2.7200000286102295,
+      "end": 2.9000000953674316
+    },
+    {
+      "word": "pull",
+      "start": 3.4200000762939453,
+      "end": 3.5799999237060547
+    },
+    {
+      "word": "the",
+      "start": 3.5799999237060547,
+      "end": 3.759999990463257
+    },
+    {
+      "word": "blue",
+      "start": 3.759999990463257,
+      "end": 4.039999961853027
+    },
+    {
+      "word": "handle",
+      "start": 4.039999961853027,
+      "end": 4.420000076293945
+    }
+  ],
+  "usage": {
+    "type": "duration",
+    "seconds": 8
+  }
+}

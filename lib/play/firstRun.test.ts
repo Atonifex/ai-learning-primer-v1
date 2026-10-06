@@ -11,11 +11,12 @@ describe("firstRun director", () => {
     expect(parseFirstRunStep("nope")).toBe("video");
     expect(parseFirstRunStep("talk")).toBe("talk");
     expect(parseFirstRunStep("purpose")).toBe("purpose");
+    expect(parseFirstRunStep("name")).toBe("move");
   });
 
   it("advances one verb at a time, with a learning card after the movie", () => {
     expect(applyFirstRunEvent("video", "video_done")).toBe("purpose");
-    expect(applyFirstRunEvent("purpose", "purpose_done")).toBe("name");
+    expect(applyFirstRunEvent("purpose", "purpose_done")).toBe("move");
     expect(applyFirstRunEvent("name", "name_saved")).toBe("move");
     expect(applyFirstRunEvent("move", "walked_to_wreck")).toBe("talk");
     expect(applyFirstRunEvent("talk", "spoke_to_rho")).toBe("work");

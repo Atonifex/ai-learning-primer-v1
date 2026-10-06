@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 test("retry repeats a failed subject selection and opens its starting check", async ({ page }) => {
   test.setTimeout(120_000);
-  const boot = await page.request.post("/api/dev/agent-bootstrap", { data: { open: "none" } });
+  const boot = await page.request.post("/api/dev/agent-bootstrap", { data: { open: "none", resetSubjectChecks: true } });
   expect(boot.ok(), await boot.text()).toBeTruthy();
   const { learnUrl } = await boot.json();
   const selected: string[] = [];
@@ -19,7 +19,10 @@ test("retry repeats a failed subject selection and opens its starting check", as
   await expect(page.getByRole("alert").filter({ hasText: "That subject did not open" })).toBeVisible();
   await page.getByRole("button", { name: "Try again", exact: true }).click();
   await page.getByRole("button", { name: "Find where I should start", exact: true }).click();
-  await expect(page.getByTestId("subject-five-check")).toContainText("Grade 3 starter sample");
+  const check = page.getByTestId("subject-five-check");
+  await expect(check.getByRole("status")).toHaveText("Question 1 of 5");
+  await expect(check.getByRole("heading")).toContainText("What does stale mean here?");
+  await expect(check.getByRole("button")).toHaveCount(3);
   expect(selected).toEqual(["ela_g3", "ela_g3"]);
 });
 

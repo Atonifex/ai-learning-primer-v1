@@ -1,10 +1,11 @@
 import { prisma } from "../db/prisma";
 import { getMissionBoard } from "./missions";
 import { buildWorldSnapshot, MAP_NOTE_PREFIX, mapNoteInput } from "../play/worldMap";
+import { gardenVisualKind, parseGardenState } from "../play/gardenPlot";
 
 export async function getWorldSnapshot(learnerProfileId: string) {
   const board = await getMissionBoard(learnerProfileId);
-  const [world, sessions, notes] = await Promise.all([
+  const [world, sessions, notes, campRow] = await Promise.all([
     prisma.storyWorld.findUniqueOrThrow({ where: { learnerProfileId }, select: { id: true,
       storyArcs: { where: { status: "ACTIVE" }, orderBy: { orderIndex: "desc" }, take: 1,
         select: { chapters: { orderBy: { orderIndex: "asc" },
@@ -15,6 +16,7 @@ export async function getWorldSnapshot(learnerProfileId: string) {
       orderBy: { createdAt: "asc" },
       select: { label: true, text: true },
     }),
+    prisma.campState.findUnique({ where: { learnerProfileId }, select: { garden: true } }),
   ]);
   const activities = await prisma.learningActivity.findMany({
     where: { authoring: "AI_GENERATED", generatedFromSessionId: { in: sessions.map((s) => s.id) } },
@@ -22,8 +24,10 @@ export async function getWorldSnapshot(learnerProfileId: string) {
     select: { id: true, displayName: true, generatedFromSessionId: true, content: true,
       completions: { where: { learnerProfileId, completedAt: { not: null } }, select: { id: true }, take: 1 } },
   });
+  const gardenVisual = gardenVisualKind(parseGardenState(campRow?.garden));
   return buildWorldSnapshot({ worldId: world.id, missions: board.missions,
     chapters: world.storyArcs[0]?.chapters ?? [], notes, camp: board.camp,
+    gardenVisual,
     products: [],
     tasks: activities.map((a) => {
       const content = a.content as { mapLocationId?: unknown } | null;

@@ -5,6 +5,8 @@ import { isClientAiDebug } from "../../lib/play/clientAiDebug";
 import { isHiddenTurn } from "../../lib/play/hiddenTurns";
 import type { Message } from "../session/MessageList";
 import type { LearningClipOffer } from "../../lib/play/learningClip";
+import type { CaptainChoicesPayload } from "../../lib/play/captainChoices";
+import { decodeCaptainChoices } from "../../lib/play/captainChoices";
 import type { GeneratedActivity, SessionStoryUi } from "../../lib/types";
 import type { AiDebugTurn } from "./AiDebugPanel";
 
@@ -35,6 +37,7 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
   >([]);
   const [pendingMissionOpen, setPendingMissionOpen] = useState<MissionOpenEvent | null>(null);
   const [pendingMissionBoardOpen, setPendingMissionBoardOpen] = useState(false);
+  const [pendingGardenPlotOpen, setPendingGardenPlotOpen] = useState(false);
   const [pendingMapOpen, setPendingMapOpen] = useState<{ nodeId?: string } | null>(null);
   const [worldVersion, setWorldVersion] = useState(0);
   const [worldUpdate, setWorldUpdate] = useState<{ reason: string; nodeId?: string } | null>(null);
@@ -42,6 +45,8 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
   const [pendingLearningClip, setPendingLearningClip] = useState<LearningClipOffer | null>(
     null
   );
+  const [pendingCaptainChoices, setPendingCaptainChoices] =
+    useState<CaptainChoicesPayload | null>(null);
   const [pendingCrewLogSaved, setPendingCrewLogSaved] = useState<CrewLogSavedEvent | null>(
     null
   );
@@ -124,6 +129,7 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
       const hidden = isHiddenTurn(content);
       setStreamError(null);
       setAiThinkingPhase(null);
+      setPendingCaptainChoices(null);
 
       if (!hidden) {
         setMessages((prev) => [
@@ -240,6 +246,11 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
                 });
               } else if (data.type === "mission_board_open") {
                 setPendingMissionBoardOpen(true);
+              } else if (data.type === "garden_plot_open") {
+                setPendingGardenPlotOpen(true);
+              } else if (data.type === "captain_choices") {
+                const decoded = decodeCaptainChoices(data);
+                if (decoded) setPendingCaptainChoices(decoded);
               } else if (data.type === "world_map_open") {
                 setPendingMapOpen({ nodeId: data.nodeId });
               } else if (data.type === "world_updated") {
@@ -333,15 +344,19 @@ export function useSessionStream(sessionId: string, onAssistantTurnEnd?: () => v
     pendingMissionOpen,
     clearPendingMissionOpen: () => setPendingMissionOpen(null),
     pendingMissionBoardOpen,
+    pendingGardenPlotOpen,
     pendingMapOpen,
     clearPendingMapOpen: () => setPendingMapOpen(null),
     worldVersion,
     worldUpdate,
     clearPendingMissionBoardOpen: () => setPendingMissionBoardOpen(false),
+    clearPendingGardenPlotOpen: () => setPendingGardenPlotOpen(false),
     pendingCrewLogOpen,
     clearPendingCrewLogOpen: () => setPendingCrewLogOpen(false),
     pendingLearningClip,
     clearPendingLearningClip: () => setPendingLearningClip(null),
+    pendingCaptainChoices,
+    clearPendingCaptainChoices: () => setPendingCaptainChoices(null),
     pendingCrewLogSaved,
     clearPendingCrewLogSaved: () => setPendingCrewLogSaved(null),
     aiDebugTurns,

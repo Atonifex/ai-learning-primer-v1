@@ -33,7 +33,52 @@ Read `PROJECT_MEMORY.md` before project work and update it concisely after meani
 - **What stays:** shared saga, standards as the hidden map, Amplify coherence (phenomenon → investigation → evidence → explanation), Rho does not take the test, diegetic reward after the product.
 - **Unresolved:** whether the tutorial wreck walk remains a one-time movement lesson before the first subject choice; whether a parent can preset the day's subject; how many at-bats count as a sitting; how thin-subject nudges from Rho work without overriding the captain.
 - **Overnight beta review, 2026-10-05/06:** Ivan requested an inspiring, age-appropriate personalized experience evaluated through parent, Grade 7, Grade 3, instructional-designer and teacher perspectives. Subject choice and saved Grade 3 starter samples now have implementation/test evidence; the full deep-dive/product loop above remains unbuilt. Prioritized follow-ons and observed curriculum limits: `OVERNIGHT_BETA_REVIEW_2026-10-05.md`. Specific transfer/retention tasks and story consequences are proposals, not validated grade mappings. Do not restore the rejected mandatory camp-sentence gate.
+- **Prodigy reflection, 2026-10-06 — accepted direction:** Primer is a guided learning experience to help learners become their best selves. Learning, questions and understanding the world drive curiosity. Ivan finds counting crates a weak entry and proposes crash investigation / rebuilding communication with the mainland within the society-building journey. Prove an authored stock experience adapted to grade and subject before expanding generation. MASTER §3/4.16 carries this direction; the exact first unit is unresolved.
+- **Proposed inquiry treatment:** notice a puzzling event → choose/ask a question → predict → examine evidence → explain/revise → apply → fresh and later checks. Suggested bubbles, voice and personal questions open bounded investigations connected to expressed interests. Candidate “We can hear a distant signal; why can't they hear our reply?” has no accepted technical cause, equipment or new runtime scene yet. V05 already reveals lightning/fire/power loss, so a crash question should investigate mechanism/evidence rather than pretend the cause is hidden. Full ordered screenshot review and two editorial revisions: `PRODIGY_ONBOARDING_REVIEW_2026-10-06.md`.
 - **Promotion trigger:** Ivan accepts the session shape. Then update MASTER §1.2 / §4 and replace the pin sampler as the session driver before building more one-off jobs.
+
+## F05 — Easy questions and continuity during guided scene dialogue
+
+- **Date / origin:** 2026-10-06, Ivan's Prodigy onboarding reflection. He likes short bottom dialogue, self-paced Next and characters/world remaining visible above, conditional on retaining exploration. He also requests question bubbles and personalized inquiry branches.
+- **Status:** user-requested design direction; exact layout/interaction is proposed, not implemented. Current dialogue remains transcript-left/portrait-right and Pixi remains home.
+- **Purpose:** keep the learner oriented in the same situation while making meaningful questions easy to ask. Next controls reading pace; it is not evidence of academic reasoning.
+- **Proposed treatment:** a compact bottom scene band for guided story beats, two or three relevant question bubbles plus own-question/voice, and readable dedicated space for deeper investigations. Save branch context and let the learner return or deliberately change subject. Avoid permanently labeling interests from one selection.
+- **Prerequisites / promotion:** author the anchor unit, choose the treatment for guided dialogue versus open tutoring, review small-screen/read-aloud/keyboard behavior, then promote the selected UI slice into MASTER before coding. Use orchestrator tools/SSE for Rho-invoked investigations. No new world generation or paid assets from this entry.
+
+## F06 — Off-course landing on an unexpected island
+
+- **Date / origin:** 2026-10-06, Ivan. Storm deviation on the way to resource-filled Fortuna causes a landing on a different island, secretly even more valuable; inability to request help drives rebuilding and reconnection.
+- **Status:** user-proposed canon revision, not adopted into the screenplay/runtime. Maya and destination Fortuna stay; the landing island is unnamed. No change to current footage, paid jobs or V05 production authority from this discussion.
+- **Purpose:** immediately investigate the difference between expected and observed location; let later evidence reveal opportunities for society-building rather than announcing hidden wealth.
+- **Proposed opening unit:** “Where are we, and how can we let someone know?” Safe dawn, one map/coast discrepancy, a concrete communication investigation, learner questions and consequential choices. Keep missing crew and safe escape continuity.
+- **Facts versus fiction:** being off course can explain a wrong search area; it does not automatically prevent radio contact. Damaged hardware, range or power are candidate authored constraints, not an accepted cause. Greater island value and geography are fictional proposals, not verified resources.
+- **Prerequisites / promotion:** choose the new geography and communication cause, review grade/subject evidence tasks, then coordinate screenplay, references/captions, world bible, maps and chapters. Distinguish Fortuna destination shots from the landing island. No early lithium/fusion/hidden-facility reveal. Detail: `UNEXPECTED_ISLAND_AND_LEARNER_AGENCY_2026-10-06.md`.
+
+## F09 — Per-standard learnerGoal + deep place lessons with world rewards
+
+- **Date / origin:** 2026-10-06, Ivan. Too much WHAT-autonomy in early shore activities (e.g. Treeline “plants or path?”). Wants clear objectives, ~15+ min depth, one required tutorial dive, autonomy in HOW, and world-building rewards that upgrade camp. Asked for student-facing paraphrases on standards going forward.
+- **Status:** design + first Treeline garden slice in progress. Catalog-wide `learnerGoal` field is **not** done. Full 15-min teach beats before the mini-game are not fully authored yet.
+- **Treeline plan:** `docs/TREELINE_GARDEN_LESSON_2026-10-06.md`. Standard `SC.3.L.17.2`; goal **What plants need to grow**. Deterministic garden beds (`lib/play/gardenPlot.ts`), tool `open_garden_plot`, map beds visual, camp `garden` JSON. Later revisits: irrigation, light, edible ID — same place, growing camp.
+- **Tutorial spine:** only Treeline deep lesson required among the four post-wreck explores; dune/creek/camp optional later.
+- **Promotion:** finish teach+practice UI, evidence write on garden pass, mark dune/creek/camp optional on Jobs board, add `learnerGoal` to StandardSeed for all catalogs, update MASTER §4.16 / §15 when Ivan locks open choices in the Treeline doc.
+
+## F07 — Visible learning goals, flexible routes and consequential mastery
+
+
+- **Date / origin:** 2026-10-06, Ivan. Make all relevant standards explicit; allow approaches/order chosen by the learner; continuous improvement and shaping the surrounding world; Ender's Game mastery as inspiration.
+- **Status:** user-proposed design direction. Complete goals/routes and broad world consequences are not implemented. Prior guided-learning product identity remains; “game” in sample copy does not revoke it.
+- **Proposed treatment:** full grade/subject catalog accessible with plain-language abilities and expandable official wording/codes; curiosity choices and alternative demonstrations; explained prerequisites and opportunities to show readiness. Goals can be visible without revealing story discoveries. This would revise the hidden-standards presentation principle if adopted.
+- **Purpose:** ownership of learning, meaningful challenge, knowing what success requires, and causal consequences tied to evidence-backed learner work. Effort/engagement is not independent mastery; preserve existing evidence tiers/formula and the removed sentence gate.
+- **Ender-inspired interpretation:** original responsive challenges, experimentation, questioning assumptions, cooperation and growing responsibility. Exact literary aspects Ivan means remain open; no copied plot or covert psychological inference.
+- **Prerequisites / promotion:** actual authored Grade 3/4 paths, dependable assessment and accessible alternatives. Grade 5–8 catalogs remain missing. Decide question-first versus current subject-first entry, prerequisite policy, supported routes and bounded state consequences before implementation. Detail and refined intended-product copy: `UNEXPECTED_ISLAND_AND_LEARNER_AGENCY_2026-10-06.md`.
+
+## F08 — Map-based crossing investigations and a focused subject proof
+
+- **Date / origin:** 2026-10-06, Ivan: rope/chasm diagrams, ford/bridge/floating river routes, travel time, weight/support and how to know a plan works. Wants more modeling/practice and reusable learning progressions; starting subject unresolved.
+- **Status:** exploration challenges requested, unimplemented. Exact invitation and inquiry progression accepted; three tutor contracts implemented, but no crossing activity or state engine. Math-first niche is a recommendation, not a scope lock.
+- **Proposed treatment:** one Grade 3 math design investigation with a labeled map, known length/load data, modeled reasoning, guided and independent practice, revision and an authored outcome that uses the actual plan. Science context may motivate the question without claiming science mastery.
+- **Facts / assumptions:** adding weights alone does not establish structural or floating safety. Use explicit simplified conditions and supplied capacity; verify any later physical model. Exact time/force/buoyancy/grade mapping remains unresolved; existing Grade 3 measurement/operations codes are candidates, not invented standards.
+- **Promotion / next:** reviewed unit data/diagram, misconception/support path, independent transfer/retrieval and causal-result tool before building or expanding generation. `LEARNING_PROGRESSIONS_AND_FIRST_SUBJECT_2026-10-06.md` includes the two experience models and current-source comparison.
 
 ## F04 — Sergeant Wilhelm becomes a source of conflict
 

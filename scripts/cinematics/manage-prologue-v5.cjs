@@ -13,6 +13,9 @@ function run(exe,args){const r=cp.spawnSync(exe,args,{windowsHide:true,encoding:
   run(tools.ffmpeg,['-hide_banner','-loglevel','error','-y','-ss',String(Math.max(0,seconds-0.6)),'-i',source,'-i',next,'-filter_complex','[0:v]trim=duration=0.6,setpts=PTS-STARTPTS,scale=400:-1[a];[1:v]trim=duration=0.6,setpts=PTS-STARTPTS,scale=400:-1[b];[a][b]concat=n=2:v=1:a=0,fps=12,tile=4x4[v]','-map','[v]','-frames:v','1',path.join(dir,'review',id+'-'+url+'-seam.jpg')]);
   console.log('Saved12fps transition review '+id+' -> '+url);return;
  }
+ if(action==='action'){
+  run(tools.ffmpeg,['-hide_banner','-loglevel','error','-y','-ss',url||'4.8','-i',source,'-vf','fps=8,scale=480:-1,tile=4x4','-frames:v','1',path.join(dir,'review',id+'-action.jpg')]);console.log('Saved action detail '+id);return;
+ }
  if(action==='download'){
   if(!fs.existsSync(source)){const r=await fetch(url);if(!r.ok)throw Error('Download HTTP '+r.status);fs.writeFileSync(source,Buffer.from(await r.arrayBuffer()));}
  }

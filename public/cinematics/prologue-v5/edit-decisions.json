@@ -4,55 +4,63 @@
     "end": 8,
     "duration": 8,
     "line": "Welcome to planet Maya, Captain. I'm Sergeant Wilhelm of Merchant Corp.",
-    "speaker": "Wilhelm"
+    "speaker": "Wilhelm",
+    "audioGain": 1
   },
   "g02": {
     "start": 0,
     "end": 9,
     "duration": 9,
     "line": "I know you're coming to our planet for the first time, and your skills will come in handy.",
-    "speaker": "Wilhelm"
+    "speaker": "Wilhelm",
+    "audioGain": 1
   },
   "g03": {
     "start": 0,
     "end": 12,
     "duration": 12,
     "line": "Here at Merchant Corp, we gather resources like lumber, oil, and other rare resources, then sell them to people on other planets.",
-    "speaker": "Wilhelm"
+    "speaker": "Wilhelm",
+    "audioGain": 1
   },
   "g04": {
     "start": 0,
     "end": 8,
     "duration": 8,
     "line": "However, it's getting harder to find these resources. That's why we need you to help us.",
-    "speaker": "Wilhelm"
+    "speaker": "Wilhelm",
+    "audioGain": 1
   },
   "g05": {
     "start": 0,
     "end": 5,
     "duration": 5,
     "line": "We've just found Fortuna. No team has explored it.",
-    "speaker": "Wilhelm"
+    "speaker": "Wilhelm",
+    "audioGain": 1
   },
   "g06": {
     "start": 0,
     "end": 12,
     "duration": 12,
     "line": "It's far from our main base. It may have oil, gold, and useful wood. But storms and wild animals may make the trip dangerous.",
-    "speaker": "Wilhelm VO"
+    "speaker": "Wilhelm VO",
+    "audioGain": 1
   },
   "g07": {
     "start": 0,
     "end": 15,
     "duration": 15,
     "line": "Explore Fortuna and report what you find. If the resources are there and the site is safe, we'll ask you to build a base and start collecting them.",
-    "speaker": "Wilhelm"
+    "speaker": "Wilhelm",
+    "audioGain": 1
   },
   "g08": {
     "start": 0,
     "end": 15,
     "duration": 15,
     "line": "You'll lead your own crew, build your own base, and get ten percent of the profit after costs. That's the money left after costs. Will you take the mission?",
-    "speaker": "Wilhelm"
+    "speaker": "Wilhelm",
+    "audioGain": 1
   }
 }

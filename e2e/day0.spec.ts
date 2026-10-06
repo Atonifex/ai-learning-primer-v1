@@ -1,13 +1,15 @@
 import { expect, test } from "@playwright/test";
+import { PRIMER_INVITATION } from "../lib/productIdentity";
+import { CAMP_SKILLS } from "../lib/play/day0";
 
 test.setTimeout(120_000);
 
-test("after the movie, a learning card explains purpose then skills before naming the captain", async ({
+test("after the movie, subjects explain their purpose and use the account captain name", async ({
   page,
 }) => {
   const boot = await page.request.post("/api/dev/agent-bootstrap", { data: { open: "intro" } });
   expect(boot.ok(), await boot.text()).toBeTruthy();
-  const body = (await boot.json()) as { learnUrl: string };
+  const body = (await boot.json()) as { learnUrl: string; displayName: string };
   await page.goto(body.learnUrl, { waitUntil: "domcontentloaded" });
   await expect(page.getByTestId("play-shell")).toHaveAttribute("data-ready", "true", { timeout: 30000 });
   const skip = page.getByRole("button", { name: "Skip — wake on the beach" });
@@ -16,13 +18,35 @@ test("after the movie, a learning card explains purpose then skills before namin
   if (await skip.isVisible()) await skip.click();
 
   await expect(card).toBeVisible();
-  await expect(card.getByText("This is a learning adventure")).toBeVisible();
-  await expect(card.getByText(/not a scored test/i)).toBeVisible();
+  await expect(card.getByRole("heading", { name: "Become your best self" })).toBeVisible();
+  await expect(card.getByText(PRIMER_INVITATION, { exact: true })).toBeVisible();
   await expect(card.getByText("MA.3")).toHaveCount(0);
   await card.getByRole("button", { name: "Continue" }).click();
   await expect(card.getByText("These are the skills camp needs")).toBeVisible();
-  await card.getByRole("button", { name: "Name the captain" }).click();
-  await expect(page.getByRole("heading", { name: /name for the captain/i })).toBeVisible();
+  await expect(card.getByText(/not a scored test/i)).toBeVisible();
+  await expect(card.getByText(`Captain ${body.displayName || "Captain"}`, { exact: true })).toBeVisible();
+  for (const skill of CAMP_SKILLS) {
+    const help = card.getByRole("button", { name: `How does ${skill.subject} help me and our crew?` });
+    await help.focus();
+    await page.keyboard.press("Enter");
+    await expect(help).toHaveAttribute("aria-expanded", "true");
+    await expect(card.getByText(skill.explanation, { exact: true })).toBeVisible();
+    await help.click();
+    await expect(help).toHaveAttribute("aria-expanded", "false");
+  }
+  await card.getByRole("button", { name: "How does Math help me and our crew?" }).click();
+  await page.screenshot({ path: "docs/skills-onboarding-preview.png" });
+  const savedPurpose = page.waitForResponse((response) => response.url().endsWith("/api/profile") &&
+    response.request().method() === "PATCH" && response.request().postDataJSON()?.firstRunEvent === "purpose_done");
+  await card.getByRole("button", { name: "Explore the island" }).click();
+  expect((await savedPurpose).ok()).toBeTruthy();
+  await expect(card).toHaveCount(0);
+  await expect(page.getByText(/tap the sand — walk to the wreck pile/)).toBeVisible();
+  await expect(page.getByRole("heading", { name: /name for the captain/i })).toHaveCount(0);
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await expect(page.getByTestId("play-shell")).toHaveAttribute("data-ready", "true", { timeout: 30_000 });
+  await expect(card).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: /name for the captain/i })).toHaveCount(0);
 });
 
 test("Camp needs shows the wreck plus locked previews and keeps the chapter problem", async ({

@@ -4,6 +4,8 @@
 
 You are helping **Ivan Harjehausen** build **Primer** — an interactive story-based learning companion inspired by Neal Stephenson's *The Young Lady's Primer*.
 
+**Product identity, clarified 2026-10-06:** Primer is a **guided learning experience to help learners become their best selves**. Use that framing in learner/parent-facing language. Curiosity about how the world works, learner questions and deep investigations drive the experience; rebuilding society is the long-term context. Prove a strong authored stock experience adapted to grade/subject before expanding generated learning. Current Pixi home and architecture remain; proposed opening inquiry and question-bubble design are in `docs/PRODIGY_ONBOARDING_REVIEW_2026-10-06.md`. Existing technical game terminology below does not override this identity or establish implemented inquiry features.
+
 Primary users: Grades 3–8 (Florida homeschool / ESA first; Grade 3–4 as the proof slice). The child is the player (**captain** = `displayName`); the parent is the economic buyer. Math, ELA, science, and social studies are **lenses on one shared island saga**, not four apps.
 
 **Companion:** Rho = humanoid AI First Mate (sidekick, never the hero; does not take tests).
@@ -84,8 +86,8 @@ This Next.js has breaking changes vs older training data. Before writing App Rou
 
 ## Priorities
 
-1. High-retention product experience (diegetic rewards: map, crew, camp — not XP-for-its-own-sake)
-2. Memorable UI that feels like a game
+1. Curiosity, deep understanding and growing learner capability through an authored grade/subject experience
+2. Clear, inviting UI that makes questions, investigations and meaningful choices easy
 3. Structured learner memory + standards evidence parents can trust
 4. Story-based pedagogy (Amplify-style coherence; standards are the hidden map)
 5. Clean, maintainable TypeScript

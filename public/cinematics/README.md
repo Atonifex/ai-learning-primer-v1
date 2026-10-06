@@ -1,4 +1,7 @@
-# Intro cinematic — placeholder until Kling export
+# Intro cinematic library
+
+**V05 status,2026-10-06:** new Maya/Fortuna/Sergeant Wilhelm sequence is in production in `prologue-v5/`. Briefing84.02s/43.8MB, both bargaining responses, silent loop, Rho introduction, runway departure, flight, lightning and damaged-cockpit warning reviewed. Blue-handle corrective take pending; escape/crash/beach objectives, final exports, runtime switch and Git delivery remain. App still plays V03. Read `prologue-v5/README.md` and `docs/OPENING_SCREENPLAY_V05.md`; do not treat old targets or missing crash placeholders below as current status.
+
 
 **First prologue edit complete (2026-10-05):** `prologue-v1/prologue-captioned-preview.mp4` is the ~30s3D review cut with spoken audio/visible subtitles. Clean master `prologue-v1/prologue.mp4`; editable VTT/SRT, selectable-caption copy, separate picture/audio and source clips in same folder. Six Kling jobs cost360 credits; balance7,600. User playback review pending. This is not yet the combined crash intro or wired website asset; crash/objective/tutorial videos remain open/deferred as documented.
 

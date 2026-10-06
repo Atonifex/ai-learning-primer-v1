@@ -35,6 +35,8 @@ export function isFirstRunStep(value: string): value is FirstRunStep {
 }
 
 export function parseFirstRunStep(value: unknown): FirstRunStep {
+  // Older profiles can be parked on the retired naming screen. Use the account name.
+  if (value === "name") return "move";
   if (typeof value === "string" && isFirstRunStep(value)) return value;
   return "video";
 }
@@ -79,7 +81,7 @@ export function firstRunCoach(step: FirstRunStep, captain: string): string | nul
 
 const EVENT_TO_STEP: Record<FirstRunEvent, FirstRunStep> = {
   video_done: "purpose",
-  purpose_done: "name",
+  purpose_done: "move",
   name_saved: "move",
   walked_to_wreck: "talk",
   spoke_to_rho: "work",
@@ -105,6 +107,7 @@ export function applyFirstRunEvent(
   event: FirstRunEvent
 ): FirstRunStep {
   const next = EVENT_TO_STEP[event];
+  if (current === "purpose" && event === "purpose_done") return "move";
   if (ORDER[next] <= ORDER[current]) return current;
   if (ORDER[next] === ORDER[current] + 1) return next;
   return current;

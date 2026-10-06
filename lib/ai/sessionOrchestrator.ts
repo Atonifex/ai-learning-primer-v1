@@ -9,7 +9,10 @@ import {
   generateSceneImage,
 } from "./imageTool";
 import { offerLearningClipTool } from "./learningClipTool";
+import { presentCaptainChoicesTool } from "./captainChoicesTool";
+import { openGardenPlotTool } from "./gardenTool";
 import { findLearningClip } from "../play/learningClipSearch";
+import { decodeCaptainChoices } from "../play/captainChoices";
 import {
   generateLearningActivityTool,
   openCrewLogTool,
@@ -19,6 +22,7 @@ import {
   showMissionBoardTool,
   suggestNextMissionTool,
 } from "./standardsTool";
+import { gardenPayloadForOpen } from "../services/garden";
 import { getReferenceBuffersForScene } from "./referenceImages";
 import { recordStandardObservation } from "../services/standardsProgress";
 import { createGeneratedMiniQuiz } from "../services/learningActivities";
@@ -223,7 +227,9 @@ export async function* streamSessionResponse(
         openMissionTool,
         openCrewLogTool,
         saveCrewLogTool,
+        openGardenPlotTool,
         offerLearningClipTool,
+        presentCaptainChoicesTool,
         showWorldMapTool,
         saveMapNoteTool,
       ],
@@ -554,6 +560,36 @@ export async function* streamSessionResponse(
               }),
             });
           }
+        } else if (call.name === "open_garden_plot") {
+          try {
+            const payload = await gardenPayloadForOpen(profile.id);
+            yield {
+              type: "garden_plot_open",
+              learnerGoal: payload.learnerGoal,
+              standardCode: payload.standardCode,
+            };
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: true,
+                opened: true,
+                learnerGoal: payload.learnerGoal,
+                standardCode: payload.standardCode,
+                lesson1Passed: payload.state.lesson1Passed,
+                evaluationSummary: payload.evaluation.summary,
+                tellCaptain:
+                  "The garden beds are on screen. Stay with the fixed goal: What plants need to grow (Sun, air, fresh water). Do not invent plot outcomes — the mini-game scores them. Help only with HOW hints after they try.",
+              }),
+            });
+          } catch (err) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: false,
+                error: err instanceof Error ? err.message : String(err),
+              }),
+            });
+          }
         } else if (call.name === "open_mission") {
           const missionId = typeof args.mission_id === "string" ? args.mission_id.trim() : "";
           if (!missionId) {
@@ -706,6 +742,36 @@ export async function* streamSessionResponse(
                 }),
               });
             }
+          }
+        } else if (call.name === "present_captain_choices") {
+          const decoded = decodeCaptainChoices(args);
+          if (!decoded) {
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: false,
+                opened: false,
+                error: "Need 2–3 options with ids A/B/C and short labels",
+                tellCaptain:
+                  "Ask one clear decision in words, or call present_captain_choices again with 2–3 short options.",
+              }),
+            });
+          } else {
+            yield {
+              type: "captain_choices",
+              prompt: decoded.prompt,
+              options: decoded.options,
+            };
+            toolResults.push({
+              tool_call_id: call.id,
+              content: JSON.stringify({
+                success: true,
+                opened: true,
+                optionCount: decoded.options.length,
+                tellCaptain:
+                  "Decision buttons are on screen. Speak the fork briefly without re-listing every letter. Wait for a message that starts with I choose A/B/C — …, or for spoken/typed words that match an option.",
+              }),
+            });
           }
         } else if (call.name === "offer_learning_clip") {
           const learningGoal =

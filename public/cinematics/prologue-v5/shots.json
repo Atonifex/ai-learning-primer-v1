@@ -238,10 +238,11 @@
       "ref": "aircraft-storm",
       "line": "",
       "speaker": null,
-      "action": "Exterior retreat toward clear sea interrupted by one lightning strike near right engine. Local small engine flame, propeller falters, nose drops steeply; maintain enough altitude for escape. No explosion or strobe.",
+      "action": "Seconds 0–1.5 same intact aircraft flies forward in heavy rain. At 1.5 seconds a SINGLE bright lightning BOLT visibly connects storm cloud to RIGHT ENGINE beside camera, with one thunderclap. The right engine immediately catches a sustained small orange fire with continuous black smoke. Right propeller stops. From 2–6 seconds aircraft loses thrust, banks and pitches NOSE DOWN steeply as in tail image. Fire and smoke MUST persist through last frame. Never recover to level flight, never extinguish fire. Track same aircraft, ample high altitude above island for safe escape in next scene. No explosion or strobe, no people.",
       "role": "continuation",
-      "retries": 0,
-      "status": "planned"
+      "retries": 1,
+      "status": "reviewed",
+      "generationId": "AdPVx9CmJ7gAfrdXfoNRU2tgaS-_WH66WZCkwAxihP_tpSTHe4vUU21gbL-NxyqS7qEjjP9A"
     },
     {
       "id": "c09",
@@ -252,18 +253,21 @@
       "action": "Cockpit only: engine fire visible outside window, gauges dim, nose falls. Rho harnessed visibly concerned no smile, hands captain wheel only. Natural alarm wind engine sputter.",
       "role": "continuation",
       "retries": 0,
-      "status": "planned"
+      "status": "reviewed",
+      "speechVerification": "confirmed by transcription",
+      "generationId": "AQEsbBdUg5hk9q3waXrGDVTjBMSYQyHvR0meS74v457w1YpaQ3-AF_9uoi8UbsPuGhjQnK8m"
     },
     {
       "id": "c10",
       "duration": 7,
-      "ref": "cockpit-storm",
+      "ref": "c09-tail",
       "line": "Crew, get ready! Captain, pull the blue handle!",
       "speaker": "Rho",
-      "action": "Rho urgently points to blue handle on LEFT wall. Captain LEFT glove pulls it once. No magic, no extra hands. Aircraft power failing, independent fictional escape seats activate.",
+      "action": "LOCKED wide cockpit camera for ENTIRE shot. No zoom, no pan, no reframing; blue handle at LEFT must stay completely visible. Same fire persists OUTSIDE RIGHT window and Rho seated LEFT with worried tense expression. Rho delivers exact instruction once while keeping her OWN hands at controls, no pointing. At seconds4–6 captain LEFT navy glove leaves LEFT wheel grip, reaches precisely to blue handle on LEFT wall, wraps fingers around its HORIZONTAL lower grip and pulls it DOWN exactly ONCE. End with glove visibly gripping LOWERED blue lever and exposed released latch, matching tail image. Captain RIGHT navy glove stays on RIGHT wheel grip. Exactly TWO captain hands throughout. NEVER raise glove toward roof or point into air, NEVER lose contact action out of frame. One readable mechanical latch click activates fictional independent parachute seats. No exterior cut or interior fire. No extra hands, thumbs-up, magic, smiles or jokes.",
       "role": "continuation",
-      "retries": 0,
-      "status": "planned"
+      "retries": 1,
+      "status": "submitted",
+      "generationId": "AZhbYI-n89cJybJ3FSJFwwj-UH3ez2SgVI_GHnfn97hynhuuMj-O8QMxG_DFMLwreS6YghP-"
     },
     {
       "id": "c11",
@@ -285,7 +289,8 @@
       "action": "Exterior EMPTY same plane drops and skids into shallow water by south beach, wing damaged, no explosive fireball. Seven open crew chutes remain far above and separate in background. Wind scatters them toward forest clearings. Fade toward quiet surf/night.",
       "role": "continuation",
       "retries": 0,
-      "status": "planned"
+      "status": "planned",
+      "fadeOut": 0.4
     },
     {
       "id": "c13",
@@ -296,7 +301,8 @@
       "action": "Dawn first-person view rises on beach, Rho at normal helping distance checks responsiveness seriously then slight relief after camera nod. No thumbs-up or romance. Same wreck behind.",
       "role": "continuation",
       "retries": 0,
-      "status": "planned"
+      "status": "planned",
+      "fadeIn": 0.4
     },
     {
       "id": "c14",

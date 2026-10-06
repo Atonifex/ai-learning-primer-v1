@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import type { CheckAnswer } from "../../lib/play/subjectFiveCheck";
-import { STARTER_CHECK_GUIDANCE } from "../../lib/play/progressCopy";
 
 type Payload = {
   item: { id: string; skill: string; example: string; prompt: string; choices: string[] } | null;
@@ -45,7 +44,6 @@ export default function SubjectFiveCheck({ sessionId, onTalk }: { sessionId: str
   }
 
   return <section aria-label="Subject starting check" className="space-y-3 rounded-xl border border-amber-900/20 bg-white p-4" data-testid="subject-five-check">
-    <p className="text-sm text-stone-700">{STARTER_CHECK_GUIDANCE}</p>
     {error && <div role="alert" className="text-sm text-red-800"><p>{error}</p><button type="button" disabled={busy} onClick={() => setRetry((n) => n + 1)} className="min-h-11 underline">Try again</button></div>}
     {!data && !error && <p role="status">Opening your saved check…</p>}
     {data && <>

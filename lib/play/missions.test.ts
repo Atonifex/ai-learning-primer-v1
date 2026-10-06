@@ -17,6 +17,8 @@ describe("mission catalog", () => {
     expect(missionByPin("wreck")?.activitySlug).toBe("g3-ma-wreck-number-forms");
     expect(missionByPin("dune")?.subjectSlug).toBe("ela_g3");
     expect(missionByPin("treeline")?.subjectSlug).toBe("science_g3");
+    expect(missionByPin("treeline")?.title).toBe("What plants need to grow");
+    expect(missionByPin("treeline")?.estimatedMinutes).toBeGreaterThanOrEqual(15);
     expect(missionByPin("creek")?.subjectSlug).toBe("social_studies_g3");
     expect(missionByPin("camp")?.lockedUntil).toBe("wreck-quiz");
   });

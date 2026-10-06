@@ -2,11 +2,17 @@
 
 import { useEffect, useRef } from "react";
 import type { StillKey } from "../../lib/play/stills";
+import type {
+  CaptainChoiceOption,
+  CaptainChoicesPayload,
+} from "../../lib/play/captainChoices";
+import { formatCaptainChoiceReply } from "../../lib/play/captainChoices";
 import type { Message } from "../session/MessageList";
 import MessageList from "../session/MessageList";
 import InputBar from "../session/InputBar";
 import PreviouslyOnCard from "../session/PreviouslyOnCard";
 import BranchPickPanel from "../session/BranchPickPanel";
+import CaptainChoicePanel from "./CaptainChoicePanel";
 import type { SessionStoryUi } from "../../lib/types";
 import SafeStill from "./SafeStill";
 import { useRhoTts } from "./useRhoTts";
@@ -19,6 +25,7 @@ export default function DialogueCutscene(props: {
   thinkingLabel: string;
   portrait: StillKey;
   storyUi: SessionStoryUi | null;
+  captainChoices?: CaptainChoicesPayload | null;
   onSend: (content: string) => void;
   onClose: () => void;
   onBranchResolved?: (nextId: string) => void;
@@ -55,6 +62,13 @@ export default function DialogueCutscene(props: {
     tts.replayLast();
   }
 
+  function handleChoicePick(option: CaptainChoiceOption) {
+    props.onSend(formatCaptainChoiceReply(option));
+  }
+
+  const showChoices =
+    Boolean(props.captainChoices?.options.length) && !props.storyUi?.branchPoint;
+
   return (
     <div className="absolute inset-0 z-30 flex min-h-0 flex-col bg-[#071820]/70 md:flex-row">
       <div className="flex min-h-0 min-w-0 flex-1 flex-col border-stone-800 bg-[#f7f1e4] md:border-r">
@@ -63,7 +77,15 @@ export default function DialogueCutscene(props: {
             Talking with Rho
           </p>
           <div className="flex flex-wrap items-center gap-1">
-            {props.onOpenMap && <button type="button" onClick={props.onOpenMap} className="rounded-lg bg-teal-800 px-3 py-2 text-sm text-teal-50">Island map</button>}
+            {props.onOpenMap && (
+              <button
+                type="button"
+                onClick={props.onOpenMap}
+                className="rounded-lg bg-teal-800 px-3 py-2 text-sm text-teal-50"
+              >
+                Island map
+              </button>
+            )}
             <button
               type="button"
               role="switch"
@@ -101,7 +123,13 @@ export default function DialogueCutscene(props: {
             </button>
           </div>
         </div>
-        {props.onOpenMap && <button type="button" onClick={props.onOpenMap} className="conversation-map-link"><span aria-hidden>✧</span><span>{props.worldUpdate ?? props.mapContext ?? "Our island"}</span><strong>View on map</strong></button>}
+        {props.onOpenMap && (
+          <button type="button" onClick={props.onOpenMap} className="conversation-map-link">
+            <span aria-hidden>✧</span>
+            <span>{props.worldUpdate ?? props.mapContext ?? "Our island"}</span>
+            <strong>View on map</strong>
+          </button>
+        )}
         {props.storyUi?.showPreviouslyOn && props.storyUi.previouslyOn && (
           <PreviouslyOnCard
             sessionId={props.sessionId}
@@ -124,8 +152,17 @@ export default function DialogueCutscene(props: {
             onResolved={(nextId) => props.onBranchResolved?.(nextId)}
           />
         )}
+        {showChoices && props.captainChoices && (
+          <CaptainChoicePanel
+            choices={props.captainChoices}
+            disabled={props.streaming}
+            onPick={handleChoicePick}
+          />
+        )}
         {props.streaming && (
-          <p className="flex-shrink-0 px-4 pb-1 text-sm text-stone-500">{props.thinkingLabel}</p>
+          <p className="flex-shrink-0 px-4 pb-1 text-sm text-stone-500">
+            {props.thinkingLabel}
+          </p>
         )}
         <InputBar
           onSend={props.onSend}
@@ -160,7 +197,9 @@ export default function DialogueCutscene(props: {
           {tts.blocked && !tts.muted && (
             <p className="mt-0.5 text-sm text-teal-100/90">Tap Rho to hear</p>
           )}
-          {tts.loading && <p className="mt-0.5 text-sm text-teal-100/80">Rho is getting ready…</p>}
+          {tts.loading && (
+            <p className="mt-0.5 text-sm text-teal-100/80">Rho is getting ready…</p>
+          )}
         </div>
       </div>
     </div>

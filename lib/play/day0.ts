@@ -7,6 +7,7 @@ import type { FirstRunStep } from "./firstRun";
 import { isFirstRunComplete, parseFirstRunStep } from "./firstRun";
 import type { MissionPublic } from "./missions";
 import { hasSavedMathPlacement } from "./mathPlacement";
+import { PRIMER_INVITATION } from "../productIdentity";
 
 export const CHAPTER_PROBLEM = "Food will not last. Crew is scattered.";
 
@@ -14,8 +15,8 @@ export const LEARNING_PURPOSE_PAGES = [
   {
     id: "purpose",
     kicker: "How Primer works",
-    title: "This is a learning adventure",
-    body: "You'll use math, reading, science, and social studies to help your crew. The first check finds a starting point. It is not a scored test. You don't need to know everything yet.",
+    title: "Become your best self",
+    body: PRIMER_INVITATION,
   },
   {
     id: "skills",
@@ -25,7 +26,34 @@ export const LEARNING_PURPOSE_PAGES = [
   },
 ] as const;
 
-export type Day0BoxId = "name" | "walk" | "talk" | "mathCheck" | "camp";
+export const CAMP_SKILLS = [
+  {
+    id: "math",
+    subject: "Math",
+    skills: "Measure, calculate, and plan",
+    explanation: "Work out how much food each person needs, divide supplies fairly, and plan how to spend the camp's money. Measurements and calculations help you compare routes and check a plan before you use it.",
+  },
+  {
+    id: "english",
+    subject: "English",
+    skills: "Read, explain, and persuade",
+    explanation: "Understand messages and instructions. Make a clear, convincing case for the Merchant Corp to send resources, or invite new people to join your crew. Listening and choosing your words well can help you resolve disagreements with rival crews.",
+  },
+  {
+    id: "science",
+    subject: "Science",
+    skills: "Observe, test, and explain",
+    explanation: "Investigate how phones and radios send messages, and what plants need to grow. Compare evidence, test an idea, and improve your explanation so your crew can make better plans for communication and food.",
+  },
+  {
+    id: "social-studies",
+    subject: "Social Studies & History",
+    skills: "Understand people, communities, and the past",
+    explanation: "History helps you understand where people and their ideas came from. Psychology asks how we think and learn; sociology asks how groups work together. These questions can help you listen to different perspectives, organize your crew, and become a thoughtful leader.",
+  },
+] as const;
+
+export type Day0BoxId = "walk" | "talk" | "mathCheck" | "camp";
 
 export type Day0Box = {
   id: Day0BoxId;
@@ -53,7 +81,6 @@ export function day0Checklist(input: {
   const step = parseFirstRunStep(input.firstRunStep);
   const rank = STEP_ORDER[step];
   return [
-    { id: "name", label: "Name the captain", done: rank >= STEP_ORDER.move || isFirstRunComplete(step) },
     { id: "walk", label: "Walk to the wreck", done: rank >= STEP_ORDER.talk || isFirstRunComplete(step) },
     { id: "talk", label: "Talk with Rho", done: rank >= STEP_ORDER.work || isFirstRunComplete(step) },
     {

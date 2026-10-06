@@ -3,6 +3,7 @@ import { elaG3Template } from "./ela_g3";
 import { scienceG3Template } from "./science_g3";
 import { socialStudiesG3Template } from "./social_studies_g3";
 import type { SubjectPromptTemplate } from "./types";
+import { learningProgressionInstructions } from "../learningProgressions";
 
 export {
   MAPMAKERS_ARC_TITLE,
@@ -54,5 +55,8 @@ export function getPromptTemplate(subjectSlug: string): SubjectPromptTemplate {
       `No prompt template registered for subject "${subjectSlug}". Add it in lib/ai/promptTemplates/.`
     );
   }
-  return template;
+  return {
+    ...template,
+    pedagogyInstructions: `${template.pedagogyInstructions}\n\n${learningProgressionInstructions(subjectSlug)}`,
+  };
 }

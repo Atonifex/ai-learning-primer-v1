@@ -1,6 +1,6 @@
 {
-  "charged": 2160,
-  "uniqueJobs": 21,
+  "charged": 2556,
+  "uniqueJobs": 26,
   "media": [
     {
       "file": "attempts/c01-0/c01.mp4",
@@ -91,6 +91,50 @@
       }
     },
     {
+      "file": "attempts/c08-0/c08.mp4",
+      "bytes": 22604020,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1916,
+          "height": 1080
+        }
+      ],
+      "format": {
+        "duration": "6.041667",
+        "size": "22604020"
+      }
+    },
+    {
+      "file": "attempts/c10-0/c10.mp4",
+      "bytes": 19647119,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1916,
+          "height": 1080
+        }
+      ],
+      "format": {
+        "duration": "7.041667",
+        "size": "19647119"
+      }
+    },
+    {
       "file": "attempts/g08-0/g08.mp4",
       "bytes": 19263412,
       "programs": [],
@@ -136,7 +180,7 @@
     },
     {
       "file": "briefing-clean.mp4",
-      "bytes": 43729493,
+      "bytes": 43761463,
       "programs": [],
       "stream_groups": [],
       "streams": [
@@ -153,12 +197,12 @@
       ],
       "format": {
         "duration": "84.041667",
-        "size": "43729493"
+        "size": "43761463"
       }
     },
     {
       "file": "briefing.mp4",
-      "bytes": 43768406,
+      "bytes": 43758887,
       "programs": [],
       "stream_groups": [],
       "streams": [
@@ -179,7 +223,7 @@
       ],
       "format": {
         "duration": "84.041667",
-        "size": "43768406"
+        "size": "43758887"
       }
     },
     {
@@ -312,6 +356,72 @@
       "format": {
         "duration": "6.041667",
         "size": "23038064"
+      }
+    },
+    {
+      "file": "sources/c07.mp4",
+      "bytes": 18016937,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1916,
+          "height": 1080
+        }
+      ],
+      "format": {
+        "duration": "7.041667",
+        "size": "18016937"
+      }
+    },
+    {
+      "file": "sources/c08.mp4",
+      "bytes": 13511955,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1916,
+          "height": 1080
+        }
+      ],
+      "format": {
+        "duration": "6.041667",
+        "size": "13511955"
+      }
+    },
+    {
+      "file": "sources/c09.mp4",
+      "bytes": 17515318,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "aac",
+          "codec_type": "audio"
+        },
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1916,
+          "height": 1080
+        }
+      ],
+      "format": {
+        "duration": "7.041667",
+        "size": "17515318"
       }
     },
     {

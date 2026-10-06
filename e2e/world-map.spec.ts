@@ -110,6 +110,11 @@ test("a chapter update reveals a new place and Rho focuses it without a page rel
 
 test("atlas offers keyboard navigation, walking paths, and a clear return to Rho", async ({ page }) => {
   const session = await boot(page);
+  // This is a map/keyboard test: a live Rho turn can reopen dialogue or pause walking.
+  await page.route("**/api/session/*/message", (route) => route.fulfill({
+    contentType: "text/event-stream",
+    body: 'data: {"type":"text","content":"Let us look at the island map."}\n\ndata: {"type":"done","messageId":"atlas-keyboard-reply"}\n\n',
+  }));
   await page.route("**/api/world", (route) => route.fulfill({ json: fixture() }));
   await page.goto(session.learnUrl, { waitUntil: "domcontentloaded" });
   await expect(page.getByTestId("play-shell")).toHaveAttribute("data-ready", "true", { timeout: 30000 });

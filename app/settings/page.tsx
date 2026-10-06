@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { requireChildPage } from "../../lib/auth/pageGuards";
 import ReadingLevelForm from "../../components/settings/ReadingLevelForm";
+import CaptainNameForm from "../../components/settings/CaptainNameForm";
 
 export default async function SettingsPage() {
   const { profile } = await requireChildPage();
@@ -16,11 +17,11 @@ export default async function SettingsPage() {
         </Link>
         <h1 className="mt-4 text-2xl font-semibold text-stone-900">Settings</h1>
         <p className="mt-2 text-sm text-stone-600">
-          Adjust how Primer talks to your captain. More parent controls will
-          land here later.
+          Choose your captain name and adjust how Rho talks to you.
         </p>
       </div>
 
+      <CaptainNameForm initialName={profile.displayName} />
       <ReadingLevelForm
         gradeBand={profile.gradeBand}
         initialReadingLevel={profile.readingLevel}

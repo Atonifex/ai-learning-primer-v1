@@ -136,7 +136,11 @@ Also read (not in `docs/`, more current):
 
 ## 3. Product thesis (why this can be phenomenal)
 
-Primer is not "Khan Academy with a skin" and not "Roblox with a worksheet." It is a **persistent world in which academic skill is the physics engine**.
+**Product identity — Ivan, 2026-10-06:** Primer is a **guided learning experience to help learners become their best selves**. Understanding how the world works, asking questions and pursuing deep investigations are the primary drive. A persistent island and the journey of rebuilding society give those investigations purpose and continuity. Use this identity in learner/parent-facing language; existing technical game terminology does not override it.
+
+**Build priority:** prove a strong authored stock experience adapted to grade and subject before expanding generated learning content. Ivan finds crate-counting a weak opening hook and proposes investigating the crash / rebuilding communication with the mainland. The exact opening phenomenon remains undecided; candidate design and evidence are in `docs/PRODIGY_ONBOARDING_REVIEW_2026-10-06.md`. Question bubbles, learner-authored/voiced questions, bounded curiosity branches and connections to personal interests are requested capabilities, not implemented features.
+
+**Later 2026-10-06 proposals, not new runtime/canon locks:** storm deviation causes a crash on an unexpected island while heading to resource-rich **Fortuna**; the landing island is secretly better, with its value discovered later. Make all relevant learning goals/standards accessible, allow flexible approaches/order, and let evidence-backed learning and decisions shape persistent world consequences. The proposed new island, communication mechanics and transparent route model require authoring/review; existing V05 geography and current subject-first sitting remain until a selected change is adopted. Ender's Game is creative mastery/adaptive-challenge inspiration, not a plot template. Backlog F06/F07 and `docs/UNEXPECTED_ISLAND_AND_LEARNER_AGENCY_2026-10-06.md` retain the design and two paper revisions.
 
 A Grade 3–8 learner is the **captain**. Their name from onboarding (`displayName`) *is* the character. **Rho is the First Mate** — loyal sidekick, never the hero. Math, reading, science, and social studies are **lenses on one story**, not four apps.
 
@@ -154,7 +158,7 @@ The parent should:
 - Read **chapter reflections** the child wrote "for the crew"
 - Trust that this is not screen-time theater
 
-If session 4 does not feel like **returning to the same island and camp**, the product has failed — even if the quizzes are correct.
+Across sittings, the learner should return to the same island and camp with a clearer explanation, a new capability or a question worth investigating. Evaluate understanding and independent application alongside continuity and desire to return.
 
 ---
 
@@ -163,6 +167,8 @@ If session 4 does not feel like **returning to the same island and camp**, the p
 | Decision | Value |
 |----------|-------|
 | Working title | Primer |
+| Product identity | **Guided learning experience to help learners become their best selves** (Ivan, 2026-10-06). Curiosity, questions and understanding the world drive progress; use this in learner/parent-facing language. |
+| Authoring before generation | Prove a strong **authored stock experience adapted to grade/subject** before expanding generated learning. Current Grade 3 samples do not establish full Grade 3–8 coverage. |
 | MVP audience | Homeschool families; child is the player; parent is the economic buyer |
 | Grade proof | Florida Grade 3 + Grade 4 catalogs as the test corpus; UI may still default Grade 3 |
 | Subjects in one world | `math_g3`, `ela_g3`, `science_g3`, `social_studies_g3` (and G4 equivalents when seeded) share **one** `StoryWorld` + **one** saga |
@@ -525,6 +531,8 @@ Record: **lifetime**, **per session** (wall clock, even if they jump lessons), *
 ### 4.16 Session focus (locked 2026-10-05)
 
 The five beach jobs are a subject sampler. They stay in the code until this view replaces them. They are no longer the model for how a child learns.
+
+**Inquiry-first clarification — Ivan, 2026-10-06:** organize the dive around a compelling observation or question about how the world works. Rebuilding society supplies the larger purpose; the learner should want to understand the investigation itself. Make questions easy through suggested bubbles, voice and the learner's own wording, with bounded branches connected to expressed interests. Prove authored grade/subject experiences before expanding generation. Crate-counting is not the accepted organizing hook for the intended opening. Crash investigation and mainland communication are user proposals; exact phenomenon, sequence, curriculum mapping and runtime replacement remain to be authored/reviewed. Preserve the subject-choice structure below and the distinction between supported practice and independent evidence. Design evidence: `docs/PRODIGY_ONBOARDING_REVIEW_2026-10-06.md`.
 
 A learning sitting has one shape:
 
@@ -1085,6 +1093,26 @@ COPPA still applies at step 1 (two logins, one household). Stipend eligibility i
 
 ## 15. Master checklist
 
+### Bottom conversation interface — 2026-10-06 (planned)
+
+- [x] Document Ivan's bottom ~45% dialogue, bottom-right reusable speaker/nameplate and inline/right content request, plus accepted conversation-only/latest-exchange+History/adaptive-small-screen choices. Plan, source findings, risks, mitigation and evaluation: `docs/BOTTOM_DIALOGUE_PLAN_2026-10-06.md`.
+- [ ] Review prototype geometry, implement shared dock/speaker/content host and verify required suites plus actual browser flows. Planning complete; runtime interface unchanged.
+
+### Inquiry-led stock experience — 2026-10-06
+
+- [x] Draft a parent/student/initial-actions onboarding improvement plan preserving working features and separating existing authorized changes from proposed slices. `docs/ONBOARDING_IMPROVEMENT_PLAN_2026-10-06.md`; **await Ivan's review before implementation**. Coordinate the accepted Treeline lesson and separate bottom-dialogue plan. Parent display-name gap and complete first-lesson teaching remain unfinished; drafting does not close those build tasks.
+
+- [x] Implement four plain-language subject skill summaries and expandable crew-purpose explanations in the skills card; preserve accepted heading/body. Use account captain name, skip retired naming step (including legacy profiles), remove name checklist action, and add profile-name editing through Settings with server validation and regression coverage. Psychological/sociological examples do not establish new standards coverage.
+
+- [x] Wire Ivan's approved invitation into public home and onboarding via one shared source; retain signed-in redirects and check explanation. Add three live subject teaching contracts (inquiry, model/practice, evidence/communication) with revision and independent-evidence rules. Prompt guidance, not a persisted activity-stage engine; fixed practice UI and authored unit remain open.
+- [x] Capture math-first niche recommendation, requested map/crossing problems and causal-learning versus reward-world comparison in `docs/LEARNING_PROGRESSIONS_AND_FIRST_SUBJECT_2026-10-06.md`. Subject scope/crossing mechanics are not adopted runtime features.
+
+- [x] Review all 31 supplied Prodigy onboarding images in order; compare with current Primer source and learning design, qualify outcomes claims, and record Ivan's guided-learning identity and inquiry-first direction. `docs/PRODIGY_ONBOARDING_REVIEW_2026-10-06.md`; documentation only.
+- [x] Capture and critique unexpected-island, visible-goals/flexible-route and Ender-inspired mastery proposals; revise story/product invitation twice on paper and document canon/UI implications in `docs/UNEXPECTED_ISLAND_AND_LEARNER_AGENCY_2026-10-06.md`. No runtime/canon replacement or new media.
+- [x] Ship in-dialogue A/B/C decision buttons via orchestrator tool `present_captain_choices` → SSE `captain_choices` → tap reply `I choose A — …` (decode in `lib/play/captainChoices.ts`). Not the full question-bubble / scene-dialogue redesign.
+- [ ] Author/review one compelling anchor unit with grade/subject variants, accessible learner questions, evidence tasks, error support, independent application and delayed revisit before expanding generated content. Exact first phenomenon remains undecided.
+- [ ] Implement and validate the accepted stock unit through the existing orchestrator/tool flow; do not mark a question-bubble or scene-dialogue proposal as shipped. Current technical/UI architecture remains until its selected replacement slice is built and tested.
+
 ### Overnight beta usability and evidence — 2026-10-05/06
 
 - [x] Replace completed-only Camp needs dead end with a real next-action card and locked previews; next-mission tool opens the board without bypassing placement.
@@ -1357,6 +1385,49 @@ If a new ★ question appears, add the answer to **§4** or **§17** — do not 
 ---
 
 ## 18. Implementation log
+
+### 2026-10-06 — Treeline garden deep lesson foundation
+
+- Ivan: fix WHAT vs HOW on early shore jobs; ~15+ min depth; one required tutorial dive; world reward that upgrades camp. Plan: `docs/TREELINE_GARDEN_LESSON_2026-10-06.md` (`SC.3.L.17.2`, goal “What plants need to grow”).
+- Shipped: deterministic `lib/play/gardenPlot.ts`, camp `garden` JSON + migration, `open_garden_plot` tool/SSE, `/api/garden` + `GardenPlotPanel`, Pixi treeline beds via `gardenVisual`, Treeline map ask no longer “what can we do here?”. Backlog F09 for catalog-wide `learnerGoal`.
+- Not done: full teach/practice beats before the mini-game; Jobs “optional later” labels for dune/creek/camp; browser e2e blocked by flaky/hung `/api/garden` against the remote DB pool (unit + tsc pass).
+
+### 2026-10-06 — Bottom dialogue plan (documentation only)
+
+- Ivan requests bottom ~45% conversation with reusable bottom-right character picture/nameplate and embedded/right-expanded content; accepted conversation-only visibility, latest exchange + History and adaptive narrow-screen full-screen content.
+- Saved implementation sequence, migration findings, risks/mitigations and measurable acceptance checks in `docs/BOTTOM_DIALOGUE_PLAN_2026-10-06.md`; updated project memory and §15. Recommended right workspace above the dock is for review, not shipped behavior.
+- Inspected dialogue/shell/message/input/portrait/camera/popup/focus and existing overlay regression source. No application code, runtime suites, browser exercise, media generation or deployment in this planning turn; unrelated changes preserved.
+
+### 2026-10-06 — Parent/student onboarding plan for review
+- Ivan requests a reviewable plan before implementation. Saved `docs/ONBOARDING_IMPROVEMENT_PLAN_2026-10-06.md`: preserved features, parent handoff, student pacing, first meaningful learning, return path, two paper revision rounds and staged acceptance checks.
+- Design-critique skill and current code/31-image Prodigy review inform proposals; no family outcomes claim. Found parent form does not send displayName, leaving new profiles potentially unnamed after removing student renaming; plan explicitly addresses it.
+- No new onboarding plan feature, story, media or deployment implemented. Recommended identity/handoff clarity first; draft reconciled with concurrent accepted Treeline science and bottom-dialogue directions, retaining their separate implementation scope.
+
+### 2026-10-06 — In-dialogue captain decision buttons (tool-first)
+
+- Added `present_captain_choices` orchestrator tool, SSE `captain_choices`, decode/format helpers in `lib/play/captainChoices.ts`, and `CaptainChoicePanel` in dialogue. Tap sends `I choose A — {label}` so Rho can act on the pick; mic/type still work.
+- Prompt TOOLS block requires the tool for A/B/C forks (not prose-only lists). Camp needs / map / quizzes keep their own tools. Unit + Playwright regressions cover decode and button→message.
+
+### 2026-10-06 — Agreed invitation and reusable teaching progressions
+- Later steering: skills overview gets four expandable explanations; account name replaces repeated naming, including legacy step migration. Settings gains a name form and island link; profile API validates names, retains ownership guard and leaves credentials untouched. `CaptainAwakening` removed, Day 0 checklist now has four actions.
+- Shared accepted invitation in `lib/productIdentity.ts`, public homepage and post-cinematic Day 0 card; authenticated home redirects remain. Starting-check reassurance moves to the skills card.
+- `lib/ai/learningProgressions.ts` defines three subject-routed contracts appended by `getPromptTemplate` for G3/G4, covering modeled/guided/independent work, evidence, revision and actual-tool consequences. No persisted stage engine or new crossing UI.
+- Unit regressions and home/onboarding/settings browser specs updated; 182 unit tests/46 files, TypeScript and targeted lint pass. Six changed-flow browser tests pass; broader suite 31/33 passes. Subject-focus retry and atlas walking/navigation still time out in isolated reruns after fixture corrections. Manual CUA navigation also times out; these checks remain unverified.
+- Narrow Grade 3 math investigation is a recommendation; science-first/scope choice remains open. Requested map crossings captured in F08; design/source comparison saved in `LEARNING_PROGRESSIONS_AND_FIRST_SUBJECT_2026-10-06.md`. Unrelated V05 production remains untouched.
+
+### 2026-10-06 — Unexpected island and learner agency proposals (authoring only)
+
+Ivan proposes an off-course crash on an unnamed island en route to Fortuna, its hidden superiority revealed through later discoveries; explicit standards/goals with learner-selected approaches/order; and world consequences driven by effort, decisions and learning, inspired by Ender's Game mastery. Captured F06/F07 and `docs/UNEXPECTED_ISLAND_AND_LEARNER_AGENCY_2026-10-06.md`, including two labeled simulated creative critique/revision rounds and usable paper copy. Recommended transparent goals/flexible routes with explained prerequisites and independent evidence. Off-course geography explains misplaced search, not automatic radio failure; communication cause remains to be authored. Proposed first unit: “Where are we, and how can we let someone know?”
+
+Current Maya/Fortuna destination canon, V05 landing references, subject-first sitting, Pixi architecture, live model and mastery formula remain intact while proposals are reviewed. No code, live prompts, UI, media/generation jobs or deployment changed. Primary-source checks and documentation verification only; no runtime suite, learner study or communication simulation.
+
+### 2026-10-06 — Prodigy review and guided-learning identity (authoring only)
+
+Reviewed all 31 supplied images in numbered order, including 13b and the supplementary partition question. Strong observed patterns: clear next actions, stable bottom dialogue/world continuity and visible progression. Academic concerns: questions detached from battle reasoning, reward/system overhead and limited correction/transfer shown. Step 13 uses numeric input and drawing/manipulatives; absence of meaningful feedback and 10–15-minute timing are Ivan's play report, not static-image measurements or efficacy proof. Primary sources and current-code comparison are in `docs/PRODIGY_ONBOARDING_REVIEW_2026-10-06.md`.
+
+Ivan clarified that Primer is a **guided learning experience to help learners become their best selves**, driven by questions and understanding how the world works within rebuilding society. Prove authored grade/subject experiences before expanding generation. He rejects crate-counting as the compelling entry and proposes crash investigation / mainland communication; question bubbles, own/voiced questions, personalized branches and scene continuity are requested design directions. MASTER §3/4.16 and backlog F03/F05 distinguish these commitments from the proposed signal phenomenon and unimplemented UI. V05 reveals lightning/fire/power loss, so do not pretend its immediate cause is unknown. The report's initial arithmetic-practice recommendation was superseded by inquiry-first stock-unit authoring.
+
+No app behavior, data, live prompts, UI, model, mastery formula, paid assets or deployment changed. No fresh browser playthrough or runtime suites run for this documentation-only review. Current `MathPractice` has one attempt then feedback; independent transfer/retention and full grade coverage remain open.
 
 ### 2026-10-05/06 — Overnight beta review and learning continuity (local verification complete)
 

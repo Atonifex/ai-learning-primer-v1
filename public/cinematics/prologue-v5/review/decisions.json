@@ -118,5 +118,21 @@
     "visual": "Full7s2fps retake: tense worried Rho looks toward storm then back to captain, furrowed brows and downturned/tense mouth maintained through end; prior cheerful smiles removed. Same cockpit/hands/left handle.",
     "speech": "Both transcripts recover exact storm/turn-back warning.",
     "seam": "12fps c06-c07 clean island approach cuts to storm-filled cockpit, consistent geography and serious Rho. Next exterior shows attempted retreat then lightning."
+  },
+  {
+    "id": "c08",
+    "accepted": true,
+    "retries": 1,
+    "visual": "Full2fps timeline shows visible cloud-to-right-engine bolt, ignition, sustained engine-only fire/smoke, stopped right prop and progressive nose-down bank at height; unchanged untouched Fortuna. No persons or injury.",
+    "speech": "No dialogue; native sound retained. No actual human listening certification.",
+    "seam": "c07-c08 twelvefps seam: purposeful cockpit-warning to exterior-storm cut, same approaching island and aircraft before lightning. Original first take rejected for transient flash/no persistent damage; one corrected take accepted."
+  },
+  {
+    "id": "c09",
+    "accepted": true,
+    "retries": 0,
+    "visual": "Full2fps timeline keeps worried Rho, dim gauges, outside engine fire/smoke and two captain hands on wheel. No cheerful reaction or reset damage. Full browser playback7.04s ended without error.",
+    "speech": "Whisper confirms exact line once: The engine's on fire! We're losing power! Word times0–4.24s; no actual human listening certification.",
+    "seam": "c08-c09 twelvefps seam shows intentional damaged-exterior→damaged-cockpit cut, fire remains on right. Visual continuity accepted; speech verification remains pending."
   }
 ]

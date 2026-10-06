@@ -6,6 +6,7 @@ import {
 } from "../../../lib/auth/guards";
 import { updateProfile } from "../../../lib/services/profile";
 import { isLearnerGradeBand } from "../../../lib/constants/grades";
+import { validCaptainName } from "../../../lib/profile/captainName";
 import {
   isFirstRunStep,
   type FirstRunEvent,
@@ -50,8 +51,10 @@ export async function PATCH(req: NextRequest) {
     );
   }
 
-  const displayName =
-    typeof body?.displayName === "string" ? body.displayName : undefined;
+  const displayName = body?.displayName !== undefined ? validCaptainName(body.displayName) : undefined;
+  if (displayName === null) {
+    return NextResponse.json({ error: "Enter a captain name between 1 and 40 characters." }, { status: 400 });
+  }
   const firstRunEventRaw = body?.firstRunEvent;
   const firstRunEvent =
     typeof firstRunEventRaw === "string" &&

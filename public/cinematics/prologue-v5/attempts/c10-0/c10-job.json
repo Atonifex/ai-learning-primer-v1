@@ -1,0 +1,63 @@
+{
+  "shot": {
+    "id": "c10",
+    "duration": 7,
+    "ref": "c09-tail",
+    "line": "Crew, get ready! Captain, pull the blue handle!",
+    "speaker": "Rho",
+    "action": "Continue exact damaged cockpit endpoint, same camera, Rho seated on LEFT, blue emergency handle clearly on LEFT wall beside her head. Right engine fire persists OUTSIDE right window, no interior fire. Rho urgently addresses the crew then says exact instruction to Captain, points once with her LEFT hand to the blue LEFT-wall handle and withdraws. Captain's LEFT navy glove leaves left wheel grip and reaches to pull the LEFT-wall blue handle DOWN exactly ONCE at seconds4–6. Captain RIGHT glove stays on wheel. Only TWO captain hands; no extra hands, no thumbs-up or magic. Handle visibly moves down and a mechanical latch releases, fictional independent parachute seats activate. No exterior cut yet. Rho tense worried expression through final frame.",
+    "role": "continuation",
+    "retries": 0,
+    "status": "planned"
+  },
+  "args": {
+    "model": "kling-video-v3_0",
+    "arguments": [
+      {
+        "name": "prompt",
+        "value": "Polished stylized 3D family adventure identical to supplied reference. Preserve character proportions costume set geography and same teal cream brass fixed-wing twin-prop aircraft. One continuous shot, no automatic cuts. No text lettering subtitles UI weapons blood injuries or horror. NO MUSIC; continuous edit score added separately. Use <<<323217795314817>>> for same Rho identity and supplied voice. Blond hair amber eyes thin teal visor metal cheek neck brown jacket teal shoulders cream shirt. Professional, no romance. Continue exact damaged cockpit endpoint, same camera, Rho seated on LEFT, blue emergency handle clearly on LEFT wall beside her head. Right engine fire persists OUTSIDE right window, no interior fire. Rho urgently addresses the crew then says exact instruction to Captain, points once with her LEFT hand to the blue LEFT-wall handle and withdraws. Captain's LEFT navy glove leaves left wheel grip and reaches to pull the LEFT-wall blue handle DOWN exactly ONCE at seconds4–6. Captain RIGHT glove stays on wheel. Only TWO captain hands; no extra hands, no thumbs-up or magic. Handle visibly moves down and a mechanical latch releases, fictional independent parachute seats activate. No exterior cut yet. Rho tense worried expression through final frame. Only Rho speaks. Speak exact simple English line ONCE, clear unhurried natural voice with lip sync: \"Crew, get ready! Captain, pull the blue handle!\". No added words/voices. Maintain worried tense Rho acting ENTIRE shot including final frame. No smiling during danger."
+      },
+      {
+        "name": "duration",
+        "value": "7"
+      },
+      {
+        "name": "resolution",
+        "value": "1080p"
+      },
+      {
+        "name": "imageCount",
+        "value": "1"
+      },
+      {
+        "name": "prefer_multi_shots",
+        "value": "false"
+      },
+      {
+        "name": "enable_audio",
+        "value": "true"
+      },
+      {
+        "name": "elements",
+        "value": "[{\"id\":\"323217795314817\",\"bindName\":\"Rho\"}]"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "first_image",
+        "inputType": "URL",
+        "url": "https://s15-kling.klingai.com/kimg/EMXN1y8qSQoGdXBsb2FkEg55bGFiLXN0dW50LXNncBovYWdlbnRfdXBsb2FkLzE3OTEyODMxNTQvOWRaZ2lOaWVlbS9jMDktdGFpbC5wbmc.origin?x-kcdn-pid=112372"
+      }
+    ],
+    "rationale": "Authorized whole V05 regeneration. Prior shot and seam reviewed before continuing. Preserve identity voice craft and causal continuity; variable pacing native sound with separate score."
+  },
+  "task": {
+    "generationId": "AdU-GR9YBh4nORia1U-Hb5wzHlFrGAzsGQVmuQgYMZ-sTb7NFq5l5PiEk7xApQ5BMRglfr92",
+    "status": "QUEUING",
+    "model": "kling-video-v3_0",
+    "creditsConsumed": 84,
+    "message": "Generation submitted. Poll query_tasks with this generationId to get the result.",
+    "generation_id": "AdU-GR9YBh4nORia1U-Hb5wzHlFrGAzsGQVmuQgYMZ-sTb7NFq5l5PiEk7xApQ5BMRglfr92",
+    "credits_consumed": 84
+  }
+}

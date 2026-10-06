@@ -55,6 +55,16 @@ export function createLandmark(node: WorldNode, onSelect: () => void) {
       g.circle(x, -20 - i * 5, 23).fill(i % 2 ? 0x366847 : 0x4f8557);
       g.circle(x - 6, -29 - i * 5, 13).fill(0x8cb571);
     });
+    if (node.gardenVisual && node.gardenVisual !== "none") {
+      const healthy = node.gardenVisual === "healthy";
+      const bed = healthy ? 0x6b8f3a : 0x8a7a45;
+      const sprout = healthy ? 0x9fd36a : 0xc4b07a;
+      [-22, -4, 14].forEach((x, i) => {
+        g.roundRect(x, 18, 14, 8, 2).fill(bed).stroke({ color: 0x5a4a32, width: 1 });
+        g.moveTo(x + 7, 18).lineTo(x + 7, 10 - i).stroke({ color: 0x6a5538, width: 2 });
+        g.circle(x + 7, 8 - i, 4).fill(sprout);
+      });
+    }
   } else {
     g.poly([-24, 17, -3, -24, 23, 17]).fill(0x859789);
     g.poly([-3, -24, 23, 17, 5, 10]).fill(0xaabc9d);

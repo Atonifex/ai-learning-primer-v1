@@ -17,11 +17,11 @@ import DialogueCutscene from "./DialogueCutscene";
 import QuizOverlay from "./QuizOverlay";
 import ReflectionOverlay from "./ReflectionOverlay";
 import MissionBoard from "./MissionBoard";
+import GardenPlotPanel from "./GardenPlotPanel";
 import LearningClipPanel from "./LearningClipPanel";
 import SubjectFocusPanel from "./SubjectFocusPanel";
 import MathFiveCheck from "./MathFiveCheck";
 import AiDebugPanel from "./AiDebugPanel";
-import CaptainAwakening from "../onboarding/CaptainAwakening";
 import FirstRunCoach from "./FirstRunCoach";
 import LearningPurposeCard from "./LearningPurposeCard";
 import {
@@ -78,14 +78,12 @@ export default function PlayShell(props: {
   autoOpenClip?: boolean;
 }) {
   const router = useRouter();
-  const [captainName, setCaptainName] = useState(
-    () => props.displayName.trim() || "Captain"
-  );
-  const captain = captainName;
+  const captain = props.displayName.trim() || "Captain";
   const firstRun = useFirstRunTutorial(props.firstRunStep ?? "video", captain);
   const missions = useMissions();
   const [dialogueOpen, setDialogueOpen] = useState(() => Boolean(props.autoOpenDialogue));
   const [boardOpen, setBoardOpen] = useState(() => Boolean(props.autoOpenBoard));
+  const [gardenOpen, setGardenOpen] = useState(false);
   const [focusOpen, setFocusOpen] = useState(() => Boolean(props.autoOpenFocus));
   const [mathCheckOpen, setMathCheckOpen] = useState(false);
   const [clip, setClip] = useState<LearningClipOffer | null>(() =>
@@ -153,6 +151,11 @@ export default function PlayShell(props: {
             `${HIDDEN_TURN.missionStartPrefix} ${started.mission.title} (${started.mission.subjectSlug}) at the ${started.mission.pinId}.`
           );
         }
+        if (missionId === "treeline-sci") {
+          setGardenOpen(true);
+          void missions.refresh();
+          return;
+        }
         const opened = await learning.openOverlayQuiz(started.mission.activitySlug);
         if (opened.alreadyDone) {
           setHint(`Reviewing ${started.mission.title}. Your result is saved.`);
@@ -214,6 +217,13 @@ export default function PlayShell(props: {
     const pending = stream.pendingMissionOpen;
     if (!pending) return;
     stream.clearPendingMissionOpen();
+    if (pending.missionId === "treeline-sci") {
+      setDialogueOpen(false);
+      setMapOpen(false);
+      setBoardOpen(false);
+      setGardenOpen(true);
+      return;
+    }
     if (pending.switched) {
       void beginMission(pending.missionId);
       return;
@@ -233,6 +243,16 @@ export default function PlayShell(props: {
     void missions.refresh();
     setBoardOpen(true);
   }, [stream.pendingMissionBoardOpen, stream, missions.refresh]);
+
+  useEffect(() => {
+    if (!stream.pendingGardenPlotOpen) return;
+    stream.clearPendingGardenPlotOpen();
+    setMapOpen(false);
+    setBoardOpen(false);
+    setFocusOpen(false);
+    setDialogueOpen(false);
+    setGardenOpen(true);
+  }, [stream.pendingGardenPlotOpen, stream]);
 
   useEffect(() => {
     if (!stream.pendingCrewLogOpen) return;
@@ -295,7 +315,14 @@ export default function PlayShell(props: {
   function askAboutPlace(node: WorldNode) {
     setMapOpen(false); setBoardOpen(false); setFocusOpen(false); setDialogueOpen(true);
     unlockRhoAudio();
-    if (!stream.streaming) void stream.sendMessage(`Let's talk about ${node.title} on our map. What can we do here for our chapter problem?`);
+    if (stream.streaming) return;
+    if (node.id === "treeline") {
+      void stream.sendMessage(
+        "At the Treeline we need to start a garden so camp can grow food. Our goal is What plants need to grow — Sun, air, and fresh water. Open the garden beds when I am ready."
+      );
+      return;
+    }
+    void stream.sendMessage(`Let's talk about ${node.title} on our map. What can we do here for our chapter problem?`);
   }
 
   async function openMapActivity(task: MapTask) {
@@ -397,20 +424,7 @@ export default function PlayShell(props: {
   if (firstRun.step === "purpose") {
     return (
       <div className="h-screen" data-testid="play-shell" data-ready={mapReady} inert={!mapReady} aria-busy={!mapReady}>
-        <LearningPurposeCard onContinue={() => void firstRun.advance("purpose_done")} />
-      </div>
-    );
-  }
-
-  if (firstRun.step === "name") {
-    return (
-      <div className="h-screen" data-testid="play-shell" data-ready={mapReady} inert={!mapReady} aria-busy={!mapReady}>
-        <CaptainAwakening
-          onSaved={(name) => {
-            setCaptainName(name);
-            void firstRun.advance("name_saved");
-          }}
-        />
+        <LearningPurposeCard captain={captain} onContinue={() => void firstRun.advance("purpose_done")} />
       </div>
     );
   }
@@ -504,6 +518,11 @@ export default function PlayShell(props: {
           </Link>
         )}
         {chrome.leave && (
+          <Link href="/settings" className="pointer-events-auto rounded-full bg-[#1a120c]/80 px-3 py-1.5 text-xs text-amber-100 hover:bg-[#1a120c]">
+            Settings
+          </Link>
+        )}
+        {chrome.leave && (
           <button
             type="button"
             onClick={() => {
@@ -569,6 +588,7 @@ export default function PlayShell(props: {
           thinkingLabel={stream.streaming ? "Rho is listening…" : ""}
           portrait={portrait}
           storyUi={stream.storyUi}
+          captainChoices={stream.pendingCaptainChoices}
           onOpenMap={mapReady ? () => setMapOpen(true) : undefined}
           mapContext={selectedNode ? `${selectedNode.title} · ${selectedNode.tasks.filter((t) => !t.completed).length} ready to try` : worldMap.world?.chapterTitle}
           worldUpdate={stream.worldUpdate?.reason}
@@ -632,6 +652,21 @@ export default function PlayShell(props: {
           onFocus={() => { setBoardOpen(false); setDialogueOpen(false); setFocusOpen(true); }}
           onClose={() => setBoardOpen(false)}
           onStart={(id) => void beginMission(id)}
+        />
+      )}
+
+      {gardenOpen && (
+        <GardenPlotPanel
+          onClose={() => setGardenOpen(false)}
+          onSaved={(passed) => {
+            void worldMap.refresh();
+            void missions.refresh();
+            setHint(
+              passed
+                ? "Garden started on the map. Plants have what they need to grow."
+                : "Garden saved. Adjust beds so plants get Sun, air, and fresh water."
+            );
+          }}
         />
       )}
 
